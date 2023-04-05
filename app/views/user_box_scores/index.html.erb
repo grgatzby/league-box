@@ -1,0 +1,4 @@
+<h1>List of players</h1>
+<% @box_scores.each do |box_score| %>
+  <%= box_score.user.nickname %>
+<% end %>
