@@ -1,0 +1,2 @@
+class UserMatchScoresController < ApplicationController
+end

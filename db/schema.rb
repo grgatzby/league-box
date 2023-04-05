@@ -10,9 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_02_063059) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_123241) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boxes", force: :cascade do |t|
+    t.integer "box_number"
+    t.bigint "round_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["round_id"], name: "index_boxes_on_round_id"
+  end
+
+  create_table "clubs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "courts", force: :cascade do |t|
+    t.string "name"
+    t.bigint "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_courts_on_club_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "time"
+    t.bigint "court_id", null: false
+    t.bigint "box_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_matches_on_box_id"
+    t.index ["court_id"], name: "index_matches_on_court_id"
+  end
+
+  create_table "rounds", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "club_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["club_id"], name: "index_rounds_on_club_id"
+  end
+
+  create_table "user_box_scores", force: :cascade do |t|
+    t.integer "points"
+    t.integer "rank"
+    t.bigint "user_id", null: false
+    t.bigint "box_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_user_box_scores_on_box_id"
+    t.index ["user_id"], name: "index_user_box_scores_on_user_id"
+  end
+
+  create_table "user_match_scores", force: :cascade do |t|
+    t.integer "points"
+    t.integer "score_set1"
+    t.integer "score_set2"
+    t.integer "score_tiebreak"
+    t.boolean "is_winner"
+    t.bigint "user_id", null: false
+    t.bigint "match_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_user_match_scores_on_match_id"
+    t.index ["user_id"], name: "index_user_match_scores_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +88,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_02_063059) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "nickname"
+    t.string "phone_number"
+    t.boolean "is_manager"
+    t.bigint "club_id", null: false
+    t.index ["club_id"], name: "index_users_on_club_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boxes", "rounds"
+  add_foreign_key "courts", "clubs"
+  add_foreign_key "matches", "boxes"
+  add_foreign_key "matches", "courts"
+  add_foreign_key "rounds", "clubs"
+  add_foreign_key "user_box_scores", "boxes"
+  add_foreign_key "user_box_scores", "users"
+  add_foreign_key "user_match_scores", "matches"
+  add_foreign_key "user_match_scores", "users"
+  add_foreign_key "users", "clubs"
 end
