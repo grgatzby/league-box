@@ -1,0 +1,29 @@
+.devise-container {
+  padding: 20px;
+  width: 400px;
+
+  border: solid 2px;
+  border-color: grey;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.log-in {
+  margin: 150px auto;
+}
+
+.sign-up {
+  margin: 100px auto;
+}
+
+.pw-forgot {
+  margin: 200px auto;
+}
+
+.pw-edit {
+  margin: 10px 100px;
+}
+
+.flex-display{
+  display: flex;
+}
