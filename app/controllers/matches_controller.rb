@@ -1,15 +1,15 @@
 class MatchesController < ApplicationController
-  def new
-    @opponent = User.find(params[:user_id])
-    @match = Match.new
-  end
-
   def show
     @opponent = User.find(params[:user_id])
     @match = Match.find(params[:match_id])
     user_match_scores = @match.user_match_scores
     @current_user_match_score = user_match_scores.select { |element| element.user == current_user }[0]
     @opponent_match_score = user_match_scores.select { |element| element.user == @opponent }[0]
+  end
+
+  def new
+    @opponent = User.find(params[:user_id])
+    @match = Match.new
   end
 
   def create
@@ -24,6 +24,7 @@ class MatchesController < ApplicationController
   end
 
   private
+
   def match_params
     params.require(:match).permit(:time)
   end
