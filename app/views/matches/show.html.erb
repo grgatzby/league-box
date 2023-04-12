@@ -1,0 +1,14 @@
+<h4><%= render "fullname", user: current_user %></h4>
+<h4><%= render "match", my_card: @current_user_match_score %> vs <%= render "fullname", user: @opponent %></h4>
+<%= "Played on #{@match.time.strftime("%d/%m/%Y")}" %>
+<br>
+<%= "Score : #{@current_user_match_score.score_set1}/#{@opponent_match_score.score_set1}" %>
+<%= "#{@current_user_match_score.score_set2}/#{@opponent_match_score.score_set2}" %>
+<% if @current_user_match_score.score_tiebreak + @opponent_match_score.score_tiebreak != 0%>
+  <%= "(#{@current_user_match_score.score_tiebreak}/#{@opponent_match_score.score_tiebreak})" %>
+<% end %>
+<br>
+Points: <%= render "fullname", user: current_user %><%= "#{@current_user_match_score.points}," %>
+<%= render "fullname", user: @opponent %><%= "#{@opponent_match_score.points}," %>
+
+<p><%= link_to "Back to my box", box_path(current_user.user_box_scores[0].box)%></p>

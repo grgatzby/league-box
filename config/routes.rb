@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-  root to: "pages#home"
-  resources :user_box_scores, only: [:index]
-  resources :rounds, only: [:show]
+  resources :boxes, only: [:index, :show]
+  resources :matches, only: [:show, :new, :create]
+  resources :user_match_scores do
+    collection do
+      get :match
+    end
+  end
+  get "scores", to: "user_match_scores#scores"
 end

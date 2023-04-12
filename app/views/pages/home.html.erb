@@ -1,2 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>League Box</h1>
+<p>The path to social tennis playing</p>
+<p><%= link_to "See all boxes", boxes_path%></p>
+<% if current_user %>
+  <p><%= link_to "Go to my box", box_path(current_user.user_box_scores[0].box)%></p>
+<% else %>
+  <p><%= link_to "Log in to fix a match", new_user_session_path%></p>
+<% end %>
