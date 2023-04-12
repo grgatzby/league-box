@@ -1,0 +1,24 @@
+<h3><%= render "fullname", user: current_user %>
+<%= " - Box number #{@box.box_number}" %></h3>
+<h4>Points results</h4>
+<ul>
+  <% @user_matches.each do |user_match| %>
+    <% user = user_match[0].user %>
+    <% match = user_match[1] %>
+
+    <li>
+      <%= render "fullname", user: user%>
+      <% if user == current_user %>
+        (<strong><%= "current user" %></strong>)
+        <%= " : #{user_match[0].points} points " %>
+      <% elsif match %>
+        <%= " : #{user_match[0].points} points " %>
+        <%= "(played on #{match.time.strftime("%d/%m/%Y")})" unless user == current_user %>
+        <%= link_to "see results", match_path(:user_id => user.id, :match_id => match.id) unless user == current_user %>
+      <% else %>
+        <%= link_to "enter match results", new_match_path(:user_id => user.id) %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>

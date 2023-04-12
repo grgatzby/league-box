@@ -1,0 +1,9 @@
+<h1>List of boxes</h1>
+<% @boxes.each do |box| %>
+  <%= "Box number #{box.box_number}" %>
+  <ul>
+    <% box.user_box_scores.each do |user_box_score| %>
+      <li><%= render "fullname", user: user_box_score.user %><%= " : #{user_box_score.points} points" %></li>
+    <% end %>
+  </ul>
+<% end %>

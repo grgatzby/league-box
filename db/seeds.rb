@@ -10,12 +10,12 @@ require 'faker'
 
 # if Rails.env.development?
   puts "-------------------"
-  puts "resetting Database"
+  puts "reseting Database"
   puts "-------------------"
   Round.destroy_all
   Court.destroy_all
-  Box.destroy_all
   Match.destroy_all
+  Box.destroy_all
   UserBoxScore.destroy_all
   UserMatchScore.destroy_all
   User.destroy_all
@@ -38,8 +38,9 @@ if User.all.empty?
 
   User.create(
     email: "guillaume.cazals@club.be",
-    first_name: "Guilaume",
+    first_name: "Guillaume",
     last_name: "Cazals",
+    nickname: "GuillaumeC",
     phone_number: "+32470970853",
     password: "654321",
     club_id: club.id,
@@ -48,8 +49,8 @@ if User.all.empty?
 end
 
 round = Round.create(
-  start_date: Date.new(2023,1,1),
-  end_date: Date.new(2023,3,31),
+  start_date: Date.new(2023, 4, 1),
+  end_date: Date.new(2023, 6, 30),
   club_id: club.id
 )
 
@@ -57,7 +58,7 @@ round = Round.create(
   puts "seeding box #{box_number}"
   box = Box.create(
     round_id: round.id,
-    box_number: box_number
+    box_number: box_number + 1
   )
 
   puts "seeding 6 Users and User-box-scores"
@@ -71,12 +72,14 @@ round = Round.create(
     user = User.create(
       first_name: first_name,
       last_name: last_name,
+      nickname: nickname,
       email: "#{first_name.downcase}.#{last_name.downcase}@club.be",
       phone_number: Faker::PhoneNumber.phone_number_with_country_code,
       password: "123456",
       club_id: club.id,
       is_manager: false
     )
+    puts "-> #{user.email} created"
     UserBoxScore.create(
       user_id: user.id,
       box_id: box.id,
