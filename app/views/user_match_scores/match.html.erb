@@ -1,23 +1,32 @@
-<h3><%= "Match played on #{@match.time.strftime("%d/%m/%Y")} (court #{@match.court.name})" %></h3>
-<% players = [] %>
-<% @user_match_scores.each_with_index do |user_match_score, index| %>
-  <%= "#{user_match_score.user.first_name} #{user_match_score.user.last_name}"%>
-  <% if index == 0 %>
-    <%= " vs " %>
+<div class="container">
+  <h3>
+    <%# "Match played on #{@match.time.strftime("%d/%m/%Y")} (court #{@match.court.name})" %>
+    <%= "Match played on court #{@match.court.name}" %>
+  </h3>
+  <h5>
+    <% players = [] %>
+    <% @user_match_scores.each_with_index do |user_match_score, index| %>
+      <%= "#{user_match_score.user.first_name} #{user_match_score.user.last_name}"%>
+      <% if index == 0 %>
+        <%= " vs " %>
+      <% end %>
+      <% players << user_match_score.user_id  %>
+    <% end %>
+  </h5>
+  <br>
+  <h4>Match scores</h4>
+  <%= form_with url: "/scores", method: :get do |f| %>
+    Match date & time: <%= f.date_field(:date, min: Time.now().to_s.slice(0,10), max: @round.end_date ) %>
+    <%= f.time_select(:time, start_hour: 7, end_hour: 19, minute_step: 30, :time_separator => "") %>
+    <br>Score first set: <%= f.select :score1_set1,(0..4).to_a %>
+    <%= f.select :score2_set1,(0..4).to_a %>
+    Score second set: <%= f.select :score1_set2,(0..4).to_a %>
+    <%= f.select :score2_set2,(0..4).to_a %>
+    Score tiebreak: <%= f.select :score1_tiebreak, ['Na']+(0..25).to_a %>
+    <%= f.select :score2_tiebreak,['Na']+(0..25).to_a %>
+    <%= hidden_field_tag(:player1_id, players[0]) %>
+    <%= hidden_field_tag(:player2_id, players[1]) %>
+    <%= hidden_field_tag(:match_id, @match.id) %>
+    <br><br><%= f.submit "Save scores", class: "btn button-purple" %>
   <% end %>
-  <% players << user_match_score.user_id  %>
-<% end %>
-
-<h3>Match scores</h3>
-<%= form_with url: "/scores", method: :get do |f| %>
-  Score first set: <%= f.select :score1_set1,(0..4).to_a %>
-  <%= f.select :score2_set1,(0..4).to_a %>
-  Score second set: <%= f.select :score1_set2,(0..4).to_a %>
-  <%= f.select :score2_set2,(0..4).to_a %>
-  Score tiebreak: <%= f.select :score1_tiebreak,(0..25).to_a %>
-  <%= f.select :score2_tiebreak,(0..25).to_a %>
-  <%= hidden_field_tag(:player1_id, players[0]) %>
-  <%= hidden_field_tag(:player2_id, players[1]) %>
-  <%= hidden_field_tag(:match_id, @match.id) %>
-  <%= f.submit %>
-<% end %>
+</div>

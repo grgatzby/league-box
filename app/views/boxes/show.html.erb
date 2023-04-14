@@ -1,24 +1,34 @@
-<h3><%= render "fullname", user: current_user %>
-<%= " - Box number #{@box.box_number}" %></h3>
-<h4>Points results</h4>
-<ul>
-  <% @user_matches.each do |user_match| %>
-    <% user = user_match[0].user %>
-    <% match = user_match[1] %>
-
-    <li>
-      <%= render "fullname", user: user%>
-      <% if user == current_user %>
-        (<strong><%= "current user" %></strong>)
-        <%= " : #{user_match[0].points} points " %>
-      <% elsif match %>
-        <%= " : #{user_match[0].points} points " %>
-        <%= "(played on #{match.time.strftime("%d/%m/%Y")})" unless user == current_user %>
-        <%= link_to "see results", match_path(:user_id => user.id, :match_id => match.id) unless user == current_user %>
-      <% else %>
-        <%= link_to "enter match results", new_match_path(:user_id => user.id) %>
+<div class="container">
+  <h3>
+    <%= "Box #{@box.box_number}" %>
+    <% if current_user.user_box_scores[0].box == @box %>(My box)<% end %>
+  </h3>
+  <div>
+    <h4>Match results</h4>
+    <ul>
+      <% @box_matches.each do |user_box_matches| %>
+        <li style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+          <% user_box_score = user_box_matches[0] %>
+          <% player = user_box_score.user %>
+          <%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %>
+          <% player_matches = user_box_matches[1] %>
+          <ul>
+            <% player_matches.each do |player_match| %>
+              <% match = player_match[0] %>
+              <% opponent = player_match[1] %>
+              <% user_score = player_match[2] %>
+              <% opponent_score = player_match[3] %>
+              <li><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d/%m/%Y")}" %> vs <%= render "fullname", user: opponent %>
+              <%= render "score", user_score: user_score, opponent_score: opponent_score %>
+              [<%= pluralize user_score.points, "point" %>]</li>
+            <% end %>
+          </ul>
+        </li>
       <% end %>
-    </li>
-
+    </ul>
+  </div>
+  <%= link_to "Back", boxes_path, class: "btn button-flat" %>
+  <% if current_user.user_box_scores[0].box == @box %>
+  <%= link_to "Enter your match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-flat" %>
   <% end %>
-</ul>
+</div>

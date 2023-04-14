@@ -12,6 +12,7 @@ require 'faker'
   puts "-------------------"
   puts "reseting Database"
   puts "-------------------"
+  Club.destroy_all
   Round.destroy_all
   Court.destroy_all
   Match.destroy_all
@@ -25,6 +26,9 @@ if Club.all.empty?
   puts "-------------------"
   puts "seeding Club"
   puts "-------------------"
+  Club.create(
+    name: "Your tennis club"
+  )
   Club.create(
     name: "Wimbledon"
   )
@@ -91,7 +95,7 @@ end
 
 10.times do |court_number|
   Court.create(
-    name: court_number,
+    name: court_number + 1,
     club_id: club.id
   )
 end

@@ -2,6 +2,7 @@ class UserMatchScoresController < ApplicationController
   def match
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
     @match = Match.find(params[:match_id])
+    @round = Round.current.last
   end
 
   def scores
@@ -55,6 +56,12 @@ class UserMatchScoresController < ApplicationController
       end
     end
 
+    # match date and time
+    match = Match.find(params[:match_id])
+    match.time = "#{params[:date]} #{params['time(4i)']}:#{params['time(5i)']}:00".to_datetime
+    match.save
+
+    # winner and loser
     user_match_scores[0].is_winner = (winner0 == 2)
     user_match_scores[1].is_winner = (winner1 == 2)
 

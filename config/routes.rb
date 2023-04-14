@@ -9,5 +9,8 @@ Rails.application.routes.draw do
       get :match
     end
   end
+  resources :user_box_scores, only: [:index]
+  get "mybox/:id", to: "boxes#mybox", as: "mybox"
   get "scores", to: "user_match_scores#scores"
+  get "overview", to: "pages#overview", as: "overview"
 end
