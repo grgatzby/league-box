@@ -27,3 +27,25 @@
   opacity: 1;
 }
 
+.button-purple {
+  margin: 0 auto;
+  color: white;
+  padding: 2px 12px;
+  border-radius: 15px;
+  background: rgb(79, 1, 86);
+  transition: background 0.3s ease;
+}
+
+.button-purple:hover {
+  background: rgb(95, 2, 104);
+  color: white;
+}
+
+.buttons-wrap {
+  display: flex;
+  background-color: beige;
+  margin: 0 auto;
+  border: 1px solid #4A4A4A;
+  padding: 2px 24px;
+  border-radius: 15px;
+}

@@ -1,0 +1,25 @@
+<div class="container">
+  <h3><%= render "fullname", user: current_user %>
+  <%= " - Box number #{@box.box_number}" %></h3>
+  <h4>Box Match results</h4>
+  <ul>
+    <% @user_matches = @user_matches.sort { |a, b| b[0].points <=> a[0].points } %>
+    <% @user_matches.each do |user_match| %>
+      <% user = user_match[0].user %>
+      <% match = user_match[1] %>
+
+      <li>
+        <span style=<%=user == current_user ? "color:blue" : "" %>><%= render "fullname", user: user %></span>
+        <% if match %>
+          : <%= pluralize user_match[0].points, "point" %>
+          <%= " (played on #{match.time.strftime("%d/%m/%Y")})" unless user == current_user %>
+          <%= link_to "see results", match_path(:user_id => user.id, :match_id => match.id) unless user == current_user %>
+        <% elsif user != current_user %>
+          : <%= link_to "enter results", new_match_path(:user_id => user.id) %>
+        <% end %>
+      </li>
+
+    <% end %>
+  </ul>
+  <%= link_to "Back", boxes_path, class: "btn button-flat" %>
+</div>

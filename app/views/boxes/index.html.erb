@@ -1,9 +1,19 @@
-<h1>List of boxes</h1>
-<% @boxes.each do |box| %>
-  <%= "Box number #{box.box_number}" %>
-  <ul>
-    <% box.user_box_scores.each do |user_box_score| %>
-      <li><%= render "fullname", user: user_box_score.user %><%= " : #{user_box_score.points} points" %></li>
+<div class="container">
+  <h1>List of boxes</h1>
+  <div class="boxes">
+    <% @boxes.each do |box| %>
+      <div class="box">
+        <strong><%= "Box #{box.box_number}" %></strong>
+        <ul>
+          <% scores = box.user_box_scores.sort { |a, b| b.points <=> a.points } %>
+          <% scores.each do |user_box_score| %>
+            <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
+              <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
+            </li>
+            <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </ul>
-<% end %>
+  </div>
+</div>

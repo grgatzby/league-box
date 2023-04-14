@@ -1,0 +1,30 @@
+.boxes {
+  margin: 16px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 16px;
+}
+
+.box {
+  background-color: beige;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  padding: 5px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+  &:hover {
+    color: green;
+    border: solid 1px lightgrey;
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+  }
+}
+
+.box-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
