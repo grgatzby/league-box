@@ -1,17 +1,23 @@
 <div class="container">
-  <h3>
+  <br><h3>
     <%= "Box #{@box.box_number}" %>
-    <% if current_user.user_box_scores[0].box == @box %>(My box)<% end %>
+    <% if current_user.user_box_scores[0].box == @box %>(my box)<% end %>
   </h3>
-  <div>
+  <div class = "form-wrap">
     <h4>Match results</h4>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
-        <li style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+        <li>
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_score.user %>
-          <%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %>
+          <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+            <%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %>
+          </span>
+
           <% player_matches = user_box_matches[1] %>
+          <% if user_box_matches[0].user == current_user %>
+            <%= link_to "Enter/view your match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
+          <% end %>
           <ul>
             <% player_matches.each do |player_match| %>
               <% match = player_match[0] %>
@@ -27,8 +33,8 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to "Back", boxes_path, class: "btn button-flat" %>
-  <% if current_user.user_box_scores[0].box == @box %>
-  <%= link_to "Enter your match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-flat" %>
-  <% end %>
+  <br>
+  <div class="buttons-wrap">
+    <%= link_to "Back", boxes_path, class: "btn button-purple" %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 .button-flat {
   margin: 0 auto;
   color: white;
-  padding: 8px 24px;
+  padding: 6px 24px;
   border-radius: 15px;
   background: #4CAF50;
   transition: background 0.3s ease;
@@ -16,7 +16,7 @@
   margin: 0 auto;
   color: #4A4A4A;
   // border: 1px solid #4A4A4A;
-  padding: 8px 24px;
+  padding: 6px 24px;
   // border-radius: 50px;
   font-weight: lighter;
   opacity: 0.6;
@@ -30,14 +30,14 @@
 .button-purple {
   margin: 0 auto;
   color: white;
-  padding: 2px 12px;
+  padding: 6px 24px;
   border-radius: 15px;
-  background: rgb(79, 1, 86);
+  background: rgb(135, 18, 145);
   transition: background 0.3s ease;
 }
 
 .button-purple:hover {
-  background: rgb(95, 2, 104);
+  background: rgb(145, 91, 150);
   color: white;
 }
 
@@ -47,5 +47,13 @@
   margin: 0 auto;
   border: 1px solid #4A4A4A;
   padding: 2px 24px;
-  border-radius: 15px;
+  border-radius: 10px;
+}
+
+.form-wrap {
+  background-color: beige;
+  margin: 0 auto;
+  border: 1px solid #4A4A4A;
+  padding: 2px 24px;
+  border-radius: 10px;
 }
