@@ -1,13 +1,15 @@
 <div class="container">
-  <h1>League table</h1>
-  <% @scores = @scores.sort { |a, b| b.points <=> a.points } %>
-  <ul>
-    <% @scores.each do |user_box_score| %>
-      <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
-        <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
-        <%= "(box #{user_box_score.box.box_number})" %>
-        <%= pluralize user_box_score.user.user_match_scores.count, "match" %>
-      </li>
-    <% end %>
-  </ul>
+  <br><h1>League table</h1>
+  <div class="form-wrap">
+    <% @scores = @scores.sort { |a, b| b.points <=> a.points } %>
+    <ul>
+      <% @scores.each do |user_box_score| %>
+        <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
+          <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
+          <%= "(box #{user_box_score.box.box_number})" %>
+          <%= pluralize user_box_score.user.user_match_scores.count, "match" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

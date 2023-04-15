@@ -1,33 +1,37 @@
-<div class="container">
-  <% unsplash_url = "https://source.unsplash.com/1400x800/?wimbledon" %>
-  <div style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= unsplash_url %>');">
-    <h1><%= @club.name %> League Box</h1>
-    <h3>The path to social tennis playing</h3>
-    <h4>Grand Prix Tournament</h4>
-    <p>The mixed Singles Box League Tournament is organized as a Grand Prix event with one round
-    per month. Points earned in each round of the box league will accumulate to give an overall
-    Grand Prix Tournament winner.
-    The winner will receive the Singles Box League Tournament trophy, listing on the club honors
-    board and possibly some champagne to celebrate at the end of the run.
-    The closing date for the compilation of earned points will coincide with the yearly club
-    tournament and the winner will be celebrated on the finals day during the awards ceremony.
-    The Grand Prix league table will be updated and displayed on the league board at the end of each
-    month.
-    </p>
-    <h4>Rounds</h4>
-    <p>
-    There will be 1 round per month until the start of the annual club Tournaments at which date the
-    Mixed Singles Box League Tournament will end and the Grand Prix Tournament winner will be
-    announced during the presentation of the club annual tournament trophy presentation.
-    </p>
+<% unsplash_url = "https://source.unsplash.com/1400x800/?wimbledon" %>
+<div style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= unsplash_url %>');">
+  <div class="container">
+    <br><h3><%= @club.name %> League Box</h3>
+    <div class="form-wrap">
+      <h4>The path to social tennis playing</h4>
+      <br><h4>Grand Prix Tournament</h4>
+      <p>The mixed Singles Box League Tournament is organized as a Grand Prix event with one round
+      per month. Points earned in each round of the box league will accumulate to give an overall
+      Grand Prix Tournament winner.
+      The winner will receive the Singles Box League Tournament trophy, listing on the club honors
+      board and possibly some champagne to celebrate at the end of the run.
+      The closing date for the compilation of earned points will coincide with the yearly club
+      tournament and the winner will be celebrated on the finals day during the awards ceremony.
+      The Grand Prix league table will be updated and displayed on the league board at the end of each
+      month.
+      </p>
+      <h4>Rounds</h4>
+      <p>
+      There will be 1 round per month until the start of the annual club Tournaments at which date the
+      Mixed Singles Box League Tournament will end and the Grand Prix Tournament winner will be
+      announced during the presentation of the club annual tournament trophy presentation.
+      </p>
+    </div>
+    <br>
+    <div class = "buttons-wrap">
+      <%= link_to "Tournament overview", overview_path, class: "btn button-ghost" %>
+      <%= link_to "View all boxes", boxes_path, class: "btn button-ghost" %>
+      <% if current_user %>
+        <%= link_to "Enter match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
+      <% else %>
+        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-ghost" %>
+      <% end %>
+    </div>
   </div>
-  <div class = "buttons-wrap">
-    <%= link_to "Tournament overview", overview_path, class: "btn button-ghost" %>
-    <%= link_to "View all boxes", boxes_path, class: "btn button-ghost" %>
-    <% if current_user %>
-      <%= link_to "Enter match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
-    <% else %>
-      <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-ghost" %>
-    <% end %>
-  </div>
+  <br><br>
 </div>

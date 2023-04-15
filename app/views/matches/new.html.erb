@@ -1,12 +1,11 @@
 <div class = "container">
-  <h4>Match <%= render "fullname", user: current_user %> vs <%= render "fullname", user: @opponent %>
-    <%= simple_form_for @match do |f| %>
+  <h4>Match <%= render "fullname", user: current_user %> vs <%= render "fullname", user: @opponent %></h4>
+    <br><br><%= simple_form_for @match do |f| %>
       <%# f.datetime_local_field(:time, min: Time.now().to_s.slice(0,10), max: @round.end_date ) %>
       <%# f.input :time, :minute_step => 30 %>
-      <%= f.input :court_id, collection: 1..10%>
+      <%= f.input :court_id, collection: 1..10, label: "Match played on court", input_html: {style: 'width: 75px'}%>
       <%= hidden_field_tag(:user_id, params[:user_id]) %>
       <%= f.submit "Enter results", class: "btn button-purple" %>
       <%# f.button :submit %>
     <% end %>
-  </h4>
 </div>
