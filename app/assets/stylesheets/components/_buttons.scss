@@ -44,16 +44,18 @@
 .buttons-wrap {
   display: flex;
   background-color: beige;
-  margin: 0 auto;
+  // margin: 0 auto;
   border: 1px solid #4A4A4A;
-  padding: 2px 24px;
+  padding: 5px 24px;
   border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }
 
 .form-wrap {
   background-color: beige;
   margin: 0 auto;
   border: 1px solid #4A4A4A;
-  padding: 2px 24px;
+  padding: 5px 24px;
   border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
 }

@@ -14,12 +14,12 @@
             : <%= pluralize user_match[0].points, "point" %>
           <% end %>
           <% if user == current_user %>
-            <%= link_to "All boxes", boxes_path, class: "btn button-ghost" %>
+            <%= link_to "Back to all boxes", boxes_path, class: "btn button-ghost" %>
           <% elsif match %>
             <%= " (played on #{match.time.strftime("%d/%m/%Y")})" %>
-            <%= link_to "See results", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
+            <%= link_to "See my results", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
           <% else %>
-            : <%= link_to "Enter results", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
+            : <%= link_to "Enter new results", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
           <% end %>
         </li>
       <% end %>

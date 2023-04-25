@@ -2,7 +2,7 @@
   <br><h1>League table</h1>
   <div class="form-wrap">
     <% @scores = @scores.sort { |a, b| b.points <=> a.points } %>
-    <ul>
+    <ol type="1">
       <% @scores.each do |user_box_score| %>
         <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
           <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
