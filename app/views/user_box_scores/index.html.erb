@@ -2,14 +2,26 @@
   <br><h1>League table</h1>
   <div class="form-wrap">
     <% @scores = @scores.sort { |a, b| b.points <=> a.points } %>
-    <ul>
+    <ol type="1">
+      <div class="row justify-content-center text-padding league-header">
+          <div class="col-sm-3">Player</div>
+          <div class="col-sm-2">Points</div>
+          <div class="col-sm-2">Box</div>
+          <div class="col-sm-2">Matches played</div>
+      </div>
       <% @scores.each do |user_box_score| %>
         <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
-          <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
-          <%= "(box #{user_box_score.box.box_number})" %>
-          <%= pluralize user_box_score.user.user_match_scores.count, "match" %>
+          <div class="row justify-content-center text-padding">
+            <div class="col-sm-3"><%= render "fullname", user: user_box_score.user %></div>
+            <div class="col-sm-2"><%= pluralize user_box_score.points, "pt" %></div>
+            <div class="col-sm-2"><%= "#{user_box_score.box.box_number}" %></div>
+            <div class="col-sm-2"><%= pluralize user_box_score.user.user_match_scores.count, "match" %></div>
+          </div>
         </li>
       <% end %>
     </ul>
+  </div>
+  <div class="buttons-wrap">
+    <%= link_to "Back to top", user_box_scores_path, class: "btn button-purple" %>
   </div>
 </div>

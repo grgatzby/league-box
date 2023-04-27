@@ -1,12 +1,14 @@
-.navbar-lewagon {
+.navbar-league-box {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  top: 0;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-league-box .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-league-box .navbar-brand img {
   width: 40px;
 }

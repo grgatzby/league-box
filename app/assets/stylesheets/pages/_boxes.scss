@@ -1,0 +1,17 @@
+.grid-container {
+  display: flex;
+
+  #grid-lines>.row>.col-2 {
+    height: 75px;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    border: 1px solid rgba(39,41,43,0.1);
+  }
+
+  .first-col-lines>.col-12 {
+    height: 75px;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    // border: 1px solid rgba(39,41,43,0.1);
+  }
+}

@@ -1,8 +1,7 @@
 <div class="container">
   <br><br>
   <div class="form-wrap">
-    <h3>Enter match scores
-    </h3>
+    <h3>Enter match scores</h3>
     <h5>
       <% players = [] %>
       <% @user_match_scores.each_with_index do |user_match_score, index| %>
@@ -18,12 +17,11 @@
     <%= form_with url: "/scores", method: :get do |f| %>
       Date & time: <%= f.date_field(:date, min: Time.now().to_s.slice(0,10), max: @round.end_date ) %>
       <%= f.time_select(:time, start_hour: 7, end_hour: 19, minute_step: 30, :time_separator => "") %>
-      <br><br>Score first set: <%= f.select :score1_set1,(0..4).to_a %>
-      <%= f.select :score2_set1,(0..4).to_a %>
-      Score second set: <%= f.select :score1_set2,(0..4).to_a %>
-      <%= f.select :score2_set2,(0..4).to_a %>
-      <br>Score tiebreak: <%= f.select :score1_tiebreak, ['Na']+(0..25).to_a %>
-      <%= f.select :score2_tiebreak,['Na']+(0..25).to_a %>
+      <br><br>Scores<br>
+      First set: <%= f.select :score1_set1,(0..4).to_a %><%= f.select :score2_set1,(0..4).to_a %>
+      Second set: <%= f.select :score1_set2,(0..4).to_a %><%= f.select :score2_set2,(0..4).to_a %>
+      <br>Tiebreak: <%= f.select :score1_tiebreak, ['Na']+(0..25).to_a %>
+      <%= f.select :score2_tiebreak, ['Na']+(0..25).to_a %>
       <%= hidden_field_tag(:player1_id, players[0]) %>
       <%= hidden_field_tag(:player2_id, players[1]) %>
       <%= hidden_field_tag(:match_id, @match.id) %>
@@ -31,6 +29,6 @@
   <br>
   <div class="buttons-wrap">
       <br><br><%= f.submit "Save scores", class: "btn button-purple" %>
-    <% end %>
   </div>
+    <% end %>
 </div>

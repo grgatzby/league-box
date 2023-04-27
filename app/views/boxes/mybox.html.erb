@@ -1,27 +1,42 @@
 <div class="container">
-  <br><h3><%= render "fullname", user: current_user %><%= " - Box #{@box.box_number}" %></h3>
+  <br><h3><%= render "fullname", user: current_user %><%= " - box #{@box.box_number}" %></h3>
   <div class="form-wrap">
-    <h4>My box results</h4>
+    <h4>View / enter match scores</h4>
+
     <ul>
+      <div class="row justify-content-center text-padding">
+        <div class="col-sm-3">Player</div>
+        <div class="col-sm-2">Points</div>
+        <div class="col-sm-2">Played on</div>
+        <div class="col-sm-3 left-padding">Status</div>
+      </div>
       <% @user_matches = @user_matches.sort { |a, b| b[0].points <=> a[0].points } %>
       <% @user_matches.each do |user_match| %>
         <% user = user_match[0].user %>
         <% match = user_match[1] %>
 
-        <li>
-          <span style=<%=user == current_user ? "color:blue" : "" %>><%= render "fullname", user: user %></span>
-          <% if match %>
-            : <%= pluralize user_match[0].points, "point" %>
-          <% end %>
-          <% if user == current_user %>
-            <%= link_to "All boxes", boxes_path, class: "btn button-ghost" %>
-          <% elsif match %>
-            <%= " (played on #{match.time.strftime("%d/%m/%Y")})" %>
-            <%= link_to "See results", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
-          <% else %>
-            : <%= link_to "Enter results", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
-          <% end %>
-        </li>
+        <div class="row justify-content-center">
+          <div class="col-sm-3 text-padding">
+            <span style=<%=user == current_user ? "color:blue" : "" %>><%= render "fullname", user: user %></span>
+          </div>
+          <div class="col-sm-2 text-padding">
+              <%= pluralize user_match[0].points, "pt" %>
+          </div>
+          <div class="col-sm-2 text-padding">
+            <% if match %>
+              <%= "#{match.time.strftime("%d/%m/%Y")}" %>
+            <% end %>
+          </div>
+          <div class="col-sm-3">
+            <% if user == current_user %>
+              <%= link_to "View all boxes", boxes_path, class: "btn button-ghost" %>
+            <% elsif match %>
+              <%= link_to "View match score", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
+            <% else %>
+              <%= link_to "Enter new score", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </ul>
   </div>

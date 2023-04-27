@@ -1,40 +1,78 @@
 <div class="container">
   <br><h3>
     <%= "Box #{@box.box_number}" %>
-    <% if current_user.user_box_scores[0].box == @box %>(my box)<% end %>
+    <% if current_user.user_box_scores[0].box == @box %>(<%= render "fullname", user: current_user %>)<% end %>
   </h3>
   <div class = "form-wrap">
-    <h4>Match results</h4>
-    <ul>
-      <% @box_matches.each do |user_box_matches| %>
-        <li>
-          <% user_box_score = user_box_matches[0] %>
-          <% player = user_box_score.user %>
-          <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
-            <%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %>
-          </span>
+    <h4>Match results (grid view)</h4>
+    <div class="grid-container row">
 
-          <% player_matches = user_box_matches[1] %>
-          <% if user_box_matches[0].user == current_user %>
-            <%= link_to "Enter/view your match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
+      <div id="first-column" class="col-2">
+        <div class="row" id="1st-col-header">
+          <div class="col-12"><%= "Box #{@box.box_number}" %></div>
+        </div>
+        <% players_order = @box_matches.map { |x| x[2]} %>
+        <% @box_matches.each do |user_box_matches| %>
+          <div class="row first-col-lines">
+            <div class="col-12">
+              <% user_box_score = user_box_matches[0] %>
+              <% player = user_box_score.user %>
+              <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+                <%= render "fullname", user: player %><br>[<%= pluralize user_box_score.points, "pt" %>]
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div id="players-columns" class="col-10">
+        <div class="row justify-content-center" id="grid-headers">
+          <% @box_matches.each do |user_box_matches| %>
+            <div class="col-2">
+              <% user_box_score = user_box_matches[0] %>
+              <% player = user_box_score.user %>
+              <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+                <%= render "fullname", user: player %>
+              </span>
+            </div>
           <% end %>
-          <ul>
-            <% player_matches.each do |player_match| %>
-              <% match = player_match[0] %>
-              <% opponent = player_match[1] %>
-              <% user_score = player_match[2] %>
-              <% opponent_score = player_match[3] %>
-              <li><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d/%m/%Y")}" %> vs <%= render "fullname", user: opponent %>
-              <%= render "score", user_score: user_score, opponent_score: opponent_score %>
-              [<%= pluralize user_score.points, "point" %>]</li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
-    </ul>
+        </div>
+        <div id="grid-lines">
+          <% @box_matches.each do |user_box_matches| %>
+            <div class="row justify-content-center">
+              <% user_box_score = user_box_matches[0] %>
+              <% player = user_box_score.user %>
+              <% player_matches = user_box_matches[1] %>
+              <% player_matches.sort_by! { |x| players_order.index(x[1]) } %>
+              <% players_order.each do |player| %>
+                <% player_match = player_matches.select { |x| x[1] == player }[0] %>
+                <div class="col-2">
+                  <% if player_match %>
+                    <% match = player_match[0] %>
+                    <% opponent = player_match[1] %>
+                    <% user_score = player_match[2] %>
+                    <% opponent_score = player_match[3] %>
+                    <% if match %>
+                      <%= render "score", user_score: user_score, opponent_score: opponent_score %>
+                      <br><%= pluralize user_score.points, "pt" %>
+                      <%= "#{match.time.strftime("%d/%m/%y")}" %>
+                    <% elsif opponent == player %>
+                      <%= "-" %>
+                    <% end %>
+                  <% else %>
+                    <span style="color:grey"><%= "not played" %></span>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", boxes_path, class: "btn button-purple" %>
+    <%= link_to "View by list", show_list_path, class: "btn button-purple" %>
   </div>
 </div>

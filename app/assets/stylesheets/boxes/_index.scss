@@ -15,6 +15,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 
   &:hover {
+    transform: scale(1.02);
     color: green;
     border: solid 1px lightgrey;
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
@@ -27,4 +28,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.text-padding {
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  .left-padding {
+    padding-left: 25px;
+  }
 }
