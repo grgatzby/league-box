@@ -16,10 +16,14 @@
 
   &:hover {
     transform: scale(1.02);
-    color: green;
+    color: rgb(246, 137, 79);
     border: solid 1px lightgrey;
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
   }
+}
+
+.box-title {
+  text-align: center;
 }
 
 .box-link {
