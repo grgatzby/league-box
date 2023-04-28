@@ -4,20 +4,24 @@
     <% if current_user.user_box_scores[0].box == @box %>(<%= render "fullname", user: current_user %>)<% end %>
   </h3>
   <div class = "form-wrap">
-    <h4>Match results (list view)</h4>
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">Match scores</div>
+      <div class="col-sm-2">Points player</div>
+      <div class="col-sm-2">Points opponent</div>
+    </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
         <li>
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_score.user %>
-          <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
-            <%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %>
-          </span>
-
-          <% player_matches = user_box_matches[1] %>
-          <% if user_box_matches[0].user == current_user %>
-            <%= link_to "Enter/view my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
-          <% end %>
+          <div class="text-paddings">
+            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
+            <% player_matches = user_box_matches[1] %>
+            <% if user_box_matches[0].user == current_user %>
+              <%= link_to "Enter/view my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
+            <% end %>
+          </div>
           <ul>
             <% player_matches.each do |player_match| %>
               <% match = player_match[0] %>
@@ -25,9 +29,12 @@
               <% user_score = player_match[2] %>
               <% opponent_score = player_match[3] %>
               <% if match %>
-                <li><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d/%m/%Y")}" %> vs <%= render "fullname", user: opponent %> :
-                <%= render "score", user_score: user_score, opponent_score: opponent_score %>
-                [<%= pluralize user_score.points, "point" %>]</li>
+                <li><div class="row">
+                  <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
+                  <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
+                  <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
+                  <div class="col-sm-2"><%= pluralize opponent_score.points, "pt" %></div>
+                </div></li>
               <% end %>
             <% end %>
           </ul>
@@ -37,7 +44,7 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", boxes_path, class: "btn button-purple" %>
-    <%= link_to "View grid", box_path, class: "btn button-purple" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+    <%= link_to "Grid view", box_path, class: "btn button-purple" %>
   </div>
 </div>

@@ -1,5 +1,5 @@
-<%= "#{user_score.score_set1}/#{opponent_score.score_set1}" %>
-<%= "#{user_score.score_set2}/#{opponent_score.score_set2}" %>
+<%= "#{user_score.score_set1}-#{opponent_score.score_set1}" %>
+<%= "#{user_score.score_set2}-#{opponent_score.score_set2}" %>
 <% if user_score.score_tiebreak + opponent_score.score_tiebreak > 0 %>
-  <%= "(#{user_score.score_tiebreak}/#{opponent_score.score_tiebreak})" %>
+  <%= "#{user_score.score_tiebreak}-#{opponent_score.score_tiebreak}" %>
 <% end %>

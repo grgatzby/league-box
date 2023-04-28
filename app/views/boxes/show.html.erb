@@ -1,17 +1,16 @@
 <div class="container">
-  <br><h3>
+  <h3>
     <%= "Box #{@box.box_number}" %>
     <% if current_user.user_box_scores[0].box == @box %>(<%= render "fullname", user: current_user %>)<% end %>
   </h3>
   <div class = "form-wrap">
-    <h4>Match results (grid view)</h4>
     <div class="grid-container row">
 
-      <div id="first-column" class="col-2">
+      <div id="first-column" class="col-1">
         <div class="row" id="1st-col-header">
           <div class="col-12"><%= "Box #{@box.box_number}" %></div>
         </div>
-        <% players_order = @box_matches.map { |x| x[2]} %>
+        <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
           <div class="row first-col-lines">
             <div class="col-12">
@@ -25,7 +24,7 @@
         <% end %>
       </div>
 
-      <div id="players-columns" class="col-10">
+      <div id="players-columns" class="col-11">
         <div class="row justify-content-center" id="grid-headers">
           <% @box_matches.each do |user_box_matches| %>
             <div class="col-2">
@@ -43,9 +42,9 @@
               <% user_box_score = user_box_matches[0] %>
               <% player = user_box_score.user %>
               <% player_matches = user_box_matches[1] %>
-              <% player_matches.sort_by! { |x| players_order.index(x[1]) } %>
-              <% players_order.each do |player| %>
-                <% player_match = player_matches.select { |x| x[1] == player }[0] %>
+              <% player_matches.sort_by! { |x| sorted_players.index(x[1]) } %>
+              <% sorted_players.each do |player2| %>
+                <% player_match = player_matches.select { |x| x[1] == player2 }[0] %>
                 <div class="col-2">
                   <% if player_match %>
                     <% match = player_match[0] %>
@@ -53,9 +52,11 @@
                     <% user_score = player_match[2] %>
                     <% opponent_score = player_match[3] %>
                     <% if match %>
+                      <%= "#{match.time.strftime("%d %b")}:" %>
                       <%= render "score", user_score: user_score, opponent_score: opponent_score %>
-                      <br><%= pluralize user_score.points, "pt" %>
-                      <%= "#{match.time.strftime("%d/%m/%y")}" %>
+                      <%# "#{player2.last_name}: " %><%# pluralize user_score.points, "pt" %>
+                      <br><%= "#{player.last_name}: " %><%= pluralize user_score.points, "pt" %>
+                      <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
                     <% elsif opponent == player %>
                       <%= "-" %>
                     <% end %>
@@ -72,7 +73,7 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", boxes_path, class: "btn button-purple" %>
-    <%= link_to "View by list", show_list_path, class: "btn button-purple" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+    <%= link_to "List view", show_list_path, class: "btn button-purple" %>
   </div>
 </div>

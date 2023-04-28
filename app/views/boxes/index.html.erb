@@ -3,8 +3,8 @@
   <div class="boxes">
     <% @boxes.each do |box| %>
       <div class="box">
-        <strong><%= "Box #{box.box_number}" %></strong>
-        <ul>
+        <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
+        <ol type="1">
           <% scores = box.user_box_scores.sort { |a, b| b.points <=> a.points } %>
           <% scores.each do |user_box_score| %>
             <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
@@ -12,7 +12,7 @@
             </li>
             <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
           <% end %>
-        </ul>
+        </ol>
       </div>
     <% end %>
   </div>
