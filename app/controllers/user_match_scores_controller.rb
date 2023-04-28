@@ -2,7 +2,6 @@ class UserMatchScoresController < ApplicationController
   def match
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
     @match = Match.find(params[:match_id])
-    @round = Round.current.last
   end
 
   def scores

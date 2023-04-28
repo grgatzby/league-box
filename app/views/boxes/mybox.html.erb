@@ -1,6 +1,6 @@
 <div class="container">
   <br><h3><%= render "fullname", user: current_user %><%= " - box #{@box.box_number}" %></h3>
-  <div class="form-wrap">
+  <div class="form-wrap players">
     <h4>View / enter match scores</h4>
 
     <ul>
@@ -16,14 +16,16 @@
         <% match = user_match[1] %>
 
         <div class="row justify-content-center">
-          <div class="col-sm-3 text-padding">
-            <span style=<%=user == current_user ? "color:blue" : "" %>><%= render "fullname", user: user %></span>
+          <div class="col-sm-3">
+            <% message = "Contact\n#{render "fullname", user: user}#{user.phone_number}\n#{user.email}" %>
+            <span style=<%=user == current_user ? "color:blue" : "" %>>
+            <%= link_to "#{render "fullname", user: user}", "", class: "btn button-ghost", :title => message  %></span>
           </div>
           <div class="col-sm-2 text-padding">
               <%= pluralize user_match[0].points, "pt" %>
           </div>
           <div class="col-sm-2 text-padding">
-            <% if match %>
+            <% if match && user != current_user %>
               <%= "#{match.time.strftime("%d/%m/%Y")}" %>
             <% end %>
           </div>

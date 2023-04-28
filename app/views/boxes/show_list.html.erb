@@ -8,7 +8,7 @@
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match scores</div>
       <div class="col-sm-2">Points player</div>
-      <div class="col-sm-2">Points opponent</div>
+      <div class="col-sm-2"><span style="color:grey">Points opponent</span></div>
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
@@ -33,7 +33,7 @@
                   <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
                   <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                  <div class="col-sm-2"><%= pluralize opponent_score.points, "pt" %></div>
+                  <div class="col-sm-2"><span style="color:grey"><%= pluralize opponent_score.points, "pt" %></span></div>
                 </div></li>
               <% end %>
             <% end %>
