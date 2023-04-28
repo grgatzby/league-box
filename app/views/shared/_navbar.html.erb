@@ -7,6 +7,9 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+      <% if user_signed_in? %>
+      <%= "Current round: #{@round.start_date.strftime("%d/%m/%Y")} - #{@round.end_date.strftime("%d/%m/%Y")}" %>
+      <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">

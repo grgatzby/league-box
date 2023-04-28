@@ -15,7 +15,7 @@
     <br>
     <%= "Court #{@match.court.name}" %>
     <%= form_with url: "/scores", method: :get do |f| %>
-      Date & time: <%= f.date_field(:date, min: Time.now().to_s.slice(0,10), max: @round.end_date ) %>
+      Date & time: <%= f.date_field(:date, min: @round.start_date, max: Time.now().to_s.slice(0,10) ) %>
       <%= f.time_select(:time, start_hour: 7, end_hour: 19, minute_step: 30, :time_separator => "") %>
       <br><br>Scores<br>
       First set: <%= f.select :score1_set1,(0..4).to_a %><%= f.select :score2_set1,(0..4).to_a %>

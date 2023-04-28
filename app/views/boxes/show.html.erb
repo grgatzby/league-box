@@ -25,9 +25,9 @@
       </div>
 
       <div id="players-columns" class="col-11">
-        <div class="row justify-content-center" id="grid-headers">
+        <div class="row" id="grid-headers">
           <% @box_matches.each do |user_box_matches| %>
-            <div class="col-2">
+            <div class="col-2 text-center">
               <% user_box_score = user_box_matches[0] %>
               <% player = user_box_score.user %>
               <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
@@ -38,31 +38,34 @@
         </div>
         <div id="grid-lines">
           <% @box_matches.each do |user_box_matches| %>
-            <div class="row justify-content-center">
+            <div class="row">
               <% user_box_score = user_box_matches[0] %>
               <% player = user_box_score.user %>
               <% player_matches = user_box_matches[1] %>
               <% player_matches.sort_by! { |x| sorted_players.index(x[1]) } %>
               <% sorted_players.each do |player2| %>
                 <% player_match = player_matches.select { |x| x[1] == player2 }[0] %>
-                <div class="col-2">
+                <div class="col-2 text-center">
+                <span class="align-middle">
                   <% if player_match %>
                     <% match = player_match[0] %>
                     <% opponent = player_match[1] %>
                     <% user_score = player_match[2] %>
                     <% opponent_score = player_match[3] %>
                     <% if match %>
-                      <%= "#{match.time.strftime("%d %b")}:" %>
+                      <%= "#{match.time.strftime("%d %b")}" %>
                       <%= render "score", user_score: user_score, opponent_score: opponent_score %>
-                      <%# "#{player2.last_name}: " %><%# pluralize user_score.points, "pt" %>
                       <br><%= "#{player.last_name}: " %><%= pluralize user_score.points, "pt" %>
-                      <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
+                      <span style="color:grey">
+                        <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
+                      </span>
                     <% elsif opponent == player %>
-                      <%= "-" %>
+                      <br><%= "-" %>
                     <% end %>
                   <% else %>
-                    <span style="color:grey"><%= "not played" %></span>
+                    <span style="color:grey"><br><%= "not played" %></span>
                   <% end %>
+                </span>
                 </div>
               <% end %>
             </div>
