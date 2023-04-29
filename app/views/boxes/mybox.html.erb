@@ -16,10 +16,15 @@
         <% match = user_match[1] %>
 
         <div class="row justify-content-center">
-          <div class="col-sm-3">
-            <% message = "Contact\n#{render "fullname", user: user}#{user.phone_number}\n#{user.email}" %>
-            <span style=<%=user == current_user ? "color:blue" : "" %>>
-            <%= link_to "#{render "fullname", user: user}", "", class: "btn button-ghost", :title => message  %></span>
+          <div class="col-sm-3 text-padding">
+            <% name = "#{render "fullname", user: user}" %>
+            <% message = "📞 #{user.phone_number} ✉️ #{user.email}" %>
+            <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+              <span style=<%=user == current_user ? "color:blue" : "" %>>
+                <%# link_to "#{render "fullname", user: user}", "", class: "btn button-ghost", :title => message  %>
+                <%= "#{render "fullname", user: user}" %>
+              </span>
+            </div>
           </div>
           <div class="col-sm-2 text-padding">
               <%= pluralize user_match[0].points, "pt" %>
