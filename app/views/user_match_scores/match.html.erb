@@ -21,7 +21,7 @@
       First set: <%= f.select :score1_set1,(0..4).to_a %><%= f.select :score2_set1,(0..4).to_a %>
       Second set: <%= f.select :score1_set2,(0..4).to_a %><%= f.select :score2_set2,(0..4).to_a %>
       <br>Tiebreak: <%= f.select :score1_tiebreak, ['Na']+(0..25).to_a %>
-      <%= f.select :score2_tiebreak, ['Na']+(0..25).to_a %>
+      <%= f.select :score2_tiebreak, ['Na']+(0..25).to_a %> (if a tiebreak has been played)
       <%= hidden_field_tag(:player1_id, players[0]) %>
       <%= hidden_field_tag(:player2_id, players[1]) %>
       <%= hidden_field_tag(:match_id, @match.id) %>

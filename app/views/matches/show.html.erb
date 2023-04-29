@@ -4,10 +4,10 @@
     <h4><%= render "match", my_card: @current_user_match_score %></h4>
     <%= "Played on #{@match.time.strftime("%d/%m/%Y")} (#{@match.time.strftime("%I:%M %p")})" %>
     <br><%= "Court #{@match.court.name}" %>
-    <br><%= "Score : #{@current_user_match_score.score_set1}/#{@opponent_match_score.score_set1}" %>
-    <%= "#{@current_user_match_score.score_set2}/#{@opponent_match_score.score_set2}" %>
+    <br><%= "Score : #{@current_user_match_score.score_set1}-#{@opponent_match_score.score_set1}" %>
+    <%= "#{@current_user_match_score.score_set2}-#{@opponent_match_score.score_set2}" %>
     <% if @current_user_match_score.score_tiebreak + @opponent_match_score.score_tiebreak != 0%>
-      <%= "(#{@current_user_match_score.score_tiebreak}/#{@opponent_match_score.score_tiebreak})" %>
+      <%= "#{@current_user_match_score.score_tiebreak}-#{@opponent_match_score.score_tiebreak}" %>
     <% end %>
     <br>
     <%= render "fullname", user: current_user %><%= "#{@current_user_match_score.points} pts," %>
