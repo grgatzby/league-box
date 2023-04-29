@@ -27,7 +27,7 @@
       <div id="players-columns" class="col-11">
         <div class="row" id="grid-headers">
           <% @box_matches.each do |user_box_matches| %>
-            <div class="col-2 text-center">
+            <div class="col-12 col-md-6 col-lg-2 text-center">
               <% user_box_score = user_box_matches[0] %>
               <% player = user_box_score.user %>
               <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
@@ -45,7 +45,7 @@
               <% player_matches.sort_by! { |x| sorted_players.index(x[1]) } %>
               <% sorted_players.each do |player2| %>
                 <% player_match = player_matches.select { |x| x[1] == player2 }[0] %>
-                <div class="col-2 text-center">
+                <div class="col-12 col-md-6 col-lg-2 text-center grid-columns">
                 <span class="align-middle">
                   <% if player_match %>
                     <% match = player_match[0] %>

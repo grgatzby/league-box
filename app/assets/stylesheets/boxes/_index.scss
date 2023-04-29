@@ -5,6 +5,18 @@
   grid-gap: 16px;
 }
 
+@media only screen and (max-width: 992px) {
+  .boxes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .boxes {
+    grid-template-columns: 1fr;
+  }
+}
+
 .box {
   background-color: beige;
   position: relative;
