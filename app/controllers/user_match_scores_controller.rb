@@ -53,28 +53,53 @@ class UserMatchScoresController < ApplicationController
         winner1 += 1
         user_match_scores[1].points = 20
       end
+    else
+      user_match_scores[0].score_tiebreak = 0
+      user_match_scores[1].score_tiebreak = 0
     end
 
-    # match date and time
-    match = Match.find(params[:match_id])
-    match.time = "#{params[:date]} #{params['time(4i)']}:#{params['time(5i)']}:00".to_datetime
-    match.save
+    if (user_match_scores[0].score_set1 < 4 && user_match_scores[1].score_set1 < 4) ||
+       (user_match_scores[0].score_set2 < 4 && user_match_scores[1].score_set2 < 4)
+      flash[:alert] = "One score must be 4 for set 1 and set 2."
+      redirect_back(fallback_location: match_user_match_scores_path)
+    elsif (user_match_scores[0].score_set1 == 4 && user_match_scores[1].score_set1 == 4) ||
+          (user_match_scores[0].score_set2 == 4 && user_match_scores[1].score_set2 == 4)
+      flash[:alert] = "4-4 is not a valid score."
+      redirect_back(fallback_location: match_user_match_scores_path)
+    elsif (user_match_scores[0].score_tiebreak < 10 && user_match_scores[1].score_tiebreak < 10) &&
+          (winner0 == 1 || winner1 == 1)
+      flash[:alert] = "One tiebreak score must be at least 10."
+      redirect_back(fallback_location: match_user_match_scores_path)
+    elsif ((user_match_scores[0].score_tiebreak > 10 && user_match_scores[1].score_tiebreak < 9) ||
+          (user_match_scores[0].score_tiebreak < 9 && user_match_scores[1].score_tiebreak > 10)) &&
+          (winner0 == 1 || winner1 == 1)
+      flash[:alert] = "One tiebreak score must be 10."
+      redirect_back(fallback_location: match_user_match_scores_path)
+    elsif (user_match_scores[0].score_tiebreak - user_match_scores[1].score_tiebreak).abs < 2 &&
+          (winner0 == 1 || winner1 == 1)
+      flash[:alert] = "Tiebreak score must be 2 clear."
+      redirect_back(fallback_location: match_user_match_scores_path)
+    else # score entered is valid
+      # match date and time
+      match = Match.find(params[:match_id])
+      match.time = "#{params[:date]} #{params['time(4i)']}:#{params['time(5i)']}:00".to_datetime
+      match.save
 
-    # winner and loser
-    user_match_scores[0].is_winner = (winner0 == 2)
-    user_match_scores[1].is_winner = (winner1 == 2)
+      # winner and loser
+      user_match_scores[0].is_winner = (winner0 == 2)
+      user_match_scores[1].is_winner = (winner1 == 2)
 
-    user_match_scores[0].save
-    user_match_scores[1].save
+      user_match_scores[0].save
+      user_match_scores[1].save
 
-    # update user_box_score for each user
-    [0, 1].each do |index|
-      match = user_match_scores[index].match
-      user_box_score = UserBoxScore.where(box_id: match.box_id, user_id: user_match_scores[index].user_id)[0]
-      user_box_score.points += user_match_scores[index].points
-      user_box_score.save
+      # update user_box_score for each user
+      [0, 1].each do |index|
+        match = user_match_scores[index].match
+        user_box_score = UserBoxScore.where(box_id: match.box_id, user_id: user_match_scores[index].user_id)[0]
+        user_box_score.points += user_match_scores[index].points
+        user_box_score.save
+      end
+      redirect_to box_path(current_user.user_box_scores[0].box)
     end
-
-    redirect_to box_path(current_user.user_box_scores[0].box)
   end
 end

@@ -1,9 +1,8 @@
 <div class = "container">
   <h4>Match <%= render "fullname", user: current_user %> vs <%= render "fullname", user: @opponent %></h4>
     <br><br><%= simple_form_for @match do |f| %>
-      <%= f.input :court_id, collection: 1..10, label: "Match played on court", input_html: {style: 'width: 75px'}%>
+      <%= f.input :court_id, collection: 1..10, default: 1, label: "Match played on court", input_html: {style: 'width: 75px'}%>
       <%= hidden_field_tag(:user_id, params[:user_id]) %>
       <%= f.submit "Enter results", class: "btn button-purple" %>
-      <%# f.button :submit %>
     <% end %>
 </div>
