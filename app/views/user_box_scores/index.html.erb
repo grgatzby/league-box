@@ -1,20 +1,21 @@
 <div class="container">
   <br><h1>League table</h1>
   <div class="form-wrap">
-    <% @scores = @scores.sort { |a, b| b.points <=> a.points } %>
     <ol type="1">
       <div class="row justify-content-center text-padding league-header">
           <div class="col-sm-3">Player</div>
+          <div class="col-sm-1">Rank</div>
           <div class="col-sm-2">Points</div>
-          <div class="col-sm-2">Box</div>
+          <div class="col-sm-1">Box</div>
           <div class="col-sm-2">Matches played</div>
       </div>
       <% @scores.each do |user_box_score| %>
         <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
           <div class="row justify-content-center player-name">
             <div class="col-sm-3"><%= render "fullname", user: user_box_score.user %></div>
+            <div class="col-sm-1 text-padding"><%= "#{user_box_score.rank}" %></div>
             <div class="col-sm-2 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
-            <div class="col-sm-2 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
+            <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
             <div class="col-sm-2 text-padding"><%= pluralize user_box_score.user.user_match_scores.count, "match" %></div>
             <%= link_to '', box_path(user_box_score.box), class: 'player-link' %>
           </div>
