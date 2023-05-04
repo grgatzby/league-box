@@ -12,6 +12,12 @@
     <br>
     <%= render "fullname", user: current_user %><%= "#{@current_user_match_score.points} pts," %>
     <%= render "fullname", user: @opponent %><%= "#{@opponent_match_score.points} pts." %>
+    <br><br>
+    <% name = "#{render "fullname", user: @manager}" %>
+    <% message = "📞 #{@manager.phone_number}\b ✉️#{@manager.email}" %>
+    <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+      To edit this match score, please contact your club manager: <%= render "fullname", user: @manager %>
+    </div>
   </div>
   <br>
   <div class="buttons-wrap">

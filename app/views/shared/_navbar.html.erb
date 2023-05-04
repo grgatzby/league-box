@@ -19,7 +19,9 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Enter my results (#{current_user.first_name} #{current_user.last_name})", mybox_path(current_user.user_box_scores[0].box), class: "nav-link" %>
+            <% if current_user && current_user.role == "player" %>
+              <%= link_to "Enter my results", mybox_path(current_user.user_box_scores[0].box), class: "nav-link" %>
+            <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "All boxes", boxes_path, class: "nav-link" %>
@@ -28,7 +30,7 @@
             <%= link_to "League table", user_box_scores_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+            <%= link_to "Log out (#{current_user.first_name} #{current_user.last_name})", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
         <% else %>
           <li class="nav-item">

@@ -19,9 +19,12 @@
     <br>
     <div class = "buttons-wrap">
       <%= link_to "Tournament overview", overview_path, class: "btn button-purple" %>
+      <%= link_to "Club staff", staff_path, class: "btn button-purple" %>
       <%= link_to "View all boxes", boxes_path, class: "btn button-purple" %>
       <% if current_user %>
-        <%= link_to "Enter match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+        <% if current_user.role == "player" %>
+          <%= link_to "Enter match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+        <% end %>
       <% else %>
         <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-purple" %>
       <% end %>

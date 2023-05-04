@@ -45,8 +45,8 @@
     enough for the opponent(s) to hear</li>
     <li>If in doubt, the player must give the benefit of the doubt to the opponent(s)</li>
     <li>If a player incorrectly calls a ball “out” and then realizes that the ball was good, the point
-    should be replayed unless it was a point winning shot or unless that player made an incorrect</li>
-    “out” call earlier in the match. In these circumstances the player who called “out” loses the point
+    should be replayed unless it was a point winning shot or unless that player made an incorrect
+    “out” call earlier in the match. In these circumstances the player who called “out” loses the point</li>
     <li>The server should call the score before each first serve, loudly enough for the opponent(s) to
     hear</li>
     </ul>
@@ -139,12 +139,18 @@
     <p>Players with no matches played in a round will be removed and will have to re-apply to remain
     in the competition.</p>
     <h5>Disputes</h5>
+    <% if @manager %>
+      <% mailto = "#{@admin.email} or #{@manager.email}" %>
+    <% else %>
+      <% mailto = "#{@admin.email}" %>
+    <% end %>
     <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to:
-    #{@manager.email}" %></p>
+    #{mailto}" %></p>
   </div>
   <br>
   <div class = "buttons-wrap">
     <%= link_to "Back to top", overview_path, class: "btn button-purple" %>
+    <%= link_to "Club staff", staff_path, class: "btn button-purple" %>
     <%= link_to "Home", root_path, class: "btn button-purple" %>
   </div>
 </div>
