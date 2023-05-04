@@ -1,0 +1,54 @@
+<div class="container">
+  <br><h3><%= "Box #{@box.box_number}" %></h3>
+  <p><strong><%= "#{@current_user.role.capitalize} " %><%= render "fullname", user: current_user %></strong>, select match to edit / delete score</p>
+  <div class = "form-wrap">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-2">Match scores</div>
+      <div class="col-sm-2">Points player</div>
+      <div class="col-sm-2 text-color-grey">Points opponent</div>
+    </div>
+    <ul>
+      <% sorted_players = @box_matches.map { |x| x[2]} %>
+      <% @box_matches.each do |user_box_matches| %>
+        <li>
+          <% user_box_score = user_box_matches[0] %>
+          <% player = user_box_matches[2] %>
+          <div class="text-paddings">
+            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
+            <% player_matches = user_box_matches[1] %>
+          </div>
+          <ul>
+            <% sorted_players.each do |player_opponent| %>
+              <% player_match = player_matches.select { |x| x[1] == player_opponent }[0] %>
+                <% if player_match %>
+                  <% match = player_match[0] %>
+                  <% opponent = player_match[1] %>
+                  <% user_score = player_match[2] %>
+                  <% opponent_score = player_match[3] %>
+                  <% if match %>
+                    <li><div class="row player-name">
+                      <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
+                      <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
+                      <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
+                      <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
+                      <%= link_to '', edit_both_user_match_scores_path(match_id: match.id), class: "line-link" %>
+                   </div></li>
+                  <% end %>
+                <% elsif player_opponent != player%>
+                  <li><div class="row player-name text-color-grey">
+                    <div class="col-sm-4"><%= render "fullname", user: player_opponent %>: <%= "not played" %></div>
+                    <%= link_to '', '', class: "line-link" %>
+                  </div></li>
+                <% end %>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <br>
+  <div class="buttons-wrap">
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+  </div>
+</div>

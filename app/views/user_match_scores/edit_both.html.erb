@@ -1,0 +1,33 @@
+<div class="container">
+  <br><br>
+  <div class="form-wrap">
+    <h3>Edit match scores</h3>
+    <h5>
+      <% players = [] %>
+      <% @user_match_scores.each_with_index do |user_match_score, index| %>
+        <%= render "fullname", user: user_match_score.user %>
+        <%# "#{user_match_score.user.first_name} #{user_match_score.user.last_name}"%>
+        <% if index == 0 %>
+          <%= " vs " %>
+        <% end %>
+        <% players << user_match_score.user_id  %>
+      <% end %>
+    </h5>
+    <%= "Court #{@match.court.name}" %>
+    <br>
+    <%= form_tag(user_match_scores_path, method: :put) do %>
+      <% @user_match_scores.each do |user_match_score| %>
+        <%= fields_for "user_match_scores[]", user_match_score do |f| %>
+            <%= render "fullname", user: f.object.user %>: <%= f.select :score_set1,(0..4).to_a %>
+            <%= f.select :score_set2,(0..4).to_a %>
+            <%= f.select :score_tiebreak, ['Na']+(0..25).to_a %><br>
+          <% end %>
+      <% end %>
+      <%= hidden_field_tag(:match_id, params[:match_id]) %>
+      <br><%= submit_tag "Update score", class: "btn button-purple"  %>
+      <%= link_to "Delete score", match_path(@match), class: "btn button-purple",
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+    <% end %>
+  </div>
+</div>

@@ -17,7 +17,11 @@
             <div class="col-sm-2 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
             <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
             <div class="col-sm-2 text-padding"><%= pluralize user_box_score.user.user_match_scores.count, "match" %></div>
-            <%= link_to '', box_path(user_box_score.box), class: 'player-link' %>
+            <% if current_user.role == "admin" || current_user.role == "manager" %>
+              <%= link_to '', show_manager_path(user_box_score.box), class: "line-link" %>
+            <% else %>
+              <%= link_to '', box_path(user_box_score.box), class: 'line-link'%>
+            <% end %>
           </div>
         </li>
       <% end %>

@@ -10,7 +10,11 @@
             <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
               <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
             </li>
-            <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
+            <% if current_user && (current_user.role == "admin" || current_user.role == "manager") %>
+              <%= link_to '', show_manager_path(user_box_score.box), class: "box-link" %>
+            <% else %>
+              <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
+            <% end %>
           <% end %>
         </ol>
       </div>

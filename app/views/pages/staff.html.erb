@@ -1,0 +1,28 @@
+<div>
+  <div class="container">
+    <br><h3><%= @club.name %> League Box</h3>
+    <div class="form-wrap">
+      <h4>Club staff</h4>
+      <br><p>
+        <%= render "fullname", user: @admin%><%= " ✉️ #{@admin.email} (admin)" %><%= " 📞 #{@admin.phone_number}" %>
+        <% if @manager %>
+          <br><%= render "fullname", user: @manager%><%= " ✉️ #{@manager.email} (Club manager)" %><%= " 📞 #{@manager.phone_number}" %>
+        <% end %>
+      </p>
+    </div>
+    <br>
+    <div class = "buttons-wrap">
+      <%= link_to "Home", root_path, class: "btn button-purple" %>
+      <%= link_to "Tournament overview", overview_path, class: "btn button-purple" %>
+      <%= link_to "View all boxes", boxes_path, class: "btn button-purple" %>
+      <% if current_user %>
+        <% if current_user.role == "player" %>
+          <%= link_to "Enter my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+        <% end %>
+      <% else %>
+        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-purple" %>
+      <% end %>
+    </div>
+  </div>
+  <br><br>
+</div>

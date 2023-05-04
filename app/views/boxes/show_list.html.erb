@@ -14,7 +14,7 @@
       <% @box_matches.each do |user_box_matches| %>
         <li>
           <% user_box_score = user_box_matches[0] %>
-          <% player = user_box_score.user %>
+          <% player = user_box_matches[2] %>
           <div class="text-paddings">
             <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
@@ -33,7 +33,7 @@
                   <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
                   <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                  <div class="col-sm-2"><span style="color:grey"><%= pluralize opponent_score.points, "pt" %></span></div>
+                  <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
                 </div></li>
               <% end %>
             <% end %>
@@ -45,6 +45,7 @@
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+    <%= link_to "Enter my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
     <%= link_to "Grid view", box_path, class: "btn button-purple" %>
   </div>
 </div>
