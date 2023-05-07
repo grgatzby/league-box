@@ -9,34 +9,98 @@ class MatchesController < ApplicationController
   def new
     @opponent = User.find(params[:user_id])
     @match = Match.new
+    # the matches/new.html.erb form allows user_match_scores nested attributes
+    @match.user_match_scores.build
+    @match.user_match_scores.build
+    @round = Round.current.find_by(club_id: current_user.club_id)
   end
 
   def create
-    # creates a new Match instance with the matches/new.html.erb form and creates one UserMatchScore instance for each player
+    # create new Match instance with the matches/new.html.erb form and a UserMatchScore instance for each player
     @match = Match.new
     @match.box = current_user.user_box_scores[0].box
-    # finds the court from the input court number
+    # get the court from the input court number (user inputs court number in lieu of court id)
     @match.court = Court.find_by name: params[:match][:court_id]
-    @match.save
-    # creates the two match scores for the match
-    UserMatchScore.create(user_id: current_user.id, match_id: @match.id)
-    UserMatchScore.create(user_id: params[:user_id], match_id: @match.id)
-    # redirects to the scores input form in user_match_scores/new.html.erb
-    redirect_to match_user_match_scores_path(match_id: @match.id)
+
+    match_scores = [{}, {}]
+    # update match scores for each player
+    match_scores[0][:score_set1] = params[:match][:user_match_scores_attributes]["0"][:score_set1].to_i
+    match_scores[0][:score_set2] = params[:match][:user_match_scores_attributes]["0"][:score_set2].to_i
+    match_scores[0][:score_tiebreak] = params[:match][:user_match_scores_attributes]["0"][:score_tiebreak].to_i
+
+    match_scores[1][:score_set1] = params[:match][:user_match_scores_attributes]["1"][:score_set1].to_i
+    match_scores[1][:score_set2] = params[:match][:user_match_scores_attributes]["1"][:score_set2].to_i
+    match_scores[1][:score_tiebreak] = params[:match][:user_match_scores_attributes]["1"][:score_tiebreak].to_i
+
+    results = compute_points(match_scores)
+
+    if test_scores(match_scores, results)
+      # if score entered is valid, store match date and match time
+      @match.time = "#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime
+      @match.save
+
+      # create the two match scores for the match
+      UserMatchScore.create(user_id: current_user.id, match_id: @match.id)
+      UserMatchScore.create(user_id: params[:opponent_id], match_id: @match.id)
+
+      user_match_scores = UserMatchScore.where(match_id: @match.id)
+
+      # update match scores and points for each player, determine winner and loser, and save user_match_scores
+      user_match_scores[0].score_set1 = match_scores[0][:score_set1]
+      user_match_scores[0].score_set2 = match_scores[0][:score_set2]
+      user_match_scores[0].score_tiebreak = match_scores[0][:score_tiebreak]
+      user_match_scores[0].points = match_scores[0][:points]
+
+      user_match_scores[1].score_set1 = match_scores[1][:score_set1]
+      user_match_scores[1].score_set2 = match_scores[1][:score_set2]
+      user_match_scores[1].score_tiebreak = match_scores[1][:score_tiebreak]
+      user_match_scores[1].points = match_scores[1][:points]
+
+      user_match_scores[0].is_winner = (results[0] > results[1])
+      user_match_scores[1].is_winner = (results[1] > results[0])
+
+      user_match_scores[0].save
+      user_match_scores[1].save
+
+      # update user_box_score for each player
+      [0, 1].each do |index|
+        match = user_match_scores[index].match
+        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+        user_box_score.points += user_match_scores[index].points
+        user_box_score.sets_won += results[index]
+        user_box_score.sets_played += results.sum
+        user_box_score.games_won += results[index] > results[1 - index] ? 1 : 0
+        user_box_score.games_played += 1
+        user_box_score.save
+      end
+
+      # redirect to league table
+      redirect_to user_box_scores_path(round_start: params[:round_start])
+    else
+      # if score entered is not valid, retake the form
+      redirect_back(fallback_location: new_match_path)
+    end
   end
 
   def destroy
     @match = Match.find(params[:id])
     user_match_scores = UserMatchScore.where(match_id: @match.id)
-    # update points in user_box_score for each player
+    results = compute_results(user_match_scores)
+    # update user_box_score for each player
     [0, 1].each do |index|
       user_box_score = UserBoxScore.find_by(box_id: @match.box_id, user_id: user_match_scores[index].user_id)
+
       user_box_score.points -= user_match_scores[index].points
+      user_box_score.sets_won -= results[index]
+      user_box_score.sets_played -= results.sum
+      user_box_score.games_won -= results[index] > results[1 - index] ? 1 : 0
+      user_box_score.games_played -= 1
       user_box_score.save
     end
     @match.destroy
-    # display league table
-    redirect_to user_box_scores_path
+    # redirect to league table
+    # TO DO: check what round: param is expected
+    redirect_to user_box_scores_path(round_start: params[:round_start])
   end
 
   private

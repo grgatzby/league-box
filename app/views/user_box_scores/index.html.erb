@@ -1,34 +1,61 @@
 <div class="container">
-  <br><h1>League table</h1>
-  <div class="form-wrap">
-    <ol type="1">
-      <div class="row justify-content-center text-padding league-header">
-          <div class="col-sm-3">Player</div>
-          <div class="col-sm-1">Rank</div>
-          <div class="col-sm-2">Points</div>
-          <div class="col-sm-1">Box</div>
-          <div class="col-sm-2">Matches played</div>
-      </div>
-      <% @scores.each do |user_box_score| %>
-        <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
-          <div class="row justify-content-center player-name">
-            <div class="col-sm-3"><%= render "fullname", user: user_box_score.user %></div>
-            <div class="col-sm-1 text-padding"><%= "#{user_box_score.rank}" %></div>
-            <div class="col-sm-2 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
-            <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
-            <div class="col-sm-2 text-padding"><%= pluralize user_box_score.user.user_match_scores.count, "match" %></div>
-            <% if current_user.role == "admin" || current_user.role == "manager" %>
-              <%= link_to '', show_manager_path(user_box_score.box), class: "line-link" %>
-            <% else %>
-              <%= link_to '', box_path(user_box_score.box), class: 'line-link'%>
-            <% end %>
-          </div>
-        </li>
-      <% end %>
-    </ul>
+  <% name = "Box League Ranking" %>
+  <% message = "A player's league position is determined by the total number of points won in a Round.
+In the event that two or more players have the same number of points the league position will be
+determined by
+1. Head to Head result (if only 2 players on the same score)
+2. Most matches played
+3. Ratio of Sets Won to Sets Played
+4. Ratio of Games Won to Games Played" %>
+  <div data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+    <h3>League table</h3>
   </div>
-  <br>
-  <div class="buttons-wrap">
-    <%= link_to "Back to top", user_box_scores_path, class: "btn button-purple" %>
-  </div>
+  <%= render "shared/set_club_and_round", path: user_box_scores_path %>
+  <% if @round %>
+    <h4><%= @club.name %></h4>
+    <div class="form-wrap">
+      <ol type="1">
+        <div class="row justify-content-center text-padding league-header">
+            <div class="col-sm-3">Player</div>
+            <div class="col-sm-1">Rank</div>
+            <div class="col-sm-1">Points</div>
+            <div class="col-sm-1">Box</div>
+            <div class="col-sm-1">Matches</div>
+            <div class="col-sm-1">Won</div>
+            <div class="col-sm-1">Sets</div>
+            <div class="col-sm-1">Won</div>
+        </div>
+        <% @scores.each do |user_box_score| %>
+          <% player = user_box_score.user %>
+          <li style=<%=player == current_user ? "color:blue" : ""%>>
+            <% name = "#{render "fullname", user: player}" %>
+            <% message = "📞 #{player.phone_number}✉️ #{player.email}" %>
+            <div data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
+
+              <div class="row justify-content-center player-name">
+                <div class="col-sm-3"><%= render "fullname", user: player %></div>
+                <div class="col-sm-1 text-padding"><%= "#{user_box_score.rank}" %></div>
+                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
+                <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
+                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>
+                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_won, "match" %></div>
+                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
+                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
+                <% if current_user.role == "admin" || current_user.role == "manager" %>
+                  <%= link_to '', box_manager_path(user_box_score.box), class: "line-link" %>
+                <% else %>
+                  <%= link_to '', box_path(user_box_score.box), class: 'line-link'%>
+                <% end %>
+              </div>
+
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <br>
+    <div class="buttons-wrap">
+      <%= link_to "Back to top", "#top", class: "btn button-purple" %>
+    </div>
+  <% end %>
 </div>

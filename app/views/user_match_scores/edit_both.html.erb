@@ -1,3 +1,4 @@
+<%# this page allows a manager to edit or delete a match scores %>
 <div class="container">
   <br><br>
   <div class="form-wrap">
@@ -6,10 +7,7 @@
       <% players = [] %>
       <% @user_match_scores.each_with_index do |user_match_score, index| %>
         <%= render "fullname", user: user_match_score.user %>
-        <%# "#{user_match_score.user.first_name} #{user_match_score.user.last_name}"%>
-        <% if index == 0 %>
-          <%= " vs " %>
-        <% end %>
+        <% if index == 0 %><%= " vs " %><% end %>
         <% players << user_match_score.user_id  %>
       <% end %>
     </h5>
@@ -18,8 +16,8 @@
     <%= form_tag(user_match_scores_path, method: :put) do %>
       <% @user_match_scores.each do |user_match_score| %>
         <%= fields_for "user_match_scores[]", user_match_score do |f| %>
-            <%= render "fullname", user: f.object.user %>: <%= f.select :score_set1,(0..4).to_a %>
-            <%= f.select :score_set2,(0..4).to_a %>
+            <%= render "fullname", user: f.object.user %>: <%= f.select :score_set1, (0..4).to_a %>
+            <%= f.select :score_set2, (0..4).to_a %>
             <%= f.select :score_tiebreak, ['Na']+(0..25).to_a %><br>
           <% end %>
       <% end %>

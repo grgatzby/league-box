@@ -16,7 +16,7 @@
     <% name = "#{render "fullname", user: @manager}" %>
     <% message = "📞 #{@manager.phone_number}\b ✉️#{@manager.email}" %>
     <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
-      To edit this match score, please contact your club manager: <%= render "fullname", user: @manager %>
+      To change this match score, please contact your club manager: <%= render "fullname", user: @manager %>
     </div>
   </div>
   <br>
