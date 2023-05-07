@@ -133,6 +133,7 @@ if true
     end
     puts "  -> 10 courts created"
   end
+end
 
 new_round = true
 
