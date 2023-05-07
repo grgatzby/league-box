@@ -1,7 +1,7 @@
 <div class="container">
   <br><h3><%= render "fullname", user: current_user %><%= " - box #{@box.box_number}" %></h3>
   <div class="form-wrap players">
-    <h4>View / enter match scores</h4>
+    <h4>My box: view or enter match scores</h4>
 
     <ul>
       <div class="row justify-content-center text-padding">
@@ -37,7 +37,7 @@
             <% if user == current_user %>
               <%= link_to "View all boxes", boxes_path, class: "btn button-ghost" %>
             <% elsif match %>
-              <%= link_to "View match score", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
+              <%= link_to "View match details", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
             <% else %>
               <%= link_to "Enter new score", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
             <% end %>

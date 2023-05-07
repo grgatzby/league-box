@@ -1,18 +1,21 @@
 class BoxesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  # skip_before_action :authenticate_user!, only: :index
   def index
-    # round = Round.current.last
-    @boxes = @round.boxes.sort
+    set_club_and_round
   end
 
   def show
     @box = Box.find(params[:id])
-    # array of [user_box_score , matches(user_box_score.user)]
-    #  where : matches(user_box_score.user) = array of [match, opponent, user_score, opponent_score]
+    # @box_matches: array of [user_box_score , matches(user_box_score.user)]
+    # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box)
   end
 
   def show_list
+    show
+  end
+
+  def show_manager
     show
   end
 
@@ -28,10 +31,6 @@ class BoxesController < ApplicationController
     @user_matches = @user_matches.sort { |a, b| b[0].points <=> a[0].points }
   end
 
-  def show_manager
-    show
-  end
-
   private
 
   def user_matches(user, box)
@@ -45,12 +44,12 @@ class BoxesController < ApplicationController
   end
 
   def box_matches(box)
-    # returns array of [user_box_score, matches_details, user] sorted by player's total points
+    # return array of [user_box_score, matches_details, user] sorted by player's total points
     box_matches = []
     box.user_box_scores.each do |user_box_score|
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
     end
-    # sort by descending scores
+    # sort by descending points scores
     box_matches.sort { |a, b| b[0].points <=> a[0].points }
   end
 

@@ -1,0 +1,22 @@
+  <% if current_user == @admin %>
+    <% if params[:club] || !params[:round_start] %>
+      <%= form_with url: path, method: :get do |form| %>
+        <%= form.label :club, "Select a club:" %><br>
+        <%= form.select :club, @club_names, :selected => params[:club] %>
+        <%= form.submit "Select" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <% if !params[:round_start] %>
+      <%= @club.name %>
+    <% end %>
+  <% end %>
+
+  <% if params[:club] && !params[:round_start] || (current_user != @admin) %>
+    <%= form_with url: path, method: :get do |form| %>
+      <%= form.label :round_start, "Select a round:" %>
+      <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>
+      <%= hidden_field_tag(:club, @club.name) %>
+      <%= form.submit "Select" %>
+    <% end %>
+  <% end %>

@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <%= "#{Time.now.strftime("%d %b %Y")} #{Time.now.strftime("%I:%M %p")}" %>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @round %>
       <%= " -  Current round: #{@round.start_date.strftime("%d %b")} - #{@round.end_date.strftime("%d %b")}" %>
     <% end %>
 

@@ -19,7 +19,7 @@
             <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%= link_to "Enter/view my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
+              <%= link_to "Enter/view match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
             <% end %>
           </div>
           <ul>
@@ -45,7 +45,11 @@
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
-    <%= link_to "Enter my match results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+    <% if current_user.user_box_scores[0].box == @box %>
+      <%= link_to "Enter new results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+    <% else %>
+      <%= link_to "My box", box_list_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+    <% end %>
     <%= link_to "Grid view", box_path, class: "btn button-purple" %>
   </div>
 </div>
