@@ -9,56 +9,9 @@
 require 'faker'
 
 # set as true to append new round to existing clubs
-new_round = true
+new_round = false
 
-if new_round
-  sample_club = Club.find_by(name: "My tennis club")
-  clubs = Club.all.reject { |club| club == sample_club }
-
-  clubs.each do |club|
-    puts "seeding current round for #{club.name}"
-    puts "------------------------------------"
-    round = Round.create(
-      start_date: Date.new(2023, 1, 1),
-      end_date: Date.new(2023, 3, 31),
-      club_id: club.id
-    )
-    puts "-> new round created"
-
-    sourcing_round = Round.find_by(
-      start_date: Date.new(2023, 4, 1),
-      club_id: club.id
-    )
-    sourcing_boxes = Box.where(round_id: sourcing_round.id)
-
-    14.times do |box_number|
-      puts "seeding box #{box_number + 1} for #{club.name}"
-      puts "------------------------------------"
-      box = Box.create(
-        round_id: round.id,
-        box_number: box_number + 1
-      )
-
-      matching_box = Box.find_by(
-        round_id: sourcing_round.id,
-        box_number: box.box_number
-      )
-
-      puts "UserBoxScores for box #{box_number + 1}"
-      puts "------------------------------------"
-
-      matching_box.user_box_scores.each do |ubs|
-        new_ubs = UserBoxScore.create(
-          user_id: ubs.user_id,
-          box_id: box.id,
-          points: 0,
-          rank: 0
-        )
-        puts "  -> UserBoxScore created for #{new_ubs.user.email}"
-      end
-    end
-  end
-else
+if true
   # if Rails.env.development?
     puts "-------------------"
     puts "reseting Database"
@@ -160,7 +113,11 @@ else
           user_id: user.id,
           box_id: box.id,
           points: 0,
-          rank: 0
+          rank: 0,
+          sets_won: 0,
+          sets_played: 0,
+          games_won: 0,
+          games_played: 0
         )
         puts "  -> player and UserBoxScore created: #{user.email}"
       end
@@ -175,5 +132,59 @@ else
       )
     end
     puts "  -> 10 courts created"
+  end
+
+new_round = true
+
+if new_round
+  sample_club = Club.find_by(name: "My tennis club")
+  clubs = Club.all.reject { |club| club == sample_club }
+
+  clubs.each do |club|
+    puts "seeding current round for #{club.name}"
+    puts "------------------------------------"
+    round = Round.create(
+      start_date: Date.new(2023, 1, 1),
+      end_date: Date.new(2023, 3, 31),
+      club_id: club.id
+    )
+    puts "-> new round created"
+
+    sourcing_round = Round.find_by(
+      start_date: Date.new(2023, 4, 1),
+      club_id: club.id
+    )
+    sourcing_boxes = Box.where(round_id: sourcing_round.id)
+
+    14.times do |box_number|
+      puts "seeding box #{box_number + 1} for #{club.name}"
+      puts "------------------------------------"
+      box = Box.create(
+        round_id: round.id,
+        box_number: box_number + 1
+      )
+
+      matching_box = Box.find_by(
+        round_id: sourcing_round.id,
+        box_number: box.box_number
+      )
+
+      puts "UserBoxScores for box #{box_number + 1}"
+      puts "------------------------------------"
+
+      matching_box.user_box_scores.each do |ubs|
+        new_ubs = UserBoxScore.create(
+          user_id: ubs.user_id,
+          box_id: box.id,
+          points: 0,
+          rank: 0,
+          sets_won: 0,
+          sets_played: 0,
+          games_won: 0,
+          games_played: 0
+        )
+        puts "  -> UserBoxScore created for #{new_ubs.user.email}"
+      end
+    end
   end
 end
