@@ -1,5 +1,6 @@
 <div class="container">
   <h3>List of boxes</h3>
+  <%# open forms to chose club and round %>
   <%= render "shared/set_club_and_round", path: boxes_path %>
   <% if @round %>
     <h4><%= @club.name %></h4>

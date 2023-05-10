@@ -4,6 +4,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:match_id])
     @current_user_match_score = match_score(@match, current_user)
     @opponent_match_score = match_score(@match, @opponent)
+    @my_current_box = my_box(current_round(current_user))
   end
 
   def new
@@ -12,13 +13,16 @@ class MatchesController < ApplicationController
     # the matches/new.html.erb form allows user_match_scores nested attributes
     @match.user_match_scores.build
     @match.user_match_scores.build
-    @round = Round.current.find_by(club_id: current_user.club_id)
+    # @round = Round.current.find_by(club_id: current_user.club_id)
+    @round = Round.find(params[:round_id])
   end
 
   def create
     # create new Match instance with the matches/new.html.erb form and a UserMatchScore instance for each player
     @match = Match.new
-    @match.box = current_user.user_box_scores[0].box
+    # --------------------FALSE
+    # @match.box = current_user.user_box_scores[0].box
+    @match.box = my_box(Round.find(params[:round_id]))
     # get the court from the input court number (user inputs court number in lieu of court id)
     @match.court = Court.find_by name: params[:match][:court_id]
 

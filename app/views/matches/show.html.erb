@@ -21,6 +21,7 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back to my box", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+    <%# link_to "Back to my box", manage_my_box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+    <%= link_to "Back to my box", manage_my_box_path(@my_current_box), class: "btn button-purple" %>
   </div>
 </div>

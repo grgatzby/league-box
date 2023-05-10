@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :user_box_scores, only: [:index]
-  get "mybox/:id", to: "boxes#mybox", as: "mybox"
+  get "manage_my_box/:id", to: "boxes#manage_my_box", as: "manage_my_box"
   get "show_manager/:id", to: "boxes#show_manager", as: "box_manager"
   get "boxes-list/:id", to: "boxes#show_list", as: "box_list"
   # get "scores", to: "user_match_scores#scores"
