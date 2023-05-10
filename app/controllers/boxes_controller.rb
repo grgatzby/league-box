@@ -9,6 +9,8 @@ class BoxesController < ApplicationController
     # @box_matches: array of [user_box_score , matches(user_box_score.user)]
     # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box)
+    @this_is_my_box = my_box?(@box)
+    @my_current_box = my_box(current_round(current_user))
   end
 
   def show_list
@@ -19,16 +21,25 @@ class BoxesController < ApplicationController
     show
   end
 
-  def mybox
-    @box = Box.find(params[:id])
-    @user_matches = []
-    @box.user_box_scores.each do |user_box_score|
-      opponent_matches = user_matches(user_box_score.user, @box)
-      current_user_matches = user_matches(current_user, @box)
-      match_played = (opponent_matches & current_user_matches)[0]
-      @user_matches << [user_box_score, match_played]
+  def manage_my_box
+    if params[:id].to_i.zero?
+      set_club_and_round
+      # get my box from chosen round
+      # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
+      @box = my_box(@round)
+    else
+      @box = Box.find(params[:id])
     end
-    @user_matches = @user_matches.sort { |a, b| b[0].points <=> a[0].points }
+    if @box
+      @my_games = []
+      @box.user_box_scores.each do |user_box_score|
+        opponent_matches = user_matches(user_box_score.user, @box)
+        current_user_matches = user_matches(current_user, @box)
+        match_played = (opponent_matches & current_user_matches)[0]
+        @my_games << [user_box_score, match_played]
+      end
+      @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
+    end
   end
 
   private
@@ -66,5 +77,10 @@ class BoxesController < ApplicationController
 
   def match_score(match, player)
     match.user_match_scores.select { |x| x.user == player }[0]
+  end
+
+  def my_box?(box)
+    # return true if current_user belongs to box, false if not
+    box.user_box_scores.map(&:user).select { |user| user == current_user }.size.positive?
   end
 end

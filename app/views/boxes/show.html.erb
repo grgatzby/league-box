@@ -1,8 +1,5 @@
 <div class="container">
-  <h3>
-    <%= "Box #{@box.box_number}" %>
-    <% if current_user.user_box_scores[0].box == @box %>(<%= render "fullname", user: current_user %>)<% end %>
-  </h3>
+  <%= render "intro_lines", box: @box %>
   <div class = "form-wrap">
     <div class="grid-container row">
 
@@ -82,11 +79,16 @@
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
-    <% if current_user.user_box_scores[0].box == @box %>
-      <%= link_to "Enter new results", mybox_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+
+    <%# if current_user.user_box_scores[0].box == @box %>
+    <% if @box == @my_current_box %>
+      <%# link_to "Enter new results", manage_my_box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+      <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-purple" %>
     <% else %>
-      <%= link_to "My box", box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+      <%# link_to "My current box", box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
+      <%= link_to "My current box", box_path(@my_current_box), class: "btn button-purple" %>
     <% end %>
+
     <%= link_to "List view", box_list_path, class: "btn button-purple" %>
   </div>
 </div>

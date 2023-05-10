@@ -1,5 +1,6 @@
 <div class = "container">
-  <h4>Match <%= render "fullname", user: current_user %> vs <%= render "fullname", user: @opponent %></h4>
+  <h4>Match <%= render "fullname", user: current_user %> vs <%= render "fullname", user: @opponent %>
+  <%= " (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h4>
   <% players = [current_user, @opponent] %>
   <br><%= form_for @match do |f| %>
     <div class="row">
@@ -10,7 +11,8 @@
     <div class="row">
       <div class="col-sm-2">Date & time:</div>
       <div class="col-sm-3">
-        <%= f.date_field(:time, min: @round.start_date, max: Time.now().to_s.slice(0,10) ) %>
+        <% end_select = [@round.end_date, Time.now()].min %>
+        <%= f.date_field(:time, min: @round.start_date, max: end_select.strftime("%d %b"), selected: end_select ) %>
         <%= f.time_select(:time, start_hour: 7, end_hour: 19, minute_step: 30, :time_separator => "") %>
       </div>
     </div>
@@ -32,6 +34,7 @@
     <br>
     <%= hidden_field_tag(:opponent_id, @opponent.id) %>
     <%= hidden_field_tag(:round_start, @round.start_date) %>
+    <%= hidden_field_tag(:round_id, @round.id) %>
     <%= f.submit "Save scores", class: "btn button-purple" %>
   <% end %>
 </div>

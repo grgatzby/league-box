@@ -38,12 +38,24 @@ class ApplicationController < ActionController::Base
       @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
       # @club = Club.find_by(name: params[:club])
       @boxes = @round.boxes.sort
-      # new_params = params.except[:round]
     end
   end
 
+  # #my_box, and #current_round are called from #show, #show_list, and #show_manager in #BoxesControllers
+  # and from #show in MatchesController
+  def current_round(user)
+    # given a user, returns its current round
+    Round.current.find_by(club_id: user.club_id)
+  end
+
+  def my_box(round)
+    # given a round, returns current_user's box for that round
+    current_user.user_box_scores.map(&:box).select { |box| box.round == round }[0]
+  end
+
   def compute_points(match_scores)
-    # called from UserMatchScoresController and MatchesController
+    # called from #update in UserMatchScoresController and #create in MatchesController
+    # and previously from #scores_NO_LONGER_USED in UserMatchScoresController
     # computes scores in match_scores (an array of 2 hashes)
 
     # Points rules:

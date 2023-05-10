@@ -10,9 +10,10 @@ determined by
   <div data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
     <h3>League table</h3>
   </div>
+  <%# open forms to chose club and round %>
   <%= render "shared/set_club_and_round", path: user_box_scores_path %>
   <% if @round %>
-    <h4><%= @club.name %></h4>
+    <h4><%= @club.name %><%= " (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h4>
     <div class="form-wrap">
       <ol type="1">
         <div class="row justify-content-center text-padding league-header">

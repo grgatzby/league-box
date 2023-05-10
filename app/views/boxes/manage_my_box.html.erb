@@ -1,18 +1,24 @@
 <div class="container">
-  <br><h3><%= render "fullname", user: current_user %><%= " - box #{@box.box_number}" %></h3>
-  <div class="form-wrap players">
-    <h4>My box: view or enter match scores</h4>
-
-    <ul>
+  <% if @box %>
+    <% @round = @box.round %>
+  <% else %>
+    <%= render "shared/set_club_and_round", path: manage_my_box_path %>
+  <% end %>
+  <% if @round %>
+    <br><h3><%= render "fullname", user: current_user %><%= " - box #{@box.box_number} (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h3>
+    <div class="form-wrap players">
+      <h4>My box: view or enter match scores</h4>
+      <%# open forms to chose club and round %>
+      <ul>
       <div class="row justify-content-center text-padding">
         <div class="col-sm-3">Player</div>
         <div class="col-sm-2">Points</div>
         <div class="col-sm-2">Played on</div>
         <div class="col-sm-3 left-padding">Action</div>
       </div>
-      <% @user_matches.each do |user_match| %>
-        <% user = user_match[0].user %>
-        <% match = user_match[1] %>
+      <% @my_games.each do |my_game| %>
+        <% user = my_game[0].user %>
+        <% match = my_game[1] %>
 
         <div class="row justify-content-center">
           <div class="col-sm-3 text-padding">
@@ -26,7 +32,7 @@
             </div>
           </div>
           <div class="col-sm-2 text-padding">
-              <%= pluralize user_match[0].points, "pt" %>
+              <%= pluralize my_game[0].points, "pt" %>
           </div>
           <div class="col-sm-2 text-padding">
             <% if match && user != current_user %>
@@ -39,13 +45,14 @@
             <% elsif match %>
               <%= link_to "View match details", match_path(:user_id => user.id, :match_id => match.id), class: "btn button-ghost" %>
             <% else %>
-              <%= link_to "Enter new score", new_match_path(:user_id => user.id), class: "btn button-ghost" %>
+              <%= link_to "Enter new score", new_match_path(:user_id => user.id, :round_id => @round.id), class: "btn button-ghost" %>
             <% end %>
           </div>
         </div>
       <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
+  <% end %>
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
