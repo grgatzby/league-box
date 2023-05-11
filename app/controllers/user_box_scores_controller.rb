@@ -10,9 +10,14 @@ class UserBoxScoresController < ApplicationController
       # 2. Most matches played
       # 3. Ratio of Sets Won to Sets Played
       # 4. Ratio of Games Won to Games Played
-      @scores = @scores.sort { |a, b|
-        [b.points, b.games_played, (b.sets_played.zero? ? 0 : b.sets_won / b.sets_played), (b.games_played.zero? ? 0 : b.games_won/b.games_played) ] <=>
-        [a.points, a.games_played, (a.sets_played.zero? ? 0 : a.sets_won / a.sets_played), (a.games_played.zero? ? 0 : a.games_won/a.games_played) ] }
+      @scores = @scores.sort do |a, b|
+        [b.points, b.games_played,
+         (b.sets_played.zero? ? 0 : b.sets_won / b.sets_played),
+         (b.games_played.zero? ? 0 : b.games_won / b.games_played)] <=>
+          [a.points, a.games_played,
+           (a.sets_played.zero? ? 0 : a.sets_won / a.sets_played),
+           (a.games_played.zero? ? 0 : a.games_won/a.games_played)]
+      end
       # updates the rank field in the database
       points_array = @scores.map(&:points)
       sorted_points = points_array.sort.uniq.reverse

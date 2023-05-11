@@ -23,7 +23,6 @@
       <%= link_to "View all boxes", boxes_path, class: "btn button-purple" %>
       <% if current_user %>
         <% if current_user.role == "player" %>
-          <%# link_to "Enter match results", manage_my_box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
           <%# passing 0 to manage_my_box_path, forces user to chose a round%>
           <%= link_to "Enter my results", manage_my_box_path(0), class: "nav-link" %>
         <% end %>

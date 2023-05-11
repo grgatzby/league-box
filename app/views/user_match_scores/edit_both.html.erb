@@ -6,7 +6,7 @@
     <h5>
       <% players = [] %>
       <% @user_match_scores.each_with_index do |user_match_score, index| %>
-        <%= render "fullname", user: user_match_score.user %>
+        <%= render "shared/fullname", user: user_match_score.user %>
         <% if index == 0 %><%= " vs " %><% end %>
         <% players << user_match_score.user_id  %>
       <% end %>
@@ -16,7 +16,7 @@
     <%= form_tag(user_match_scores_path, method: :put) do %>
       <% @user_match_scores.each do |user_match_score| %>
         <%= fields_for "user_match_scores[]", user_match_score do |f| %>
-            <%= render "fullname", user: f.object.user %>: <%= f.select :score_set1, (0..4).to_a %>
+            <%= render "shared/fullname", user: f.object.user %>: <%= f.select :score_set1, (0..4).to_a %>
             <%= f.select :score_set2, (0..4).to_a %>
             <%= f.select :score_tiebreak, ['Na']+(0..25).to_a %><br>
           <% end %>

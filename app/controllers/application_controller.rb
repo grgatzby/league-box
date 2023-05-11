@@ -29,12 +29,14 @@ class ApplicationController < ActionController::Base
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
 
-    if current_user != @admin || params[:club] # user hits select in the clubs form
+    if current_user != @admin || params[:club]
+      # user belongs to a club (player or manager), or has answered the clubs form
       @club = Club.find_by(name: params[:club]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date) # dropdown in the form
     end
 
-    if params[:round_start] # user hits select in the rounds form
+    if params[:round_start]
+      # user has answered the rounds form
       @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
       # @club = Club.find_by(name: params[:club])
       @boxes = @round.boxes.sort
@@ -48,9 +50,9 @@ class ApplicationController < ActionController::Base
     Round.current.find_by(club_id: user.club_id)
   end
 
-  def my_box(round)
-    # given a round, returns current_user's box for that round
-    current_user.user_box_scores.map(&:box).select { |box| box.round == round }[0]
+  def my_box(round, player = current_user)
+    # given a round, returns player's box for that round
+    player.user_box_scores.map(&:box).select { |box| box.round == round }[0]
   end
 
   def compute_points(match_scores)
@@ -93,13 +95,13 @@ class ApplicationController < ActionController::Base
       match_scores[0][:score_tiebreak] = 0
       match_scores[1][:score_tiebreak] = 0
     end
-    # return results (ARRAY of won sets count for each player)
+    # returns results (ARRAY of won sets count for each player)
     results
   end
 
   def compute_results(match_scores)
     # called from UserMatchScoresController and MatchesController
-    # compute and return results (hash of won sets count for each player)
+    # computes and returns results (hash of won sets count for each player)
 
     results = { sets_won1: 0,
                 sets_won2: 0 }
@@ -126,14 +128,14 @@ class ApplicationController < ActionController::Base
         results[:sets_won2] += 1
       end
     end
-    # return results (ARRAY of won sets count for each player)
+    # returns results (ARRAY of won sets count for each player)
     [results[:sets_won1], results[:sets_won2]]
   end
 
   def test_scores(match_scores, results)
     # called from UserMatchScoresController and MatchesController
-    # return true if scores entered in matches/new or user_match_scores/edit_both are valid,
-    # return false otherwise
+    # returns true if scores entered in matches/new or user_match_scores/edit_both are valid,
+    # returns false otherwise
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = "One score must be 4 for set 1 and set 2."

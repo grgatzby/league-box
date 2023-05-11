@@ -5,8 +5,8 @@ class UserMatchScoresController < ApplicationController
   end
 
   def edit_both
-    # manager: edit or destroy match scores
-    # call form UserMatchScore / edit_both.html.erb
+    # manager: edit match scores
+    # calls form UserMatchScore / edit_both.html.erb
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
     if @user_match_scores[0].score_tiebreak.zero? && @user_match_scores[1].score_tiebreak.zero?
       @user_match_scores[0].score_tiebreak = "Na"
@@ -20,7 +20,7 @@ class UserMatchScoresController < ApplicationController
     user_match_scores = UserMatchScore.where(match_id: params[:match_id])
 
     results = compute_results(user_match_scores)
-    # store current match points for each player
+    # stores current match points for each player
     match_points = [{}, {}]
     [0, 1].each do |index|
       match_points[index][:points] = user_match_scores[index].points
@@ -29,7 +29,7 @@ class UserMatchScoresController < ApplicationController
       match_points[index][:games_won] = results[index] > results[1 - index] ? 1 : 0
     end
 
-    # update match scores for each player
+    # updates match scores for each player
     id = user_match_scores[0].id.to_s
     user_match_scores[0].score_set1 = params[:user_match_scores][id][:score_set1].to_i
     user_match_scores[0].score_set2 = params[:user_match_scores][id][:score_set2].to_i
@@ -40,7 +40,7 @@ class UserMatchScoresController < ApplicationController
     user_match_scores[1].score_set2 = params[:user_match_scores][id][:score_set2].to_i
     user_match_scores[1].score_tiebreak = params[:user_match_scores][id][:score_tiebreak].to_i
 
-    # update points in user_match_scores and return winner/loser hash (count of sets won)
+    # updates points in user_match_scores and return winner/loser hash (count of sets won)
     results = compute_points(user_match_scores)
 
     if test_scores(user_match_scores, results)
@@ -51,7 +51,7 @@ class UserMatchScoresController < ApplicationController
 
       user_match_scores[0].save
       user_match_scores[1].save
-      # update user_box_score for each player
+      # updates user_box_score for each player
       [0, 1].each do |index|
         match = user_match_scores[index].match
         user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
@@ -59,56 +59,12 @@ class UserMatchScoresController < ApplicationController
         user_box_score.sets_won += results[index] - match_points[index][:sets_won]
         user_box_score.sets_played += results.sum - match_points[index][:sets_played]
         user_box_score.games_won += (results[index] > results[1 - index] ? 1 : 0) - match_points[index][:games_won]
-        # user_box_score.games_played unchanged
+        # user_box_score.games_played is unchanged
         user_box_score.save
         @round = match.box.round
       end
-      # display league table
+      # displays league table
       redirect_to user_box_scores_path(round_start: @round.start_date)
-    else
-      # score entered is not valid
-      redirect_back(fallback_location: match_user_match_scores_path)
-    end
-  end
-
-  def scores_NO_LONGER_USED
-    # computes the form from user_match_score/match.html.erb
-    # once match is played, updates user_match_score and user_box_score for both players
-    user_match_scores = UserMatchScore.where(match_id: params[:match_id])
-    user_match_scores[0].user_id = params[:player1_id].to_i
-    user_match_scores[0].score_set1 = params[:score1_set1].to_i
-    user_match_scores[0].score_set2 = params[:score1_set2].to_i
-    user_match_scores[0].score_tiebreak = params[:score1_tiebreak].to_i
-
-    user_match_scores[1].user_id = params[:player2_id].to_i
-    user_match_scores[1].score_set1 = params[:score2_set1].to_i
-    user_match_scores[1].score_set2 = params[:score2_set2].to_i
-    user_match_scores[1].score_tiebreak = params[:score2_tiebreak].to_i
-
-    # update points in user_match_scores and return winner/loser array (count of sets won)
-    results = compute_points(user_match_scores)
-
-    if test_scores(user_match_scores, results)
-      # if score entered is valid, store match date and time
-      match = Match.find(params[:match_id])
-      match.time = "#{params[:date]} #{params['time(4i)']}:#{params['time(5i)']}:00".to_datetime
-      match.save
-
-      # update winner and loser in user_match_scores
-      user_match_scores[0].is_winner = (results[:sets_won1] == 2)
-      user_match_scores[1].is_winner = (results[:sets_won2] == 2)
-
-      user_match_scores[0].save
-      user_match_scores[1].save
-
-      # update points in user_box_score for each player
-      [0, 1].each do |index|
-        match = user_match_scores[index].match
-        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
-        user_box_score.points += user_match_scores[index].points
-        user_box_score.save
-      end
-      redirect_to box_path(current_user.user_box_scores[0].box)
     else
       # if score entered is not valid
       redirect_back(fallback_location: match_user_match_scores_path)
@@ -120,5 +76,4 @@ class UserMatchScoresController < ApplicationController
   def user_match_score_params
     params.require(:user_match_score).permit([:score_set1, :score_set2, :score_tiebreak, :points, :is_winner])
   end
-
 end

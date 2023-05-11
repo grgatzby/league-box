@@ -8,21 +8,22 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @opponent = User.find(params[:user_id])
-    @match = Match.new
-    # the matches/new.html.erb form allows user_match_scores nested attributes
-    @match.user_match_scores.build
-    @match.user_match_scores.build
+    @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
+    @opponent = User.find(params[:opponent_id])
     # @round = Round.current.find_by(club_id: current_user.club_id)
     @round = Round.find(params[:round_id])
+    @end_select = [@round.end_date, Time.now].min
+    @match = Match.new(time: @end_select)
+    # the matches/new.html.erb form supports user_match_scores nested attributes
+    @match.user_match_scores.build
+    @match.user_match_scores.build
   end
 
   def create
     # create new Match instance with the matches/new.html.erb form and a UserMatchScore instance for each player
     @match = Match.new
-    # --------------------FALSE
-    # @match.box = current_user.user_box_scores[0].box
-    @match.box = my_box(Round.find(params[:round_id]))
+    @current_player = User.find(params[:player_id])
+    @match.box = my_box(Round.find(params[:round_id]), @current_player)
     # get the court from the input court number (user inputs court number in lieu of court id)
     @match.court = Court.find_by name: params[:match][:court_id]
 
@@ -44,7 +45,7 @@ class MatchesController < ApplicationController
       @match.save
 
       # create the two match scores for the match
-      UserMatchScore.create(user_id: current_user.id, match_id: @match.id)
+      UserMatchScore.create(user_id: params[:player_id], match_id: @match.id)
       UserMatchScore.create(user_id: params[:opponent_id], match_id: @match.id)
 
       user_match_scores = UserMatchScore.where(match_id: @match.id)
@@ -79,7 +80,8 @@ class MatchesController < ApplicationController
       end
 
       # redirect to league table
-      redirect_to user_box_scores_path(round_start: params[:round_start])
+      # redirect_to user_box_scores_path(round_start: params[:round_start])
+      redirect_to user_box_scores_path(round_start: params[:round_start], club: @current_player.club.name)
     else
       # if score entered is not valid, retake the form
       redirect_back(fallback_location: new_match_path)
@@ -87,6 +89,7 @@ class MatchesController < ApplicationController
   end
 
   def destroy
+    # for admin and managers only
     @match = Match.find(params[:id])
     user_match_scores = UserMatchScore.where(match_id: @match.id)
     results = compute_results(user_match_scores)
