@@ -2,9 +2,11 @@
     <%# display the club form before the round form, then keep displaying it %>
     <% if !params[:round_start] || params[:club] %>
       <%= form_with url: path, method: :get do |form| %>
-        <%= form.label :club, "Select a club: " %><br>
+        <%= form.label :club, "Select a club: " %>
         <%= form.select :club, @club_names, :selected => params[:club] %>
-        <%= form.submit "Confirm" %>
+        <% if !params[:club] || params[:round_start] %>
+          <%= form.submit "Confirm" %>
+        <% end %>
       <% end %>
     <% end %>
   <% else %>
