@@ -2,22 +2,23 @@
     <%# display the club form before the round form, then keep displaying it %>
     <% if !params[:round_start] || params[:club] %>
       <%= form_with url: path, method: :get do |form| %>
-        <%= form.label :club, "Select a club:" %><br>
+        <%= form.label :club, "Select a club: " %><br>
         <%= form.select :club, @club_names, :selected => params[:club] %>
-        <%= form.submit "Select" %>
+        <%= form.submit "Confirm" %>
       <% end %>
     <% end %>
   <% else %>
-    <%# display the club name until the round form has been taken %>
+    <%# display the club name until the round form has been answered %>
     <% if !params[:round_start] %>
       <%= @club.name %>
     <% end %>
   <% end %>
-  <% if !params[:round_start] || params[:club] || (current_user != @admin) %>
+  <%# if !params[:round_start] || params[:club] || (current_user != @admin) %>
+  <% if !params[:round_start] && params[:club] || (current_user != @admin) %>
     <%= form_with url: path, method: :get do |form| %>
-      <%= form.label :round_start, "Round start date:" %>
+      <%= form.label :round_start, "Select a round start date: " %>
       <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>
       <%= hidden_field_tag(:club, @club.name) %>
-      <%= form.submit "Select" %>
+      <%= form.submit "Confirm" %>
     <% end %>
   <% end %>

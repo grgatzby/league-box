@@ -13,7 +13,7 @@ determined by
   <%# open forms to chose club and round %>
   <%= render "shared/set_club_and_round", path: user_box_scores_path %>
   <% if @round %>
-    <h4><%= @club.name %><%= " (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h4>
+    <h4><%= @club.name %><%= " (#{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")} round)" %></h4>
     <div class="form-wrap">
       <ol type="1">
         <div class="row justify-content-center text-padding league-header">
@@ -21,25 +21,25 @@ determined by
             <div class="col-sm-1">Rank</div>
             <div class="col-sm-1">Points</div>
             <div class="col-sm-1">Box</div>
-            <div class="col-sm-1">Matches</div>
-            <div class="col-sm-1">Won</div>
+            <div class="col-sm-2">Matches</div>
+            <div class="col-sm-2">Won</div>
             <div class="col-sm-1">Sets</div>
             <div class="col-sm-1">Won</div>
         </div>
         <% @scores.each do |user_box_score| %>
           <% player = user_box_score.user %>
           <li style=<%=player == current_user ? "color:blue" : ""%>>
-            <% name = "#{render "fullname", user: player}" %>
+            <% name = "#{render "shared/fullname", user: player}" %>
             <% message = "📞 #{player.phone_number}✉️ #{player.email}" %>
             <div data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
 
               <div class="row justify-content-center player-name">
-                <div class="col-sm-3"><%= render "fullname", user: player %></div>
+                <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
                 <div class="col-sm-1 text-padding"><%= "#{user_box_score.rank}" %></div>
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
                 <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
-                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>
-                <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_won, "match" %></div>
+                <div class="col-sm-2 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>
+                <div class="col-sm-2 text-padding"><%= pluralize user_box_score.games_won, "match" %></div>
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
                 <% if current_user.role == "admin" || current_user.role == "manager" %>

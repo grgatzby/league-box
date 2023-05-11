@@ -1,12 +1,17 @@
 <div class="container">
-  <br><h3><%= "Box #{@box.box_number}" %></h3>
-  <p><strong><%= "#{@current_user.role.capitalize} " %><%= render "fullname", user: current_user %></strong>, select match to edit / delete score</p>
+  <br><h3><%= "Box #{@box.box_number}" %><%= " - #{@box.round.club.name} " %><%= render "round", round: @box.round %></h3>
+
+  <p>
+    <%= "#{@current_user.role.capitalize} " %><strong><%= render "shared/fullname", user: current_user %></strong>
+    <% add_message = current_user == @admin ? ", or enter new sscore" : "" %>
+    <%="select a match to edit or delete the score #{add_message}."%>
+  </p>
   <div class = "form-wrap">
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match scores</div>
-      <div class="col-sm-2">Points player</div>
-      <div class="col-sm-2 text-color-grey">Points opponent</div>
+      <div class="col-sm-2">Player points</div>
+      <div class="col-sm-2 text-color-grey">Opponent points</div>
     </div>
     <ul>
       <% sorted_players = @box_matches.map { |x| x[2]} %>
@@ -15,7 +20,7 @@
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>
           <div class="text-paddings">
-            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
+            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
           </div>
           <ul>
@@ -28,7 +33,7 @@
                   <% opponent_score = player_match[3] %>
                   <% if match %>
                     <li><div class="row player-name">
-                      <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
+                      <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
                       <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
                       <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                       <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
@@ -37,8 +42,10 @@
                   <% end %>
                 <% elsif player_opponent != player%>
                   <li><div class="row player-name text-color-grey">
-                    <div class="col-sm-4"><%= render "fullname", user: player_opponent %>: <%= "not played" %></div>
-                    <%= link_to '', '', class: "line-link" %>
+                    <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %>: <%= "not played" %></div>
+                    <% if current_user == @admin %>
+                      <%= link_to '', new_match_path(opponent_id: player_opponent.id, round_id: @box.round.id, player_id: player.id), class: "line-link" %>
+                    <% end %>
                   </div></li>
                 <% end %>
             <% end %>

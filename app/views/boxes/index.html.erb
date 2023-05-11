@@ -1,6 +1,6 @@
 <div class="container">
   <h3>List of boxes</h3>
-  <%# open forms to chose club and round %>
+  <%# chose club and round from forms %>
   <%= render "shared/set_club_and_round", path: boxes_path %>
   <% if @round %>
     <h4><%= @club.name %></h4>
@@ -12,7 +12,7 @@
             <% scores = box.user_box_scores.sort { |a, b| b.points <=> a.points } %>
             <% scores.each do |user_box_score| %>
               <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
-                <%= render "fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
+                <%= render "shared/fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
               </li>
               <% if current_user && (current_user.role == "admin" || current_user.role == "manager") %>
                 <%= link_to '', box_manager_path(user_box_score.box), class: "box-link" %>

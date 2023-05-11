@@ -13,10 +13,9 @@
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>
           <div class="text-paddings">
-            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
+            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%# link_to "Enter/view match results", manage_my_box_path(current_user.user_box_scores[0].box), class: "btn button-ghost" %>
               <%= link_to "Enter/view match results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
             <% end %>
           </div>
@@ -28,7 +27,7 @@
               <% opponent_score = player_match[3] %>
               <% if match %>
                 <li><div class="row">
-                  <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "fullname", user: opponent %></div>
+                  <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
                   <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
@@ -45,10 +44,8 @@
     <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
 
     <% if @box == @my_current_box %>
-      <%# link_to "Enter new results", manage_my_box_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-purple" %>
     <% else %>
-      <%# link_to "My current box", box_list_path(current_user.user_box_scores[0].box), class: "btn button-purple" %>
       <%= link_to "My current box", box_list_path(@my_current_box), class: "btn button-purple" %>
     <% end %>
 
