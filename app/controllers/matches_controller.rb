@@ -81,7 +81,7 @@ class MatchesController < ApplicationController
 
       # redirect to league table
       # redirect_to user_box_scores_path(round_start: params[:round_start])
-      redirect_to user_box_scores_path(round_start: params[:round_start], club: @current_player.club.name)
+      redirect_to user_box_scores_path(round_start: params[:round_start], club_name: @current_player.club.name)
     else
       # if score entered is not valid, retake the form
       redirect_back(fallback_location: new_match_path)

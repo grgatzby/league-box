@@ -4,8 +4,9 @@
     <div class="row">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match scores</div>
-      <div class="col-sm-2">Points player</div>
-      <div class="col-sm-2"><span style="color:grey">Points opponent</span></div>
+      <div class="col-sm-2">Player's points</div>
+      <div class="col-sm-2"><span style="color:grey">Opponent's points</span></div>
+      <div class="col-sm-2"><span style="color:grey">Opponent's ranking</span></div>
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
@@ -13,10 +14,10 @@
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>
           <div class="text-paddings">
-            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %> : <%= pluralize user_box_score.points, "point" %></span>
+            <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%= link_to "Enter/view match results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
+              <%= link_to "Enter/view my match results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
             <% end %>
           </div>
           <ul>
@@ -31,6 +32,7 @@
                   <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
+                  <div class="col-sm-2 text-color-grey"><%= "#{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
                 </div></li>
               <% end %>
             <% end %>
@@ -49,6 +51,6 @@
       <%= link_to "My current box", box_list_path(@my_current_box), class: "btn button-purple" %>
     <% end %>
 
-    <%= link_to "Grid view", box_path, class: "btn button-purple" %>
+    <%= link_to "Show grid view", box_path, class: "btn button-purple" %>
   </div>
 </div>

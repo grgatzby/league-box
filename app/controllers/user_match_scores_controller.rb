@@ -64,7 +64,8 @@ class UserMatchScoresController < ApplicationController
         @round = match.box.round
       end
       # displays league table
-      redirect_to user_box_scores_path(round_start: @round.start_date)
+      # redirect_to user_box_scores_path(round_start: @round.start_date)
+      redirect_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name)
     else
       # if score entered is not valid
       redirect_back(fallback_location: match_user_match_scores_path)

@@ -29,16 +29,16 @@ class ApplicationController < ActionController::Base
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
 
-    if current_user != @admin || params[:club]
+    if current_user != @admin || params[:club_name]
       # user belongs to a club (player or manager), or has answered the clubs form
-      @club = Club.find_by(name: params[:club]) if @club == @sample_club
+      @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date) # dropdown in the form
     end
 
     if params[:round_start]
       # user has answered the rounds form
       @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
-      # @club = Club.find_by(name: params[:club])
+      # @club = Club.find_by(name: params[:club_name])
       @boxes = @round.boxes.sort
     end
   end
