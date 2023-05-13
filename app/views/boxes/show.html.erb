@@ -78,14 +78,14 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
 
     <% if @box == @my_current_box %>
-      <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-purple" %>
+      <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-flat" %>
     <% else %>
-      <%= link_to "My current box", box_path(@my_current_box), class: "btn button-purple" %>
+      <%= link_to "My current box", box_path(@my_current_box), class: "btn button-flat" %>
     <% end %>
 
-    <%= link_to "Show list view", box_list_path, class: "btn button-purple" %>
+    <%= link_to "Show list view", box_list_path, class: "btn button-flat" %>
   </div>
 </div>
