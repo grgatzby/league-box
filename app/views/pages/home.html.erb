@@ -18,11 +18,11 @@
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= link_to "Tournament overview", overview_path, class: "btn button-purple" %>
-      <%= link_to "Club staff", staff_path, class: "btn button-purple" %>
-      <%= link_to "View all boxes", boxes_path, class: "btn button-purple" %>
+      <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
+      <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
+      <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
       <% unless current_user %>
-        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-purple" %>
+        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
       <% end %>
     </div>
   </div>

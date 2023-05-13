@@ -22,10 +22,10 @@
           <% end %>
       <% end %>
       <%= hidden_field_tag(:match_id, params[:match_id]) %>
-      <br><%= submit_tag "Update score", class: "btn button-purple"  %>
-      <%= link_to "Delete score", match_path(@match), class: "btn button-purple",
+      <br><%= submit_tag "Update score", class: "btn button-flat"  %>
+      <%= link_to "Delete score", match_path(@match), class: "btn button-flat",
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-      <%= link_to "Back", "javascript:history.back()", class: "btn button-purple" %>
+      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
     <% end %>
   </div>
 </div>

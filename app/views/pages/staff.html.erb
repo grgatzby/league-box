@@ -39,16 +39,16 @@
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= link_to "Home", root_path, class: "btn button-purple" %>
-      <%= link_to "Tournament overview", overview_path, class: "btn button-purple" %>
-      <%= link_to "View all boxes", boxes_path, class: "btn button-purple" %>
+      <%= link_to "Home", root_path, class: "btn button-flat" %>
+      <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
+      <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
       <% if current_user %>
         <% if current_user.role == "player" %>
           <%# passing 0 to manage_my_box_path, forces user to chose a round%>
-          <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-purple" %>
+          <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
         <% end %>
       <% else %>
-        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-purple" %>
+        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
       <% end %>
     </div>
   </div>
