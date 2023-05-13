@@ -3,8 +3,8 @@
 
   <p>
     <%= "#{@current_user.role.capitalize} " %><strong><%= render "shared/fullname", user: current_user %></strong>
-    <% add_message = current_user == @admin ? ", or enter new score" : "" %>
-    <%="select a match to edit or delete the score #{add_message}."%>
+    <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
+    <%="select a match to edit or delete the score#{admin_message}."%>
   </p>
   <div class = "form-wrap">
     <div class="row">
@@ -33,14 +33,22 @@
                   <% user_score = player_match[2] %>
                   <% opponent_score = player_match[3] %>
                   <% if match %>
-                    <li><div class="row player-name">
-                      <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
-                      <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
-                      <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                      <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
-                      <div class="col-sm-2 text-color-grey"><%= "#{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
-                      <%= link_to '', edit_both_user_match_scores_path(match_id: match.id), class: "line-link" %>
-                   </div></li>
+                    <li>
+                      <% name = "Score" %>
+                      <% score_input_by = User.find(user_score.input_user_id) %>
+                      <% message = "input by #{render "shared/fullname", user: score_input_by} (#{score_input_by.role}) on #{user_score.input_date.strftime("%d %b %Y")} #{user_score.input_date.strftime("%I:%M %p")}" %>
+                      <div data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
+
+                        <div class="row player-name">
+                          <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
+                          <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
+                          <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
+                          <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
+                          <div class="col-sm-2 text-color-grey"><%= "#{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
+                          <%= link_to '', edit_both_user_match_scores_path(match_id: match.id), class: "line-link" %>
+                        </div>
+                      </div>
+                    </li>
                   <% end %>
                 <% elsif player_opponent != player%>
                   <li><div class="row player-name text-color-grey">

@@ -40,6 +40,12 @@ class UserMatchScoresController < ApplicationController
     user_match_scores[1].score_set2 = params[:user_match_scores][id][:score_set2].to_i
     user_match_scores[1].score_tiebreak = params[:user_match_scores][id][:score_tiebreak].to_i
 
+    input_date = Time.now
+    user_match_scores[0].input_user_id = current_user.id
+    user_match_scores[0].input_date = input_date
+    user_match_scores[1].input_user_id = current_user.id
+    user_match_scores[1].input_date = input_date
+
     # updates points in user_match_scores and return winner/loser hash (count of sets won)
     results = compute_points(user_match_scores)
 

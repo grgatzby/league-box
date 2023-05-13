@@ -3,6 +3,7 @@
   <% opponent_rank = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id).rank %>
   <h3><%= render "shared/fullname", user: current_user %><%= "(# #{player_rank})" %> vs
   <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_rank})" %></h3>
+
   <div class="form-wrap">
     <h4><%= render "match", my_card: @current_user_match_score %>by <%= render "shared/fullname", user: current_user %></h4>
     <%= "Played on #{@match.time.strftime("%d/%m/%Y")} (#{@match.time.strftime("%I:%M %p")})" %>
@@ -12,7 +13,10 @@
     <% if @current_user_match_score.score_tiebreak + @opponent_match_score.score_tiebreak != 0%>
       <%= "#{@current_user_match_score.score_tiebreak}-#{@opponent_match_score.score_tiebreak}" %>
     <% end %>
-    <br>
+    <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
+    <% score_input_by = User.find(ums.input_user_id) %>
+    <% message = ": score input by #{render "shared/fullname", user: score_input_by} (#{score_input_by.role}) on #{ums.input_date.strftime("%d %b %Y")} #{ums.input_date.strftime("%I:%M %p")}." %>
+    <%= message %><br>
     <%= render "shared/fullname", user: current_user %><%= "#{@current_user_match_score.points} pts," %>
     <%= render "shared/fullname", user: @opponent %><%= "#{@opponent_match_score.points} pts." %>
     <br><br>
@@ -21,6 +25,7 @@
     <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
       To change this match score, please contact your club manager: <%= render "shared/fullname", user: @manager %>
     </div>
+  </div>
   </div>
   <br>
   <div class="buttons-wrap">

@@ -10,8 +10,8 @@ class MatchesController < ApplicationController
   def new
     @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
     @opponent = User.find(params[:opponent_id])
-    # @round = Round.current.find_by(club_id: current_user.club_id)
     @round = Round.find(params[:round_id])
+    # max match date in the form: lowest of round end date and current date
     @end_select = [@round.end_date, Time.now].min
     @match = Match.new(time: @end_select)
     # the matches/new.html.erb form supports user_match_scores nested attributes
@@ -63,6 +63,12 @@ class MatchesController < ApplicationController
 
       user_match_scores[0].is_winner = (results[0] > results[1])
       user_match_scores[1].is_winner = (results[1] > results[0])
+
+      input_date = Time.now
+      user_match_scores[0].input_user_id = current_user.id
+      user_match_scores[0].input_date = input_date
+      user_match_scores[1].input_user_id = current_user.id
+      user_match_scores[1].input_date = input_date
 
       user_match_scores[0].save
       user_match_scores[1].save
