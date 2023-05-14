@@ -15,15 +15,15 @@
     <% end %>
     <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
     <% score_input_by = User.find(ums.input_user_id) %>
-    <% message = ": score input by #{render "shared/fullname", user: score_input_by} (#{score_input_by.role}) on #{ums.input_date.strftime("%d %b %Y")} #{ums.input_date.strftime("%I:%M %p")}." %>
-    <%= message %><br>
-    <%= render "shared/fullname", user: current_user %><%= "#{@current_user_match_score.points} pts," %>
-    <%= render "shared/fullname", user: @opponent %><%= "#{@opponent_match_score.points} pts." %>
+    <% message = ": score input on #{ums.input_date.strftime("%d %b %Y")} #{ums.input_date.strftime("%I:%M %p")} by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}." %>
+    <span style="color:grey"><%= message %></span><br>
+    <%= render "shared/fullname", user: current_user %><%= ": #{@current_user_match_score.points} pts." %><br>
+    <%= render "shared/fullname", user: @opponent %><%= ": #{@opponent_match_score.points} pts." %>
     <br><br>
     <% name = "#{render "shared/fullname", user: @manager}" %>
     <% message = "📞 #{@manager.phone_number}\b ✉️#{@manager.email}" %>
     <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
-      To change this match score, please contact your club manager: <%= render "shared/fullname", user: @manager %>
+      To change this match score, please contact your club manager <%= render "shared/fullname", user: @manager %>.
     </div>
   </div>
   </div>
