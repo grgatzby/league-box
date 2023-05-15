@@ -23,8 +23,8 @@
         <div class="row justify-content-center">
           <div class="col-sm-3 text-padding">
             <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
-            <% message = "📞 #{opponent.phone_number} ✉️ #{opponent.email}" %>
-            <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= opponent_name %>" data-bs-content="<%= message %>">
+            <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
+            <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= opponent_name %>" data-bs-content="<%= message %>">
               <span style=<%=opponent == @current_player ? "color:blue" : "" %>>
                 <%# link_to "#{render "shared/fullname", user: opponent}", "", class: "btn button-ghost", :title => message  %>
                 <%= "#{render "shared/fullname", user: opponent}" %>

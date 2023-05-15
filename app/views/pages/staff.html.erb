@@ -6,33 +6,32 @@
         <br>
         <div class="row">
           <div class="col-sm-2">Name</div>
-          <div class="col-sm-1"></div>
-          <div class="col-sm-4"><%= "✉️" %></div>
-          <div class="col-sm-2"><%= "📞" %></div>
-          <% if current_user == @admin %>
-            <div class="col-sm-2"><%= "Club" %></div>
-          <% end %>
+          <div class="col-sm-3"><%= "✉️ e-mail address" %></div>
+          <div class="col-sm-2"><%= "📞 telephone" %></div>
+          <div class="col-sm-3"><%= "🎾 function" %></div>
         </div>
         <div class="row">
           <div class="col-sm-2"><%= render "shared/fullname", user: @admin%></div>
-          <div class="col-sm-5"><%= "#{@admin.email} (admin)" %></div>
-          <div class="col-sm-3"><%= "#{@admin.phone_number}" %></div>
+          <div class="col-sm-3"><%= "#{@admin.email}" %></div>
+          <div class="col-sm-2"><%= "#{@admin.phone_number}" %></div>
+          <div class="col-sm-3"><%= "admin" %></div>
         </div>
-          <% if current_user == @admin %>
-            <% @managers.each do |manager| %>
-              <div class="row">
-                <div class="col-sm-2"><%= render "shared/fullname", user: manager%></div>
-                <div class="col-sm-5"><%= "#{manager.email} (manager)" %></div>
-                <div class="col-sm-2"><%= "#{manager.phone_number}" %></div>
-                <div class="col-sm-2"><%= "#{manager.club.name}" %></div>
-              </div>
-            <% end %>
+        <% if current_user == @admin %>
+          <% @managers.each do |manager| %>
+            <div class="row">
+              <div class="col-sm-2"><%= render "shared/fullname", user: manager%></div>
+              <div class="col-sm-3"><%= "#{manager.email}" %></div>
+              <div class="col-sm-2"><%= "#{manager.phone_number}" %></div>
+              <div class="col-sm-3"><%= "#{manager.club.name} manager" %></div>
+            </div>
           <% end %>
+        <% end %>
         <% if @manager %>
           <div class="row">
             <div class="col-sm-2"><%= render "shared/fullname", user: @manager%></div>
-            <div class="col-sm-5"><%= "#{@manager.email} (Club manager)" %></div>
+            <div class="col-sm-3"><%= "#{@manager.email}" %></div>
             <div class="col-sm-3"><%= "#{@manager.phone_number}" %></div>
+            <div class="col-sm-3"><%= "#{manager.club.name} manager" %></div>
           </div>
         <% end %>
         <br>

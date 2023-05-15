@@ -15,8 +15,8 @@
               <% line_player = user_box_score.user %>
 
               <% name = "#{render "shared/fullname", user: line_player}" %>
-              <% message = "📞 #{line_player.phone_number}\n\n ✉️#{line_player.email}" %>
-              <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= name %>" data-bs-content="<%= message %>">
+              <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
+              <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= name %>" data-bs-content="<%= message %>">
                 <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
                   <%= render "shared/fullname", user: line_player %><br>[<%= pluralize user_box_score.points, "pt" %>]
                 </span>
