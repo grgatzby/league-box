@@ -21,8 +21,8 @@
     <%= render "shared/fullname", user: @opponent %><%= ": #{@opponent_match_score.points} pts." %>
     <br><br>
     <% name = "#{render "shared/fullname", user: @manager}" %>
-    <% message = "📞 #{@manager.phone_number}\b ✉️#{@manager.email}" %>
-    <div class="mb-4" data-controller="popover" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+    <% message = "📞 #{@manager.phone_number}<br />✉️#{@manager.email}" %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
       To change this match score, please contact your club manager <%= render "shared/fullname", user: @manager %>.
     </div>
   </div>
