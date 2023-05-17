@@ -1,13 +1,6 @@
 <div class="container">
   <% name = "Box League Ranking" %>
-  <% message = "A player's league position is determined by the total number of points won in a Round.
-In the event that two or more players have the same number of points the league position will be
-determined by:<br />
-1. Head to Head result (if only 2 players on the same score)<br />
-2. Most matches played<br />
-3. Ratio of Sets Won to Sets Played<br />
-4. Ratio of Games Won to Games Played" %>
-  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= @rules %>">
     <h3>League table</h3>
   </div>
   <%# open forms to chose club and round %>
