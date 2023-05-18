@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "intro_lines", box: @box %>
   <div class = "form-wrap">
-    <div class="grid-container row">
+    <div class="grid-container row small-font">
 
       <div id="first-column" class="col-1">
         <div class="row" id="1st-col-header">
@@ -9,7 +9,7 @@
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
-          <div class="row first-col-lines">
+          <div class="row first-col-lines font-bold">
             <div class="col-12">
               <% user_box_score = user_box_matches[0] %>
               <% line_player = user_box_score.user %>
@@ -27,7 +27,7 @@
       </div>
 
       <div id="players-columns" class="col-11">
-        <div class="row" id="grid-headers">
+        <div class="row font-bold" id="grid-headers">
           <% @box_matches.each do |user_box_matches| %>
             <div class="col-12 col-md-6 col-lg-2 text-center">
               <% user_box_score = user_box_matches[0] %>
@@ -86,6 +86,6 @@
       <%= link_to "My current box", box_path(@my_current_box), class: "btn button-flat" %>
     <% end %>
 
-    <%= link_to "Show list view", box_list_path, class: "btn button-flat" %>
+    <%= link_to "List view", box_list_path, class: "btn button-flat" %>
   </div>
 </div>

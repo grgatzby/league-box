@@ -1,5 +1,5 @@
 <div class="container">
-  <br><h3><%= @club.name %> League Box</h3>
+  <br><h4><%= @club.name %> League Box</h4>
   <div class="form-wrap">
     <h4>Tournament overview</h4>
     <p><%= "Box Leagues are designed to enable members of #{@club.name} to play competitive
@@ -144,7 +144,7 @@
     <% else %>
       <% mailto = "#{@admin.email}" %>
     <% end %>
-    <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to:
+    <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to
     #{mailto}" %></p>
   </div>
   <br>

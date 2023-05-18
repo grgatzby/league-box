@@ -6,14 +6,16 @@
     <h4><%= @club.name %></h4>
     <div class="boxes">
       <% @boxes.each do |box| %>
-        <div class="box">
+        <div class="box small-font">
           <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
           <ol type="1">
-            <% scores = box.user_box_scores.sort { |a, b| b.points <=> a.points } %>
+            <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
             <% scores.each do |user_box_score| %>
-              <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>>
-                <%= render "shared/fullname", user: user_box_score.user %> : <%= pluralize user_box_score.points, "point" %>
-              </li>
+              <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>><div class="row">
+                <div class="col-sm-6"><%= render "shared/fullname", user: user_box_score.user %></div>
+                <div class="col-sm-3"><%= "##{user_box_score.rank}" %></div>
+                <div class="col-sm-3"><%= pluralize user_box_score.points, "pt" %></div>
+              </div></li>
               <% if current_user && (current_user.role == "admin" || current_user.role == "manager") %>
                 <%= link_to '', box_manager_path(user_box_score.box), class: "box-link" %>
               <% else %>
@@ -25,4 +27,12 @@
       <% end %>
     </div>
   <% end %>
+  <br>
+  <div class="buttons-wrap">
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
+    <% if current_user && current_user.role == "player" %>
+      <%# passing 0 to manage_my_box_path, forces user to chose a round%>
+      <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
+    <% end %>
+  </div>
 </div>
