@@ -1,10 +1,6 @@
 .text-padding {
   padding-top: 6px;
   padding-bottom: 6px;
-
-  .left-padding {
-    padding-left: 25px;
-  }
 }
 
 
@@ -13,19 +9,20 @@
   display: flex;
 
   #grid-lines>.row>.grid-columns {
-    height: 105px;
+    height: 5.5rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     border: 1px solid rgba(39,41,43,0.1);
   }
 
   .first-col-lines>.col-12 {
-    height: 105px;
+    height: 5.5rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     // border: 1px solid rgba(39,41,43,0.1);
   }
 }
+
 
 // ------------ index page --------
 .boxes {

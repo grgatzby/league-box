@@ -1,7 +1,7 @@
 <div class="container">
   <%= render "intro_lines", box: @box %>
   <div class = "form-wrap">
-    <div class="row">
+    <div class="row font-bold">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match scores</div>
       <div class="col-sm-2">Player's points</div>
@@ -17,7 +17,7 @@
             <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%= link_to "Enter/view my match results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
+              <%= link_to "-> My results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
             <% end %>
           </div>
           <ul>
@@ -51,6 +51,6 @@
       <%= link_to "My current box", box_list_path(@my_current_box), class: "btn button-flat" %>
     <% end %>
 
-    <%= link_to "Show grid view", box_path, class: "btn button-flat" %>
+    <%= link_to "Grid view", box_path, class: "btn button-flat" %>
   </div>
 </div>
