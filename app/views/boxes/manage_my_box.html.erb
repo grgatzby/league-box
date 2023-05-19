@@ -41,11 +41,11 @@
           </div>
           <div class="col-sm-3">
             <% if opponent == @current_player %>
-              <%= link_to "All boxes", boxes_path, class: "btn button-ghost" %>
+              <%= link_to ">> All boxes", boxes_path, class: "btn button-ghost" %>
             <% elsif match %>
-              <%= link_to "Match details", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
+              <%= link_to ">> Match details", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
             <% else %>
-              <%= link_to "New score", new_match_path(:opponent_id => opponent.id, :round_id => @round.id), class: "btn button-ghost" %>
+              <%= link_to ">> New score", new_match_path(:opponent_id => opponent.id, :round_id => @round.id), class: "btn button-ghost" %>
             <% end %>
           </div>
         </div>

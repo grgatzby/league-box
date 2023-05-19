@@ -95,7 +95,7 @@ class MatchesController < ApplicationController
   end
 
   def destroy
-    # for admin and managers only
+    # for admin and referees only
     @match = Match.find(params[:id])
     user_match_scores = UserMatchScore.where(match_id: @match.id)
     results = compute_results(user_match_scores)

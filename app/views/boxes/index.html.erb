@@ -16,8 +16,8 @@
                 <div class="col-sm-3"><%= "##{user_box_score.rank}" %></div>
                 <div class="col-sm-3"><%= pluralize user_box_score.points, "pt" %></div>
               </div></li>
-              <% if current_user && (current_user.role == "admin" || current_user.role == "manager") %>
-                <%= link_to '', box_manager_path(user_box_score.box), class: "box-link" %>
+              <% if current_user && (current_user.role == "admin" || current_user.role == "referee") %>
+                <%= link_to '', box_referee_path(user_box_score.box), class: "box-link" %>
               <% else %>
                 <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
               <% end %>
@@ -33,6 +33,8 @@
     <% if current_user && current_user.role == "player" %>
       <%# passing 0 to manage_my_box_path, forces user to chose a round%>
       <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
+    <% else %>
+        <%= link_to "New round", new_round_path, class: "btn button-flat" %>
     <% end %>
   </div>
 </div>

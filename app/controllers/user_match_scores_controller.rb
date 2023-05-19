@@ -5,7 +5,7 @@ class UserMatchScoresController < ApplicationController
   end
 
   def edit_both
-    # manager: edit match scores
+    # allows referee to edit match scores
     # calls form UserMatchScore / edit_both.html.erb
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
     if @user_match_scores[0].score_tiebreak.zero? && @user_match_scores[1].score_tiebreak.zero?

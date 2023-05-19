@@ -31,7 +31,7 @@
     by paying the Guest Fee at the bar before commencing play.</p>
 
     <h5>Box Design</h5>
-    <p>Boxes will be designed to accommodate 4 players</p>
+    <p>Boxes will be designed to accommodate 4 to 6 players</p>
     <h5>Organizing Matches</h5>
     <p>It is the responsibility of both players to make every effort to organize matches.</p>
     <h5>General Tennis Rules</h5>
@@ -97,9 +97,8 @@
     <ul>
       <li>the top player will be promoted 2 boxes.</li>
       <li>the second top player will be promoted 1 box.</li>
-      <li>the third player will be relegated 1 box.</li>
-      <li>the fourth player will be relegated 2 boxes.</li>
-      <li>The bottom 2 players will be relegated 1 box.</li>
+      <li>the second last player will be relegated 1 box.</li>
+      <li>the last player will be relegated 2 boxes.</li>
     </ul>
     <h5>New Entrants</h5>
     <p>Every effort will be made to accommodate new league players into a box that is appropriate to
@@ -139,8 +138,8 @@
     <p>Players with no matches played in a round will be removed and will have to re-apply to remain
     in the competition.</p>
     <h5>Disputes</h5>
-    <% if @manager %>
-      <% mailto = "#{@admin.email} or #{@manager.email}" %>
+    <% if @referee %>
+      <% mailto = "#{@admin.email} or #{@referee.email}" %>
     <% else %>
       <% mailto = "#{@admin.email}" %>
     <% end %>

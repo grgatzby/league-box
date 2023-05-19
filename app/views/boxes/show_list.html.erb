@@ -17,7 +17,7 @@
             <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%= link_to "-> My results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
+              <%= link_to ">> My results <<", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
             <% end %>
           </div>
           <ul>
@@ -29,7 +29,7 @@
               <% if match %>
                 <li><div class="row">
                   <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
-                  <div class="col-sm-2"><%= render "score", user_score: user_score, opponent_score: opponent_score %></div>
+                  <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= "#{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
