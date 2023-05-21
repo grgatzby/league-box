@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     if current_user != @admin || params[:club_name]
       # user belongs to a club (player or referee), or has answered the clubs form
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
-      @start_dates = @club.rounds.map(&:start_date) # dropdown in the form
+      @start_dates = @club.rounds.map(&:start_date).sort # dropdown in the form
     end
 
     if params[:round_start]
@@ -103,8 +103,7 @@ class ApplicationController < ActionController::Base
     # called from UserMatchScoresController and MatchesController
     # computes and returns results (hash of won sets count for each player)
 
-    results = { sets_won1: 0,
-                sets_won2: 0 }
+    results = { sets_won1: 0, sets_won2: 0 }
 
     # first set
     if match_scores[0][:score_set1] > match_scores[1][:score_set1]

@@ -9,7 +9,7 @@
     </button>
     <%= "#{Time.now.strftime("%d %b %Y")} #{Time.now.strftime("%I:%M %p")}" %>
     <% if user_signed_in? && @round %>
-      <%= " -  Current round: #{@round.start_date.strftime("%d %b")} - #{@round.end_date.strftime("%d %b")}" %>
+      <%= " -  Round: #{@round.start_date.strftime("%d %b %Y")} - #{@round.end_date.strftime("%d %b %Y")}" %>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
