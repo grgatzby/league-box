@@ -1,57 +1,63 @@
 <div class="container">
+  <h3>Manage my box</h3>
   <% if @box %>
     <% @round = @box.round %>
   <% else %>
     <%= render "shared/set_club_and_round", path: manage_my_box_path %>
   <% end %>
   <% if @round %>
-    <br><h3><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number} (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h3>
-    <div class="form-wrap players">
-      <h4>My box: view or enter match scores</h4>
-      <%# open forms to chose club and round %>
-      <ul>
-      <div class="row justify-content-center text-padding">
-        <div class="col-sm-3">Player</div>
-        <div class="col-sm-2">Points</div>
-        <div class="col-sm-2">Played on</div>
-        <div class="col-sm-3">Action</div>
-      </div>
-      <% @my_games.each do |my_game| %>
-        <% opponent = my_game[0].user %>
-        <% match = my_game[1] %>
+    <%= render "round", round: @round %>
+    <% if @user_not_in_round %>
+      <br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
+    <% else %>
+      <br><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4>
+      <div class="form-wrap players">
+        <h4>My box: view or enter match scores</h4>
+        <%# open forms to chose club and round %>
+        <ul>
+        <div class="row justify-content-center text-padding">
+          <div class="col-sm-3">Player</div>
+          <div class="col-sm-2">Points</div>
+          <div class="col-sm-2">Played on</div>
+          <div class="col-sm-3">Action</div>
+        </div>
+        <% @my_games.each do |my_game| %>
+          <% opponent = my_game[0].user %>
+          <% match = my_game[1] %>
 
-        <div class="row justify-content-center">
-          <div class="col-sm-3 text-padding">
-            <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
-            <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
-            <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= opponent_name %>" data-bs-content="<%= message %>">
-              <span style=<%=opponent == @current_player ? "color:blue" : "" %>>
-                <%# link_to "#{render "shared/fullname", user: opponent}", "", class: "btn button-ghost", :title => message  %>
-                <%= "#{render "shared/fullname", user: opponent}" %>
-              </span>
+          <div class="row justify-content-center">
+            <div class="col-sm-3 text-padding">
+              <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
+              <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
+              <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= opponent_name %>" data-bs-content="<%= message %>">
+                <span style=<%=opponent == @current_player ? "color:blue" : "" %>>
+                  <%# link_to "#{render "shared/fullname", user: opponent}", "", class: "btn button-ghost", :title => message  %>
+                  <%= "#{render "shared/fullname", user: opponent}" %>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-2 text-padding">
+                <%= pluralize my_game[0].points, "pt" %>
+            </div>
+            <div class="col-sm-2 text-padding">
+              <% if match && opponent != @current_player %>
+                <%= "#{match.time.strftime("%d/%m/%Y")}" %>
+              <% end %>
+            </div>
+            <div class="col-sm-3">
+              <% if opponent == @current_player %>
+                <%= link_to ">> View all boxes", boxes_path, class: "btn button-ghost" %>
+              <% elsif match %>
+                <%= link_to ">> View match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
+              <% else %>
+                <%= link_to ">> Enter new score", new_match_path(:opponent_id => opponent.id, :round_id => @round.id), class: "btn button-ghost" %>
+              <% end %>
             </div>
           </div>
-          <div class="col-sm-2 text-padding">
-              <%= pluralize my_game[0].points, "pt" %>
-          </div>
-          <div class="col-sm-2 text-padding">
-            <% if match && opponent != @current_player %>
-              <%= "#{match.time.strftime("%d/%m/%Y")}" %>
-            <% end %>
-          </div>
-          <div class="col-sm-3">
-            <% if opponent == @current_player %>
-              <%= link_to "All boxes", boxes_path, class: "btn button-ghost" %>
-            <% elsif match %>
-              <%= link_to "Match details", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
-            <% else %>
-              <%= link_to "New score", new_match_path(:opponent_id => opponent.id, :round_id => @round.id), class: "btn button-ghost" %>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      </ul>
-    </div>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
   <br>
   <div class="buttons-wrap">

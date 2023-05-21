@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def staff
     if current_user == @admin
-      @managers = User.where(role: "manager")
+      @referees = User.where(role: "referee")
     end
   end
 end

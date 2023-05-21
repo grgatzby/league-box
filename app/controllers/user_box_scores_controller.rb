@@ -1,48 +1,44 @@
 class UserBoxScoresController < ApplicationController
   def index
     set_club_and_round
-    if @round
-      @scores = @round.user_box_scores
-      @rules = "A player's league position is determined by the total number of points won in a Round.
-                In the event that two or more players have the same number of points the league position will be
-                determined by:<br />
-                1. Head to Head result (if only 2 players on the same score)<br />
-                2. Most matches played<br />
-                3. Ratio of Sets Won to Sets Played<br />
-                4. Ratio of Games Won to Games Played"
-      @tied_players = []
-      @scores = @scores.sort { |a, b| compare_players(a, b) }
-      # updates the rank field in the database
-
-      # previous ranking, based on points only
-
-      # points_array = @scores.map(&:points)
-      # sorted_points = points_array.sort.uniq.reverse
-      # @scores.each do |user_box_score|
-      #   user_box_score.update(rank: sorted_points.index(user_box_score.points) + 1)
-      # end
-
-      # new ranking based on sorting criterias and ties
-
-      rank_tied = 1
-      player = @scores.first
-      sort_array = @scores.map do |score|
-        unless @tied_players.include?(score) && compare_players(player, score).zero?
-          rank_tied = @scores.index(score) + 1
-        end
-        player = score
-        rank_tied
-      end
-
-      @scores.each_with_index do |user_box_score, index|
-        user_box_score.update(rank: sort_array[index])
-      end
-    end
+    @user_box_scores = rank_players(@round.user_box_scores) if @round
+    @rules = "A player's league position is determined by the total number of points won in a Round.
+              In the event that two or more players have the same number of points the league position will be
+              determined by:<br />
+              1. Head to Head result (if only 2 players on the same score)<br />
+              2. Most matches played<br />
+              3. Ratio of Sets Won to Sets Played<br />
+              4. Ratio of Games Won to Games Played"
   end
 
   private
 
-  def compare_players(a, b)
+  def rank_players(scores)
+    @tieds = [] # populated in #add_to_tieds
+    scores = scores.sort { |a, b| compare(a, b) }
+    # updates the rank field in the UserBoxScore database
+
+    # previous wrong ranking, based on points only :
+
+    # points_array = scores.map(&:points)
+    # sorted_points = points_array.sort.uniq.reverse
+    # scores.each do |score|
+    #   score.update(rank: sorted_points.index(score.points) + 1)
+    # end
+
+    # new ranking based on sorting criterias and ties :
+
+    rank_tied = 1
+    player = scores.first
+    ranks = scores.map do |score|
+      rank_tied = scores.index(score) + 1 unless @tieds.include?(score) && compare(player, score).zero?
+      player = score
+      rank_tied
+    end
+    scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
+  end
+
+  def compare(a, b)
     comparison = compare_points(a, b)
     return comparison unless comparison.zero?
 
@@ -55,7 +51,7 @@ class UserBoxScoresController < ApplicationController
     comparison = compare_game_ratio(a, b)
     return comparison unless comparison.zero?
 
-    add_to_tied_players(a, b)
+    add_to_tieds(a, b)
 
     comparison
   end
@@ -76,8 +72,8 @@ class UserBoxScoresController < ApplicationController
     (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
   end
 
-  def add_to_tied_players(*players)
-    players.each { |player| @tied_players << player }
-    @tied_players.uniq!
+  def add_to_tieds(*players)
+    players.each { |player| @tieds << player }
+    @tieds.uniq!
   end
 end

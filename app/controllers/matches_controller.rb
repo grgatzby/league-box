@@ -11,10 +11,10 @@ class MatchesController < ApplicationController
     @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
     @opponent = User.find(params[:opponent_id])
     @round = Round.find(params[:round_id])
-    # max match date in the form: lowest of round end date and current date
+    # max match date in the form: user can't post results in the future
     @end_select = [@round.end_date, Time.now].min
     @match = Match.new(time: @end_select)
-    # the matches/new.html.erb form supports user_match_scores nested attributes
+    # the matches/new.html.erb form accepts nested attributes for user_match_scores
     @match.user_match_scores.build
     @match.user_match_scores.build
   end
@@ -95,7 +95,7 @@ class MatchesController < ApplicationController
   end
 
   def destroy
-    # for admin and managers only
+    # for admin and referees only
     @match = Match.find(params[:id])
     user_match_scores = UserMatchScore.where(match_id: @match.id)
     results = compute_results(user_match_scores)
