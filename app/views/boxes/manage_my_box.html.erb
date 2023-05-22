@@ -3,10 +3,10 @@
   <% if @box %>
     <% @round = @box.round %>
   <% else %>
-    <%= render "shared/set_club_and_round", path: manage_my_box_path %>
+    <%= render "shared/set_club_and_round", fallback_path: manage_my_box_path %>
   <% end %>
   <% if @round %>
-    <%= render "round", round: @round %>
+    <%= render "shared/round", round: @round %>
     <% if @user_not_in_round %>
       <br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
     <% else %>

@@ -30,9 +30,9 @@ class ApplicationController < ActionController::Base
     @club_names = clubs.map(&:name) # dropdown in the form
 
     if current_user != @admin || params[:club_name]
-      # user belongs to a club (player or referee), or has answered the clubs form
+      # user belongs to a club (= is a player or a referee), or has answered the clubs form
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
-      @start_dates = @club.rounds.map(&:start_date).sort # dropdown in the form
+      @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
     end
 
     if params[:round_start]
@@ -45,9 +45,9 @@ class ApplicationController < ActionController::Base
 
   # #current_round, and #my_box are called from #show, #show_list, and #show_referee in BoxesControllers
   # and from #show in MatchesController
-  def current_round(user)
-    # given a user, returns its current round
-    Round.current.find_by(club_id: user.club_id)
+  def current_round(club_id)
+    # given a club_id, returns its current round
+    Round.current.find_by(club_id: club_id)
   end
 
   def my_box(round, player = current_user)

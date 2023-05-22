@@ -1,6 +1,6 @@
 <div class = "container">
-  <h4>Match <%= render "shared/fullname", user: @current_player %> vs <%= render "shared/fullname", user: @opponent %>
-  <%= " (round: #{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")})" %></h4>
+  <br><%= render "shared/club_round", round: @round %>
+  <h5><%= render "shared/fullname", user: @current_player %> against <%= render "shared/fullname", user: @opponent %></h5>
   <% players = [@current_player, @opponent] %>
   <br><%= form_for @match do |f| %>
     <div class="row">
@@ -35,6 +35,10 @@
     <%= hidden_field_tag(:opponent_id, @opponent.id) %>
     <%= hidden_field_tag(:round_start, @round.start_date) %>
     <%= hidden_field_tag(:round_id, @round.id) %>
-    <%= f.submit "Save scores", class: "btn button-flat" %>
+    <%= f.submit ">> Save scores", class: "btn button-ghost" %>
   <% end %>
+  <br>
+  <div class="buttons-wrap">
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
+  </div>
 </div>

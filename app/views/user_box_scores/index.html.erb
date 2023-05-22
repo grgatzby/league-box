@@ -4,9 +4,9 @@
     <h3>League table</h3>
   </div>
   <%# open forms to chose club and round %>
-  <%= render "shared/set_club_and_round", path: user_box_scores_path %>
+  <%= render "shared/set_club_and_round", fallback_path: user_box_scores_path %>
   <% if @round %>
-    <h4><%= @club.name %><%= " (#{@round.start_date.strftime("%d %b")} -  #{@round.end_date.strftime("%d %b")} round)" %></h4>
+    <%= render "shared/club_round", round: @round %>
     <div class="form-wrap">
       <ol type="1">
         <div class="row justify-content-center text-padding league-header font-bold">
@@ -50,6 +50,7 @@
     <br>
     <div class="buttons-wrap">
       <%= link_to "Back to top", "#top", class: "btn button-flat" %>
+      <%= link_to "View all boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-flat" %>
     </div>
   <% end %>
 </div>

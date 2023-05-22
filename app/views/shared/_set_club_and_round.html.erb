@@ -1,7 +1,7 @@
   <% if current_user == @admin %>
     <%# display the club form before the round form, then keep displaying it %>
     <% if !params[:round_start] || params[:club_name] %>
-      <%= form_with url: path, method: :get do |form| %>
+      <%= form_with url: fallback_path, method: :get do |form| %>
         <%= form.label :club_name, "Select a club: " %>
         <%= form.select :club_name, @club_names, :selected => params[:club_name] %>
         <% if !params[:club_name] || params[:round_start] %>
@@ -17,7 +17,7 @@
   <% end %>
   <%# if !params[:round_start] || params[:club_name] || (current_user != @admin) %>
   <% if !params[:round_start] && params[:club_name] || (current_user != @admin) %>
-    <%= form_with url: path, method: :get do |form| %>
+    <%= form_with url: fallback_path, method: :get do |form| %>
       <%= form.label :round_start, "Select a round start date: " %>
       <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>&nbsp;&nbsp;&nbsp;&nbsp;
       <%= hidden_field_tag(:club_name, @club.name) %>
