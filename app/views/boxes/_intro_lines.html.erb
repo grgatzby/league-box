@@ -1,10 +1,13 @@
-<h3>
-  <%= "View box #{box.box_number}" %>
-  <% if @this_is_my_box %>
-    <%= render "shared/fullname", user: current_user %>
-  <% end %>
-</h3>
-  <%= render "round", round: box.round %>
-  <% if box == @my_current_box%>
-    my current box
-  <% end %>
+<div class="header-flex">
+  <div><h3><%= "View box #{box.box_number}" %></h3></div>
+  <div>
+    <% if @this_is_my_box %>
+      <%= render "shared/fullname", user: current_user %>
+    <% end %>
+  </div>
+  <div>
+    <% if box == @my_current_box%>
+      my current box
+    <% end %>
+  </div>
+</div>

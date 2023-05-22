@@ -72,3 +72,10 @@
   left: 0;
   width: 100%;
 }
+
+.header-flex {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  align-items: center;
+}

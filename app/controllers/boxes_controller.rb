@@ -12,7 +12,7 @@ class BoxesController < ApplicationController
     # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box)
     @this_is_my_box = my_box?(@box)
-    @my_current_box = my_box(current_round(current_user))
+    @my_current_box = my_box(current_round(current_user.club_id))
   end
 
   def show_list

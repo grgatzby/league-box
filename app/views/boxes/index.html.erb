@@ -1,10 +1,10 @@
 <div class="container">
   <h3>View all boxes</h3>
   <%# chose club and round from forms %>
-  <%= render "shared/set_club_and_round", path: boxes_path %>
+  <%= render "shared/set_club_and_round", fallback_path: boxes_path %>
   <% if @round %>
-    <h4><%= @club.name %></h4>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= @message_boxes %>">
+    <%= render "shared/club_round", round: @round %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box columns" data-bs-content="<%= @message_boxes %>">
       <div class="boxes">
         <% @boxes.each do |box| %>
           <div class="box small-font">
@@ -15,7 +15,7 @@
                 <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>><div class="row">
                   <div class="col-sm-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                   <div class="col-sm-2"><%= "##{user_box_score.rank}" %></div>
-                  <div class="col-sm-1"><%= "#{user_box_score.games_played}" %></div>
+                  <div class="col-sm-1" style=<%=user_box_score.games_played.zero? ? "color:red" : ""%>><%= "#{user_box_score.games_played}" %></div>
                   <div class="col-sm-3"><%= pluralize user_box_score.points, "pt" %></div>
                 </div></li>
                 <% if current_user && (current_user.role == "admin" || current_user.role == "referee") %>
@@ -29,15 +29,17 @@
         <% end %>
       </div>
     </div>
+    <br>
+    <div class="buttons-wrap">
+      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
+      <%= link_to "League table", user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-flat" %>
+      <% if current_user && current_user.role == "player" %>
+        <%# passing 0 to manage_my_box_path, forces user to chose a round%>
+        <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
+      <% elsif Round.where(club_id:@round.club_id).last.end_date - Time.now.to_date in -10..15 %>
+        <%# allow referee/admin to create next round up to 10 days before or 15 days after end of last round %>
+        <%= link_to "Create next round", new_round_path(club_id: @round.club_id), class: "btn button-flat" %>
+      <% end %>
+    </div>
   <% end %>
-  <br>
-  <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
-    <% if current_user && current_user.role == "player" %>
-      <%# passing 0 to manage_my_box_path, forces user to chose a round%>
-      <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
-    <% else %>
-        <%= link_to "New round", new_round_path, class: "btn button-flat" %>
-    <% end %>
-  </div>
 </div>

@@ -1,18 +1,20 @@
 class RoundsController < ApplicationController
   def new
-    @current_round = current_round(current_user)
+    # admin or referee to generate next round from current: form
+    # if admin logged in, club given by params[:club_id]
+    @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
     @message = "Select box move, for example:<br />
                 2 = two boxes up,<br />
                 1 = one box up,<br />
                 -1 = one box down,<br />
                 -2 = two boxes down.<br /><br />
-                Select 99 to remove user from next league."
+                Select 99 to remove player from next league round (e.g. if less than 2 games played)."
     @message_boxes = "player name, rank,<br />nb games played, proposed box move"
 
     @new_round = Round.new
     # the rounds/new.html.erb form accepts nested attributes for boxes and user_box_scores
-    @val = []
+    @player_moves = []
     @boxes.each do |box|
       new_box = @new_round.boxes.build
       user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank }
@@ -20,24 +22,27 @@ class RoundsController < ApplicationController
       # - the top two players will be promoted 1 box,
       # - the last two players will be relegated 1 box,
       # A player who has played less than two matches will be removed from the league.
-      minimum_qualifying_matches = 2
-      player_box_move = Hash.new(0)
-      player_box_move[0] = box.box_number == 1 ? 0 : 1
-      player_box_move[1] = box.box_number == 1 ? 0 : 1
-      player_box_move[user_box_scores.length - 2] = box.box_number == @boxes.length ? 0 : -1
-      player_box_move[user_box_scores.length - 1] = box.box_number == @boxes.length ? 0 : -1
+      min_qualifying_games = 2
+      box_player_move = Hash.new(0)
+      box_player_move[0] = box.box_number == 1 ? 0 : 1
+      box_player_move[1] = box.box_number == 1 ? 0 : 1
+      box_player_move[user_box_scores.length - 2] = box.box_number == @boxes.length ? 0 : -1
+      box_player_move[user_box_scores.length - 1] = box.box_number == @boxes.length ? 0 : -1
       user_box_scores.each_with_index do |ubs, index|
-        new_box.user_box_scores.build
-        @val << (ubs.games_played >= minimum_qualifying_matches ? player_box_move[index] : 99)
+        new_box.user_box_scores.build # one nested attribute per player for the form
+        # array of proposed moves for each player in the round (99 = player removed from next round)
+        @player_moves << (ubs.games_played >= min_qualifying_games ? box_player_move[index] : 99)
       end
     end
   end
 
   def create
-    current_round = current_round(current_user)
-    @new_round = Round.create(club_id: @club.id,
-                          start_date: params[:round][:start_date].to_date,
-                          end_date: params[:round][:end_date].to_date)
+    # admin or referee to generate next round from current
+    # if admin logged in, club given by params[:club_id]
+    current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
+    @new_round = Round.create(club_id: current_round.club_id,
+                              start_date: params[:round][:start_date].to_date,
+                              end_date: params[:round][:end_date].to_date)
 
     current_boxes = current_round.boxes
     temp_boxes = new_temp_boxes(current_boxes.count)
@@ -45,13 +50,13 @@ class RoundsController < ApplicationController
     clean_boxes(temp_boxes, current_boxes[0].user_box_score_ids.length)
 
     # redirect to all boxes
-    redirect_to boxes_path(round_start: @new_round.start_date, club_name: @club.name)
+    redirect_to boxes_path(round_start: @new_round.start_date, club_name: current_round.club.name)
   end
 
   private
 
   def new_temp_boxes(nb_boxes)
-    # returns array of temporary boxes (players are not spread evenly)
+    # returns array of temporary boxes; nb_boxes : number of boxes in the current round
     boxes = []
     nb_boxes.times do |box_index|
       boxes << Box.create(round_id: @new_round.id, box_number: box_index + 1)
@@ -61,13 +66,13 @@ class RoundsController < ApplicationController
 
   def apply_shifts(current_boxes, new_boxes)
     # assign players to temporary boxes according to requested box shift
+    # players are not spread evenly accross boxes yet
     current_boxes.count.times do |box_index|
       nb_players = current_boxes[box_index].user_box_score_ids.count
       nb_players.times do |player_index|
         player_shift = params[:round][:boxes_attributes][box_index.to_s][:user_box_scores_attributes][player_index.to_s][:box_id].to_i
         user_box_scores = current_boxes[box_index].user_box_scores.sort { |a, b| a.rank <=> b.rank }
         player_id = user_box_scores[player_index].user_id
-        # raise if player_index == 5 && box_index == 4
         UserBoxScore.create(
           user_id: player_id,
           box_id: new_boxes[box_index - player_shift].id,
@@ -89,6 +94,7 @@ class RoundsController < ApplicationController
     # create groups of user_box_scores (nb_player_per_box items per group)
     new_user_box_score_groups = []
     nb_new_boxes = all_user_box_scores.count / nb_player_per_box
+    # shift(n) is an array method: removes first n element from array and returns the array of these n elements
     nb_new_boxes.times { new_user_box_score_groups << all_user_box_scores.shift(nb_player_per_box) }
     new_user_box_score_groups << all_user_box_scores unless all_user_box_scores.empty?
     nb_new_boxes = new_user_box_score_groups.count
@@ -98,7 +104,8 @@ class RoundsController < ApplicationController
       user_box_scores.each { |user_box_score| user_box_score.update(box_id: temp_boxes[index].id) }
     end
 
-    # delete remaining empty boxes (not destroy because od dependent destroy)
+    # delete remaining empty boxes (not destroy because dependent destroy still links updated user_box_scores)
+    # shift(n) is an array method: removes first n element from array and returns the array of these n elements
     temp_boxes.shift(nb_new_boxes) # remove populated boxes from temp_boxes array
     temp_boxes.each(&:delete)
   end
