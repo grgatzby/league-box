@@ -1,6 +1,7 @@
+<%# list of all boxes %>
 <div class="container">
   <h3>View all boxes</h3>
-  <%# chose club and round from forms %>
+  <%# select club and round in forms %>
   <%= render "shared/set_club_and_round", fallback_path: boxes_path %>
   <% if @round %>
     <%= render "shared/club_round", round: @round %>
@@ -29,9 +30,9 @@
         <% end %>
       </div>
     </div>
-    <br>
+
     <div class="buttons-wrap">
-      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
+      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
       <%= link_to "League table", user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-flat" %>
       <% if current_user && current_user.role == "player" %>
         <%# passing 0 to manage_my_box_path, forces user to chose a round%>

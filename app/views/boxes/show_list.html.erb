@@ -1,3 +1,4 @@
+<%# player show page by list of matches %>
 <div class="container">
   <%= render "intro_lines", box: @box %>
   <%= render "shared/club_round", round: @box.round %>
@@ -5,9 +6,9 @@
     <div class="row font-bold">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match scores</div>
-      <div class="col-sm-2">Player's points</div>
-      <div class="col-sm-2"><span style="color:grey">Opponent's points</span></div>
-      <div class="col-sm-2"><span style="color:grey">Opponent's ranking</span></div>
+      <div class="col-sm-2">Player match points</div>
+      <div class="col-sm-2 text-color-grey">Opponent match points</div>
+      <div class="col-sm-2 text-color-grey">Opponent's ranking</div>
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
@@ -33,7 +34,7 @@
                   <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
-                  <div class="col-sm-2 text-color-grey"><%= "#{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
+                  <div class="col-sm-2 text-color-grey"><%= "# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
                 </div></li>
               <% end %>
             <% end %>
@@ -44,12 +45,12 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
 
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-flat" %>
     <% else %>
-      <%= link_to "My current box", box_list_path(@my_current_box), class: "btn button-flat" %>
+      <%= link_to "My box results", box_list_path(@my_current_box), class: "btn button-flat" %>
     <% end %>
 
     <%= link_to "Grid view", box_path, class: "btn button-flat" %>

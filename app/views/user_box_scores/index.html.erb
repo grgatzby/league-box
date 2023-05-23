@@ -1,3 +1,4 @@
+<%# show the league table %>
 <div class="container">
   <% name = "Box League Ranking" %>
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= @rules %>">
@@ -28,7 +29,7 @@
 
               <div class="row justify-content-center player-name">
                 <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
-                <div class="col-sm-1 text-padding"><%= "#{user_box_score.rank}" %></div>
+                <div class="col-sm-1 text-padding"><%= "# #{user_box_score.rank}" %></div>
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
                 <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
                 <div class="col-sm-2 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>

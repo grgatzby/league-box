@@ -1,3 +1,4 @@
+<%# player page to view match results, enter new scores %>
 <div class="container">
   <h3>Manage my box</h3>
   <% if @box %>
@@ -50,7 +51,7 @@
               <% elsif match %>
                 <%= link_to ">> View match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
               <% else %>
-                <%= link_to ">> Enter new score", new_match_path(:opponent_id => opponent.id, :round_id => @round.id), class: "btn button-ghost" %>
+                <%= link_to ">> Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost" %>
               <% end %>
             </div>
           </div>
@@ -58,9 +59,9 @@
         </ul>
       </div>
     <% end %>
+    <br>
+    <div class="buttons-wrap">
+      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+    </div>
   <% end %>
-  <br>
-  <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
-  </div>
 </div>

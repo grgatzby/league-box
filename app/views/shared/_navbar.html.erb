@@ -1,3 +1,4 @@
+<%# partial: navbar %>
 <div class="navbar navbar-expand-sm navbar-light navbar-league-box">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
@@ -21,7 +22,7 @@
           <li class="nav-item">
             <% if current_user && current_user.role == "player" %>
               <%# passing 0 to manage_my_box_path, forces user to chose a round%>
-              <%= link_to "Enter my results", manage_my_box_path(0), class: "nav-link" %>
+              <%= link_to "My box results", manage_my_box_path(0), class: "nav-link" %>
             <% end %>
           </li>
           <li class="nav-item">

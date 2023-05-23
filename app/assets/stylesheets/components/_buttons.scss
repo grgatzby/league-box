@@ -12,6 +12,20 @@
   color: white;
 }
 
+.button-flat-grey {
+  margin: 0 auto;
+  color: white;
+  padding: 6px 24px;
+  border-radius: 15px;
+  background: #bbbbbb;
+  transition: background 0.3s ease;
+}
+
+.button-flat-grey:hover {
+  background: #7f7f7f;
+  color: white;
+}
+
 .button-ghost {
   margin: 0 auto;
   color: #4A4A4A;

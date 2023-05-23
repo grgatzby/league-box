@@ -1,3 +1,4 @@
+<%# admin/referee: create new next round %>
 <div class="container">
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= @message %>">
     <h3>Proposed player moves for next round</h3>
@@ -38,13 +39,13 @@
             End date :
             <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
-            <div class="box-title"><%= f.submit ">> Create new round", class: "btn button-ghost" %></div>
+            <div class="buttons-wrap">
+              <div class="box-title"><%= f.submit "Create new round", class: "btn button-flat" %></div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
   <% end %>
-  <div class="buttons-wrap">
-    <br><%= link_to "Back", "javascript:history.back()", class: "btn button-flat" %>
-  </div>
 </div>

@@ -18,7 +18,7 @@ class UserBoxScoresController < ApplicationController
     scores = scores.sort { |a, b| compare(a, b) }
     # updates the rank field in the UserBoxScore database
 
-    # previous wrong ranking, based on points only :
+    # previous ranking (flawed), based on points only :
 
     # points_array = scores.map(&:points)
     # sorted_points = points_array.sort.uniq.reverse

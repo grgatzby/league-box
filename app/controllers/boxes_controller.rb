@@ -81,10 +81,6 @@ class BoxesController < ApplicationController
     matches << [nil, user, nil, nil]
   end
 
-  def match_score(match, player)
-    match.user_match_scores.select { |x| x.user == player }[0]
-  end
-
   def my_box?(box, player = current_user)
     # returns true if player belongs to box, false if not
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
