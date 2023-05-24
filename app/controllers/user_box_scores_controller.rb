@@ -21,24 +21,24 @@ class UserBoxScoresController < ApplicationController
     # the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players, referee)
     # players are allocated in boxes by id in descending order.
 
-    # create club
-    club = Club.create(name: params[:new_club_name])
-
-    # create courts
-    params[:nb_of_courts].to_i.times do |court_number|
-      Court.create(
-        name: court_number + 1,
-        club_id: club.id
-      )
-    end
-    # create round
-    round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
-
-    # create array of users (players and a club referee)
     csv_file = params[:csv_file]
     if csv_file.content_type == "text/csv"
       headers = CSV.foreach(csv_file).first
       if headers == ["id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+        # create club
+        club = Club.create(name: params[:new_club_name])
+
+        # create courts
+        params[:nb_of_courts].to_i.times do |court_number|
+          Court.create(
+            name: court_number + 1,
+            club_id: club.id
+          )
+        end
+        # create round
+        round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
+
+        # create array of users (players and a club referee)
         users = []
         CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
           user = User.create(row)
