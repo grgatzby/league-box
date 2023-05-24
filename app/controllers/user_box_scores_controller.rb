@@ -36,32 +36,43 @@ class UserBoxScoresController < ApplicationController
 
     # create array of users (players and a club referee)
     csv_file = params[:csv_file]
-    users = []
-    CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
-      user = User.create(row)
-      user.update(club_id: club.id, password: "123456")
-      users << user
-    end
-    referees = users.select { |user| user.role == "referee" }
-    referees.each { |referee| referee.update(password: "654321") }
-    players = users.select { |user| user.role == "player" }
+    if csv_file.content_type == "text/csv"
+      headers = CSV.foreach(csv_file).first
+      if headers == ["id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+        users = []
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
+          user = User.create(row)
+          user.update(club_id: club.id, password: "123456")
+          users << user
+        end
+        referees = users.select { |user| user.role == "referee" }
+        referees.each { |referee| referee.update(password: "654321") }
+        players = users.select { |user| user.role == "player" }
 
-    # create boxes and user_box_scores
-    players_per_box = params[:players_per_box].to_i
-    players_per_box = 6
-    players_per_box -= 1 while players.count % players_per_box in 1..3
-    nb_boxes = players.count / players_per_box
-    box_players = []
-    boxes = []
-    nb_boxes.times do |box_index|
-      boxes << Box.create(round_id: round.id, box_number: box_index + 1)
-      box_players << players.shift(players_per_box)
-      box_players[box_index].each do |player|
-        UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
-                            sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
+        # create boxes and user_box_scores
+        players_per_box = params[:players_per_box].to_i
+        players_per_box = 6
+        players_per_box -= 1 while players.count % players_per_box in 1..3
+        nb_boxes = players.count / players_per_box
+        box_players = []
+        boxes = []
+        nb_boxes.times do |box_index|
+          boxes << Box.create(round_id: round.id, box_number: box_index + 1)
+          box_players << players.shift(players_per_box)
+          box_players[box_index].each do |player|
+            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
+                                sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
+          end
+        end
+        redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
+      else
+        flash[:notice] = 'Your headers must be ["id", "email", "first_name", "last_name", "nickname", "phone_number", "role"].'
+        redirect_back(fallback_location: new_user_box_score_path)
       end
+    else
+      flash[:notice] = "Please chose a csv type."
+      redirect_back(fallback_location: new_user_box_score_path)
     end
-    redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
   end
 
   private
