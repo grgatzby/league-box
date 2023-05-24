@@ -1,4 +1,5 @@
 class UserBoxScoresController < ApplicationController
+  require "csv"
   def index
     set_club_and_round
     @user_box_scores = rank_players(@round.user_box_scores) if @round
@@ -9,6 +10,58 @@ class UserBoxScoresController < ApplicationController
               2. Most matches played<br />
               3. Ratio of Sets Won to Sets Played<br />
               4. Ratio of Games Won to Games Played"
+  end
+
+  def new
+    # @club = Club.new
+  end
+
+  def create
+    # allows the admin to create a club, its courts, players (from csv file), a round, its boxes and user_box_scores
+    # the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players, referee)
+    # players are allocated in boxes by id in descending order.
+
+    # create club
+    club = Club.create(name: params[:new_club_name])
+
+    # create courts
+    params[:nb_of_courts].to_i.times do |court_number|
+      Court.create(
+        name: court_number + 1,
+        club_id: club.id
+      )
+    end
+    # create round
+    round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
+
+    # create array of users (players and a club referee)
+    csv_file = params[:csv_file]
+    users = []
+    CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
+      user = User.create(row)
+      user.update(club_id: club.id, password: "123456")
+      users << user
+    end
+    referees = users.select { |user| user.role == "referee" }
+    referees.each { |referee| referee.update(password: "654321") }
+    players = users.select { |user| user.role == "player" }
+
+    # create boxes and user_box_scores
+    players_per_box = params[:players_per_box].to_i
+    players_per_box = 6
+    players_per_box -= 1 while players.count % players_per_box in 1..3
+    nb_boxes = players.count / players_per_box
+    box_players = []
+    boxes = []
+    nb_boxes.times do |box_index|
+      boxes << Box.create(round_id: round.id, box_number: box_index + 1)
+      box_players << players.shift(players_per_box)
+      box_players[box_index].each do |player|
+        UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
+                            sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
+      end
+    end
+    redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
   end
 
   private

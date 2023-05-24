@@ -8,15 +8,22 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
-    @opponent = User.find(params[:opponent_id])
+    @page_from = params[:page_from]
     @round = Round.find(params[:round_id])
-    # max match date in the form: user can't post results in the future
-    @end_select = [@round.end_date, Time.now].min
-    @match = Match.new(time: @end_select)
-    # the matches/new.html.erb form accepts nested attributes for user_match_scores
-    @match.user_match_scores.build
-    @match.user_match_scores.build
+    @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
+    @box = my_box(@round, @current_player)
+    if @round.start_date > Time.now
+      flash[:notice] = "Round has not started yet."
+      redirect_back(fallback_location: box_referee_path(@box))
+    else
+      @opponent = User.find(params[:opponent_id])
+      # max match date in the form: user can't post results in the future
+      @end_select = [@round.end_date, Time.now].min
+      @match = Match.new(time: @end_select)
+      # the matches/new.html.erb form accepts nested attributes for user_match_scores
+      @match.user_match_scores.build
+      @match.user_match_scores.build
+    end
   end
 
   def create
@@ -88,9 +95,9 @@ class MatchesController < ApplicationController
       # redirect to league table
       # redirect_to user_box_scores_path(round_start: params[:round_start], club_name: @current_player.club.name)
       if current_user.role == "player"
-        redirect_to manage_my_box_path(@match.box)
+        redirect_to manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box))
       else
-        redirect_to box_referee_path(@match.box)
+        redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
       end
     else
       # if score entered is not valid, retake the form
@@ -99,6 +106,7 @@ class MatchesController < ApplicationController
   end
 
   def edit
+    @page_from = params[:page_from]
     # for admin and referees only
     # allows to edit match scores (match and 2 user_match_scores)
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
@@ -177,9 +185,9 @@ class MatchesController < ApplicationController
       # displays league table
       # redirect_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name)
       if current_user.role == "player"
-        redirect_to manage_my_box_path(match.box)
+        redirect_to manage_my_box_path(match.box, page_from: manage_my_box_path(match.box))
       else
-        redirect_to box_referee_path(match.box)
+        redirect_to box_referee_path(match.box, page_from: box_referee_path(match.box))
       end
     else
       # if score entered is not valid

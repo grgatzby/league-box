@@ -9,9 +9,9 @@
   <% if @round %>
     <%= render "shared/round", round: @round %>
     <% if @user_not_in_round %>
-      <br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
+      <br><br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
     <% else %>
-      <br><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4>
+      <br><br><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4>
       <div class="form-wrap players">
         <h4>My box: view or enter match scores</h4>
         <%# open forms to chose club and round %>
@@ -20,7 +20,7 @@
           <div class="col-sm-3">Player</div>
           <div class="col-sm-2">Points</div>
           <div class="col-sm-2">Played on</div>
-          <div class="col-sm-3">Action</div>
+          <div class="col-sm-3">Chose action</div>
         </div>
         <% @my_games.each do |my_game| %>
           <% opponent = my_game[0].user %>
@@ -61,7 +61,12 @@
     <% end %>
     <br>
     <div class="buttons-wrap">
+    <% if @page_from %>
+      <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+      <%= link_to "Back", @page_from+parameters, class: "btn button-flat-grey" %>
+    <% else %>
       <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+    <% end %>
     </div>
   <% end %>
 </div>

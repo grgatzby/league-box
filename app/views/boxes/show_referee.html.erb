@@ -61,7 +61,7 @@
                         <% name = "Enter new score for" %>
                         <% message = "match between #{render "shared/fullname", user: player}<br /> and #{render "shared/fullname", user: player_opponent}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
-                          <%# click on line to enter new match score %>
+                          <%# click on opponent line to enter new match score %>
                           <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>
                         </div>
                       <% end %>
@@ -76,6 +76,11 @@
   <% end %>
   <br>
   <div class="buttons-wrap">
+  <% if @page_from %>
+    <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+    <%= link_to "Back", @page_from+parameters, class: "btn button-flat-grey" %>
+  <% else %>
     <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+  <% end %>
   </div>
 </div>

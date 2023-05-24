@@ -1,0 +1,44 @@
+<%# allow the admin to create a club, its courts, players (from csv file), a round, its boxes and user_box_scores %>
+<%# the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players and referee) %>
+<%# players are allocated in boxes by id in descending order  %>
+<div class="container">
+  <h3>Create a new club</h3><br>
+  <% unless current_user.role == "admin" %>
+    <br><br><%= "You are not an admin, this page is not authorised" %>
+  <% else %>
+    <%= form_with(url: {action: "create"}, multipart: true) do %>
+      <div class="form-wrap">
+      <div class="row justify-content-center">
+        <br><div class="col-sm-2"><%= label_tag :new_club_name %></div>
+        <div class="col-sm-1"><%= text_field_tag :new_club_name, "My new club ltc" %></div>
+      </div>
+      <br>
+      <div class="row">
+        <br><div class="col-sm-2"><%= label_tag :nb_of_courts %></div>
+        <div class="col-sm-1"><%= text_field_tag :nb_of_courts, 5 %></div>
+      </div>
+      <br>
+      <div class="row">
+        <br><div class="col-sm-2"><%= label_tag :round_dates %></div>
+        <div class="col-sm-3"><%= date_field_tag :start_date, Date.today %>&nbsp;to
+        &nbsp;<%= date_field_tag :end_date, Date.today.next_month %></div>
+      </div>
+      <br>
+      <div class="row">
+        <br><div class="col-sm-2"><%= label_tag :players_per_box %></div>
+        <div class="col-sm-1"><%= text_field_tag :players_per_box, 6 %></div>
+      </div>
+      <br>
+      <div class="row">
+        <br><div class="col-sm-2"><%= label_tag :csv_file %></div>
+        <div class="col-sm-1"><%= file_field_tag :csv_file %></div>
+      </div>
+      <br>
+
+      <div class="buttons-wrap">
+        <%= submit_tag 'Submit', class: "btn button-flat" %>
+        <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

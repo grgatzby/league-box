@@ -20,6 +20,9 @@
     <div class = "buttons-wrap">
       <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
       <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
+      <% if current_user && current_user.role == "admin" %>
+        <%= link_to "Create club", new_user_box_score_path, class: "btn button-flat" %>
+      <% end %>
       <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
       <% unless current_user %>
         <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
