@@ -37,9 +37,9 @@
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
                 <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
                 <% if current_user.role == "admin" || current_user.role == "referee" %>
-                  <%= link_to '', box_referee_path(user_box_score.box), class: "line-link" %>
+                  <%= link_to '', box_referee_path(user_box_score.box, page_from: user_box_scores_path), class: "line-link" %>
                 <% else %>
-                  <%= link_to '', box_path(user_box_score.box), class: 'line-link'%>
+                  <%= link_to '', box_path(user_box_score.box, page_from: user_box_scores_path), class: 'line-link'%>
                 <% end %>
               </div>
 

@@ -1,12 +1,14 @@
 class BoxesController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
   def index
+    @page_from = params[:page_from]
     @message_boxes = "player name, rank,<br />nb games played, points"
     # define variables @club and @round
     set_club_and_round
   end
 
   def show
+    @page_from = params[:page_from]
     @box = Box.find(params[:id])
     # @box_matches: array of [user_box_score , matches(user_box_score.user)]
     # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
@@ -24,6 +26,7 @@ class BoxesController < ApplicationController
   end
 
   def manage_my_box
+    @page_from = params[:page_from]
     @current_player = current_user
     # allows player to view its box and select enter new score / view played match
     if params[:id].to_i.zero?

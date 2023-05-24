@@ -7,7 +7,7 @@
     <div class = "form-wrap">
       <div class="row">
         <div class="col-sm-2"><%= f.label :court_id, "Match played on court: " %></div>
-        <div class="col-sm-1"><%= f.select :court_id, 1..10, default: 1 %></div>
+        <div class="col-sm-1"><%= f.select :court_id, 1..@round.club.courts.count, default: 1 %></div>
       </div>
       <br>
       <div class="row">
@@ -37,11 +37,17 @@
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>
       <%= hidden_field_tag(:round_start, @round.start_date) %>
       <%= hidden_field_tag(:round_id, @round.id) %>
+      <%# hidden_field_tag(:page_from, @page_from) %>
     </div>
     <br>
     <div class="buttons-wrap">
       <%= f.submit "Save score", class: "btn button-flat" %>
-      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <% if current_user.role == "player" %>
+        <%= link_to "Back", manage_my_box_path(@box, page_from: manage_my_box_path(@box)), class: "btn button-flat-grey" %>
+      <% else %>
+        <%= link_to "Back", box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn button-flat-grey" %>
+      <% end %>
     </div>
   <% end %>
   <br>

@@ -20,9 +20,9 @@
                   <div class="col-sm-3"><%= pluralize user_box_score.points, "pt" %></div>
                 </div></li>
                 <% if current_user && (current_user.role == "admin" || current_user.role == "referee") %>
-                  <%= link_to '', box_referee_path(user_box_score.box), class: "box-link" %>
+                  <%= link_to '', box_referee_path(user_box_score.box, page_from: boxes_path), class: "box-link" %>
                 <% else %>
-                  <%= link_to '', box_path(user_box_score.box), class: 'box-link'%>
+                  <%= link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link'%>
                 <% end %>
               <% end %>
             </ol>
