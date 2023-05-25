@@ -1,33 +1,31 @@
-<div>
-  <div class="container">
-    <br><h4><%= @club.name %> League Box</h4>
-    <div class="form-wrap">
-      <h4>The path to social tennis playing</h4>
-      <br><h5>Grand Prix Tournament</h5>
-      <p>The mixed Singles Box League Tournament is organized as a Grand Prix event with one round
-      per month. Points earned in each round of the box league will accumulate to give an overall
-      Grand Prix Tournament winner.</p>
-      <p>The winner will receive the Singles Box League Tournament trophy, listing on the club honors
-      board and possibly some champagne to celebrate at the end of the run.</p>
-      <p>The closing date for the compilation of earned points will coincide with the yearly club
-      tournament and the winner will be celebrated on the finals day during the awards ceremony.
-      </p>
-      <p>The Grand Prix league table will be updated and displayed on the league board at the end of each
-      month.
-      </p>
-    </div>
-    <br>
-    <div class = "buttons-wrap">
-      <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
-      <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
-      <% if current_user && current_user.role == "admin" %>
-        <%= link_to "Create club", new_user_box_score_path, class: "btn button-flat" %>
-      <% end %>
-      <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
-      <% unless current_user %>
-        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
-      <% end %>
-    </div>
+<div class="container">
+  <br><h4><%= @club.name %> League Box</h4>
+  <div class="form-wrap">
+    <h4>The path to social tennis playing</h4>
+    <br><h5>Grand Prix Tournament</h5>
+    <p>The mixed Singles Box League Tournament is organized as a Grand Prix event with one round
+    per month. Points earned in each round of the box league will accumulate to give an overall
+    Grand Prix Tournament winner.</p>
+    <p>The winner will receive the Singles Box League Tournament trophy, listing on the club honors
+    board and possibly some champagne to celebrate at the end of the run.</p>
+    <p>The closing date for the compilation of earned points will coincide with the yearly club
+    tournament and the winner will be celebrated on the finals day during the awards ceremony.
+    </p>
+    <p>The Grand Prix league table will be updated and displayed on the league board at the end of each
+    month.
+    </p>
   </div>
-  <br><br>
+  <br>
+  <div class = "buttons-wrap">
+    <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
+    <%= link_to "Site structure", structure_path, class: "btn button-flat" %>
+    <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
+    <% if current_user && current_user.role == "admin" %>
+      <%= link_to "Create club", new_user_box_score_path, class: "btn button-flat" %>
+    <% end %>
+    <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
+    <% unless current_user %>
+      <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
+    <% end %>
+  </div>
 </div>

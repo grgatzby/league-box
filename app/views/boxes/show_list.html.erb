@@ -1,6 +1,6 @@
 <%# player show page by list of matches %>
 <div class="container">
-  <%= render "intro_lines", box: @box %>
+  <%= render "intro_lines", box: @box, view_type: "List" %>
   <%= render "shared/club_round", round: @box.round %>
   <div class = "form-wrap">
     <div class="row font-bold">
@@ -8,7 +8,7 @@
       <div class="col-sm-2">Match scores</div>
       <div class="col-sm-2">Player match points</div>
       <div class="col-sm-2 text-color-grey">Opponent match points</div>
-      <div class="col-sm-2 text-color-grey">Opponent's ranking</div>
+      <div class="col-sm-2 text-color-grey">Opponent total points</div>
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
@@ -19,7 +19,7 @@
             <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
             <% player_matches = user_box_matches[1] %>
             <% if user_box_matches[0].user == current_user %>
-              <%= link_to ">> My results <<", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
+              <%= link_to ">> Enter new results", manage_my_box_path(@my_current_box), class: "btn button-ghost" %>
             <% end %>
           </div>
           <ul>
@@ -30,11 +30,18 @@
               <% opponent_score = player_match[3] %>
               <% if match %>
                 <li><div class="row">
-                  <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
+                  <div class="col-sm-4">
+                    <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %>
+                    <span class="text-color-grey">
+                      vs
+                      <%= render "shared/fullname", user: opponent %>
+                      <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
+                    </span>
+                  </div>
                   <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                   <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
-                  <div class="col-sm-2 text-color-grey"><%= "# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
+                  <div class="col-sm-2 text-color-grey"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
                 </div></li>
               <% end %>
             <% end %>

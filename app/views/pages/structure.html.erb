@@ -1,0 +1,75 @@
+<div class="container">
+  <br><h4>LeagueBox website structure</h4>
+  <div class="form-wrap">
+    <br><h5>All Boxes</h5>
+    <p>All boxes are listed detailing for each player.</p>
+    <ul>
+      <li>name</li>
+      <li>ranking in the club</li>
+      <li>number of matches played</li>
+      <li>number of total points</li>
+    </ul>
+    <% if current_user && current_user.role != "player" %>
+      <p>Clicking on a box leads to the Box Referee view.</p>
+      <p>Footpage link to <i>League table</i></p>
+    <% else %>
+      <p>Clicking on a box leads to the Box Grid view.</p>
+      <p>Footpage links to <i>League table</i>, and <i>Enter my results</i> (= Manage my box page)</p>
+    <% end %>
+
+    <br><h5>League table</h5>
+    <p>Each player's is shown in descending rank order. Headers are <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
+    Won </strong>(matches won)<strong>, Sets </strong>(sets played)<strong>, Won </strong>(sets won).</p>
+
+    <% if current_user && current_user.role != "player" %>
+      <br><h5>Box referee view</h5>
+      <p>Each player's matches which have been played are shown as list items. Headers are <strong>Match scores,
+      Player match points, Opponent match points, Opponent's total points</strong>.
+      Unplayed matchs are listed too.</p>
+      <p>Clicking on a match line lands on the Match Edit/Delete page, clicking on an unplayed match (admin only) lands on the New match score page.</p>
+
+    <% else %>
+      <br><h5>Box Grid view</h5>
+      <p>Each player's matches are shown under their corresponding opponent.</p>
+      <p>Footpage links to <i>My box results</i>, and <i>List view</i>. <i>My box results</i> links to player's box Grid view</p>
+
+      <br><h5>Box List view</h5>
+      <p>Each player's matches which have been played are shown as list items. Headers are <strong>Match scores,
+      Player match points, Opponent match points, Opponent's total points</strong>.</p>
+      <p>If on current player's box List view, <span style= "color:blue">current player appears in blue</span>, and a <i>Enter new results</i> link to Manage my box is shown.</p>
+      <p>Footpage links to <i>My box results</i>, and <i>Grid view</i>. <i>My box results</i> links to player's box List view</p>
+
+      <br><h5>Manage my box</h5>
+      <p>Each of my box matches dates and players points with links such as <i>View my box</i>, <i>View match results</i>, and <i>Enter new score</i>.</p>
+    <% end %>
+
+    <br><h5>Match results view</h5>
+    <p>Details of a match played:
+    <ul>
+      <li>game date and time, court number,</li>
+      <li>score, with date and time of submission,</li>
+      <li>earnings and total points.</li>
+    </ul></p>
+
+    <br><h5>New match score</h5>
+    <p>Form to enter new match details.</p>
+
+    <% if current_user && current_user.role != "player" %>
+      <br><h5>Match edit score</h5>
+      <p>Form to modify match details, or delete score.</p>
+    <% end %>
+
+  </div>
+  <br>
+  <div class = "buttons-wrap">
+    <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
+    <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
+    <% if current_user && current_user.role == "admin" %>
+      <%= link_to "Create club", new_user_box_score_path, class: "btn button-flat" %>
+    <% end %>
+    <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
+    <% unless current_user %>
+      <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
+    <% end %>
+  </div>
+</div>
