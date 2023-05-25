@@ -16,7 +16,7 @@
         <div class="col-sm-2">Match scores</div>
         <div class="col-sm-2">Player match points</div>
         <div class="col-sm-2 text-color-grey">Opponent match points</div>
-        <div class="col-sm-2 text-color-grey">Opponent's ranking</div>
+        <div class="col-sm-2 text-color-grey">Opponent total points</div>
       </div>
       <ul>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
@@ -43,11 +43,18 @@
                         <% message = "submitted by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%d %b %Y")} #{user_score.input_date.strftime("%I:%M %p")}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
                           <div class="row player-name">
-                            <div class="col-sm-4"><%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %> vs <%= render "shared/fullname", user: opponent %></div>
+                            <div class="col-sm-4">
+                              <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %>
+                              <span class="text-color-grey">
+                                vs
+                                <%= render "shared/fullname", user: opponent %>
+                                <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
+                              </span>
+                            </div>
                             <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                             <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                             <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
-                            <div class="col-sm-2 text-color-grey"><%= "# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank}" %></div>
+                            <div class="col-sm-2 text-color-grey"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
                             <%# click on player line to update/delete match and user_match_scores details %>
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>

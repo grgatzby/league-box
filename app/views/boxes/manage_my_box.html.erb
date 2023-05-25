@@ -18,8 +18,8 @@
         <ul>
         <div class="row justify-content-center text-padding">
           <div class="col-sm-3">Player</div>
-          <div class="col-sm-2">Points</div>
-          <div class="col-sm-2">Played on</div>
+          <div class="col-sm-2">Total points</div>
+          <div class="col-sm-2">Match played on</div>
           <div class="col-sm-3">Chose action</div>
         </div>
         <% @my_games.each do |my_game| %>
@@ -47,7 +47,7 @@
             </div>
             <div class="col-sm-3">
               <% if opponent == @current_player %>
-                <%= link_to ">> View all boxes", boxes_path, class: "btn button-ghost" %>
+                <%= link_to ">> View my box", box_list_path(@box), class: "btn button-ghost" %>
               <% elsif match %>
                 <%= link_to ">> View match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
               <% else %>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   get "overview", to: "pages#overview", as: "overview"
   get "staff", to: "pages#staff", as: "staff"
+  get "structure", to: "pages#structure", as: "structure"
 
   resources :boxes, only: [:index, :show]
   get "boxes-list/:id", to: "boxes#show_list", as: "box_list"

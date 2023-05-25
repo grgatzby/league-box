@@ -1,13 +1,13 @@
 <%# player show page by grid of matches %>
 <div class="container">
-  <%= render "intro_lines", box: @box %>
+  <%= render "intro_lines", box: @box, view_type: "Grid"%>
   <%= render "shared/club_round", round: @box.round %>
   <div class = "form-wrap">
     <div class="grid-container row small-font">
 
       <div id="first-column" class="col-1">
         <div class="row" id="1st-col-header">
-          <div class="col-12"><%= "Box #{@box.box_number}" %></div>
+          <div class="col-12 font-bold"><%= "Box #{@box.box_number}" %></div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>

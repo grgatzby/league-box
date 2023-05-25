@@ -13,7 +13,6 @@ class UserBoxScoresController < ApplicationController
   end
 
   def new
-    # @club = Club.new
   end
 
   def create
