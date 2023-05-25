@@ -1,5 +1,5 @@
 <%# allow the admin to create a club, its courts, players (from csv file), a round, its boxes and user_box_scores %>
-<%# the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players and referee) %>
+<%# the csv file must contain fields id, email, first_name, last_name, (nickname), phone_number, role (players + 1 referee) %>
 <%# players are allocated in boxes by id in descending order  %>
 <div class="container">
   <h3>Create a new club</h3><br>
@@ -9,7 +9,7 @@
     <% message = "CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet." %>
     <p>Upload a list of players and a referee from a standard CSV file containing the following headers:</p>
 
-    <p><i>id, email, first_name, last_name, nickname, phone_number, role</i>
+    <p><i>id, email, first_name, last_name, [nickname], phone_number, role</i>
     . Players will be allocated in boxes based on the id order.</p>
     <%= form_with(url: {action: "create"}, multipart: true) do %>
       <div class="form-wrap">

@@ -23,7 +23,7 @@ class UserBoxScoresController < ApplicationController
     csv_file = params[:csv_file]
     if csv_file.content_type == "text/csv"
       headers = CSV.foreach(csv_file).first
-      if headers == ["id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+      if headers.sort - ["nickname"] == ["id", "email", "first_name", "last_name", "phone_number", "role"].sort
         # create club
         club = Club.create(name: params[:new_club_name])
 
@@ -41,7 +41,7 @@ class UserBoxScoresController < ApplicationController
         users = []
         CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
           user = User.create(row)
-          user.update(club_id: club.id, password: "123456")
+          user.update(club_id: club.id, password: "123456", nickname: user.nickname || user.first_name + user.last_name[0])
           users << user
         end
         referees = users.select { |user| user.role == "referee" }
@@ -65,7 +65,7 @@ class UserBoxScoresController < ApplicationController
         end
         redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
       else
-        flash[:notice] = 'Your headers must be ["id", "email", "first_name", "last_name", "nickname", "phone_number", "role"].'
+        flash[:notice] = 'Your headers must be "id", "email", "first_name", "last_name", ["nickname"], "phone_number", and "role".'
         redirect_back(fallback_location: new_user_box_score_path)
       end
     else
