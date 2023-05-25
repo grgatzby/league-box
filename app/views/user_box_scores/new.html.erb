@@ -4,37 +4,44 @@
 <div class="container">
   <h3>Create a new club</h3><br>
   <% unless current_user.role == "admin" %>
-    <br><br><%= "You are not an admin, this page is not authorised" %>
+    <br><br><%= "You are not an admin, this page is not authorised." %>
   <% else %>
+    <% message = "CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet." %>
+    <p>Upload a list of players and a referee from a standard CSV file containing the following headers:</p>
+
+    <p><i>id, email, first_name, last_name, nickname, phone_number, role</i>
+    . Players will be allocated in boxes based on the id order.</p>
     <%= form_with(url: {action: "create"}, multipart: true) do %>
       <div class="form-wrap">
-      <div class="row justify-content-center">
-        <br><div class="col-sm-2"><%= label_tag :new_club_name %></div>
-        <div class="col-sm-1"><%= text_field_tag :new_club_name, "My new club ltc" %></div>
-      </div>
-      <br>
-      <div class="row">
-        <br><div class="col-sm-2"><%= label_tag :nb_of_courts %></div>
-        <div class="col-sm-1"><%= text_field_tag :nb_of_courts, 5 %></div>
-      </div>
-      <br>
-      <div class="row">
-        <br><div class="col-sm-2"><%= label_tag :round_dates %></div>
-        <div class="col-sm-3"><%= date_field_tag :start_date, Date.today %>&nbsp;to
-        &nbsp;<%= date_field_tag :end_date, Date.today.next_month %></div>
-      </div>
-      <br>
-      <div class="row">
-        <br><div class="col-sm-2"><%= label_tag :players_per_box %></div>
-        <div class="col-sm-1"><%= text_field_tag :players_per_box, 6 %></div>
-      </div>
-      <br>
-      <div class="row">
-        <br><div class="col-sm-2"><%= label_tag :csv_file %></div>
-        <div class="col-sm-1"><%= file_field_tag :csv_file %></div>
-      </div>
-      <br>
+        <div class="row"><br>
+          <div class="col-sm-2"><%= label_tag :new_club_name %></div>
+          <div class="col-sm-1"><%= text_field_tag :new_club_name, "My tennis club ltc", size: 30 %></div>
+        </div><br>
 
+        <div class="row"><br>
+          <div class="col-sm-2"><%= label_tag :nb_of_courts %></div>
+          <div class="col-sm-1"><%= text_field_tag :nb_of_courts, 5, size: 2 %></div>
+          <div class="col-sm-1"></div>
+          <br><div class="col-sm-2"><%= label_tag :players_per_box %></div>
+          <div class="col-sm-1"><%= text_field_tag :players_per_box, 6, size: 2 %></div>
+        </div><br>
+        <div class="row"><br>
+          <div class="col-sm-2"><%= label_tag :round_dates %></div>
+          <div class="col-sm-3">
+            <%= date_field_tag :start_date, Date.today %>&nbsp;to&nbsp;
+            <%= date_field_tag :end_date, Date.today.next_month %>
+          </div>
+        </div><br>
+        <div class="row"><br>
+          <div class="col-sm-2">
+            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="CSV file"
+              data-bs-content="<%= message %>">
+              <%= label_tag :load_csv_file %>
+            </div>
+          </div>
+          <div class="col-sm-1"><%= file_field_tag :csv_file %></div>
+        </div><br>
+      </div><br>
       <div class="buttons-wrap">
         <%= submit_tag 'Submit', class: "btn button-flat" %>
         <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
