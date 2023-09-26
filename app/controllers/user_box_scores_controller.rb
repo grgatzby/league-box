@@ -69,7 +69,7 @@ class UserBoxScoresController < ApplicationController
         redirect_back(fallback_location: new_user_box_score_path)
       end
     else
-      flash[:notice] = "Please chose a csv type."
+      flash[:notice] = "Please chose a csv file type."
       redirect_back(fallback_location: new_user_box_score_path)
     end
   end
