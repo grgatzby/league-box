@@ -8,14 +8,18 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <%= "#{Time.now.strftime("%d %b %Y")} #{Time.now.strftime("%I:%M %p")}" %>
-    <% if user_signed_in? && @round %>
-      <%= " -  Round: #{@round.start_date.strftime("%d %b %Y")} - #{@round.end_date.strftime("%d %b %Y")}" %>
-    <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
+          <li class="nav-item text-padding">
+            <%= "#{Time.now.strftime("%d %b %y")} #{Time.now.strftime("%H:%M")}" %>
+          </li>
+          <li class="nav-item text-padding">
+            <% if user_signed_in? && @round %>
+              <%= " Round: #{@round.start_date.strftime("%b %y")} - #{@round.end_date.strftime("%b %y")}" %>
+            <% end %>
+          </li>
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
