@@ -7,7 +7,7 @@
     <% if current_user && current_user.role == "admin" %><i>Create club</i>,<% end %> <i>Log in</i> (unless logged in).</p>
 
     <br><h5>Tournament overview</h5>
-    <p>Explains the rules of the Box League</p>
+    <p>Explanation of the of the Box League rules</p>
     <p>Footpage links to <i>Back to top</i>, <i>Club staff</i>, and <i>Home</i>.</p>
 
     <br><h5>Club staff</h5>
@@ -16,7 +16,7 @@
     <% if current_user && current_user.role == "player" %><i>, Enter my results</i><% end %>.</p>
 
     <br><h5>All Boxes</h5>
-    <p>All boxes are listed detailing for each player.</p>
+    <p>View of all boxes with following details for each player.</p>
     <ul>
       <li>name</li>
       <li>ranking in the club</li>
@@ -32,7 +32,7 @@
     <% end %>
 
     <br><h5>League table</h5>
-    <p>Each player's is shown in descending rank order. Headers are <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
+    <p>Each player appears in descending rank order. Headers are <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
     Won </strong>(matches won)<strong>, Sets </strong>(sets played)<strong>, Won </strong>(sets won).</p>
     <p>Footpage links to <i>Back to top</i>, and <i>All boxes</i>.</p>
 
