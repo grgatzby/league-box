@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:match_id])
     @current_user_match_score = match_score(@match, current_user)
     @opponent_match_score = match_score(@match, @opponent)
-    @my_current_box = my_box(current_round(current_user.club_id))
+    # @my_current_box = my_box(current_round(current_user.club_id))
   end
 
   def new
@@ -92,8 +92,9 @@ class MatchesController < ApplicationController
         user_box_score.save
       end
 
-      # redirect to league table
-      # redirect_to user_box_scores_path(round_start: params[:round_start], club_name: @current_player.club.name)
+      # update the league table
+      rank_players(@match.box.round.user_box_scores)
+
       if current_user.role == "player"
         redirect_to manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box))
       else
@@ -182,8 +183,11 @@ class MatchesController < ApplicationController
         @round = match.box.round
       end
 
+      # update the league table
+      rank_players(match.box.round.user_box_scores)
       # displays league table
       # redirect_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name)
+
       if current_user.role == "player"
         redirect_to manage_my_box_path(match.box, page_from: manage_my_box_path(match.box))
       else
@@ -212,9 +216,12 @@ class MatchesController < ApplicationController
       user_box_score.save
     end
     @match.destroy
-    # redirect to league table
+
+    # update the league table
+    rank_players(@match.box.round.user_box_scores)
     # TO DO: check what round: param is expected
-    redirect_to user_box_scores_path(round_start: params[:round_start])
+    # redirect_to user_box_scores_path(round_start: params[:round_start])
+    redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
   end
 
   private

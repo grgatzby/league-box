@@ -1,8 +1,8 @@
 <div class="header-flex">
-  <div><h3><%= "#{view_type} view box #{box.box_number}" %></h3></div>
+  <div><h3><%= "Box #{box.box_number} - #{view_type} view" %></h3></div>
   <div>
     <% if @this_is_my_box %>
-      <%= render "shared/fullname", user: current_user %>
+      <h4><%= render "shared/fullname", user: current_user %></h4>
     <% end %>
   </div>
   <div>

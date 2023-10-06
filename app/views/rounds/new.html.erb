@@ -40,8 +40,8 @@
             <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
             <div class="buttons-wrap">
-              <div class="box-title"><%= f.submit "Create new round", class: "btn button-flat" %></div>
-              &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+              <div class="box-title"><%= f.submit "Create new round", class: "btn buttons-shape btn-green" %></div>
+              &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
             </div>
           </div>
         </div>

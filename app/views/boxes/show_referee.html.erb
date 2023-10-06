@@ -3,20 +3,24 @@
   <% if current_user.role == "player" %>
   <br><br><%= "As a player, this page is not authorised" %>
   <% else %>
-    <br><%= render "shared/club_round", round: @box.round %>
+    <br><%# render "shared/club_round", round: @box.round %>
+    <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
+    <div class="same-line">
+      <div><%= render "shared/club_round", round: @box.round %></div>
+      <div>
+        <%= "#{@current_user.role.capitalize} " %><strong><%= (render "shared/fullname", user: current_user).strip %></strong>,
+        <%= "select a match to edit or delete the score#{admin_message}" %>
+      </div>
+      <div></div>
+    </div>
 
-    <p>
-      <%= "#{@current_user.role.capitalize} " %><strong><%= (render "shared/fullname", user: current_user).strip %></strong>,
-      <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
-      <%="select a match to edit or delete the score#{admin_message}."%>
-    </p>
-    <div class = "form-wrap">
+    <div class = "frame-wrap box-wrap">
       <div class="row font-bold">
         <div class="col-sm-4"></div>
-        <div class="col-sm-2">Match scores</div>
-        <div class="col-sm-2">Player match points</div>
-        <div class="col-sm-2 text-color-grey">Opponent match points</div>
-        <div class="col-sm-2 text-color-grey">Opponent total points</div>
+        <div class="col-sm-2">Match score</div>
+        <div class="col-sm-2">Player's points</div>
+        <div class="col-sm-2 text-blue">Opponent's points</div>
+        <div class="col-sm-2 text-blue">Opponent total points</div>
       </div>
       <ul>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
@@ -38,23 +42,23 @@
                     <% opponent_score = player_match[3] %>
                     <% if match %>
                       <li>
-                        <% name = "Edit/delete score" %>
+                        <% name = "Score" %>
                         <% score_input_by = User.find(user_score.input_user_id) %>
-                        <% message = "submitted by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%d %b %Y")} #{user_score.input_date.strftime("%I:%M %p")}" %>
-                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
+                        <% message = "Submitted by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%a %-d %b %y")} at #{user_score.input_date.strftime("%H:%M")}" %>
+                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <div class="row player-name">
                             <div class="col-sm-4">
                               <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %>
-                              <span class="text-color-grey">
-                                vs
+                              <span class="text-blue">
+                                <i>vs</i>
                                 <%= render "shared/fullname", user: opponent %>
                                 <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
                               </span>
                             </div>
                             <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                             <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                            <div class="col-sm-2 text-color-grey"><%= pluralize opponent_score.points, "pt" %></div>
-                            <div class="col-sm-2 text-color-grey"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
+                            <div class="col-sm-2 text-blue"><%= pluralize opponent_score.points, "pt" %></div>
+                            <div class="col-sm-2 text-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
                             <%# click on player line to update/delete match and user_match_scores details %>
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>
@@ -62,12 +66,12 @@
                       </li>
                     <% end %>
                   <% elsif player_opponent != player%>
-                    <li><div class="row player-name text-color-grey">
-                      <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %>: <%= "not played" %></div>
+                    <li><div class="row player-name text-blue">
+                      <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %></div>
+                      <div class="col-sm-2"><%= "not played" %></div>
                       <% if current_user == @admin %>
-                        <% name = "Enter new score for" %>
-                        <% message = "match between #{render "shared/fullname", user: player}<br /> and #{render "shared/fullname", user: player_opponent}" %>
-                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
+                        <% message = "Click to enter the new match score for<br />#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
+                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <%# click on opponent line to enter new match score %>
                           <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>
                         </div>
@@ -85,9 +89,9 @@
   <div class="buttons-wrap">
   <% if @page_from %>
     <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-    <%= link_to "Back", @page_from+parameters, class: "btn button-flat-grey" %>
+    <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue" %>
   <% else %>
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
   <% end %>
   </div>
 </div>

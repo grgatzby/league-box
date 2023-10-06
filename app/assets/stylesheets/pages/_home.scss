@@ -1,17 +1,55 @@
 // ----------- All pages -----------
+  .home-container {
+    width: 1200px;
+  }
+
+.frame-wrap {
+  background-color: $tennis-green;
+  margin: 0 auto;
+  // border: 2px solid #8A8A8A;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  text-align: justify;
+}
+
+.home-wrap {
+  padding: 15px 240px;
+}
+
+.box-wrap {
+  padding: 15px 24px;
+}
+
+.white-text {
+  color: white;
+}
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .buttons-wrap {
   display: flex;
   padding: 5px 24px;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.form-wrap {
-  background-color: beige;
-  margin: 0 auto;
-  // border: 2px solid #8A8A8A;
-  padding: 5px 24px;
-  border-radius: 15px;
+.photo-wrap {
+  border-radius: 5px;
+  margin-left: 10px;
+  height: 250px;
+  width: 500px;
+  background-position: center;
+  background-image: url("social_tennis.jpg");
+  background-size: cover;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+  }
 }
 
 // ----------- UserBoxScores/index and Boxes/show_referee -----------
@@ -31,6 +69,6 @@
   width: 100%;
 }
 
-.text-color-grey {
-color:grey
+.text-blue {
+color:#336699
 }

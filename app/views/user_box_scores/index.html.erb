@@ -7,8 +7,15 @@
   <%# open forms to chose club and round %>
   <%= render "shared/set_club_and_round", fallback_path: user_box_scores_path %>
   <% if @round %>
-    <%= render "shared/club_round", round: @round %>
-    <div class="form-wrap">
+    <div class="same-line">
+      <div><%= render "shared/club_round", round: @round %></div>
+      <div>
+        <%= "Click on a player line to access their box" %>
+      </div>
+      <div></div>
+    </div>
+    <div class="frame-wrap box-wrap">
+      <p><%= sanitize @rules %></p>
       <ol type="1">
         <div class="row justify-content-center text-padding league-header font-bold">
             <div class="col-sm-3">Player</div>
@@ -22,10 +29,10 @@
         </div>
         <% @user_box_scores.each do |user_box_score| %>
           <% player = user_box_score.user %>
-          <li style=<%=player == current_user ? "color:blue" : ""%>>
+          <li style=<%=player == current_user ? "color:#336699" : ""%>>
             <% name = "#{render "shared/fullname", user: player}" %>
-            <% message = "📞 #{player.phone_number}<br />✉️ #{player.email}" %>
-            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" title="<%= name %>" data-bs-content="<%= message %>">
+            <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
+            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
 
               <div class="row justify-content-center player-name">
                 <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
@@ -50,8 +57,8 @@
     </div>
     <br>
     <div class="buttons-wrap">
-      <%= link_to "Back to top", "#top", class: "btn button-flat" %>
-      <%= link_to "View all boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-flat" %>
+      <%= link_to "Back to top", "#top", class: "btn button-shape btn-green" %>
+      <%= link_to "All boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-shape btn-green" %>
     </div>
   <% end %>
 </div>

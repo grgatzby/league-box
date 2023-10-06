@@ -13,10 +13,10 @@
             <ol type="1">
               <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
               <% scores.each do |user_box_score| %>
-                <li style=<%=user_box_score.user == current_user ? "color:blue" : ""%>><div class="row">
+                <li style=<%=user_box_score.user == current_user ? "color:green" : ""%>><div class="row">
                   <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                   <div class="col-2"><%= "##{user_box_score.rank}" %></div>
-                  <div class="col-1" style=<%=user_box_score.games_played.zero? ? "color:red" : ""%>><%= "#{user_box_score.games_played}" %></div>
+                  <div class="col-1" style=<%=user_box_score.games_played.zero? ? "color:#A5E08D" : ""%>><%= "#{user_box_score.games_played}" %></div>
                   <div class="col-3"><%= pluralize user_box_score.points, "pt" %></div>
                 </div></li>
                 <% if current_user && (current_user.role == "admin" || current_user.role == "referee") %>
@@ -32,15 +32,15 @@
     </div>
 
     <div class="buttons-wrap">
-      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
-      <%= link_to "League table", user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-flat" %>
+      <%= link_to "League table", user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green" %>
       <% if current_user && current_user.role == "player" %>
         <%# passing 0 to manage_my_box_path, forces user to chose a round%>
-        <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
+        <%= link_to "Enter my results", manage_my_box_path(0), class: "btn buttons-shape btn-green" %>
       <% elsif Round.where(club_id:@round.club_id).last.end_date - Time.now.to_date in -10..15 %>
         <%# allow referee/admin to create next round up to 10 days before or 15 days after end of last round %>
-        <%= link_to "Create next round", new_round_path(club_id: @round.club_id), class: "btn button-flat" %>
+        <%= link_to "Create next round", new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-green" %>
       <% end %>
+      <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
     </div>
   <% end %>
 </div>

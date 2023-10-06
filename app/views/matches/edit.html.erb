@@ -1,20 +1,25 @@
 <%# admin/referee: edit or delete a match and dependent user_match_scores %>
 <div class="container">
   <br>
-  <h3>Edit match</h3>
+  <h3>Edit match score</h3>
 
   <% players = [@current_player, @opponent] %>
   <br>
-  <h5>
-    <% @user_match_scores.each_with_index do |user_match_score, index| %>
-      <%= render "shared/fullname", user: user_match_score.user %>
-      <% if index == 0 %><%= " vs " %><% end %>
-    <% end %>
-  </h5>
-  <br>
+  <div class="same-line">
+    <div>
+      <h5>
+        <%= render "shared/fullname", user: @user_match_scores[0].user %><%= " vs " %>
+        <%= render "shared/fullname", user: @user_match_scores[1].user %>
+      </h5>
+    </div>
+    <div>
+      <%= "Update or delete the match score" %>
+    </div>
+    <div></div>
+  </div>
 
   <%= form_for @match do |f| %>
-    <div class = "form-wrap">
+    <div class = "frame-wrap">
       <div class="row">
         <div class="col-sm-2"><%= f.label :court_id, "Match played on court: " %></div>
         <div class="col-sm-1"><%= f.select :court_id, 1..10 %></div>
@@ -43,6 +48,9 @@
         </div>
       <% end %>
       <br>
+      <% score_input_by = User.find(@match.user_match_scores[0].input_user_id) %>
+      <%= "Current score was submitted on #{@match.user_match_scores[0].input_date.strftime("%a %-d %b %y")} at #{@match.user_match_scores[0].input_date.strftime("%H:%M")} by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}." %>
+      <br><br>
       <%= hidden_field_tag(:player_id, @current_player.id) %>
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>
       <%= hidden_field_tag(:round_start, @round.start_date) %>
@@ -54,14 +62,14 @@
     <br>
 
     <div class="buttons-wrap">
-      <%= f.submit "Update score", class: "btn button-flat" %>
-      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Delete score", match_path(@match), class: "btn button-flat",
+      <%= f.submit "Update score", class: "btn buttons-shape btn-green" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Delete score", match_path(@match), class: "btn buttons-shape btn-green",
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to "Back", manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box)), class: "btn button-flat-grey" %>
+        <%= link_to "Back", manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% else %>
-        <%= link_to "Back", box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn button-flat-grey" %>
+        <%= link_to "Back", box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% end %>
 
     </div>

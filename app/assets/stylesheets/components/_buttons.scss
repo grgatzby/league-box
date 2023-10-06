@@ -1,58 +1,56 @@
-.button-flat {
+.buttons-shape {
   margin: 0 auto 5px;
-  color: white;
   padding: 6px 24px;
-  border-radius: 15px;
-  background: #4CAF50;
+  border-radius: 0.25rem;
+  // background: #4CAF50;
+  // background: #339966;
   transition: background 0.3s ease;
 }
 
-.button-flat:hover {
-  background: #3e8e41;
+.btn-green {
+  background: $tennis-green;
   color: white;
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+    background: #3e8e41;
+    color: white;
+  }
 }
 
-.button-flat-grey {
-  margin: 0 auto;
+.btn-blue {
+  background: $tennis-blue;
   color: white;
-  padding: 6px 24px;
-  border-radius: 15px;
-  background: #bbbbbb;
-  transition: background 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+    background: #7f7f7f;
+    color: white;
+  }
 }
 
-.button-flat-grey:hover {
-  background: #7f7f7f;
+.btn-aqua {
+  background: $tennis-aqua;
   color: white;
-}
 
-.button-ghost {
-  margin: 0 auto;
-  color: #4A4A4A;
-  // border: 1px solid #4A4A4A;
-  padding: 6px 0px;
-  // border-radius: 50px;
-  // font-weight: lighter;
-  font-weight: bold;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
-}
-
-.button-ghost:hover {
-  opacity: 1;
-}
-
-.button-purple {
-  margin: 0 auto;
-  color: white;
-  padding: 6px 24px;
-  border-radius: 15px;
-  background: rgb(135, 18, 145);
-  transition: background 0.3s ease;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
-}
-
-.button-purple:hover {
+  &:hover {
+  box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
   background: rgb(145, 91, 150);
   color: white;
+  }
+}
+
+
+.button-ghost {
+  margin: 0 auto 5px;
+  color: $tennis-blue;
+  // border: 1px solid #4A4A4A;
+  padding: 6px 0px;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #7f7f7f;
+  }
 }

@@ -18,6 +18,9 @@ class BoxesController < ApplicationController
   end
 
   def show_list
+    @points = "Winner earns 20 points.<br />
+    Looser earns 10 points per set won + number of games per lost set.<br />
+    The championship tie-break counts as one set (no points awarded for the looser)."
     show
   end
 
@@ -28,7 +31,7 @@ class BoxesController < ApplicationController
   def manage_my_box
     @page_from = params[:page_from]
     @current_player = current_user
-    # allows player to view its box and select enter new score / view played match
+    # allows player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       # define variables @club and @round
       set_club_and_round

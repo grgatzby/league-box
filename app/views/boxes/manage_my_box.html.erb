@@ -1,6 +1,6 @@
 <%# player page to view match results, enter new scores %>
 <div class="container">
-  <h3>Manage my box</h3>
+  <h3>My box results</h3>
   <% if @box %>
     <% @round = @box.round %>
   <% else %>
@@ -11,17 +11,24 @@
     <% if @user_not_in_round %>
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
     <% else %>
-      <br><br><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4>
-      <div class="form-wrap players">
+      <br><br>
+    <div class="same-line">
+      <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
+      <div></div>
+      <div><%= "Select an action" %></div>
+      <div></div>
+    </div>
+      <div class="frame-wrap players box-wrap">
         <h4>My box: view or enter match scores</h4>
         <%# open forms to chose club and round %>
-        <ul>
-        <div class="row justify-content-center text-padding">
-          <div class="col-sm-3">Player</div>
-          <div class="col-sm-2">Total points</div>
-          <div class="col-sm-2">Match played on</div>
-          <div class="col-sm-3">Chose action</div>
-        </div>
+        <h6>
+          <div class="row justify-content-center text-padding font-bold">
+            <div class="col-sm-3">Player</div>
+            <div class="col-sm-2">Total points</div>
+            <div class="col-sm-2">Match played on</div>
+            <div class="col-sm-3">Action</div>
+          </div>
+        </h6>
         <% @my_games.each do |my_game| %>
           <% opponent = my_game[0].user %>
           <% match = my_game[1] %>
@@ -31,7 +38,7 @@
               <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
               <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
               <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= opponent_name %>" data-bs-content="<%= message %>">
-                <span style=<%=opponent == @current_player ? "color:blue" : "" %>>
+                <span style=<%=opponent == @current_player ? "color:green" : "" %>>
                   <%# link_to "#{render "shared/fullname", user: opponent}", "", class: "btn button-ghost", :title => message  %>
                   <%= "#{render "shared/fullname", user: opponent}" %>
                 </span>
@@ -42,30 +49,29 @@
             </div>
             <div class="col-sm-2 text-padding">
               <% if match && opponent != @current_player %>
-                <%= "#{match.time.strftime("%d/%m/%Y")}" %>
+                <%= "#{match.time.strftime("%a %-d %h %y")}" %>
               <% end %>
             </div>
             <div class="col-sm-3">
               <% if opponent == @current_player %>
-                <%= link_to ">> View my box", box_list_path(@box), class: "btn button-ghost" %>
+                <%= link_to "Display my box", box_list_path(@box), class: "btn buttons-shape btn-blue" %>
               <% elsif match %>
-                <%= link_to ">> View match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
+                <%= link_to "See match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
               <% else %>
-                <%= link_to ">> Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost" %>
+                <%= link_to "Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost" %>
               <% end %>
             </div>
           </div>
         <% end %>
-        </ul>
       </div>
     <% end %>
     <br>
     <div class="buttons-wrap">
     <% if @page_from %>
       <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-      <%= link_to "Back", @page_from+parameters, class: "btn button-flat-grey" %>
+      <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue" %>
     <% else %>
-      <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+      <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
     <% end %>
     </div>
   <% end %>
