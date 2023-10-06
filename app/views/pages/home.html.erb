@@ -1,30 +1,45 @@
-<div class="container">
-  <br><h4><%= @club.name %> League Box</h4>
-  <div class="form-wrap">
-    <h4>The path to social tennis playing</h4>
-    <br><h5>Welcome to the Grand Prix Tournament</h5>
-    <p>The mixed Singles Box League Tournament is organized as a Grand Prix event with one round
-    per month. Points earned in each round of the box league will accumulate to give an overall
-    Grand Prix Tournament winner.</p>
-    <p>The winner will receive the Singles Box League Tournament trophy, listing on the club honors
-    board and possibly some champagne to celebrate at the end of the run.</p>
-    <p>The closing date for the compilation of earned points will coincide with the yearly club
-    tournament and the winner will be celebrated on the finals day during the awards ceremony.
-    </p>
-    <p>The Grand Prix league table will be updated and displayed on the league board at the end of each
-    month.
-    </p>
+<div class="container home-container">
+  <br><h4><%= @club.name.capitalize %> League Box</h4>
+  <div class="frame-wrap home-wrap">
+    <h3><%= "The path to social tennis playing".upcase %></h3><br>
+
+    <div class="content-wrap">
+      <div>
+        <h5>Welcome to your club's Social Tournament website</h5>
+        <p>The mixed Singles Social Tournament is organized as a Box League with one round
+        every month (or three months in some clubs). Points earned in each round of the Box
+        League will accumulate to give an overall Tournament winner.</p>
+        <p>The winner will receive the Singles Box League Tournament trophy, listing on the club honors
+        board and possibly some champagne to celebrate at the end of the run.</p>
+        <p>The league table will be updated and displayed on the league board at the end of each
+        round.</p>
+        <br>
+      </div>
+
+      <div class="photo-wrap"></div>
+
+      <div>
+        <br><h5>How does it work?</h5>
+        <p>Easily follow the league table and see how you rank against the other players in the box league.</p>
+        <ul>
+          <li>Post your latest match score in <span class="white-text">My box</span> after a match has been played, and see where you and the other players stand in your box.</li>
+          <li>With <span class="white-text">All boxes</span> see at a glance every box in the box league, click on any box to dive into it.<br/>
+          You can even see the previous rounds.</li>
+          <li>Looking at one box, you see scores, date and time of game, and player's ranking in <span class="white-text">List view</span> or in <span class="white-text">Table view</span>.</li>
+          <li>The <span class="white-text">League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.</li>
+        </ul>
+        <p>Happy tournament!</p>
+      </div>
+    </div>
   </div>
   <br>
   <div class = "buttons-wrap">
-    <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
-    <%= link_to "Site structure", structure_path, class: "btn button-flat" %>
-    <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
+    <%= link_to "Tournament rules", rules_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Club staff", staff_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Website map", structure_path, class: "btn button-shape btn-green" %>
+    <%# link_to "All boxes", boxes_path, class: "btn button-shape btn-green" %>
     <% if current_user && current_user.role == "admin" %>
-      <%= link_to "Create club", new_user_box_score_path, class: "btn button-flat" %>
-    <% end %>
-    <% unless current_user %>
-      <%= link_to "Log in", new_user_session_path, class: "btn button-flat" %>
+      <%= link_to "New round", new_user_box_score_path, class: "btn button-shape btn-aqua" %>
     <% end %>
   </div>
 </div>

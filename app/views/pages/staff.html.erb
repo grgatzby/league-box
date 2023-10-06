@@ -1,54 +1,54 @@
 <div>
-  <div class="container">
-    <br><h4><%= @club.name %> League Box</h4>
-    <div class="form-wrap">
-      <h4>Club staff</h4>
+  <div class="container home-container">
+    <br><h4><%= @club.name.capitalize %> staff</h4><br>
+    <div class="frame-wrap box-wrap">
+      <h3><%= "Club staff".upcase %></h3>
         <br>
         <div class="row" style="font-weight: bold">
           <div class="col-sm-2">Name</div>
-          <div class="col-sm-3"><%= "✉️ e-mail address" %></div>
+          <div class="col-sm-2"><%= "🎾 club" %></div>
+          <div class="col-sm-3"><%= "✉️ e-mail" %></div>
           <div class="col-sm-2"><%= "📞 telephone" %></div>
           <div class="col-sm-3"><%= "🧩 role" %></div>
-          <div class="col-sm-2"><%= "🎾 club" %></div>
         </div>
         <div class="row">
           <div class="col-sm-2"><%= render "shared/fullname", user: @admin%></div>
+          <div class="col-sm-2"></div>
           <div class="col-sm-3"><%= "#{@admin.email}" %></div>
           <div class="col-sm-2"><%= "#{@admin.phone_number}" %></div>
-          <div class="col-sm-3"><%= "admin" %></div>
+          <div class="col-sm-3"><%= "website admin" %></div>
         </div>
         <% if current_user == @admin %>
           <% @referees.each do |referee| %>
             <div class="row">
               <div class="col-sm-2"><%= render "shared/fullname", user: referee%></div>
+              <div class="col-sm-2"><%= "#{referee.club.name}" %></div>
               <div class="col-sm-3"><%= "#{referee.email}" %></div>
               <div class="col-sm-2"><%= "#{referee.phone_number}" %></div>
               <div class="col-sm-3"><%= "#{referee.club.name} referee" %></div>
-              <div class="col-sm-2"><%= "#{referee.club.name}" %></div>
             </div>
           <% end %>
         <% end %>
         <% if @referee %>
           <div class="row">
             <div class="col-sm-2"><%= render "shared/fullname", user: @referee%></div>
+            <div class="col-sm-2"><%= "#{@referee.club.name}" %></div>
             <div class="col-sm-3"><%= "#{@referee.email}" %></div>
             <div class="col-sm-2"><%= "#{@referee.phone_number}" %></div>
             <div class="col-sm-3"><%= "#{@referee.club.name} referee" %></div>
-            <div class="col-sm-2"><%= "#{@referee.club.name}" %></div>
           </div>
         <% end %>
         <br>
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= link_to "Home", root_path, class: "btn button-flat" %>
-      <%= link_to "Tournament overview", overview_path, class: "btn button-flat" %>
-      <%= link_to "View all boxes", boxes_path, class: "btn button-flat" %>
+      <%= link_to "Home", root_path, class: "btn button-shape btn-green" %>
+      <%= link_to "Tournament rules", rules_path, class: "btn button-shape btn-green" %>
+      <%= link_to "Website map", structure_path, class: "btn button-shape btn-green" %>
+      <%# link_to "All boxes", boxes_path, class: "btn button-shape btn-green" %>
       <% if current_user && current_user.role == "player" %>
         <%# passing 0 to manage_my_box_path, forces user to chose a round%>
-        <%= link_to "Enter my results", manage_my_box_path(0), class: "btn button-flat" %>
-      <% else %>
-        <%= link_to "Log in to enter match results", new_user_session_path, class: "btn button-flat" %>
+        <%= link_to "My box", manage_my_box_path(0), class: "btn button-shape btn-green" %>
       <% end %>
     </div>
   </div>

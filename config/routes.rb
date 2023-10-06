@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
-  get "overview", to: "pages#overview", as: "overview"
+  get "rules", to: "pages#rules", as: "rules"
   get "staff", to: "pages#staff", as: "staff"
   get "structure", to: "pages#structure", as: "structure"
 

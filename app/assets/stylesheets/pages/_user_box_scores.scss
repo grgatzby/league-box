@@ -2,6 +2,11 @@
 .league-header {
   position: sticky;
   top: 66px;
-  background-color: beige;
+  background-color: $tennis-green;
 }
 
+.same-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

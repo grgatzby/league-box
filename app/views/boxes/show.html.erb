@@ -1,10 +1,18 @@
-<%# player show page by grid of matches %>
+<%# player show page by table of matches %>
 <div class="container">
-  <%= render "intro_lines", box: @box, view_type: "Grid"%>
-  <%= render "shared/club_round", round: @box.round %>
-  <div class = "form-wrap">
-    <div class="grid-container row small-font">
+  <%= render "intro_lines", box: @box, view_type: "table"%>
+  <div class="same-line">
+    <div><%= render "shared/club_round", round: @box.round %></div>
+    <div>
+      <%= link_to "Toggle to list view", box_list_path, class: "btn buttons-shape btn-green" %>
+    </div>
+    <div></div>
+  </div>
 
+  <%# render "shared/club_round", round: @box.round %>
+  <div class = "frame-wrap box-wrap">
+
+    <div class="grid-container row small-font">
       <div id="first-column" class="col-1">
         <div class="row" id="1st-col-header">
           <div class="col-12 font-bold"><%= "Box #{@box.box_number}" %></div>
@@ -12,6 +20,7 @@
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
           <div class="row first-col-lines font-bold">
+
             <div class="col-12">
               <% user_box_score = user_box_matches[0] %>
               <% line_player = user_box_score.user %>
@@ -19,8 +28,8 @@
               <% name = "#{render "shared/fullname", user: line_player}" %>
               <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
               <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= name %>" data-bs-content="<%= message %>">
-                <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
-                  <%= render "shared/fullname", user: line_player %><br>[<%= pluralize user_box_score.points, "pt" %>]
+                <span style=<%=user_box_matches[0].user == current_user ? "color:green" : ""%>>
+                  <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= pluralize user_box_score.points, "pt" %>
                 </span>
               </div>
             </div>
@@ -34,7 +43,7 @@
             <div class="col-12 col-md-6 col-lg-2 text-center">
               <% user_box_score = user_box_matches[0] %>
               <% column_player = user_box_score.user %>
-              <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>>
+              <span style=<%=user_box_matches[0].user == current_user ? "color:green" : ""%>>
                 <%= render "shared/fullname", user: column_player %>
               </span>
             </div>
@@ -57,10 +66,10 @@
                       <% user_score = player_match[2] %>
                       <% opponent_score = player_match[3] %>
                       <% if match %>
-                        <%= "#{match.time.strftime("%d %b")}:" %>
                         <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
+                        <%= ", #{match.time.strftime("%a %-d %b")}" %>
                         <br><%= "#{line_player.last_name}: " %><%= pluralize user_score.points, "pt" %>
-                        <span style="color:grey">
+                        <span style="color:#336699">
                           <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
                         </span>
                       <% elsif opponent == line_player %>
@@ -80,14 +89,14 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn button-flat-grey" %>
+    <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
 
     <% if @box == @my_current_box %>
-      <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn button-flat" %>
+      <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% else %>
-      <%= link_to "My box results", box_path(@my_current_box), class: "btn button-flat" %>
+      <%# link_to "My box results", box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% end %>
 
-    <%= link_to "List view", box_list_path, class: "btn button-flat" %>
+    <%# link_to "List view", box_list_path, class: "btn buttons-shape btn-green" %>
   </div>
 </div>

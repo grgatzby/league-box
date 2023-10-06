@@ -1,22 +1,30 @@
-<div class="container">
-  <br><h4><%= @club.name %> League Box</h4>
-  <div class="form-wrap">
-    <h4>Tournament overview</h4>
-    <p><%= "Box Leagues are designed to enable members of #{@club.name} to play competitive
-    tennis on a regular basis. Box leagues are also an ideal way to meet other members and build a
-    broader network of players for social games." %></p>
-    <p>However, box leagues only work if players are committed to getting matches played. Members
-    who enter the leagues must make every effort to complete their fixture programme. If, for
-    whatever reason, players are unable to fulfil fixtures they should notify opponents and referee
-    promptly.</p>
-    <p>Players should notify their opponents to block out the dates / times they are not available to play
-    matches as well as advertise the dates and times they would like to play matches. This simple
-    application of good time management principles will make it easier to schedule your matches.
-    </p>
+<div class="container home-container">
+  <br><h4><%= @club.name.capitalize %> League Box</h4>
+  <div class="frame-wrap home-wrap">
+
+    <h3><%= "Tournament overview".upcase %></h3><br>
+    <div class="content-wrap">
+      <div>
+        <p><%= "Box Leagues are designed to enable members of #{@club.name} to play competitive
+        tennis on a regular basis. Box leagues are also an ideal way to meet other members and build a
+        broader network of players for social games." %></p>
+        <p>However, box leagues only work if players are committed to getting matches played. Members
+        who enter the leagues must make every effort to complete their fixture programme. If, for
+        whatever reason, players are unable to fulfil fixtures they should notify opponents and referee
+        promptly.</p>
+        <p>Players should notify their opponents to block out the dates / times they are not available to play
+        matches as well as advertise the dates and times they would like to play matches. This simple
+        application of good time management principles will make it easier to schedule your matches.
+        </p>
+      </div>
+      <div class="photo-wrap">
+      </div>
+    </div>
+      <br>
   </div>
   <br>
-  <div class="form-wrap">
-    <h4>Rules</h4><br>
+  <div class="frame-wrap home-wrap">
+    <h3><%= "The rules".upcase %></h3><br>
     <h5>Rounds</h5>
     <p>There will be 1 round per month, unless local rules state otherwise.</p>
     <h5>Availability</h5>
@@ -111,8 +119,8 @@
     Any unplayed games will be conceded.</p>
     <i>
       <p>For example:</p>
-      <p>Player A is leading 2:1 and 30:15 in set 1 when player A has to retire.</p>
-      <p>The match score should be entered as 2:4 0:4 to player B.</p>
+      <p>Player A is leading 2/1 and 30:15 in set 1 when player A has to retire.</p>
+      <p>The match score should be entered as 2/4 0/4 to player B.</p>
     </i>
     <h5>Withdrawing before the start of a round</h5>
     <p>Players should inform the Tournament Referee if they wish to withdraw from the box league.</p>
@@ -135,17 +143,19 @@
     in the competition.</p>
     <h5>Disputes</h5>
     <% if @referee %>
-      <% mailto = "#{@admin.email} or #{@referee.email}" %>
+      <% mailto = "your referee #{@referee.first_name} at #{@referee.email}" %>
     <% else %>
-      <% mailto = "#{@admin.email}" %>
+      <% mailto = "your admin at #{@admin.email}" %>
     <% end %>
     <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to
     #{mailto}." %></p>
   </div>
   <br>
   <div class = "buttons-wrap">
-    <%= link_to "Back to top", overview_path, class: "btn button-flat" %>
-    <%= link_to "Club staff", staff_path, class: "btn button-flat" %>
-    <%= link_to "Home", root_path, class: "btn button-flat" %>
-  </div>
+    <%= link_to "Home", root_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Club staff", staff_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Website map", structure_path, class: "btn button-shape btn-green" %>
+    <%# link_to "All boxes", boxes_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Back to top", rules_path, class: "btn button-shape btn-blue" %>
+</div>
 </div>

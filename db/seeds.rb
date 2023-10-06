@@ -30,7 +30,7 @@ if true
   puts "seeding Clubs"
   puts "-------------------"
   sample_club = Club.create(
-    name: "My tennis club"
+    name: "your tennis club"
   )
 
   Club.create(
@@ -138,7 +138,7 @@ end
 new_round = true
 
 if new_round
-  sample_club = Club.find_by(name: "My tennis club")
+  sample_club = Club.find_by(name: "your tennis club")
   clubs = Club.all.reject { |club| club == sample_club }
 
   clubs.each do |club|
