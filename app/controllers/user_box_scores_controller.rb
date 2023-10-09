@@ -1,6 +1,7 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
   def index
+    # Displays the league table
     set_club_and_round
     @user_box_scores = rank_players(@round.user_box_scores) if @round
     @rules = "A player's league position is determined by the total number of points won in a round.<br />

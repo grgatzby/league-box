@@ -5,8 +5,15 @@
 
 
 // ------------ show page --------
+.grid-wrap {
+  overflow-x: auto;
+  // white-space: nowrap;
+}
+
 .grid-container {
+  width: 80rem;
   display: flex;
+
 
   #grid-lines>.row>.grid-columns {
     height: 5.5rem;

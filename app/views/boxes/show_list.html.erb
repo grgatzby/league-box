@@ -5,13 +5,13 @@
   <div class="same-line">
     <div><%= render "shared/club_round", round: @box.round %></div>
     <div>
-      <%= link_to "Toggle to table view", box_path, class: "btn buttons-shape btn-green" %>
+      Toggle to <%= link_to "Table view", box_path, class: "btn buttons-shape btn-green" %>
     </div>
     <div></div>
   </div>
 
-  <div class = "frame-wrap box-wrap">
-    <div class="row font-bold">
+  <div class = "frame-shape frame-padding">
+    <div class="row font-bold text-padding table-header">
       <div class="col-sm-4"></div>
       <div class="col-sm-2">Match score</div>
       <% name = "Match earnings" %>

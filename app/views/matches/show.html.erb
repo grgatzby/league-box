@@ -5,7 +5,7 @@
   <h3><%= render "shared/fullname", user: current_user %><%= "(# #{player_ubs.rank})" %> vs
   <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %></h3>
 
-  <div class="frame-wrap">
+  <div class="frame-shape">
     <br><h4><%= render "match", my_card: @current_user_match_score %>by <%= render "shared/fullname", user: current_user %></h4>
     <br><%= "Played on #{@match.time.strftime("%a %-d %h %y")} at #{@match.time.strftime("%H:%M")}, on court #{@match.court.name}." %>
 
