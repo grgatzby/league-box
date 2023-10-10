@@ -2,14 +2,13 @@
 <div class="container">
   <%= render "intro_lines", box: @box, view_type: "table"%>
   <div class="same-line">
-    <div><%= render "shared/club_round", round: @box.round %></div>
+    <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
       Toggle to <%= link_to "List view", box_list_path, class: "btn buttons-shape btn-green" %>
     </div>
     <div></div>
   </div>
 
-  <%# render "shared/club_round", round: @box.round %>
   <div class = "frame-shape frame-padding grid-wrap">
     <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
     <div class="grid-container row small-font">
@@ -93,6 +92,7 @@
   <br>
   <div class="buttons-wrap">
     <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%= link_to "Back", :back %>
 
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>

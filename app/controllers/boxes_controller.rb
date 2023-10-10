@@ -4,7 +4,7 @@ class BoxesController < ApplicationController
     @page_from = params[:page_from]
     @message_boxes = "player name, rank,<br />nb games played, points"
     # define variables @club and @round
-    set_club_and_round
+    set_club_round
   end
 
   def show
@@ -34,7 +34,7 @@ class BoxesController < ApplicationController
     # allows player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       # define variables @club and @round
-      set_club_and_round
+      set_club_round
       # gets my box from chosen round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
       @box = my_box(@round, @current_player)
