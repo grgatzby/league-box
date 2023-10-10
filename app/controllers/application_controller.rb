@@ -20,25 +20,27 @@ class ApplicationController < ActionController::Base
     @referee = User.find_by(role: "referee", club_id: @club.id)
   end
 
-  def after_sign_in_path_for(resource)
+  # def after_sign_in_path_for(resource)
+  def after_sign_in_path_for
     root_path
   end
 
-  def set_club_and_round
-    # instantiates variables @club and @round
-    # for use in #index, #manage_my_box in Boxes and user_box_scores/index views forms
+  def set_club_round
+    # instantiate variables @club from params[:club_name], and @round from params[:round_start]
+    # if they have been selected from the _select_club_round forms
+    # invoked by #index, #manage_my_box in Boxes and user_box_scores/index views forms
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
 
     if current_user != @admin || params[:club_name]
-      # user belongs to a club (= is a player or a referee),
-      # or has chosen a club in the clubs form (params[:club_name] is defined)
+      # user is in a club (= is a player or a referee),
+      # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
     end
 
     if params[:round_start]
-      # user has answered the rounds form
+      # user has selected a round in the form
       @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
       # @club = Club.find_by(name: params[:club_name])
       @boxes = @round.boxes.sort
@@ -46,9 +48,9 @@ class ApplicationController < ActionController::Base
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the 3 methods #current_round, #my_box and #match_score are called
-  # - from #show (+ #show_list and #show_referee) in BoxesControllers
-  # - and from #show in MatchesController
+  # the 3 methods #current_round, #my_box and #match_score are invoked
+  # - by #show (and #show_list and #show_referee) in BoxesControllers
+  # - by from #show in MatchesController
 
   def current_round(club_id)
     # given a club_id, returns its current round
@@ -65,9 +67,9 @@ class ApplicationController < ActionController::Base
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the method #rank_players is called
-  # - from #index in UserBoxScoresController
-  # - and from #create in MatchesController
+  # the method #rank_players is invoked
+  # - by #index in UserBoxScoresController
+  # - and by #create in MatchesController
 
   def rank_players(scores)
     @tieds = [] # populated in #add_to_tieds

@@ -2,9 +2,9 @@
 <div class="container">
   <h3>View all boxes</h3>
   <%# select club and round in forms %>
-  <%= render "shared/set_club_and_round", fallback_path: boxes_path %>
+  <%= render "shared/select_club_round", fallback_path: boxes_path %>
   <% if @round %>
-    <%= render "shared/club_round", round: @round %>
+    <%= render "shared/display_club_round", round: @round %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box columns" data-bs-content="<%= @message_boxes %>">
       <div class="boxes">
         <% @boxes.each do |box| %>

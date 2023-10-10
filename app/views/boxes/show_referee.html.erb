@@ -3,10 +3,10 @@
   <% if current_user.role == "player" %>
   <br><br><%= "As a player, this page is not authorised" %>
   <% else %>
-    <br><%# render "shared/club_round", round: @box.round %>
+    <br>
     <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
     <div class="same-line">
-      <div><%= render "shared/club_round", round: @box.round %></div>
+      <div><%= render "shared/display_club_round", round: @box.round %></div>
       <div>
         <%= "#{@current_user.role.capitalize} " %><strong><%= (render "shared/fullname", user: current_user).strip %></strong>,
         <%= "select a match to edit or delete the score#{admin_message}" %>
@@ -15,7 +15,7 @@
     </div>
 
     <div class = "frame-shape frame-padding">
-      <div class="row font-bold text-padding table-header">
+      <div class="row font-bold text-padding sticky-header">
         <div class="col-sm-4"></div>
         <div class="col-sm-2">Match score</div>
         <div class="col-sm-2">Player's points</div>

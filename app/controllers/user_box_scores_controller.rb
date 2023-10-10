@@ -1,25 +1,53 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
+
   def index
-    # Displays the league table
-    set_club_and_round
-    @user_box_scores = rank_players(@round.user_box_scores) if @round
+    # displays the league table, allows user to sort the table by headers clicks
+    set_club_round
+    if params[:order]
+      @order = params[:order].to_i
+    else
+      @order = -1
+    end
+    if @round
+      @user_box_scores = rank_players(@round.user_box_scores)
+      @user_box_scores.reverse! if @order == 1
+    end
+    case params[:sort]
+    when "Player"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| user_box_scores.user.last_name }
+      @user_box_scores.reverse! if @order == -1
+    when "Points"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.points }
+    when "Box"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| -@order * user_box_scores.box.box_number }
+    when "Matches"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.games_played }
+    when "Matches Won"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.games_won }
+    when "Sets"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_played }
+    when "Sets Won"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_won }
+    # else
+    #   @user_box_scores = rank_players(@round.user_box_scores) if @round
+    end
     @rules = "A player's league position is determined by the total number of points won in a round.<br />
-              In the event that two or more players have the same number of points the league position will be
-              determined by:
-              <ol>
-                <li>Head to Head result (if only 2 players on the same score)</li>
-                <li>Most matches played</li>
-                <li>Ratio of sets won to sets played</li>
-                <li>Ratio of games won to games played</li>
-              </ol>"
+            In the event that two or more players have the same number of points the league position will be
+            determined by:
+            <ol>
+              <li>Head to Head result (if only 2 players on the same score)</li>
+              <li>Most matches played</li>
+              <li>Ratio of sets won to sets played</li>
+              <li>Ratio of games won to games played</li>
+            </ol>"
   end
 
   def new
   end
 
   def create
-    # allows the admin to create a club, its courts, players (from csv file), a round, its boxes and user_box_scores
+    # (admin only) create a club, its courts, players (from csv file), a round, its boxes and user_box_scores
     # the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players, referee)
     # players are allocated in boxes by id in descending order.
 
@@ -40,11 +68,11 @@ class UserBoxScoresController < ApplicationController
         # create round
         round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
 
-        # create array of users (players and a club referee)
+        # create array of users (players and club referees)
         users = []
         CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
           user = User.create(row)
-          user.update(club_id: club.id, password: "123456", nickname: user.nickname || user.first_name + user.last_name[0])
+          user.update(club_id: club.id, password: "123456", nickname: user.nickname || (user.first_name + user.last_name[0]))
           users << user
         end
         referees = users.select { |user| user.role == "referee" }
@@ -76,70 +104,4 @@ class UserBoxScoresController < ApplicationController
       redirect_back(fallback_location: new_user_box_score_path)
     end
   end
-
-  # private
-
-  # def rank_players(scores)
-  #   @tieds = [] # populated in #add_to_tieds
-  #   scores = scores.sort { |a, b| compare(a, b) }
-  #   # updates the rank field in the UserBoxScore database
-
-  #   # previous ranking (flawed), based on points only :
-
-  #   # points_array = scores.map(&:points)
-  #   # sorted_points = points_array.sort.uniq.reverse
-  #   # scores.each do |score|
-  #   #   score.update(rank: sorted_points.index(score.points) + 1)
-  #   # end
-
-  #   # new ranking based on sorting criterias and ties :
-
-  #   rank_tied = 1
-  #   player = scores.first
-  #   ranks = scores.map do |score|
-  #     rank_tied = scores.index(score) + 1 unless @tieds.include?(score) && compare(player, score).zero?
-  #     player = score
-  #     rank_tied
-  #   end
-  #   scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
-  # end
-
-  # def compare(a, b)
-  #   comparison = compare_points(a, b)
-  #   return comparison unless comparison.zero?
-
-  #   comparison = compare_matches_played(a, b)
-  #   return comparison unless comparison.zero?
-
-  #   comparison = compare_set_ratio(a, b)
-  #   return comparison unless comparison.zero?
-
-  #   comparison = compare_game_ratio(a, b)
-  #   return comparison unless comparison.zero?
-
-  #   add_to_tieds(a, b)
-
-  #   comparison
-  # end
-
-  # def compare_points(a, b)
-  #   b.points <=> a.points
-  # end
-
-  # def compare_matches_played(a, b)
-  #   b.games_played <=> a.games_played
-  # end
-
-  # def compare_set_ratio(a, b)
-  #   (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
-  # end
-
-  # def compare_game_ratio(a, b)
-  #   (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
-  # end
-
-  # def add_to_tieds(*players)
-  #   players.each { |player| @tieds << player }
-  #   @tieds.uniq!
-  # end
 end
