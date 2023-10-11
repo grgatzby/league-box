@@ -10,8 +10,8 @@
         <div class="col-sm-1 text-padding"><%= "# #{user_box_score.rank}" %></div>
         <div class="col-sm-1 text-padding"><%= pluralize user_box_score.points, "pt" %></div>
         <div class="col-sm-1 text-padding"><%= "#{user_box_score.box.box_number}" %></div>
-        <div class="col-sm-2 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>
-        <div class="col-sm-2 text-padding"><%= pluralize user_box_score.games_won, "match" %></div>
+        <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_played, "match" %></div>
+        <div class="col-sm-1 text-padding"><%= pluralize user_box_score.games_won, "match" %></div>
         <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
         <div class="col-sm-1 text-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
         <% if current_user.role == "admin" || current_user.role == "referee" %>

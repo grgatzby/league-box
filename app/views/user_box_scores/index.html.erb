@@ -14,16 +14,18 @@
     </div>
     <div class="frame-shape frame-padding">
       <p><%= sanitize @rules %></p>
+      <% up = ["↓", "↑"] %>
+      <% down = ["↑", "↓"]%>
       <ol type="1">
         <div class="row justify-content-center sticky-header font-bold">
-            <div class="col-sm-3"><%=render "header_link", header: "Player"%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Rank"%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Points"%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Box"%></div>
-            <div class="col-sm-2"><%=render "header_link", header: "Matches"%></div>
-            <div class="col-sm-2"><%=render "header_link", header: "Matches Won"%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets"%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets Won"%></div>
+            <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Matches", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Sets", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
         </div>
         <div>
           <%= render "league_table", user_box_scores: @user_box_scores %>
