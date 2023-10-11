@@ -1,1 +1,3 @@
-<%=link_to header, user_box_scores_path(order: -@order, sort: header, round_start: @round.start_date, club_name: @round.club.name), class: "btn button-ghost"%>
+<% header_arrow = @order == 1 ? dir[0] : dir[1] %>
+<% header_arrow = header == @sort ? header_arrow : "" %>
+<%=link_to header+header_arrow, user_box_scores_path(exsort: @sort, order: -@order, sort: header, round_start: @round.start_date, club_name: @round.club.name), class: "btn button-ghost"%>

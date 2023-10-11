@@ -3,8 +3,12 @@ class UserBoxScoresController < ApplicationController
 
   def index
     # displays the league table, allows user to sort the table by headers clicks
+
     set_club_round
-    if params[:order]
+
+    # @order dictates the sorting order of the selected header
+    # it is passed from the partial _header_link.html.erb when a header is clicked
+    if params[:order] && (params[:exsort] == params[:sort])
       @order = params[:order].to_i
     else
       @order = -1
@@ -13,10 +17,12 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores = rank_players(@round.user_box_scores)
       @user_box_scores.reverse! if @order == 1
     end
+    @sort = params[:sort]
+
     case params[:sort]
     when "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| user_box_scores.user.last_name }
-      @user_box_scores.reverse! if @order == -1
+      @user_box_scores.reverse! if @order == 1
     when "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.points }
     when "Box"
@@ -29,8 +35,6 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_played }
     when "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_won }
-    # else
-    #   @user_box_scores = rank_players(@round.user_box_scores) if @round
     end
     @rules = "A player's league position is determined by the total number of points won in a round.<br />
             In the event that two or more players have the same number of points the league position will be
