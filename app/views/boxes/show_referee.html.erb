@@ -23,7 +23,7 @@
         <div class="col-sm-2 text-blue">Opponent total points</div>
       </div>
       <ul>
-        <% sorted_players = @box_matches.map { |x| x[2]} %>
+        <% sorted_players = @box_matches.map { |bm| bm[2]} %>
         <% @box_matches.each do |user_box_matches| %>
           <li>
             <% user_box_score = user_box_matches[0] %>
@@ -34,7 +34,7 @@
             </div>
             <ul>
               <% sorted_players.each do |player_opponent| %>
-                <% player_match = player_matches.select { |x| x[1] == player_opponent }[0] %>
+                <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
                   <% if player_match %>
                     <% match = player_match[0] %>
                     <% opponent = player_match[1] %>
@@ -44,7 +44,7 @@
                       <li>
                         <% name = "Score" %>
                         <% score_input_by = User.find(user_score.input_user_id) %>
-                        <% message = "Submitted by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%a %-d %b %y")} at #{user_score.input_date.strftime("%H:%M")}" %>
+                        <% message = "<strong>Score entered</strong><br />by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%a %-d %b %y")} at #{user_score.input_date.strftime("%H:%M")}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <div class="row player-name">
                             <div class="col-sm-4">
@@ -91,7 +91,8 @@
     <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
     <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue" %>
   <% else %>
-    <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
   <% end %>
   </div>
 </div>

@@ -2,7 +2,7 @@ class BoxesController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
   def index
     @page_from = params[:page_from]
-    @message_boxes = "player name, rank,<br />nb games played, points"
+    @message_boxes = "<strong>Box columns:</strong><br />player name, rank,<br />games played, box points"
     # define variables @club and @round
     set_club_round
   end

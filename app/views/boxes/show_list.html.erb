@@ -4,9 +4,11 @@
   <div class="same-line">
     <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
-      Toggle to <%= link_to "Table view", box_path, class: "btn buttons-shape btn-green" %>
+      <%# <%= link_to "View as table", box_path, class: "btn buttons-shape btn-green" %>
+      <%= link_to box_path, class: "btn buttons-shape btn-yellow" do %>
+        <i class="fa-regular fa-table-list"></i>
+      <% end %>
     </div>
-    <div></div>
   </div>
 
   <div class = "frame-shape frame-padding">
@@ -67,7 +69,9 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%= link_to "View as table", box_path, class: "btn buttons-shape btn-green" %>
+    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
 
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>

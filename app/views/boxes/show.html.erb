@@ -4,9 +4,11 @@
   <div class="same-line">
     <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
-      Toggle to <%= link_to "List view", box_list_path, class: "btn buttons-shape btn-green" %>
+      <%# <%= link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
+      <%= link_to box_list_path, class: "btn buttons-shape btn-yellow" do %>
+        <i class="fa-solid fa-list"></i>
+      <% end %>
     </div>
-    <div></div>
   </div>
 
   <div class = "frame-shape frame-padding grid-wrap">
@@ -14,7 +16,7 @@
     <div class="grid-container row small-font">
       <div id="first-column" class="col-1">
         <div class="row" id="1st-col-header">
-          <div class="col-12 font-bold"><%= "Box #{@box.box_number}" %></div>
+          <div class="col-12 font-bold"><%= "BOX #{@box.box_number}" %></div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
@@ -69,7 +71,7 @@
                       <% opponent_score = player_match[3] %>
                       <% if match %>
                         <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
-                        <%= ", #{match.time.strftime("%a %-d %b")}" %>
+                        <%= "[#{match.time.strftime("%a %-d %b")}]" %>
                         <br><%= "#{line_player.last_name}: " %><%= pluralize user_score.points, "pt" %>
                         <span style="color:#336699">
                           <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
@@ -91,8 +93,9 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-    <%= link_to "Back", :back %>
+    <%= link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
+    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+    <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
 
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>

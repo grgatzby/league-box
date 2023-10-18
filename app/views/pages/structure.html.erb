@@ -1,19 +1,21 @@
-<div class="container home-container">
-  <br><h3><%= "LeagueBox website structure".upcase %></h3>
+<%= render "image_front", sticky: true %>
+
+<div class="container">
   <div class="frame-shape home-wrap">
+    <br><h3><%= "LeagueBox website structure".upcase %></h3>
     <br><h5>Home</h5>
     <p>General presentation of the Box League Tournament</p>
-    <p>Footpage links to <span class="white-text">Tournament rules</span>, <span class="white-text">Club staff</span>, <span class="white-text">Website map</span>,
-    <% if current_user && current_user.role == "admin" %><span class="white-text">Create club</span>,<% end %> <span class="white-text">Log in</span> (unless logged in).</p>
+    <p>Footpage links to <span class="colored-text">Tournament rules</span>, <span class="colored-text">Club staff</span>, <span class="colored-text">Website map</span>,
+    <% if current_user && current_user.role == "admin" %><span class="colored-text">Create club</span>,<% end %> <span class="colored-text">Log in</span> (unless already logged in).</p>
 
     <br><h5>Tournament overview and rules</h5>
     <p>Explanation of the of the Box League rules</p>
-    <p>Footpage links to <span class="white-text">Home</span>, <span class="white-text">Club staff</span>, and <span class="white-text">Website map</span>.</p>
+    <p>Footpage links to <span class="colored-text">Home</span>, <span class="colored-text">Club staff</span>, and <span class="colored-text">Website map</span>.</p>
 
     <br><h5>Club staff</h5>
     <p>Details of the admin and the club referee</p>
-    <p>Footpage links to <span class="white-text">Home</span>, <span class="white-text">Tournament rules</span>, <span class="white-text">Website map</span>
-    <% if current_user && current_user.role == "player" %>, and <span class="white-text">Enter my results</span><% end %>.</p>
+    <p>Footpage links to <span class="colored-text">Home</span>, <span class="colored-text">Tournament rules</span>, <span class="colored-text">Website map</span>
+    <% if current_user && current_user.role == "player" %>, and <span class="colored-text">Enter my results</span><% end %>.</p>
 
     <br><h5>All Boxes</h5>
     <p>Display all boxes in one glance with following details for each player:</p>
@@ -26,16 +28,17 @@
     <p>Current player appears in <span style= "color:green">green</span>.</p>
     <% if current_user && current_user.role != "player" %>
       <p>Clicking on a box leads to the Box Referee view.</p>
-      <p>Footpage button links to <span class="white-text">League table</span>.</p>
+      <p>Footpage button links to <span class="colored-text">League table</span>.</p>
     <% else %>
       <p>Clicking on a box leads to the Box Table view.</p>
-      <p>Footpage links to <span class="white-text">League table</span>, and <span class="white-text">Enter my results</span> (= Manage my box page).</p>
+      <p>Footpage links to <span class="colored-text">League table</span>, and <span class="colored-text">Enter my results</span> (= Manage my box page).</p>
     <% end %>
 
     <br><h5>League table</h5>
-    <p>Each player appears in descending rank order. Headers are <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
+    <p>Each player appears in descending rank order under the headers <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
     Won </strong>(matches won)<strong>, Sets </strong>(sets played)<strong>, Won </strong>(sets won).</p>
-    <p>Footpage links to <span class="white-text">Back to top</span>, and <span class="white-text">All boxes</span>.</p>
+    <p>Clicking on a header sorts the player according to this header.</p>
+    <p>Footpage links to <span class="colored-text">Back to top</span>, and <span class="colored-text">All boxes</span>.</p>
 
     <% if current_user && current_user.role != "player" %>
       <br><h5>Box referee view</h5>
@@ -48,16 +51,16 @@
       <br><h5>Box Table view</h5>
       <p>Each player's matches are shown under their corresponding opponent.</p>
       <p>Current player appears in <span style= "color:green">green</span>.</p>
-      <p>Toggle link to <span class="white-text">List view</span>.</p>
+      <p>Toggle link to <span class="colored-text">List view</span>.</p>
 
       <br><h5>Box List view</h5>
       <p>Each player's matches which have been played are shown as list items. Headers are <strong>Match scores,
       Player match points, Opponent match points, Opponent's total points</strong>.</p>
-      <p>Current player appears in <span style= "color:green">green</span>, and a <span class="white-text">Enter new results</span> link to Manage my box is shown.</p>
-      <p>Toggle link to <span class="white-text">Table view</span>.</p>
+      <p>Current player appears in <span style= "color:green">green</span>, and a <span class="colored-text">Enter new results</span> link to Manage my box is shown.</p>
+      <p>Toggle link to <span class="colored-text">Table view</span>.</p>
 
       <br><h5>Manage my box</h5>
-      <p>Each of my box matches dates and players points with links such as <span class="white-text">Display my box</span>, <span class="white-text">See match results</span>, and <span class="white-text">Enter new score</span>.</p>
+      <p>Each of my box matches dates and players points with links such as <span class="colored-text">Display my box</span>, <span class="colored-text">See match results</span>, and <span class="colored-text">Enter new score</span>.</p>
     <% end %>
 
     <br><h5>Match results view</h5>
@@ -76,17 +79,17 @@
       <p>Form to modify match details, or delete score.</p>
     <% end %>
 
-  </div>
-  <br>
+  </div><br>
+
   <div class = "buttons-wrap">
-    <%= link_to "Tournament rules", rules_path, class: "btn button-shape btn-green" %>
-    <%= link_to "Club staff", staff_path, class: "btn button-shape btn-green" %>
-    <%# link_to "All boxes", boxes_path, class: "btn button-shape btn-green" %>
+    <%= link_to "Tournament rules", rules_path, class: "btn buttons-shape btn-green" %>
+    <%= link_to "Club staff", staff_path, class: "btn buttons-shape btn-green" %>
     <% if current_user && current_user.role == "admin" %>
-      <%= link_to "New round", new_user_box_score_path, class: "btn button-shape btn-green" %>
+      <%= link_to "New round", new_user_box_score_path, class: "btn buttons-shape btn-green" %>
     <% end %>
     <% unless current_user %>
-      <%= link_to "Log in to enter new match results", new_user_session_path, class: "btn button-shape btn-green" %>
+      <%= link_to "Log in to enter new match results", new_user_session_path, class: "btn buttons-shape btn-green" %>
     <% end %>
+    <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue" %>
   </div>
 </div>

@@ -1,41 +1,48 @@
 <%# show the league table %>
 <div class="container">
   <% name = "Box League Ranking" %>
-  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= @rules %>">
     <h3>League table</h3>
-  </div>
   <% if @round %>
     <div class="same-line">
       <div><%= render "shared/display_club_round", round: @round %></div>
-      <div>
-        <%= "Click on a player line to access their box" %>
-      </div>
-      <div></div>
     </div>
+    <% up = ["↓", "↑"] %>
+    <% down = ["↑", "↓"]%>
+    <% if params["sort"] %>
+      <% params["sort"] = nil  %>
+      <p class="stick-rules"><%= link_to "Click on a player line to access their box.",
+        user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape button-ghost no-padding-no-border" %></p>
+    <% else %>
+      <p class="stick-rules" >Click on a player line to access their box.</p>
+      <div class="photo-wrap frame-shape frame-padding">
+        <%= sanitize @rules %>
+      </div><br>
+    <% end %>
+<div>
+<%# <div class="league-frame"> %>
+<%# league-frame and league-containerallow overflow-x (horizontal scroll) but kills stickiness %>
+<%# stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  %>
     <div class="frame-shape frame-padding">
-      <p><%= sanitize @rules %></p>
-      <% up = ["↓", "↑"] %>
-      <% down = ["↑", "↓"]%>
+    <%# <div class="frame-shape frame-padding league-container"> %>
+      <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
+        <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Matches Played", dir: down%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Sets Played", dir: down%></div>
+        <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
+      </div>
       <ol type="1">
-        <div class="row justify-content-center sticky-header font-bold">
-            <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Matches", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
-        </div>
-        <div>
-          <%= render "league_table", user_box_scores: @user_box_scores %>
-        </div>
-      </ul>
+        <%= render "league_table", user_box_scores: @user_box_scores %>
+      </ol>
     </div>
+</div>
     <br>
     <div class="buttons-wrap">
-      <%= link_to "Back to top", "#top", class: "btn button-shape btn-green" %>
-      <%= link_to "All boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn button-shape btn-green" %>
+      <%= link_to "Back to top", "#top", class: "btn buttons-shape btn-blue" %>
+      <%= link_to "All boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green" %>
     </div>
   <% else %>
     <%# invoke forms to select a club (admin only) and a round %>
