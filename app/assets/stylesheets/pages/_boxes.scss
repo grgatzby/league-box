@@ -62,8 +62,8 @@
 }
 
 .box {
-  // background-color: beige;
   background-color: $tennis-green;
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
   position: relative;
   justify-content: center;
   align-items: center;
@@ -73,7 +73,6 @@
 
   &:hover {
     transform: scale(1.01);
-    // color: rgb(246, 137, 79);
     color: $tennis-blue;
     // border: solid 1px lightgrey;
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
