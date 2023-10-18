@@ -1,6 +1,36 @@
 // ------------ index page --------
-.same-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.stick-rules {
+  position: sticky;
+  top: 66px;
+  opacity: 1;
+  z-index: 1;
+  background-color: $tennis-green;
+  border-radius: 2px;
+  text-align: center;
 }
+
+.sticky-league-table-header {
+  position: sticky;
+  top: 90px;
+  // background-color: $tennis-green;
+  background-color: $tennis-beige;
+  opacity: 1;
+  z-index: 1;
+  border-radius: 0.25rem;
+}
+
+.no-padding-no-border {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+}
+
+.league-frame {
+  overflow-x: auto;
+}
+
+.league-container {
+  width: 80rem;
+}
+// @media only screen and (max-width: 1200px) {
+//   }

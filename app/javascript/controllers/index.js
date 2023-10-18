@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
+
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)

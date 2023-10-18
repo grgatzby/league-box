@@ -21,24 +21,24 @@ class UserBoxScoresController < ApplicationController
 
     case params[:sort]
     when "Player"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| user_box_scores.user.last_name }
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
     when "Points"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.points }
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
     when "Box"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| -@order * user_box_scores.box.box_number }
-    when "Matches"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.games_played }
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
+    when "Matches Played"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
     when "Matches Won"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.games_won }
-    when "Sets"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_played }
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
+    when "Sets Played"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
     when "Sets Won"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| @order * user_box_scores.sets_won }
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
     @rules = "A player's league position is determined by the total number of points won in a round.<br />
             In the event that two or more players have the same number of points the league position will be
-            determined by:
+            determined by:<br /><br />
             <ol>
               <li>Head to Head result (if only 2 players on the same score)</li>
               <li>Most matches played</li>

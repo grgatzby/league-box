@@ -1,7 +1,7 @@
 .buttons-shape {
   margin: 0 auto 5px;
   padding: 6px 24px;
-  border-radius: 0.25rem;
+  border-radius: 2px;
   // background: #4CAF50;
   // background: #339966;
   transition: background 0.3s ease;
@@ -9,11 +9,12 @@
 
 .btn-green {
   background: $tennis-green;
-  color: white;
+  color: $tennis-blue;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
-    background: #3e8e41;
+    // background: #3e8e41;
+    background: $tennis-green;
     color: white;
   }
 }
@@ -29,6 +30,17 @@
   }
 }
 
+.btn-beige {
+  background: $tennis-beige;
+  color: $tennis-blue;
+
+  &:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+    background: $tennis-blue;
+    color: white;
+  }
+}
+
 .btn-aqua {
   background: $tennis-aqua;
   color: white;
@@ -39,7 +51,6 @@
   color: white;
   }
 }
-
 
 .button-ghost {
   margin: 0 auto 5px;

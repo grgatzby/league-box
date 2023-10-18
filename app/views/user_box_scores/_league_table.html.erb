@@ -6,6 +6,7 @@
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
 
       <div class="row justify-content-center player-name">
+      <%# <div class="row justify-content-center player-name grid-container"> %>
         <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
         <div class="col-sm-1 text-padding"><%= "# #{user_box_score.rank}" %></div>
         <div class="col-sm-1 text-padding"><%= pluralize user_box_score.points, "pt" %></div>

@@ -6,8 +6,14 @@
   <style>
   /* custom CSS */
   .container {
-    margin: 20rem auto;
+    margin: 0 auto;
     width: 50%;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .container {
+      width: 80%;
+    }
   }
 
   .message {
@@ -46,23 +52,50 @@
     background: #7f7f7f;
     color: white;
   }
+
+  .stick-image-front {
+    position: sticky;
+    /* top: 66px; */
+  }
+
+  .image-front {
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .image-front > .image-front-text {
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+    padding-top: 150px;
+    text-align: center;
+  }
+
 </style>
 </head>
 
 <body>
   <!-- This file lives in public/500.html -->
+  <div class="image-front stick-image-front"
+    style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/social_tennis.jpg')">
+    <br><h4 class="mx-5 image-front-text">League Box</h4><br>
+  </div><br>
+
   <div class="container">
     <div class="message">
       <div>
-        <img src="tennis_racket.jpg" alt="tennis_racket image"  height=50>
+        <img src="/tennis_racket.jpg" alt="tennis_racket image"  height=50>
       </div>
       <div class="frame-shape">
-        <h1>League box</h1>
+        <!-- <h1>League box</h1> -->
         <h3>We're sorry, but something went wrong.</h3>
         <p>If you are the application owner check the logs for more information.</p>
           </div>
       <div>
-        <img  src="tennis_racket.jpg" alt="tennis_racket image"  height=50>
+        <img  src="/tennis_racket.jpg" alt="tennis_racket image"  height=50>
       </div>
     </div>
     <br>

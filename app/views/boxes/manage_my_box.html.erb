@@ -14,9 +14,6 @@
       <br><br>
     <div class="same-line">
       <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
-      <div></div>
-      <div><%= "Select an action" %></div>
-      <div></div>
     </div>
       <div class="frame-shape players frame-padding">
         <h4>My box: view or enter match scores</h4>
@@ -63,6 +60,10 @@
             </div>
           </div>
         <% end %>
+      </div><br>
+      <div class="frame-shape players frame-padding">
+        <h4>My box: chat with my opponents</h4>
+
       </div>
     <% end %>
     <br>
@@ -71,7 +72,9 @@
       <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
       <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue" %>
     <% else %>
-      <%= link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+      <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+      <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
+      <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue" %>
     <% end %>
     </div>
   <% end %>
