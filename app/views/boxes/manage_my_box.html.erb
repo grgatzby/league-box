@@ -1,5 +1,5 @@
 <!-- player page to view match results, enter new scores -->
-<div class="container">
+<div class="container text-size">
   <h3>My box results</h3>
   <% if @box %>
     <% @round = @box.round %>
@@ -15,11 +15,11 @@
       <div class="same-line">
         <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
       </div>
-      <div class="frame-shape players frame-padding">
+      <div class="frame-shape players frame-padding text-size">
         <h4>View or enter match scores</h4>
         <!-- open forms to chose club and round -->
         <h6>
-          <div class="row justify-content-center text-padding font-bold">
+          <div class="row justify-content-center text-padding font-bold text-size">
             <div class="col-sm-3">Player</div>
             <div class="col-sm-2">Total points</div>
             <div class="col-sm-2">Match played on</div>
@@ -51,21 +51,21 @@
             </div>
             <div class="col-sm-3">
               <% if opponent == @current_player %>
-                <%= link_to "View my box", box_list_path(@box), class: "btn buttons-shape btn-blue" %>
+                <%= link_to "View my box", box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
-                <%= link_to "See match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost" %>
+                <%= link_to "See match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
               <% else %>
-                <%= link_to "Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost" %>
+                <%= link_to "Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost text-size" %>
               <% end %>
             </div>
           </div>
         <% end %>
       </div><br>
 
-      <div class="frame-shape players frame-padding">
+      <div class="frame-shape players frame-padding text-size">
         <h4>Chat with my opponents</h4>
         <div class="buttons-wrap">
-          <%= link_to "Access my chatroom", chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue" %>
+          <%= link_to "Access my chatroom", chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
         </div>
       </div>
     <% end %>
@@ -73,11 +73,11 @@
     <div class="buttons-wrap">
       <% if @page_from %>
         <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-        <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue" %>
+        <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue text-size" %>
       <% else %>
         <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-        <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
-        <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue" %>
+        <%= link_to "Back", :back, class: "btn buttons-shape btn-blue text-size" %>
+        <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue text-size" %>
       <% end %>
     </div>
   <% end %>
