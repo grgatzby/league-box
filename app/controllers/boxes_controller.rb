@@ -21,10 +21,12 @@ class BoxesController < ApplicationController
     @points = "Winner earns 20 points.<br />
     Looser earns 10 points per set won + number of games per lost set.<br />
     The championship tie-break counts as one set (no points awarded for the looser)."
+    # inherits from #show method
     show
   end
 
   def show_referee
+    # inherits from #show method
     show
   end
 
@@ -51,6 +53,17 @@ class BoxesController < ApplicationController
         @my_games << [user_box_score, match_played]
       end
       @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
+
+      if @box.chatroom == @general_chatroom
+        # since the Chatroom class as been migrated after the Box class (a chatroom has one box)
+        # the migration script assigned by default the chatroom "general" to existing boxes
+        # in which case a new chatroom has to be created whith name "[Club name] - b[Box number]/R[Round id]"
+        # it will NOT remain available to players when in the next round (chatroom is round specific)
+        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{format('%02d', @box.round.id)}")
+        @box.update(chatroom_id: @chatroom.id)
+      else
+        @chatroom = @box.chatroom
+      end
     end
   end
 

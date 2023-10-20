@@ -37,7 +37,7 @@
     <%= link_to "Club staff", staff_path, class: "btn buttons-shape btn-green" %>
     <%= link_to "Website map", structure_path, class: "btn buttons-shape btn-green" %>
     <% if current_user && current_user.role == "admin" %>
-      <%= link_to "New round", new_user_box_score_path, class: "btn buttons-shape btn-aqua" %>
+      <%= link_to "Create new round", new_user_box_score_path, class: "btn buttons-shape btn-aqua" %>
     <% end %>
   </div>
 </div>

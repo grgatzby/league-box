@@ -1,10 +1,11 @@
-<%# admin/referee show page by list of matches, allows to edit, delete score, input new score (admin only) %>
+<!-- admin/referee show page by list of matches, allows to edit, delete score, input new score (admin only) -->
 <div class="container">
   <% if current_user.role == "player" %>
-  <br><br><%= "As a player, this page is not authorised" %>
+    <br><br><%= "As a player, this page is not authorised" %>
   <% else %>
     <br>
     <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
+  <%= render "intro_lines", box: @box, view_type: "referee" %>
     <div class="same-line">
       <div><%= render "shared/display_club_round", round: @box.round %></div>
       <div>
@@ -14,7 +15,7 @@
       <div></div>
     </div>
 
-    <div class = "frame-shape frame-padding">
+    <div class = "frame-shape frame-padding text-size">
       <div class="row font-bold text-padding sticky-header">
         <div class="col-sm-4"></div>
         <div class="col-sm-2">Match score</div>
@@ -59,7 +60,7 @@
                             <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
                             <div class="col-sm-2 text-blue"><%= pluralize opponent_score.points, "pt" %></div>
                             <div class="col-sm-2 text-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
-                            <%# click on player line to update/delete match and user_match_scores details %>
+                            <!-- click on player line to update/delete match and user_match_scores details -->
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>
                         </div>
@@ -72,7 +73,7 @@
                       <% if current_user == @admin %>
                         <% message = "Click to enter the new match score for<br />#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
-                          <%# click on opponent line to enter new match score %>
+                          <!-- click on opponent line to enter new match score -->
                           <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>
                         </div>
                       <% end %>
@@ -83,7 +84,7 @@
           </li>
         <% end %>
       </ul>
-    </div>
+    </div><br>
   <% end %>
   <br>
   <div class="buttons-wrap">

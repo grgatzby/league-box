@@ -1,3 +1,4 @@
+<!-- player: enter a new match score -->
 <div class = "container">
   <br>
   <h3>New match score</h3>
@@ -29,6 +30,7 @@
         <div class="col-sm-2">Date & time:</div>
         <div class="col-sm-3">
           <%= f.date_field(:time, min: @round.start_date, max: @end_select, value: @end_select ) %>
+          <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
           <%= f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>
       </div>

@@ -1,0 +1,45 @@
+<%# partial: display message in the chatroom; called from the Chatroom show page %>
+<!--<div id="message-<%= message.id %>" >
+  <small>
+    <% sender = message.user.club == current_user.club ? "" : "#{message.user.club.name}: " %>
+    <% sender += render "shared/fullname", user: message.user %>
+    <% if message.user.role == "player" %>
+      <% box = message.user.user_box_scores.map(&:box).last %>
+      <% user_box_score = UserBoxScore.find_by(user_id: message.user.id, box_id: box.id) %>
+      <% sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"  %>
+    <% else %>
+      <% sender += " (#{message.user.role})"  %>
+    <% end %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-content="<%= sender %>">
+      <strong><%= message.user.nickname %></strong>
+    </div>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= sanitize message.content %></p>
+</div> -->
+
+<!-- improved the styling thanks to https://www.honeybadger.io/blog/chat-app-rails-actioncable-turbo/
+the styling is now sender specific:
+style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.html.erb -->
+<div id="message-<%= message.id %>" class="cont-<%= message.user.id %>">
+
+  <div class="message-box msg-<%= message.user.id %> ">
+    <small>
+      <% sender = message.user.club == current_user.club ? "" : "#{message.user.club.name}: " %>
+      <% sender += render "shared/fullname", user: message.user %>
+      <% if message.user.role == "player" %>
+        <% box = message.user.user_box_scores.map(&:box).last %>
+        <% user_box_score = UserBoxScore.find_by(user_id: message.user.id, box_id: box.id) %>
+        <% sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"  %>
+      <% else %>
+        <% sender += " (#{message.user.role})"  %>
+      <% end %>
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-content="<%= sender %>">
+        <strong><%= message.user.nickname %></strong>
+      </div>
+      <!--<i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
+      <small><i><%= message.created_at.strftime("%a %-d %b at %H:%M") %></i></small>
+    </small>
+    <p><%= sanitize message.content %></p>
+  </div>
+</div>

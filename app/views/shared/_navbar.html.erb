@@ -1,4 +1,4 @@
-<%# partial: navbar %>
+<!-- partial: navbar -->
 <div class="navbar navbar-expand-sm navbar-light navbar-league-box">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
@@ -25,7 +25,7 @@
           </li>
           <li class="nav-item">
             <% if current_user && current_user.role == "player" %>
-              <%# passing 0 to manage_my_box_path, forces user to chose a round%>
+              <!-- passing 0 to manage_my_box_path forces the _select_club_round form -->
               <%= link_to "My box", manage_my_box_path(0), class: "nav-link" %>
             <% end %>
           </li>
@@ -34,6 +34,11 @@
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "All boxes", boxes_path, class: "dropdown-item" %>
               <%= link_to "League table", user_box_scores_path, class: "dropdown-item" %>
+              <% if current_user.role == "player" %>
+                <%= link_to "#general chatroom", chatroom_path(@general_chatroom), class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "Chatrooms", chatroom_path(0), class: "dropdown-item" %>
+              <% end %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>

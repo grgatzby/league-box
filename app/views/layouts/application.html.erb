@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      /* styling for the self written messages in the chatroom */
+      <%= ".msg-#{current_user&.id}" %> {
+      /* background-color: #007bff !important; */
+      background-color: #FFC65A !important;
+      opacity: 90%;
+      padding: 5px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      display: flex;
+      justify-content: flex-end
+      }
+    </style>
+
     <title><%= meta_title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="<%= meta_description %>">

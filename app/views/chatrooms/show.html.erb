@@ -1,0 +1,46 @@
+<!-- display or chose and display (admin/referee) a chatroom
+chatrooms for each box are created in Box controller #manage_my_box,
+if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
+<% if @chatroom %>
+<!-- coming from Box/manage_my_box -->
+  <div class="container"
+    data-controller="chatroom-subscription"
+    data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+  >
+    <h3>#<%= @chatroom.name %> chatroom</h3>
+    <div class="frame-shape chatroom">
+      <div class="messages" data-chatroom-subscription-target="messages">
+        <% @chatroom.messages.sort.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
+      </div>
+
+      <%= simple_form_for [@chatroom, @message],
+        html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
+      %>
+        <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@chatroom.name}",
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", class: "btn buttons-shape btn-beige ms-2 mb-3" %>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <!-- referees and admin get to select a chatroom -->
+  <div class="container">
+    <h3><%= "#{@current_user.club.name} chatrooms" %></h3>
+    <div class="frame-shape players frame-padding">
+      <%= form_with url: chatroom_path, method: :get do |form| %>
+        <%= form.label :chatroom, "Select a chatroom: " %>
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select :chatroom, @chatrooms %>
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit "Confirm", class: "btn buttons-shape btn-green" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<br>
+<div class="buttons-wrap">
+  <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
+</div>
