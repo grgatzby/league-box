@@ -2,6 +2,8 @@ class RoundsController < ApplicationController
   def new
     # admin or referee to generate next round from current: form
     # if admin logged in, club given by params[:club_id]
+    # TO DO: the #current_round method won't work after the last round is over:
+    # create a new Round scope such as last?
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
     @message = "Select box move, for example:<br />
@@ -39,6 +41,8 @@ class RoundsController < ApplicationController
   def create
     # admin or referee to generate next round from current
     # if admin logged in, club given by params[:club_id]
+    # TO DO: create a chatroom for each new box:
+    # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
     current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @new_round = Round.create(club_id: current_round.club_id,
                               start_date: params[:round][:start_date].to_date,
@@ -49,7 +53,7 @@ class RoundsController < ApplicationController
     apply_shifts(current_boxes, temp_boxes)
     clean_boxes(temp_boxes, current_boxes[0].user_box_score_ids.length)
 
-    # redirect to all boxes
+    # redirect to boxes/index
     redirect_to boxes_path(round_start: @new_round.start_date, club_name: current_round.club.name)
   end
 
@@ -94,7 +98,7 @@ class RoundsController < ApplicationController
     # create groups of user_box_scores (nb_player_per_box items per group)
     new_user_box_score_groups = []
     nb_new_boxes = all_user_box_scores.count / nb_player_per_box
-    # shift(n) is an array method: removes first n element from array and returns the array of these n elements
+    # shift(n) is an Array method: removes first n element from array and returns the array of these n elements
     nb_new_boxes.times { new_user_box_score_groups << all_user_box_scores.shift(nb_player_per_box) }
     new_user_box_score_groups << all_user_box_scores unless all_user_box_scores.empty?
     nb_new_boxes = new_user_box_score_groups.count
@@ -105,7 +109,7 @@ class RoundsController < ApplicationController
     end
 
     # delete remaining empty boxes (not destroy because dependent destroy still links updated user_box_scores)
-    # shift(n) is an array method: removes first n element from array and returns the array of these n elements
+    # shift(n) is an Array method: removes first n element from array and returns the array of these n elements
     temp_boxes.shift(nb_new_boxes) # remove populated boxes from temp_boxes array
     temp_boxes.each(&:delete)
   end

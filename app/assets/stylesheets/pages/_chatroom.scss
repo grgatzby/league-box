@@ -1,0 +1,11 @@
+// The specific styling of the messages for current_user is performed in #app/views/layouts/application.html.erb
+
+.message-box {
+  width: fit-content;
+  // max-width: 40%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  // background-color: #555555 ;
+  // padding: 10px
+}

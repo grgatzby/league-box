@@ -1,4 +1,4 @@
-<%# player show page by list of matches %>
+<!-- player show page by list of matches -->
 <div class="container">
   <%= render "intro_lines", box: @box, view_type: "list" %>
   <div class="same-line">
@@ -24,8 +24,8 @@
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
-        <%# for a player (user) : @box_matches = array of [user_box_score , matches(user)]
-            with : matches(user): array of [match, opponent, user_score, opponent_score] %>
+        <!-- for a player (user) : @box_matches = array of [user_box_score , matches(user)]
+            with : matches(user): array of [match, opponent, user_score, opponent_score] -->
         <li>
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>

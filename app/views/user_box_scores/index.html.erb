@@ -1,4 +1,4 @@
-<%# show the league table %>
+<!-- display the league table -->
 <div class="container">
   <% name = "Box League Ranking" %>
     <h3>League table</h3>
@@ -18,34 +18,35 @@
         <%= sanitize @rules %>
       </div><br>
     <% end %>
-<div>
-<%# <div class="league-frame"> %>
-<%# league-frame and league-containerallow overflow-x (horizontal scroll) but kills stickiness %>
-<%# stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  %>
-    <div class="frame-shape frame-padding">
-    <%# <div class="frame-shape frame-padding league-container"> %>
-      <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
-        <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Matches Played", dir: down%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Sets Played", dir: down%></div>
-        <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
-      </div>
-      <ol type="1">
-        <%= render "league_table", user_box_scores: @user_box_scores %>
-      </ol>
+
+    <div>
+    <%# <div class="league-frame"> %>
+    <!-- league-frame and league-containerallow overflow-x (horizontal scroll) but kills stickiness %>
+    <%# stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  -->
+        <div class="frame-shape frame-padding">
+        <%# <div class="frame-shape frame-padding league-container"> %>
+          <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
+            <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Matches Played", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Sets Played", dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
+          </div>
+          <ol type="1">
+            <%= render "league_table", user_box_scores: @user_box_scores %>
+          </ol>
+        </div>
     </div>
-</div>
     <br>
     <div class="buttons-wrap">
       <%= link_to "Back to top", "#top", class: "btn buttons-shape btn-blue" %>
       <%= link_to "All boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green" %>
     </div>
   <% else %>
-    <%# invoke forms to select a club (admin only) and a round %>
+    <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
     <%= render "shared/select_club_round", fallback_path: user_box_scores_path %>
   <% end %>
 </div>

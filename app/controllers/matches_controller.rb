@@ -118,7 +118,6 @@ class MatchesController < ApplicationController
     @current_player = @user_match_scores[0].user
     @opponent = @user_match_scores[1].user
 
-
     @match = Match.find(params[:match_id])
     @match.court_id = @match.court.name
     @round = @match.box.round

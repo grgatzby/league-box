@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_13_131732) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_223106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,7 +19,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_131732) do
     t.bigint "round_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "chatroom_id", null: false
+    t.index ["chatroom_id"], name: "index_boxes_on_chatroom_id"
     t.index ["round_id"], name: "index_boxes_on_round_id"
+  end
+
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -44,6 +52,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_131732) do
     t.datetime "updated_at", null: false
     t.index ["box_id"], name: "index_matches_on_box_id"
     t.index ["court_id"], name: "index_matches_on_court_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "rounds", force: :cascade do |t|
@@ -105,10 +123,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_13_131732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boxes", "chatrooms"
   add_foreign_key "boxes", "rounds"
   add_foreign_key "courts", "clubs"
   add_foreign_key "matches", "boxes"
   add_foreign_key "matches", "courts"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "rounds", "clubs"
   add_foreign_key "user_box_scores", "boxes"
   add_foreign_key "user_box_scores", "users"

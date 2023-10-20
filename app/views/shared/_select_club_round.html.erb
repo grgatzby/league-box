@@ -1,7 +1,7 @@
-<%# partial: let the user select a club and a round %>
+<!-- partial: let the user select a club and a round -->
 <% if current_user == @admin %>
   <% if !params[:round_start] || params[:club_name] %>
-    <%# for the admin: display the club form before the round form, then keep displaying it %>
+    <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
       <%= form.label :club_name, "Select a club: " %>
       <%= form.select :club_name, @club_names, :selected => params[:club_name] %>
@@ -15,13 +15,13 @@
   <% end %>
 <% else %>
   <% if !params[:round_start] %>
-    <%# display the club name until the round form has been answered %>
+    <!-- display the club name until the round form has been answered -->
     <%= @club.name %>
   <% end %>
 <% end %>
 
 <% if !params[:round_start] && params[:club_name] || (current_user != @admin) %>
-  <%# display the round form if a club is defined %>
+  <!-- display the round form IF a club is already defined -->
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= form.label :round_start, "Select a round start date: " %>
     <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>&nbsp;&nbsp;&nbsp;&nbsp;

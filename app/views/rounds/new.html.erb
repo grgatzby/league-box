@@ -1,4 +1,4 @@
-<%# admin/referee: create new next round %>
+<!-- admin/referee: create new next round. Accessed from Box index view -->
 <div class="container">
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= @message %>">
     <h3>Proposed player moves for next round</h3>
@@ -8,14 +8,13 @@
     <%= form_for @new_round do |f| %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= @message_boxes %>">
         <div class="boxes">
-          <%# @boxes.each do |box| %>
+
           <%= f.fields_for :boxes do |new_box| %>
             <% box = @boxes[new_box.index] %>
             <div class="box small-font">
               <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
               <ol type="1">
                 <% user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
-                <%# user_box_scores.each do |user_box_score| %>
                 <%= new_box.fields_for :user_box_scores do |new_user_box_score| %>
                   <% user_box_score = user_box_scores[new_user_box_score.index] %>
                   <li><div class="row">
@@ -23,14 +22,13 @@
                     <div class="col-sm-2"><%= "##{user_box_score.rank}" %></div>
                     <div class="col-sm-1"><%= "#{user_box_score.games_played}" %></div>
                     <div class="col-sm-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
-                    <%# shift is an array method: removes first element from array and returns the element %>
+                    <!-- shift is an array method: removes first element from array and returns the element -->
                   </div></li>
                 <% end %>
-                <%# end %>
               </ol>
             </div>
           <% end %>
-          <%# end %>
+
           <div class="box_select small-font">
             <div class="box-title"><strong><%= "New round" %></strong></div>
             <br><br>Start date :

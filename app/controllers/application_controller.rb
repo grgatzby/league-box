@@ -3,6 +3,22 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
 
+  # application schema in https://kitt.lewagon.com/db/95868
+  # Existing features:
+  # - players can: view a box (in list or grid view), enter a new match score in their own box, view all boxes,
+  #                view the league table, access the #general chatroom and their box chatroom.
+  # - referees can: view a box (in referee view), edit / delete a match score, view all boxes,
+  #                 view the league table, access the #general chatroom and all of their club's chatrooms,
+  #                 create a new round, from an existing one.
+  # - admin can: view a box (in referee view), enter / edit / delete a match score, view all boxes,
+  #              view the league table, access the #general chatroom and all other chatrooms,
+  #              create a new club and its boxes (from a CSV file), create a new round.
+  #
+  # TO DO: navbar dropdown does not work with the click; currently triggered by the Down key
+  # TO DO: adjust times (currently lagged system date)
+  # TO DO: should I allow referees to create a match (ie new score) as can the admin?
+  # TO DO: rails interntionalization (I18n) https://guides.rubyonrails.org/i18n.html
+
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :nickname,:phone_number, :role])
@@ -14,10 +30,10 @@ class ApplicationController < ActionController::Base
   def global_variables
     # players and referees belong to a club, the admin belongs to the sample club
     @sample_club = Club.find_by(name: "your tennis club")
-
     @club = current_user ? current_user.club : @sample_club
     @admin = User.find_by(role: "admin")
     @referee = User.find_by(role: "referee", club_id: @club.id)
+    @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
   end
 
   # def after_sign_in_path_for(resource)
@@ -48,9 +64,9 @@ class ApplicationController < ActionController::Base
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the 3 methods #current_round, #my_box and #match_score are invoked
-  # - by #show (and #show_list and #show_referee) in BoxesControllers
-  # - by from #show in MatchesController
+  # the #current_round, #my_box and #match_score methods are invoked
+  # - from #show, #show_list and #show_referee methods in BoxesControllers
+  # - from #show method in MatchesController
 
   def current_round(club_id)
     # given a club_id, returns its current round
@@ -67,7 +83,7 @@ class ApplicationController < ActionController::Base
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the method #rank_players is invoked
+  # the #rank_players method is invoked
   # - by #index in UserBoxScoresController
   # - and by #create in MatchesController
 
@@ -76,7 +92,7 @@ class ApplicationController < ActionController::Base
     scores = scores.sort { |a, b| compare(a, b) }
     # updates the rank field in the UserBoxScore database
 
-    # previous ranking (flawed), based on points only :
+    # simple ranking, based on points only :
 
     # points_array = scores.map(&:points)
     # sorted_points = points_array.sort.uniq.reverse
@@ -84,7 +100,7 @@ class ApplicationController < ActionController::Base
     #   score.update(rank: sorted_points.index(score.points) + 1)
     # end
 
-    # new ranking based on sorting criterias and ties :
+    # correct ranking based on 4 sorting criterias and ties :
 
     rank_tied = 1
     player = scores.first
@@ -100,7 +116,7 @@ class ApplicationController < ActionController::Base
 
   def compare(a, b)
     # the 4 compare methods use the spaceship operator
-    # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b not comparable)
+    # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b are not comparable)
     comparison = compare_points(a, b)
     return comparison unless comparison.zero?
 

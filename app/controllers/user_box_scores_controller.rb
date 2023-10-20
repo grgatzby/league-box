@@ -54,6 +54,8 @@ class UserBoxScoresController < ApplicationController
     # (admin only) create a club, its courts, players (from csv file), a round, its boxes and user_box_scores
     # the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players, referee)
     # players are allocated in boxes by id in descending order.
+    # TO DO: create a chatroom for each new box
+    # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
     csv_file = params[:csv_file]
     if csv_file.content_type == "text/csv"
