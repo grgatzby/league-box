@@ -1,4 +1,7 @@
 class ChatroomsController < ApplicationController
+# help from Mike Pottebaum for the production launch (after H10 crash errors)
+# https://medium.com/swlh/deploying-a-rails-react-app-with-actioncable-to-heroku-cb5d42f41a2a
+
   def show
     # display the chatroom
     # method is accessed from either the navbar, or the show_referee or manage_my_box view pages
