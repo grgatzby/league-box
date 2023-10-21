@@ -1,18 +1,14 @@
 class ChatroomsController < ApplicationController
-# help from Mike Pottebaum for the production launch (after H10 crash errors)
-# https://medium.com/swlh/deploying-a-rails-react-app-with-actioncable-to-heroku-cb5d42f41a2a
-
   def show
     # display the chatroom
     # method is accessed from either the navbar, or the show_referee or manage_my_box view pages
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
-      # coming from the form in show_referee view page
-      # [1..-1] to remove the first hash tag in the name
+      # coming from the form in show_referee view page ([1..-1] removes the first character '#' of the name)
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..-1])
     elsif params[:id] == "0"
-      # defines the list of chatrooms available for the referee or the admin
-      # to chose from in the form. For a referee: only those from his club
+      # defines the list of chatrooms available for the referee or the admin to select
+      # in the form. For a referee: only those from his club
       if current_user == @admin
         @chatrooms = Chatroom.all
       else
@@ -22,7 +18,7 @@ class ChatroomsController < ApplicationController
           club == @current_user.club
         end
       end
-      # adding the hash tag in front of the chatroom names (for display in the form)
+      # add the '#' in front of the chatroom names (for display in the form)
       @chatrooms = @chatrooms.map { |chatroom| "##{chatroom.name}" }
     else
       # coming from the navbar or manage_my_box view page

@@ -11,29 +11,27 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        <li class="nav-item time-padding">
+          <%= "#{Time.now.strftime("%a %-d %b")} #{Time.now.strftime("%H:%M")}" %>&nbsp;&nbsp
+        </li>
+        <li class="nav-item time-padding">
+          <% if user_signed_in? && @round %>
+            <%= " Round: #{@round.start_date.strftime("%b %y")} - #{@round.end_date.strftime("%b %y")}" %>
+          <% end %>
+        </li>
         <% if user_signed_in? %>
-          <li class="nav-item active time-padding">
-            <%= "#{Time.now.strftime("%a %-d %b")} #{Time.now.strftime("%H:%M")}" %>&nbsp;&nbsp
-          </li>
-          <li class="nav-item time-padding">
-            <% if user_signed_in? && @round %>
-              <%= " Round: #{@round.start_date.strftime("%b %y")} - #{@round.end_date.strftime("%b %y")}" %>
-            <% end %>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <% if current_user && current_user.role == "player" %>
-              <!-- passing 0 to manage_my_box_path forces the _select_club_round form -->
-              <%= link_to "My box", manage_my_box_path(0), class: "nav-link" %>
-            <% end %>
-          </li>
           <li class="nav-item dropdown">
-            <a class="nav-link" href="#" data-bs-toggle="dropdown"><%= "#{current_user.nickname} - #{current_user.role}" %></a>
+            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.nickname} - #{current_user.role}" %></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "All boxes", boxes_path, class: "dropdown-item" %>
               <%= link_to "League table", user_box_scores_path, class: "dropdown-item" %>
+              <% if current_user && current_user.role == "player" %>
+                <!-- passing 0 to manage_my_box_path forces the _select_club_round form -->
+                <%= link_to "My box", manage_my_box_path(0), class: "dropdown-item color-tennis-blue" %>
+              <% end %>
               <% if current_user.role == "player" %>
                 <%= link_to "#general chatroom", chatroom_path(@general_chatroom), class: "dropdown-item" %>
               <% else %>
@@ -43,9 +41,6 @@
             </div>
           </li>
         <% else %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

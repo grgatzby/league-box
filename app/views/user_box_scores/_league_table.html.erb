@@ -1,6 +1,6 @@
 <% user_box_scores.each do |user_box_score| %>
   <% player = user_box_score.user %>
-  <li style=<%=player == current_user ? "color:#336699" : ""%>>
+  <li class=<%=player == current_user ? "color-tennis-blue" : ""%>>
     <% name = "#{render "shared/fullname", user: player}" %>
     <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">

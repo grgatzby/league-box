@@ -73,7 +73,7 @@
                         <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
                         <%= "[#{match.time.strftime("%a %-d %b")}]" %>
                         <br><%= "#{line_player.last_name}: " %><%= pluralize user_score.points, "pt" %>
-                        <span style="color:#336699">
+                        <span class=" color-tennis-blue">
                           <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
                         </span>
                       <% elsif opponent == line_player %>
