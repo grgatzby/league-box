@@ -33,7 +33,7 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
     <h3><%= "#{@current_user.club.name} chatrooms" %></h3>
     <div class="frame-shape players frame-padding">
       <%= form_with url: chatroom_path, method: :get do |form| %>
-        <%= form.label :chatroom, "Select a chatroom: " %>
+        <%= form.label :chatroom, "Chose a chatroom: " %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select :chatroom, @chatrooms %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit "Confirm", class: "btn buttons-shape btn-green" %>
       <% end %>

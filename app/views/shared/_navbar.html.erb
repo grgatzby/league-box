@@ -12,7 +12,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <li class="nav-item time-padding">
-          <%= "#{Time.now.strftime("%a %-d %b")} #{Time.now.strftime("%H:%M")}" %>&nbsp;&nbsp
+          <%= "#{Time.now.strftime("%a %-d %b")}" %>&nbsp;&nbsp<%= "#{Time.now.strftime("%H:%M")}" %>&nbsp;&nbsp
         </li>
         <li class="nav-item time-padding">
           <% if user_signed_in? && @round %>
@@ -25,7 +25,7 @@
         <%# if user_signed_in? && current_user != @dummy_user%>
         <% if user_signed_in?%>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.nickname} - #{current_user.role}" %></a>
+            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.role} #{current_user.nickname}" %></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "All boxes", boxes_path, class: "dropdown-item" %>
               <%= link_to "League table", user_box_scores_path, class: "dropdown-item" %>

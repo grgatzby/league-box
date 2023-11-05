@@ -35,8 +35,10 @@
           <div class="col-sm-2"><%= "#{referee.phone_number}" %></div>
           <div class="col-sm-3"><%= "#{referee.club.name} referee" %></div>
         </div>
+        <br>
       <% end %>
     <% end %>
+    
     <% if @referee %>
       <div class="row">
         <div class="col-sm-2"><%= render "shared/fullname", user: @referee%></div>
