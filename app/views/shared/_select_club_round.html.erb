@@ -1,5 +1,10 @@
 <%# partial: let the user select a club and a round %>
+<% if !params[:round_start] %>
+  <%= sanitize intro_paragraph %>
+<% end %>
+
 <% if current_user == @admin %>
+  <%# if !params[:round_start] || params[:club_name] %>
   <% if !params[:round_start] || params[:club_name] %>
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
@@ -8,7 +13,6 @@
       <% if !params[:club_name] || params[:round_start] %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit "Confirm", class: "btn buttons-shape btn-green" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
         <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
       <% end %>
     <% end %>
@@ -17,11 +21,12 @@
   <% if !params[:round_start] %>
     <!-- display the club name until the round form has been answered -->
     <%= @club.name %>
+    <br><br>
   <% end %>
 <% end %>
 
 <% if !params[:round_start] && params[:club_name] || (current_user != @admin) %>
-  <!-- display the round form IF a club is already defined -->
+  <!-- for players and referees: display the round form IF a club is already set -->
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= form.label :round_start, "Select a round start date: " %>
     <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>&nbsp;&nbsp;&nbsp;&nbsp;

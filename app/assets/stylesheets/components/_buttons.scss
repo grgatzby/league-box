@@ -1,11 +1,44 @@
+.buttons-wrap { /* wrapper for the bottom buttons area */
+  display: flex;
+  margin: 0 auto;
+  padding: 5px 24px;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  justify-content: center;
+  width: 70%;
+}
+
 .buttons-shape {
-  margin: 0 auto 5px;
+  margin: 0 auto $btn-margin;
   padding: 6px 24px;
-  border-radius: 2px;
+  border-radius: 0.25rem;
   // background: #4CAF50;
   // background: #339966;
   transition: background 0.3s ease;
 }
+
+.button-ghost {
+  margin: 0 auto 5px;
+  // border: 1px solid #4A4A4A;
+  padding: 6px 0px;
+  color: $tennis-blue;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #7f7f7f;
+  }
+}
+
+.button-top {
+  position: fixed;
+  bottom: $footer-height; /* Place the button relative to the bottom of the page */
+  right: 5px; /* Place the button 5px from the right */
+
+  z-index: 99; /* Make sure it does not overlap */
+}
+
 
 .btn-green {
   background: $tennis-green;
@@ -14,8 +47,8 @@
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     // background: #3e8e41;
-    background: $tennis-green;
-    color: white;
+    background: #7f7f7f;
+    color: $tennis-blue;
   }
 }
 
@@ -49,19 +82,5 @@
   box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
   background: rgb(145, 91, 150);
   color: white;
-  }
-}
-
-.button-ghost {
-  margin: 0 auto 5px;
-  color: $tennis-blue;
-  // border: 1px solid #4A4A4A;
-  padding: 6px 0px;
-  font-weight: bold;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-
-  &:hover {
-    color: #7f7f7f;
   }
 }

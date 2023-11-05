@@ -3,6 +3,7 @@ class UserBoxScoresController < ApplicationController
 
   def index
     # displays the league table, allows user to sort the table by headers clicks
+    @intro_paragraph = "For a given round, view the <strong>league table</strong> of your club"
 
     set_club_round
 

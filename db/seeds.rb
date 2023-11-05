@@ -48,7 +48,7 @@ if true
     phone_number: "+32470970853",
     password: "650702",
     role: "admin",
-    club_id: sample_club.id  # user needs to belong to a club
+    club_id: sample_club.id # user needs to belong to a club
   )
 
   clubs = Club.all.reject { |club| club == sample_club }

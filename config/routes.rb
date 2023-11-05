@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
+  get "contact", to: "messages#contact", as: "contact"
 end

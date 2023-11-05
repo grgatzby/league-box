@@ -1,8 +1,11 @@
+# require 'tzinfo'
+
 class BoxesController < ApplicationController
   # skip_before_action :authenticate_user!, only: :index
   def index
     @page_from = params[:page_from]
     @message_boxes = "<strong>Box columns:</strong><br />player name, rank,<br />games played, box points"
+    @intro_paragraph = "For a given round, view for all boxes at a glance <strong>player names, rankings, games played and box points</strong><br />in your club"
     # define variables @club and @round
     set_club_round
   end
@@ -18,11 +21,11 @@ class BoxesController < ApplicationController
   end
 
   def show_list
+    # inherits from #show method
+    show
     @points = "Winner earns 20 points.<br />
     Looser earns 10 points per set won + number of games per lost set.<br />
     The championship tie-break counts as one set (no points awarded for the looser)."
-    # inherits from #show method
-    show
   end
 
   def show_referee
@@ -33,6 +36,7 @@ class BoxesController < ApplicationController
   def manage_my_box
     @page_from = params[:page_from]
     @current_player = current_user
+    @intro_paragraph = "For a given round, view <strong>your box</strong><br />and view your match details or enter your new scores in your club"
     # allows player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       # define variables @club and @round

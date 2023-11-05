@@ -4,9 +4,12 @@
   <div class="same-line">
     <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
-      <%# link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
-      <%= link_to box_list_path, class: "btn buttons-shape btn-beige" do %>
-        <i class="fa-solid fa-list"></i>
+      <% if @this_is_my_box %>
+        <%= link_to "My box", manage_my_box_path(@box), class: "btn buttons-shape btn-blue" %>
+      <% end %>
+      <!-- Link to view as list -->
+      <%= link_to box_list_path, class: "btn buttons-shape btn-blue" do %>
+        <i class="fa-regular fa-list"></i>
       <% end %>
     </div>
   </div>
@@ -29,7 +32,7 @@
               <% name = "#{render "shared/fullname", user: line_player}" %>
               <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
               <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= name %>" data-bs-content="<%= message %>">
-                <span style=<%=user_box_matches[0].user == current_user ? "color:green" : ""%>>
+                <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
                   <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= pluralize user_box_score.points, "pt" %>
                 </span>
               </div>
@@ -46,7 +49,7 @@
             <div class="col-2 text-center">
               <% user_box_score = user_box_matches[0] %>
               <% column_player = user_box_score.user %>
-              <span style=<%=user_box_matches[0].user == current_user ? "color:green" : ""%>>
+              <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
                 <%= render "shared/fullname", user: column_player %>
               </span>
             </div>
@@ -93,10 +96,10 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
+<!--    <%= link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
     <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
     <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
-
+-->
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% else %>

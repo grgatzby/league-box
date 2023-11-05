@@ -1,8 +1,8 @@
-<%= render "image_front", sticky: true %>
+<%= render "image_front", sticky: false %>
 
 <div class="container">
-  <div class="frame-shape home-wrap">
-    <br><h3><%= "The path to social tennis playing".upcase %></h3><br>
+  <div class="frame-shape home-wrap box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
+    <br><br><h3><%= "The path to social tennis playing".upcase %></h3><br>
     <h5>Welcome to your club's Social Tournament website</h5>
     <p>The mixed Singles Social Tournament is organized as a Box League with one round
     every month (or three months in some clubs). Points earned in each round of the Box
@@ -15,24 +15,29 @@
     <br><h5>How does the Leaguebox work?</h5>
     <p>Each round lasts a month (in some clubs: 3 months), and players compete within their allocated box.</p>
     <ol>
-      <li>🎾 Within the round time frame, play against all the members of your box.</li>
-      <li>💻 After each match, either you or your opponent enters the match score in the Leaguebox website.</li>
-      <li>🏆 The website automatically updates the league table.</li>
-      <li>🎭 At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box.</li>
-    </ol>
+      <li>🎾 <strong>Within the round time frame</strong>, play against all the members of your box.</li>
+      <li>💻 <strong>After your match</strong>, you or your opponent enters the score in the Leaguebox website.</li>
+      <li>🏆 The league table is automatically updated.</li>
+      <li>🎭 <strong>At the end of the round</strong>, the top two players will be promoted 1 box. The last two players will be relegated 1 box.</li>
+    </ol><br>
     <br><h5>How to use the Leaguebox website?</h5>
     <p>Easily follow the league table and see how you rank against other players in the box league.</p>
     <ol>
-      <li>Post your latest match score in <span class="colored-text">My box</span> after a match has been played, and see where you and the other players stand in your box.</li>
-      <li>In <span class="colored-text">All boxes</span> see at a glance every box of the league, and click on any box for more details.<br/>
+      <li>Post your latest match score in <span class="color-tennis-blue">My box</span> after a match has been played, and see where you and the other players stand in your box.</li>
+      <li>In <span class="color-tennis-blue">All boxes</span> see at a glance every box of the league, and click on any box for more details.<br/>
       You can even see the previous rounds.</li>
-      <li>Within a box, you'll see scores, date and time of game, and player's ranking in <span class="colored-text">List view</span> or in <span class="colored-text">Table view</span>.</li>
-      <li>The <span class="colored-text">League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.</li>
-    </ol>
+      <li>Within a box, you'll see scores, date and time of game, and player's ranking in <span class="color-tennis-blue">List view</span> or in <span class="color-tennis-blue">Table view</span>.</li>
+      <li>The <span class="color-tennis-blue">League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.</li>
+    </ol><br>
     <br><h5>Happy tournament!</h5>
-  </div><br>
 
-  <div class = "buttons-wrap">
+    <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+      class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+    </button>
+  </div>
+
+  <!--
+  <br><div class = "buttons-wrap">
     <%= link_to "Tournament rules", rules_path, class: "btn buttons-shape btn-green" %>
     <%= link_to "Club staff", staff_path, class: "btn buttons-shape btn-green" %>
     <%= link_to "Website map", structure_path, class: "btn buttons-shape btn-green" %>
@@ -40,4 +45,5 @@
       <%= link_to "Create new round", new_user_box_score_path, class: "btn buttons-shape btn-aqua" %>
     <% end %>
   </div>
+  -->
 </div>

@@ -1,0 +1,36 @@
+<div class="container"
+  data-controller="contact-us"
+  data-contact-us-chatroom-id-value="<%= @chatroom.id %>">
+    <br>
+    <h3>Contact us</h3>
+    <div class="frame-shape contact-wrap">
+      <%= simple_form_for [@chatroom, @message],
+        html: { data: { action: "turbo:submit-end->contact-us#submitForm" } } do |f| %>
+        <%=  f.input :category,
+          label: false,
+          collection: ['Score dispute','Suggestion', 'Join us', 'Other'],
+          prompt: "-- Select one category --",
+          input_html: {class: "contact-category"},
+          required: true
+        %>
+        <%= f.input :content,
+          as: "text",
+          label: false,
+          input_html: {class: "contact-content"},
+          wrapper_html: {class: "flex-grow-1"}
+        %>
+        <%= f.submit "Send", class: "btn buttons-shape btn-beige ms-2 mb-3" %>
+      <% end %>
+
+      <%# Popup message for when the messag is submitted %>
+      <div class="contact-message contact-display d-none" data-contact-us-target="message">
+        <div class="navbar-brand"><%= image_tag "tennis_racket.jpg" %></div>
+        <div>
+          <br>Thank you for your message!
+          <br>We will get back to you soon.
+        </div>
+        <%= link_to "Ok", destroy_user_session_path, class: "btn buttons-shape btn-blue",
+        data: {turbo_method: :delete} %>
+     </div>
+    </div>
+</div>

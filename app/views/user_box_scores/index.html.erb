@@ -1,5 +1,5 @@
 <!-- display the league table -->
-<div class="container">
+<div class="container" data-controller="toggle">
   <% name = "Box League Ranking" %>
     <h3>League table</h3>
   <% if @round %>
@@ -10,10 +10,15 @@
     <% down = ["↑", "↓"]%>
     <% if params["sort"] %>
       <% params["sort"] = nil  %>
-      <p class="stick-rules"><%= link_to "Click on a player line to access their box.",
-        user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape button-ghost no-padding-no-border" %></p>
+      <p class="stick-rules">
+        <%= link_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border" do%>
+          Click on a <span class="color-orange-light"><strong>player line</strong></span> to access their box
+          or a <span class="color-tennis-blue"><strong>header</strong></span> to sort.
+        <% end %>
+      </p>
     <% else %>
-      <p class="stick-rules" >Click on a player line to access their box.</p>
+      <p class="stick-rules">Click on a <span class="color-orange-light"><strong>player line</strong></span> to access their box
+      or a <span class="color-tennis-blue"><strong>header</strong></span> to sort.</p>
       <div class="photo-wrap frame-shape frame-padding">
         <%= sanitize @rules %>
       </div><br>
@@ -35,18 +40,25 @@
             <div class="col-sm-1"><%=render "header_link", header: "Sets Played", dir: down%></div>
             <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
           </div>
-          <ol type="1">
-            <%= render "league_table", user_box_scores: @user_box_scores %>
-          </ol>
+          <div class="box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
+            <ol type="1">
+              <%= render "league_table", user_box_scores: @user_box_scores %>
+            </ol>
+
+            <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+              class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+            </button>
+          </div>
         </div>
     </div>
-    <br>
+    <!--
     <div class="buttons-wrap">
       <%= link_to "Back to top", "#top", class: "btn buttons-shape btn-blue" %>
       <%= link_to "All boxes", boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green" %>
     </div>
+    -->
   <% else %>
     <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
-    <%= render "shared/select_club_round", fallback_path: user_box_scores_path %>
+    <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: @intro_paragraph %>
   <% end %>
 </div>
