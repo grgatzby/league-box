@@ -1,11 +1,13 @@
 <!-- player page to view match results, enter new scores -->
 <div class="container text-size">
-  <h3>My box results</h3>
-  <% if @box %>
-    <% @round = @box.round %>
-  <% else %>
-    <%= render "shared/select_club_round", fallback_path: manage_my_box_path %>
-  <% end %>
+  <div>
+    <h3>My box results</h3>
+    <% if @box %>
+      <% @round = @box.round %>
+    <% else %>
+      <%= render "shared/select_club_round", fallback_path: manage_my_box_path, intro_paragraph: @intro_paragraph %>
+    <% end %>
+  </div>
   <% if @round %>
     <%= render "shared/round", round: @round %>
     <% if @user_not_in_round %>
@@ -14,6 +16,19 @@
       <br><br>
       <div class="same-line">
         <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
+        <div>
+          <!-- Back -->
+      <% if @page_from %>
+        <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+        <%= link_to @page_from+parameters, class: "btn buttons-shape btn-blue" do %>
+          <i class="fa-solid fa-left-long"></i>
+        <% end %>
+      <% else %>
+        <%= link_to :back, class: "btn buttons-shape btn-blue" do %>
+          <i class="fa-solid fa-left-long"></i>
+        <% end %>
+      <% end %>
+        </div>
       </div>
       <div class="frame-shape players frame-padding text-size">
         <h4>View or enter match scores</h4>
@@ -51,7 +66,7 @@
             </div>
             <div class="col-sm-3">
               <% if opponent == @current_player %>
-                <%= link_to "View my box", box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
+                <%= link_to "View box results", box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
                 <%= link_to "See match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
               <% else %>
@@ -63,13 +78,14 @@
       </div><br>
 
       <div class="frame-shape players frame-padding text-size">
-        <h4>Chat with my opponents</h4>
+        <h4>Chat with other players in my box</h4>
         <div class="buttons-wrap">
-          <%= link_to "Access my chatroom", chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
+          <%= link_to "Access the chatroom", chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
         </div>
       </div>
     <% end %>
     <br>
+    <!--
     <div class="buttons-wrap">
       <% if @page_from %>
         <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
@@ -80,5 +96,6 @@
         <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue text-size" %>
       <% end %>
     </div>
+    -->
   <% end %>
 </div>

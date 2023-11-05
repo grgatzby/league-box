@@ -7,14 +7,16 @@
 
   <div class="frame-shape home-wrap">
     <br><h4><%= render "match", my_card: @current_user_match_score %>by <%= render "shared/fullname", user: current_user %></h4>
-    <br><%= "Match played on #{@match.time.strftime("%a %-d %h %y")}, #{@match.time.strftime("%H:%M")}, on court #{@match.court.name}." %>
+    <% match_time = @tz.to_local(@match.time) %>
+    <br><%= "Match played on #{match_time.strftime("%a %-d %h %y")}, #{match_time.strftime("%H:%M")}, on court #{@match.court.name}." %>
 
     <br><br>
     <strong><%= "Score : " %></strong>
     <%= (render "shared/score", user_score: @current_user_match_score, opponent_score: @opponent_match_score).strip %>,
     <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
+    <% log_time = @tz.to_local(ums.input_date) %>
     <% score_input_by = User.find(ums.input_user_id) %>
-    <% message = "submitted on #{ums.input_date.strftime("%a %-d %h %y")}, #{ums.input_date.strftime("%H:%M")} by #{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}." %>
+    <% message = "submitted on #{log_time.strftime("%a %-d %h %y")}, #{log_time.strftime("%H:%M")} by #{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}." %>
     <span class=" color-tennis-blue"><%= message %></span>
     <br><br>
     <strong><%= "Points earned : " %></strong>

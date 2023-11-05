@@ -1,4 +1,7 @@
 // ----------- Many pages -----------
+.container {
+  margin-bottom: $btn-margin;
+}
 .sticky-header {
   position: sticky;
   top: 66px;
@@ -7,6 +10,12 @@
   opacity: 1;
   z-index: 1;
   border-radius: 0.25rem;
+}
+
+.box-scroller {
+  // size of the scrolling rules box
+  overflow: scroll;
+  height:79vh;
 }
 
 .same-line {
@@ -99,17 +108,6 @@
   }
 }
 
-.colored-text {
-  color: $tennis-blue;
-}
-
-.buttons-wrap {
-  display: flex;
-  padding: 5px 24px;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
 .photo-wrap {
   border-radius: 0.2rem;
   height: 20rem;
@@ -138,17 +136,33 @@
 .image-front {
   height: 20rem;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-size: cover;
   background-position: center;
 
   .image-front-text {
     color: white;
-    font-size: 30px;
+    // font-size: 30px;
+    font-size: 2.6vw;
     font-weight: bolder;
-    padding-top: 150px;
-    text-align: center;
   }
+}
+
+@media only screen and (max-width: 1200px) {
+  .image-front {
+      .image-front-text {
+        font-size: 3vw;
+        }
+      }
+}
+
+@media only screen and (max-width: 768px) {
+  .image-front {
+      .image-front-text {
+        font-size: 4vw;
+        }
+      }
 }
 
 // ----------- UserBoxScores/index and Boxes/show_referee -----------
@@ -156,7 +170,7 @@
   position: relative;
 
   &:hover {
-    color: rgb(246, 137, 79);
+    color: $orange-light;
   }
 }
 
@@ -166,8 +180,4 @@
   bottom: 0;
   left: 0;
   width: 100%;
-}
-
-.text-blue {
-color:#336699
 }

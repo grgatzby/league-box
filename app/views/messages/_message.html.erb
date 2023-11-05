@@ -38,7 +38,7 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
         <strong><%= message.user.nickname %></strong>
       </div>
       <!--<i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
-      <small><i><%= message.created_at.strftime("%a %-d %b at %H:%M") %></i></small>
+      <small><i><%= @tz.to_local(message.created_at).strftime("%a %-d %b at %H:%M") %></i></small>
     </small>
     <p><%= sanitize message.content %></p>
   </div>

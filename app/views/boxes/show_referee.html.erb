@@ -4,15 +4,13 @@
     <br><br><%= "As a player, this page is not authorised" %>
   <% else %>
     <br>
-    <% admin_message = current_user == @admin ? ", or enter new score" : "" %>
-  <%= render "intro_lines", box: @box, view_type: "referee" %>
+    <% message = "#{@current_user.role.capitalize} <strong>#{(render "shared/fullname", user: current_user).strip}</strong>,<br />" %>
+    <% message += "select a match to edit or delete the score#{current_user == @admin ? ", or input a new score" : ""}" %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
+      <%= render "intro_lines", box: @box, view_type: "referee" %>
+    </div>
     <div class="same-line">
       <div><%= render "shared/display_club_round", round: @box.round %></div>
-      <div>
-        <%= "#{@current_user.role.capitalize} " %><strong><%= (render "shared/fullname", user: current_user).strip %></strong>,
-        <%= "select a match to edit or delete the score#{admin_message}" %>
-      </div>
-      <div></div>
     </div>
 
     <div class = "frame-shape frame-padding text-size">
@@ -20,8 +18,8 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-2">Match score</div>
         <div class="col-sm-2">Player's points</div>
-        <div class="col-sm-2 text-blue">Opponent's points</div>
-        <div class="col-sm-2 text-blue">Opponent total points</div>
+        <div class="col-sm-2 color-tennis-blue">Opponent's points</div>
+        <div class="col-sm-2 color-tennis-blue">Opponent total points</div>
       </div>
       <ul>
         <% sorted_players = @box_matches.map { |bm| bm[2]} %>
@@ -30,7 +28,7 @@
             <% user_box_score = user_box_matches[0] %>
             <% player = user_box_matches[2] %>
             <div class="text-paddings">
-              <span style=<%=user_box_matches[0].user == current_user ? "color:blue" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
+              <%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %>
               <% player_matches = user_box_matches[1] %>
             </div>
             <ul>
@@ -45,12 +43,14 @@
                       <li>
                         <% name = "Score" %>
                         <% score_input_by = User.find(user_score.input_user_id) %>
-                        <% message = "<strong>Score entered</strong><br />by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{user_score.input_date.strftime("%a %-d %b %y")} at #{user_score.input_date.strftime("%H:%M")}" %>
+                        <% input_date = @tz.to_local(user_score.input_date) %>
+                        <% message = "<strong>Score entered</strong><br />by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}<br /> on #{input_date.strftime("%a %-d %b %y")} at #{input_date.strftime("%H:%M")}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <div class="row player-name">
                             <div class="col-sm-4">
-                              <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%d %b")}" %>
-                              <span class="text-blue">
+                              <% match_time = @tz.to_local(match.time) %>
+                              <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match_time.strftime("%d %b")}" %>
+                              <span class="color-tennis-blue">
                                 <i>vs</i>
                                 <%= render "shared/fullname", user: opponent %>
                                 <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
@@ -58,8 +58,8 @@
                             </div>
                             <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                             <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                            <div class="col-sm-2 text-blue"><%= pluralize opponent_score.points, "pt" %></div>
-                            <div class="col-sm-2 text-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
+                            <div class="col-sm-2 color-tennis-blue"><%= pluralize opponent_score.points, "pt" %></div>
+                            <div class="col-sm-2 color-tennis-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
                             <!-- click on player line to update/delete match and user_match_scores details -->
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>
@@ -67,7 +67,7 @@
                       </li>
                     <% end %>
                   <% elsif player_opponent != player%>
-                    <li><div class="row player-name text-blue">
+                    <li><div class="row player-name color-tennis-blue">
                       <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %></div>
                       <div class="col-sm-2"><%= "not played" %></div>
                       <% if current_user == @admin %>

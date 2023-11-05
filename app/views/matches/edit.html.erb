@@ -49,7 +49,8 @@
       <% end %>
       <br>
       <% score_input_by = User.find(@match.user_match_scores[0].input_user_id) %>
-      <%= "Current score was submitted on #{@match.user_match_scores[0].input_date.strftime("%a %-d %b %y")} at #{@match.user_match_scores[0].input_date.strftime("%H:%M")} by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}." %>
+      <% log_time = @tz.to_local(@match.user_match_scores[0].input_date) %>
+      <%= "Current score was submitted on #{log_time.strftime("%a %-d %b %y")} at #{log_time.strftime("%H:%M")} by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}." %>
       <br><br>
       <%= hidden_field_tag(:player_id, @current_player.id) %>
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>

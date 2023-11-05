@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="frame-shape home-wrap">
-    <br><h3><%= "Tournament overview".upcase %></h3><br>
+    <br><br><h3><%= "Tournament overview".upcase %></h3><br>
     <p><%= "Box Leagues are designed to enable members of #{@club.name} to play competitive
     tennis on a regular basis. They are also an ideal way to meet other members and build a
     broader network of players for social games." %></p>
@@ -13,15 +13,17 @@
     <p>Players should notify their opponents to block out the dates / times they are not available to play
     matches as well as advertise the dates and times they would like to play matches. This simple
     application of good time management principles will make it easier to schedule your matches.
-    </p>
+    </p><br>
   </div><br>
 
   <div data-controller="toggle">
-    <div class="buttons-wrap">
-      <button data-action="click->toggle#fire" data-toggle-target="button"
-        class="btn buttons-shape btn-blue">View the rules</button>
+    <div class = "buttons-wrap">
+      <button data-action="click->toggle#fire" data-toggle-target="toggler"
+        class="btn buttons-shape btn-blue">Display the rules
+      </button>
     </div>
-    <div data-toggle-target="togglableElement" class="d-none frame-shape home-wrap">
+
+    <div data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" class="d-none frame-shape home-wrap box-scroller">
       <br><h3><%= "The rules".upcase %></h3><br>
       <h5>Rounds</h5>
       <p>There will be 1 round per month, unless local rules state otherwise.</p>
@@ -147,15 +149,10 @@
       <% end %>
       <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to
       #{mailto}." %></p>
-    </div><br>
 
-    <div class = "buttons-wrap">
-      <%= link_to "Home", root_path, class: "btn buttons-shape btn-green" %>
-      <%= link_to "Club staff", staff_path, class: "btn buttons-shape btn-green" %>
-      <%= link_to "Website map", structure_path, class: "btn buttons-shape btn-green" %>
-      <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue" %>
-      <button data-action="click->toggle#fire" data-toggle-target="button2"
-          class="d-none btn buttons-shape btn-blue">Hide the rules</button>
+      <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+        class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+      </button>
     </div>
   </div>
 </div>

@@ -4,9 +4,12 @@
   <div class="same-line">
     <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
-      <%# <%= link_to "View as table", box_path, class: "btn buttons-shape btn-green" %>
-      <%= link_to box_path, class: "btn buttons-shape btn-beige" do %>
-        <i class="fa-regular fa-table-list"></i>
+      <% if @this_is_my_box %>
+        <%= link_to "My box", manage_my_box_path(@box), class: "btn buttons-shape btn-blue" %>
+      <% end %>
+      <!-- Link to view as table -->
+      <%= link_to box_path, class: "btn buttons-shape btn-blue" do %>
+        <i class="fa-solid fa-table-cells"></i>
       <% end %>
     </div>
   </div>
@@ -19,8 +22,8 @@
       <div class="text-paddings col-sm-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= @points %>">
         Player's points
       </div>
-      <div class="col-sm-2 text-blue">Opponent's points</div>
-      <div class="col-sm-2 text-blue">Opponent total points</div>
+      <div class="col-sm-2 color-tennis-blue">Opponent's points</div>
+      <div class="col-sm-2 color-tennis-blue">Opponent total points</div>
     </div>
     <ul>
       <% @box_matches.each do |user_box_matches| %>
@@ -29,7 +32,7 @@
         <li>
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>
-          <span style=<%=user_box_matches[0].user == current_user ? "color:green" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
+          <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
           <% player_matches = user_box_matches[1] %>
           <% if user_box_matches[0].user == current_user %>
             <%# link_to "My box", manage_my_box_path(@box), class: "btn buttons-shape btn-blue" %>
@@ -44,7 +47,7 @@
                 <li><div class="row">
                   <div class="col-sm-4">
                     <%= "#{user_score.is_winner ? "Won" : "Lost"} on #{match.time.strftime("%a %-d %b")}" %>
-                    <span class="text-blue">
+                    <span class="color-tennis-blue">
                       <i>vs</i>
                       <%= render "shared/fullname", user: opponent %>
                       <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
@@ -52,14 +55,14 @@
                   </div>
                   <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
                   <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                  <div class="col-sm-2 text-blue"><%= pluralize opponent_score.points, "pt" %></div>
-                  <div class="col-sm-2 text-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
+                  <div class="col-sm-2 color-tennis-blue"><%= pluralize opponent_score.points, "pt" %></div>
+                  <div class="col-sm-2 color-tennis-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
                 </div></li>
               <% end %>
             <% end %>
             <% if player_matches.count == 1 %>
               <div class="col-sm-4"></div>
-              <div class="col-sm-6 text-blue"><%= "No score entered, don't forget to play your matches!" %></div>
+              <div class="col-sm-6 color-tennis-red"><%= "Don't forget to play your matches and enter your scores in My box!" %></div>
             <% end %>
 
           </ul>
@@ -69,10 +72,11 @@
   </div>
   <br>
   <div class="buttons-wrap">
+  <!--
     <%= link_to "View as table", box_path, class: "btn buttons-shape btn-green" %>
     <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
     <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
-
+  -->
     <% if @box == @my_current_box %>
       <%= link_to "Enter new results", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% else %>

@@ -5,14 +5,15 @@
   top: 0;
   opacity: 1;
   z-index: 10;
+  .navbar-collapse {
+    flex-grow: 0;
+  }
 }
 
-.navbar-league-box .navbar-collapse {
-  flex-grow: 0;
-}
 
-.navbar-league-box .navbar-brand img {
+.navbar-brand img {
   width: 40px;
+  // border-radius: 50%;
 }
 
 .time-padding {
@@ -20,4 +21,20 @@
   padding-top: 6px;
   padding-bottom: 6px;
   color: var(--bs-nav-link-color);
+}
+
+.nav-link {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.dropdown-item {
+  opacity: 0.4;
+
+  &:hover {
+    opacity: 1;
+  }
 }

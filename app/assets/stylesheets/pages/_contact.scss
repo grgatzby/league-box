@@ -1,0 +1,39 @@
+.contact-wrap {
+  padding: 25px calc(var(--bs-gutter-x) * 6) 5px;
+  // top padding is 25px
+  // right and left paddings are calc(var(--bs-gutter-x) * 6) px
+  //bottom padding is 5px
+
+  .contact-category {
+    margin: $btn-margin;
+    border-radius: 5px;
+    border: black 1x solid;
+  }
+
+  .contact-content {
+    height: 500px;
+    margin: $btn-margin;
+    border-radius: 5px;
+    border: black 1x solid;
+    justify-content: center;
+  }
+
+  .contact-message {
+    background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
+    position: fixed;
+    bottom: 50%; /* Place the button relative to the bottom of the page */
+    right: 45%; /* Place the button 5px from the right */
+    border: 1px solid $gray-600;
+    padding: 20px;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    opacity: 1;
+  }
+
+  .contact-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+ }

@@ -47,8 +47,8 @@ class MatchesController < ApplicationController
     results = compute_points(match_scores)
 
     if test_scores(match_scores, results)
-      # if score entered is valid, store match date and match time
-      @match.time = "#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime
+      # if score entered is valid, store match date and match time in UTC Time
+      @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
       @match.save
 
       # create the two match scores for the match
@@ -120,6 +120,8 @@ class MatchesController < ApplicationController
 
     @match = Match.find(params[:match_id])
     @match.court_id = @match.court.name
+    # convert @match.time from UTC time to local time for display in the form
+    @match.time += @tz.to_local(@match.time).utc_offset
     @round = @match.box.round
     # max match date in the form: user can't post results in the future
     @end_select = [@round.end_date, Time.now].min
@@ -158,9 +160,9 @@ class MatchesController < ApplicationController
     results = compute_points(user_match_scores)
 
     if test_scores(user_match_scores, results)
-      # if score entered is valid, store match date and match time
+      # if score entered is valid, store match date and match time in UTC time
       match.court_id = Court.find_by(name: params[:match][:court_id], club_id: match.court.club_id).id
-      match.time = "#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime
+      match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
       match.save
 
       # if score entered is valid, update winner and loser booleans in user_match_scores
