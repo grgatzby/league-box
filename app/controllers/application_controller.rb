@@ -34,16 +34,8 @@ class ApplicationController < ActionController::Base
     @admin = User.find_by(role: "admin")
     @referee = User.find_by(role: "referee", club_id: @club.id)
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
-    @contact_chatroom = Chatroom.find_by(name: "contact") || Chatroom.create(name: "contact")
     # time_zone (dependency on gem tzinfo-data): used to convert UTC persisted times in local time
     @tz = TZInfo::Timezone.get("Europe/Paris")
-    @dummy_user = User.find_by(role: "contact") || User.create(role: "contact",
-                                                               email: "contacts@club.be",
-                                                               first_name: "Contact",
-                                                               last_name: "User",
-                                                               nickname: "ContactUs",
-                                                               password: "123456",
-                                                               club_id: @sample_club.id) # user needs to belong to a club
   end
 
   # def after_sign_in_path_for(resource)

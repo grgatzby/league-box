@@ -30,7 +30,7 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
 <% else %>
   <!-- referees and admin get to select a chatroom -->
   <div class="container">
-    <h3><%= "#{@current_user.club.name} chatrooms" %></h3>
+    <h3><%= "#{current_user.club.name} chatrooms" %></h3>
     <div class="frame-shape players frame-padding">
       <%= form_with url: chatroom_path, method: :get do |form| %>
         <%= form.label :chatroom, "Chose a chatroom: " %>

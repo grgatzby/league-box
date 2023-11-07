@@ -4,7 +4,7 @@
     <br><br><%= "As a player, this page is not authorised" %>
   <% else %>
     <br>
-    <% message = "#{@current_user.role.capitalize} <strong>#{(render "shared/fullname", user: current_user).strip}</strong>,<br />" %>
+    <% message = "#{current_user.role.capitalize} <strong>#{(render "shared/fullname", user: current_user).strip}</strong>,<br />" %>
     <% message += "select a match to edit or delete the score#{current_user == @admin ? ", or input a new score" : ""}" %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
       <%= render "intro_lines", box: @box, view_type: "referee" %>
