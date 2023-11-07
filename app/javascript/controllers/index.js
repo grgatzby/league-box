@@ -13,8 +13,5 @@ application.register("popover", PopoverController)
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
 
-import ContactUsController from "./contact_us_controller"
-application.register("contact-us", ContactUsController)
-
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)

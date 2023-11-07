@@ -22,10 +22,9 @@
         <%= link_to "Home", root_path, class: "nav-link active" %>
         <%= link_to "Tournament rules", rules_path, class: "nav-link" %>
         <%= link_to "Club staff", staff_path, class: "nav-link" %>
-        <%# if user_signed_in? && current_user != @dummy_user%>
         <% if user_signed_in?%>
           <li class="nav-item dropdown">
-            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.role} #{current_user.nickname}" %></a>
+            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.nickname} (#{current_user.role})" %></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "All boxes", boxes_path, class: "dropdown-item" %>
               <%= link_to "League table", user_box_scores_path, class: "dropdown-item" %>

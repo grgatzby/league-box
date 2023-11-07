@@ -15,7 +15,7 @@ class ChatroomsController < ApplicationController
         @chatrooms = Chatroom.select do |chatroom|
           box = chatroom.box
           club = box.round.club
-          club == @current_user.club
+          club == current_user.club
         end
       end
       # add the '#' in front of the chatroom names (for display in the form)

@@ -1,0 +1,66 @@
+<div class="container">
+  <br><h3>Contact us</h3><hr>
+  <p>Score disputes should be dealt in your box chatroom</p>
+  <div class="frame-shape contact-wrap">
+    <%= simple_form_for @contact do |f| %>
+      <% if @contact.errors.any? %>
+          <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
+              <div class="font-bold text-rose-700 text-sm pb-4"><%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved:</div>
+
+              <ul class="pb-0 mb-0">
+                  <% @contact.errors.each do |error| %>
+                      <li class="text-rose-600 pl-4 text-sm"><%= error.full_message %></li>
+                  <% end %>
+              </ul>
+          </div>
+      <% end %>
+
+      <div class="contact-align contact-space-between">
+        <div><%= f.input :subject,
+          label: false,
+          collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
+          prompt: "Select a topic →",
+          input_html: {class: "contact-field", style: "width: 350px"},
+          required: true
+        %></div>
+        <% default = current_user ? "#{current_user.first_name} #{current_user.last_name}" : "" %>
+        <div><%= f.input :name,
+          input_html: {class: "contact-field", style: "width: 350px", value: default},
+          label: false,
+          placeholder: "Full name",
+          required: true
+        %></div>
+      </div>
+      <div class="contact-align contact-space-between">
+        <% default = current_user ? current_user.email : "" %>
+        <div><%= f.input :email,
+          input_html: {class: "contact-field", style: "width: 350px", value: default},
+          label: false,
+          placeholder: "e-mail address user@domain.com",
+          required: true
+        %></div>
+        <div><%= f.input :phone,
+          input_html: {class: "contact-field", style: "width: 350px"},
+          label: false,
+          placeholder: "Phone number",
+          required: false
+        %></div>
+      </div>
+      <%= f.input :message,
+        as: "text",
+        label: false,
+        input_html: {class: "contact-field contact-content"},
+        required: true
+      %>
+      <%= f.text_field :nickname,
+        type:"hidden"
+      %>
+      <div>
+      <%= f.file_field :files, multiple: true, class: 'btn buttons-shape btn-beige mb-3', accept: 'image/png,image/gif,image/jpeg,application/pdf' %>
+      </div>
+      <%= f.submit "Send",
+        class: "btn buttons-shape btn-beige mb-3"
+      %>
+    <% end %>
+  </div>
+</div>

@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: :show do
     resources :messages, only: :create
   end
-  get "contact", to: "messages#contact", as: "contact"
+  resources :contacts, only: [:new, :create ]
+  get "/contacts", to: "contacts#new", as: "contact"
+  get "contacts/sent"
 end

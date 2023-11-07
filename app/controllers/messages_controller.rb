@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:contact]
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
@@ -15,12 +14,6 @@ class MessagesController < ApplicationController
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
-  end
-
-  def contact
-    sign_in(@dummy_user)
-    @chatroom = @contact_chatroom
-    @message = Message.new
   end
 
   private

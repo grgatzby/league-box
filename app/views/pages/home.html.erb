@@ -1,4 +1,4 @@
-<%= render "image_front", sticky: false %>
+<%= render "shared/image_front", sticky: false %>
 
 <div class="container" data-controller="toggle">
   <div class="frame-shape home-wrap box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
@@ -12,6 +12,7 @@
     <p>The league table will be updated and displayed on the league board at the end of each
     round.</p>
     <br>
+
     <br><h5>How does the Leaguebox work?</h5>
     <p>Each round lasts a month (in some clubs: 3 months), and players compete within their allocated box.</p>
     <ol>
@@ -19,7 +20,10 @@
       <li>💻 <strong>After your match</strong>, you or your opponent enters the score in the Leaguebox website.</li>
       <li>🏆 The league table is automatically updated.</li>
       <li>🎭 <strong>At the end of the round</strong>, the top two players will be promoted 1 box. The last two players will be relegated 1 box.</li>
-    </ol><br>
+    </ol>
+    <p>Visit our <b>Tournament rules</b> page for more details</p>
+    <br>
+
     <br><h5>How to use the Leaguebox website?</h5>
     <p>Easily follow the league table and see how you rank against other players in the box league.</p>
     <ol>
@@ -29,6 +33,7 @@
       <li>Within a box, you'll see scores, date and time of game, and player's ranking in <span class="color-tennis-blue">List view</span> or in <span class="color-tennis-blue">Table view</span>.</li>
       <li>The <span class="color-tennis-blue">League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.</li>
     </ol><br>
+
     <br><h5>Happy tournament!</h5>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"

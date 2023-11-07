@@ -1,7 +1,4 @@
-# require 'tzinfo'
-
 class BoxesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: :index
   def index
     @page_from = params[:page_from]
     @message_boxes = "<strong>Box columns:</strong><br />player name, rank,<br />games played, box points"
