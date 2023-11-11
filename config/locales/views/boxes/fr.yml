@@ -30,7 +30,7 @@ fr:
       player_points_header: Points joueur
       match_earnings: Points du match
       opponent_points_header: Points adversaire
-      opponent_total_points_header: Cumul points adversaire
+      opponent_total_points_header: Cumul adversaire
       points_pop: >
         Le vainqueur gagne 20 points.<br />
         Le perdant gagne 10 points par set gagné + nombre de jeu par set perdu.<br />
@@ -48,7 +48,7 @@ fr:
       match_score_header: Score match
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
-      opponent_total_points_header: Points adversaire cumulés
+      opponent_total_points_header: Cumul adversaire
       pop02: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
       won: Gagné
       lost: Perdu

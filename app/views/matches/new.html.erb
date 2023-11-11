@@ -17,7 +17,8 @@
   </div>
 
   <%= form_for @match do |f| %>
-    <div class = "frame-shape">
+    <div class = "frame-shape home-wrap">
+      <br>
       <div class="row">
         <div class="col-sm-2"><%= f.label :court_id, t(".match_played") %> </div>
         <div class="col-sm-1"><%= f.select :court_id, 1..@round.club.courts.count, default: 1 %></div>
