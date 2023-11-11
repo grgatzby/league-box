@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
+  # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
   # Existing features:
@@ -18,6 +19,17 @@ class ApplicationController < ActionController::Base
   # TO DO: adjust times (currently lagged system date)
   # TO DO: should I allow referees to create a match (ie new score) as can the admin?
   # TO DO: rails interntionalization (I18n) https://guides.rubyonrails.org/i18n.html
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
+
+  around_action :switch_locale
+
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
 
   def configure_permitted_parameters
     # For additional fields in app/views/devise/registrations/new.html.erb
@@ -156,5 +168,4 @@ class ApplicationController < ActionController::Base
     players.each { |player| @tieds << player }
     @tieds.uniq!
   end
-
 end

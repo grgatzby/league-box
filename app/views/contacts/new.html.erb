@@ -1,6 +1,6 @@
 <div class="container">
-  <br><h3>Contact us</h3><hr>
-  <p>Score disputes should be dealt in your box chatroom</p>
+  <br><h3><%= t '.contact_title' %></h3><hr>
+  <p><%= t '.p01' %></p>
   <div class="frame-shape contact-wrap">
     <%= simple_form_for @contact do |f| %>
       <% if @contact.errors.any? %>
@@ -14,12 +14,12 @@
               </ul>
           </div>
       <% end %>
-
       <div class="contact-align contact-space-between">
         <div><%= f.input :subject,
           label: false,
-          collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
-          prompt: "Select a topic →",
+          # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
+          collection: t('.topics').map { |item| item.values }.flatten,
+          prompt: t('.prompt'),
           input_html: {class: "contact-field", style: "width: 350px"},
           required: true
         %></div>
@@ -27,7 +27,7 @@
         <div><%= f.input :name,
           input_html: {class: "contact-field", style: "width: 350px", value: default},
           label: false,
-          placeholder: "Full name",
+          placeholder: t('.name_placeholder'),
           required: true
         %></div>
       </div>
@@ -36,13 +36,13 @@
         <div><%= f.input :email,
           input_html: {class: "contact-field", style: "width: 350px", value: default},
           label: false,
-          placeholder: "e-mail address user@domain.com",
+          placeholder: t('.email_placeholder'),
           required: true
         %></div>
         <div><%= f.input :phone,
           input_html: {class: "contact-field", style: "width: 350px"},
           label: false,
-          placeholder: "Phone number",
+          placeholder: t('.phone_placeholder'),
           required: false
         %></div>
       </div>
@@ -58,7 +58,7 @@
       <div>
       <%= f.file_field :files, multiple: true, class: 'btn buttons-shape btn-beige mb-3', accept: 'image/png,image/gif,image/jpeg,application/pdf' %>
       </div>
-      <%= f.submit "Send",
+      <%= f.submit t('.send_btn'),
         class: "btn buttons-shape btn-beige mb-3"
       %>
     <% end %>

@@ -1,0 +1,37 @@
+fr:
+  user_box_scores:
+    index:
+      intro: Pour le round choisi, consultez la <b>league table</b> du club
+      league_table_title: League table
+      top_line_html: >
+        Cliquer sur la <span class="color-orange-light"><b>ligne du joueur</b></span> pour accéder à sa box
+        ou trier par <span class="color-tennis-blue"><b>entête</b></span> en cliquant dessus.
+      rules: >
+        Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
+        Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
+        <ol>
+          <li>Head to Head result (if only 2 players on the same score)</li>
+          <li>Le plus de matchs joués</li>
+          <li>Ratio sets gagnés sur sets joués</li>
+          <li>Ratio jeux gagnés sur jeux joués</li>
+        </ol>
+      player_header: Joueurs
+      rank_header: Classements
+      points_header: Points
+      box_header: Box
+      matches_played_header: Matchs Joués
+      matches_won_header: Matchs Gagnés
+      sets_played_header: Sets Joués
+      sets_won_header: Sets Gagnés
+    new:
+      new_club_title: Générer un nouveau club et un round
+      not_authorised: Vous n'êtes pas admin, cette page n'est pas authorisée.
+      p01: "Uploader une liste de joueurs et un referee à partir d'un fichier CSV avec les entêtes suivants:"
+      p02_html: <i>id, email, first_name, last_name, nickname [optionnel], phone_number, role</i>. Les joueurs seront placés dans les box selon l'ordre des id.
+      title_pop: fichier CSV
+      message_pop: CSV (comma separated values) est un fichier texte dont les données sont separées par des virgules. Il peut être généré facilement à partir d'un tableur.
+      submit_btn: Valider
+      back_btn: Retour
+    create:
+      header_flash: Les entêtes doivent être "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
+      file_type_flash: Choisissez un fichier de type csv.

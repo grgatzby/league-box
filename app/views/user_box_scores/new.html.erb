@@ -2,15 +2,12 @@
 the csv file must contain fields id, email, first_name, last_name, (nickname), phone_number, role (players + 1 referee)
 players are allocated in boxes by id in descending order  -->
 <div class="container">
-  <h3>Create a new club and a round</h3><br>
+  <h3><%= t '.new_club_title' %></h3><br>
   <% unless current_user.role == "admin" %>
-    <br><br><%= "You are not an admin, this page is not authorised." %>
+    <br><br><%= t '.not_authorised' %>
   <% else %>
-    <% message = "CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet." %>
-    <p>Upload a list of players and a referee from a standard CSV file containing the following headers:</p>
-
-    <p><i>id, email, first_name, last_name, [nickname], phone_number, role</i>
-    . Players will be allocated in boxes based on the id order.</p>
+    <p><%= t '.p01' %></p>
+    <p><%= t '.p02_html' %></p>
     <%= form_with(url: {action: "create"}, multipart: true) do %>
       <div class="frame-shape">
         <div class="row"><br>
@@ -34,8 +31,8 @@ players are allocated in boxes by id in descending order  -->
         </div><br>
         <div class="row"><br>
           <div class="col-sm-2">
-            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="CSV file"
-              data-bs-content="<%= message %>">
+            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= t('.title_pop') %>"
+              data-bs-content="<%= t('.message_pop') %>">
               <%= label_tag :load_csv_file %>
             </div>
           </div>
@@ -43,9 +40,9 @@ players are allocated in boxes by id in descending order  -->
         </div><br>
       </div><br>
       <div class="buttons-wrap">
-        <%= submit_tag 'Submit', class: "btn buttons-shape btn-green" %>
+        <%= submit_tag t('.submit'), class: "btn buttons-shape btn-green" %>
         <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-        <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
+        <%= link_to t('.back'), :back, class: "btn buttons-shape btn-blue" %>
       </div>
     <% end %>
   <% end %>

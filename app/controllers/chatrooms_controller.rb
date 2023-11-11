@@ -26,7 +26,7 @@ class ChatroomsController < ApplicationController
       if @chatroom != @general_chatroom &&
          @chatroom.box.user_box_scores
                   .select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
-        flash[:notice] = "You have no access to this chatroom."
+        flash[:notice] = t('.no_access_flash')
         redirect_back(fallback_location: manage_my_box_path(0))
       end
     end

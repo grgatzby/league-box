@@ -1,0 +1,37 @@
+nl:
+  user_box_scores:
+    index:
+      intro: Raadpleeg voor de gekozen ronde de <b>competitietabel</b> van de club
+      league_table_title: League table
+      top_line_html: >
+        Klik op de <span class="color-orange-light"><b>lijn</b></span> van de speler om toegang te krijgen tot zijn box
+        of sorteer op <span class="color-tennis-blue"><b>header</b></span> door erop te klikken.
+      rules: >
+        De rangschikking van een speler in de ranglijst wordt bepaald door het totaal aantal punten dat tijdens de ronde is verdiend.<br />
+        Als twee spelers hetzelfde aantal punten verzamelen, wordt de rangschikking bepaald op basis van de volgende criteria:<br /><br />
+        <ol>
+          <li>Head to Head result (if only 2 players on the same score)</li>
+          <li>Meeste wedstrijden gespeeld</li>
+          <li>Verhouding tussen gewonnen sets en gespeelde sets</li>
+          <li>Verhouding tussen gewonnen games en gespeelde games</li>
+        </ol>
+      player_header: Spelers
+      rank_header: Ranglijsten
+      points_header: Punten
+      box_header: Box
+      matches_played_header: Wedstrijden gespeeld
+      matches_won_header: Gewonnen wedstrijden
+      sets_played_header: Gespeelde sets
+      sets_won_header: Sets gewonnen
+    new:
+      new_club_title: Genereer een nieuwe club en ronde
+      not_authorised: U bent geen beheerder, deze pagina is niet geautoriseerd.
+      p01: "Upload een lijst met spelers en een scheidsrechter vanuit een CSV-bestand met de volgende headers:"
+      p02_html: <i>ID, e-mailadres, voornaam, achternaam, bijnaam [optioneel], telefoonnummer, rol</i>. Spelers worden in dozen geplaatst op basis van ID-volgorde.
+      title_pop: CSV-bestand
+      message_pop: CSV (Comma Separated Values) is een tekstbestand waarvan de gegevens door komma's worden gescheiden. Het kan eenvoudig worden gegenereerd vanuit een spreadsheet.
+      submit_btn: Bevestigen
+      back_btn: Rug
+    create:
+      header_flash: De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' zijn.
+      file_type_flash: Kies een csv-bestandstype.

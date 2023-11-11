@@ -1,7 +1,6 @@
 <!-- display the league table -->
 <div class="container" data-controller="toggle">
-  <% name = "Box League Ranking" %>
-    <h3>League table</h3>
+  <h3><%= t '.league_table_title' %></h3>
   <% if @round %>
     <div class="same-line">
       <div><%= render "shared/display_club_round", round: @round %></div>
@@ -11,16 +10,12 @@
     <% if params["sort"] %>
       <% params["sort"] = nil  %>
       <p class="stick-rules">
-        <%= link_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border" do%>
-          Click on a <span class="color-orange-light"><strong>player line</strong></span> to access their box
-          or a <span class="color-tennis-blue"><strong>header</strong></span> to sort.
-        <% end %>
+        <%= link_to t(".top_line_html"), user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border"%>
       </p>
     <% else %>
-      <p class="stick-rules">Click on a <span class="color-orange-light"><strong>player line</strong></span> to access their box
-      or a <span class="color-tennis-blue"><strong>header</strong></span> to sort.</p>
-      <div class="photo-wrap frame-shape frame-padding">
-        <%= sanitize @rules %>
+      <p class="stick-rules"><%= t '.top_line_html' %></p>
+      <div class="photo-wrap frame-shape frame-padding text-size">
+        <%= sanitize t('.rules') %>
       </div><br>
     <% end %>
 
@@ -28,17 +23,17 @@
     <%# <div class="league-frame"> %>
     <!-- league-frame and league-containerallow overflow-x (horizontal scroll) but kills stickiness
     stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  -->
-        <div class="frame-shape frame-padding">
-        <%# <div class="frame-shape frame-padding league-container"> %>
+        <div class="frame-shape frame-padding text-size">
+        <%# <div class="frame-shape frame-padding text-size league-container"> %>
           <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
-            <div class="col-sm-3"><%=render "header_link", header: "Player", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Rank", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Points", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Box", dir: up%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Matches Played", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Matches Won", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets Played", dir: down%></div>
-            <div class="col-sm-1"><%=render "header_link", header: "Sets Won", dir: down%></div>
+            <div class="col-sm-3"><%=render "header_link", header: t('.player_header'), dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.rank_header'), dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.points_header'), dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.box_header'), dir: up%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.matches_played_header'), dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.matches_won_header'), dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.sets_played_header'), dir: down%></div>
+            <div class="col-sm-1"><%=render "header_link", header: t('.sets_won_header'), dir: down%></div>
           </div>
           <div class="box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
             <ol type="1">
@@ -59,6 +54,6 @@
     -->
   <% else %>
     <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
-    <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: @intro_paragraph %>
+    <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: t(".intro") %>
   <% end %>
 </div>

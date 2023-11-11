@@ -3,8 +3,6 @@ class UserBoxScoresController < ApplicationController
 
   def index
     # displays the league table, allows user to sort the table by headers clicks
-    @intro_paragraph = "For a given round, view the <strong>league table</strong> of your club"
-
     set_club_round
 
     # @order dictates the sorting order of the selected header
@@ -19,33 +17,23 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores.reverse! if @order == 1
     end
     @sort = params[:sort]
-
     case params[:sort]
-    when "Player"
+    when t('.player_header') # "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
-    when "Points"
+    when t('.points_header') # "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    when "Box"
+    when t('.box_header') # "Box"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    when "Matches Played"
+    when t('.matches_played_header') # "Matches Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    when "Matches Won"
+    when t('.matches_won_header') # "Matches Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    when "Sets Played"
+    when t('.sets_played_header') # "Sets Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    when "Sets Won"
+    when t('.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
-    @rules = "A player's league position is determined by the total number of points won in a round.<br />
-            In the event that two or more players have the same number of points the league position will be
-            determined by:<br /><br />
-            <ol>
-              <li>Head to Head result (if only 2 players on the same score)</li>
-              <li>Most matches played</li>
-              <li>Ratio of sets won to sets played</li>
-              <li>Ratio of games won to games played</li>
-            </ol>"
   end
 
   def new
@@ -103,11 +91,11 @@ class UserBoxScoresController < ApplicationController
         end
         redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
       else
-        flash[:notice] = 'Your headers must be "id", "email", "first_name", "last_name", ["nickname"], "phone_number", and "role".'
+        flash[:notice] = t('.header_flash')
         redirect_back(fallback_location: new_user_box_score_path)
       end
     else
-      flash[:notice] = "Please chose a csv file type."
+      flash[:notice] = t('.file_type_flash')
       redirect_back(fallback_location: new_user_box_score_path)
     end
   end

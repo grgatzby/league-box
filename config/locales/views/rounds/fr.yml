@@ -1,0 +1,15 @@
+fr:
+  rounds:
+    new:
+      new_round_title: "Prochain round: mouvement des joueurs"
+      message: >
+          Choisir une promotion, par exemple:<br />
+          2 = promotion deux box,<br />
+          1 = promotion une box,<br />
+          -1 = baisser d'une box,<br />
+          -2 = baisser de 2 box.<br /><br />
+          Choisir 99 pour éliminer le joueur du prochain round (par ex. si moins de 2 matchs joués).
+      message_boxes: joueur, classement,<br />nb jeux joués, mouvement proposé
+      start_date: "Date de départ:"
+      end_date: "Date de fin:"
+      create_round_btn: Créer le round

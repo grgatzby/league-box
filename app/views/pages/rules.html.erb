@@ -1,154 +1,127 @@
 <%= render "shared/image_front", sticky: false %>
 
 <div class="container">
-  <div class="frame-shape home-wrap">
-    <br><br><h3><%= "Tournament overview".upcase %></h3><br>
-    <p><%= "Box Leagues are designed to enable members of #{@club.name} to play competitive
-    tennis on a regular basis. They are also an ideal way to meet other members and build a
-    broader network of players for social games." %></p>
-    <p>However, box leagues only work if players are committed to getting matches played. Members
-    who enter the leagues must make every effort to complete their fixture programme. If, for
-    whatever reason, players are unable to fulfil fixtures they should notify opponents and referee
-    promptly.</p>
-    <p>Players should notify their opponents to block out the dates / times they are not available to play
-    matches as well as advertise the dates and times they would like to play matches. This simple
-    application of good time management principles will make it easier to schedule your matches.
-    </p><br>
+  <div class="frame-shape home-wrap text-size">
+    <br><h3><%= t(".overview_title").upcase %></h3><br>
+    <p><%= t('.p01_html', clubname: @club.name) %></p>
+    <p><%= t '.p02' %></p>
+    <p><%= t '.p03' %></p>
   </div><br>
 
-  <div data-controller="toggle">
+  <div data-controller="toggle"
+       data-toggle-display-rules-value="<%= t '.btn_display_rules' %>"
+       data-toggle-hide-rules-value="<%= t '.btn_hide_rules' %>">
     <div class = "buttons-wrap">
       <button data-action="click->toggle#fire" data-toggle-target="toggler"
-        class="btn buttons-shape btn-blue">Display the rules
+        class="btn buttons-shape btn-blue"><%= t '.btn_display_rules' %>
       </button>
     </div>
 
-    <div data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" class="d-none frame-shape home-wrap box-scroller">
-      <br><h3><%= "The rules".upcase %></h3><br>
-      <h5>Rounds</h5>
-      <p>There will be 1 round per month, unless local rules state otherwise.</p>
-      <h5>Availability</h5>
-      <p>Players must be able to play matches in the evenings and / or weekends.</p>
-      <h5>Qualifying Players</h5>
-      <p>Players must be aged 16 years or above on the date of the start of the round in which the player
-      joins the tournament unless otherwise agreed with the Tournament Referee.</p>
-      <p><%= "All players must be fully subscribed members of #{@club.name}" %></p>
-      <p>Day time members will be exceptionally able to play their matches after their permissible hours
-      by paying the Guest Fee at the bar before commencing play.</p>
+    <div data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" class="d-none frame-shape home-wrap text-size box-scroller">
+      <br><h3><%= t(".rules").upcase %></h3><br>
+      <h5><%= t '.rounds' %></h5>
+        <p><%= t '.p04' %></p>
+      <h5><%= t '.availability' %></h5>
+        <p><%= t '.p05' %></p>
+      <h5><%= t '.qualifying_players' %></h5>
+        <p><%= t '.p06' %></p>
+        <p><%= t('.p07_html', clubname: @club.name) %></p>
+        <p><%= t '.p08' %></p>
 
-      <h5>Box Design</h5>
-      <p>Boxes will be designed to accommodate 4 to 6 players</p>
-      <h5>Organizing Matches</h5>
-      <p>It is the responsibility of both players to make every effort to organize matches.</p>
-      <h5>General Tennis Rules</h5>
-      <p>Matches will be played according to the ITF Tennis Rules which can be viewed at
-      www.itftennis.com</p>
-      <h5>Matches not Umpired</h5>
-      <p>The following principles will apply when playing a match without a Chair Umpire:</p>
+      <h5><%= t '.box_design' %></h5>
+        <p><%= t '.p09' %></p>
+      <h5><%= t '.organizing_matches' %></h5>
+        <p><%= t '.p10' %></p>
+      <h5><%= t '.tennis_rules' %></h5>
+        <p><%= t '.p11' %></p>
+      <h5><%= t '.matches_not_umpired' %></h5>
+        <p><%= t '.p12' %></p>
       <ul>
-      <li>Each player is responsible for all line calls on their own side of the net</li>
-      <li>All “out” and “fault” calls should be made promptly after the ball has bounced and loudly
-      enough for the opponent(s) to hear</li>
-      <li>If in doubt, the player must give the benefit of the doubt to the opponent(s)</li>
-      <li>If a player incorrectly calls a ball “out” and then realizes that the ball was good, the point
-      should be replayed unless it was a point winning shot or unless that player made an incorrect
-      “out” call earlier in the match. In these circumstances the player who called “out” loses the point</li>
-      <li>The server should call the score before each first serve, loudly enough for the opponent(s) to
-      hear</li>
+        <li><%= t '.li01' %></li>
+        <li><%= t '.li02' %></li>
+        <li><%= t '.li03' %></li>
+        <li><%= t '.li04' %></li>
+        <li><%= t '.li05' %></li>
       </ul>
-      <h5>Warm-up</h5>
-      <p>To ensure that matches are completed within 1 hour warm-ups should be restricted to 5 minutes.</p>
-      <h5>Match Format</h5>
-      <p>Matches will be played as two short sets with a deciding championship tie-break if required.</p>
-      <p>Each set will be played as the first to 4 games with a normal 7 point tie-break at games 3:3.</p>
-      <p>The championship tiebreaker will be played as the first to 10 points with 2 clear.</p>
-      <p>OPTIONAL: (to be decided amongst players before the start of a match)</p>
-      <p>So that games do not become protracted, a sudden death deuce can be played to decide a game
-      should the game score be 40:40</p>
-      <p>The Receiver then would determine which side to receive the serve on a Sudden Death Deuce</p>
-      <h5>Points</h5>
-      <p>Points earned are calculated to provide incentive to win as many games as possible and are
-      calculated as follows:</p>
-      Winner 20 points
-      Looser 10 points per set won + number of games per lost set
-      The championship tie-break counts as one set (no points awarded for the looser)
+      <h5><%= t '.warm_up' %></h5>
+        <p><%= t '.p13' %></p>
+      <h5><%= t '.match_format' %></h5>
+        <p><%= t '.p14' %></p>
+        <p><%= t '.p15' %></p>
+        <p><%= t '.p16' %></p>
+        <p><%= t '.p17' %></p>
+        <p><%= t '.p18' %></p>
+        <p><%= t '.p19' %></p>
+      <h5><%= t '.points' %></h5>
+        <p><%= t '.p20' %></p>
+      <ul>
+        <li><%= t '.li06' %></li>
+        <li><%= t '.li07' %></li>
+        <li><%= t '.li08' %></li>
+      </ul>
       <i>
-        <p>Examples:</p>
+        <p><%= t '.p21' %></p>
         <ul>
-          <li>4-2 4-3 : winner 20 pts, looser 5 pts</li>
-          <li>4-1 2-4 10-6 : winner 20 pts, looser 11 pts</li>
-          <li>4-3 3-4 12-10 : winner 20 pts, looser 13 pts</li>
-          <li>4-2 2-4 10-1 : winner 20 pts, looser 12 pts</li>
+          <li><%= t '.li09' %></li>
+          <li><%= t '.li10' %></li>
+          <li><%= t '.li11' %></li>
+          <li><%= t '.li12' %></li>
         </ul>
       </i>
-      <h5>Posting Results</h5>
-      <p>Either player can post the match result.</p>
-      <p>Each Box player will log in to their account and enter the score on line,
-      otherwise they can be marked on the club board where a sheet is provided for your convenience.
-      If a result has been entered incorrectly contact the Tournament Referee.</p>
-      <p>Please note that all results must be posted by the end date of the round, except where an
-      extension has been granted by the referee.</p>
-      <h5>Box League Ranking</h5>
-      <p>A player's league position is determined by the total number of points won in a Round.
-      In the event that two or more players have the same number of points the league position will be
-      determined by:</p>
-      <ol>
-        <li>Head to Head result (if only 2 players on the same score)</li>
-        <li>Most matches played</li>
-        <li>Ratio of Sets Won to Sets Played %</li>
-        <li>Ratio of Games Won to Games Played %</li>
-      </ol>
-      <h5>Promotion / Relegation</h5>
-      <p>In normal circumstances</p>
-      <ul>
-        <li>the top two players will be promoted 1 box.</li>
-        <li>the last two players will be relegated 1 box.</li>
-      </ul>
-      <h5>New Entrants</h5>
-      <p>Every effort will be made to accommodate new league players into a box that is appropriate to
-      the player’s ability.</p>
-      <h5>Disqualification</h5>
-      <p>Players who do not play any matches in a round without good reason or advance notice may be
-      withdrawn from the tournament, at the sole discretion of the Tournament Referee.</p>
-      <h5>No Show</h5>
-      <p>If a player is more than 5 minutes late on court the opponent has the right to claim 1 game.</p>
-      <p>If a player is more than 10 minutes late on court the opponent has the right to claim 2 games.</p>
-      <p>If a player is more than 15 minutes late on court the opponent has the right to claim a set.</p>
-      <h5>Retire from Match</h5>
-      <p>If a player retires from a match, for example because of injury, all completed games will stand.
-      Any unplayed games will be conceded.</p>
+      <h5><%= t '.posting_results' %></h5>
+        <p><%= t '.p22' %></p>
+        <p><%= t '.p23' %></p>
+        <p><%= t '.p24' %></p>
+      <h5><%= t '.box_league_ranking' %></h5>
+        <p><%= t '.p25' %></p>
+        <ol>
+          <li><%= t '.li13' %></li>
+          <li><%= t '.li14' %></li>
+          <li><%= t '.li15' %></li>
+          <li><%= t '.li16' %></li>
+        </ol>
+      <h5><%= t '.promotion_relegation' %></h5>
+        <p><%= t '.p26' %></p>
+        <ul>
+          <li><%= t '.li17' %></li>
+          <li><%= t '.li18' %></li>
+        </ul>
+      <h5><%= t '.new_entrants' %></h5>
+        <p><%= t '.p27' %></p>
+      <h5><%= t '.disqualification' %></h5>
+        <p><%= t '.p28' %></p>
+      <h5><%= t '.no_show' %></h5>
+        <p><%= t '.p29' %></p>
+        <p><%= t '.p30' %></p>
+        <p><%= t '.p31' %></p>
+      <h5><%= t '.retire_from_match' %></h5>
+        <p><%= t '.p32' %></p>
       <i>
-        <p>For example:</p>
-        <p>Player A is leading 2/1 and 30:15 in set 1 when player A has to retire.</p>
-        <p>The match score should be entered as 2/4 0/4 to player B.</p>
+        <p><%= t '.p33' %></p>
+        <p><%= t '.p34' %></p>
+        <p><%= t '.p35' %></p>
       </i>
-      <h5>Withdrawing before the start of a round</h5>
-      <p>Players should inform the Tournament Referee if they wish to withdraw from the box league.</p>
-      <p>If a player withdraws before the start of a round the Tournament Referee will make every effort
-      to maintain the player's position should the player rejoin the box league at the start of the next
-      round.</p>
-      <h5>Walk-overs</h5>
-      <p>Walk-overs have been abolished and are not allowed for the following reasons:</p>
-      <ul>
-        <li>complications in managing walk-overs</li>
-        <li>impossibility for the referee to verify walk-over claims</li>
-        <li>unfair allocation of unplayed point</li>
-      </ul>
-      <h5>Deadline Extensions</h5>
-      <p>Players should make every effort to play their matches within the box league period.</p>
-      <p>Players can request an extension to the deadline providing the match has been arranged and the
-      court booked. Such requests will be considered at the discretion of the Tournament Referee
-      whose decision is final.</p>
-      <p>Players with no matches played in a round will be removed and will have to re-apply to remain
-      in the competition.</p>
-      <h5>Disputes</h5>
+      <h5><%= t '.withdrawing' %></h5>
+        <p><%= t '.p36' %></p>
+        <p><%= t '.p37' %></p>
+      <h5><%= t '.walk_overs' %></h5>
+        <p><%= t '.p38' %></p>
+        <ul>
+          <li><%= t '.li19' %></li>
+          <li><%= t '.li20' %></li>
+          <li><%= t '.li21' %></li>
+        </ul>
+      <h5><%= t '.deadline_extensions' %></h5>
+        <p><%= t '.p39' %></p>
+        <p><%= t '.p40' %></p>
+        <p><%= t '.p41' %></p>
+      <h5><%= t '.disputes' %></h5>
       <% if @referee %>
-        <% mailto = "your referee #{@referee.first_name} at #{@referee.email}" %>
+        <% mailto = t(".mail_to_referee_html", referee_first_name: @referee.first_name, referee_email: @referee.email) %>
       <% else %>
-        <% mailto = "your admin at #{@admin.email}" %>
+        <% mailto = t(".mail_to_admin_html", admin_email: @admin.email) %>
       <% end %>
-      <p><%= "The Tournament Referee's decision is final. All dispute inquiries to be emailed to
-      #{mailto}." %></p>
+      <p><%= t(".p42_html", mailto: mailto) %></p>
 
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>

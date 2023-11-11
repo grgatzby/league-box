@@ -1,0 +1,23 @@
+nl:
+  shared:
+    footer:
+      sitemap_btn: Sitemap
+      contact_us_btn: Contact
+    navbar:
+      home_link: Home
+      tournament_rules_link:  Toernooiregels
+      club_staff_link: Clubpersoneel
+      all_boxes_link: De boxen
+      league_table_link: League table
+      my_box_link: Mijn box
+      general_chat_link: "Chat room #general"
+      chatrooms_link: Chatrooms
+      log_out_link: Uitloggen
+      login_link: Log in
+    round:
+      round_period: "Round %{start} tot %{end}"
+    select_club_round:
+      select_club: "Kies een club: "
+      confirm_btn: Bevestigen
+      back_btn: Rug
+      select_round_start: "Ronde startdatum: "

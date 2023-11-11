@@ -1,0 +1,10 @@
+nl:
+  chatrooms:
+    show:
+      chatroom_title: "Chat room %{chatroom}"
+      send_btn: Versturen
+      back_btn: Rug
+      chose_chatroom: "Kies een chatroom: "
+      confirm_btn: Bevestigen
+      chatrooms_title: "Chatrooms van %{club}"
+      no_access_flash: U heeft geen toegang tot deze chatroom.

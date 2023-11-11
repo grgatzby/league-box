@@ -31,3 +31,84 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      default: "%Y-%m-%d"
+      mmmyy_date: "%b %y"
+      ddmmmyy_date: "%d %b %y"
+  time:
+    formats:
+      default: "%a %-d %b"
+      hhmm_time: "%H:%M"
+      wwwddmmm_date: "%a %-d %b"
+      # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
+      wwwddmmmyy_date: "%a %-d %b %y"
+      ddmmm_date: "%d %b"
+      wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
+      wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
+      wwwddmmmyy_at_hhmm: "%a %-d %b %y at %H:%M"
+fr:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+      mmmyy_date: "%b %y"             # avr. 23
+      ddmmmyy_date: "%d %b %y"        # 30 avr. 23
+    day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
+    abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
+    month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+    abbr_month_names: [~, jan., fév., mar., avr., mai, juin, juil., août, sept., oct., nov., déc.]
+    order:
+      - :day
+      - :month
+      - :year
+  time:
+    formats:
+      default: "%d %B %Y %H:%M:%S"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M"
+      hhmm_time: "%H:%M"               # 16:28
+      wwwddmmm_date: "%a %-d %b"       # ven 10 nov.
+      # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
+      wwwddmmmyy_date: "%a %-d %b %y"  # ven 14 avr. 23   # wwwddmmmyy_at_hhmm
+      ddmmm_date: "%d %b"              # 2 mai
+      wwwddmmm_at_hhmm: "%a %-d %b à %H:%M"
+      wwwddmmmyy_at_hhmm: "%a %-d %b %y à %H:%M"
+    am: 'am'
+    pm: 'pm'
+nl:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+      only_day: "%e"
+      mmmyy_date: "%b %y"
+      ddmmmyy_date: "%d %b %y"
+    day_names: [zondag, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag]
+    abbr_day_names: [zon, maa, din, woe, don, vri, zat]
+    month_names: [~, januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]
+    abbr_month_names: [~, jan, feb, mar, apr, mei, jun, jul, aug, sep, okt, nov, dec]
+    order:
+      - :day
+      - :month
+      - :year
+  time:
+    formats:
+      # default: "%a %d %b %Y %H:%M:%S %Z"
+      default: "%d %B %Y %H:%M:%S"
+      short: "%d %b %H:%M"
+      long: "%d %B %Y %H:%M"
+      time: "%H:%M"
+      only_second: "%S"
+      hhmm_time: "%H:%M"
+      wwwddmmm_date: "%a %-d %b"
+      # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
+      wwwddmmmyy_date: "%a %-d %b %y"
+      ddmmm_date: "%d %b"
+      wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
+      wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
+      wwwddmmmyy_at_hhmm: "%a %-d %b %y at %H:%M"
+  am: "'s ochtends"
+  pm: "'s middags"

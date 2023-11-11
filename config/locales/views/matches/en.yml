@@ -1,0 +1,36 @@
+en:
+  matches:
+    match:
+      won: Won
+      lost: Lost
+    edit:
+      edit_match_title: Edit match score
+      p01: Update or delete the match score
+      match_played: "Match played on court: "
+      date_time: "Date & time:"
+      set_1: Set 1
+      set_2: Set 2
+      tie_break: Tie-break
+      submitted: "Current score was submitted on %{date} by %{player}."
+      update_score_btn: Update score
+      delete_score_btn: Delete score
+      sure: Are you sure?
+      back_btn: Back
+    new:
+      new_match_title: New match score
+      p01: Enter the new match score
+      match_played: "Match played on court: "
+      date_time: "Date & time:"
+      set_1: Set 1
+      set_2: Set 2
+      tie_break: Tie-break
+      save_score_btn: Save score
+      back_btn: Back
+      round_not_started_flash: Round has not started yet.
+    show:
+      match_played: "Match played on %{date} on court %{court}."
+      score: "Score : "
+      submitted: "submitted on %{date} by %{user}."
+      points_earned: "Points earned : "
+      challenge: "To challenge or edit this match score, please contact your club referee %{referee}."
+      back_btn: Back to my box

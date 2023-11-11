@@ -1,0 +1,22 @@
+nl:
+  contacts:
+    new:
+      contact_title: Contact
+      p01: Los scoregeschillen op vanuit uw chatroom
+      prompt: Kies een onderwerp →
+      topics:
+      - feedback: Geef feedback
+      - join_club: Sluit je aan bij een van onze clubs
+      - other_topic: Ander onderwerp
+      name_placeholder: Voor-en achternaam
+      email_placeholder: e-mailadres user@domain.com
+      phone_placeholder: Telefoon
+      send_btn: Verzenden
+    sent:
+      sent_title: Bericht verzonden!
+      p01_html: Bedankt voor je bericht. Uw <b>admin</b> neemt binnenkort contact met u op.
+      p02: 🎾 Blijf ondertussen je boxcompetitiewedstrijden spelen! 🎾
+      p03: 🎾 Bezoek in de tussentijd onze pagina Toernooiregels! 🎾
+      back_btn: Home
+    create:
+      error_flash: Fout bij verzenden van bericht

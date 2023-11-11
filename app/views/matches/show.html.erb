@@ -5,21 +5,22 @@
   <h3><%= render "shared/fullname", user: current_user %><%= "(# #{player_ubs.rank})" %> vs
   <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %></h3>
 
-  <div class="frame-shape home-wrap">
+  <div class="frame-shape home-wrap text-size">
     <br><h4><%= render "match", my_card: @current_user_match_score %>by <%= render "shared/fullname", user: current_user %></h4>
     <% match_time = @tz.to_local(@match.time) %>
-    <br><%= "Match played on #{match_time.strftime("%a %-d %h %y")}, #{match_time.strftime("%H:%M")}, on court #{@match.court.name}." %>
+    <br>
+    <%# t(".match_played", date: match_time.strftime("%a %-d %h %y"), time: match_time.strftime("%H:%M"), court: @match.court.name) %>
+    <%= t(".match_played", date: l(match_time, format: :wwwddmmmyy_at_hhmm), court: @match.court.name) %>
 
     <br><br>
-    <strong><%= "Score : " %></strong>
+    <b><%= t '.score' %></b>
     <%= (render "shared/score", user_score: @current_user_match_score, opponent_score: @opponent_match_score).strip %>,
     <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
     <% log_time = @tz.to_local(ums.input_date) %>
     <% score_input_by = User.find(ums.input_user_id) %>
-    <% message = "submitted on #{log_time.strftime("%a %-d %h %y")}, #{log_time.strftime("%H:%M")} by #{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}." %>
-    <span class=" color-tennis-blue"><%= message %></span>
+    <span class=" color-tennis-blue"><%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_at_hhmm), user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %></span>
     <br><br>
-    <strong><%= "Points earned : " %></strong>
+    <b><%= t '.points_earned' %></b>
     <%= (render "shared/fullname", user: current_user).strip %>
     <%= ": #{pluralize @current_user_match_score.points, "point"} (#{pluralize player_ubs.points, "box pt"}) - " %>
     <%= (render "shared/fullname", user: @opponent).strip %>
@@ -28,13 +29,13 @@
     <% name = "#{render "shared/fullname", user: @referee}" %>
     <% message = "📞 #{@referee.phone_number}<br />✉️#{@referee.email}" %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
-      To challenge or edit this match score, please contact your club referee <%= (render "shared/fullname", user: @referee).strip %>.
+      <%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %>
     </div>
     <br>
   </div>
   <br>
   <div class="buttons-wrap">
     <%# link_to "Back to my box", manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-blue" %>
-    <%= link_to "Back to my box", manage_my_box_path(@match.box), class: "btn buttons-shape btn-blue" %>
+    <%= link_to t(".back_btn"), manage_my_box_path(@match.box), class: "btn buttons-shape btn-blue" %>
   </div>
 </div>

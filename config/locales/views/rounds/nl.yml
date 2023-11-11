@@ -1,0 +1,15 @@
+nl:
+  rounds:
+    new:
+      new_round_title: "Volgende ronde: spelersbeweging"
+      message: >
+          Kies een promotie, bijvoorbeeld:<br />
+          2 = promotie twee boxen,<br />
+          1 = promotie van een box,<br />
+          -1 = ga één box naar beneden,<br />
+          -2 = kom langs 2 boxen.<br /><br />
+          Kies 99 om de speler uit de volgende ronde te elimineren (bijvoorbeeld als er minder dan 2 wedstrijden gespeeld zijn).
+      message_boxes: speler, rangschikking,<br />aantal gespeelde partijen, voorgestelde zet
+      start_date: "Begin datum:"
+      end_date: "Einddatum:"
+      create_round_btn: Maak de ronde

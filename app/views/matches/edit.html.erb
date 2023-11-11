@@ -1,7 +1,8 @@
 <!-- admin/referee: edit or delete a match and dependent user_match_scores -->
 <div class="container">
   <br>
-  <h3>Edit match score</h3>
+  <h3><%= t '.edit_match_title' %></h3>
+  <p><%= t '.p01' %></p>
 
   <% players = [@current_player, @opponent] %>
   <br>
@@ -12,21 +13,17 @@
         <%= render "shared/fullname", user: @user_match_scores[1].user %>
       </h5>
     </div>
-    <div>
-      <%= "Update or delete the match score" %>
-    </div>
-    <div></div>
   </div>
 
   <%= form_for @match do |f| %>
     <div class = "frame-shape">
       <div class="row">
-        <div class="col-sm-2"><%= f.label :court_id, "Match played on court: " %></div>
+        <div class="col-sm-2"><%= f.label :court_id, t(".match_played") %></div>
         <div class="col-sm-1"><%= f.select :court_id, 1..10 %></div>
       </div>
       <br>
       <div class="row">
-        <div class="col-sm-2">Date & time:</div>
+        <div class="col-sm-2"><%= t '.date_time' %></div>
         <div class="col-sm-3">
           <%= f.date_field(:time, min: @round.start_date, max: @end_select ) %>
           <%= f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
@@ -35,9 +32,9 @@
       <br>
       <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-1">Set 1</div>
-        <div class="col-sm-1">Set 2</div>
-        <div class="col-sm-1">Tie-break</div>
+        <div class="col-sm-1"><%= t '.set_1' %></div>
+        <div class="col-sm-1"><%= t '.set_2' %></div>
+        <div class="col-sm-1"><%= t '.tie_break' %></div>
       </div>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
@@ -50,7 +47,7 @@
       <br>
       <% score_input_by = User.find(@match.user_match_scores[0].input_user_id) %>
       <% log_time = @tz.to_local(@match.user_match_scores[0].input_date) %>
-      <%= "Current score was submitted on #{log_time.strftime("%a %-d %b %y")} at #{log_time.strftime("%H:%M")} by #{score_input_by.role} #{render "shared/fullname", user: score_input_by}." %>
+      <%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_date), time: l(log_time, format: :hhmm_time), player: "#{score_input_by.role} #{render "shared/fullname", user: score_input_by}") %>
       <br><br>
       <%= hidden_field_tag(:player_id, @current_player.id) %>
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>
@@ -63,14 +60,14 @@
     <br>
 
     <div class="buttons-wrap">
-      <%= f.submit "Update score", class: "btn buttons-shape btn-green" %>
-      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "Delete score", match_path(@match), class: "btn buttons-shape btn-green",
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      <%= f.submit t(".update_score_btn"), class: "btn buttons-shape btn-green" %>
+      &nbsp;&nbsp;&nbsp;&nbsp;<%= link_to t(".delete_score_btn"), match_path(@match), class: "btn buttons-shape btn-green",
+      data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to "Back", manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% else %>
-        <%= link_to "Back", box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% end %>
 
     </div>

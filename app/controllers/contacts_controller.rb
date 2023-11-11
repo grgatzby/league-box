@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     if @contact.deliver
       redirect_to action: :sent
     else
-      flash.now[:error] = 'Could not send message'
+      flash.now[:error] = t('.error_flash')
       render :new, status: :unprocessable_entity
     end
   end

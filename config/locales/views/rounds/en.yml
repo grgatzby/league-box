@@ -1,0 +1,15 @@
+en:
+  rounds:
+    new:
+      new_round_title: Proposed player moves for next round
+      message: >
+          Select box move, for example:<br />
+          2 = two boxes up,<br />
+          1 = one box up,<br />
+          -1 = one box down,<br />
+          -2 = two boxes down.<br /><br />
+          Select 99 to remove player from next league round (e.g. if less than 2 games played).
+      message_boxes: player name, rank,<br />nb games played, proposed box move
+      start_date: "Start date :"
+      end_date: "End date :"
+      create_round_btn: Create new round

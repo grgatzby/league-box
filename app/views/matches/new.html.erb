@@ -1,7 +1,8 @@
 <!-- player: enter a new match score -->
 <div class = "container">
   <br>
-  <h3>New match score</h3>
+  <h3><%= t(".new_match_title") %></h3>
+  <p><%= t '.p01' %></p>
 
   <br><%= render "shared/display_club_round", round: @round %>
   <% players = [@current_player, @opponent] %>
@@ -13,21 +14,17 @@
         <%= render "shared/fullname", user: @opponent %>
       </h5>
     </div>
-    <div>
-      <%= "Enter the new match score" %>
-    </div>
-    <div></div>
   </div>
 
   <%= form_for @match do |f| %>
     <div class = "frame-shape">
       <div class="row">
-        <div class="col-sm-2"><%= f.label :court_id, "Match played on court: " %></div>
+        <div class="col-sm-2"><%= f.label :court_id, t(".match_played") %> </div>
         <div class="col-sm-1"><%= f.select :court_id, 1..@round.club.courts.count, default: 1 %></div>
       </div>
       <br>
       <div class="row">
-        <div class="col-sm-2">Date & time:</div>
+        <div class="col-sm-2"><%= t '.date_time' %></div>
         <div class="col-sm-3">
           <%= f.date_field(:time, min: @round.start_date, max: @end_select, value: @end_select ) %>
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
@@ -37,9 +34,9 @@
       <br>
       <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-1">Set 1</div>
-        <div class="col-sm-1">Set 2</div>
-        <div class="col-sm-1">Tie-break</div>
+        <div class="col-sm-1"><%= t '.set_1' %></div>
+        <div class="col-sm-1"><%= t '.set_2' %></div>
+        <div class="col-sm-1"><%= t '.tie_break' %></div>
       </div>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
@@ -58,12 +55,12 @@
     </div>
     <br>
     <div class="buttons-wrap">
-      <%= f.submit "Save score", class: "btn buttons-shape btn-green" %>
+      <%= f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to "Back", manage_my_box_path(@box, page_from: manage_my_box_path(@box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), manage_my_box_path(@box, page_from: manage_my_box_path(@box)), class: "btn buttons-shape btn-blue" %>
       <% else %>
-        <%= link_to "Back", box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-blue" %>
       <% end %>
     </div>
   <% end %>
