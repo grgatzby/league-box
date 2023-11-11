@@ -1,44 +1,44 @@
 <!-- player page to view match results, enter new scores -->
 <div class="container text-size">
   <div>
-    <h3>My box results</h3>
+    <h3><%= t '.my_box_results' %></h3>
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%= render "shared/select_club_round", fallback_path: manage_my_box_path, intro_paragraph: @intro_paragraph %>
+      <%= render "shared/select_club_round", fallback_path: manage_my_box_path, intro_paragraph: t(".intro") %>
     <% end %>
   </div>
   <% if @round %>
-    <%= render "shared/round", round: @round %>
-    <% if @user_not_in_round %>
-      <br><br><h4><%= render "shared/fullname", user: @current_player %><%= " you are not in this round!" %></h4>
+    <%# render "shared/round", round: @round %>
+    <%= render "shared/display_club_round", round: @box.round %>
+  <% if @user_not_in_round %>
+      <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
-      <br><br>
       <div class="same-line">
         <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
         <div>
           <!-- Back -->
-      <% if @page_from %>
-        <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-        <%= link_to @page_from+parameters, class: "btn buttons-shape btn-blue" do %>
-          <i class="fa-solid fa-left-long"></i>
-        <% end %>
-      <% else %>
-        <%= link_to :back, class: "btn buttons-shape btn-blue" do %>
-          <i class="fa-solid fa-left-long"></i>
-        <% end %>
-      <% end %>
+          <% if @page_from %>
+            <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-blue" do %>
+              <i class="fa-solid fa-left-long"></i>
+            <% end %>
+          <% else %>
+            <%= link_to :back, class: "btn buttons-shape btn-blue" do %>
+              <i class="fa-solid fa-left-long"></i>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div class="frame-shape players frame-padding text-size">
-        <h4>View or enter match scores</h4>
+        <h4><%= t '.view_enter_scores' %></h4>
         <!-- open forms to chose club and round -->
         <h6>
           <div class="row justify-content-center text-padding font-bold text-size">
-            <div class="col-sm-3">Player</div>
-            <div class="col-sm-2">Total points</div>
-            <div class="col-sm-2">Match played on</div>
-            <div class="col-sm-3">Action</div>
+            <div class="col-sm-3"><%= t '.player_header' %></div>
+            <div class="col-sm-2"><%= t '.total_points_header' %></div>
+            <div class="col-sm-2"><%= t '.played_on_header' %></div>
+            <div class="col-sm-3"><%= t '.action_header' %></div>
           </div>
         </h6>
         <% @my_games.each do |my_game| %>
@@ -61,16 +61,16 @@
             </div>
             <div class="col-sm-2 text-padding">
               <% if match && opponent != @current_player %>
-                <%= "#{match.time.strftime("%a %-d %h %y")}" %>
+                <%= "#{l(match.time, format: :wwwddmmmyy_date)}" %>
               <% end %>
             </div>
             <div class="col-sm-3">
               <% if opponent == @current_player %>
-                <%= link_to "View box results", box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
+                <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
-                <%= link_to "See match results", match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
+                <%= link_to t(".see_match_result_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
               <% else %>
-                <%= link_to "Enter new score", new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost text-size" %>
+                <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost text-size" %>
               <% end %>
             </div>
           </div>
@@ -78,9 +78,9 @@
       </div><br>
 
       <div class="frame-shape players frame-padding text-size">
-        <h4>Chat with other players in my box</h4>
+        <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
-          <%= link_to "Access the chatroom", chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
+          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
         </div>
       </div>
     <% end %>

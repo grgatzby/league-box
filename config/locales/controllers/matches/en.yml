@@ -1,0 +1,7 @@
+en:
+  matches:
+    test_scores01_flash: One score must be 4 for set 1 and set 2.
+    test_scores02_flash: 4-4 is not a valid score.
+    test_scores03_flash: One tiebreak score must be at least 10
+    test_scores04_flash: One tiebreak score must be 10.
+    test_scores05_flash: Tiebreak score must be 2 clear.

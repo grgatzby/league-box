@@ -1,2 +1,3 @@
 <%# partial: display round start date and end date %>
-<%= "Round : #{round.start_date.strftime("%d %b")} to #{round.end_date.strftime("%d %b %y")}" %>
+<%# t(".round_period", start: round.start_date.strftime("%d %b"), end: round.end_date.strftime("%d %b %y")) %>
+<%= t(".round_period", start: l(round.start_date, format: :ddmmmyy_date), end: l(round.end_date, format: :ddmmmyy_date)) %>

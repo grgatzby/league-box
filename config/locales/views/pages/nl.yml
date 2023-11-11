@@ -1,0 +1,211 @@
+nl:
+  pages:
+    home:
+      main_title: Jouw pad naar verenigingstennis
+      welcome_title: Welkom op de Leaguebox-website van jouw club
+      p01: >
+        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of elke drie maanden, afhankelijk van de club).
+        De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
+      p02: >
+        De winnaar ontvangt de Singles Box League Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
+        champagne om zijn overwinning aan het einde van de ronde te vieren.
+      p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
+      how_title: Hoe werkt Leaguebox?
+      p04: Elke ronde duurt een maand (3 maanden voor sommige clubs) en spelers strijden in hun box.
+      li01_html: 🎾 <b>Speel gedurende de ronde</b> tegen alle spelers in je box.
+      li02_html: 💻 <b>Na elke wedstrijd</b> voer jij of je tegenstander de score in op de website van Leaguebox.
+      li03_html: 🏆 De ranglijst wordt automatisch bijgewerkt.
+      li04_html: 🎭 <b>Aan het einde van de ronde</b> gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje.
+      p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
+      use_title: Gebruik van de Leaguebox-website
+      p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
+      li05_html: >
+        Voer je laatste score in <span class='color-tennis-blue'>Mijn box</span> na de wedstrijd in en volg
+        hoe jij het doet ten opzichte van de andere spelers in jouw box.
+      li06_html: >
+        Op <span class='color-tennis-blue'>De boxen</span> zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
+        klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
+      li07_html: >
+        Binnen een vak raadpleeg je de scores, datum en tijd van een wedstrijd en de rangschikking van een speler in <span class='color-tennis-blue'>Lijstweergave</span>
+        of in <span class='color-tennis-blue'>Rasterweergave</span>.
+      li08_html: De <span class='color-tennis-blue'>League Table</span> wordt in realtime bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
+      happy_tournament: Happy tournament!
+    rules:
+      overview_title: Beschrijving van het toernooi
+      p01_html: >
+        Box Leagues zijn ontworpen om %{clubname} spelers in staat te stellen regelmatig competitief tennis te spelen.
+        Bovendien zijn ze de ideale manier om andere leden van uw club te ontmoeten en uw recreatieve tennisnetwerk uit te breiden.
+      p02: >
+        Maar boxcompetities werken alleen als de spelers zich ertoe verbinden de wedstrijden te spelen. Leden die zich inschrijven voor competities
+        moeten er alles aan doen om de geplande wedstrijden te plannen en te spelen. Als u om welke reden dan ook de geplande wedstrijden niet kunt spelen
+        waarschuw snel uw tegenstanders en uw scheidsrechter.
+      p03: >
+        Spelers moeten hun tegenstanders op de hoogte stellen van perioden van onbeschikbaarheid, evenals van beschikbare perioden.
+        Deze discipline zal de goede organisatie van uw wedstrijden vergemakkelijken.
+      btn_display_rules: Toon regels
+      btn_hide_rules: Verberg de regels
+      rules: De regels
+      rounds: Rondes
+      p04: Er is één ronde per maand, tenzij anders aangegeven door jouw club.
+      availability: Beschikbaarheid
+      p05: Spelers moeten hun wedstrijden 's avonds en/of in het weekend kunnen spelen.
+      qualifying_players: Spelers getroffen
+      p06: Spelers moeten bij aanvang van de ronde 16 jaar of ouder zijn om aan het toernooi te kunnen deelnemen; elke vrijstelling is ter beoordeling van de scheidsrechter.
+      p07_html: "Spelers moeten volledige leden zijn van %{clubname}"
+      p08: Leden die overdag spelen, kunnen bij wijze van uitzondering hun wedstrijden buiten de toegestane uren spelen door de gastentoeslag aan de bar te betalen voordat ze beginnen met spelen.
+      box_design: Constitutie van boxen
+      p09: De Boxen bieden plaats aan 4 tot 6 spelers
+      organizing_matches: Organisatie van wedstrijden
+      p10: Het is de verantwoordelijkheid van beide spelers om hun wedstrijd te organiseren.
+      tennis_rules: Algemene tennisregels
+      p11: De wedstrijden zijn volgens de ITF-tennisregels die kunnen worden bekeken op www.itftennis.com
+      matches_not_umpired: Wedstrijden zonder scheidsrechter
+      p12: "De volgende principes zijn van toepassing op wedstrijden gespeeld zonder scheidsrechter:"
+      li01: Elke speler is verantwoordelijk voor het scheidsrechteren van de lijnen aan zijn kant van het net
+      li02: “Uit” en “foute” oproepen moeten onmiddellijk na de rebound worden gedaan en luid genoeg om door de tegenstander te worden gehoord.
+      li03: In geval van twijfel zal de speler het voordeel van de twijfel aan zijn tegenstander geven
+      li04: >
+        Als een speler per ongeluk een bal "uit" verklaart en zich vervolgens realiseert dat deze goed was, moet het punt opnieuw worden gespeeld.
+        tenzij het een winnend schot was of als die speler eerder in de wedstrijd al per ongeluk een bal "uit" had verklaard.
+        In een dergelijk geval verliest de speler die de bal "uit" verklaart het punt.
+      li05: De serveerder moet de score vóór elke eerste service bekendmaken, luid genoeg om door de tegenstander te worden gehoord
+      warm_up: Opwarmen
+      p13: Om ervoor te zorgen dat de wedstrijden binnen het toegewezen uur worden afgewerkt, zijn de warming-ups beperkt tot 5 minuten.
+      match_format: Match-formaat
+      p14: De wedstrijden worden gespeeld in twee minisets, eventueel met een beslissende tie-break.
+      p15: "Elke set wordt gespeeld als de eerste met 4 games met een standaard tiebreak van 7 punten om 3:3."
+      p16: De beslissende tie-break wordt net als de eerste gespeeld op 10 punten met een minimaal verschil van 2 punten.
+      p17: "OPTIONEEL: (nader te bepalen tussen de spelers vóór aanvang van de wedstrijd)"
+      p18: "Om te voorkomen dat games zich voortslepen, kan een gelijkspel Sudden Death worden gespeeld om de wedstrijd om 40:40 te beslissen"
+      p19: De ontvanger zal dan beslissen van welke kant hij service zal krijgen bij een gelijkspel met plotselinge dood.
+      points: Punten
+      p20: "Verdiende punten worden berekend om spelers aan te moedigen zoveel mogelijk games te winnen en worden als volgt bepaald:"
+      li06: Wedstrijdwinnaar 20 punten
+      li07: Verliezer 10 punten per gewonnen set + aantal games per verloren set
+      li08: De tiebreak telt als een set (er worden geen punten toegekend aan de verliezer)
+      p21: "Voorbeelden:"
+      li09: "4-2 4-3 : winnaar 20 punten, verliezer 5 punten"
+      li10: "4-1 2-4 10-6 : winnaar 20 punten, verliezer 11 punten"
+      li11: "4-3 3-4 12-10 : winnaar 20 punten, verliezer 13 punten"
+      li12: "4-2 2-4 10-1 : winnaar 20 punten, verliezer 12 punten"
+      posting_results: Resultaten opslaan
+      p22: Elke speler kan het wedstrijdresultaat op de site invoeren.
+      p23: >
+        Elke speler in de Box kan inloggen op zijn account en scores online invoeren, of deze kunnen op het bord worden gemarkeerd
+        waar u een scoreblad ter beschikking wordt gesteld. Indien een uitslag verkeerd is ingevoerd, neem dan contact op met de Toernooischeidsrechter.
+      p24: Houd er rekening mee dat alle resultaten vóór het einde van de ronde moeten worden ingevoerd, tenzij de scheidsrechter uitstel heeft verleend.
+      box_league_ranking: Stand van de Box League
+      p25: >
+        De rangschikking van een speler wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer spelers
+        hetzelfde aantal punten zou hebben, wordt de rangschikking bepaald door:
+      li13: Head to Head-resultaat (als slechts 2 spelers dezelfde score hebben)
+      li14: Meeste wedstrijden gespeeld
+      li15: De verhouding tussen gewonnen sets en gespeelde sets %
+      li16: De verhouding tussen gewonnen games en gespeelde games %
+      promotion_relegation: Promotie/degradatie
+      p26: Onder normale omstandigheden
+      li17: de twee beste spelers promoveren met 1 box.
+      li18: de laatste twee spelers degraderen één box.
+      new_entrants: Nieuwkomers
+      p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
+      disqualification: Diskwalificatie
+      p28: >
+        Spelers die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
+        naar eigen goeddunken van de toernooischeidsrechter.
+      no_show: No Show
+      p29: Als een speler meer dan 5 minuten te laat op het speelveld is, mag zijn tegenstander 1 game eisen.
+      p30: Als een speler meer dan 10 minuten te laat op het speelveld is, mag zijn tegenstander 2 games eisen.
+      p31: Als een speler meer dan 15 minuten te laat op het speelveld is, mag zijn tegenstander een set eisen.
+      retire_from_match: Terugtrekt van een Match
+      p32: Als een speler zich terugtrekt, bijvoorbeeld vanwege een blessure, tellen alle gespeelde wedstrijden mee. Niet gespeelde wedstrijden worden verloren verklaard.
+      p33: "Bijvoorbeeld:"
+      p34: "Speler A leidt 2/1, 30:15 in de eerste set en moet opgeven."
+      p35: De score van de in te voeren wedstrijd is 2/4 0/4 in het voordeel van speler B.
+      withdrawing: Terugtrekking vóór aanvang van een ronde
+      p36: Spelers informeren de scheidsrechter als ze zich willen terugtrekken uit de Box League.
+      p37: >
+        Als de speler zich vóór het begin van de ronde terugtrekt, zal de scheidsrechter proberen zijn positie in de competitie te behouden
+        als hij wilde deelnemen aan de volgende ronde.
+      walk_overs: Overwinning door verbeurdverklaring of afwezigheid (walk-over)
+      p38: "Walk-overs zijn afgeschaft en niet meer toegestaan ​​om de volgende redenen:"
+      li19: ingewikkeld om te beheren
+      li20: het is voor de scheidsrechter onmogelijk om walk-over-verklaringen te verifiëren
+      li21: oneerlijke toewijzing van niet-gespeelde punten
+      deadline_extensions: Deadline-verlengingen
+      p39: Spelers zullen ernaar moeten streven hun wedstrijden binnen de duur van de Box League te spelen.
+      p40: >
+        Spelers kunnen om uitstel verzoeken, op voorwaarde dat de wedstrijd is geregeld en de baan is gereserveerd. Zo'n verzoek
+        zal worden beoordeeld naar goeddunken van de toernooischeidsrechter, wiens beslissing definitief zal zijn.
+      p41: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
+      disputes: Geschillen
+      mail_to_referee_html: "uw referee %{referee_first_name} aan %{referee_email}"
+      mail_to_admin_html: "uw admin aan %{admin_email}"
+      p42_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
+    staff:
+      your_club_staff_title: Clubpersoneel
+      p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
+      p02: >
+        De clubscheidsrechter is uw aanspreekpunt als u het niet eens bent over een score die al in het systeem is ingevoerd,
+        of u heeft een slechte score ingevoerd: wijzig of verwijder deze. Neem contact op met uw scheidsrechter via uw boxchatroom of per telefoon.
+      p03: >
+        Als om wat voor reden dan ook noch jij, noch je tegenstander je score in het systeem kunnen invoeren, neem dan contact op met de beheerder die deze daarna voor je zal invoeren
+        validatie van de scheidsrechter.
+      header_name: Naam
+      header_club: 🎾 Club
+      header_email: ✉️ E-mail
+      header_phone: 📞 Telefoon
+      header_role: 🧩 Rol
+      website_admin: Sitebeheerder
+      club_referee_html: "Referee van %{club_name}"
+    structure:
+      sitemap: Sitemap LeagueBox
+      home: Home
+      p01: Algemene presentatie van het Box League Toernooi
+      p02a_html: Voettekstlinks naar <span class='color-tennis-blue'>Toernooiregels</span>, <span class='color-tennis-blue'>Clubpersoneel</span> pagina's
+      p02b_html: ", <span class='color-tennis-blue'>Creëer een club</span>"
+      p02c_html: ", en <span class='color-tennis-blue'>Sitemap</span>."
+      overview_rules: Toernooibeschrijving en regels
+      p03: Box League-regels uitgelegd
+      p04_html: Voettekstlinks naar het <span class='color-tennis-blue'>Home</span>, <span class='color-tennis-blue'>Clubpersoneel</span> en <span class='color-tennis -blue'>Sitemap</span>.
+      club_staff: Clubpersoneel
+      p05: Gegevens van de beheerder en de clubscheidsrechter
+      p06a_html: Voettekstlinks naar <span class='color-tennis-blue'>home</span>, <span class='color-tennis-blue'>Toernooiregels</span>, <span class='color-tennis-blue '>Sitemap</span>
+      p06b_html: ", en <span class='color-tennis-blue'>Voer mijn resultaten in</span>"
+      all_boxes: Boxen
+      p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
+      li01: zijn naam
+      li02: zijn ranking binnen het toernooi
+      li03: het aantal gespeelde wedstrijden
+      li04: accumulatie van punten
+      p08_html: "De <span style= 'color:green'>verbonden speler</span> wordt groen weergegeven."
+      p09a: Als u op een box klikt, komt u in de boxscheidsrechter-weergave.
+      p09b: Als u op een vakje klikt, gaat u naar de rasterweergave.
+      p10a_html: Voettekstknop voor de <span class='color-tennis-blue'>competitietabel</span>.
+      p10b_html: Voettekstlinks naar <span class='color-tennis-blue'>Competitietabel</span> en <span class='color-tennis-blue'>Mijn resultaten invoeren</span> (= Manage my box page).
+      league_table: League table
+      p11_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets < /b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
+      p12: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
+      p13_html: Voettekstlinks naar <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
+      referee_view: Box referee view
+      p14_html: Bekijk de pagina op <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
+      p15: Als u op een wedstrijdregel klikt, komt u terecht op de pagina Wedstrijd bewerken/verwijderen. Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina Nieuwe wedstrijdscore.
+      table_view: Box Table view
+      p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
+      p17_html: "Current player appears in <span style= 'color:green'>green</span>."
+      p18_html: Toggle links to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
+      list_view: Box List view
+      p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Matchpunten van de speler, Matchpunten van de tegenstander, Totaal aantal punten van de tegenstander</b>.
+      p20_html: "Current player appears in <span style= 'color:green'>green</span>, and a <span class='color-tennis-blue'>Enter new results</span> link to Manage my box is shown."
+      p21_html: Toggle links to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+      manage_my_box: Manage my box
+      p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Bekijk mijn box</span>, <span class='color-tennis-blue'>Bekijk de wedstrijdresultaten</span> span> en <span class='color-tennis-blue'>Voer nieuwe score in</span>.
+      p23: Link naar de box-chatroom.
+      match_results: Wedstrijdresultaten bekijken
+      p24: "Details van een gespeelde wedstrijd:"
+      li05: datum en tijd van het spel, baannummer,
+      li06: score, met datum en tijdstip van binnenkomst,
+      li07: wedstrijdwinsten en totaal aantal punten.
+      new_match_score: Nieuwe wedstrijdscore
+      p25: Formulier om nieuwe wedstrijdgegevens in te voeren.
+      match_edit_score: Wedstrijdbewerkingsscore
+      p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.

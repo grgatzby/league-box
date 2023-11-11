@@ -1,84 +1,89 @@
 <%= render "shared/image_front", sticky: false %>
 
 <div class="container" data-controller="toggle">
-  <div class="frame-shape home-wrap box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
-    <br><h3><%= "LeagueBox website structure".upcase %></h3>
-    <br><h5>Home</h5>
-    <p>General presentation of the Box League Tournament</p>
-    <p>Footpage links to <span class="color-tennis-blue">Tournament rules</span>, <span class="color-tennis-blue">Club staff</span>, and <span class="color-tennis-blue">Website map</span>
-    <% if current_user && current_user.role == "admin" %>, <span class="color-tennis-blue">Create club</span>.<% end %>pages.</p>
+  <div class="frame-shape home-wrap text-size box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
+    <br><h3><%= t(".sitemap").upcase %></h3>
+    <br><h5><%= t '.home' %></h5>
+    <p><%= t '.p01' %></p>
+    <p>
+      <%= t '.p02a_html' %>
+      <% if current_user && current_user.role == "admin" %>
+        <%= t '.p02b_html' %>
+      <% end %>
+      <%= t '.p02c_html' %>
+    </p>
 
-    <br><h5>Tournament overview and rules</h5>
-    <p>Explanation of the of the Box League rules</p>
-    <p>Footpage links to <span class="color-tennis-blue">Home</span>, <span class="color-tennis-blue">Club staff</span>, and <span class="color-tennis-blue">Website map</span>.</p>
+    <br><h5><%= t '.overview_rules' %></h5>
+    <p><%= t '.p03' %></p>
+    <p><%= t '.p04_html' %></p>
 
-    <br><h5>Club staff</h5>
-    <p>Details of the admin and the club referee</p>
-    <p>Footpage links to <span class="color-tennis-blue">Home</span>, <span class="color-tennis-blue">Tournament rules</span>, <span class="color-tennis-blue">Website map</span>
-    <% if current_user && current_user.role == "player" %>, and <span class="color-tennis-blue">Enter my results</span><% end %>.</p>
+    <br><h5><%= t '.club_staff' %></h5>
+    <p><%= t '.p05' %></p>
+    <p>
+      <%= t '.p06a_html' %>
+      <% if current_user && current_user.role == "player" %>
+        <%= t '.p06b_html' %>
+      <% end %>
+      .
+    </p>
 
-    <br><h5>All Boxes</h5>
-    <p>Display all boxes in one glance with following details for each player:</p>
+    <br><h5><%= t '.all_boxes' %></h5>
+    <p><%= t '.p07' %></p>
     <ul>
-      <li>name</li>
-      <li>ranking in the club</li>
-      <li>number of matches played</li>
-      <li>number of total points</li>
+      <li><%= t '.li01' %></li>
+      <li><%= t '.li02' %></li>
+      <li><%= t '.li03' %></li>
+      <li><%= t '.li04' %></li>
     </ul>
-    <p>Current player appears in <span style= "color:green">green</span>.</p>
+    <p><%= t '.p08_html' %></p>
     <% if current_user && current_user.role != "player" %>
-      <p>Clicking on a box leads to the Box Referee view.</p>
-      <p>Footpage button links to <span class="color-tennis-blue">League table</span>.</p>
+      <p><%= t '.p09a' %></p>
+      <p><%= t '.p10a_html' %></p>
     <% else %>
-      <p>Clicking on a box leads to the Box Table view.</p>
-      <p>Footpage links to <span class="color-tennis-blue">League table</span>, and <span class="color-tennis-blue">Enter my results</span> (= Manage my box page).</p>
+      <p><%= t '.p09b' %></p>
+      <p><%= t '.p10b_html' %></p>
     <% end %>
 
-    <br><h5>League table</h5>
-    <p>Each player appears in descending rank order under the headers <strong>Player, Rank, Points, Box, Matches </strong>(matches played)<strong>,
-    Won </strong>(matches won)<strong>, Sets </strong>(sets played)<strong>, Won </strong>(sets won).</p>
-    <p>Clicking on a header sorts the player according to this header.</p>
-    <p>Footpage links to <span class="color-tennis-blue">Back to top</span>, and <span class="color-tennis-blue">All boxes</span>.</p>
+    <br><h5><%= t '.league_table' %></h5>
+    <p><%= t '.p11_html' %></p>
+    <p><%= t '.p12' %></p>
+    <p><%= t '.p13_html' %></p>
 
     <% if current_user && current_user.role != "player" %>
-      <br><h5>Box referee view</h5>
-      <p>Each player's matches which have been played are shown as list items. Headers are <strong>Match scores,
-      Player match points, Opponent match points, Opponent's total points</strong>.
-      Unplayed matchs are listed too.</p>
-      <p>Clicking on a match line lands on the Match Edit/Delete page, clicking on an unplayed match (admin only) lands on the New match score page.</p>
+      <br><h5><%= t '.referee_view' %></h5>
+      <p><%= t '.p14_html' %></p>
+      <p><%= t '.p15' %></p>
 
     <% else %>
-      <br><h5>Box Table view</h5>
-      <p>Each player's matches are shown under their corresponding opponent.</p>
-      <p>Current player appears in <span style= "color:green">green</span>.</p>
-      <p>Toggle links to <span class="color-tennis-blue">List view</span>, <i class="fa-solid fa-list color-tennis-blue"></i>.</p>
+      <br><h5><%= t '.table_view' %></h5>
+      <p><%= t '.p16' %></p>
+      <p><%= t '.p17_html' %></p>
+      <p><%= t '.p18_html' %></p>
 
-      <br><h5>Box List view</h5>
-      <p>Each player's matches which have been played are shown as list items. Headers are <strong>Match scores,
-      Player match points, Opponent match points, Opponent's total points</strong>.</p>
-      <p>Current player appears in <span style= "color:green">green</span>, and a <span class="color-tennis-blue">Enter new results</span> link to Manage my box is shown.</p>
-      <p>Toggle links to <span class="color-tennis-blue">Table view</span>, <i class="fa-regular fa-table-list color-tennis-blue"></i>.</p>
+      <br><h5><%= t '.list_view' %></h5>
+      <p><%= t '.p19_html' %></p>
+      <p><%= t '.p20_html' %></p>
+      <p><%= t '.p21_html' %></p>
 
-      <br><h5>Manage my box</h5>
-      <p>Each of my box matches dates and players points with links such as <span class="color-tennis-blue">Display my box</span>,
-      <span class="color-tennis-blue">See match results</span>, and <span class="color-tennis-blue">Enter new score</span>.</p>
-      <p>Link to the box chatroom.</p>
+      <br><h5><%= t '.manage_my_box' %></h5>
+      <p><%= t '.p22_html' %></p>
+      <p><%= t '.p23' %></p>
     <% end %>
 
-    <br><h5>Match results view</h5>
-    <p>Details of a match played:
+    <br><h5><%= t '.match_results' %></h5>
+    <p><%= t '.p24' %>
     <ul>
-      <li>game date and time, court number,</li>
-      <li>score, with date and time of submission,</li>
-      <li>match earnings and total points.</li>
+      <li><%= t '.li05' %></li>
+      <li><%= t '.li06' %></li>
+      <li><%= t '.li07' %></li>
     </ul></p>
 
-    <br><h5>New match score</h5>
-    <p>Form to enter new match details.</p>
+    <br><h5><%= t '.new_match_score' %></h5>
+    <p><%= t '.p25' %></p>
 
     <% if current_user && current_user.role != "player" %>
-      <br><h5>Match edit score</h5>
-      <p>Form to modify match details, or delete score.</p>
+      <br><h5><%= t '.match_edit_score' %></h5>
+      <p><%= t '.p26' %></p>
     <% end %>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"

@@ -13,7 +13,7 @@ class MatchesController < ApplicationController
     @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
     @box = my_box(@round, @current_player)
     if @round.start_date > Time.now
-      flash[:notice] = "Round has not started yet."
+      flash[:notice] = t('.round_not_started_flash')
       redirect_back(fallback_location: box_referee_path(@box))
     else
       @opponent = User.find(params[:opponent_id])
@@ -196,7 +196,7 @@ class MatchesController < ApplicationController
       end
     else
       # if score entered is not valid
-      redirect_back(fallback_location: match_user_match_scores_path)
+      redirect_back(fallback_location: edit_match_path)
     end
   end
 
@@ -304,24 +304,24 @@ class MatchesController < ApplicationController
     # returns true if scores entered in matches/new or matches/edit are valid, false otherwise
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
-      flash[:alert] = "One score must be 4 for set 1 and set 2."
+      flash[:alert] = t('.test_scores01_flash')
       false
     elsif (match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] == 4) ||
           (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
-      flash[:alert] = "4-4 is not a valid score."
+      flash[:alert] = t('.test_scores02_flash')
       false
     elsif (match_scores[0][:score_tiebreak] < 10 && match_scores[1][:score_tiebreak] < 10) &&
           (results[0] == 1 || results[1] == 1)
-      flash[:alert] = "One tiebreak score must be at least 10."
+      flash[:alert] = t('.test_scores03_flash')
       false
     elsif ((match_scores[0][:score_tiebreak] > 10 && match_scores[1][:score_tiebreak] < 9) ||
           (match_scores[0][:score_tiebreak] < 9 && match_scores[1][:score_tiebreak] > 10)) &&
           (results[0] == 1 || results[1] == 1)
-      flash[:alert] = "One tiebreak score must be 10."
+      flash[:alert] = t('.test_scores04_flash')
       false
     elsif (match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2 &&
           (results[0] == 1 || results[1] == 1)
-      flash[:alert] = "Tiebreak score must be 2 clear."
+      flash[:alert] = t('.test_scores05_flash')
       false
     else
       true

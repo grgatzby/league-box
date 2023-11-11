@@ -1,0 +1,61 @@
+en:
+  back_btn: Back
+  boxes:
+    intro_lines:
+      my_current_box: my current box
+    index:
+      all_box_title: View all boxes
+      intro: "For a given round, view for all boxes at a glance <b>player names, rankings, games played and box points</b><br />in your club"
+      click_box_pop: Click on a box to view match details
+      message_box_pop: <b>Box columns:</b><br />player name, rank,<br />games played, box points
+      create_round_btn: Create the next round
+    manage_my_box:
+      my_box_results: My box results
+      intro: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
+      not_in_round: " you are not in this round!"
+      view_enter_scores: View or enter match scores
+      player_header: Player
+      total_points_header: Total points
+      played_on_header: Match played on
+      action_header: Action
+      view_box_results_btn: View box results
+      see_match_result_btn: See match result
+      enter_score_btn: Enter new score
+      chat_in_my_box: Chat with other players in my box
+      access_chatroom_btn: Access the chatroom
+    show_list:
+      list_view: list view
+      my_box_btn: My box
+      match_score_header: Match score
+      player_points_header: Player's points
+      match_earnings: Match earnings
+      opponent_points_header: Opponent's points
+      opponent_total_points_header: Opponent total points
+      points_pop: >
+        Winner earns 20 points.<br />
+        Looser earns 10 points per set won + number of games per lost set.<br />
+        The championship tie-break counts as one set (no points awarded for the looser).
+      won: Won
+      lost: Lost
+      on_date: "on"
+      enter_results_btn: Enter new results
+      dont_forget: Don't forget to play your matches and enter your scores in My box!
+    show_referee:
+      referee_view: referee view
+      not_authorised: As a player, this page is not authorised
+      pop01_a: select a match to edit or delete the score
+      pop01_b: ", or input a new score"
+      match_score_header: Match score
+      player_points_header: Player's points
+      opponent_points_header: Opponent's points
+      opponent_total_points_header: Opponent total points
+      pop02: "<b>Score entered</b><br />by %{user}<br />on %{date}"
+      won: Won
+      lost: Lost
+      on_date: "on"
+      not_played: not played
+      pop03_a: Click to enter the new match score for<br />
+    show:
+      my_box_btn: My box
+      not_played: not played
+      table_view: table view

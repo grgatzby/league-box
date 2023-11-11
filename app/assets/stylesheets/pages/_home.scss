@@ -41,10 +41,9 @@
 
 .frame-padding {
   padding: 15px 24px;
-  h3 {
-    font-size: 1.5vw;
-  }
-
+  // h3 {
+  //   font-size: 1.5vw;
+  // }
 }
 
 .home-wrap {
@@ -55,42 +54,42 @@
   padding-right: calc(var(--bs-gutter-x) * 6);
   font-size: 1.1vw;
 
-  h3 {
-    font-size: 1.5vw;
-  }
+  // h3 {
+  //   font-size: 1.5vw;
+  // }
 
-  h5 {
-    font-size: 1.4vw;
-  }
+  // h5 {
+  //   font-size: 1.4vw;
+  // }
 }
 
-@media only screen and (max-width: 1400px) {
-  .home-wrap {
-    font-size: 1.2vw;
+// @media only screen and (max-width: 1400px) {
+//   .home-wrap {
+//     font-size: 1.2vw;
 
-    h3 {
-      font-size: 1.7vw;
-    }
+//     h3 {
+//       font-size: 1.7vw;
+//     }
 
-    h5 {
-      font-size: 1.6vw;
-    }
-  }
-}
+//     h5 {
+//       font-size: 1.6vw;
+//     }
+//   }
+// }
 
-@media only screen and (max-width: 1200px) {
-  .home-wrap {
-    font-size: 1.5vw;
+// @media only screen and (max-width: 1200px) {
+//   .home-wrap {
+//     font-size: 1.5vw;
 
-    h3 {
-      font-size: 1.8vw;
-    }
+//     h3 {
+//       font-size: 1.8vw;
+//     }
 
-    h5 {
-      font-size: 1.7vw;
-    }
-  }
-}
+//     h5 {
+//       font-size: 1.7vw;
+//     }
+//   }
+// }
 
 @media only screen and (max-width: 768px) {
   .home-wrap {
@@ -98,13 +97,13 @@
     padding-left: 50px;
     padding-right: 50px;
 
-    h3 {
-      font-size: 2.6vw;
-    }
+    // h3 {
+    //   font-size: 2.6vw;
+    // }
 
-    h5 {
-      font-size: 2.4vw;
-    }
+    // h5 {
+    //   font-size: 2.4vw;
+    // }
   }
 }
 

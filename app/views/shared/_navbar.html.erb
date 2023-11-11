@@ -10,39 +10,51 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <%# link_to 'EN', {controller: controller_name, action: action_name, locale: :en}, {class: "nav-link"} %>&nbsp;&nbsp
+      <%# link_to 'FR', {controller: controller_name, action: action_name, locale: :fr}, {class: "nav-link"} %>&nbsp;&nbsp
       <ul class="navbar-nav me-auto">
         <li class="nav-item time-padding">
-          <%= "#{Time.now.strftime("%a %-d %b")}" %>&nbsp;&nbsp<%= "#{Time.now.strftime("%H:%M")}" %>&nbsp;&nbsp
+          <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>&nbsp;&nbsp
         </li>
         <li class="nav-item time-padding">
           <% if user_signed_in? && @round %>
-            <%= " Round: #{@round.start_date.strftime("%b %y")} - #{@round.end_date.strftime("%b %y")}" %>
+            <%= " Round: #{l(@round.start_date, format: :mmmyy_date)} - #{l(@round.end_date, format: :mmmyy_date)}" %>
           <% end %>
         </li>
-        <%= link_to "Home", root_path, class: "nav-link active" %>
-        <%= link_to "Tournament rules", rules_path, class: "nav-link" %>
-        <%= link_to "Club staff", staff_path, class: "nav-link" %>
+        <%= link_to t('.home_link'), root_path, class: "nav-link active" %>
+        <%= link_to t('.tournament_rules_link'), rules_path, class: "nav-link" %>
+        <%= link_to t('.club_staff_link'), staff_path, class: "nav-link" %>
         <% if user_signed_in?%>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><%= "#{current_user.nickname} (#{current_user.role})" %></a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "All boxes", boxes_path, class: "dropdown-item" %>
-              <%= link_to "League table", user_box_scores_path, class: "dropdown-item" %>
+              <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item" %>
+              <%= link_to t('.league_table_link'), user_box_scores_path, class: "dropdown-item" %>
               <% if current_user && current_user.role == "player" %>
                 <!-- passing 0 to manage_my_box_path forces the _select_club_round form -->
-                <%= link_to "My box", manage_my_box_path(0), class: "dropdown-item color-tennis-blue" %>
+                <%= link_to t('.my_box_link'), manage_my_box_path(0), class: "dropdown-item color-tennis-blue" %>
               <% end %>
               <% if current_user.role == "player" %>
-                <%= link_to "#general chatroom", chatroom_path(@general_chatroom), class: "dropdown-item" %>
+                <%= link_to t('.general_chat_link'), chatroom_path(@general_chatroom), class: "dropdown-item" %>
               <% else %>
-                <%= link_to "Chatrooms", chatroom_path(0), class: "dropdown-item" %>
+                <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item" %>
               <% end %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to t('.log_out_link'), destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
-       <% else %>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-globe"></i></a>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%# link_to 'EN', {controller: controller_name, action: action_name, locale: :en}, {class: "dropdown-item"} %>
+              <%# link_to 'FR', {controller: controller_name, action: action_name, locale: :fr}, {class: "dropdown-item"} %>
+              <%= link_to "EN", request.params.except(:commit).merge(locale: :en), class: "dropdown-item" %>
+              <%= link_to "FR", request.params.except(:commit).merge(locale: :fr), class: "dropdown-item" %>
+              <%= link_to "NL", request.params.except(:commit).merge(locale: :nl), class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to t('.login_link'), new_user_session_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>

@@ -1,0 +1,61 @@
+nl:
+  back_btn: Rug
+  boxes:
+    intro_lines:
+      my_current_box: mijn huidige box
+    index:
+      all_box_title: Bekijk de boxen
+      intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
+      click_box_pop: Klik op een vakje voor wedstrijddetails
+      message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
+      create_round_btn: Créer le prochain round
+    manage_my_box:
+      my_box_results: Mijn box
+      intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
+      not_in_round: " jij zit niet in deze ronde!"
+      view_enter_scores: Bekijk of voer uw scores in
+      player_header: Speler
+      total_points_header: Accumulatiepunten
+      played_on_header: Wedstrijd gespeeld
+      action_header: Actie
+      view_box_results_btn: Boxresultaten
+      see_match_result_btn: Wedstrijdresultaten
+      enter_score_btn: Voer een score in
+      chat_in_my_box: Chat met de spelers in uw box
+      access_chatroom_btn: Toegang tot de chatroom
+    show_list:
+      list_view: resultaten lijst
+      my_box_btn: Mijn box
+      match_score_header: Wedstrijdscore
+      player_points_header: Spelerpunten
+      match_earnings: Matchpunten
+      opponent_points_header: Tegenstander punten
+      opponent_total_points_header: Tegenstander accumulatiepunten
+      points_pop: >
+        De winnaar verdient 20 punten.<br />
+        De verliezer verdient 10 punten per gewonnen set + aantal games per verloren set.<br />
+        De tiebreak voor het kampioenschap telt als een set (er worden geen punten toegekend aan de verliezer).
+      won: Won
+      lost: Verloren
+      on_date: "op"
+      enter_results_btn: Voer een score in
+      dont_forget: Vergeet niet uw wedstrijden te spelen en uw scores in Uw vak in te voeren!
+    show_referee:
+      referee_view: pagina referee
+      not_authorised: Ongeautoriseerde pagina
+      pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
+      pop01_b: ", of voer een nieuwe score in"
+      match_score_header: Wedstrijdscore
+      player_points_header: Spelerpunten
+      opponent_points_header: Tegenstander punten
+      opponent_total_points_header: Tegenstander accumulatiepunten
+      pop02: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
+      won: Won
+      lost: Verloren
+      on_date: "op"
+      not_played: Nog niet gespeeld
+      pop03_a: Klik om de score in te voeren<br />
+    show:
+      my_box_btn: Mijn box
+      not_played: Nog niet gespeeld
+      table_view: resultatenraster

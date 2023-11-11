@@ -1,0 +1,10 @@
+fr:
+  chatrooms:
+    show:
+      chatroom_title: "Chatroom %{chatroom}"
+      send_btn: Envoi
+      back_btn: Retour
+      chose_chatroom: "Choisir une chatroom: "
+      confirm_btn: Confirmer
+      chatrooms_title: "Chatrooms de %{club}"
+      no_access_flash: Vous n'avez pas accès à cette chatroom.

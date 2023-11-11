@@ -1,0 +1,36 @@
+nl:
+  matches:
+    match:
+      won: Gewonnen
+      lost: Verloren
+    edit:
+      edit_match_title: Bewerk een partituur
+      p01: Bewerk of verwijder partituur
+      match_played: "Wedstrijd gespeeld op het veld: "
+      date_time: "Datum en uur:"
+      set_1: 1e set
+      set_2: 2e setje
+      tie_break: Tie-break
+      submitted: "Skern ingevoerd op %{date} door %{player}."
+      update_score_btn: Bevestigen
+      delete_score_btn: Verwijderen
+      sure: Jij bevestigt?
+      back_btn: Rug
+    new:
+      new_match_title: Nieuwe score
+      p01: Voer de nieuwe score in
+      match_played: "Wedstrijd gespeeld op het veld: "
+      date_time: "Datum en uur:"
+      set_1: 1e set
+      set_2: 2e setje
+      tie_break: Tie-break
+      save_score_btn: Bevestigen
+      back_btn: Rug
+      round_not_started_flash: De ronde is nog niet begonnen.
+    show:
+      match_played: "Wedstrijd gespeeld op %{date} op veld %{court}."
+      score: "Score : "
+      submitted: "ingevoerd op %{date} door %{user}."
+      points_earned: "Punten verdiend : "
+      challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubscheidsrechter %{referee}."
+      back_btn: Terug naar Mijn box

@@ -1,0 +1,22 @@
+en:
+  contacts:
+    new:
+      contact_title: Contact us
+      p01: Score disputes should be dealt in your box chatroom
+      prompt: Select a topic →
+      topics:
+      - feedback: Provide feedback
+      - join_club: Join one of our clubs
+      - other_topic: Any other topic
+      name_placeholder: Full name
+      email_placeholder: e-mail address user@domain.com
+      phone_placeholder: Phone number
+      send_btn: Send
+    sent:
+      sent_title: Message sent!
+      p01_html: Thank you for your message. Your <b>admin</b> will get back to you soon.
+      p02: In the meantime, 🎾 keep playing your league box matches! 🎾
+      p03: In the meantime, 🎾 visit our Tournament rules pages! 🎾
+      back_btn: Back to home
+    create:
+      error_flash: Could not send message

@@ -1,0 +1,22 @@
+fr:
+  contacts:
+    new:
+      contact_title: Contact
+      p01: Réglez les différends sur les scores à partir de votre chatroom
+      prompt: Choisir un sujet →
+      topics:
+      - feedback: Donnez un feedback
+      - join_club: Rejoignez un de nos clubs
+      - other_topic: Autre sujet
+      name_placeholder: Nom complet
+      email_placeholder: adresse e-mail user@domain.com
+      phone_placeholder: Téléphone
+      send_btn: Envoi
+    sent:
+      sent_title: Message envoyé!
+      p01_html: Merci de votre message. Votre <b>admin</b> vous contactera bientôt.
+      p02: En attendant, 🎾 continuez à jouer vos matchs de box league! 🎾
+      p03: En attendant, 🎾 visitez notre page Règles tournoi! 🎾
+      back_btn: Page d'accueil
+    create:
+      error_flash: Erreur d'envoi du message

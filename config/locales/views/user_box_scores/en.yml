@@ -1,0 +1,38 @@
+en:
+  user_box_scores:
+    index:
+      intro: For a given round, view the <b>league table</b> of your club
+      league_table_title: League table
+      top_line_html: >
+        Click on a <span class="color-orange-light"><b>player line</b></span> to access their box
+        or a <span class="color-tennis-blue"><b>header</b></span> to sort.
+      rules: >
+        A player's league position is determined by the total number of points won in a round.<br />
+        In the event that two or more players have the same number of points the league position will be
+        determined by:<br /><br />
+        <ol>
+          <li>Head to Head result (if only 2 players on the same score)</li>
+          <li>Most matches played</li>
+          <li>Ratio of sets won to sets played</li>
+          <li>Ratio of games won to games played</li>
+        </ol>
+      player_header: Player
+      rank_header: Rank
+      points_header: Points
+      box_header: Box
+      matches_played_header: Matches Played
+      matches_won_header: Matches Won
+      sets_played_header: Sets Played
+      sets_won_header: Sets Won
+    new:
+      new_club_title: Create a new club and a round
+      not_authorised: You are not an admin, this page is not authorised.
+      p01: "Upload a list of players and a referee from a standard CSV file containing the following headers:"
+      p02_html: <i>id, email, first_name, last_name, nickname [optional], phone_number, role</i>. Players will be allocated in boxes based on the id order.
+      title_pop: CSV file
+      message_pop: CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet.
+      submit_btn: Submit
+      back_btn: Back
+    create:
+      header_flash: Your headers must be "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      file_type_flash: Please chose a csv file type.

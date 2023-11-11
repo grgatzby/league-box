@@ -6,8 +6,9 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
   <div class="container"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+    data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
   >
-    <h3>#<%= @chatroom.name %> chatroom</h3>
+    <br><h3>#<%= t(".chatroom_title", chatroom: @chatroom.name) %></h3>
     <div class="frame-shape chatroom">
       <div class="messages" data-chatroom-subscription-target="messages">
         <% @chatroom.messages.sort.each do |message| %>
@@ -23,24 +24,24 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
           placeholder: "Message ##{@chatroom.name}",
           wrapper_html: {class: "flex-grow-1"}
         %>
-        <%= f.submit "Send", class: "btn buttons-shape btn-beige ms-2 mb-3" %>
+        <%= f.submit t(".send_btn"), class: "btn buttons-shape btn-beige ms-2 mb-3" %>
       <% end %>
     </div>
   </div>
 <% else %>
   <!-- referees and admin get to select a chatroom -->
   <div class="container">
-    <h3><%= "#{current_user.club.name} chatrooms" %></h3>
-    <div class="frame-shape players frame-padding">
+    <br><h3><%= t(".chatrooms_title", club: current_user.club.name) %></h3>
+    <div class="frame-shape players frame-padding text-size">
       <%= form_with url: chatroom_path, method: :get do |form| %>
-        <%= form.label :chatroom, "Chose a chatroom: " %>
+        <%= form.label :chatroom, t(".chose_chatroom") %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select :chatroom, @chatrooms %>
-        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit "Confirm", class: "btn buttons-shape btn-green" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit t(".confirm_btn"), class: "btn buttons-shape btn-green" %>
       <% end %>
     </div>
   </div>
 <% end %>
 <br>
 <div class="buttons-wrap">
-  <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
+  <%= link_to t(".back_btn"), :back, class: "btn buttons-shape btn-blue" %>
 </div>

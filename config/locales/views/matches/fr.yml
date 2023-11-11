@@ -1,0 +1,36 @@
+fr:
+  matches:
+    match:
+      won: Gagné
+      lost: Perdu
+    edit:
+      edit_match_title: Editer un score
+      p01: Editer ou supprimer le score
+      match_played: "Match joué sur le court: "
+      date_time: "Date & heure:"
+      set_1: 1er set
+      set_2: 2ème set
+      tie_break: Tie-break
+      submitted: "Score saisi le %{date} par %{player}."
+      update_score_btn: Valider
+      delete_score_btn: Supprimer
+      sure: Confirmez-vous?
+      back_btn: Retour
+    new:
+      new_match_title: Nouveau score
+      p01: Saisir le nouveau score
+      match_played: "Match joué sur le court: "
+      date_time: "Date & heure:"
+      set_1: 1er set
+      set_2: 2ème set
+      tie_break: Tie-break
+      save_score_btn: Valider
+      back_btn: Retour
+      round_not_started_flash: Le Round n'a pas commencé.
+    show:
+      match_played: "Match joué le %{date} sur le court %{court}."
+      score: "Score : "
+      submitted: "saisi le %{date} par %{user}."
+      points_earned: "Points gagnés : "
+      challenge: "Pour contester ou modifier ce score, contacter le club referee %{referee}."
+      back_btn: Retour à Ma box

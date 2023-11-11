@@ -1,18 +1,18 @@
 <%= render "shared/image_front", sticky: false %>
 
 <div class="container">
-  <div class="frame-shape frame-padding">
-    <h3>Message sent!</h3>
+  <div class="frame-shape frame-padding text-size">
+    <h3><%= t '.sent_title' %></h3>
     <br>
-    <p>Thank you for your message. Your <b>admin</b> will get back to you soon. </p>
+    <p><%= t '.p01_html' %></p>
     <% if current_user %>
-      <p>In the meantime, 🎾 keep playing your league box matches! 🎾</p>
+      <p><%= t '.p02' %></p>
     <% else %>
-      <p>In the meantime, 🎾 visit our Tournament rules pages! 🎾</p>
+      <p><%= t '.p03' %></p>
     <% end %>
   </div>
   <br>
   <div class = "buttons-wrap">
-    <%= link_to "Back to home", root_path, class: "btn buttons-shape btn-green" %>
+    <%= link_to t(".back_btn"), root_path, class: "btn buttons-shape btn-green" %>
   </div>
 </div>

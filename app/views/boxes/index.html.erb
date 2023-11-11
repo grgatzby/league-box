@@ -1,13 +1,13 @@
 <!-- list of all boxes -->
 <div class="container">
-  <h3>View all boxes</h3>
+  <h3><%= t '.all_box_title' %></h3>
   <!-- select club and round in forms -->
-  <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: @intro_paragraph %>
+  <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: t(".intro") %>
   <% if @round %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-content="Click on a box to view match details">
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-content="<%= t '.click_box_pop' %>">
       <%= render "shared/display_club_round", round: @round %>
     </div>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" data-bs-content="<%= @message_boxes %>">
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" data-bs-content="<%= t '.message_box_pop' %>">
       <div class="boxes">
         <% @boxes.each do |box| %>
           <div class="box small-font">
@@ -36,7 +36,7 @@
     <% if current_user && current_user.role == "admin" %>
       <div class="buttons-wrap">
         <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round -->
-        <%= link_to "Create the next round", new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
+        <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
       </div>
     <% end %>
   <% end %>

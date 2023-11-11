@@ -1,0 +1,23 @@
+fr:
+  shared:
+    footer:
+      sitemap_btn: Plan du Site
+      contact_us_btn: Nous contacter
+    navbar:
+      home_link: Accueil
+      tournament_rules_link: Le Tournoi
+      club_staff_link: Personnel du Club
+      all_boxes_link: Les box
+      league_table_link: League table
+      my_box_link: Ma box
+      general_chat_link: "Chat room #general"
+      chatrooms_link: Les chat rooms
+      log_out_link: Déconnexion
+      login_link: Connexion
+    round:
+      round_period: "Round %{start} au %{end}"
+    select_club_round:
+      select_club: "Choisir un club: "
+      confirm_btn: Confirmer
+      back_btn: Retour
+      select_round_start: "Date de début de round: "
