@@ -4,15 +4,15 @@ fr:
       main_title: Votre chemin vers le tennis associatif
       welcome_title: Bienvenue sur le site Leaguebox de votre club
       p01: >
-        Le Singles Tournament est organisé comme une Box League proposant un round chaque mois (ou chaque trois mois selon les clubs).
-        Les points gagnés au cours de chaque round s'additionneront en un total cumulé qui déterminera le vainqueur du Tournoi.
+        Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou chaque trimestre dans certains clubs).
+        Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
       p02: >
-        Le vainqueur recevra le trophée du Singles Box League Tournament, son nom sur le tableau d'honneur et pourquoi pas
-        du champagne pour célébrer sa victoir à la fin du tour.
+        Le vainqueur recevra le trophée du Tournoi Box League, son nom sur le tableau d'honneur et pourquoi pas
+        du champagne pour célébrer sa victoire à la fin du tournoi.
       p03: La league table sera mise à jour et affichée sur le tableau à la fin des rounds.
       how_title: Comment fonctionne la Leaguebox?
       p04: Chaque round dure un mois (3 mois pour certains clubs), et les joueurs s'affrontent au sein de leur box.
-      li01_html: 🎾 <b>Pendant la durée du round</b>, jouez contre tous les joueurs de votre box.
+      li01_html: 🎾 <b>Pendant la durée du round</b>, jouez contre tous les autres joueurs de votre box.
       li02_html: 💻 <b>Après chaque match</b>, vous ou votre adversaire entrez le score sur le site Leaguebox.
       li03_html: 🏆 La league table est automatiquement mise à jour.
       li04_html: 🎭 <b>À la fin du round</b>, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box.
@@ -21,10 +21,10 @@ fr:
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
         Entrez votre dernier score dans <span class='color-tennis-blue'>Ma box</span> après le match, et suivez
-        comment vous vous situez contre les autres joueurs de votre box.
+        comment vous vous classez par rapport aux autres joueurs de votre box.
       li06_html: >
-        Sur <span class='color-tennis-blue'>Les box</span> voyez d'un coup d'œil chaque box de la league, et accédez aux box en
-        cliquant dessus pour la suivre en détail.<br/>Vous avez également accès aux rounds précédents.
+        Sur <span class='color-tennis-blue'>Les box</span> voyez d'un coup d'œil toutes les box de la league, et accédez aux box en
+        cliquant dessus pour la détailler.<br/>Vous avez également accès aux rounds précédents.
       li07_html: >
         Au sein d'une box, vous consulterez les scores, date et heure d'un match, et le classement d'un joueur en <span class='color-tennis-blue'>Vue par liste</span>
         ou en <span class='color-tennis-blue'>Vue par grille</span>.
@@ -36,11 +36,11 @@ fr:
         Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif.
         Elles sont également le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
       p02: >
-        Mais les box league ne marchent que si les joueurs s'engagent à jouer les matchs. Les membres qui s'inscrivent aux leagues
+        Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent aux leagues
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer les matchs prévus
         prévenez rapidement vos adversaires et votre referee.
       p03: >
-        Les joueurs devront notifier à leurs adversaires les périodes d'indisponibilité, ainsi que les périodes disponibles.
+        Les joueurs devront notifier à leurs adversaires leurs périodes d'indisponibilité, ainsi que leurs disponibilités.
         Cette discipline facilitera la bonne organisation de vos matchs.
       btn_display_rules: Afficher les règles
       btn_hide_rules: Cacher les règles
@@ -50,34 +50,34 @@ fr:
       availability: Disponibilité
       p05: Les joueurs doivent pouvoir disputer leurs matchs le soir et / ou le week-end.
       qualifying_players: Joueurs concernés
-      p06: Les joueurs devront avoir 16 ans ou plus au départ du round pour participer au tournois; toute dérogation est à la discrétion du Referee.
+      p06: Les joueurs devront avoir 16 ans ou plus au départ du round pour participer au tournoi; toute dérogation est à la discrétion du Referee.
       p07_html: "Les joueurs devront être membres de plein droit du %{clubname}"
-      p08: Day time members will be exceptionally able to play their matches after their permissible hours by paying the Guest Fee at the bar before commencing play.
+      p08: Les membres journaliers pourront exceptionnellement jouer leurs matchs après les heures autorisées en payant les frais d'invité avant de commencer à jouer.
       box_design: Constitution des Box
       p09: Les Box pourront accueillir de 4 à 6 joueurs
-      organizing_matches: Organisation des Matchs
+      organizing_matches: Organisation des matchs
       p10: Il est de la responsabilité des deux joueurs d'organiser leur match.
       tennis_rules: Règles Générales du Tennis
-      p11: Les Matchs seront les règles de l'ITF Tennis qui peuvent être consultées sur www.itftennis.com
-      matches_not_umpired: Matchs non Arbitrés
-      p12: "Les principes suivants s'appliqueront pour les matchs joués sans Arbitre:"
+      p11: Les matchs seront joués selon les règles de l'ITF Tennis qui peuvent être consultées sur www.itftennis.com
+      matches_not_umpired: Matchs non arbitrés
+      p12: "Les principes suivants s'appliqueront pour les matchs joués sans arbitre:"
       li01: Chaque joueur est responsable d'arbitrer les lignes de son côté du filet
       li02: Les arbitrages “out” et “faute” doivent être faits juste après le rebond et suffisamment fort pour être entendus par l'adversaire
       li03: En cas de doute, le joueur donnera le bénéfice du doute à son adversaire
       li04: >
-        Si un joueur déclare par erreur une balle "out" puis se rend compte qu'ell était bonne, le point devrait être rejoué
+        Si un joueur déclare par erreur une balle "out" puis se rend compte qu'elle était bonne, le point devrait être rejoué
         sauf s'il s'agissait d'un coup gagnant ou si ce joueur avait déjà déclaré une balle "out" par erreur plus tôt dans le match.
-        Dans un tel cas le joueur qui aura déclaré la balle "out" perd le point
+        Dans un tel cas le joueur qui aura déclaré la balle "out" perdra le point
       li05: Le serveur devra annoncer le score avant chaque premier service, assez fort pour être entendu par l'adversaire
       warm_up: Échauffement
       p13: Pour garantir que les matchs soient terminés dans l'heure impartie, l'échauffement sera limité à 5 minutes.
-      match_format: Format du Match
-      p14: Les Matchs seront joués en deux mini sets avec un tie-break décisif si nécessaire.
+      match_format: Format du match
+      p14: Les matchs seront joués en deux mini-sets avec un tie-break décisif si nécessaire.
       p15: "Chaque set sera joué comme le premier à 4 jeux avec un tie-break standard de 7 points à 3:3."
       p16: Le tie-break décisif sera joué comme le premier à 10 points avec 2 points d'écart minimum.
       p17: "OPTIONNEL: (à décider entre les joueurs avant le début du match)"
       p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40"
-      p19: Le Receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité
+      p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité
       points: Points
       p20: "Les points gagnés sont calculés de façon à encourager les joueurs à gagner autant de jeux que possible et sont déterminés ainsi:"
       li06: Gagnant du match 20 points
@@ -88,7 +88,7 @@ fr:
       li10: "4-1 2-4 10-6 : gagnant 20 pts, perdant 11 pts"
       li11: "4-3 3-4 12-10 : gagnant 20 pts, perdant 13 pts"
       li12: "4-2 2-4 10-1 : gagnant 20 pts, perdant 12 pts"
-      posting_results: Enregistrer les Résultats
+      posting_results: Enregistrer les résultats
       p22: L'un ou l'autre des joueurs peut saisir le résultat du match sur le site.
       p23: >
         Chaque joueur de la Box pourra se connecter à son compte et saisir les scores en ligne, ou ils pourront être marqués au tableau
@@ -161,42 +161,36 @@ fr:
       sitemap: Plan du site LeagueBox
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League
-      p02a_html: Liens de pied de page vers les pages <span class='color-tennis-blue'>Règles du Tournoi</span>, <span class='color-tennis-blue'>Le personnel du club</span>
-      p02b_html: ", <span class='color-tennis-blue'>Créer un club</span>"
-      p02c_html: ", et <span class='color-tennis-blue'>Structure du site</span>."
       overview_rules: Description du Tournoi et règles
       p03: Explication des règles de la Box League
-      p04_html: Liens de pied de page vers les pages <span class='color-tennis-blue'>d'accueil</span>, <span class='color-tennis-blue'>Le personnel du club</span>, et <span class='color-tennis-blue'>Structure du site</span>.
-      club_staff: Club staff
+      club_staff: Personnel du club
       p05: Coordonnées de l'admin et du Referee du club
-      p06a_html: Liens de pied de page vers les pages <span class='color-tennis-blue'>d'accueil</span>, <span class='color-tennis-blue'>Règles du Tournoi</span>, <span class='color-tennis-blue'>Structure du site</span>
-      p06b_html: ", et <span class='color-tennis-blue'>Saisir mes résultats</span>"
       all_boxes: Les Box
-      p07: "Présente toutes les box en un coup d'œil avec pour chaque joueur:"
+      p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
       li01: son nom
-      li02: son classement au sein du tournoi
+      li02: son classement dans le tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
-      p08_html: "Le <span style= 'color:green'>joueur connecté</span> apparaît en vert."
+      p08_html: "Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange."
       p09a: Un clic sur une box conduit à la vue Box Referee.
       p09b: Un clic sur une box conduit à la vue en Grille.
-      p10a_html: Bouton de pied de page vers la <span class='color-tennis-blue'>League table</span>.
-      p10b_html: Liens de pied de page vers <span class='color-tennis-blue'>League table</span>, and <span class='color-tennis-blue'>Enter my results</span> (= Manage my box page).
+      p10a_html: À l'approche de la fin du round, un bouton de pied de page pour <span class='color-tennis-aqua'>Créer le prochain round</span> apparaît.
       league_table: League table
       p11_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p12: En cliquant sur un entête, les joueurs se classent selon cet entête.
-      p13_html: Liens de pied de page vers <span class='color-tennis-blue'>Back to top</span>, and <span class='color-tennis-blue'>All boxes</span>.
       referee_view: Vue referee
       p14_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores du match, Points de match du joueur, Points de match de l'adversaire, Points totaux de l'adversaire</b>. Les matchs non joués sont également répertoriés.
       p15: En cliquant sur une ligne de match, vous accédez à la page Modifier/Supprimer un match, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page Nouveau score de match.
       table_view: Vue en Grille
       p16: Les matchs de chaque joueur sont affichés sous leur adversaire correspondant.
-      p17_html: "Current player appears in <span style= 'color:green'>green</span>."
-      p18_html: Lien pour basculer vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
+      p17_html: >
+        Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange, et un lien vers <span class='color-tennis-blue'>Ma box</span> apparaît
+        à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Vue en Liste
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores du match, Points de match du joueur, Points de match de l'adversaire, Points totaux de l'adversaire</b>.
-      p20_html: "Current player appears in <span style= 'color:green'>green</span>, and a <span class='color-tennis-blue'>Enter new results</span> link to Manage my box is shown."
-      p21_html: Toggle links to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+      p20_html: >
+        Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange, et un lien vers <span class='color-tennis-blue'>Ma box</span> apparaît
+        à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
       manage_my_box: Manage my box
       p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Afficher ma box</span>, <span class='color-tennis-blue'>Voir les résultats des matchs</ span> et <span class='color-tennis-blue'>Entrez un nouveau score</span>.
       p23: Lien vers la chatroom de la box.

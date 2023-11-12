@@ -1,8 +1,7 @@
 class BoxesController < ApplicationController
   def index
     @page_from = params[:page_from]
-    # define variables @club and @round
-    set_club_round
+    set_club_round    # define variables @club and @round
   end
 
   def show
@@ -16,13 +15,11 @@ class BoxesController < ApplicationController
   end
 
   def show_list
-    # inherits from #show method
-    show
+    show        # inherits from #show method
   end
 
   def show_referee
-    # inherits from #show method
-    show
+    show        # inherits from #show method
   end
 
   def manage_my_box
@@ -30,11 +27,9 @@ class BoxesController < ApplicationController
     @current_player = current_user
     # allows player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
-      # define variables @club and @round
-      set_club_round
-      # gets my box from chosen round
+      set_club_round # define variables @club and @round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
-      @box = my_box(@round, @current_player)
+      @box = my_box(@round, @current_player) # gets my box from chosen round
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
@@ -50,9 +45,9 @@ class BoxesController < ApplicationController
       @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
 
       if @box.chatroom == @general_chatroom
-        # since the Chatroom class as been migrated after the Box class (a chatroom has one box)
+        # since the Chatroom class was migrated after the Box class (with: a chatroom has one box)
         # the migration script assigned by default the chatroom "general" to existing boxes
-        # in which case a new chatroom has to be created whith name "[Club name] - b[Box number]/R[Round id]"
+        # if assigned chatroom is still #general, create a new chatroom here whith name "[Club name] - b[Box number]/R[Round id]"
         # it will NOT remain available to players when in the next round (chatroom is round specific)
         @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{format('%02d', @box.round.id)}")
         @box.update(chatroom_id: @chatroom.id)
@@ -80,8 +75,7 @@ class BoxesController < ApplicationController
     box.user_box_scores.each do |user_box_score|
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
     end
-    # sorts by descending points scores
-    box_matches.sort { |a, b| b[0].points <=> a[0].points }
+    box_matches.sort { |a, b| b[0].points <=> a[0].points } # sorts by descending points scores
   end
 
   def matches_details(user_box_score)
@@ -91,8 +85,7 @@ class BoxesController < ApplicationController
       opponent = opponent(match, user)
       [match, opponent, match_score(match, user), match_score(match, opponent)]
     end
-    # adds user to list
-    matches << [nil, user, nil, nil]
+    matches << [nil, user, nil, nil] # adds user to the list
   end
 
   def my_box?(box, player = current_user)

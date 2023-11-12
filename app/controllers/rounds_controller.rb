@@ -6,13 +6,6 @@ class RoundsController < ApplicationController
     # create a new Round scope such as last?
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
-    @message = "Select box move, for example:<br />
-                2 = two boxes up,<br />
-                1 = one box up,<br />
-                -1 = one box down,<br />
-                -2 = two boxes down.<br /><br />
-                Select 99 to remove player from next league round (e.g. if less than 2 games played)."
-    @message_boxes = "player name, rank,<br />nb games played, proposed box move"
 
     @new_round = Round.new
     # the rounds/new.html.erb form accepts nested attributes for boxes and user_box_scores

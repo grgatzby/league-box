@@ -15,10 +15,7 @@ class ApplicationController < ActionController::Base
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round.
   #
-  # TO DO: navbar dropdown does not work with the click; currently triggered by the Down key
-  # TO DO: adjust times (currently lagged system date)
-  # TO DO: should I allow referees to create a match (ie new score) as can the admin?
-  # TO DO: rails interntionalization (I18n) https://guides.rubyonrails.org/i18n.html
+  # Question: should we allow referees to create a match (ie new score) as can the admin?
 
   def default_url_options
     { locale: I18n.locale }
