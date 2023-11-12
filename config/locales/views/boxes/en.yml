@@ -30,7 +30,7 @@ en:
       player_points_header: Player's points
       match_earnings: Match earnings
       opponent_points_header: Opponent's points
-      opponent_total_points_header: Opponent total points
+      opponent_total_points_header: Opponent's total points
       points_pop: >
         Winner earns 20 points.<br />
         Looser earns 10 points per set won + number of games per lost set.<br />
@@ -48,7 +48,7 @@ en:
       match_score_header: Match score
       player_points_header: Player's points
       opponent_points_header: Opponent's points
-      opponent_total_points_header: Opponent total points
+      opponent_total_points_header: Opponent's total points
       pop02: "<b>Score entered</b><br />by %{user}<br />on %{date}"
       won: Won
       lost: Lost

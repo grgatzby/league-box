@@ -1,6 +1,14 @@
 en:
   chatrooms:
     show:
+      message: >
+        Message colors:<br />
+          - Players from my club appear in blue<br />
+          - My club's Referee appears in aqua<br />
+          <span class= 'color-grey'>- Players from other clubs appear in light gray<br />
+          - The Referee of another club appears in dark gray</span><br />
+          - The admin appears in red<br /><br />
+        Messages are displayed on the left of the screen, except for your messages which are on the right
       chatroom_title: "%{chatroom} chatroom"
       send_btn: Send
       back_btn: Back

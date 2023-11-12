@@ -80,8 +80,8 @@ class ApplicationController < ActionController::Base
   # - from #show method in MatchesController
 
   def current_round(club_id)
-    # given a club_id, returns its current round
-    Round.current.find_by(club_id: club_id)
+    # given a club_id, returns its current round or the last existing round
+    Round.current.find_by(club_id: club_id) || Round.where(club_id: club_id).order(:start_date).last
   end
 
   def my_box(round, player = current_user)

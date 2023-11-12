@@ -49,7 +49,7 @@
 <!--
   <div class = "buttons-wrap">
     <%= link_to "Tournament rules", rules_path, class: "btn buttons-shape btn-green" %>
-    <%= link_to "Website map", structure_path, class: "btn buttons-shape btn-green" %>
+    <%= link_to "Website map", sitemap_path, class: "btn buttons-shape btn-green" %>
     <% if current_user && current_user.role == "player" %>
       <%# passing 0 to manage_my_box_path, forces user to chose a round %%>
       <%= link_to "My box", manage_my_box_path(0), class: "btn buttons-shape btn-green" %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: "pages#home"
     get "rules", to: "pages#rules", as: "rules"
     get "staff", to: "pages#staff", as: "staff"
-    get "structure", to: "pages#structure", as: "structure"
+    get "sitemap", to: "pages#sitemap", as: "sitemap"
 
     resources :boxes, only: [:index, :show]
     get "boxes-list/:id", to: "boxes#show_list", as: "box_list"
