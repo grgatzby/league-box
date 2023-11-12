@@ -8,7 +8,7 @@ nl:
       intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
       click_box_pop: Klik op een vakje voor wedstrijddetails
       message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
-      create_round_btn: Créer le prochain round
+      create_round_btn: Maak de volgende ronde
     manage_my_box:
       my_box_results: Mijn box
       intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren

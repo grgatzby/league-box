@@ -5,27 +5,12 @@
     <br><h3><%= t(".sitemap").upcase %></h3>
     <br><h5><%= t '.home' %></h5>
     <p><%= t '.p01' %></p>
-    <p>
-      <%= t '.p02a_html' %>
-      <% if current_user && current_user.role == "admin" %>
-        <%= t '.p02b_html' %>
-      <% end %>
-      <%= t '.p02c_html' %>
-    </p>
 
     <br><h5><%= t '.overview_rules' %></h5>
     <p><%= t '.p03' %></p>
-    <p><%= t '.p04_html' %></p>
 
     <br><h5><%= t '.club_staff' %></h5>
     <p><%= t '.p05' %></p>
-    <p>
-      <%= t '.p06a_html' %>
-      <% if current_user && current_user.role == "player" %>
-        <%= t '.p06b_html' %>
-      <% end %>
-      .
-    </p>
 
     <br><h5><%= t '.all_boxes' %></h5>
     <p><%= t '.p07' %></p>
@@ -36,18 +21,19 @@
       <li><%= t '.li04' %></li>
     </ul>
     <p><%= t '.p08_html' %></p>
-    <% if current_user && current_user.role != "player" %>
-      <p><%= t '.p09a' %></p>
-      <p><%= t '.p10a_html' %></p>
-    <% else %>
-      <p><%= t '.p09b' %></p>
-      <p><%= t '.p10b_html' %></p>
-    <% end %>
-
+    <p>
+      <% if current_user && current_user.role != "player" %>
+        <%= t '.p09a' %>
+      <% else %>
+        <%= t '.p09b' %>
+      <% end %>
+      <% if current_user && current_user.role == "admin" %>
+        <%= t '.p10a_html' %>
+      <% end %>
+    </p>
     <br><h5><%= t '.league_table' %></h5>
     <p><%= t '.p11_html' %></p>
     <p><%= t '.p12' %></p>
-    <p><%= t '.p13_html' %></p>
 
     <% if current_user && current_user.role != "player" %>
       <br><h5><%= t '.referee_view' %></h5>
@@ -58,12 +44,10 @@
       <br><h5><%= t '.table_view' %></h5>
       <p><%= t '.p16' %></p>
       <p><%= t '.p17_html' %></p>
-      <p><%= t '.p18_html' %></p>
 
       <br><h5><%= t '.list_view' %></h5>
       <p><%= t '.p19_html' %></p>
       <p><%= t '.p20_html' %></p>
-      <p><%= t '.p21_html' %></p>
 
       <br><h5><%= t '.manage_my_box' %></h5>
       <p><%= t '.p22_html' %></p>

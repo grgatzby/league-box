@@ -52,7 +52,7 @@ nl:
       qualifying_players: Spelers getroffen
       p06: Spelers moeten bij aanvang van de ronde 16 jaar of ouder zijn om aan het toernooi te kunnen deelnemen; elke vrijstelling is ter beoordeling van de scheidsrechter.
       p07_html: "Spelers moeten volledige leden zijn van %{clubname}"
-      p08: Leden die overdag spelen, kunnen bij wijze van uitzondering hun wedstrijden buiten de toegestane uren spelen door de gastentoeslag aan de bar te betalen voordat ze beginnen met spelen.
+      p08: Leden die overdag spelen, kunnen bij wijze van uitzondering hun wedstrijden buiten de toegestane uren spelen door de gastentoeslag te betalen voordat ze beginnen met spelen.
       box_design: Constitutie van boxen
       p09: De Boxen bieden plaats aan 4 tot 6 spelers
       organizing_matches: Organisatie van wedstrijden
@@ -161,42 +161,36 @@ nl:
       sitemap: Sitemap LeagueBox
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
-      p02a_html: Voettekstlinks naar <span class='color-tennis-blue'>Toernooiregels</span>, <span class='color-tennis-blue'>Clubpersoneel</span> pagina's
-      p02b_html: ", <span class='color-tennis-blue'>Creëer een club</span>"
-      p02c_html: ", en <span class='color-tennis-blue'>Sitemap</span>."
       overview_rules: Toernooibeschrijving en regels
       p03: Box League-regels uitgelegd
-      p04_html: Voettekstlinks naar het <span class='color-tennis-blue'>Home</span>, <span class='color-tennis-blue'>Clubpersoneel</span> en <span class='color-tennis -blue'>Sitemap</span>.
       club_staff: Clubpersoneel
       p05: Gegevens van de beheerder en de clubscheidsrechter
-      p06a_html: Voettekstlinks naar <span class='color-tennis-blue'>home</span>, <span class='color-tennis-blue'>Toernooiregels</span>, <span class='color-tennis-blue '>Sitemap</span>
-      p06b_html: ", en <span class='color-tennis-blue'>Voer mijn resultaten in</span>"
       all_boxes: Boxen
       p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
       li01: zijn naam
       li02: zijn ranking binnen het toernooi
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
-      p08_html: "De <span style= 'color:green'>verbonden speler</span> wordt groen weergegeven."
+      p08_html: "De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven."
       p09a: Als u op een box klikt, komt u in de boxscheidsrechter-weergave.
       p09b: Als u op een vakje klikt, gaat u naar de rasterweergave.
-      p10a_html: Voettekstknop voor de <span class='color-tennis-blue'>competitietabel</span>.
-      p10b_html: Voettekstlinks naar <span class='color-tennis-blue'>Competitietabel</span> en <span class='color-tennis-blue'>Mijn resultaten invoeren</span> (= Manage my box page).
+      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak dee volgende ronde</span>.
       league_table: League table
       p11_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets < /b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p12: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
-      p13_html: Voettekstlinks naar <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
       referee_view: Box referee view
       p14_html: Bekijk de pagina op <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
       p15: Als u op een wedstrijdregel klikt, komt u terecht op de pagina Wedstrijd bewerken/verwijderen. Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina Nieuwe wedstrijdscore.
-      table_view: Box Table view
+      table_view: Box resultatenraster
       p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
-      p17_html: "Current player appears in <span style= 'color:green'>green</span>."
-      p18_html: Toggle links to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
-      list_view: Box List view
+      p17_html:
+        De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven en er verschijnt een link naar <span class='color-tennis-blue'>Mijn box</span>
+        links van de schakellink naar de <span class='color-tennis-blue'>resultaten lijst</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
+      list_view: Box resultaten lijst
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Matchpunten van de speler, Matchpunten van de tegenstander, Totaal aantal punten van de tegenstander</b>.
-      p20_html: "Current player appears in <span style= 'color:green'>green</span>, and a <span class='color-tennis-blue'>Enter new results</span> link to Manage my box is shown."
-      p21_html: Toggle links to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+      p20_html: >
+        De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven en er verschijnt een link naar <span class='color-tennis-blue'>Mijn box</span>
+        links van de schakellink naar de <span class='color-tennis-blue'>resultatenraster</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i>).
       manage_my_box: Manage my box
       p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Bekijk mijn box</span>, <span class='color-tennis-blue'>Bekijk de wedstrijdresultaten</span> span> en <span class='color-tennis-blue'>Voer nieuwe score in</span>.
       p23: Link naar de box-chatroom.
