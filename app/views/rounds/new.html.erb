@@ -34,7 +34,7 @@
             <br><br><%= t '.start_date' %>
             <%= f.date_field(:start_date, min: @current_round.end_date + 1, value: @current_round.end_date + 1 ) %>
             <% duration = ((@current_round.end_date + 1 - @current_round.start_date).to_f / 365 * 12).round %>
-            <%= t '.end_date' %>
+            <br><%= t '.end_date' %>
             <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
             <div class="buttons-wrap">

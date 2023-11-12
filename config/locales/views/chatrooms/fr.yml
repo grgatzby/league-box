@@ -1,6 +1,14 @@
 fr:
   chatrooms:
     show:
+      message: >
+        Couleurs des messages:<br />
+          - Les joueurs de mon club apparaîssent en bleu<br />
+          - Le Referee de mon club apparaît en aqua<br />
+          <span class= 'color-grey'>- Les joueurs des autres clubs apparaîssent en gris clair<br />
+          - Le Referee d'un autre club apparaît en gris foncé</span><br />
+          - L'admin apparaît en rouge<br /><br />
+        Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
       chatroom_title: "Chatroom %{chatroom}"
       send_btn: Envoi
       back_btn: Retour

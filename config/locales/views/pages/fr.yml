@@ -16,7 +16,7 @@ fr:
       li02_html: 💻 <b>Après chaque match</b>, vous ou votre adversaire entrez le score sur le site Leaguebox.
       li03_html: 🏆 La league table est automatiquement mise à jour.
       li04_html: 🎭 <b>À la fin du round</b>, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box.
-      p05_html: Consultez notre page <b>Règles du tournoi</b> pour en savoir plus
+      p05_html: Consultez notre page <b>Le tournoi</b> pour en savoir plus
       use_title: Comment utilliser votre site Leaguebox?
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
@@ -142,14 +142,14 @@ fr:
       mail_to_admin_html: "votre admin à %{admin_email}"
       p42_html: "les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     staff:
-      your_club_staff_title: Responsables du club
-      p01: Les responsables du club s'engagent à faciliter votre expérience sur les courts et sur ce site.
+      your_club_staff_title: Personnel du club
+      p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       p02: >
         Le Referee du club sera votre point de contact, pour arbitrer un désaccord sur un score déjà entré dans le système,
         ou si vous avez saisi un mauvais score: il pourra le modifier ou le supprimer. Contactez votre referee via la chatroom de votre box ou par téléphone.
       p03: >
-        Si pour une raison quelconque, ni votre adversaire ni vous ne pouvez entrer votre score dans le système, contactez l'admin qui le rentrera pour vous après
-        validation du referee.
+        Si pour une raison quelconque, ni votre adversaire ni vous-même ne pouvez entrer votre score dans le système, contactez l'admin qui le rentrera pour vous après
+        validation par le Referee.
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email
@@ -157,8 +157,8 @@ fr:
       header_role: 🧩 Rôle
       website_admin: Admin du site
       club_referee_html: "Referee du %{club_name}"
-    structure:
-      sitemap: Plan du site LeagueBox
+    sitemap:
+      sitemap_title: Plan du site LeagueBox
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League
       overview_rules: Description du Tournoi et règles
@@ -191,7 +191,7 @@ fr:
       p20_html: >
         Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange, et un lien vers <span class='color-tennis-blue'>Ma box</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      manage_my_box: Manage my box
+      manage_my_box: Ma box
       p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Afficher ma box</span>, <span class='color-tennis-blue'>Voir les résultats des matchs</ span> et <span class='color-tennis-blue'>Entrez un nouveau score</span>.
       p23: Lien vers la chatroom de la box.
       match_results: Affichage des résultats du match

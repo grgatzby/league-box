@@ -2,8 +2,6 @@ class RoundsController < ApplicationController
   def new
     # admin or referee to generate next round from current: form
     # if admin logged in, club given by params[:club_id]
-    # TO DO: the #current_round method won't work after the last round is over:
-    # create a new Round scope such as last?
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
 

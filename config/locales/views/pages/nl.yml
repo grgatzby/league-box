@@ -157,8 +157,8 @@ nl:
       header_role: 🧩 Rol
       website_admin: Sitebeheerder
       club_referee_html: "Referee van %{club_name}"
-    structure:
-      sitemap: Sitemap LeagueBox
+    sitemap:
+      sitemap_title: Sitemap LeagueBox
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
       overview_rules: Toernooibeschrijving en regels
@@ -174,9 +174,9 @@ nl:
       p08_html: "De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven."
       p09a: Als u op een box klikt, komt u in de boxscheidsrechter-weergave.
       p09b: Als u op een vakje klikt, gaat u naar de rasterweergave.
-      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak dee volgende ronde</span>.
+      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span>.
       league_table: League table
-      p11_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets < /b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
+      p11_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p12: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
       referee_view: Box referee view
       p14_html: Bekijk de pagina op <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
@@ -191,8 +191,8 @@ nl:
       p20_html: >
         De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven en er verschijnt een link naar <span class='color-tennis-blue'>Mijn box</span>
         links van de schakellink naar de <span class='color-tennis-blue'>resultatenraster</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i>).
-      manage_my_box: Manage my box
-      p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Bekijk mijn box</span>, <span class='color-tennis-blue'>Bekijk de wedstrijdresultaten</span> span> en <span class='color-tennis-blue'>Voer nieuwe score in</span>.
+      manage_my_box: Mijn box
+      p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Bekijk mijn box</span>, <span class='color-tennis-blue'>Bekijk de wedstrijdresultaten</span> en <span class='color-tennis-blue'>Voer nieuwe score in</span>.
       p23: Link naar de box-chatroom.
       match_results: Wedstrijdresultaten bekijken
       p24: "Details van een gespeelde wedstrijd:"

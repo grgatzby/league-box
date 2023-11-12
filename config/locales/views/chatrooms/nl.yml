@@ -1,6 +1,14 @@
 nl:
   chatrooms:
     show:
+      message: >
+        Berichtkleuren:<br />
+          - Spelers van mijn club verschijnen in het blauw<br />
+          - De scheidsrechter van mijn club verschijnt in aqua<br />
+          <span class= 'color-grey'>- Spelers van andere clubs verschijnen in lichtgrijs<br />
+          - De scheidsrechter van een andere club verschijnt in donkergrijs</span><br />
+          - De beheerder wordt in het rood weergegeven<br /><br />
+        Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chat room %{chatroom}"
       send_btn: Versturen
       back_btn: Rug

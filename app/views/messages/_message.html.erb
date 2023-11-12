@@ -22,24 +22,31 @@
 the styling is now sender specific:
 style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.html.erb -->
 <div id="message-<%= message.id %>" class="cont-<%= message.user.id %>">
-
   <div class="message-box msg-<%= message.user.id %> ">
     <small>
-      <% sender = message.user.club == current_user.club ? "" : "#{message.user.club.name}: " %>
-      <% sender += render "shared/fullname", user: message.user %>
-      <% if message.user.role == "player" %>
+      <% sender = message.user.club == current_user.club || message.user.role == "admin" ?
+                      "" : "#{message.user.club.name}: " %>
+      <% case message.user.role %>
+      <% when "player" %>
         <% box = message.user.user_box_scores.map(&:box).last %>
         <% user_box_score = UserBoxScore.find_by(user_id: message.user.id, box_id: box.id) %>
+        <% sender += render "shared/fullname", user: message.user %>
         <% sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"  %>
-      <% else %>
-        <% sender += " (#{message.user.role})"  %>
+        <% color_name = message.user.club == current_user.club ? "color-tennis-blue" : "color-grey" %>
+      <% when "referee" %>
+        <% sender += render "shared/fullname", user: message.user %>
+        <% color_name = message.user.club == current_user.club ? "color-tennis-aqua" : "color-black" %>
+      <% when "admin" %>
+        <% sender += " League Box website admin"  %>
+        <% color_name = "color-tennis-red" %>
       <% end %>
+      <% sender += " #{message.user.role}"  %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-content="<%= sender %>">
-        <strong><%= message.user.nickname %></strong>
+        <strong class=<%=color_name%>><%= message.user.nickname %></strong>
       </div>
       <!--<i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
-      <small><i><%= l(@tz.to_local(message.created_at), format: :wwwddmmm_at_hhmm) %></i></small>
+      <small class=<%=color_name%>><i><%= l(@tz.to_local(message.created_at), format: :wwwddmmm_at_hhmm) %></i></small>
     </small>
-    <p><%= sanitize message.content %></p>
+    <p class=<%=color_name%>><%= sanitize message.content %></p>
   </div>
 </div>

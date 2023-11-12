@@ -10,10 +10,9 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%# link_to 'EN', {controller: controller_name, action: action_name, locale: :en}, {class: "nav-link"} %>&nbsp;&nbsp
-      <%# link_to 'FR', {controller: controller_name, action: action_name, locale: :fr}, {class: "nav-link"} %>&nbsp;&nbsp
+
       <ul class="navbar-nav me-auto">
-        <li class="nav-item time-padding">
+        <li class="nav-item time-padding active">
           <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>&nbsp;&nbsp
         </li>
         <li class="nav-item time-padding">
@@ -21,7 +20,6 @@
             <%= " Round: #{l(@round.start_date, format: :mmmyy_date)} - #{l(@round.end_date, format: :mmmyy_date)}" %>
           <% end %>
         </li>
-        <%= link_to t('.home_link'), root_path, class: "nav-link active" %>
         <%= link_to t('.tournament_rules_link'), rules_path, class: "nav-link" %>
         <%= link_to t('.club_staff_link'), staff_path, class: "nav-link" %>
         <% if user_signed_in?%>
@@ -57,6 +55,11 @@
             <%= link_to "NL", request.params.except(:commit).merge(locale: :nl), class: "dropdown-item" %>
           </div>
         </li>
+        <div style="width: 20px"></div>
+        <%# link_to t('.home_link'), root_path, class: "nav-link active" %>
+        <%= link_to root_path, class: "nav-link active" do %>
+          <i class="fa-solid fa-house"></i>
+        <% end %>
       </ul>
     </div>
   </div>

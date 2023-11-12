@@ -88,13 +88,15 @@
     </div><br>
   <% end %>
   <br>
+  <!---
   <div class="buttons-wrap">
-  <% if @page_from %>
-    <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-    <%= link_to t("back_btn"), @page_from+parameters, class: "btn buttons-shape btn-blue" %>
-  <% else %>
-    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-    <%= link_to t("back_btn"), :back, class: "btn buttons-shape btn-blue" %>
-  <% end %>
+    <% if @page_from %>
+      <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+      <%= link_to t("back_btn"), @page_from+parameters, class: "btn buttons-shape btn-blue" %>
+    <% else %>
+      <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
+      <%= link_to t("back_btn"), :back, class: "btn buttons-shape btn-blue" %>
+    <% end %>
   </div>
+  --->
 </div>

@@ -4,11 +4,12 @@ class ChatroomsController < ApplicationController
     # method is accessed from either the navbar, or the show_referee or manage_my_box view pages
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
-      # coming from the form in show_referee view page ([1..-1] removes the first character '#' of the name)
-      @chatroom = Chatroom.find_by(name: params[:chatroom][1..-1])
+      # coming from the form in show_referee view page
+      # @chatroom = Chatroom.find_by(name: params[:chatroom][1..-1]) # [1..-1] removes the first character '#' of the name
+      @chatroom = Chatroom.find_by(name: params[:chatroom][1..]) # [1..] removes the first character '#' of the name
     elsif params[:id] == "0"
-      # defines the list of chatrooms available for the referee or the admin to select
-      # in the form. For a referee: only those from his club
+      # define the list of chatrooms available for the referee or the admin to select in the form
+      # for the admin: all chatrooms; for a referee: only those from his own club + the #general chatroom
       if current_user == @admin
         @chatrooms = Chatroom.all
       else
@@ -17,6 +18,7 @@ class ChatroomsController < ApplicationController
           club = box.round.club
           club == current_user.club
         end
+        @chatrooms.push(@general_chatroom) unless @chatrooms.include?(@general_chatroom)
       end
       # add the '#' in front of the chatroom names (for display in the form)
       @chatrooms = @chatrooms.map { |chatroom| "##{chatroom.name}" }
