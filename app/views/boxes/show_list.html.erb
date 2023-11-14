@@ -5,7 +5,7 @@
     <div><%= render "shared/display_club_round", round: @box.round %></div>
     <div>
       <% if @this_is_my_box %>
-        <%= link_to t(".my_box_btn"), manage_my_box_path(@box), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".my_box_btn"), my_box_path(@box), class: "btn buttons-shape btn-blue" %>
       <% end %>
       <!-- Link to view as table -->
       <%= link_to box_path, class: "btn buttons-shape btn-blue" do %>
@@ -34,7 +34,7 @@
           <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
           <% player_matches = user_box_matches[1] %>
           <% if user_box_matches[0].user == current_user %>
-            <%# link_to "My box", manage_my_box_path(@box), class: "btn buttons-shape btn-blue" %>
+            <%# link_to "My box", my_box_path(@box), class: "btn buttons-shape btn-blue" %>
           <% end %>
           <ul>
             <% player_matches.each do |player_match| %>
@@ -76,7 +76,7 @@
     <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
   -->
     <% if @box == @my_current_box %>
-      <%= link_to t(".enter_results_btn"), manage_my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
+      <%= link_to t(".enter_results_btn"), my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% else %>
       <%# link_to "My box", box_list_path(@my_current_box), class: "btn buttons-shape btn-green" %>
     <% end %>

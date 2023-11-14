@@ -4,15 +4,24 @@
   <div class="frame-shape frame-padding text-size">
     <h3><%= t '.sent_title' %></h3>
     <br>
-    <p><%= t '.p01_html' %></p>
-    <% if current_user %>
-      <p><%= t '.p02' %></p>
+    <% if params[:round_id] %>
+      <p><%= t('.p04_html', club_name: @round.club.name) %></p>
     <% else %>
-      <p><%= t '.p03' %></p>
+      <p><%= t '.p01_html' %></p>
+      <% if current_user %>
+        <p><%= t '.p02' %></p>
+      <% else %>
+        <p><%= t '.p03' %></p>
+      <% end %>
     <% end %>
   </div>
   <br>
   <div class = "buttons-wrap">
-    <%= link_to t(".back_btn"), root_path, class: "btn buttons-shape btn-green" %>
+    <% if params[:round_id] %>
+      <%# link_to t(".back_btn"), boxes_path(request.params.except(:action, :controller)), class: "btn buttons-shape btn-green" %>
+      <%= link_to t(".back_btn"), boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green" %>
+    <% else %>
+      <%= link_to t(".home_btn"), root_path, class: "btn buttons-shape btn-green" %>
+    <% end %>
   </div>
 </div>

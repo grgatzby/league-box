@@ -4,14 +4,14 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:match_id])
     @current_user_match_score = match_score(@match, current_user)
     @opponent_match_score = match_score(@match, @opponent)
-    # @my_current_box = my_box(current_round(current_user.club_id))
+    # @my_current_box = my_own_box(current_round(current_user.club_id))
   end
 
   def new
     @page_from = params[:page_from]
     @round = Round.find(params[:round_id])
     @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
-    @box = my_box(@round, @current_player)
+    @box = my_own_box(@round, @current_player)
     if @round.start_date > Time.now
       flash[:notice] = t('.round_not_started_flash')
       redirect_back(fallback_location: box_referee_path(@box))
@@ -30,7 +30,7 @@ class MatchesController < ApplicationController
     # create new Match instance with the matches/new.html.erb form and 2 UserMatchScore instances
     @match = Match.new
     @current_player = User.find(params[:player_id])
-    @match.box = my_box(Round.find(params[:round_id]), @current_player)
+    @match.box = my_own_box(Round.find(params[:round_id]), @current_player)
     # get the court from the input court number (user inputs court number in lieu of court id)
     @match.court = Court.find_by name: params[:match][:court_id]
 
@@ -96,7 +96,7 @@ class MatchesController < ApplicationController
       rank_players(@match.box.round.user_box_scores)
 
       if current_user.role == "player"
-        redirect_to manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box))
+        redirect_to my_box_path(@match.box, page_from: my_box_path(@match.box))
       else
         redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
       end
@@ -190,7 +190,7 @@ class MatchesController < ApplicationController
       # redirect_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name)
 
       if current_user.role == "player"
-        redirect_to manage_my_box_path(match.box, page_from: manage_my_box_path(match.box))
+        redirect_to my_box_path(match.box, page_from: my_box_path(match.box))
       else
         redirect_to box_referee_path(match.box, page_from: box_referee_path(match.box))
       end

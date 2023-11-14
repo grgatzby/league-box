@@ -161,8 +161,8 @@ fr:
       sitemap_title: Plan du site LeagueBox
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League
-      overview_rules: Description du Tournoi et règles
-      p03: Explication des règles de la Box League
+      overview_rules: Le Tournoi
+      p03: Description du Tournoi et explication des règles de la Box League
       club_staff: Personnel du club
       p05: Coordonnées de l'admin et du Referee du club
       all_boxes: Les Box
@@ -171,7 +171,7 @@ fr:
       li02: son classement dans le tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
-      p08_html: "Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange."
+      p08_html: "Le joueur connecté apparaît en <span class='color-orange'>orange</span>."
       p09a: Un clic sur une box conduit à la vue Box Referee.
       p09b: Un clic sur une box conduit à la vue en Grille.
       p10a_html: À l'approche de la fin du round, un bouton de pied de page pour <span class='color-tennis-aqua'>Créer le prochain round</span> apparaît.
@@ -179,27 +179,46 @@ fr:
       p11_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p12: En cliquant sur un entête, les joueurs se classent selon cet entête.
       referee_view: Vue referee
-      p14_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores du match, Points de match du joueur, Points de match de l'adversaire, Points totaux de l'adversaire</b>. Les matchs non joués sont également répertoriés.
-      p15: En cliquant sur une ligne de match, vous accédez à la page Modifier/Supprimer un match, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page Nouveau score de match.
+      p14_html: >
+        Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores match</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
+        Les matchs non joués sont également répertoriés.<br><br>
+        En cliquant sur une ligne de match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
       table_view: Vue en Grille
       p16: Les matchs de chaque joueur sont affichés sous leur adversaire correspondant.
       p17_html: >
-        Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange, et un lien vers <span class='color-tennis-blue'>Ma box</span> apparaît
+        Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Ma box</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Vue en Liste
-      p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores du match, Points de match du joueur, Points de match de l'adversaire, Points totaux de l'adversaire</b>.
+      p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores match, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
-        Le <span class= 'color-orange'>joueur connecté</span> apparaît en orange, et un lien vers <span class='color-tennis-blue'>Ma box</span> apparaît
+        Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Ma box</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      manage_my_box: Ma box
-      p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Afficher ma box</span>, <span class='color-tennis-blue'>Voir les résultats des matchs</ span> et <span class='color-tennis-blue'>Entrez un nouveau score</span>.
+      my_box: Ma box
+      p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Résultats de ma box</span>, <span class='color-tennis-blue'>Score du match</span> et <span class='color-tennis-blue'>Saisir un score</span>.
       p23: Lien vers la chatroom de la box.
       match_results: Affichage des résultats du match
       p24: "Détails d'un match joué:"
-      li05: date et heure du match, numéro du terrain,
-      li06: score, avec date et heure de saisie,
+      li05: date, heure du match, et numéro du terrain
+      li06: score, avec date et heure de saisie
       li07: gains du match et total des points.
       new_match_score: Nouveau score
       p25: Formulaire pour saisir les nouveaux détails du match.
       match_edit_score: Éditer le score
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
+      chatrooms: Chatrooms
+      p27_html: >
+        La <b>chatroom #general</b>, accessible depuis le menu principal, est ouverte à tous les joueurs, quelque soit leur club.<br>
+        Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
+        Une <b>chatroom de box</b> existe également pour chaque box du tournoi, accessible depuis la page <b>Ma Box</b>.<br><br>
+        Une couleur est attribuée aux messages, selon leur auteur:<br>
+      p28_html: >
+        La <b>chatroom #general</b> et les <b>chatroom de box</b> sont accessibles depuis le menu principal. La chatroom #general est ouverte à tous les joueurs, quelque soit leur club.<br>
+        Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
+        Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <b>Ma Box</b> disponible aux joueurs.<br><br>
+        Une couleur est attribuée aux messages, selon leur auteur:<br>
+      li08_html: <span class='color-tennis-blue'>Ceux des joueurs du même club apparaîssent en bleu</span>
+      li09_html: <span class='color-tennis-aqua'>Ceux du Referee du même club apparaîssent en aqua</span>
+      li10_html: <span class= 'color-grey'>Ceux des joueurs des autres clubs apparaîssent en gris clair</span>
+      li11_html: <span class= 'color-black'>Ceux du Referee d'un autre club apparaîssent en gris foncé</span>
+      li12_html: <span class= 'color-tennis-red'>Ceux de l'admin apparaîssent en rouge</span>
+      p29: Les messages reçus apparaissent sur la gauche de l'écran, et les messages envoyés sur la droite.

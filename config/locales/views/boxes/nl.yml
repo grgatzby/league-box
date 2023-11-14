@@ -9,7 +9,8 @@ nl:
       click_box_pop: Klik op een vakje voor wedstrijddetails
       message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
       create_round_btn: Maak de volgende ronde
-    manage_my_box:
+      request_round_btn: Vraag de admin de volgende ronde aan
+    my_box:
       my_box_results: Mijn box
       intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       not_in_round: " jij zit niet in deze ronde!"
@@ -18,17 +19,17 @@ nl:
       total_points_header: Accumulatiepunten
       played_on_header: Wedstrijd gespeeld
       action_header: Actie
-      view_box_results_btn: Boxresultaten
-      see_match_result_btn: Wedstrijdresultaten
+      view_box_results_btn: Mijn boxresultaten
+      see_match_result_btn: Wedstrijdscore
       enter_score_btn: Voer een score in
       chat_in_my_box: Chat met de spelers in uw box
-      access_chatroom_btn: Toegang tot de chatroom
+      access_chatroom_btn: Chatroom van uw box
     show_list:
       list_view: resultaten lijst
       my_box_btn: Mijn box
-      match_score_header: Wedstrijdscore
-      player_points_header: Spelerpunten
       match_earnings: Matchpunten
+      match_score_header: Wedstrijdscores
+      player_points_header: Spelerpunten
       opponent_points_header: Tegenstander punten
       opponent_total_points_header: Tegenstander accumulatiepunten
       points_pop: >
@@ -45,7 +46,7 @@ nl:
       not_authorised: Ongeautoriseerde pagina
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
-      match_score_header: Wedstrijdscore
+      match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
       opponent_points_header: Tegenstander punten
       opponent_total_points_header: Tegenstander accumulatiepunten

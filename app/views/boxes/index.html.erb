@@ -35,9 +35,12 @@
 
     <% if current_user && current_user.role == "admin" %>
       <div class="buttons-wrap">
-        <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round -->
+        <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round
+        TO DO: add a time related condition here for the button to appear -->
         <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
       </div>
+    <% elsif current_user && current_user.role == "referee" %>
+        <%= link_to t(".request_round_btn"), contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
     <% end %>
   <% end %>
 </div>

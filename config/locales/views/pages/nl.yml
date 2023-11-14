@@ -161,17 +161,17 @@ nl:
       sitemap_title: Sitemap LeagueBox
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
-      overview_rules: Toernooibeschrijving en regels
-      p03: Box League-regels uitgelegd
+      overview_rules: Toernooiregels
+      p03: Toernooibeschrijving en Box League-regels uitgelegd
       club_staff: Clubpersoneel
-      p05: Gegevens van de beheerder en de clubscheidsrechter
+      p05: Gegevens van de beheerder (admin) en de clubscheidsrechter (Referee)
       all_boxes: Boxen
       p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
       li01: zijn naam
       li02: zijn ranking binnen het toernooi
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
-      p08_html: "De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven."
+      p08_html: "De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven."
       p09a: Als u op een box klikt, komt u in de boxscheidsrechter-weergave.
       p09b: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span>.
@@ -179,20 +179,22 @@ nl:
       p11_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p12: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
       referee_view: Box referee view
-      p14_html: Bekijk de pagina op <span class='color-tennis-blue'>Terug naar boven</span> en <span class='color-tennis-blue'>Alle boxen</span>.
-      p15: Als u op een wedstrijdregel klikt, komt u terecht op de pagina Wedstrijd bewerken/verwijderen. Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina Nieuwe wedstrijdscore.
+      p14_html: >
+        De door elke speler gespeelde wedstrijden worden weergegeven als lijstitems. De kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.<br>
+        Als u op een wedstrijdregel klikt, komt u terecht op de pagina <b>Wedstrijd bewerken/verwijderen</b>.<br><br>
+        Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina <b>Nieuwe wedstrijdscore</b>.
       table_view: Box resultatenraster
       p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
       p17_html:
-        De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven en er verschijnt een link naar <span class='color-tennis-blue'>Mijn box</span>
+        De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven en er verschijnt een <span class='color-tennis-blue'>Mijn box</span>-knop
         links van de schakellink naar de <span class='color-tennis-blue'>resultaten lijst</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Box resultaten lijst
-      p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Matchpunten van de speler, Matchpunten van de tegenstander, Totaal aantal punten van de tegenstander</b>.
+      p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >
-        De <span class= 'color-orange'>verbonden speler</span> wordt oranje weergegeven en er verschijnt een link naar <span class='color-tennis-blue'>Mijn box</span>
+        De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven en er verschijnt een <span class='color-tennis-blue'>Mijn box</span>-knop
         links van de schakellink naar de <span class='color-tennis-blue'>resultatenraster</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i>).
-      manage_my_box: Mijn box
-      p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Bekijk mijn box</span>, <span class='color-tennis-blue'>Bekijk de wedstrijdresultaten</span> en <span class='color-tennis-blue'>Voer nieuwe score in</span>.
+      my_box: Mijn box
+      p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Mijn boxresultaten</span>, <span class='color-tennis-blue'>Wedstrijdscore</span> en <span class='color-tennis-blue'>Voer een score in</span>.
       p23: Link naar de box-chatroom.
       match_results: Wedstrijdresultaten bekijken
       p24: "Details van een gespeelde wedstrijd:"
@@ -203,3 +205,20 @@ nl:
       p25: Formulier om nieuwe wedstrijdgegevens in te voeren.
       match_edit_score: Wedstrijdbewerkingsscore
       p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.
+      chatrooms: Chatrooms
+      p27_html: >
+        De <b>#general chatroom</b>, toegankelijk vanuit het hoofdmenu, is open voor alle spelers, ongeacht hun club.<br>
+        Gebruikers moeten het gebruiken voor hun algemene communicatie en moeten gematigd zijn.<br>
+        Er is ook een <b>box-chatroom</b> voor elke toernooibox, toegankelijk via de pagina <b>Mijn box</b>.<br><br>
+        Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
+      p28_html: >
+        De <b>#general chatroom</b> en de <b>boxchatrooms</b> zijn toegankelijk via het hoofdmenu. De #general chatroom is open voor alle spelers, ongeacht hun club.<br>
+        Gebruikers moeten het gebruiken voor hun algemene communicatie en moeten gematigd zijn.<br>
+        Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <b>Mijn Box</b>-pagina die beschikbaar is voor spelers.<br><br>
+        Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
+      li08_html: <span class='color-tennis-blue'>Die van spelers van dezelfde club verschijnen in het blauw</span>
+      li09_html: <span class='color-tennis-aqua'>Die van de scheidsrechter van dezelfde club verschijnen in aqua</span>
+      li10_html: <span class= 'color-grey'>Die van spelers van andere clubs verschijnen in lichtgrijs</span>
+      li11_html: <span class= 'color-black'>Die van de scheidsrechter van een andere club verschijnen in donkergrijs</span>
+      li12_html: <span class= 'color-tennis-red'>Die van de beheerder verschijnen in het rood</span>
+      p29: Ontvangen berichten verschijnen aan de linkerkant van het scherm en verzonden berichten aan de rechterkant.
