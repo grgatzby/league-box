@@ -38,7 +38,6 @@
     <% if current_user && current_user.role != "player" %>
       <br><h5><%= t '.referee_view' %></h5>
       <p><%= t '.p14_html' %></p>
-      <p><%= t '.p15' %></p>
 
     <% else %>
       <br><h5><%= t '.table_view' %></h5>
@@ -49,7 +48,7 @@
       <p><%= t '.p19_html' %></p>
       <p><%= t '.p20_html' %></p>
 
-      <br><h5><%= t '.manage_my_box' %></h5>
+      <br><h5><%= t '.my_box' %></h5>
       <p><%= t '.p22_html' %></p>
       <p><%= t '.p23' %></p>
     <% end %>
@@ -69,6 +68,21 @@
       <br><h5><%= t '.match_edit_score' %></h5>
       <p><%= t '.p26' %></p>
     <% end %>
+
+    <br><h5><%= t '.chatrooms' %></h5>
+    <% if current_user && current_user.role != "player" %>
+      <p><%= t '.p28_html' %></p>
+    <% else %>
+      <p><%= t '.p27_html' %></p>
+    <% end %>
+    <ul>
+      <li><%= t '.li08_html' %></li>
+      <li><%= t '.li09_html' %></li>
+      <li><%= t '.li10_html' %></li>
+      <li><%= t '.li11_html' %></li>
+      <li><%= t '.li12_html' %></li>
+    </ul></p>
+    <p><%= t '.p29' %></p>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
       class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>

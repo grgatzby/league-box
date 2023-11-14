@@ -2,21 +2,54 @@ nl:
   contacts:
     new:
       contact_title: Contact
-      p01: Los scoregeschillen op vanuit uw chatroom
+      new_round_title: Request a new round creation
+      error_invite: Bekijk het volgende foutbericht
+      error:
+        zero: 0 fout zorgd
+        one: 1 fout zorgd
+        other: "%{count} fouten zorgden"
+      error_message: "heeft de verzending van dit formulier verboden:"
+      p01: Los scoregeschillen op vanuit uw box-chatroom
       prompt: Kies een onderwerp →
       topics:
       - feedback: Geef feedback
       - join_club: Sluit je aan bij een van onze clubs
       - other_topic: Ander onderwerp
+      new_round_subject: "Nieuw rondeverzoek voor de %{club} - New round request"
+      new_round_message: >
+        Van %{start_date} tot %{end_date} (dd/mm/yy). Een spelerslijst is bijgevoegd (a players list is attached)
+        Groetjes %{sender}
       name_placeholder: Voor-en achternaam
       email_placeholder: e-mailadres user@domain.com
       phone_placeholder: Telefoon
+      file_attached: Er is geen bestand bijgevoegd. Toch versturen?
       send_btn: Verzenden
     sent:
       sent_title: Bericht verzonden!
       p01_html: Bedankt voor je bericht. Uw <b>admin</b> neemt binnenkort contact met u op.
       p02: 🎾 Blijf ondertussen je boxcompetitiewedstrijden spelen! 🎾
       p03: 🎾 Bezoek in de tussentijd onze pagina Toernooiregels! 🎾
-      back_btn: Home
+      p04_html: >
+        Bedankt voor het aanvragen van een nieuwe rondecreatie voor %{club_name}.<br>
+        Uw <b>admin</b> neemt binnenkort contact met u op.
+      back_btn: Rug
+      home_btn: Home-pagina
     create:
       error_flash: Fout bij verzenden van bericht
+  mail_form:
+    errors:
+      models:
+        contact:
+          attributes:
+            subject:
+              blank: kan niet leeg zijn
+            name:
+              blank: kan niet leeg zijn
+            phone:
+              blank: kan niet leeg zijn
+            email:
+              blank: kan niet leeg zijn
+            message:
+              blank: kan niet leeg zijn
+            files:
+              blank: ": een bijgevoegde lijst met spelers is vereist (geaccepteerde formaten: csv, msword, ms-excel, pdf)"

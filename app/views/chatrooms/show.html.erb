@@ -1,8 +1,8 @@
 <!-- display or chose and display (admin/referee) a chatroom
-chatrooms for each box are created in Box controller #manage_my_box,
+chatrooms for each box are created in Box controller #my_box,
 if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
 <% if @chatroom %>
-<!-- coming from Box/manage_my_box -->
+<!-- coming from Box/my_box -->
   <div class="container"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"

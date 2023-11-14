@@ -11,7 +11,7 @@ class BoxesController < ApplicationController
     # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box)
     @this_is_my_box = my_box?(@box)
-    @my_current_box = my_box(current_round(current_user.club_id))
+    @my_current_box = my_own_box(current_round(current_user.club_id))
   end
 
   def show_list
@@ -22,14 +22,14 @@ class BoxesController < ApplicationController
     show        # inherits from #show method
   end
 
-  def manage_my_box
+  def my_box
     @page_from = params[:page_from]
     @current_player = current_user
     # allows player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       set_club_round # define variables @club and @round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
-      @box = my_box(@round, @current_player) # gets my box from chosen round
+      @box = my_own_box(@round, @current_player) # gets my box from chosen round
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
@@ -44,10 +44,11 @@ class BoxesController < ApplicationController
       end
       @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
 
-      if @box.chatroom == @general_chatroom
-        # since the Chatroom class was migrated after the Box class (with: a chatroom has one box)
-        # the migration script assigned by default the chatroom "general" to existing boxes
-        # if assigned chatroom is still #general, create a new chatroom here whith name "[Club name] - b[Box number]/R[Round id]"
+      if !@box.chatroom || @box.chatroom == @general_chatroom
+        # the Chatroom class was migrated after the Box class (with: a chatroom has one box)
+        # and the migration script assigned the #general chatroom to existing boxes by default
+        # if the assigned chatroom is still #general, or if this box has no chatroom,
+        # create here a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
         # it will NOT remain available to players when in the next round (chatroom is round specific)
         @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{format('%02d', @box.round.id)}")
         @box.update(chatroom_id: @chatroom.id)

@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
   def new
-    # admin or referee to generate next round from current: form
+    # invoked from button in Boxes index view
+    # admin to generate next round from current: form
     # if admin logged in, club given by params[:club_id]
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort

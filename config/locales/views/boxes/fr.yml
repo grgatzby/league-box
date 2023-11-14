@@ -9,7 +9,8 @@ fr:
       click_box_pop: Cliquez une box pour les détails des matchs
       message_box_pop: <b>Colonnes</b><br />joueur, classement,<br />matchs joués, points cumulés
       create_round_btn: Créer le prochain round
-    manage_my_box:
+      request_round_btn: Demander la création du prochain round
+    my_box:
       my_box_results: Ma box
       intro: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
@@ -18,17 +19,17 @@ fr:
       total_points_header: Cumul points
       played_on_header: Match joué le
       action_header: Action
-      view_box_results_btn: Résultats box
-      see_match_result_btn: Résultats match
-      enter_score_btn: Saisissez un score
+      view_box_results_btn: Résultats de ma box
+      see_match_result_btn: Score du match
+      enter_score_btn: Saisir un score
       chat_in_my_box: Discutez avec les joueurs de votre box
-      access_chatroom_btn: Accédez à la chatroom
+      access_chatroom_btn: Chatroom de votre box
     show_list:
       list_view: liste de résultats
       my_box_btn: Ma box
-      match_score_header: Score match
-      player_points_header: Points joueur
       match_earnings: Points du match
+      match_score_header: Scores match
+      player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
       points_pop: >
@@ -45,7 +46,7 @@ fr:
       not_authorised: Page non authorisée
       pop01_a: choisissez un match à éditer ou supprimez le score
       pop01_b: ", ou saisissez un nouveau score"
-      match_score_header: Score match
+      match_score_header: Scores match
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire

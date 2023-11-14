@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   def set_club_round
     # instantiate variables @club from params[:club_name], and @round from params[:round_start]
     # if they have been selected from the _select_club_round forms
-    # invoked by #index, #manage_my_box in Boxes and user_box_scores/index views forms
+    # invoked by #index, #my_box in Boxes and user_box_scores/index views forms
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
 
@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
     Round.current.find_by(club_id: club_id) || Round.where(club_id: club_id).order(:start_date).last
   end
 
-  def my_box(round, player = current_user)
+  def my_own_box(round, player = current_user)
     # given a round, returns player's box for that round
     player.user_box_scores.map(&:box).select { |box| box.round == round }[0]
   end

@@ -5,7 +5,7 @@
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%= render "shared/select_club_round", fallback_path: manage_my_box_path, intro_paragraph: t(".intro") %>
+      <%= render "shared/select_club_round", fallback_path: my_box_path, intro_paragraph: t(".intro") %>
     <% end %>
   </div>
   <% if @round %>

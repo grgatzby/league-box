@@ -46,7 +46,7 @@ en:
       ddmmm_date: "%d %b"
       wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
       wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
-      wwwddmmmyy_at_hhmm: "%a %-d %b %y at %H:%M"
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
 fr:
   date:
     formats:
@@ -74,7 +74,7 @@ fr:
       wwwddmmmyy_date: "%a %-d %b %y"  # ven 14 avr. 23   # wwwddmmmyy_at_hhmm
       ddmmm_date: "%d %b"              # 2 mai
       wwwddmmm_at_hhmm: "%a %-d %b à %H:%M"
-      wwwddmmmyy_at_hhmm: "%a %-d %b %y à %H:%M"
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y à %H:%M" # vendredi 14 avr. 2023
     am: 'am'
     pm: 'pm'
 nl:
@@ -109,6 +109,6 @@ nl:
       ddmmm_date: "%d %b"
       wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
       wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
-      wwwddmmmyy_at_hhmm: "%a %-d %b %y at %H:%M"
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
   am: "'s ochtends"
   pm: "'s middags"

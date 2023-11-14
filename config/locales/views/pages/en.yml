@@ -160,8 +160,8 @@ en:
       sitemap_title: LeagueBox sitemap
       home: Home
       p01: General presentation of the Box League Tournament
-      overview_rules: Tournament overview and rules
-      p03: Explanation of the Box League rules
+      overview_rules: Tournament rules
+      p03: Tournament overview and explanation of the Box League rules
       club_staff: Club staff
       p05: Details of the admin and the club referee
       all_boxes: All Boxes
@@ -170,7 +170,7 @@ en:
       li02: ranking in the league
       li03: number of matches played
       li04: number of total points
-      p08_html: "<span class= 'color-orange'>Current player</span> appears in orange."
+      p08_html: "Current player appears in <span class='color-orange'>orange</span>."
       p09a: Clicking on a box leads to the Box Referee view.
       p09b: Clicking on a box leads to the Box Table view.
       p10a_html: When reaching the end of the round, a footpage button <span class='color-tennis-aqua'>Create the next round</span> appears.
@@ -178,27 +178,47 @@ en:
       p11_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
       p12: Clicking on a header sorts the player according to this header.
       referee_view: Box referee view
-      p14_html: Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player match points, Opponent match points, Opponent's total points</b>. Unplayed matchs are listed too.
-      p15: Clicking on a match line lands on the Match Edit/Delete page, clicking on an unplayed match (admin only) lands on the New match score page.
+      p14_html: >
+        Each player's matches which have been played are shown as list items.
+        Headers are <b>Match scores</b>, <b>Player's points</b>, <b>Opponent's points</b>, <b>Opponent's total points</b>.<br>
+        Unplayed matchs are listed too.<br><br>
+        Clicking on a match line lands on the <b>Match Edit/Delete</b> page, clicking on an unplayed match (admin only) lands on the <b>New match score</b> page.
       table_view: Box Table view
       p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
-        If on <span class= 'color-orange'>Current player</span>'s box, the name appears in orange, and <span class='color-tennis-blue'>My box</span> button appears
+        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
         next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Box List view
-      p19_html: Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player match points, Opponent match points, Opponent's total points</b>.
+      p19_html: Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
       p20_html: >
-        If on <span class= 'color-orange'>Current player</span>'s box, the name appears in orange, and <span class='color-tennis-blue'>My box</span> button appears
+        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      manage_my_box: My box
-      p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match results</span>, and <span class='color-tennis-blue'>Enter new score</span>.
+      my_box: My box
+      p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.
       p23: Link to the box chatroom.
       match_results: Match results view
       p24: "Details of a match played:"
-      li05: game date and time, court number,
-      li06: score, with date and time of submission,
+      li05: game date and time, court number
+      li06: score, with date and time of submission
       li07: match earnings and total points.
       new_match_score: New match score
       p25: Form to enter new match details.
       match_edit_score: Match edit score
       p26: Form to modify match details, or delete score.
+      chatrooms: Chatrooms
+      p27_html: >
+        The <b>#general chatroom</b>, accessible from the main menu, is open to all players, regardless of their club.<br>
+        Users must use it for their general communication, and must exercise moderation.<br>
+        A <b>box chatroom</b> also exists for each tournament box, accessible from the <b>My Box</b> page.<br><br>
+        A color is assigned to messages, according to their author:<br>
+      p28_html: >
+        The <b>#general chatroom</b> and the <b>box chatrooms</b> are accessible from the main menu. The #general chatroom is open to all players, whatever their club.<br>
+        Users must use it for their general communication, and must exercise moderation.<br>
+        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <b>My Box</b> page available to players.<br><br>
+        A color is assigned to messages, according to their author:<br>
+      li08_html: <span class='color-tennis-blue'>Those of players from the same club appear in blue</span>
+      li09_html: <span class='color-tennis-aqua'>Those of Referee of the same club appear in aqua</span>
+      li10_html: <span class= 'color-grey'>Those of players from other clubs appear in light gray</span>
+      li11_html: <span class= 'color-black'>Those of the Referee from another club appear in dark gray</span>
+      li12_html: <span class= 'color-tennis-red'>Those of the admin appear in red</span>
+      p29: Received messages appear on the left of the screen, and sent messages on the right.

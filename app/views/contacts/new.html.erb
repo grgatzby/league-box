@@ -1,11 +1,24 @@
 <div class="container">
-  <br><h3><%= t '.contact_title' %></h3><hr>
-  <p><%= t '.p01' %></p>
+  <br>
+  <%# processing_round_request = params[:round_id] || (params[:contact] && params[:contact][:club_name]) %>
+  <% processing_new_round = params[:round_id] || (params[:contact] && params[:contact][:round_id]) %>
+  <% if processing_new_round %>
+    <!--- coming from the Boxes show_referee view (request a new round creation) -->
+    <h3><%= t '.new_round_title' %></h3>
+  <% else %>
+    <!--- coming from the footer partial (contact us) -->
+    <h3><%= t '.contact_title' %></h3><hr>
+    <p><%= t '.p01' %></p>
+  <% end %>
   <div class="frame-shape contact-wrap">
     <%= simple_form_for @contact do |f| %>
       <% if @contact.errors.any? %>
+          <%# t('.error_invite') %>
           <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
-              <div class="font-bold text-rose-700 text-sm pb-4"><%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved:</div>
+              <div class="font-bold text-rose-700 text-sm pb-4">
+                <!---<%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved: --->
+                <%= "#{t('.error', count: @contact.errors.count)} #{t('.error_message')}" %><br>
+              </div>
 
               <ul class="pb-0 mb-0">
                   <% @contact.errors.each do |error| %>
@@ -15,49 +28,117 @@
           </div>
       <% end %>
       <div class="contact-align contact-space-between">
-        <div><%= f.input :subject,
-          label: false,
-          # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
-          collection: t('.topics').map { |item| item.values }.flatten,
-          prompt: t('.prompt'),
-          input_html: {class: "contact-field", style: "width: 350px"},
-          required: true
-        %></div>
-        <% default = current_user ? "#{current_user.first_name} #{current_user.last_name}" : "" %>
+        <div>
+          <!--- FORM FIELD: subject -->
+          <% if processing_new_round %>
+            <!--- coming from the Boxes show_referee view (request a new round creation) -->
+            <% round = Round.find(processing_new_round) %>
+            <% default_subject =  t('.new_round_subject', club: round.club.name)%>
+            <%= f.input :subject,
+              label: false,
+              prompt: t('.prompt'),
+              input_html: {class: "contact-field", style: "width: 350px", value: default_subject},
+              required: true
+            %>
+          <% else %>
+            <!--- coming from the footer partial (contact us) -->
+            <%= f.input :subject,
+              label: false,
+              # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
+              collection: t('.topics').map { |item| item.values }.flatten,
+              prompt: t('.prompt'),
+              input_html: {class: "contact-field", style: "width: 350px"},
+              required: true
+            %>
+          <% end %>
+        </div>
+
+        <!--- FORM FIELD: name -->
+        <% default_name = current_user ? "#{current_user.first_name} #{current_user.last_name}" : "" %>
         <div><%= f.input :name,
-          input_html: {class: "contact-field", style: "width: 350px", value: default},
           label: false,
           placeholder: t('.name_placeholder'),
+          input_html: {class: "contact-field", style: "width: 350px", value: default_name},
           required: true
         %></div>
       </div>
       <div class="contact-align contact-space-between">
-        <% default = current_user ? current_user.email : "" %>
+
+        <!--- FORM FIELD: email address -->
+        <% default_email = current_user ? current_user.email : "" %>
         <div><%= f.input :email,
-          input_html: {class: "contact-field", style: "width: 350px", value: default},
           label: false,
           placeholder: t('.email_placeholder'),
+          input_html: {class: "contact-field", style: "width: 350px", value: default_email},
           required: true
         %></div>
+
+        <!--- FORM FIELD: phone number -->
+        <% default_phone = current_user ? current_user.phone_number : "" %>
         <div><%= f.input :phone,
-          input_html: {class: "contact-field", style: "width: 350px"},
           label: false,
           placeholder: t('.phone_placeholder'),
+          input_html: {class: "contact-field", style: "width: 350px", value: default_phone},
           required: false
         %></div>
       </div>
+
+      <!--- FORM FIELD: message body -->
+      <% if processing_new_round %>
+        <!--- coming from the Boxes show_referee view (request a new round creation) -->
+        <% round = Round.find(processing_new_round) %>
+        <% duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round %>
+        <% start_date = l(round.end_date + 1, format: :default) %>
+        <% end_date = l(round.end_date >> duration, format: :default) %>
+        <% default_message = t('.new_round_message',
+                                  start_date: start_date, end_date: end_date,
+                                  club: round.club.name,
+                                  sender: default_name) %>
+      <% else %>
+        <!--- coming from the footer partial (contact us) -->
+        <% default_message = "" %>
+      <% end %>
       <%= f.input :message,
         as: "text",
         label: false,
-        input_html: {class: "contact-field contact-content"},
+        input_html: {class: "contact-field contact-content", value: default_message},
         required: true
       %>
-      <%= f.text_field :nickname,
+
+      <!--- FORM FIELD: security check (hidden) -->
+      <%= f.text_field :formcheck,
         type:"hidden"
       %>
-      <div>
-      <%= f.file_field :files, multiple: true, class: 'btn buttons-shape btn-beige mb-3', accept: 'image/png,image/gif,image/jpeg,application/pdf' %>
-      </div>
+      <% if processing_new_round %>
+        <!--- coming from the Boxes show_referee view (request a new Round creation) -->
+
+        <!--- FORM FIELD: round id = passing parameters to the Sent view (hidden) -->
+        <%= f.text_field :round_id,
+          type:"hidden",
+          value: round.id
+        %>
+        <div>
+
+          <!--- FORM FIELD: files attachment (one file for new Round request) -->
+          <!--- NB: "required: true" with "validate: { presence: true }" in the Contact model
+          would not work with "multiple : true" since no attachment yields "files"=>[""] in the params -->
+          <%= f.file_field :files,
+            class: 'btn buttons-shape btn-beige mb-3',
+            accept: 'text/csv,application/msword,application/vnd.ms-excel,application/pdf',
+            required: true
+          %>
+        </div>
+      <% else %>
+
+        <!--- FORM FIELD: files attachment (multi file for Contact us) -->
+        <div>
+          <%= f.file_field :files,
+            multiple: true,
+            class: 'btn buttons-shape btn-beige mb-3',
+            accept: 'image/png,image/gif,image/jpeg,application/pdf'
+          %>
+        </div>
+      <% end %>
       <%= f.submit t('.send_btn'),
         class: "btn buttons-shape btn-beige mb-3"
       %>

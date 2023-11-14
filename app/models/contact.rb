@@ -2,10 +2,12 @@ class Contact < MailForm::Base
   attribute :subject,   validate: true
   attribute :name,      validate: true
   attribute :email,     validate: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i
-  attribute :files,     attachment: true
+  # validate: { presence: true } works only when using the form without multiple: true
+  # otherwise the form yields "files"=>[""] in the params
+  attribute :files,     attachment: true, validate: { presence: true }
   attribute :phone,     validate: /\(?([0-9]{0,3})\)?([0-9]{0,10})/
   attribute :message,   validate: true
-  attribute :nickname,  captcha: true
+  attribute :formcheck, captcha: true
 
   def headers
     {

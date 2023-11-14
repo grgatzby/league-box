@@ -66,7 +66,7 @@
       data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), manage_my_box_path(@match.box, page_from: manage_my_box_path(@match.box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), my_box_path(@match.box, page_from: my_box_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% else %>
         <%= link_to t(".back_btn"), box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn buttons-shape btn-blue" %>
       <% end %>
