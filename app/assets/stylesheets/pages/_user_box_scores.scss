@@ -34,3 +34,17 @@
 }
 // @media only screen and (max-width: 1200px) {
 //   }
+
+@media print {
+  .dont-print, .navbar-league-box, .footer-wrap {
+    display: none;
+  }
+
+  .do-expand, .chatroom .messages {
+    display: block;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+}

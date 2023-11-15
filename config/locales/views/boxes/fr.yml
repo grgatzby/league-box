@@ -1,8 +1,13 @@
 fr:
   back_btn: Retour
   boxes:
+    list_view: liste de résultats
+    referee_view: vue referee
+    table_view: grille de résultats
     intro_lines:
-      my_current_box: ma box courante
+      pop01_a: choisissez un match pour éditer ou supprimer son score
+      pop01_b: ", ou saisissez un nouveau score"
+      pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
     index:
       all_box_title: Consulter les box
       intro: "Pour le round choisi, voyez en un coup d'œil les <b>joueurs, classements, match joués et point cumulés</b> de votre club<br />"
@@ -25,7 +30,6 @@ fr:
       chat_in_my_box: Discutez avec les joueurs de votre box
       access_chatroom_btn: Chatroom de votre box
     show_list:
-      list_view: liste de résultats
       my_box_btn: Ma box
       match_earnings: Points du match
       match_score_header: Scores match
@@ -40,23 +44,19 @@ fr:
       lost: Perdu
       on_date: "le"
       enter_results_btn: Entrez un score
-      dont_forget: N'oubliez pas de jouer vos matchs et d'entrer vos scores dans Votre box!
+      dont_forget_html: N'oubliez pas de jouer vos matchs et d'entrer vos scores dans <b>Ma box</b>!
     show_referee:
-      referee_view: vue referee
       not_authorised: Page non authorisée
-      pop01_a: choisissez un match à éditer ou supprimez le score
-      pop01_b: ", ou saisissez un nouveau score"
       match_score_header: Scores match
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
-      pop02: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
+      pop01: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
       won: Gagné
       lost: Perdu
       on_date: "le"
       not_played: Pas encore joué
-      pop03_a: Cliquez pour saisir le score pour<br />
+      pop02_a: Cliquez pour saisir le score pour<br />
     show:
       my_box_btn: Ma box
       not_played: Pas encore joué
-      table_view: grille de résultats

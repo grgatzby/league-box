@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  print: "Print"
   date:
     formats:
       default: "%Y-%m-%d"
@@ -48,6 +48,7 @@ en:
       wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
       wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
 fr:
+  print: "Imprimer"
   date:
     formats:
       default: "%d/%m/%Y"
@@ -78,6 +79,7 @@ fr:
     am: 'am'
     pm: 'pm'
 nl:
+  print: "Afdrukken"
   date:
     formats:
       default: "%d/%m/%Y"

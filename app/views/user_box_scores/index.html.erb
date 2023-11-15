@@ -1,24 +1,32 @@
 <!-- display the league table -->
 <div class="container" data-controller="toggle">
-  <h3><%= t '.league_table_title' %></h3>
-  <% if @round %>
-    <div class="same-line">
-      <div><%= render "shared/display_club_round", round: @round %></div>
-    </div>
-    <% up = ["↓", "↑"] %>
-    <% down = ["↑", "↓"]%>
-    <% if params["sort"] %>
-      <% params["sort"] = nil  %>
-      <p class="stick-rules">
-        <%= link_to t(".top_line_html"), user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border"%>
-      </p>
-    <% else %>
-      <p class="stick-rules"><%= t '.top_line_html' %></p>
-      <div class="photo-wrap frame-shape frame-padding text-size">
-        <%= sanitize t('.rules') %>
-      </div><br>
+  <h3>
+    <%= t '.league_table_title' %>
+    <% if @round %>
+      <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
     <% end %>
-
+  </h3>
+  <% if @round %>
+    <div>
+      <div class="same-line">
+        <div><%= render "shared/display_club_round", round: @round %></div>
+      </div>
+      <div class="dont-print">
+        <% up = ["↓", "↑"] %>
+        <% down = ["↑", "↓"]%>
+        <% if params["sort"] %>
+          <% params["sort"] = nil  %>
+          <p class="stick-rules">
+            <%= link_to t(".top_line_html"), user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border"%>
+          </p>
+        <% else %>
+          <p class="stick-rules"><%= t '.top_line_html' %></p>
+          <div class="photo-wrap frame-shape frame-padding text-size">
+            <%= sanitize t('.rules') %>
+          </div><br>
+        <% end %>
+      </div>
+    </div>
     <div>
     <%# <div class="league-frame"> %>
     <!-- league-frame and league-containerallow overflow-x (horizontal scroll) but kills stickiness
@@ -35,7 +43,7 @@
             <div class="col-sm-1"><%=render "header_link", header: t('.sets_played_header'), dir: down%></div>
             <div class="col-sm-1"><%=render "header_link", header: t('.sets_won_header'), dir: down%></div>
           </div>
-          <div class="box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
+          <div class="do-expand box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" >
             <ol type="1">
               <%= render "league_table", user_box_scores: @user_box_scores %>
             </ol>

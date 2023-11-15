@@ -1,21 +1,9 @@
 <!-- player show page by list of matches -->
 <div class="container">
-  <%= render "intro_lines", box: @box, view_type: t(".list_view") %>
-  <div class="same-line">
-    <div><%= render "shared/display_club_round", round: @box.round %></div>
-    <div>
-      <% if @this_is_my_box %>
-        <%= link_to t(".my_box_btn"), my_box_path(@box), class: "btn buttons-shape btn-blue" %>
-      <% end %>
-      <!-- Link to view as table -->
-      <%= link_to box_path, class: "btn buttons-shape btn-blue" do %>
-        <i class="fa-solid fa-table-cells"></i>
-      <% end %>
-    </div>
-  </div>
+  <%= render "intro_lines", box: @box, view_type: t("boxes.list_view") %>
 
-  <div class = "frame-shape frame-padding text-size">
-    <div class="row font-bold text-padding sticky-header">
+  <div class = "frame-shape frame-padding text-size  do-expand box-scroller">
+    <div class="row font-bold text-padding">
       <div class="col-sm-4"></div>
       <div class="col-sm-2"><%= t '.match_score_header' %></div>
       <div class="text-paddings col-sm-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
@@ -61,7 +49,7 @@
             <% end %>
             <% if player_matches.count == 1 %>
               <div class="col-sm-4"></div>
-              <div class="col-sm-6 color-tennis-red"><%= t '.dont_forget' %></div>
+              <div class="col-sm-6 color-tennis-red"><%= t '.dont_forget_html' %></div>
             <% end %>
 
           </ul>
@@ -70,7 +58,7 @@
     </ul>
   </div>
   <br>
-  <div class="buttons-wrap">
+  <div class="buttons-wrap dont-print">
   <!--
     <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
     <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
