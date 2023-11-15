@@ -1,12 +1,18 @@
 nl:
   back_btn: Rug
   boxes:
+    list_view: resultaten lijst
+    referee_view: pagina referee
+    table_view: resultatenraster
     intro_lines:
       my_current_box: mijn huidige box
+      pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
+      pop01_b: ", of voer een nieuwe score in"
+      pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
     index:
       all_box_title: Bekijk de boxen
       intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
-      click_box_pop: Klik op een vakje voor wedstrijddetails
+      click_box_pop: Klik op een box voor wedstrijddetails
       message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
       create_round_btn: Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
@@ -25,7 +31,6 @@ nl:
       chat_in_my_box: Chat met de spelers in uw box
       access_chatroom_btn: Chatroom van uw box
     show_list:
-      list_view: resultaten lijst
       my_box_btn: Mijn box
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
@@ -40,12 +45,9 @@ nl:
       lost: Verloren
       on_date: "op"
       enter_results_btn: Voer een score in
-      dont_forget: Vergeet niet uw wedstrijden te spelen en uw scores in Uw vak in te voeren!
+      dont_forget_html: Vergeet niet uw wedstrijden te spelen en uw scores in <b>Mijn box</b> in te voeren!
     show_referee:
-      referee_view: pagina referee
       not_authorised: Ongeautoriseerde pagina
-      pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
-      pop01_b: ", of voer een nieuwe score in"
       match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
       opponent_points_header: Tegenstander punten
@@ -59,4 +61,3 @@ nl:
     show:
       my_box_btn: Mijn box
       not_played: Nog niet gespeeld
-      table_view: resultatenraster

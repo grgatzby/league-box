@@ -8,18 +8,23 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
   >
-    <br><h3>#<%= t(".chatroom_title", chatroom: @chatroom.name) %></h3>
-      <div class="frame-shape chatroom">
-        <div class="messages" data-chatroom-subscription-target="messages">
-          <!-- previous messages -->
-          <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="center" data-bs-content="<%= t '.message' %>">
-            <% @chatroom.messages.sort.each do |message| %>
-              <%= render "messages/message", message: message %>
-            <% end %>
-          </div>
+    <br>
+    <h3>
+      #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
+      <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
+    </h3>
+    <div class="frame-shape chatroom">
+        <!-- previous messages -->
+      <div class="messages do-expand" data-chatroom-subscription-target="messages">
+        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="center" data-bs-content="<%= t '.message' %>">
+          <% @chatroom.messages.sort.each do |message| %>
+            <%= render "messages/message", message: message %>
+          <% end %>
         </div>
+      </div>
 
-        <!-- new message -->
+      <!-- new message form -->
+      <div class="dont-print">
         <%= simple_form_for [@chatroom, @message],
           html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f|
         %>
@@ -31,6 +36,7 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
           <%= f.submit t(".send_btn"), class: "btn buttons-shape btn-beige ms-2 mb-3" %>
         <% end %>
       </div>
+    </div>
   </div>
 <% else %>
   <!-- referees and admin get to select a chatroom -->
@@ -46,6 +52,8 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
   </div>
 <% end %>
 <br>
-<div class="buttons-wrap">
+<!--
+<div class="buttons-wrap dont-print">
   <%= link_to t(".back_btn"), :back, class: "btn buttons-shape btn-blue" %>
 </div>
+-->

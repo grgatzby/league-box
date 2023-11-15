@@ -1,13 +1,46 @@
 <div class="header-flex">
-  <div><h3><%= "Box #{box.box_number} - #{view_type}" %></h3></div>
   <div>
+    <h3>
+      <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
+      <% if current_user.role != "player" %>
+        <% message += "#{t(".pop01_a")}#{current_user == @admin ? "#{t(".pop01_b")}" : ""}" %>
+      <% else %>
+        <% message += "#{t(".pop02_html")}" %>
+      <% end %>
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
+        <%= "Box #{box.box_number} - #{view_type}" %>
+      </div>
+    </h3>
     <% if @this_is_my_box %>
-      <h4><%= render "shared/fullname", user: current_user %></h4>
+      <h5>
+        <%= render "shared/fullname", user: current_user %>
+        <%= "(#{t '.my_current_box'})" %>
+      </h5>
     <% end %>
-  </div>
-  <div>
     <% if box == @my_current_box%>
-      <%= t '.my_current_box' %>
+      <%# t '.my_current_box' %>
     <% end %>
   </div>
 </div>
+
+<div class="same-line">
+  <div><%= render "shared/display_club_round", round: box.round %></div>
+  <div class="dont-print">
+    <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
+    <% if @this_is_my_box %>
+      <%= link_to t(".my_box_btn"), my_box_path(box), class: "btn buttons-shape btn-blue" %>
+    <% end %>
+    <% case view_type %>
+      <% when t("boxes.list_view") %>
+        <%# Link to view as table %>
+        <%= link_to box_path, class: "btn buttons-shape btn-blue" do %>
+          <i class="fa-solid fa-table-cells"></i>
+        <% end %>
+      <% when t("boxes.table_view") %>
+        <%# Link to view as list %>
+        <%= link_to box_list_path, class: "btn buttons-shape btn-blue" do %>
+          <i class="fa-regular fa-list"></i>
+        <% end %>
+      <% end %>
+  </div>
+</div><br>

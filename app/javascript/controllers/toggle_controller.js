@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["togglableElement", "toggler", "topButton"]
+  static targets = ["togglableButton", "togglableElement", "toggler", "topButton"]
   static values = {
     displayRules: String,
     hideRules: String
@@ -30,6 +30,7 @@ export default class extends Controller {
     // when the user clicks on the hide/display the rules button
     this.togglableElementTarget.scrollTop = 0 // instantaneous scrollTop
     this.togglableElementTarget.classList.toggle("d-none");
+    this.togglableButtonTarget.classList.toggle("d-none");
     const btn = this.togglerTarget
     let txt = btn.innerText
     // btn.textContent = txt == "Display the rules" ? "Hide the rules" : "Display the rules"

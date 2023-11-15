@@ -4,14 +4,11 @@
     <br><br><%= t '.not_authorised' %>
   <% else %>
     <br>
-    <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
-    <% message += "#{t(".pop01_a")}#{current_user == @admin ? "#{t(".pop01_b")}" : ""}" %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
-      <%= render "intro_lines", box: @box, view_type: t(".referee_view") %>
-    </div>
-    <div class="same-line">
-      <div><%= render "shared/display_club_round", round: @box.round %></div>
-    </div>
+    <%# message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
+    <%# message += "#{t(".pop01_a")}#{current_user == @admin ? "#{t(".pop01_b")}" : ""}" %>
+    <%#div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>
+      <%= render "intro_lines", box: @box, view_type: t("boxes.referee_view") %>
+    <%#div%>
 
     <div class = "frame-shape frame-padding text-size">
       <div class="row font-bold text-padding sticky-header">
@@ -89,7 +86,7 @@
   <% end %>
   <br>
   <!---
-  <div class="buttons-wrap">
+  <div class="buttons-wrap dont-print">
     <% if @page_from %>
       <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
       <%= link_to t("back_btn"), @page_from+parameters, class: "btn buttons-shape btn-blue" %>

@@ -1,8 +1,14 @@
 en:
   back_btn: Back
   boxes:
+    list_view: list view
+    referee_view: referee view
+    table_view: table view
     intro_lines:
       my_current_box: my current box
+      pop01_a: select a match to edit or delete the score
+      pop01_b: ", or enter a new score"
+      pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
     index:
       all_box_title: View all boxes
       intro: "For a given round, view for all boxes at a glance <b>player names, rankings, games played and box points</b><br />in your club"
@@ -25,7 +31,6 @@ en:
       chat_in_my_box: Chat with other players in my box
       access_chatroom_btn: Access the box chatroom
     show_list:
-      list_view: list view
       my_box_btn: My box
       match_earnings: Match earnings
       match_score_header: Match scores
@@ -40,12 +45,9 @@ en:
       lost: Lost
       on_date: "on"
       enter_results_btn: Enter new results
-      dont_forget: Don't forget to play your matches and enter your scores in My box!
+      dont_forget_html: Don't forget to play your matches and enter your scores in <b>My box</b>!
     show_referee:
-      referee_view: referee view
       not_authorised: As a player, this page is not authorised
-      pop01_a: select a match to edit or delete the score
-      pop01_b: ", or input a new score"
       match_score_header: Match scores
       player_points_header: Player's points
       opponent_points_header: Opponent's points
@@ -59,4 +61,3 @@ en:
     show:
       my_box_btn: My box
       not_played: not played
-      table_view: table view

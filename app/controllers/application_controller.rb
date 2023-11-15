@@ -10,10 +10,10 @@ class ApplicationController < ActionController::Base
   #                view the league table, access the #general chatroom and their box chatroom.
   # - referees can: view a box (in referee view), edit / delete a match score, view all boxes,
   #                 view the league table, access the #general chatroom and all of their club's chatrooms,
-  #                 create a new round, from an existing one.
+  #                 request a new round creation.
   # - admin can: view a box (in referee view), enter / edit / delete a match score, view all boxes,
   #              view the league table, access the #general chatroom and all other chatrooms,
-  #              create a new club and its boxes (from a CSV file), create a new round.
+  #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
   #
   # Question: should we allow referees to create a match (ie new score) as can the admin?
 
