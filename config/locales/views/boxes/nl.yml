@@ -5,7 +5,6 @@ nl:
     referee_view: pagina referee
     table_view: resultatenraster
     intro_lines:
-      my_current_box: mijn huidige box
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
@@ -52,12 +51,12 @@ nl:
       player_points_header: Spelerpunten
       opponent_points_header: Tegenstander punten
       opponent_total_points_header: Tegenstander accumulatiepunten
-      pop02: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
+      pop01: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
       won: Won
       lost: Verloren
       on_date: "op"
       not_played: Nog niet gespeeld
-      pop03_a: Klik om de score in te voeren<br />
+      pop02_a: Klik om de score in te voeren<br />
     show:
       my_box_btn: Mijn box
       not_played: Nog niet gespeeld

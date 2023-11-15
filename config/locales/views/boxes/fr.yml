@@ -5,7 +5,6 @@ fr:
     referee_view: vue referee
     table_view: grille de résultats
     intro_lines:
-      my_current_box: ma box courante
       pop01_a: choisissez un match pour éditer ou supprimer son score
       pop01_b: ", ou saisissez un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
@@ -52,12 +51,12 @@ fr:
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
-      pop02: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
+      pop01: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
       won: Gagné
       lost: Perdu
       on_date: "le"
       not_played: Pas encore joué
-      pop03_a: Cliquez pour saisir le score pour<br />
+      pop02_a: Cliquez pour saisir le score pour<br />
     show:
       my_box_btn: Ma box
       not_played: Pas encore joué

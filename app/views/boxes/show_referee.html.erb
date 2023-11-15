@@ -41,7 +41,7 @@
                         <% name = "Score" %>
                         <% score_input_by = User.find(user_score.input_user_id) %>
                         <% input_date = @tz.to_local(user_score.input_date) %>
-                        <% message = "#{t(".pop02", user: "#{score_input_by.role} #{render "shared/fullname", user: score_input_by}",
+                        <% message = "#{t(".pop01", user: "#{score_input_by.role} #{render "shared/fullname", user: score_input_by}",
                                                     date: l(input_date, format: :wwwddmmmyy_at_hhmm))}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <div class="row player-name">
@@ -69,7 +69,7 @@
                       <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %></div>
                       <div class="col-sm-2"><%= t '.not_played' %></div>
                       <% if current_user == @admin %>
-                        <% message = "#{t(".pop03_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
+                        <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
                           <!-- click on opponent line to enter new match score -->
                           <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>

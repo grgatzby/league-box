@@ -5,7 +5,6 @@ en:
     referee_view: referee view
     table_view: table view
     intro_lines:
-      my_current_box: my current box
       pop01_a: select a match to edit or delete the score
       pop01_b: ", or enter a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
@@ -52,12 +51,12 @@ en:
       player_points_header: Player's points
       opponent_points_header: Opponent's points
       opponent_total_points_header: Opponent's total points
-      pop02: "<b>Score entered</b><br />by %{user}<br />on %{date}"
+      pop01: "<b>Score entered</b><br />by %{user}<br />on %{date}"
       won: Won
       lost: Lost
       on_date: "on"
       not_played: not played
-      pop03_a: Click to enter the new match score for<br />
+      pop02_a: Click to enter the new match score for<br />
     show:
       my_box_btn: My box
       not_played: not played
