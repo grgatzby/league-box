@@ -6,9 +6,9 @@
     <p><%= t('.p01_html', clubname: @club.name) %></p>
     <p><%= t '.p02' %></p>
     <p><%= t '.p03' %></p>
-  </div><br>
+  </div>
 
-  <div data-controller="toggle"
+  <div data-controller="toggle top-bottom-padding"
        data-toggle-display-rules-value="<%= t '.btn_display_rules' %>"
        data-toggle-hide-rules-value="<%= t '.btn_hide_rules' %>">
     <div class = "buttons-wrap dont-print">
@@ -16,11 +16,11 @@
         class="btn buttons-shape btn-blue"><%= t '.btn_display_rules' %>
       </button>
       <span class="d-none" data-toggle-target="togglableButton">
-        <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue"%>
+        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green"%>
       </span>
     </div>
 
-    <div data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" class="d-none frame-shape home-wrap text-size do-expand box-scroller">
+    <div data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" class="d-none frame-shape home-wrap text-size expand-to-print box-scroller">
       <br><h3><%= t(".rules").upcase %></h3><br>
       <h5><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>
@@ -120,7 +120,7 @@
         <p><%= t '.p41' %></p>
       <h5><%= t '.disputes' %></h5>
       <% if @referee %>
-        <% mailto = t(".mail_to_referee_html", referee_first_name: @referee.first_name, referee_email: @referee.email) %>
+        <% mailto = t(".mail_to_referee_html", referee_name: "#{@referee.first_name} #{@referee.last_name}", referee_email: @referee.email) %>
       <% else %>
         <% mailto = t(".mail_to_admin_html", admin_email: @admin.email) %>
       <% end %>

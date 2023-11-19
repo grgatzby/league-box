@@ -9,7 +9,10 @@ nl:
         one: 1 fout zorgd
         other: "%{count} fouten zorgden"
       error_message: "heeft de verzending van dit formulier verboden:"
-      p01: Los scoregeschillen op vanuit uw box-chatroom
+      contact_p01_html: >
+        Dit verzoek wordt naar de beheerder verzonden. Voor verzoeken gericht aan uw Referee
+        Hun contactgegevens vindt u op de pagina <b>Clubpersoneel</b>.
+      contact_p02: Los scoregeschillen op vanuit uw box-chatroom
       prompt: Kies een onderwerp →
       topics:
       - feedback: Geef feedback
@@ -23,7 +26,7 @@ nl:
       email_placeholder: e-mailadres user@domain.com
       phone_placeholder: Telefoon
       file_attached: Er is geen bestand bijgevoegd. Toch versturen?
-      send_btn: Verzenden
+      send_btn: ⎷ Verzenden
     sent:
       sent_title: Bericht verzonden!
       p01_html: Bedankt voor je bericht. Uw <b>admin</b> neemt binnenkort contact met u op.
@@ -32,7 +35,7 @@ nl:
       p04_html: >
         Bedankt voor het aanvragen van een nieuwe rondecreatie voor %{club_name}.<br>
         Uw <b>admin</b> neemt binnenkort contact met u op.
-      back_btn: Rug
+      back_btn: ← Rug
       home_btn: Home-pagina
     create:
       error_flash: Fout bij verzenden van bericht

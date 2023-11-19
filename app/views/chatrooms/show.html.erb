@@ -9,14 +9,16 @@ if not already created in Round/new (TO DO), or in UserBoxScore/new (TO DO)-->
     data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
   >
     <br>
-    <h3>
+    <h3 class = "same-line">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
-      <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
+      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     </h3>
     <div class="frame-shape chatroom">
         <!-- previous messages -->
-      <div class="messages do-expand" data-chatroom-subscription-target="messages">
-        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="click" data-bs-placement="center" data-bs-content="<%= t '.message' %>">
+      <div class="messages expand-to-print" data-chatroom-subscription-target="messages">
+        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="click" data-bs-placement="center" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= t '.message' %>">
           <% @chatroom.messages.sort.each do |message| %>
             <%= render "messages/message", message: message %>
           <% end %>

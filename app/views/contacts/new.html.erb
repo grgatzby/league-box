@@ -3,12 +3,13 @@
   <%# processing_round_request = params[:round_id] || (params[:contact] && params[:contact][:club_name]) %>
   <% processing_new_round = params[:round_id] || (params[:contact] && params[:contact][:round_id]) %>
   <% if processing_new_round %>
-    <!--- coming from the Boxes show_referee view (request a new round creation) -->
+    <!--- from the Boxes show_referee view (request a new round creation) -->
     <h3><%= t '.new_round_title' %></h3>
   <% else %>
-    <!--- coming from the footer partial (contact us) -->
+    <!--- from the footer partial (contact us) -->
     <h3><%= t '.contact_title' %></h3><hr>
-    <p><%= t '.p01' %></p>
+    <p><%= t '.contact_p01_html' %></p>
+    <p><%= t '.contact_p02' %></p>
   <% end %>
   <div class="frame-shape contact-wrap">
     <%= simple_form_for @contact do |f| %>
@@ -29,9 +30,9 @@
       <% end %>
       <div class="contact-align contact-space-between">
         <div>
-          <!--- FORM FIELD: subject -->
+          <!--- form field SUBJECT -->
           <% if processing_new_round %>
-            <!--- coming from the Boxes show_referee view (request a new round creation) -->
+            <!--- from the Boxes show_referee view (request a new round creation) -->
             <% round = Round.find(processing_new_round) %>
             <% default_subject =  t('.new_round_subject', club: round.club.name)%>
             <%= f.input :subject,
@@ -41,7 +42,7 @@
               required: true
             %>
           <% else %>
-            <!--- coming from the footer partial (contact us) -->
+            <!--- from the footer partial (contact us) -->
             <%= f.input :subject,
               label: false,
               # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
@@ -53,7 +54,7 @@
           <% end %>
         </div>
 
-        <!--- FORM FIELD: name -->
+        <!--- form field NAME -->
         <% default_name = current_user ? "#{current_user.first_name} #{current_user.last_name}" : "" %>
         <div><%= f.input :name,
           label: false,
@@ -64,7 +65,7 @@
       </div>
       <div class="contact-align contact-space-between">
 
-        <!--- FORM FIELD: email address -->
+        <!--- form field EMAIL ADDRESS -->
         <% default_email = current_user ? current_user.email : "" %>
         <div><%= f.input :email,
           label: false,
@@ -73,7 +74,7 @@
           required: true
         %></div>
 
-        <!--- FORM FIELD: phone number -->
+        <!--- form field PHONE NUMBER -->
         <% default_phone = current_user ? current_user.phone_number : "" %>
         <div><%= f.input :phone,
           label: false,
@@ -83,9 +84,9 @@
         %></div>
       </div>
 
-      <!--- FORM FIELD: message body -->
+      <!--- form field MESSAGE BODY -->
       <% if processing_new_round %>
-        <!--- coming from the Boxes show_referee view (request a new round creation) -->
+        <!--- from the Boxes show_referee view (request a new round creation) -->
         <% round = Round.find(processing_new_round) %>
         <% duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round %>
         <% start_date = l(round.end_date + 1, format: :default) %>
@@ -95,7 +96,7 @@
                                   club: round.club.name,
                                   sender: default_name) %>
       <% else %>
-        <!--- coming from the footer partial (contact us) -->
+        <!--- from the footer partial (contact us) -->
         <% default_message = "" %>
       <% end %>
       <%= f.input :message,
@@ -105,21 +106,20 @@
         required: true
       %>
 
-      <!--- FORM FIELD: security check (hidden) -->
+      <!--- form field SECURITY CHECK (hidden) -->
       <%= f.text_field :formcheck,
         type:"hidden"
       %>
       <% if processing_new_round %>
-        <!--- coming from the Boxes show_referee view (request a new Round creation) -->
+        <!--- from the Boxes show_referee view (request a new Round creation) -->
 
-        <!--- FORM FIELD: round id = passing parameters to the Sent view (hidden) -->
+        <!--- form field ROUND ID = passing parameters to the Sent view (hidden) -->
         <%= f.text_field :round_id,
           type:"hidden",
           value: round.id
         %>
         <div>
-
-          <!--- FORM FIELD: files attachment (one file for new Round request) -->
+          <!--- form field FILE ATTACHMENT (one file for new Round request) -->
           <!--- NB: "required: true" with "validate: { presence: true }" in the Contact model
           would not work with "multiple : true" since no attachment yields "files"=>[""] in the params -->
           <%= f.file_field :files,
@@ -129,8 +129,7 @@
           %>
         </div>
       <% else %>
-
-        <!--- FORM FIELD: files attachment (multi file for Contact us) -->
+        <!--- form field FILES ATTACHMENT (multi file for Contact us) -->
         <div>
           <%= f.file_field :files,
             multiple: true,
@@ -139,6 +138,7 @@
           %>
         </div>
       <% end %>
+      <!--- form SUBMIT -->
       <%= f.submit t('.send_btn'),
         class: "btn buttons-shape btn-beige mb-3"
       %>

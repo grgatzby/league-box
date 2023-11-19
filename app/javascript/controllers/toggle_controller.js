@@ -1,5 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
 
+const scrollDirection = function() {
+  var oldScrollY = window.scrollY;
+  window.onscroll = function(e) {
+    if (oldScrollY < window.scrollY) {
+      return 1;
+    } else {
+      return -1;
+    }
+  }
+}
+
 // Connects to data-controller="toggle"
 export default class extends Controller {
   static targets = ["togglableButton", "togglableElement", "toggler", "topButton"]
@@ -8,17 +19,27 @@ export default class extends Controller {
     hideRules: String
   }
 
-
-  scrollFunction() {
-    // when the scrolling in the scroll-box starts, scroll te entire window up
-    window.scrollTo(0, document.body.scrollHeight);
-    // when the scrolling in the scroll-box is half way down, show the Top button
-    if (this.togglableElementTarget.scrollTop > window.innerHeight/2){
-      this.topButtonTarget.classList.remove("d-none");
-    } else {
-      this.topButtonTarget.classList.add("d-none");
+  connect() {
+    var context = this.togglableElementTarget
+    var button = this.topButtonTarget
+    var oldScrollY = context.scrollTop;
+    context.onscroll = function(e) {
+      // when scrolling UP in the scroll-box, scroll the entire window up
+      if (oldScrollY < context.scrollTop && context.scrollTop > 0) {
+        window.scrollTo(0, document.body.scrollHeight);
+        console.log("old:", oldScrollY, "context:", context.scrollTop, "half window:", window.innerHeight/2);
+        console.log("scrolling top")
+      }
+      oldScrollY = context.scrollTop;
+      // when the scrolling in the scroll-box is half way down, show the Top button
+      if (context.scrollTop > window.innerHeight/2){
+        button.classList.remove("d-none");
+      } else {
+        button.classList.add("d-none");
+      }
     }
-  }
+    }
+
 
   scrollToTop() {
     // when the user clicks on the Top button, scroll to the top of the document

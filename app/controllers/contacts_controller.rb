@@ -7,9 +7,15 @@ class ContactsController < ApplicationController
   end
 
   def create
+    # The "contact us" feature previously was using a chatroom;
+    # now it is replaced with an email to admin with multiple file attachments thanks to this post
+    # https://stackoverflow.com/questions/72229213/rails-mail-form-cant-send-attachment
+    # an the following fix:
+    # heartcombo/mail_form#76
     @contact = Contact.new(contact_params)
     @contact.request = request
     if @contact.deliver
+      # used to check parameters from invoking view link:
       # redirect_to contacts_sent_path(request.parameters)
       redirect_to contacts_sent_path(round_id: params[:contact][:round_id])
     else

@@ -4,9 +4,9 @@
   <div class="frame-shape frame-padding text-size">
     <div class="home-wrap">
       <br><h3><%= t(".your_club_staff_title").upcase %></h3>
-      <br><p><%= t '.p01' %></p>
-      <p><%= t '.p02' %></p>
-      <p><%= t '.p03' %></p>
+      <br><p><%= t '.staff_p01' %></p>
+      <p><%= t '.staff_p02_html' %></p>
+      <p><%= t '.staff_p03_html' %></p>
     </div>
     <br>
     <div class="row" style="font-weight: bold">
@@ -36,12 +36,13 @@
     <% end %>
 
     <% if @referee %>
+      <!-- defined in application_controller#global_variables if current user is a referee-->
       <div class="row">
         <div class="col-sm-2"><%= render "shared/fullname", user: @referee%></div>
         <div class="col-sm-2"><%= "#{@referee.club.name}" %></div>
         <div class="col-sm-3"><%= "#{@referee.email}" %></div>
         <div class="col-sm-2"><%= "#{@referee.phone_number}" %></div>
-        <div class="col-sm-3"><%= "#{@referee.club.name} referee" %></div>
+        <div class="col-sm-3"><%= "#{@referee.club.name} #{@referee.role.capitalize}" %></div>
       </div>
     <% end %>
   </div>

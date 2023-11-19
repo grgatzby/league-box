@@ -1,8 +1,8 @@
 en:
   shared:
     footer:
-      sitemap_btn: Sitemap
-      contact_us_btn: Contact us
+      sitemap_lnk: Sitemap
+      contact_us_lnk: Contact us
     navbar:
       home_link: Home
       tournament_rules_link: Tournament rules
@@ -18,6 +18,6 @@ en:
       round_period: "Round %{start} to %{end}"
     select_club_round:
       select_club: "Select a club: "
-      confirm_btn: Confirm
-      back_btn: Back
+      confirm_btn: ⎷ Confirm
+      back_btn: ← Back
       select_round_start: "Select a round start date: "

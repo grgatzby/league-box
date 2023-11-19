@@ -30,7 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  print: "Print"
+  print_btn: ⎷ Print
+  points:
+    zero: 0 points
+    one: 1 point
+    other: "%{count} points"
+  pts:
+    zero: 0 pts
+    one: 1 pt
+    other: "%{count} pts"
+  box_pts:
+    zero: 0 box pts
+    one: 1 box pt
+    other: "%{count} box pts"
   date:
     formats:
       default: "%Y-%m-%d"
@@ -48,7 +60,19 @@ en:
       wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
       wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
 fr:
-  print: "Imprimer"
+  print_btn: ⎷ Imprimer
+  points:
+    zero: 0 point
+    one: 1 point
+    other: "%{count} points"
+  pts:
+    zero: 0 pt
+    one: 1 pt
+    other: "%{count} pts"
+  box_pts:
+    zero: 0 pt de box
+    one: 1 pt de box
+    other: "%{count} pts de box"
   date:
     formats:
       default: "%d/%m/%Y"
@@ -79,7 +103,19 @@ fr:
     am: 'am'
     pm: 'pm'
 nl:
-  print: "Afdrukken"
+  print_btn: ⎷ Afdrukken
+  points:
+    zero: 0 punten
+    one: 1 punt
+    other: "%{count} punten"
+  pts:
+    zero: 0 ptn
+    one: 1 pt
+    other: "%{count} ptn"
+  box_pts:
+    zero: 0 box ptn
+    one: 1 box pt
+    other: "%{count} box ptn"
   date:
     formats:
       default: "%d/%m/%Y"

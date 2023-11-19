@@ -30,6 +30,7 @@ fr:
         ou en <span class='color-tennis-blue'>Vue par grille</span>.
       li08_html: La <span class='color-tennis-blue'>League Table</span> est mise à jour en temps réel, et vous pouvez suivre les classement de tous les autres joueurs dans le tournoi.
       happy_tournament: Que les meilleurs gagnent!
+      create_club_btn: Créer un nouveau club
     rules:
       overview_title: Description du Tournoi
       p01_html: >
@@ -38,7 +39,7 @@ fr:
       p02: >
         Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent aux leagues
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer les matchs prévus
-        prévenez rapidement vos adversaires et votre referee.
+        prévenez rapidement vos adversaires et votre Referee.
       p03: >
         Les joueurs devront notifier à leurs adversaires leurs périodes d'indisponibilité, ainsi que leurs disponibilités.
         Cette discipline facilitera la bonne organisation de vos matchs.
@@ -129,7 +130,7 @@ fr:
       walk_overs: Victoire par forfait ou absence (Walk-over)
       p38: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
       li19: compliqués à gérer
-      li20: il est impossible pour le referee de vérifier les déclarations de walk-overs
+      li20: il est impossible pour le Referee de vérifier les déclarations de walk-overs
       li21: attribution injuste de points non joués
       deadline_extensions: Deadline Extensions
       p39: les joueurs devront s'efforcer de jouer leurs matchs dans la durée de la box league.
@@ -138,29 +139,30 @@ fr:
         sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
       p41: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
       disputes: Différends
-      mail_to_referee_html: "votre referee %{referee_first_name} à %{referee_email}"
+      mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email}"
       mail_to_admin_html: "votre admin à %{admin_email}"
       p42_html: "les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     staff:
       your_club_staff_title: Personnel du club
-      p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
-      p02: >
-        Le Referee du club sera votre point de contact, pour arbitrer un désaccord sur un score déjà entré dans le système,
-        ou si vous avez saisi un mauvais score: il pourra le modifier ou le supprimer. Contactez votre referee via la chatroom de votre box ou par téléphone.
-      p03: >
-        Si pour une raison quelconque, ni votre adversaire ni vous-même ne pouvez entrer votre score dans le système, contactez l'admin qui le rentrera pour vous après
+      staff_p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
+      staff_p02_html: >
+        Le Referee du club sera votre point de contact, pour arbitrer un <b>désaccord sur un score déjà entré</b> dans le système,
+        ou si <b>vous avez saisi un mauvais score</b>: il pourra le modifier ou le supprimer. Contactez votre Referee via la chatroom de votre box ou par téléphone.
+      staff_p03_html: >
+        Si pour une raison quelconque, <b>ni votre adversaire ni vous-même ne pouvez entrer votre score</b> dans le système, contactez l'admin qui le rentrera pour vous après
         validation par le Referee.
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email
       header_phone: 📞 Téléphone
       header_role: 🧩 Rôle
-      website_admin: Admin du site
+      website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
     sitemap:
       sitemap_title: Plan du site LeagueBox
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League
+      p02_html: Pour l'admin, bouton <b>Créer un nouveau club</b>
       overview_rules: Le Tournoi
       p03: Description du Tournoi et explication des règles de la Box League
       club_staff: Personnel du club
@@ -175,12 +177,13 @@ fr:
       p09a: Un clic sur une box conduit à la vue Box Referee.
       p09b: Un clic sur une box conduit à la vue en Grille.
       p10a_html: À l'approche de la fin du round, un bouton de pied de page pour <span class='color-tennis-aqua'>Créer le prochain round</span> apparaît.
+      p11_html: Pour le Referee, bouton <b>Demander la création du prochain round</b>
       league_table: League table
-      p11_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
-      p12: En cliquant sur un entête, les joueurs se classent selon cet entête.
-      referee_view: Vue referee
+      p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
+      p13: En cliquant sur un entête, les joueurs se classent selon cet entête.
+      referee_view: Vue Referee
       p14_html: >
-        Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores match</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
+        Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
         Les matchs non joués sont également répertoriés.<br><br>
         En cliquant sur une ligne de match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
       table_view: Vue en Grille
@@ -189,7 +192,7 @@ fr:
         Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Ma box</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Vue en Liste
-      p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Scores match, Points joueur, Points adversaire, Cumul adversaire</b>.
+      p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
         Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Ma box</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
@@ -209,12 +212,12 @@ fr:
       p27_html: >
         La <b>chatroom #general</b>, accessible depuis le menu principal, est ouverte à tous les joueurs, quelque soit leur club.<br>
         Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
-        Une <b>chatroom de box</b> existe également pour chaque box du tournoi, accessible depuis la page <b>Ma Box</b>.<br><br>
+        Une <b>chatroom de box</b> existe également pour chaque box du tournoi, accessible depuis la page <span class='color-tennis-blue'>Ma box</span>.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
         La <b>chatroom #general</b> et les <b>chatroom de box</b> sont accessibles depuis le menu principal. La chatroom #general est ouverte à tous les joueurs, quelque soit leur club.<br>
         Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
-        Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <b>Ma Box</b> disponible aux joueurs.<br><br>
+        Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <span class='color-tennis-blue'>Ma box</span> disponible aux joueurs.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       li08_html: <span class='color-tennis-blue'>Ceux des joueurs du même club apparaîssent en bleu</span>
       li09_html: <span class='color-tennis-aqua'>Ceux du Referee du même club apparaîssent en aqua</span>

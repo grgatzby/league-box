@@ -30,6 +30,7 @@ en:
         or in <span class='color-tennis-blue'>Table view</span>.
       li08_html: The <span class='color-tennis-blue'>League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.
       happy_tournament: Happy tournament!
+      create_club_btn: Create a new club
     rules:
       overview_title: Tournament overview
       p01_html: >
@@ -38,7 +39,7 @@ en:
       p02: >
         However, box leagues only work if players are committed to getting matches played. Members who enter the leagues must make
         every effort to complete their fixture programme. If, for whatever reason, players are unable to fulfil fixtures they
-        should notify opponents and referee promptly.
+        should notify opponents and Referee promptly.
       p03: >
         Players should notify their opponents to block out the dates / times they are not available to play matches as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
@@ -94,7 +95,7 @@ en:
       p23: >
         Each Box player will log in to their account and enter the score on line, otherwise they can be marked on the club board
         where a sheet is provided for your convenience. If a result has been entered incorrectly contact the Tournament Referee.
-      p24: Please note that all results must be posted by the end date of the round, except where an extension has been granted by the referee.
+      p24: Please note that all results must be posted by the end date of the round, except where an extension has been granted by the Referee.
       box_league_ranking: Box League Ranking
       p25: >
         A player's league position is determined by the total number of points won in a Round. In the event that two or more players
@@ -130,7 +131,7 @@ en:
       walk_overs: Walk-overs
       p38: "Walk-overs have been abolished and are not allowed for the following reasons:"
       li19: complications in managing walk-overs
-      li20: impossibility for the referee to verify walk-over claims
+      li20: impossibility for the Referee to verify walk-over claims
       li21: unfair allocation of unplayed point
       deadline_extensions: Deadline Extensions
       p39: Players should make every effort to play their matches within the box league period.
@@ -139,31 +140,32 @@ en:
         will be considered at the discretion of the Tournament Referee whose decision is final.
       p41: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
       disputes: Disputes
-      mail_to_referee_html: "your referee %{referee_first_name} at %{referee_email}"
+      mail_to_referee_html: "your Referee %{referee_name} at %{referee_email}"
       mail_to_admin_html: "your admin at %{admin_email}"
       p42_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
     staff:
       your_club_staff_title: Your club staff
-      p01: Your club staff is commited to facilitate your experience both on the tennis courts and on this website.
-      p02: >
-        The club referee is your point of contact, should you have a dispute on a match score that was previously input
-        in the system, or if you entered a bad score: he can edit the score, or delete it. Get in touch with your referee through box chatroom or by phone.
-      p03: If for any reason, neither you nor your opponent can enter the match score in the system, please contact the admin who will enter the referee-approved score for you.
+      staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and on this website.
+      staff_p02_html: >
+        The club Referee is your point of contact, should <b>you have a dispute on a match score</b> that was previously input
+        in the system, or if <b>you entered a bad score</b>: he can edit the score, or delete it. Get in touch with your Referee through box chatroom or by phone.
+      staff_p03_html: If for any reason, <b>neither you nor your opponent can enter the match score</b> in the system, please contact the admin who will enter the Referee-approved score for you.
       header_name: Name
       header_club: 🎾 Club
       header_email: ✉️ email
       header_phone: 📞 Telephone
       header_role: 🧩 Role
       website_admin: Website admin
-      club_referee_html: "%{club_name} referee"
+      club_referee_html: "%{club_name} Referee"
     sitemap:
       sitemap_title: LeagueBox sitemap
       home: Home
       p01: General presentation of the Box League Tournament
+      p02_html: For the admin, <b>Create a new club</b> button
       overview_rules: Tournament rules
       p03: Tournament overview and explanation of the Box League rules
       club_staff: Club staff
-      p05: Details of the admin and the club referee
+      p05: Details of the admin and the club Referee
       all_boxes: All Boxes
       p07: "Display all boxes in one glance with following details for each player:"
       li01: name
@@ -174,10 +176,11 @@ en:
       p09a: Clicking on a box leads to the Box Referee view.
       p09b: Clicking on a box leads to the Box Table view.
       p10a_html: When reaching the end of the round, a footpage button <span class='color-tennis-aqua'>Create the next round</span> appears.
+      p11_html: For the Referee, <b>Request the admin the next round</b> button
       league_table: League table
-      p11_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p12: Clicking on a header sorts the player according to this header.
-      referee_view: Box referee view
+      p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
+      p13: Clicking on a header sorts the player according to this header.
+      referee_view: Box Referee view
       p14_html: >
         Each player's matches which have been played are shown as list items.
         Headers are <b>Match scores</b>, <b>Player's points</b>, <b>Opponent's points</b>, <b>Opponent's total points</b>.<br>
@@ -209,12 +212,12 @@ en:
       p27_html: >
         The <b>#general chatroom</b>, accessible from the main menu, is open to all players, regardless of their club.<br>
         Users must use it for their general communication, and must exercise moderation.<br>
-        A <b>box chatroom</b> also exists for each tournament box, accessible from the <b>My Box</b> page.<br><br>
+        A <b>box chatroom</b> also exists for each tournament box, accessible from the <span class='color-tennis-blue'>My box</span> page.<br><br>
         A color is assigned to messages, according to their author:<br>
       p28_html: >
         The <b>#general chatroom</b> and the <b>box chatrooms</b> are accessible from the main menu. The #general chatroom is open to all players, whatever their club.<br>
         Users must use it for their general communication, and must exercise moderation.<br>
-        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <b>My Box</b> page available to players.<br><br>
+        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='color-tennis-blue'>My box</span> page available to players.<br><br>
         A color is assigned to messages, according to their author:<br>
       li08_html: <span class='color-tennis-blue'>Those of players from the same club appear in blue</span>
       li09_html: <span class='color-tennis-aqua'>Those of Referee of the same club appear in aqua</span>

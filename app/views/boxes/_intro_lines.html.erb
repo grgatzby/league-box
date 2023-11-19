@@ -7,7 +7,9 @@
       <% else %>
         <% message += "#{t(".pop02_html")}" %>
       <% end %>
-      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= message %>">
         <%= "Box #{box.box_number} - #{view_type}" %>
       </div>
     </h3>
@@ -23,7 +25,7 @@
 <div class="same-line">
   <div><%= render "shared/display_club_round", round: box.round %></div>
   <div class="dont-print">
-    <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
+    <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     <% if @this_is_my_box %>
       <%= link_to t(".my_box_btn"), my_box_path(box), class: "btn buttons-shape btn-blue" %>
     <% end %>

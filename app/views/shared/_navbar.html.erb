@@ -17,7 +17,7 @@
         </li>
         <li class="nav-item time-padding">
           <% if user_signed_in? && @round %>
-            <%= " Round: #{l(@round.start_date, format: :mmmyy_date)} - #{l(@round.end_date, format: :mmmyy_date)}" %>
+            <%= render "shared/round", round: @round %>
           <% end %>
         </li>
         <%= link_to t('.tournament_rules_link'), rules_path, class: "nav-link" %>

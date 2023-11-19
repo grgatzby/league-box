@@ -2,11 +2,14 @@
 <div class="container">
   <%= render "intro_lines", box: @box, view_type: t("boxes.list_view") %>
 
-  <div class = "frame-shape frame-padding text-size  do-expand box-scroller">
-    <div class="row font-bold text-padding">
+  <!--<div class = "frame-shape frame-padding text-size expand-to-print box-scroller">-->
+  <div class = "frame-shape frame-padding">
+    <div class="row font-bold top-bottom-padding sticky-header">
       <div class="col-sm-4"></div>
       <div class="col-sm-2"><%= t '.match_score_header' %></div>
-      <div class="text-paddings col-sm-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
+      <div class="col-sm-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+          title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
         <%= t '.player_points_header' %>
       </div>
       <div class="col-sm-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
@@ -19,11 +22,11 @@
         <li>
           <% user_box_score = user_box_matches[0] %>
           <% player = user_box_matches[2] %>
-          <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>><%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %></span>
+          <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
+            <%= render "shared/fullname", user: player %>
+            <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
+          </span>
           <% player_matches = user_box_matches[1] %>
-          <% if user_box_matches[0].user == current_user %>
-            <%# link_to "My box", my_box_path(@box), class: "btn buttons-shape btn-blue" %>
-          <% end %>
           <ul>
             <% player_matches.each do |player_match| %>
               <% match = player_match[0] %>
@@ -41,9 +44,9 @@
                     </span>
                   </div>
                   <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
-                  <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                  <div class="col-sm-2 color-tennis-blue"><%= pluralize opponent_score.points, "pt" %></div>
-                  <div class="col-sm-2 color-tennis-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
+                  <div class="col-sm-2"><%= t("pts", count: user_score.points) %></div>
+                  <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
+                  <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
                 </div></li>
               <% end %>
             <% end %>
@@ -58,15 +61,4 @@
     </ul>
   </div>
   <br>
-  <div class="buttons-wrap dont-print">
-  <!--
-    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-    <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
-  -->
-    <% if @box == @my_current_box %>
-      <%= link_to t(".enter_results_btn"), my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
-    <% else %>
-      <%# link_to "My box", box_list_path(@my_current_box), class: "btn buttons-shape btn-green" %>
-    <% end %>
-  </div>
 </div>

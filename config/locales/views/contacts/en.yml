@@ -9,7 +9,10 @@ en:
         one: 1 error
         other: "%{count} errors"
       error_message: "prohibited this form from being sent:"
-      p01: Score disputes should be dealt in your box chatroom
+      contact_p01_html: >
+        This request will be sent to the admin. For requests addressed to your Referee
+        please find their details in the <b>Club Staff</b> page.
+      contact_p02: Score disputes should be dealt in your box chatroom
       prompt: Select a topic →
       topics:
       - feedback: Provide feedback
@@ -23,7 +26,7 @@ en:
       email_placeholder: e-mail address user@domain.com
       phone_placeholder: Phone number
       file_attached: No file is attached. Send anyway?
-      send_btn: Send
+      send_btn: ⎷ Send
     sent:
       sent_title: Message sent!
       p01_html: Thank you for your message. Your <b>admin</b> will get back to you soon.
@@ -32,7 +35,7 @@ en:
       p04_html: >
         Thank you for requesting a new round creation for %{club_name}.<br>
         Your <b>admin</b> will get back to you soon.
-      back_btn: Back
+      back_btn: ← Back
       home_btn: Home page
     create:
       error_flash: Could not send message
