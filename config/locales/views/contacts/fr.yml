@@ -9,7 +9,10 @@ fr:
         one: 1 erreur empêche
         other: "%{count} erreurs empêchent"
       error_message: "l'envoi de ce formulaire:"
-      p01: Les différends sur les scores devront être traités depuis votre chatroom de box
+      contact_p01_html: >
+        Cette demande sera envoyée à l'admin. Pour les demandes adressées à votre Referee
+        vous trouverez ses coordonnées en consultant la page <b>Personnel du Club</b>.
+      contact_p02: Les différends sur les scores devront être traités depuis votre chatroom de box
       prompt: Choisir un sujet →
       topics:
       - feedback: Donnez un feedback
@@ -23,7 +26,7 @@ fr:
       email_placeholder: adresse e-mail user@domain.com
       phone_placeholder: Téléphone
       file_attached: Il n'y a pas de fichier attaché. Envoyer tout de même?
-      send_btn: Envoi
+      send_btn: ⎷ Envoi
     sent:
       sent_title: Message envoyé!
       p01_html: Merci de votre message. Votre <b>admin</b> vous contactera bientôt.
@@ -32,7 +35,7 @@ fr:
       p04_html: >
         Merci de votre demande de création d'un nouveau round pour le %{club_name}.<br>
         Votre <b>admin</b> vous contactera bientôt.
-      back_btn: Retour
+      back_btn: ← Retour
       home_btn: Page d'accueil
     create:
       error_flash: Erreur d'envoi du message

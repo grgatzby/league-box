@@ -1,0 +1,27 @@
+<% user_box_scores.each do |user_box_score| %>
+  <% player = user_box_score.user %>
+  <li class=<%=player == current_user ? "color-tennis-blue" : ""%>>
+    <% name = "#{render "shared/fullname", user: player}" %>
+    <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+         data-bs-content="<%= message %>">
+      <div class="row justify-content-center player-name">
+      <%# <div class="row justify-content-center player-name grid-container"> %>
+        <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= "#{user_box_score.box.box_number}" %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.games_played, "match" %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.games_won, "match" %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
+        <% if current_user.role == "admin" || current_user.role == "referee" %>
+          <%= link_to '', box_referee_path(user_box_score.box, page_from: user_box_scores_path), class: "line-link" %>
+        <% else %>
+          <%= link_to '', box_path(user_box_score.box, page_from: user_box_scores_path), class: 'line-link'%>
+        <% end %>
+      </div>
+    </div>
+  </li>
+<% end %>

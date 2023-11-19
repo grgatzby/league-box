@@ -12,10 +12,10 @@ nl:
       set_2: 2e setje
       tie_break: Tie-break
       submitted: "Skern ingevoerd op %{date} door %{player}."
-      update_score_btn: Bevestigen
-      delete_score_btn: Verwijderen
+      update_score_btn: ⎷ Bevestigen
+      delete_score_btn: x Verwijderen
       sure: Jij bevestigt?
-      back_btn: Rug
+      back_btn: ← Rug
     new:
       new_match_title: Nieuwe score
       p01: Voer de nieuwe score in
@@ -24,13 +24,13 @@ nl:
       set_1: 1e set
       set_2: 2e setje
       tie_break: Tie-break
-      save_score_btn: Bevestigen
-      back_btn: Rug
+      save_score_btn: ⎷ Bevestigen
+      back_btn: ← Rug
       round_not_started_flash: De ronde is nog niet begonnen.
     show:
       match_played: "Wedstrijd gespeeld op %{date} op veld %{court}."
       score: "Score : "
       submitted: "ingevoerd op %{date} door %{user}."
       points_earned: "Punten verdiend : "
-      challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubscheidsrechter %{referee}."
-      back_btn: Terug naar Mijn box
+      challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
+      back_btn: ← Terug naar Mijn box

@@ -1,8 +1,8 @@
 fr:
   shared:
     footer:
-      sitemap_btn: Plan du Site
-      contact_us_btn: Nous contacter
+      sitemap_lnk: Plan du Site
+      contact_us_lnk: Nous contacter
     navbar:
       home_link: Accueil
       tournament_rules_link: Le Tournoi
@@ -18,6 +18,6 @@ fr:
       round_period: "Round %{start} au %{end}"
     select_club_round:
       select_club: "Choisir un club: "
-      confirm_btn: Confirmer
-      back_btn: Retour
+      confirm_btn: ⎷ Confirmer
+      back_btn: ← Retour
       select_round_start: "Date de début de round: "

@@ -4,7 +4,7 @@
 }
 .sticky-header {
   position: sticky;
-  top: 66px;
+  top: $navbar-height;
   // background-color: $tennis-green;
   background-color: $tennis-beige;
   opacity: 1;

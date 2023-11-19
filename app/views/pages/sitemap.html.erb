@@ -5,6 +5,9 @@
     <br><h3><%= t(".sitemap_title").upcase %></h3>
     <br><h5><%= t '.home' %></h5>
     <p><%= t '.p01' %></p>
+    <% if current_user && current_user.role != "player" %>
+      <p><%= t '.p02_html' %></p>
+    <% end %>
 
     <br><h5><%= t '.overview_rules' %></h5>
     <p><%= t '.p03' %></p>
@@ -30,10 +33,13 @@
       <% if current_user && current_user.role == "admin" %>
         <%= t '.p10a_html' %>
       <% end %>
+      <% if current_user && current_user.role != "player" %>
+        <%= t '.p11_html' %>
+      <% end %>
     </p>
     <br><h5><%= t '.league_table' %></h5>
-    <p><%= t '.p11_html' %></p>
-    <p><%= t '.p12' %></p>
+    <p><%= t '.p12_html' %></p>
+    <p><%= t '.p13' %></p>
 
     <% if current_user && current_user.role != "player" %>
       <br><h5><%= t '.referee_view' %></h5>

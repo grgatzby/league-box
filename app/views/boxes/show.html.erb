@@ -19,9 +19,11 @@
 
               <% name = "#{render "shared/fullname", user: line_player}" %>
               <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
-              <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" title="<%= name %>" data-bs-content="<%= message %>">
+              <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+              data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
+              title="<%= name %>" data-bs-content="<%= message %>">
                 <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
-                  <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= pluralize user_box_score.points, "pt" %>
+                  <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= t("pts", count: user_box_score.points) %>
                 </span>
               </div>
             </div>
@@ -63,12 +65,12 @@
                       <% if match %>
                         <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
                         <%= "[#{l(match.time, format: :wwwddmmm_date)}]" %>
-                        <br><%= "#{line_player.last_name}: " %><%= pluralize user_score.points, "pt" %>
+                        <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
                         <span class=" color-tennis-blue">
-                          <br><%= "#{opponent.last_name}: " %><%= pluralize opponent_score.points, "pt" %>
+                          <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
                         </span>
                       <% elsif opponent == line_player %>
-                        <br><%= "-" %>
+                        <img src="/tennis_racket.jpg" alt="tennis_racket image"  height=50>
                       <% end %>
                     <% else %>
                       <span style="color:grey"><br><%= t '.not_played' %></span>
@@ -83,17 +85,4 @@
     </div>
   </div>
   <br>
-  <div class="buttons-wrap dont-print">
-<!--    <%= link_to "View as list", box_list_path, class: "btn buttons-shape btn-green" %>
-    <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-    <%= link_to "Back", :back, class: "btn buttons-shape btn-blue" %>
--->
-    <% if @box == @my_current_box %>
-      <%= link_to "Enter new results", my_box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
-    <% else %>
-      <%# link_to "My box results", box_path(@my_current_box), class: "btn buttons-shape btn-green" %>
-    <% end %>
-
-    <%# link_to "List view", box_list_path, class: "btn buttons-shape btn-green" %>
-  </div>
 </div>

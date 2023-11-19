@@ -1,12 +1,16 @@
 <!-- admin/referee: create new next round. Accessed from Box index view -->
 <div class="container">
-  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= t '.message' %>">
+  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+      data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+      title="Box moves" data-bs-content="<%= t '.message' %>">
     <h3><%= t '.new_round_title' %></h3>
   </div>
   <% if @new_round %>
     <h4><%= @current_round.club.name %></h4>
     <%= form_for @new_round do |f| %>
-      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="Box moves" data-bs-content="<%= t '.message_boxes' %>">
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+        title="Box moves" data-bs-content="<%= t '.message_boxes' %>">
         <div class="boxes">
 
           <%= f.fields_for :boxes do |new_box| %>

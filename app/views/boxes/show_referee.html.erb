@@ -3,15 +3,11 @@
   <% if current_user.role == "player" %>
     <br><br><%= t '.not_authorised' %>
   <% else %>
-    <br>
-    <%# message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
-    <%# message += "#{t(".pop01_a")}#{current_user == @admin ? "#{t(".pop01_b")}" : ""}" %>
-    <%#div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>
-      <%= render "intro_lines", box: @box, view_type: t("boxes.referee_view") %>
-    <%#div%>
+    <br><%= render "intro_lines", box: @box, view_type: t("boxes.referee_view") %>
 
-    <div class = "frame-shape frame-padding text-size">
-      <div class="row font-bold text-padding sticky-header">
+    <!---<div class = "frame-shape frame-padding text-size">-->
+    <div class = "frame-shape frame-padding">
+      <div class="row font-bold top-bottom-padding sticky-header">
         <div class="col-sm-4"></div>
         <div class="col-sm-2"><%= t '.match_score_header' %></div>
         <div class="col-sm-2"><%= t '.player_points_header' %></div>
@@ -24,8 +20,8 @@
           <li>
             <% user_box_score = user_box_matches[0] %>
             <% player = user_box_matches[2] %>
-            <div class="text-paddings">
-              <%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= pluralize user_box_score.points, "point" %>
+            <div class="top-bottom-padding">
+              <%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
               <% player_matches = user_box_matches[1] %>
             </div>
             <ul>
@@ -43,7 +39,9 @@
                         <% input_date = @tz.to_local(user_score.input_date) %>
                         <% message = "#{t(".pop01", user: "#{score_input_by.role} #{render "shared/fullname", user: score_input_by}",
                                                     date: l(input_date, format: :wwwddmmmyy_at_hhmm))}" %>
-                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
+                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+                            data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+                            data-bs-content="<%= message %>">
                           <div class="row player-name">
                             <div class="col-sm-4">
                               <% match_time = @tz.to_local(match.time) %>
@@ -55,9 +53,9 @@
                               </span>
                             </div>
                             <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
-                            <div class="col-sm-2"><%= pluralize user_score.points, "pt" %></div>
-                            <div class="col-sm-2 color-tennis-blue"><%= pluralize opponent_score.points, "pt" %></div>
-                            <div class="col-sm-2 color-tennis-blue"><%= pluralize user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points, "pt" %></div>
+                            <div class="col-sm-2"><%= t("pts", count: user_score.points) %></div>
+                            <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
+                            <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
                             <!-- click on player line to update/delete match and user_match_scores details -->
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>
@@ -70,7 +68,9 @@
                       <div class="col-sm-2"><%= t '.not_played' %></div>
                       <% if current_user == @admin %>
                         <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
-                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-content="<%= message %>">
+                        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+                            data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+                            data-bs-content="<%= message %>">
                           <!-- click on opponent line to enter new match score -->
                           <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>
                         </div>

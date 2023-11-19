@@ -10,9 +10,9 @@ fr:
           - L'admin apparaît en rouge<br /><br />
         Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
       chatroom_title: "Chatroom %{chatroom}"
-      send_btn: Envoi
-      back_btn: Retour
+      send_btn: ⎷ Envoi
+      back_btn: ← Retour
       chose_chatroom: "Choisir une chatroom: "
-      confirm_btn: Confirmer
+      confirm_btn: ⎷ Confirmer
       chatrooms_title: "Chatrooms de %{club}"
       no_access_flash: Vous n'avez pas accès à cette chatroom.

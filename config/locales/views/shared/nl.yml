@@ -1,8 +1,8 @@
 nl:
   shared:
     footer:
-      sitemap_btn: Sitemap
-      contact_us_btn: Contact
+      sitemap_lnk: Sitemap
+      contact_us_lnk: Contact
     navbar:
       home_link: Home
       tournament_rules_link:  Toernooiregels
@@ -15,9 +15,9 @@ nl:
       log_out_link: Uitloggen
       login_link: Log in
     round:
-      round_period: "Round %{start} tot %{end}"
+      round_period: "Ronde %{start} tot %{end}"
     select_club_round:
       select_club: "Kies een club: "
-      confirm_btn: Bevestigen
-      back_btn: Rug
+      confirm_btn: ⎷ Bevestigen
+      back_btn: ← Rug
       select_round_start: "Ronde startdatum: "

@@ -1,7 +1,8 @@
 // ------------ index page --------
 .stick-rules {
   position: sticky;
-  top: 66px;
+  // top: 66px;
+  top: $navbar-height;
   opacity: 1;
   z-index: 1;
   background-color: $tennis-beige;
@@ -11,8 +12,7 @@
 
 .sticky-league-table-header {
   position: sticky;
-  top: 90px;
-  // background-color: $tennis-green;
+  top: $navbar-height+26;
   background-color: $tennis-beige;
   opacity: 1;
   z-index: 1;
@@ -36,15 +36,36 @@
 //   }
 
 @media print {
+  a[href]::after {
+    content: none !important;
+  }
+  :link[href]:after {
+    content: none !important;
+  }
+
   .dont-print, .navbar-league-box, .footer-wrap {
     display: none;
   }
 
-  .do-expand, .chatroom .messages {
+  .expand-to-print, .chatroom .messages {
     display: block;
     width: auto;
     height: auto;
     overflow: visible;
+    // page-break-inside: avoid;  // has no effect
+    font-size: smaller;
+
   }
+
+
+  @page {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  body {
+    padding-top: 72px;
+    padding-bottom: 72px ;
+  }
+
 
 }

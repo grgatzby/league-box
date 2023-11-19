@@ -2,6 +2,7 @@ nl:
   user_box_scores:
     index:
       intro: Raadpleeg voor de gekozen ronde de <b>competitietabel</b> van de club
+      to_text_btn: Exporteren naar tekstbestand
       league_table_title: League table
       top_line_html: >
         Klik op de <span class="color-orange-light"><b>lijn</b></span> van de speler om toegang te krijgen tot zijn box
@@ -23,15 +24,32 @@ nl:
       matches_won_header: Gewonnen wedstrijden
       sets_played_header: Gespeelde sets
       sets_won_header: Sets gewonnen
+    headers_line:
+      player_header: Spelers
+      rank_header: Ranglijsten
+      points_header: Punten
+      box_header: Box
+      matches_played_header: Wedstrijden gespeeld
+      matches_won_header: Gewonnen wedstrijden
+      sets_played_header: Gespeelde sets
+      sets_won_header: Sets gewonnen
     new:
       new_club_title: Genereer een nieuwe club en ronde
       not_authorised: U bent geen beheerder, deze pagina is niet geautoriseerd.
-      p01: "Upload een lijst met spelers en een scheidsrechter vanuit een CSV-bestand met de volgende headers:"
-      p02_html: <i>ID, e-mailadres, voornaam, achternaam, bijnaam [optioneel], telefoonnummer, rol</i>. Spelers worden in dozen geplaatst op basis van ID-volgorde.
+      p01: "Upload een lijst met spelers en een Referee vanuit een CSV-bestand met de volgende headers:"
+      p02_html: >
+        <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <i>ID, e-mailadres, voornaam, achternaam, bijnaam [optioneel], telefoonnummer, rol</i>.<br><br>
+        Spelers worden in dozen geplaatst op basis van ID-volgorde in het bestand.
       title_pop: CSV-bestand
       message_pop: CSV (Comma Separated Values) is een tekstbestand waarvan de gegevens door komma's worden gescheiden. Het kan eenvoudig worden gegenereerd vanuit een spreadsheet.
-      submit_btn: Bevestigen
-      back_btn: Rug
+      new_club_name: nieuwe clubnaam
+      nb_of_courts: aantal rechtbanken
+      players_per_box: spelers per box
+      round_dates: ronde data
+      load_csv_file: CSV-bestand laden
+      submit_btn: ⎷ Bevestigen
+      back_btn: ← Rug
     create:
       header_flash: De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' zijn.
       file_type_flash: Kies een csv-bestandstype.

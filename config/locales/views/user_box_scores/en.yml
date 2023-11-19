@@ -2,6 +2,7 @@ en:
   user_box_scores:
     index:
       intro: For a given round, view the <b>league table</b> of your club
+      to_text_btn: Export to text file
       league_table_title: League table
       top_line_html: >
         Click on a <span class="color-orange-light"><b>player line</b></span> to access their box
@@ -24,15 +25,32 @@ en:
       matches_won_header: Matches Won
       sets_played_header: Sets Played
       sets_won_header: Sets Won
+    headers_line:
+      player_header: Player
+      rank_header: Rank
+      points_header: Points
+      box_header: Box
+      matches_played_header: Matches Played
+      matches_won_header: Matches Won
+      sets_played_header: Sets Played
+      sets_won_header: Sets Won
     new:
       new_club_title: Create a new club and a round
       not_authorised: You are not an admin, this page is not authorised.
-      p01: "Upload a list of players and a referee from a standard CSV file containing the following headers:"
-      p02_html: <i>id, email, first_name, last_name, nickname [optional], phone_number, role</i>. Players will be allocated in boxes based on the id order.
+      p01: "Upload a list of players and a Referee from a standard CSV file containing the following headers:"
+      p02_html: >
+          <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <i>id, email, first_name, last_name, nickname [optional], phone_number, role</i>.<br><br>
+          Players will be allocated in boxes based on the id order in the file.
       title_pop: CSV file
       message_pop: CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet.
-      submit_btn: Submit
-      back_btn: Back
+      new_club_name: new club name
+      nb_of_courts: number of courts
+      players_per_box: players per box
+      round_dates: round dates
+      load_csv_file: load CSV file
+      submit_btn: ⎷ Submit
+      back_btn: ← Back
     create:
       header_flash: Your headers must be "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
       file_type_flash: Please chose a csv file type.

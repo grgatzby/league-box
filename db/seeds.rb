@@ -63,7 +63,7 @@ if true
     )
     puts "-> round created"
 
-    puts "seeding a referee for #{club.name}"
+    puts "seeding a Referee for #{club.name}"
     puts "------------------------------------"
     first_name = Faker::Name.male_first_name
     last_name = Faker::Name.last_name
@@ -79,7 +79,7 @@ if true
       role: "referee"
     )
 
-    puts "-> referee created: #{user.email}"
+    puts "-> Referee created: #{user.email}"
 
     14.times do |box_number|
       puts "seeding box #{box_number + 1} for #{club.name}"

@@ -22,13 +22,15 @@
     <br><br>
     <b><%= t '.points_earned' %></b>
     <%= (render "shared/fullname", user: current_user).strip %>
-    <%= ": #{pluralize @current_user_match_score.points, "point"} (#{pluralize player_ubs.points, "box pt"}) - " %>
+    <%= ": #{t("points", count: @current_user_match_score.points)} (#{t("box_pts", count: player_ubs.points)}) - " %>
     <%= (render "shared/fullname", user: @opponent).strip %>
-    <%= ": #{pluralize @opponent_match_score.points, "point"} (#{pluralize opponent_ubs.points, "box pt"})." %>
+    <%= ": #{t("points", count: @opponent_match_score.points)} (#{t("box_pts", count: opponent_ubs.points)})." %>
     <br><br>
     <% name = "#{render "shared/fullname", user: @referee}" %>
     <% message = "📞 #{@referee.phone_number}<br />✉️#{@referee.email}" %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" title="<%= name %>" data-bs-content="<%= message %>">
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+        title="<%= name %>" data-bs-content="<%= message %>">
       <%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %>
     </div>
     <br>

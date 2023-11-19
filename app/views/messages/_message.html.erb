@@ -10,7 +10,7 @@
     <% else %>
       <% sender += " (#{message.user.role})"  %>
     <% end %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-content="<%= sender %>">
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-delay= '{ "show": 500 }' data-bs-content="<%= sender %>">
       <strong><%= message.user.nickname %></strong>
     </div>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
@@ -41,7 +41,9 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
         <% color_name = "color-tennis-red" %>
       <% end %>
       <% sender += " #{message.user.role}"  %>
-      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-content="<%= sender %>">
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= sender %>">
         <strong class=<%=color_name%>><%= message.user.nickname %></strong>
       </div>
       <!--<i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->

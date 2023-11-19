@@ -12,10 +12,10 @@ fr:
       set_2: 2ème set
       tie_break: Tie-break
       submitted: "Score saisi le %{date} par %{player}."
-      update_score_btn: Valider
-      delete_score_btn: Supprimer
+      update_score_btn: ⎷ Valider
+      delete_score_btn: x Supprimer le score
       sure: Confirmez-vous?
-      back_btn: Retour
+      back_btn: ← Retour
     new:
       new_match_title: Nouveau score
       p01: Saisir le nouveau score
@@ -24,13 +24,13 @@ fr:
       set_1: 1er set
       set_2: 2ème set
       tie_break: Tie-break
-      save_score_btn: Valider
-      back_btn: Retour
+      save_score_btn: ⎷ Valider
+      back_btn: ← Retour
       round_not_started_flash: Le Round n'a pas commencé.
     show:
       match_played: "Match joué le %{date} sur le court %{court}."
       score: "Score : "
       submitted: "saisi le %{date} par %{user}."
       points_earned: "Points gagnés : "
-      challenge: "Pour contester ou modifier ce score, contacter le club referee %{referee}."
-      back_btn: Retour à Ma box
+      challenge: "Pour contester ou modifier ce score, contacter le club Referee %{referee}."
+      back_btn: ← Retour à Ma box

@@ -1,21 +1,20 @@
 <!-- list of all boxes -->
 <div class="container">
-  <h3>
-    <%= t '.all_box_title' %>
-    <% if @round %>
-      <%= link_to t('print'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-blue dont-print"%>
-    <% end %>
-  </h3>
-  <!-- select club and round in forms -->
+  <h3><%= t '.all_box_title' %></h3>
   <div class="dont-print">
     <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: t(".intro") %>
   </div>
   <% if @round %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="bottom" data-bs-content="<%= t '.click_box_pop' %>">
+    <div class = "same-line" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
+        data-bs-content="<%= t '.click_box_pop' %>">
       <%= render "shared/display_club_round", round: @round %>
+      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     </div>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="right" data-bs-content="<%= t '.message_box_pop' %>">
-      <div class="boxes do-expand box-scroller">
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+        data-bs-content="<%= t '.message_box_pop' %>">
+      <div class="boxes expand-to-print box-scroller">
         <% @boxes.each do |box| %>
           <div class="box small-font">
             <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
@@ -26,7 +25,7 @@
                   <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                   <div class="col-2"><%= "##{user_box_score.rank}" %></div>
                   <div class="col-1 <%=user_box_score.games_played.zero? ? "color-tennis-red" : ""%>"><%= "#{user_box_score.games_played}" %></div>
-                  <div class="col-3"><%= pluralize user_box_score.points, "pt" %></div>
+                  <div class="col-3"><%= t("pts", count: user_box_score.points) %></div>
                 </div></li>
                 <% if current_user && (current_user.role == "admin" || current_user.role == "referee") %>
                   <%= link_to '', box_referee_path(user_box_score.box, page_from: boxes_path), class: "box-link" %>

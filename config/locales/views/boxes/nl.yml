@@ -1,19 +1,21 @@
 nl:
-  back_btn: Rug
+  back_btn: ← Rug
   boxes:
     list_view: resultaten lijst
-    referee_view: pagina referee
+    referee_view: pagina Referee
     table_view: resultatenraster
     intro_lines:
+      my_box_btn: Mijn box
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
+      my_current_box: mijn huidige box
     index:
       all_box_title: Bekijk de boxen
       intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
       click_box_pop: Klik op een box voor wedstrijddetails
       message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
-      create_round_btn: Maak de volgende ronde
+      create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
     my_box:
       my_box_results: Mijn box
@@ -30,7 +32,6 @@ nl:
       chat_in_my_box: Chat met de spelers in uw box
       access_chatroom_btn: Chatroom van uw box
     show_list:
-      my_box_btn: Mijn box
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
@@ -43,7 +44,6 @@ nl:
       won: Won
       lost: Verloren
       on_date: "op"
-      enter_results_btn: Voer een score in
       dont_forget_html: Vergeet niet uw wedstrijden te spelen en uw scores in <b>Mijn box</b> in te voeren!
     show_referee:
       not_authorised: Ongeautoriseerde pagina
@@ -58,5 +58,4 @@ nl:
       not_played: Nog niet gespeeld
       pop02_a: Klik om de score in te voeren<br />
     show:
-      my_box_btn: Mijn box
       not_played: Nog niet gespeeld
