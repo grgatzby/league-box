@@ -34,11 +34,12 @@ class UserBoxScoresController < ApplicationController
     when t('.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
-    # if params[:download] == "true"
-    #   params[:download] = "false"
-    #   send_data(render_to_string, template: :raw, filename: "/object.rtfd", type: "text/html", download: "false")
-    #   # render json: {template: raw(render_to_string, :filename => "/object.html", :type => "text/html")}
-    # end
+    # raise
+    if params[:download] == "true"
+      # params[:download] = "false"
+      send_data(render_to_string.encode("UTF-8"), template: :raw, filename: "/object.txt", type: "text/txt")
+      # render json: {template: raw(render_to_string, :filename => "/object.html", :type => "text/html")}
+    end
   end
 
   def new

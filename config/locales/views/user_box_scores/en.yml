@@ -17,14 +17,14 @@ en:
           <li>Ratio of sets won to sets played</li>
           <li>Ratio of games won to games played</li>
         </ol>
-      player_header: Player
-      rank_header: Rank
-      points_header: Points
-      box_header: Box
-      matches_played_header: Matches Played
-      matches_won_header: Matches Won
-      sets_played_header: Sets Played
-      sets_won_header: Sets Won
+      # player_header: Player
+      # rank_header: Rank
+      # points_header: Points
+      # box_header: Box
+      # matches_played_header: Matches Played
+      # matches_won_header: Matches Won
+      # sets_played_header: Sets Played
+      # sets_won_header: Sets Won
     data_table:
       matches:
         zero: 0 matches

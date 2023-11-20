@@ -16,14 +16,14 @@ nl:
           <li>Verhouding tussen gewonnen sets en gespeelde sets</li>
           <li>Verhouding tussen gewonnen games en gespeelde games</li>
         </ol>
-      player_header: Spelers
-      rank_header: Ranglijsten
-      points_header: Punten
-      box_header: Box
-      matches_played_header: Wedstrijden gespeeld
-      matches_won_header: Gewonnen wedstrijden
-      sets_played_header: Gespeelde sets
-      sets_won_header: Sets gewonnen
+      # player_header: Spelers
+      # rank_header: Rang
+      # points_header: Punten
+      # box_header: Box
+      # matches_played_header: Wedstrijden gespeeld
+      # matches_won_header: Gewonnen wedstrijden
+      # sets_played_header: Gespeelde sets
+      # sets_won_header: Sets gewonnen
     data_table:
       matches:
         zero: 0 wedstrijden
@@ -34,8 +34,8 @@ nl:
         one: 1 set
         other: "%{count} sets"
     headers_line:
-      player_header: Spelers
-      rank_header: Ranglijsten
+      player_header: Speler
+      rank_header: Rang
       points_header: Punten
       box_header: Box
       matches_played_header: Wedstrijden gespeeld
