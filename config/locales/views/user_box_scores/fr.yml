@@ -16,14 +16,14 @@ fr:
           <li>Ratio sets gagnés sur sets joués</li>
           <li>Ratio jeux gagnés sur jeux joués</li>
         </ol>
-      player_header: Joueurs
-      rank_header: Classements
-      points_header: Points
-      box_header: Box
-      matches_played_header: Matchs Joués
-      matches_won_header: Matchs Gagnés
-      sets_played_header: Sets Joués
-      sets_won_header: Sets Gagnés
+      # player_header: Joueurs
+      # rank_header: Rang
+      # points_header: Points
+      # box_header: Box
+      # matches_played_header: Matchs Joués
+      # matches_won_header: Matchs Gagnés
+      # sets_played_header: Sets Joués
+      # sets_won_header: Sets Gagnés
     data_table:
       matches:
         zero: 0 match
@@ -34,8 +34,8 @@ fr:
         one: 1 set
         other: "%{count} sets"
     headers_line:
-      player_header: Joueurs
-      rank_header: Classements
+      player_header: Joueur
+      rank_header: Rang
       points_header: Points
       box_header: Box
       matches_played_header: Matchs Joués

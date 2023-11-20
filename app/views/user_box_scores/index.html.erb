@@ -9,9 +9,10 @@
           <%= link_to t('print_btn'), '#',
               onclick: 'window.print();return false;',
               class: "btn buttons-shape btn-green dont-print" %>
-          <%= link_to t('.to_text_btn'), user_box_scores_path(download: true, round_start: @round.start_date, club_name: @round.club.name),
-              onclick: 'send_data(render_to_string, template: :raw, filename: "/object.rtfd", type: "text/html", round_start: @round.start_date, club_name: @round.club.name)',
-              # user_box_scores_path(download: true, round_start: @round.start_date, club_name: @round.club.name),
+          <%= link_to t('.to_text_btn'),
+              user_box_scores_path(download: true, round_start: @round.start_date, club_name: @round.club.name),
+              method: :get,
+              onclick: 'JavaScript:location.reload(true);',
               class: "btn buttons-shape btn-green dont-print" %>
           </div>
       </div><br>

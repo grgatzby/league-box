@@ -68,8 +68,10 @@
               <% if opponent == @current_player %>
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <%= link_to t(".see_match_result_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
               <% else %>
+                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
                 <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost text-size" %>
               <% end %>
             </div>

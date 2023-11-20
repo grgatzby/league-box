@@ -12,7 +12,7 @@ nl:
       contact_p01_html: >
         Dit verzoek wordt naar de beheerder verzonden. Voor verzoeken gericht aan uw Referee
         Hun contactgegevens vindt u op de pagina <b>Clubpersoneel</b>.
-      contact_p02: Los scoregeschillen op vanuit uw box-chatroom
+      contact_p02: Los scoregeschillen op vanuit uw box-chatroom.
       prompt: Kies een onderwerp →
       topics:
       - feedback: Geef feedback
