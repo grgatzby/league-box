@@ -25,6 +25,15 @@ en:
       matches_won_header: Matches Won
       sets_played_header: Sets Played
       sets_won_header: Sets Won
+    data_table:
+      matches:
+        zero: 0 matches
+        one: 1 match
+        other: "%{count} matches"
+      sets:
+        zero: 0 sets
+        one: 1 set
+        other: "%{count} sets"
     headers_line:
       player_header: Player
       rank_header: Rank

@@ -12,10 +12,10 @@
         <div class="col-sm-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
         <div class="col-sm-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>
         <div class="col-sm-1 top-bottom-padding"><%= "#{user_box_score.box.box_number}" %></div>
-        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.games_played, "match" %></div>
-        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.games_won, "match" %></div>
-        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.sets_played, "set" %></div>
-        <div class="col-sm-1 top-bottom-padding"><%= pluralize user_box_score.sets_won, "set" %></div>
+        <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_played) %></div>
+        <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_played) %></div>
+        <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_won) %></div>
         <% if current_user.role == "admin" || current_user.role == "referee" %>
           <%= link_to '', box_referee_path(user_box_score.box, page_from: user_box_scores_path), class: "line-link" %>
         <% else %>

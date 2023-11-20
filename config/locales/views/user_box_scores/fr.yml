@@ -24,6 +24,15 @@ fr:
       matches_won_header: Matchs Gagnés
       sets_played_header: Sets Joués
       sets_won_header: Sets Gagnés
+    data_table:
+      matches:
+        zero: 0 match
+        one: 1 match
+        other: "%{count} matchs"
+      sets:
+        zero: 0 set
+        one: 1 set
+        other: "%{count} sets"
     headers_line:
       player_header: Joueurs
       rank_header: Classements

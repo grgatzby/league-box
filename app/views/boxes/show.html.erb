@@ -70,7 +70,7 @@
                           <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
                         </span>
                       <% elsif opponent == line_player %>
-                        <img src="/tennis_racket.jpg" alt="tennis_racket image"  height=50>
+                        <%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %>
                       <% end %>
                     <% else %>
                       <span style="color:grey"><br><%= t '.not_played' %></span>

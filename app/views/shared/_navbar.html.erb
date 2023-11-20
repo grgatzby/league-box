@@ -12,10 +12,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto">
-        <li class="nav-item time-padding active">
+        <li class="nav-item time-color top-bottom-padding active">
           <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>&nbsp;&nbsp
         </li>
-        <li class="nav-item time-padding">
+        <li class="nav-item time-color top-bottom-padding">
           <% if user_signed_in? && @round %>
             <%= render "shared/round", round: @round %>
           <% end %>
