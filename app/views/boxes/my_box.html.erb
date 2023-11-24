@@ -1,4 +1,4 @@
-<!-- player page to view match results, enter new scores -->
+<!-- player page to view own match results, enter new scores -->
 <div class="container text-size">
   <div>
     <h3><%= t '.my_box_results' %></h3>
@@ -10,7 +10,7 @@
   </div>
   <% if @round %>
     <%= render "shared/display_club_round", round: @box.round %>
-  <% if @user_not_in_round %>
+    <% if @user_not_in_round %>
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
       <div class="same-line">
@@ -36,7 +36,7 @@
             <div class="col-sm-3"><%= t '.player_header' %></div>
             <div class="col-sm-2"><%= t '.total_points_header' %></div>
             <div class="col-sm-2"><%= t '.played_on_header' %></div>
-            <div class="col-sm-3"><%= t '.action_header' %></div>
+            <div class="col-sm-2"><%= t '.action_header' %></div>
           </div>
         </h6>
         <% @my_games.each do |my_game| %>
@@ -64,11 +64,11 @@
                 <%= "#{l(match.time, format: :wwwddmmmyy_date)}" %>
               <% end %>
             </div>
-            <div class="col-sm-3">
+            <div class="col-sm-2">
               <% if opponent == @current_player %>
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
-                &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                &emsp;&emsp;&emsp;&emsp;&emsp;
                 <%= link_to t(".see_match_result_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
               <% else %>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
@@ -78,11 +78,10 @@
           </div>
         <% end %>
       </div><br>
-
       <div class="frame-shape players frame-padding text-size">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
-          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom, box_id: @box.id), class: "btn buttons-shape btn-blue text-size" %>
+          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: "btn buttons-shape btn-blue text-size" %>
         </div>
       </div>
     <% end %>

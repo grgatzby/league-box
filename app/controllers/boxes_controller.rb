@@ -7,25 +7,25 @@ class BoxesController < ApplicationController
   def show
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
-    # @box_matches: array of [user_box_score , matches(user_box_score.user)]
-    # matches(user_box_score.user): array of [match, opponent, user_score, opponent_score]
+    # @box_matches is an array of [user_box_score , matches(user_box_score.user)]
+    # matches(user_box_score.user) is an array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box)
     @this_is_my_box = my_box?(@box)
     @my_current_box = my_own_box(current_round(current_user.club_id))
   end
 
   def show_list
-    show        # inherits from #show method
+    show        # inherited from #show method
   end
 
   def show_referee
-    show        # inherits from #show method
+    show        # inherited from #show method
   end
 
   def my_box
     @page_from = params[:page_from]
     @current_player = current_user
-    # allows player to view their box and select enter new score / view played match
+    # allow player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       set_club_round # define variables @club and @round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
@@ -43,13 +43,13 @@ class BoxesController < ApplicationController
         @my_games << [user_box_score, match_played]
       end
       @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
-
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # the Chatroom class was migrated after the Box class (with: a chatroom has one box)
-        # and the migration script assigned the #general chatroom to existing boxes by default
-        # if the assigned chatroom is still #general, or if this box has no chatroom,
-        # create here a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
-        # it will NOT remain available to players when in the next round (chatroom is round specific)
+        # Create a new chatroom in this case:
+        # reason : the Chatroom class was migrated after the Box class (with: a chatroom has one box)
+        # and the migration script assigned the #general chatroom by default to existing boxes.
+        # If the assigned chatroom is still #general, or if this box has no chatroom yet,
+        # we create a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
+        # it will NOT remain available to players when in the next round (a chatroom is round specific)
         @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{format('%02d', @box.round.id)}")
         @box.update(chatroom_id: @chatroom.id)
       else
@@ -71,7 +71,7 @@ class BoxesController < ApplicationController
   end
 
   def box_matches(box)
-    # returns array of [user_box_score, matches_details, user] sorted by player's total points
+    # return array of [user_box_score, matches_details, user] sorted by player's total points
     box_matches = []
     box.user_box_scores.each do |user_box_score|
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
@@ -86,11 +86,11 @@ class BoxesController < ApplicationController
       opponent = opponent(match, user)
       [match, opponent, match_score(match, user), match_score(match, opponent)]
     end
-    matches << [nil, user, nil, nil] # adds user to the list
+    matches << [nil, user, nil, nil] # add user to the list
   end
 
   def my_box?(box, player = current_user)
-    # returns true if player belongs to box, false if not
+    # return true if player belongs to box, false if not
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
 end

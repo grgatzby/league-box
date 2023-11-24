@@ -6,7 +6,7 @@ fr:
     edit:
       edit_match_title: Editer un score
       p01: Editer ou supprimer le score
-      match_played: "Match joué sur le court: "
+      match_played: "Court: "
       date_time: "Date & heure:"
       set_1: 1er set
       set_2: 2ème set
@@ -19,7 +19,7 @@ fr:
     new:
       new_match_title: Nouveau score
       p01: Saisir le nouveau score
-      match_played: "Match joué sur le court: "
+      match_played: "Court: "
       date_time: "Date & heure:"
       set_1: 1er set
       set_2: 2ème set

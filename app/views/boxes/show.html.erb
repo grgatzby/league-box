@@ -5,8 +5,9 @@
   <div class = "frame-shape frame-padding grid-wrap">
     <!-- the first column of the table uses 1/12th of the total width (bootstrap grid) -->
     <div class="grid-container row small-font">
-      <div id="first-column" class="col-1">
-        <div class="row" id="1st-col-header">
+      <div class="col-1">
+        <!--<div class="row" id="1st-col-header">-->
+        <div class="row">
           <div class="col-12 font-bold"><%= "BOX #{@box.box_number}" %></div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
@@ -32,8 +33,8 @@
       </div>
 
       <!-- the rest of the table uses 11/12th of the total width (bootstrap grid) -->
-      <div id="players-columns" class="col-11">
-        <div class="row font-bold" id="grid-headers">
+      <div class="col-11">
+        <div class="row font-bold">
           <% @box_matches.each do |user_box_matches| %>
             <%# <div class="col-12 col-md-6 col-lg-2 text-center"> %>
             <div class="col-2 text-center">

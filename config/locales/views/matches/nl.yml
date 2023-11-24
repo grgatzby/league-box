@@ -6,7 +6,7 @@ nl:
     edit:
       edit_match_title: Bewerk een partituur
       p01: Bewerk of verwijder partituur
-      match_played: "Wedstrijd gespeeld op het veld: "
+      match_played: "Veld: "
       date_time: "Datum en uur:"
       set_1: 1e set
       set_2: 2e setje
@@ -19,7 +19,7 @@ nl:
     new:
       new_match_title: Nieuwe score
       p01: Voer de nieuwe score in
-      match_played: "Wedstrijd gespeeld op het veld: "
+      match_played: "Veld: "
       date_time: "Datum en uur:"
       set_1: 1e set
       set_2: 2e setje

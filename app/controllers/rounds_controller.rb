@@ -1,8 +1,8 @@
 class RoundsController < ApplicationController
   def new
-    # invoked from button in Boxes index view
-    # admin to generate next round from current: form
-    # if admin logged in, club given by params[:club_id]
+    # invoked from a button in Boxes index view
+    # form request to admin to generate a next round derived from the current
+    # if admin is logged in, the club is given by params[:club_id]
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
 
@@ -52,7 +52,7 @@ class RoundsController < ApplicationController
   private
 
   def new_temp_boxes(nb_boxes)
-    # returns array of temporary boxes; nb_boxes : number of boxes in the current round
+    # return array of temporary boxes; nb_boxes : number of boxes in the current round
     boxes = []
     nb_boxes.times do |box_index|
       boxes << Box.create(round_id: @new_round.id, box_number: box_index + 1)
@@ -84,7 +84,7 @@ class RoundsController < ApplicationController
   end
 
   def clean_boxes(temp_boxes, nb_player_per_box)
-    # spread players (user_box_scores) evenly across temporary boxes and delete remaining empty boxes
+    # deal players (user_box_scores) evenly across temporary boxes and delete remaining empty boxes
 
     all_user_box_scores = temp_boxes.map(&:user_box_scores).flatten
     # create groups of user_box_scores (nb_player_per_box items per group)

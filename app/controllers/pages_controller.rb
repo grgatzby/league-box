@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:home, :rules, :sitemap, :staff]
   skip_before_action :authenticate_user!, only: %i[home rules sitemap staff]
 
   def staff

@@ -5,19 +5,18 @@
   top: 0;
   opacity: 1;
   z-index: 10;
-  .navbar-collapse {
-    flex-grow: 0;
-  }
+  right: 100%;
 }
 
+.navbar-collapse {
+  flex-grow: 0;
+}
 
 .navbar-brand img {
   width: 40px;
-  // border-radius: 50%;
 }
 
 .time-color {
-  margin: auto;
   color: var(--bs-nav-link-color);
 }
 
@@ -26,6 +25,19 @@
 
   &:hover {
     opacity: 1;
+  }
+}
+
+// horizontal display of navbar icons in collapsed mode
+.navbar-out-of-collapse {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media all and (max-width: 992px) {
+  .navbar-out-of-collapse {
+    width: 200px;
   }
 }
 
@@ -39,8 +51,7 @@
 
 // to allow drop down menu on hover
 @media all and (min-width: 992px) {
-	.navbar .nav-item .dropdown-menu { display: none }
-	// .navbar .nav-item:hover .nav-link {   }
+  .navbar .nav-item .dropdown-menu { display: none }
 	.navbar .nav-item:hover .dropdown-menu { display: block }
 	.navbar .nav-item .dropdown-menu { margin-top:0; }
 }

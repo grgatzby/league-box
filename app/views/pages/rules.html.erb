@@ -40,37 +40,29 @@
       <h5><%= t '.matches_not_umpired' %></h5>
         <p><%= t '.p12' %></p>
       <ul>
-        <li><%= t '.li01' %></li>
-        <li><%= t '.li02' %></li>
-        <li><%= t '.li03' %></li>
-        <li><%= t '.li04' %></li>
-        <li><%= t '.li05' %></li>
+        <% (1..5).each do |i| %>
+          <li><%= t ".li0#{i}" %></li>
+        <% end %>
       </ul>
       <h5><%= t '.warm_up' %></h5>
         <p><%= t '.p13' %></p>
       <h5><%= t '.match_format' %></h5>
-        <p><%= t '.p14' %></p>
-        <p><%= t '.p15' %></p>
-        <p><%= t '.p16' %></p>
-        <p><%= t '.p17' %></p>
-        <p><%= t '.p18' %></p>
-        <p><%= t '.p19' %></p>
+        <% (14..19).each do |i| %>
+          <p><%= t ".p#{format '%02d',i}" %></p>
+        <% end %>
       <h5><%= t '.points' %></h5>
         <p><%= t '.p20' %></p>
       <ul>
-        <li><%= t '.li06' %></li>
-        <li><%= t '.li07' %></li>
-        <li><%= t '.li08' %></li>
+        <% (6..8).each do |i| %>
+          <li><%= t ".li#{format '%02d',i}" %></li>
+        <% end %>
       </ul>
-      <i>
-        <p><%= t '.p21' %></p>
-        <ul>
-          <li><%= t '.li09' %></li>
-          <li><%= t '.li10' %></li>
-          <li><%= t '.li11' %></li>
-          <li><%= t '.li12' %></li>
-        </ul>
-      </i>
+      <p><%= t '.p21' %></p>
+      <i><ul>
+        <% (9..12).each do |i| %>
+          <li><%= t ".li#{format '%02d',i}" %></li>
+        <% end %>
+      </ul></i>
       <h5><%= t '.posting_results' %></h5>
         <p><%= t '.p22' %></p>
         <p><%= t '.p23' %></p>
@@ -78,10 +70,9 @@
       <h5><%= t '.box_league_ranking' %></h5>
         <p><%= t '.p25' %></p>
         <ol>
-          <li><%= t '.li13' %></li>
-          <li><%= t '.li14' %></li>
-          <li><%= t '.li15' %></li>
-          <li><%= t '.li16' %></li>
+          <% (13..16).each do |i| %>
+            <li><%= t ".li#{format '%02d',i}" %></li>
+          <% end %>
         </ol>
       <h5><%= t '.promotion_relegation' %></h5>
         <p><%= t '.p26' %></p>
@@ -99,11 +90,11 @@
         <p><%= t '.p31' %></p>
       <h5><%= t '.retire_from_match' %></h5>
         <p><%= t '.p32' %></p>
-      <i>
         <p><%= t '.p33' %></p>
-        <p><%= t '.p34' %></p>
-        <p><%= t '.p35' %></p>
-      </i>
+        <i>
+          <p><%= t '.p34' %></p>
+          <p><%= t '.p35' %></p>
+        </i>
       <h5><%= t '.withdrawing' %></h5>
         <p><%= t '.p36' %></p>
         <p><%= t '.p37' %></p>

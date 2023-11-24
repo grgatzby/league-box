@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   # application schema in https://kitt.lewagon.com/db/95868
   # Existing features:
   # - players can: view a box (in list or grid view), enter a new match score in their own box, view all boxes,
-  #                view the league table, access the #general chatroom and their box chatroom.
+  #                view the league table, access their box chatroom.
   # - referees can: view a box (in referee view), edit / delete a match score, view all boxes,
   #                 view the league table, access the #general chatroom and all of their club's chatrooms,
   #                 request a new round creation.

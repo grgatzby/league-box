@@ -186,8 +186,6 @@ class MatchesController < ApplicationController
 
       # update the league table
       rank_players(match.box.round.user_box_scores)
-      # displays league table
-      # redirect_to user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name)
 
       if current_user.role == "player"
         redirect_to my_box_path(match.box, page_from: my_box_path(match.box))
@@ -228,7 +226,7 @@ class MatchesController < ApplicationController
   private
 
   def compute_points(match_scores)
-    # computes match_scores (array of 2 hashes of scores),
+    # compute match_scores (array of 2 hashes of scores),
     # and returns results (array of won sets count for each player)
     # Points rules:
     #   - Winner 20 points
@@ -265,12 +263,12 @@ class MatchesController < ApplicationController
       match_scores[0][:score_tiebreak] = 0
       match_scores[1][:score_tiebreak] = 0
     end
-    # returns results (ARRAY of won sets count for each player)
+    # return results (ARRAY of won sets count for each player)
     results
   end
 
   def compute_results(match_scores)
-    # computes and returns results (array of won sets count for each player)
+    # compute and returns results (array of won sets count for each player)
 
     results = { sets_won1: 0, sets_won2: 0 }
 
@@ -296,12 +294,12 @@ class MatchesController < ApplicationController
         results[:sets_won2] += 1
       end
     end
-    # returns results (ARRAY of won sets count for each player)
+    # return results (ARRAY of won sets count for each player)
     [results[:sets_won1], results[:sets_won2]]
   end
 
   def test_scores(match_scores, results)
-    # returns true if scores entered in matches/new or matches/edit are valid, false otherwise
+    # return true if scores entered in matches/new or matches/edit are valid, false otherwise
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = t('.test_scores01_flash')
