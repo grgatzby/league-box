@@ -34,6 +34,11 @@
   color: grey;
 }
 
+.color-gray {
+  color: $gray;
+  opacity: 0;
+}
+
 .color-black {
   color: #505050;
 }
@@ -42,9 +47,13 @@
 
   font-size: 1.1vw;
 
-  h3 {
-    font-size: 1.7vw;
+  p {
+    font-size: 1.1vw;
   }
+
+  h3 {
+      font-size: 1.7vw;
+    }
 
   h4 {
     font-size: 1.4vw;
@@ -57,7 +66,11 @@
 
 @media only screen and (max-width: 1400px) {
   .text-size {
-    font-size: 1.2vw;
+    font-size: 1.3vw;
+
+    p {
+      font-size: 1.3vw;
+    }
 
     h3 {
       font-size: 1.7vw;
@@ -75,7 +88,11 @@
 
 @media only screen and (max-width: 1200px) {
   .text-size {
-    font-size: 1vw;
+    font-size: 1.5vw;
+
+    p {
+      font-size: 1.5vw;
+    }
 
     h3 {
       font-size: 1.8vw;
@@ -93,9 +110,12 @@
 
 @media only screen and (max-width: 768px) {
   .text-size {
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     padding-left: 50px;
     padding-right: 50px;
+    p {
+      font-size: 1.8vw;
+    }
 
     h3 {
       font-size: 2.6vw;

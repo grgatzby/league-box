@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-  # skip_before_action :authenticate_user!, only: [:new, :create, :sent]
   skip_before_action :authenticate_user!, only: %i[new create sent]
 
   def new
@@ -7,8 +6,8 @@ class ContactsController < ApplicationController
   end
 
   def create
-    # The "contact us" feature previously was using a chatroom;
-    # now it is replaced with an email to admin with multiple file attachments thanks to this post
+    # The "contact us" feature was previously using a chatroom;
+    # now it generates an email to admin with multiple file attachments thanks to this post
     # https://stackoverflow.com/questions/72229213/rails-mail-form-cant-send-attachment
     # an the following fix:
     # heartcombo/mail_form#76
@@ -36,6 +35,8 @@ class ContactsController < ApplicationController
 
   def contact_params
     # params.require(:contact).permit(:subject, :name, :email, :phone, :message, :formcheck, :files => [])
+    # replaced :files => [] with :files, files: [] to allow single file attachment (new round request)
+    # and multi file attachment (contact us)
     params.require(:contact).permit(:subject, :name, :email, :phone, :message, :formcheck, :files, files: [])
   end
 end

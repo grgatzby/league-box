@@ -34,10 +34,13 @@ class UserBoxScoresController < ApplicationController
     when t('.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
-    # raise
+    @render_to_text = false
     if params[:download] == "true"
-      # params[:download] = "false"
-      send_data(render_to_string.encode("UTF-8"), template: :raw, filename: "/object.txt", type: "text/txt")
+      @render_to_text = true
+      # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
+      # to strip all html
+      text_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
+      send_data(text_string, template: :raw, filename: "/object.txt", type: "text/txt")
       # render json: {template: raw(render_to_string, :filename => "/object.html", :type => "text/html")}
     end
   end
@@ -103,6 +106,20 @@ class UserBoxScoresController < ApplicationController
     else
       flash[:notice] = t('.file_type_flash')
       redirect_back(fallback_location: new_user_box_score_path)
+    end
+  end
+
+  private
+
+  def export_to_csv
+    # WORK IN PROGRESS
+    file = "#{Rails.root}/public/data.csv"
+    table = User.all;0 # ";0" stops output.  Change "User" to any model.
+    CSV.open(file, 'w') do |writer|
+      writer << table.first.attributes.map { |a,v| a }
+      table.each do |s|
+        writer << s.attributes.map { |a,v| v }
+      end
     end
   end
 end

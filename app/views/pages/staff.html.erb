@@ -1,50 +1,54 @@
 <%= render "shared/image_front", sticky: false %>
 
 <div class="container">
-  <div class="frame-shape frame-padding text-size">
-    <div class="home-wrap">
+  <div class="frame-shape frame-padding">
+    <div class="home-wrap text-size">
       <br><h3><%= t(".your_club_staff_title").upcase %></h3>
       <br><p><%= t '.staff_p01' %></p>
       <p><%= t '.staff_p02_html' %></p>
       <p><%= t '.staff_p03_html' %></p>
     </div>
     <br>
-    <div class="row" style="font-weight: bold">
-      <div class="col-sm-2"><%= t '.header_name' %></div>
-      <div class="col-sm-2"><%= t '.header_club' %></div>
-      <div class="col-sm-3"><%= t '.header_email' %></div>
-      <div class="col-sm-2"><%= t '.header_phone' %></div>
-      <div class="col-sm-3"><%= t '.header_role' %></div>
-    </div>
-    <div class="row">
-      <div class="col-sm-2"><%= render "shared/fullname", user: @admin%></div>
-      <div class="col-sm-2"></div>
-      <div class="col-sm-3"><%= "#{@admin.email}" %></div>
-      <div class="col-sm-2"><%= "#{@admin.phone_number}" %></div>
-      <div class="col-sm-3"><%= t '.website_admin' %></div>
-    </div>
-    <% if current_user == @admin %>
-      <% @referees.each do |referee| %>
-        <div class="row">
-          <div class="col-sm-2"><%= render "shared/fullname", user: referee%></div>
-          <div class="col-sm-2"><%= "#{referee.club.name}" %></div>
-          <div class="col-sm-3"><%= "#{referee.email}" %></div>
-          <div class="col-sm-2"><%= "#{referee.phone_number}" %></div>
-          <div class="col-sm-3"><%= t(".club_referee_html", club_name: referee.club.name) %></div>
+    <div class="frame-padding grid-wrap text-size">
+      <div class="grid-container">
+        <div class="row" style="font-weight: bold">
+          <div class="col-2"><%= t '.header_name' %></div>
+          <div class="col-2"><%= t '.header_club' %></div>
+          <div class="col-3"><%= t '.header_email' %></div>
+          <div class="col-2"><%= t '.header_phone' %></div>
+          <div class="col-3"><%= t '.header_role' %></div>
         </div>
-      <% end %>
-    <% end %>
+        <div class="row">
+          <div class="col-2"><%= render "shared/fullname", user: @admin%></div>
+          <div class="col-2"></div>
+          <div class="col-3"><%= "#{@admin.email}" %></div>
+          <div class="col-2"><%= "#{@admin.phone_number}" %></div>
+          <div class="col-3"><%= t '.website_admin' %></div>
+        </div>
+        <% if current_user == @admin %>
+          <% @referees.each do |referee| %>
+            <div class="row">
+              <div class="col-2"><%= render "shared/fullname", user: referee%></div>
+              <div class="col-2"><%= "#{referee.club.name}" %></div>
+              <div class="col-3"><%= "#{referee.email}" %></div>
+              <div class="col-2"><%= "#{referee.phone_number}" %></div>
+              <div class="col-3"><%= t(".club_referee_html", club_name: referee.club.name) %></div>
+            </div>
+          <% end %>
+        <% end %>
 
-    <% if @referee %>
-      <!-- defined in application_controller#global_variables if current user is a referee-->
-      <div class="row">
-        <div class="col-sm-2"><%= render "shared/fullname", user: @referee%></div>
-        <div class="col-sm-2"><%= "#{@referee.club.name}" %></div>
-        <div class="col-sm-3"><%= "#{@referee.email}" %></div>
-        <div class="col-sm-2"><%= "#{@referee.phone_number}" %></div>
-        <div class="col-sm-3"><%= "#{@referee.club.name} #{@referee.role.capitalize}" %></div>
+        <% if @referee %>
+          <!-- defined in application_controller#global_variables if current user is a referee-->
+          <div class="row">
+            <div class="col-2"><%= render "shared/fullname", user: @referee%></div>
+            <div class="col-2"><%= "#{@referee.club.name}" %></div>
+            <div class="col-3"><%= "#{@referee.email}" %></div>
+            <div class="col-2"><%= "#{@referee.phone_number}" %></div>
+            <div class="col-3"><%= "#{@referee.club.name} #{@referee.role.capitalize}" %></div>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 
 <!--

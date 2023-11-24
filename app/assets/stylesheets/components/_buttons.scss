@@ -85,3 +85,18 @@
   color: white;
   }
 }
+
+.btn-orange {
+  background: $orange;
+  color: brown;
+
+  &:hover {
+  box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
+  background: rgb(246, 137, 79);
+  color: $tennis-beige;
+  }
+}
+
+.form-actions {
+  justify-content: center;
+}

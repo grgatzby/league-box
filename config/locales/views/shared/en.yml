@@ -7,13 +7,14 @@ en:
       home_link: Home
       tournament_rules_link: Tournament rules
       club_staff_link: Club staff
+      login_link: Log in
+    dropdown_menu:
       all_boxes_link: All boxes
       league_table_link: League table
       my_box_link: My box
       general_chat_link: "#general chatroom"
       chatrooms_link: Chatrooms
       log_out_link: Log out
-      login_link: Log in
     round:
       round_period: "Round %{start} to %{end}"
     select_club_round:

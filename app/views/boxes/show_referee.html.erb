@@ -22,9 +22,9 @@
             <% player = user_box_matches[2] %>
             <div class="top-bottom-padding">
               <%= render "shared/fullname", user: player %><%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
-              <% player_matches = user_box_matches[1] %>
             </div>
             <ul>
+              <% player_matches = user_box_matches[1] %>
               <% sorted_players.each do |player_opponent| %>
                 <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
                   <% if player_match %>

@@ -2,7 +2,7 @@ en:
   user_box_scores:
     index:
       intro: For a given round, view the <b>league table</b> of your club
-      to_text_btn: Export to text file
+      to_text_btn: Exporte page to text file
       league_table_title: League table
       top_line_html: >
         Click on a <span class="color-orange-light"><b>player line</b></span> to access their box

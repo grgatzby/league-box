@@ -15,4 +15,5 @@ en:
       chose_chatroom: "Chose a chatroom: "
       confirm_btn: ⎷ Confirm
       chatrooms_title: "%{club} chatrooms"
-      no_access_flash: You have no access to this chatroom.
+      no_access_flash: You have no access to this chatroom
+      no_chatroom_flash: This chatroom does not exist
