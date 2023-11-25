@@ -42,8 +42,9 @@ class UserBoxScoresController < ApplicationController
       no_html_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
       send_data(no_html_string, template: :raw, filename: "/object.txt", type: "text/txt")
     elsif params[:to_csv] == "true"
-      league_table_to_csv(@round)
-      flash[:notice] = t('.file_csv_flash')
+      @file = league_table_to_csv(@round)
+      # flash[:notice] = t('.file_csv_flash')
+      flash[:notice] = @file
       assign_params = params.dup
       assign_params.delete(:to_csv)
       redirect_back(fallback_location: user_box_scores_path)
@@ -152,5 +153,6 @@ class UserBoxScoresController < ApplicationController
                    user_box_score.sets_won]
       end
     end
+    file
   end
 end
