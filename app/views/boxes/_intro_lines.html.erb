@@ -1,6 +1,7 @@
 <!-- partial: in grid and list show views (player) or referee view (admin and referees) : first lines display -->
+<br>
 <div class="header-flex">
-  <div>
+    <div class="same-line" style="width: 100%">
     <h3>
       <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
       <% if current_user.role != "player" %>
@@ -14,6 +15,7 @@
         <%= "Box #{box.box_number} - #{view_type}" %>
       </div>
     </h3>
+    <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
     <% if @this_is_my_box %>
       <h5>
         <%= render "shared/fullname", user: current_user %>
@@ -26,21 +28,21 @@
 <div class="same-line">
   <div><%= render "shared/display_club_round", round: box.round %></div>
   <div class="dont-print">
-    <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+    <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
     <% if @this_is_my_box %>
-      <%= link_to t(".my_box_btn"), my_box_path(box), class: "btn buttons-shape btn-blue" %>
+      <%= link_to t(".my_box_btn"), my_box_path(box), class: "btn buttons-shape btn-blue mb-3" %>
     <% end %>
     <% case view_type %>
       <% when t("boxes.list_view") %>
         <%# Link to view as table %>
-        <%= link_to box_path, class: "btn buttons-shape btn-blue" do %>
+        <%= link_to box_path, class: "btn buttons-shape btn-blue mb-3" do %>
           <i class="fa-solid fa-table-cells"></i>
         <% end %>
       <% when t("boxes.table_view") %>
         <%# Link to view as list %>
-        <%= link_to box_list_path, class: "btn buttons-shape btn-blue" do %>
+        <%= link_to box_list_path, class: "btn buttons-shape btn-blue mb-3" do %>
           <i class="fa-regular fa-list"></i>
         <% end %>
       <% end %>
   </div>
-</div><br>
+</div>

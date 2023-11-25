@@ -24,8 +24,8 @@ class ContactsController < ApplicationController
   end
 
   def sent
-    # if processing a request new round (from Referee view page), then params[:round_id] is defined
     if params[:round_id]
+      # if processing a new round request (from Referee view page), params[:round_id] is defined
       @round = Round.find(params[:round_id])
       @club_name = @round.club.name
     end

@@ -9,8 +9,10 @@
 }
 
 .buttons-shape {
-  // margin: 0 auto $btn-margin;
-  margin: 0 $btn-margin;
+  // margin
+  /* top | left and right | bottom */
+  /* top and bottom | left and right */
+  /* top | right | bottom | left */
   padding: 6px 24px;
   border-radius: 0.25rem;
   // background: #4CAF50;

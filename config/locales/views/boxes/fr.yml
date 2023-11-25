@@ -13,8 +13,7 @@ fr:
     index:
       all_box_title: Consulter les box
       intro: "Pour le round choisi, voyez en un coup d'œil les <b>joueurs, classements, match joués et point cumulés</b> de votre club<br />"
-      click_box_pop: Cliquez une box pour les détails des matchs
-      message_box_pop: <b>Colonnes</b><br />joueur, classement,<br />matchs joués, points cumulés
+      message_box_pop: <b>Colonnes</b><br />joueur, classement,<br />matchs joués, points cumulés<br /><br />Cliquez sur une box pour voir les détails des matchs.
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
     my_box:

@@ -1,18 +1,19 @@
 <!-- list of all boxes -->
 <div class="container">
-  <h3><%= t '.all_box_title' %></h3>
+  <div class="same-line" style="width: 50%">
+    <h3><%= t '.all_box_title' %></h3>
+    <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+  </div>
   <div class="dont-print">
     <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: t(".intro") %>
   </div>
   <% if @round %>
-    <div class = "same-line" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
-        data-bs-content="<%= t '.click_box_pop' %>">
+    <div class = "same-line">
       <%= render "shared/display_club_round", round: @round %>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 1000}'
         data-bs-content="<%= t '.message_box_pop' %>">
       <div class="boxes expand-to-print box-scroller">
         <% @boxes.each do |box| %>

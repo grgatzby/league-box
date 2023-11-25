@@ -13,8 +13,7 @@ en:
     index:
       all_box_title: View all boxes
       intro: "For a given round, view for all boxes at a glance <b>player names, rankings, games played and box points</b><br />in your club"
-      click_box_pop: Click on a box to view match details
-      message_box_pop: <b>Box columns:</b><br />player name, rank,<br />games played, box points
+      message_box_pop: <b>Box columns:</b><br />player name, rank,<br />games played, box points.<br /><br />Click on a box to view match details
       create_round_btn: ⎷ Create the next round
       request_round_btn: Request the admin the next round
     my_box:

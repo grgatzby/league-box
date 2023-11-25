@@ -13,8 +13,7 @@ nl:
     index:
       all_box_title: Bekijk de boxen
       intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
-      click_box_pop: Klik op een box voor wedstrijddetails
-      message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten
+      message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
     my_box:

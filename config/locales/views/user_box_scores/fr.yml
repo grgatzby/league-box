@@ -2,8 +2,8 @@ fr:
   user_box_scores:
     index:
       intro: Pour le round choisi, consultez la <b>league table</b> du club
-      to_text_btn: Convertir la page en fichier texte
-      to_csv_btn: Convertir la page en fichier CSV
+      to_text_btn: Exporter vers un fichier texte
+      to_csv_btn: Exporter vers un fichier CSV
       league_table_title: League table
       top_line_html: >
         Cliquer sur la <span class="color-orange-light"><b>ligne du joueur</b></span> pour accéder à sa box

@@ -3,7 +3,7 @@
   <% if current_user.role == "player" %>
     <br><br><%= t '.not_authorised' %>
   <% else %>
-    <br><%= render "intro_lines", box: @box, view_type: t("boxes.referee_view") %>
+    <%= render "intro_lines", box: @box, view_type: t("boxes.referee_view") %>
 
     <!---<div class = "frame-shape frame-padding text-size">-->
     <div class = "frame-shape frame-padding">

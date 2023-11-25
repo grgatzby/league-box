@@ -68,12 +68,8 @@ class UserBoxScoresController < ApplicationController
         club = Club.create(name: params[:new_club_name])
 
         # create courts
-        params[:nb_of_courts].to_i.times do |court_number|
-          Court.create(
-            name: court_number + 1,
-            club_id: club.id
-          )
-        end
+        params[:nb_of_courts].to_i.times { |court_number| Court.create(name: court_number + 1, club_id: club.id) }
+
         # create round
         round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
 
@@ -158,25 +154,3 @@ class UserBoxScoresController < ApplicationController
     end
   end
 end
-
-# HEADERS
-# <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
-#   <div class="col-sm-3"><%=render "header_link", header: t('.player_header'), dir: up%></div>
-#   <div class="col-sm-1"><%=render "header_link", header: t('.rank_header'), dir: up%></div>
-#   <div class="col-sm-1"><%=render "header_link", header: t('.points_header'), dir: down%></div>
-#   <div class="col-sm-1"><%=render "header_link", header: t('.box_header'), dir: up%></div>
-#   <div class="col-sm-2"><%=render "header_link", header: t('.matches_played_header'), dir: down%></div>
-#   <div class="col-sm-2"><%=render "header_link", header: t('.matches_won_header'), dir: down%></div>
-#   <div class="col-sm-1"><%=render "header_link", header: t('.sets_played_header'), dir: down%></div>
-#   <div class="col-sm-1"><%=render "header_link", header: t('.sets_won_header'), dir: down%></div>
-# </div>
-
-# TABLE
-# <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
-# <div class="col-sm-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
-# <div class="col-sm-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>
-# <div class="col-sm-1 top-bottom-padding"><%= "#{user_box_score.box.box_number}" %></div>
-# <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_played) %></div>
-# <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
-# <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_played) %></div>
-# <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_won) %></div>
