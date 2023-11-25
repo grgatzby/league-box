@@ -18,30 +18,35 @@ class UserBoxScoresController < ApplicationController
     end
     @sort = params[:sort]
     case params[:sort]
-    when t('.player_header') # "Player"
+    when t('.headers_line.player_header') # "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
-    when t('.points_header') # "Points"
+    when t('.headers_line.points_header') # "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    when t('.box_header') # "Box"
+    when t('.headers_line.box_header') # "Box"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    when t('.matches_played_header') # "Matches Played"
+    when t('.headers_line.matches_played_header') # "Matches Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    when t('.matches_won_header') # "Matches Won"
+    when t('.headers_line.matches_won_header') # "Matches Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    when t('.sets_played_header') # "Sets Played"
+    when t('.headers_line.sets_played_header') # "Sets Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    when t('.sets_won_header') # "Sets Won"
+    when t('.headers_line.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
     @render_to_text = false
-    if params[:download] == "true"
+    if params[:to_text] == "true"
       @render_to_text = true
       # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
       # to strip all html
-      text_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
-      send_data(text_string, template: :raw, filename: "/object.txt", type: "text/txt")
-      # render json: {template: raw(render_to_string, :filename => "/object.html", :type => "text/html")}
+      no_html_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
+      send_data(no_html_string, template: :raw, filename: "/object.txt", type: "text/txt")
+    elsif params[:to_csv] == "true"
+      league_table_to_csv(@round)
+      flash[:notice] = t('.file_csv_flash')
+      assign_params = params.dup
+      assign_params.delete(:to_csv)
+      redirect_back(fallback_location: user_box_scores_path)
     end
   end
 
@@ -112,14 +117,66 @@ class UserBoxScoresController < ApplicationController
   private
 
   def export_to_csv
-    # WORK IN PROGRESS
+    # EXAMPLE from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     file = "#{Rails.root}/public/data.csv"
     table = User.all;0 # ";0" stops output.  Change "User" to any model.
     CSV.open(file, 'w') do |writer|
-      writer << table.first.attributes.map { |a,v| a }
+      # table headers
+      writer << table.first.attributes.map { |a, _v| a }
       table.each do |s|
-        writer << s.attributes.map { |a,v| v }
+        writer << s.attributes.map { |_a, v| v }
+      end
+    end
+  end
+
+  def league_table_to_csv(round)
+    file = "#{Rails.root}/public/data.csv"
+    user_box_scores = rank_players(round.user_box_scores)
+    table = user_box_scores;0 # ";0" stops output.
+    CSV.open(file, 'w') do |writer|
+      # table headers
+      writer << [l(Time.now, format: :long),
+                 t('.headers_line.player_header'),
+                 t('.headers_line.rank_header'),
+                 t('.headers_line.points_header'),
+                 t('.headers_line.box_header'),
+                 t('.headers_line.matches_played_header'),
+                 t('.headers_line.matches_won_header'),
+                 t('.headers_line.sets_played_header'),
+                 t('.headers_line.sets_won_header')]
+      table.each_with_index do |user_box_score, index|
+        writer << [index + 1,
+                   "#{user_box_score.user.first_name} #{user_box_score.user.last_name}",
+                   user_box_score.rank,
+                   user_box_score.points,
+                   user_box_score.box.box_number,
+                   user_box_score.games_played,
+                   user_box_score.games_won,
+                   user_box_score.sets_played,
+                   user_box_score.sets_won]
       end
     end
   end
 end
+
+# HEADERS
+# <div class="row justify-content-center align-items-center font-bold sticky-league-table-header">
+#   <div class="col-sm-3"><%=render "header_link", header: t('.player_header'), dir: up%></div>
+#   <div class="col-sm-1"><%=render "header_link", header: t('.rank_header'), dir: up%></div>
+#   <div class="col-sm-1"><%=render "header_link", header: t('.points_header'), dir: down%></div>
+#   <div class="col-sm-1"><%=render "header_link", header: t('.box_header'), dir: up%></div>
+#   <div class="col-sm-2"><%=render "header_link", header: t('.matches_played_header'), dir: down%></div>
+#   <div class="col-sm-2"><%=render "header_link", header: t('.matches_won_header'), dir: down%></div>
+#   <div class="col-sm-1"><%=render "header_link", header: t('.sets_played_header'), dir: down%></div>
+#   <div class="col-sm-1"><%=render "header_link", header: t('.sets_won_header'), dir: down%></div>
+# </div>
+
+# TABLE
+# <div class="col-sm-3"><%= render "shared/fullname", user: player %></div>
+# <div class="col-sm-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
+# <div class="col-sm-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>
+# <div class="col-sm-1 top-bottom-padding"><%= "#{user_box_score.box.box_number}" %></div>
+# <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_played) %></div>
+# <div class="col-sm-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
+# <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_played) %></div>
+# <div class="col-sm-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_won) %></div>

@@ -1,17 +1,28 @@
 <!-- display the league table -->
 <div class="container" data-controller="toggle">
-  <h3><%= t '.league_table_title' %></h3>
+  <div class="same-line">
+    <h3><%= t '.league_table_title' %></h3>
+    <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+  </div>
   <% if @round %>
     <div>
       <div class="same-line">
-        <div><%= render "shared/display_club_round", round: @round %></div>
+        <%= render "shared/display_club_round", round: @round %>
+        <span class="nav-item time-color top-bottom-padding do-print">
+          <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>
+        </span>
         <% if !@render_to_text %>
           <div>
             <%= link_to t('print_btn'), '#',
                 onclick: 'window.print();return false;',
                 class: "btn buttons-shape btn-green dont-print" %>
             <%= link_to t('.to_text_btn'),
-                user_box_scores_path(download: true, round_start: @round.start_date, club_name: @round.club.name),
+                user_box_scores_path(to_text: true, round_start: @round.start_date, club_name: @round.club.name),
+                method: :get,
+                onclick: 'JavaScript:location.reload(true);',
+                class: "btn buttons-shape btn-green dont-print" %>
+            <%= link_to t('.to_csv_btn'),
+                user_box_scores_path(to_csv: true, round_start: @round.start_date, club_name: @round.club.name),
                 method: :get,
                 onclick: 'JavaScript:location.reload(true);',
                 class: "btn buttons-shape btn-green dont-print" %>

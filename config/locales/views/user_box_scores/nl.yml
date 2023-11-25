@@ -3,6 +3,7 @@ nl:
     index:
       intro: Raadpleeg voor de gekozen ronde de <b>competitietabel</b> van de club
       to_text_btn: Exporteren naar tekstbestand
+      to_csv_btn: Exporteren naar CSV-bestand
       league_table_title: League table
       top_line_html: >
         Klik op de <span class="color-orange-light"><b>lijn</b></span> van de speler om toegang te krijgen tot zijn box
@@ -16,6 +17,7 @@ nl:
           <li>Verhouding tussen gewonnen sets en gespeelde sets</li>
           <li>Verhouding tussen gewonnen games en gespeelde games</li>
         </ol>
+      file_csv_flash: bestand data.csv gemaakt
       # player_header: Spelers
       # rank_header: Rang
       # points_header: Punten

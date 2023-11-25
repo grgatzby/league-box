@@ -34,6 +34,10 @@
 // @media only screen and (max-width: 1200px) {
 //   }
 
+.do-print {
+  opacity: 0;
+}
+
 @media print {
   a[href]::after {
     content: none !important;
@@ -44,6 +48,10 @@
 
   .dont-print, .navbar-league-box, .footer-wrap {
     display: none;
+  }
+
+  .do-print {
+    opacity: 1;
   }
 
   .expand-to-print, .chatroom .messages {

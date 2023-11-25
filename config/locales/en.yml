@@ -54,11 +54,12 @@ en:
       hhmm_time: "%H:%M"
       wwwddmmm_date: "%a %-d %b"
       # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
-      wwwddmmmyy_date: "%a %-d %b %y"
+      wwwddmmmyy_date: "%a %-d %b %y"    # Tue. 14 Apr. 23
+      wwwwddmmmmyyyy_date: "%A %-d %B %Y"  # Tuesday 14 April 23
       ddmmm_date: "%d %b"
       wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
-      wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
-      wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
+      wwwddmmm_at_hhmm: "%a %-d %b, %H:%M"
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y, %H:%M"
 fr:
   print_btn: ⎷ Imprimer
   points:
@@ -96,10 +97,11 @@ fr:
       hhmm_time: "%H:%M"               # 16:28
       wwwddmmm_date: "%a %-d %b"       # ven 10 nov.
       # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
-      wwwddmmmyy_date: "%a %-d %b %y"  # ven 14 avr. 23   # wwwddmmmyy_at_hhmm
+      wwwddmmmyy_date: "%a %-d %b %y"  # ven 14 avr. 23
+      wwwwddmmmmyyyy_date: "%A %-d %B %Y"  # vendredi 14 avr. 23
       ddmmm_date: "%d %b"              # 2 mai
       wwwddmmm_at_hhmm: "%a %-d %b à %H:%M"
-      wwwddmmmyy_at_hhmm: "%A %-d %b %Y à %H:%M" # vendredi 14 avr. 2023
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y à %H:%M" # vendredi 14 avr. 2023 à 16:28
     am: 'am'
     pm: 'pm'
 nl:
@@ -144,9 +146,10 @@ nl:
       wwwddmmm_date: "%a %-d %b"
       # match_time: "%a %-d %h %y"   # Tue 9 May 23 wwwddmmmyy_time
       wwwddmmmyy_date: "%a %-d %b %y"
+      wwwwddmmmmyyyy_date: "%A %-d %B %Y"  # Tuesday 14 April 23
       ddmmm_date: "%d %b"
       wwwddmmmyy_time: "%a %-d %b %y"   # Tue 9 May 23 wwwddmmmyy_time
-      wwwddmmm_at_hhmm: "%a %-d %b at %H:%M"
-      wwwddmmmyy_at_hhmm: "%A %-d %b %Y at %H:%M"
+      wwwddmmm_at_hhmm: "%a %-d %b om %H:%M uur"
+      wwwddmmmyy_at_hhmm: "%A %-d %b %Y om %H:%M uur"
   am: "'s ochtends"
   pm: "'s middags"
