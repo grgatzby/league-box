@@ -127,8 +127,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_to_csv(round)
-    # file = Rails.root.join('public', 'data.csv')
-    file = "/data.csv"
+    file = Rails.root.join('public', 'data.csv')
     user_box_scores = rank_players(round.user_box_scores)
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
