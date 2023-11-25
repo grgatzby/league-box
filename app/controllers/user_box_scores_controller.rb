@@ -115,7 +115,8 @@ class UserBoxScoresController < ApplicationController
 
   def export_to_csv
     # EXAMPLE from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    file = "#{Rails.root}/public/data.csv"
+    # file = "#{Rails.root}/public/data.csv"
+    file = Rails.root.join('public', 'data.csv')
     table = User.all;0 # ";0" stops output.  Change "User" to any model.
     CSV.open(file, 'w') do |writer|
       # table headers
