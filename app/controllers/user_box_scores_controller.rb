@@ -39,8 +39,8 @@ class UserBoxScoresController < ApplicationController
       @render_to_text = true
       # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
       # to strip all html
-      no_html_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
-      send_data(no_html_string, template: :raw, filename: "/object.txt", type: "text/txt")
+      html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
+      send_data(html_free_string, template: :raw, filename: "/object.txt", type: "text/txt")
     elsif params[:to_csv] == "true"
       @file = league_table_to_csv(@round)
       # flash[:notice] = t('.file_csv_flash')
@@ -115,8 +115,7 @@ class UserBoxScoresController < ApplicationController
 
   def export_to_csv
     # EXAMPLE from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    # file = "#{Rails.root}/public/data.csv"
-    file = Rails.root.join('public', 'data.csv')
+    file = "#{Rails.root}/public/data.csv"
     table = User.all;0 # ";0" stops output.  Change "User" to any model.
     CSV.open(file, 'w') do |writer|
       # table headers
@@ -128,7 +127,8 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_to_csv(round)
-    file = "#{Rails.root}/public/data.csv"
+    # file = Rails.root.join('public', 'data.csv')
+    file = "/data.csv"
     user_box_scores = rank_players(round.user_box_scores)
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
