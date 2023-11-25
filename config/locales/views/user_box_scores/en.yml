@@ -2,7 +2,8 @@ en:
   user_box_scores:
     index:
       intro: For a given round, view the <b>league table</b> of your club
-      to_text_btn: Exporte page to text file
+      to_text_btn: Export page to text file
+      to_csv_btn: Export page to CSV file
       league_table_title: League table
       top_line_html: >
         Click on a <span class="color-orange-light"><b>player line</b></span> to access their box
@@ -17,6 +18,7 @@ en:
           <li>Ratio of sets won to sets played</li>
           <li>Ratio of games won to games played</li>
         </ol>
+      file_csv_flash: file data.csv created
       # player_header: Player
       # rank_header: Rank
       # points_header: Points

@@ -43,7 +43,7 @@ fr:
         Le championship tie-break compte come un set (pas de points attribué au perdant).
       won: Gagné
       lost: Perdu
-      on_date: "le"
+      on_date: ""
       dont_forget_html: N'oubliez pas de jouer vos matchs et d'entrer vos scores dans <b>Ma box</b>!
     show_referee:
       not_authorised: Page non authorisée
@@ -51,10 +51,10 @@ fr:
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
-      pop01: "<b>Score saisi</b><br />par %{user}<br />le %{date}"
+      pop01: "<b>Score saisi</b><br />par %{user}<br />%{date}"
       won: Gagné
       lost: Perdu
-      on_date: "le"
+      on_date: ""
       not_played: Pas encore joué
       pop02_a: Cliquez pour saisir le score pour<br />
     show:
