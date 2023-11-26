@@ -152,6 +152,6 @@ class UserBoxScoresController < ApplicationController
                    user_box_score.sets_won]
       end
     end
-    send_file(file, filename: 'mycsvfile.csv', type: 'text/csv', disposition: 'attachment')
+    send_file file, filename: 'mycsvfile.csv', type: 'text/csv', disposition: 'attachment', :x_sendfile=>true
   end
 end
