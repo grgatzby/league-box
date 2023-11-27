@@ -7,12 +7,12 @@
 
     <!---<div class = "frame-shape frame-padding text-size">-->
     <div class = "frame-shape frame-padding">
-      <div class="row font-bold top-bottom-padding sticky-header">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-2"><%= t '.match_score_header' %></div>
-        <div class="col-sm-2"><%= t '.player_points_header' %></div>
-        <div class="col-sm-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
-        <div class="col-sm-1 color-tennis-blue"><%= t '.opponent_total_points_header' %></div>
+      <div class="same-line font-bold top-bottom-padding sticky-header">
+        <div class="col-4"></div>
+        <div class="col-2"><%= t '.match_score_header' %></div>
+        <div class="col-2"><%= t '.player_points_header' %></div>
+        <div class="col-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
+        <div class="col-2 color-tennis-blue"><%= t '.opponent_total_points_header' %></div>
       </div>
       <ul>
         <% sorted_players = @box_matches.map { |bm| bm[2]} %>
@@ -42,8 +42,8 @@
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                             data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
                             data-bs-content="<%= message %>">
-                          <div class="row player-name">
-                            <div class="col-sm-4">
+                          <div class="same-line player-name">
+                            <div class="col-4">
                               <% match_time = @tz.to_local(match.time) %>
                               <%= "#{user_score.is_winner ? t(".won") : t(".lost")} #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
                               <span class="color-tennis-blue">
@@ -52,10 +52,10 @@
                                 <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
                               </span>
                             </div>
-                            <div class="col-sm-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
-                            <div class="col-sm-2"><%= t("pts", count: user_score.points) %></div>
-                            <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
-                            <div class="col-sm-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
+                            <div class="col-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
+                            <div class="col-2"><%= t("pts", count: user_score.points) %></div>
+                            <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
+                            <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
                             <!-- click on player line to update/delete match and user_match_scores details -->
                             <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
                           </div>
@@ -63,9 +63,9 @@
                       </li>
                     <% end %>
                   <% elsif player_opponent != player%>
-                    <li><div class="row player-name color-tennis-blue">
-                      <div class="col-sm-4"><%= render "shared/fullname", user: player_opponent %></div>
-                      <div class="col-sm-2"><%= t '.not_played' %></div>
+                    <li><div class="same-line player-name color-tennis-blue">
+                      <div class="col-4"><%= render "shared/fullname", user: player_opponent %></div>
+                      <div class="col-2"><%= t '.not_played' %></div>
                       <% if current_user == @admin %>
                         <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
                         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"

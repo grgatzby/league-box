@@ -15,7 +15,7 @@ fr:
       contact_p02: Les différends sur les scores devront être traités depuis la chatroom de votre box.
       prompt: Choisir un sujet →
       topics:
-      - feedback: Donnez un feedback
+      - feedback: Commentaire
       - join_club: Rejoignez un de nos clubs
       - other_topic: Autre sujet
       new_round_subject: "Demande: nouveau round pour le %{club} - New round request"

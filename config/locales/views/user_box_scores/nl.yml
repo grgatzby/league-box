@@ -26,7 +26,7 @@ nl:
       # matches_won_header: Gewonnen wedstrijden
       # sets_played_header: Gespeelde sets
       # sets_won_header: Sets gewonnen
-    data_table:
+    table_data:
       matches:
         zero: 0 wedstrijden
         one: 1 wedstrijd
@@ -35,7 +35,7 @@ nl:
         zero: 0 sets
         one: 1 set
         other: "%{count} sets"
-    headers_line:
+    table_headers:
       player_header: Speler
       rank_header: Rang
       points_header: Punten

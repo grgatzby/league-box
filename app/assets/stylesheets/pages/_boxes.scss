@@ -11,10 +11,19 @@
   // white-space: nowrap;
 }
 
-.grid-container {
+.box-grid-width {
   width: 80rem;
-  // display: flex;
+}
 
+.staff-grid-width {
+  width: 80rem;
+}
+
+.league-grid-width {
+  width: 80rem;
+}
+
+.grid-container {
 
   #grid-lines>.row>.grid-columns {
     height: 5.5rem;

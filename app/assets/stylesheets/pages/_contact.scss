@@ -16,7 +16,7 @@
   }
 
   .contact-align {
-    width: 75%;
+    width: 80%;
     display: flex;
   }
 
@@ -35,6 +35,26 @@
     box-shadow: 0 0 8px rgba(0,0,0,0.2);
     opacity: 1;
   }
+}
 
+@media only screen and (max-width: 990px) {
+ .contact-wrap {
+   padding: 25px calc(var(--bs-gutter-x) * 2) 5px;
 
- }
+   .contact-align {
+    width: 100%;
+    display:inline;
+  }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+ .contact-wrap {
+  //  padding: 25px calc(var(--bs-gutter-x) * 2) 5px;
+
+   .contact-align {
+    width: 100%;
+
+  }
+  }
+}

@@ -1,7 +1,7 @@
 <!-- display the league table -->
-<div class="container" data-controller="toggle">
+<div class="container text-size" data-controller="toggle">
   <br>
-  <div class="same-line" style="width: 50%">
+  <div class="same-line" style="width: 20rem">
     <h3><%= t '.league_table_title' %></h3>
     <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
   </div>
@@ -17,17 +17,19 @@
           <div>
             <%= link_to t('print_btn'), '#',
                 onclick: 'window.print();return false;',
-                class: "btn buttons-shape btn-green mb-3 dont-print" %>
+                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
             <%= link_to t('.to_text_btn'),
                 user_box_scores_path(to_text: true, round_start: @round.start_date, club_name: @round.club.name),
                 method: :get,
                 onclick: 'JavaScript:location.reload(true);',
-                class: "btn buttons-shape btn-green mb-3 dont-print" %>
+                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
             <%= link_to t('.to_csv_btn'),
                 user_box_scores_path(to_csv: true, round_start: @round.start_date, club_name: @round.club.name),
                 method: :get,
                 onclick: 'JavaScript:location.reload(true);',
-                class: "btn buttons-shape btn-green mb-3 dont-print" %>
+                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
+            <%= link_to 'Download', download_path(round_start: @round.start_date, club_name: @round.club.name),
+                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
           </div>
         <% end %>
       </div>
@@ -35,11 +37,11 @@
       <% if !@render_to_text %>
         <% if params["sort"] %>
           <% params["sort"] = nil  %>
-          <p class="stick-rules dont-print">
+          <p class="stick-rules dont-print text-size">
             <%= link_to t(".top_line_html"), user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border"%>
           </p>
         <% else %>
-          <p class="stick-rules dont-print">
+          <p class="stick-rules dont-print text-size">
             <%= t '.top_line_html' %>
           </p>
           <div class="photo-wrap frame-shape frame-padding text-size dont-print">
@@ -52,10 +54,10 @@
       stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  -->
       <div class="frame-shape frame-padding text-size">
       <%# <div class="frame-shape frame-padding text-size league-container"> %>
-        <%= render "headers_line" %>
+        <%= render "table_headers" %>
         <%# <div class="expand-to-print box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" > %>
         <div class="expand-to-print box-scroller" data-toggle-target="togglableElement" >
-          <ol type="1"><%= render "data_table", user_box_scores: @user_box_scores %></ol>
+          <ol type="1"><%= render "table_data", user_box_scores: @user_box_scores %></ol>
           <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
             class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
           </button>

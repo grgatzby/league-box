@@ -33,10 +33,10 @@
         <h4><%= t '.view_enter_scores' %></h4>
         <h6>
           <div class="row justify-content-center top-bottom-padding font-bold text-size">
-            <div class="col-sm-3"><%= t '.player_header' %></div>
-            <div class="col-sm-2"><%= t '.total_points_header' %></div>
-            <div class="col-sm-2"><%= t '.played_on_header' %></div>
-            <div class="col-sm-2"><%= t '.action_header' %></div>
+            <div class="col-3"><%= t '.player_header' %></div>
+            <div class="col-2"><%= t '.total_points_header' %></div>
+            <div class="col-2"><%= t '.played_on_header' %></div>
+            <div class="col-2"><%= t '.action_header' %></div>
           </div>
         </h6>
         <% @my_games.each do |my_game| %>
@@ -44,27 +44,26 @@
           <% match = my_game[1] %>
 
           <div class="row justify-content-center">
-            <div class="col-sm-3 top-bottom-padding">
+            <div class="col-3 top-bottom-padding">
               <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
               <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
               <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                   data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                   title="<%= opponent_name %>" data-bs-content="<%= message %>">
                 <span style=<%=opponent == @current_player ? "color:green" : "" %>>
-                  <%# link_to "#{render "shared/fullname", user: opponent}", "", class: "btn button-ghost", :title => message  %>
                   <%= "#{render "shared/fullname", user: opponent}" %>
                 </span>
               </div>
             </div>
-            <div class="col-sm-2 top-bottom-padding">
+            <div class="col-2 top-bottom-padding">
                 <%= t("pts", count: my_game[0].points) %>
             </div>
-            <div class="col-sm-2 top-bottom-padding">
+            <div class="col-2 top-bottom-padding">
               <% if match && opponent != @current_player %>
                 <%= "#{l(match.time, format: :wwwddmmmyy_date)}" %>
               <% end %>
             </div>
-            <div class="col-sm-2">
+            <div class="col-2">
               <% if opponent == @current_player %>
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>

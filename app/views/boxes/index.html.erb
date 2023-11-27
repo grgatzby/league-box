@@ -46,7 +46,7 @@
           TO DO: add a time related condition here for the button to appear -->
           <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
       <% elsif current_user && current_user.role == "referee" %>
-          <%= link_to t(".request_round_btn"), contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
+          <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
       <% end %>
     </div>
   <% end %>

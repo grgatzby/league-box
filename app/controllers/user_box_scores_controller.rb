@@ -6,7 +6,7 @@ class UserBoxScoresController < ApplicationController
     set_club_round
 
     # @order dictates the sorting order of the selected header
-    # it is passed from the partial _header_link.html.erb when a header is clicked
+    # it is passed from the partial _table_header_lnk.html.erb when a header is clicked
     if params[:order] && (params[:exsort] == params[:sort])
       @order = params[:order].to_i
     else
@@ -18,20 +18,20 @@ class UserBoxScoresController < ApplicationController
     end
     @sort = params[:sort]
     case params[:sort]
-    when t('.headers_line.player_header') # "Player"
+    when t('.table_headers.player_header') # "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
-    when t('.headers_line.points_header') # "Points"
+    when t('.table_headers.points_header') # "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    when t('.headers_line.box_header') # "Box"
+    when t('.table_headers.box_header') # "Box"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    when t('.headers_line.matches_played_header') # "Matches Played"
+    when t('.table_headers.matches_played_header') # "Matches Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    when t('.headers_line.matches_won_header') # "Matches Won"
+    when t('.table_headers.matches_won_header') # "Matches Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    when t('.headers_line.sets_played_header') # "Sets Played"
+    when t('.table_headers.sets_played_header') # "Sets Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    when t('.headers_line.sets_won_header') # "Sets Won"
+    when t('.table_headers.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
     @render_to_text = false
@@ -43,7 +43,7 @@ class UserBoxScoresController < ApplicationController
       send_data(html_free_string, template: :raw, filename: "/object.txt", type: "text/txt")
     elsif params[:to_csv] == "true"
       league_table_to_csv(@round)
-      flash[:notice] = t('.file_csv_flash')
+      # flash[:notice] = t('.file_csv_flash')
       # assign_params = params.dup
       # assign_params.delete(:to_csv)
       redirect_back(fallback_location: user_box_scores_path)
@@ -110,6 +110,13 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
+  def download_csv(file = "#{Rails.root}/public/data.csv")
+    if File.exist?(file)
+      send_file file, filename: "data-#{Date.today}.csv", disposition: 'attachment', type: 'text/csv'
+      flash[:notice] = "file downoaded"
+    end
+  end
+
   private
 
   def export_to_csv
@@ -126,20 +133,21 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_to_csv(round)
-    file = Rails.root.join('public', 'data.csv')
+    # file = Rails.root.join('public', 'data.csv')
+    file = "#{Rails.root}/public/data.csv"
     user_box_scores = rank_players(round.user_box_scores)
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
       writer << [l(Time.now, format: :long),
-                 t('.headers_line.player_header'),
-                 t('.headers_line.rank_header'),
-                 t('.headers_line.points_header'),
-                 t('.headers_line.box_header'),
-                 t('.headers_line.matches_played_header'),
-                 t('.headers_line.matches_won_header'),
-                 t('.headers_line.sets_played_header'),
-                 t('.headers_line.sets_won_header')]
+                 t('.table_headers.player_header'),
+                 t('.table_headers.rank_header'),
+                 t('.table_headers.points_header'),
+                 t('.table_headers.box_header'),
+                 t('.table_headers.matches_played_header'),
+                 t('.table_headers.matches_won_header'),
+                 t('.table_headers.sets_played_header'),
+                 t('.table_headers.sets_won_header')]
       table.each_with_index do |user_box_score, index|
         writer << [index + 1,
                    "#{user_box_score.user.first_name} #{user_box_score.user.last_name}",
@@ -152,6 +160,6 @@ class UserBoxScoresController < ApplicationController
                    user_box_score.sets_won]
       end
     end
-    send_file file, filename: 'mycsvfile.csv', type: 'text/csv', disposition: 'attachment', :x_sendfile=>true
+    download_csv(file.pathmap)
   end
 end

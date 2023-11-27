@@ -3,6 +3,9 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
+    if current_user == @admin
+      @referees = User.where(role: "referee")
+    end
   end
 
   def create

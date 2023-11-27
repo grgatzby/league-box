@@ -1,3 +1,5 @@
+<%= render "shared/image_front", sticky: false %>
+
 <div class="container">
   <br>
   <%# processing_round_request = params[:round_id] || (params[:contact] && params[:contact][:club_name]) %>
@@ -8,10 +10,12 @@
   <% else %>
     <!--- from the footer partial (contact us) -->
     <h3><%= t '.contact_title' %></h3><hr>
-    <p><%= t '.contact_p01_html' %></p>
-    <p><%= t '.contact_p02' %></p>
   <% end %>
   <div class="frame-shape contact-wrap">
+    <% if !processing_new_round %>
+      <p><%= t '.contact_p01_html' %></p>
+      <p><%= t '.contact_p02' %></p>
+    <% end %>
     <%= simple_form_for @contact do |f| %>
       <% if @contact.errors.any? %>
           <%# t('.error_invite') %>
@@ -38,7 +42,7 @@
             <%= f.input :subject,
               label: false,
               prompt: t('.prompt'),
-              input_html: {class: "contact-field", style: "width: 350px", value: default_subject},
+              input_html: {class: "contact-field", style: "width: 20em", value: default_subject},
               required: true
             %>
           <% else %>
@@ -48,7 +52,7 @@
               # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
               collection: t('.topics').map { |item| item.values }.flatten,
               prompt: t('.prompt'),
-              input_html: {class: "contact-field", style: "width: 350px"},
+              input_html: {class: "contact-field", style: "width: 20em"},
               required: true
             %>
           <% end %>
@@ -59,7 +63,7 @@
         <div><%= f.input :name,
           label: false,
           placeholder: t('.name_placeholder'),
-          input_html: {class: "contact-field", style: "width: 350px", value: default_name},
+          input_html: {class: "contact-field", style: "width: 20em", value: default_name},
           required: true
         %></div>
       </div>
@@ -70,7 +74,7 @@
         <div><%= f.input :email,
           label: false,
           placeholder: t('.email_placeholder'),
-          input_html: {class: "contact-field", style: "width: 350px", value: default_email},
+          input_html: {class: "contact-field", style: "width: 20em", value: default_email},
           required: true
         %></div>
 
@@ -79,7 +83,7 @@
         <div><%= f.input :phone,
           label: false,
           placeholder: t('.phone_placeholder'),
-          input_html: {class: "contact-field", style: "width: 350px", value: default_phone},
+          input_html: {class: "contact-field", style: "width: 20em", value: default_phone},
           required: false
         %></div>
       </div>
@@ -143,5 +147,6 @@
         class: "btn buttons-shape btn-beige mb-3"
       %>
     <% end %>
+  <%= render "staff" %>
   </div>
 </div>
