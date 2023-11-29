@@ -1,12 +1,11 @@
 <% up = ["↓", "↑"] %>
 <% down = ["↑", "↓"]%>
-<div class="same-line justify-content-center align-items-center font-bold sticky-league-table-header">
-  <div class="col-3"><%=render "table_header_lnk", header: t('.player_header'), dir: up%></div>
-  <div class="col-1"><%=render "table_header_lnk", header: t('.rank_header'), dir: up%></div>
-  <div class="col-1"><%=render "table_header_lnk", header: t('.points_header'), dir: down%></div>
-  <div class="col-1"><%=render "table_header_lnk", header: t('.box_header'), dir: up%></div>
-  <div class="col-2"><%=render "table_header_lnk", header: t('.matches_played_header'), dir: down%></div>
-  <div class="col-2"><%=render "table_header_lnk", header: t('.matches_won_header'), dir: down%></div>
-  <div class="col-1"><%=render "table_header_lnk", header: t('.sets_played_header'), dir: down%></div>
-  <div class="col-1"><%=render "table_header_lnk", header: t('.sets_won_header'), dir: down%></div>
-</div>
+
+<div class="col-3"><%=render "table_header_lnk", header: t('.player_header'), dir: up%></div>
+<div class="col-1"><%=render "table_header_lnk", header: t('.rank_header'), dir: up%></div>
+<div class="col-1"><%=render "table_header_lnk", header: t('.points_header'), dir: down%></div>
+<div class="col-1"><%=render "table_header_lnk", header: t('.box_header'), dir: up%></div>
+<div class="col-2"><%=render "table_header_lnk", header: t('.matches_played_header'), dir: down%></div>
+<div class="col-2"><%=render "table_header_lnk", header: t('.matches_won_header'), dir: down%></div>
+<div class="col-1"><%=render "table_header_lnk", header: t('.sets_played_header'), dir: down%></div>
+<div class="col-1"><%=render "table_header_lnk", header: t('.sets_won_header'), dir: down%></div>
