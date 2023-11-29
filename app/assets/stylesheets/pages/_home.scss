@@ -2,6 +2,7 @@
 .container {
   margin-bottom: $btn-margin;
 }
+
 .sticky-header {
   position: sticky;
   top: $navbar-height;
@@ -38,7 +39,6 @@
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: justify;
 }
-
 
 .frame-padding {
   padding: 15px calc(var(--bs-gutter-x) * 2);

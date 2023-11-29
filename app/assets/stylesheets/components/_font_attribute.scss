@@ -44,17 +44,16 @@
 }
 
 .text-size {
-
-  font-size: calc(1rem + 0.3vw);
+  font-size: calc(0.9rem + 0.1vw);
   // font-size: 1.1vw;
 
   p {
-    font-size: calc(1rem + 0.3vw);
+    font-size: calc(0.9rem + 0.1vw);
     // font-size: 1.1vw;
   }
 
   h3 {
-      font-size: calc(1.3rem + 0.6vw);
+      font-size: calc(1.3rem + 0.5vw);
       // font-size: 1.7vw;
       font-weight: bold;
     }
@@ -116,7 +115,6 @@
 
 @media only screen and (max-width: 768px) {
   .text-size {
-    font-size: 1.9vw;
     padding-left: 50px;
     padding-right: 50px;
 //     p {
@@ -135,4 +133,8 @@
 //     font-size: 2.4vw;
 //      }
   }
+
+  .table-text-size {
+    font-size: 1.9vw;
+}
 }

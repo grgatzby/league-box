@@ -6,7 +6,6 @@
     <!-- the first column of the table uses 1/12th of the total width (bootstrap grid) -->
     <div class="grid-container box-grid-width row small-font">
       <div class="col-1 expand-to-print">
-        <!--<div class="row" id="1st-col-header">-->
         <div class="row">
           <div class="col-12 font-bold"><%= "BOX #{@box.box_number}" %></div>
         </div>
@@ -36,7 +35,6 @@
       <div class="col-11 expand-to-print">
         <div class="row font-bold">
           <% @box_matches.each do |user_box_matches| %>
-            <%# <div class="col-12 col-md-6 col-lg-2 text-center"> %>
             <div class="col-2 text-center">
               <% user_box_score = user_box_matches[0] %>
               <% column_player = user_box_score.user %>
@@ -55,7 +53,6 @@
               <% player_matches.sort_by! { |x| sorted_players.index(x[1]) } %>
               <% sorted_players.each do |column_player| %>
                 <% player_match = player_matches.select { |x| x[1] == column_player }[0] %>
-                <%#<div class="col-12 col-md-6 col-lg-2 text-center grid-columns"> %>
                 <div class="col-2 text-center grid-columns">
                   <span class="align-middle">
                     <% if player_match %>

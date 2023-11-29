@@ -1,18 +1,17 @@
 <!-- display the league table -->
-<div class="container text-size" data-controller="toggle">
+<div class="container" data-controller="toggle">
   <br>
   <div class="same-line" style="width: 20rem">
     <h3><%= t '.league_table_title' %></h3>
     <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
   </div>
   <% if @round %>
-    <div>
+    <div class="text-size">
       <div class="same-line">
         <%= render "shared/display_club_round", round: @round %>
         <span class="nav-item time-color top-bottom-padding do-print">
           <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>
         </span>
-        <span><%= @file %></span>
         <% if !@render_to_text %>
           <div>
             <%= link_to t('print_btn'), '#',
@@ -50,19 +49,29 @@
         <% end %>
       <% end %>
       <%# <div class="league-frame"> %>
+      <% if @browser_device_mobile %>
+        <%= render 'league_to_mobile' %>
+      <% else %>
+        <%= render 'league_to_widescreen' %>
+      <% end %>
+
+
+
+
+
+
       <!-- league-frame and league-container allow overflow-x (horizontal scroll) but kills stickiness
       stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  -->
-      <div class="frame-shape frame-padding text-size">
+<!--       <div class="frame-shape frame-padding text-size table-text-size">
       <%# <div class="frame-shape frame-padding text-size league-container"> %>
         <%= render "table_headers" %>
-        <%# <div class="expand-to-print box-scroller" data-toggle-target="togglableElement" data-action="scroll->toggle#scrollFunction" > %>
         <div class="expand-to-print box-scroller" data-toggle-target="togglableElement" >
           <ol type="1"><%= render "table_data", user_box_scores: @user_box_scores %></ol>
           <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
             class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
           </button>
         </div>
-      </div>
+      </div>  -->
     </div>
   <% else %>
     <!-- if no round selected, invoke forms to select a club (admin only) and a round -->

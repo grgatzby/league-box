@@ -34,6 +34,7 @@ class UserBoxScoresController < ApplicationController
     when t('.table_headers.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
+    @browser_device_mobile = mobile_device?
     @render_to_text = false
     if params[:to_text] == "true"
       @render_to_text = true
@@ -161,5 +162,9 @@ class UserBoxScoresController < ApplicationController
       end
     end
     download_csv(file.pathmap)
+  end
+
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
   end
 end
