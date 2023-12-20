@@ -12,10 +12,10 @@ nl:
       p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
       how_title: Hoe werkt Leaguebox?
       p04: Elke ronde duurt een maand (3 maanden voor sommige clubs) en spelers strijden in hun box.
-      li01_html: 🎾 <b>Speel gedurende de ronde</b> tegen alle spelers in je box.
-      li02_html: 💻 <b>Na elke wedstrijd</b> voer jij of je tegenstander de score in op de website van Leaguebox.
-      li03_html: 🏆 De ranglijst wordt automatisch bijgewerkt.
-      li04_html: 🎭 <b>Aan het einde van de ronde</b> gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje.
+      li01_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
+      li02_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
+      li03_html: 🏆 De <b>ranglijst</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen bekijken</b>.
+      li04_html: "🎭 <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
       p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
       use_title: Gebruik van de Leaguebox-website
       p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
@@ -210,13 +210,11 @@ nl:
       p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.
       chatrooms: Chatrooms
       p27_html: >
-        De <b>#general chatroom</b>, toegankelijk vanuit het hoofdmenu, is open voor alle spelers, ongeacht hun club.<br>
-        Gebruikers moeten het gebruiken voor hun algemene communicatie en moeten gematigd zijn.<br>
-        Er is ook een <b>box-chatroom</b> voor elke toernooibox, toegankelijk via de pagina <span class='color-tennis-blue'>Mijn box</span>.<br><br>
+        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='color-tennis-blue'>Mijn box</span> voor spelers.<br>
+        De <b>#algemene chatroom</b> is gereserveerd voor de beheerder en scheidsrechters, ongeacht hun club.
+        Zijn roeping is algemene communicatie, en niet voor een specifieke club, maar om te communiceren met de beheerder.<br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       p28_html: >
-        De <b>#general chatroom</b> en de <b>boxchatrooms</b> zijn toegankelijk via het hoofdmenu. De #general chatroom is open voor alle spelers, ongeacht hun club.<br>
-        Gebruikers moeten het gebruiken voor hun algemene communicatie en moeten gematigd zijn.<br>
         Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='color-tennis-blue'>Mijn box</span>-pagina die beschikbaar is voor spelers.<br><br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       li08_html: <span class='color-tennis-blue'>Die van spelers van dezelfde club verschijnen in het blauw</span>

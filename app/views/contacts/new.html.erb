@@ -11,7 +11,7 @@
     <!--- from the footer partial (contact us) -->
     <h3><%= t '.contact_title' %></h3><hr>
   <% end %>
-  <div class="frame-shape contact-wrap">
+  <div class="frame-color-shape contact-wrap">
     <% if !processing_new_round %>
       <p><%= t '.contact_p01_html' %></p>
       <p><%= t '.contact_p02' %></p>
@@ -20,7 +20,7 @@
       <% if @contact.errors.any? %>
           <%# t('.error_invite') %>
           <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
-              <div class="font-bold text-rose-700 text-sm pb-4">
+              <div class="bold-font text-rose-700 text-sm pb-4">
                 <!---<%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved: --->
                 <%= "#{t('.error', count: @contact.errors.count)} #{t('.error_message')}" %><br>
               </div>

@@ -22,10 +22,10 @@
                 <%= new_box.fields_for :user_box_scores do |new_user_box_score| %>
                   <% user_box_score = user_box_scores[new_user_box_score.index] %>
                   <li><div class="row">
-                    <div class="col-sm-6"><%= render "shared/fullname", user: user_box_score.user %></div>
-                    <div class="col-sm-2"><%= "##{user_box_score.rank}" %></div>
-                    <div class="col-sm-1"><%= "#{user_box_score.games_played}" %></div>
-                    <div class="col-sm-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
+                    <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
+                    <div class="col-2"><%= "##{user_box_score.rank}" %></div>
+                    <div class="col-1"><%= "#{user_box_score.games_played}" %></div>
+                    <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
                     <!-- shift is an array method: removes first element from array and returns the element -->
                   </div></li>
                 <% end %>

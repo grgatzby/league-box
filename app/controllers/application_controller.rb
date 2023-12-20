@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     # players and referees belong to a club, the admin belongs to the sample club
     @sample_club = Club.find_by(name: "your tennis club")
     @club = current_user ? current_user.club : @sample_club
+    @current_round = current_round(@club.id)
     @admin = User.find_by(role: "admin")
     @referee = User.find_by(role: "referee", club_id: @club.id)
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
@@ -59,17 +60,29 @@ class ApplicationController < ActionController::Base
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
 
+    # if current_user != @admin || params[:club_name]
+    #   # user belongs to a club (= is a player or a referee),
+    #   # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
+    #   @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
+    #   @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
+    # end
+
+    # if params[:round_start]
+    #   # user has selected a round in the form
+    #   @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
+    #   @boxes = @round.boxes.sort
+    # elsif current_user != @admin
+    #   @round = @current_round
+    #   @boxes = @round.boxes.sort
+    # end
+
     if current_user != @admin || params[:club_name]
-      # user is in a club (= is a player or a referee),
+      # user belongs to a club (= is a player or a referee),
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
-    end
+      @round = params[:round_start] ? Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id) : current_round(@club.id)
 
-    if params[:round_start]
-      # user has selected a round in the form
-      @round = Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id)
-      # @club = Club.find_by(name: params[:club_name])
       @boxes = @round.boxes.sort
     end
   end

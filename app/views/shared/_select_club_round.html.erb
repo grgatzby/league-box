@@ -4,7 +4,6 @@
 <% end %>
 <br>
 <% if current_user == @admin %>
-  <%# if !params[:round_start] || params[:club_name] %>
   <% if !params[:round_start] || params[:club_name] %>
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
@@ -25,9 +24,11 @@
     <br><br>
   <% end %>
 <% end %>
-
 <% if !params[:round_start] && params[:club_name] || (current_user != @admin) %>
   <!-- for players and referees: display the round form IF a club is already set -->
+
+  <%= render "shared/select_round", fallback_path: fallback_path, label: t('.select_round_start') %>
+  <!--
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= form.label :round_start, t('.select_round_start') %>
     <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -36,4 +37,5 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <%= link_to t('.back_btn'), :back, class: "btn buttons-shape btn-blue" %>
   <% end %>
+  -->
 <% end %>

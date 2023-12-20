@@ -33,7 +33,7 @@
       crossorigin="anonymous">
     </script>
     <% if !@render_to_text %>
-      <%# remove metadata from displaying in export to text (in user_box_score index) %>
+      <%# exclude metadata from exporting to text (in user_box_score/index) %>
       <title><%= meta_title %></title>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="description" content="<%= meta_description %>">
@@ -47,7 +47,7 @@
 
   <body>
     <div class="content">
-      <%# remove navbar display from export to text (in user_box_score index) %>
+      <%# exclude navbar and flash messages from exporting to text (in user_box_score index) %>
       <% if !@render_to_text %>
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
@@ -55,7 +55,7 @@
       <%= yield %>
     </div>
     <% if !@render_to_text %>
-      <%# remove footer display from export to text (in user_box_score index) %>
+      <%# exclude footer from exporting to text (in user_box_score index) %>
       <footer class="footer-wrap">
         <%= render "shared/footer" %>
       </footer>

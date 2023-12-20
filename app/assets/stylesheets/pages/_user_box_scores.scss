@@ -1,4 +1,8 @@
 // ------------ index page --------
+:root {
+  --top-header: 0px;  // this value WAS managed from JS toggle_controller to handle header y position; not used anymore
+}
+
 .stick-rules {
   position: sticky;
   top: $navbar-height;
@@ -9,13 +13,27 @@
   text-align: center;
 }
 
-.sticky-league-table-header {
+.league-table-headers {
   position: sticky;
-  top: $navbar-height+24;
+  top: 0;
   background-color: $tennis-beige;
   opacity: 1;
   z-index: 1;
   border-radius: 0.25rem;
+}
+
+.header-ghost {
+  margin: 0 0 5px; /* top | left and right | bottom */
+  // border: 1px solid #4A4A4A;
+  padding: 6px 0px;
+  color: $tennis-blue;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    color: #7f7f7f;
+  }
 }
 
 .no-padding-no-border {
@@ -23,14 +41,3 @@
   padding-bottom: 0;
   border: 0;
 }
-
-.league-frame {
-  overflow-x: auto;
-}
-
-.league-container {
-  width: 80rem;
-}
-// @media only screen and (max-width: 1200px) {
-//   }
-

@@ -1,13 +1,13 @@
 en:
   user_box_scores:
     index:
-      intro: For a given round, view the <b>league table</b> of your club
-      to_text_btn: Export page to text file
-      to_csv_btn: Export page to CSV file
+      intro: The <b>league table</b> is updated upon each score entry
       league_table_title: League table
+      file_csv_flash: file data.csv created
+    top_line:
       top_line_html: >
-        Click on a <span class="color-orange-light"><b>player line</b></span> to access their box
-        or a <span class="color-tennis-blue"><b>header</b></span> to sort.
+        Click on <span class="color-orange-light"><b>a player's line</b></span> to <b>access their box</b>
+        or on <span class="color-tennis-blue"><b>a header</b></span> to <b>sort the table</b>
       rules: >
         A player's league position is determined by the total number of points won in a round.<br />
         In the event that two or more players have the same number of points the league position will be
@@ -18,7 +18,9 @@ en:
           <li>Ratio of sets won to sets played</li>
           <li>Ratio of games won to games played</li>
         </ol>
-      file_csv_flash: file data.csv created
+    buttons:
+      to_text_btn: Export page to text file
+      to_csv_btn: Export page to CSV file
       # player_header: Player
       # rank_header: Rank
       # points_header: Points
@@ -61,7 +63,7 @@ en:
       round_dates: round dates
       load_csv_file: load CSV file
       submit_btn: ⎷ Submit
-      back_btn: ← Back
+      back_btn: ←
     create:
       header_flash: Your headers must be "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
       file_type_flash: Please chose a csv file type.

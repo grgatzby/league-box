@@ -12,10 +12,10 @@ fr:
       p03: La league table sera mise à jour et affichée sur le tableau à la fin des rounds.
       how_title: Comment fonctionne la Leaguebox?
       p04: Chaque round dure un mois (3 mois pour certains clubs), et les joueurs s'affrontent au sein de leur box.
-      li01_html: 🎾 <b>Pendant la durée du round</b>, jouez contre tous les autres joueurs de votre box.
-      li02_html: 💻 <b>Après chaque match</b>, vous ou votre adversaire entrez le score sur le site Leaguebox.
-      li03_html: 🏆 La league table est automatiquement mise à jour.
-      li04_html: 🎭 <b>À la fin du round</b>, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box.
+      li01_html: 🎾 <b>Pendant la durée du round</b>, jouez les matchs de votre box.
+      li02_html: 💻 Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
+      li03_html: 🏆 La <b>league table</b> est automatiquement mise à jour. Vous pouvez également <b>consulter les box</b>.
+      li04_html: "🎭 <b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box."
       p05_html: Consultez notre page <b>Le tournoi</b> pour en savoir plus
       use_title: Comment utilliser votre site Leaguebox?
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
@@ -210,13 +210,11 @@ fr:
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
       chatrooms: Chatrooms
       p27_html: >
-        La <b>chatroom #general</b>, accessible depuis le menu principal, est ouverte à tous les joueurs, quelque soit leur club.<br>
-        Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
-        Une <b>chatroom de box</b> existe également pour chaque box du tournoi, accessible depuis la page <span class='color-tennis-blue'>Ma box</span>.<br><br>
+        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='color-tennis-blue'>Ma box</span> pour les joueurs.<br>
+        La <b>chatroom #general</b> est réservée à l'admin et aux referee quel que soit leur club.
+        Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
-        La <b>chatroom #general</b> et les <b>chatroom de box</b> sont accessibles depuis le menu principal. La chatroom #general est ouverte à tous les joueurs, quelque soit leur club.<br>
-        Les utilisateurs devront l'utiliser pour leur communication à portée générale, et devront faire preuve de modération.<br>
         Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <span class='color-tennis-blue'>Ma box</span> disponible aux joueurs.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       li08_html: <span class='color-tennis-blue'>Ceux des joueurs du même club apparaîssent en bleu</span>

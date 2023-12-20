@@ -1,64 +1,12 @@
 <!-- player show page by list of matches -->
-<div class="container">
-  <%= render "intro_lines", box: @box, view_type: t("boxes.list_view") %>
+<div class="container" data-controller="toggle">
+  <% view_types = [t("boxes.list_view"), t("boxes.table_view")]  %>
+  <%= render "intro_lines", box: @box, view_types: view_types %>
 
-  <!--<div class = "frame-shape frame-padding text-size expand-to-print box-scroller">-->
-  <div class = "frame-shape frame-padding">
-    <div class="same-line font-bold top-bottom-padding sticky-header">
-      <div class="col-4"></div>
-      <div class="col-2"><%= t '.match_score_header' %></div>
-      <div class="col-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-          title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
-        <%= t '.player_points_header' %>
-      </div>
-      <div class="col-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
-      <div class="col-2 color-tennis-blue"><%= t '.opponent_total_points_header' %></div>
+  <div class = "frame-color-shape frame-padding frame-scroller-wrap">
+    <div class="box-grid-width row">
+      <%= render "show_lr_headers", view: "player" %>
+      <%= render "show_lr_data", view: "player" %>
     </div>
-    <ul>
-      <% @box_matches.each do |user_box_matches| %>
-        <!-- for a player (user) : @box_matches = array of [user_box_score , matches(user)]
-            with : matches(user): array of [match, opponent, user_score, opponent_score] -->
-        <li>
-          <% user_box_score = user_box_matches[0] %>
-          <% player = user_box_matches[2] %>
-          <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
-            <%= render "shared/fullname", user: player %>
-            <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
-          </span>
-          <% player_matches = user_box_matches[1] %>
-          <ul>
-            <% player_matches.each do |player_match| %>
-              <% match = player_match[0] %>
-              <% opponent = player_match[1] %>
-              <% user_score = player_match[2] %>
-              <% opponent_score = player_match[3] %>
-              <% if match %>
-                <li><div class="same-line">
-                  <div class="col-4">
-                    <%= "#{user_score.is_winner ? t(".won") : t(".lost")} #{t(".on_date")} #{l(match.time, format: :wwwddmmm_date)}" %>
-                    <span class="color-tennis-blue">
-                      <i>vs</i>
-                      <%= render "shared/fullname", user: opponent %>
-                      <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
-                    </span>
-                  </div>
-                  <div class="col-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
-                  <div class="col-2"><%= t("pts", count: user_score.points) %></div>
-                  <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
-                  <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
-                </div></li>
-              <% end %>
-            <% end %>
-            <% if player_matches.count == 1 %>
-              <div class="col-4"></div>
-              <div class="col-6 color-tennis-red"><%= t '.dont_forget_html' %></div>
-            <% end %>
-
-          </ul>
-        </li>
-      <% end %>
-    </ul>
   </div>
-  <br>
 </div>

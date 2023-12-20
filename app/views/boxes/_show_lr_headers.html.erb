@@ -1,0 +1,17 @@
+<div class="one-line bold-font top-bottom-padding">
+  <!-- show list headers -->
+  <div class="col-4"></div>
+  <div class="col-2"><%= t '.match_score_header' %></div>
+  <% case view %>
+    <% when "player" %>
+      <div class="col-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+          title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
+        <%= t '.player_points_header' %>
+      </div>
+    <% else %>
+      <div class="col-2"><%= t '.player_points_header' %></div>
+  <% end %>
+  <div class="col-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
+  <div class="col-2 color-tennis-blue"><%= t '.opponent_total_points_header' %></div>
+</div>

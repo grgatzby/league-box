@@ -1,17 +1,18 @@
 <!-- player show page by table of matches -->
 <div class="container">
-  <%= render "intro_lines", box: @box, view_type: t("boxes.table_view")%>
+  <% view_types = [t("boxes.table_view"), t("boxes.list_view")]  %>
+  <%= render "intro_lines", box: @box, view_types: view_types %>
 
-  <div class = "frame-shape frame-padding grid-wrap">
+  <div class = "frame-color-shape frame-padding grid-wrap">
     <!-- the first column of the table uses 1/12th of the total width (bootstrap grid) -->
     <div class="grid-container box-grid-width row small-font">
-      <div class="col-1 expand-to-print">
+      <div class="col-1 print-all-content">
         <div class="row">
-          <div class="col-12 font-bold"><%= "BOX #{@box.box_number}" %></div>
+          <div class="col-12 bold-font"><%= "BOX #{@box.box_number}" %></div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
-          <div class="row first-col-lines font-bold">
+          <div class="row first-col-lines bold-font">
 
             <div class="col-12">
               <% user_box_score = user_box_matches[0] %>
@@ -32,8 +33,8 @@
       </div>
 
       <!-- the rest of the table uses 11/12th of the total width (bootstrap grid) -->
-      <div class="col-11 expand-to-print">
-        <div class="row font-bold">
+      <div class="col-11 print-all-content">
+        <div class="row bold-font">
           <% @box_matches.each do |user_box_matches| %>
             <div class="col-2 text-center">
               <% user_box_score = user_box_matches[0] %>

@@ -9,17 +9,17 @@ a chatroom is created in Box controller #my_box.
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
   >
-    <br><div class="same-line" style="width: 50%">
+    <br><div class="one-line" style="width: 50%">
       <h3>Chatroom</h3>
-      <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+      <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
     </div>
-    <h5  class="same-line">
+    <h5  class="one-line">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     </h5>
-    <div class="frame-shape chatroom">
+    <div class="frame-color-shape chatroom">
         <!-- previous messages -->
-      <div class="messages expand-to-print" data-chatroom-subscription-target="messages">
+      <div class="messages print-all-content" data-chatroom-subscription-target="messages">
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="click" data-bs-placement="center" data-bs-delay= '{ "show": 500 }'
           data-bs-content="<%= t '.message' %>">
@@ -56,7 +56,7 @@ a chatroom is created in Box controller #my_box.
   <!-- referees and admin get to select a chatroom -->
   <div class="container">
     <br><h3><%= t(".chatrooms_title", club: current_user.club.name) %></h3>
-    <div class="frame-shape players frame-padding text-size">
+    <div class="frame-color-shape players frame-padding text-size">
       <%= form_with url: chatroom_path, method: :get do |form| %>
         <%= form.label :chatroom, t(".chose_chatroom") %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select :chatroom, @chatrooms.sort %>

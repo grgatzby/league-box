@@ -5,20 +5,25 @@ nl:
       contact_us_lnk: Contact
     navbar:
       home_link: Home
-      tournament_rules_link:  Toernooiregels
+      tournament_rules_link: Toernooiregels
       club_staff_link: Clubpersoneel
       login_link: Log in
     dropdown_menu:
-      all_boxes_link: De boxen
+      tournament_rules_link: Toernooiregels
+      club_staff_link: Clubpersoneel
+      all_boxes_link: Naar boxen
       league_table_link: League table
-      my_box_link: Mijn box
+      my_box_link: Mijn scores
       general_chat_link: "Chatroom #general"
       chatrooms_link: Chatrooms
       log_out_link: Uitloggen
     round:
       round_period: "Ronde %{start} tot %{end}"
+    select_round:
+      select_round_start: "Bekijk een andere ronde: "
+      confirm_btn: ⎷ Bevestigen
     select_club_round:
       select_club: "Kies een club: "
       confirm_btn: ⎷ Bevestigen
-      back_btn: ← Rug
+      back_btn: ←
       select_round_start: "Ronde startdatum: "

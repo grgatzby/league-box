@@ -1,18 +1,18 @@
 <div class="dont-print"><%= render "shared/image_front", sticky: false %></div>
 
 <div class="container">
-  <div class="frame-shape home-wrap text-size dont-print">
+  <div class="frame-color-shape frame-padding-freetop text-size dont-print">
     <br><h3><%= t(".overview_title").upcase %></h3><br>
     <p><%= t('.p01_html', clubname: @club.name) %></p>
     <p><%= t '.p02' %></p>
     <p><%= t '.p03' %></p>
   </div>
 
-  <div data-controller="toggle top-bottom-padding"
+  <div data-controller="toggle" class="top-bottom-padding"
        data-toggle-display-rules-value="<%= t '.btn_display_rules' %>"
        data-toggle-hide-rules-value="<%= t '.btn_hide_rules' %>">
     <div class = "buttons-wrap dont-print">
-      <button data-action="click->toggle#fire" data-toggle-target="toggler"
+      <button data-action="click->toggle#toggleRules" data-toggle-target="toggler"
         class="btn buttons-shape btn-blue text-size"><%= t '.btn_display_rules' %>
       </button>
       <span class="d-none" data-toggle-target="togglableButton">
@@ -21,7 +21,7 @@
     </div>
 
     <div data-toggle-target="togglableElement"
-         class="d-none frame-shape home-wrap text-size expand-to-print box-scroller">
+         class="d-none frame-color-shape frame-padding-freetop text-size print-all-content box-scroller">
       <br><h3><%= t(".rules").upcase %></h3><br>
       <h5><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>

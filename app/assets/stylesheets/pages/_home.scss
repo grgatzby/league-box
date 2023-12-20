@@ -1,11 +1,12 @@
-// ----------- Many pages -----------
+// ----------- Most pages -----------
 .container {
   margin-bottom: $btn-margin;
 }
 
 .sticky-header {
   position: sticky;
-  top: $navbar-height;
+  // top: $navbar-height;
+  top: 0;
   // background-color: $tennis-green;
   background-color: $tennis-beige;
   opacity: 1;
@@ -14,22 +15,17 @@
 }
 
 .box-scroller {
-  // size of the scrolling rules box
   overflow: scroll;
-  height:74vh;
+  max-height: calc(100vh - 200px);
 }
 
-.same-line {
+.one-line {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-// .container {
-//   width: 85%;
-// }
-
-.frame-shape {
+.frame-color-shape {
   // background-color: $tennis-green;
   // background: rgb(2,0,36);
   background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
@@ -44,20 +40,24 @@
   padding: 15px calc(var(--bs-gutter-x) * 2);
 }
 
-.home-wrap {
+.frame-padding-freetop {
   padding-bottom: 15px;
   padding-left: calc(var(--bs-gutter-x) * 6);
   padding-right: calc(var(--bs-gutter-x) * 6);
 }
 
-@media only screen and (max-width: 768px) {
-  .home-wrap {
-    // font-size: 2.5vw;
+.frame-scroller-wrap {
+  overflow: scroll;
+  position: sticky;
+}
+
+@media only screen and (max-width: 1400px) {
+  .frame-padding-freetop {
     padding-left: 50px;
     padding-right: 50px;
   }
   .frame-padding {
-    padding: 15px 0px;
+    padding: 15px calc(var(--bs-gutter-x) * 0.5);
   }
 }
 
@@ -69,10 +69,6 @@
   background-image: url("social_tennis.jpg");
   background-size: cover;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
-
-  // &:hover {
-  //   box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
-  // }
 }
 
 @media only screen and (max-width: 768px) {
@@ -96,7 +92,6 @@
 
   .image-front-text {
     color: white;
-    // font-size: 30px;
     font-size: 2.6vw;
     font-weight: bolder;
   }
@@ -119,7 +114,7 @@
 }
 
 // ----------- UserBoxScores/index and Boxes/show_referee -----------
-.player-name {
+.player-to-orange {
   position: relative;
 
   &:hover {

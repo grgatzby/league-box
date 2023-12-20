@@ -1,4 +1,4 @@
-.font-bold {
+.bold-font {
   font-weight: bold;
 }
 
@@ -34,13 +34,12 @@
   color: grey;
 }
 
-.color-gray {
-  color: $gray;
-  opacity: 0;
-}
-
 .color-black {
   color: #505050;
+}
+
+.color-green {
+  color: green;
 }
 
 .text-size {
@@ -67,74 +66,4 @@
     font-size: 1.25rem;
     // font-size: 1.4vw;
   }
-}
-
-// @media only screen and (max-width: 1400px) {
-//   .text-size {
-//     font-size: 1.3vw;
-
-//     p {
-//       font-size: 1.3vw;
-//     }
-
-//     h3 {
-//       font-size: 1.7vw;
-//     }
-
-//     h4 {
-//       font-size: 1.55vw;
-//     }
-
-//     h5 {
-//       font-size: 1.6vw;
-//     }
-//   }
-// }
-
-// @media only screen and (max-width: 1200px) {
-//   .text-size {
-//     font-size: 1.5vw;
-
-//     p {
-//       font-size: 1.5vw;
-//     }
-
-//     h3 {
-//       font-size: 1.8vw;
-//     }
-
-//     h4 {
-//       font-size: 1.75vw;
-//     }
-
-//     h5 {
-//       font-size: 1.7vw;
-//     }
-//   }
-// }
-
-@media only screen and (max-width: 768px) {
-  .text-size {
-    padding-left: 50px;
-    padding-right: 50px;
-//     p {
-//       font-size: 2vw;
-//     }
-
-//     h3 {
-//       font-size: 3.2vw;
-//     }
-
-//     h4 {
-//       font-size: 1.75vw;
-//     }
-
-//     h5 {
-//     font-size: 2.4vw;
-//      }
-  }
-
-  .table-text-size {
-    font-size: 1.9vw;
-}
 }

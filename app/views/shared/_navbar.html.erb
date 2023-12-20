@@ -25,7 +25,7 @@
             <%= render "shared/round", round: @round %>
           <% end %>
         </li>
-        <li><%= link_to t('.tournament_rules_link'), rules_path, class: "nav-link active" %></li>
+        <li><%# link_to t('.tournament_rules_link'), rules_path, class: "nav-link active" %></li>
         <li><%# link_to t('.club_staff_link'), staff_path, class: "nav-link" %></li>
         <li>
           <% if user_signed_in?%>

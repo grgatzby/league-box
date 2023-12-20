@@ -1,0 +1,15 @@
+<li>
+  <div class="row player-to-orange color-tennis-blue">
+    <div class="col-4"><%= render "shared/fullname", user: player_opponent %></div>
+    <div class="col-8"><%= t '.not_played' %></div>
+    <% if current_user == @admin %>
+      <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= message %>">
+        <!-- click on opponent line to enter new match score -->
+        <%= link_to '', new_match_path(round_id: @box.round.id, opponent_id: player_opponent.id, player_id: player.id), class: "line-link" %>
+      </div>
+    <% end %>
+  </div>
+</li>
