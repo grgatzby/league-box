@@ -11,7 +11,7 @@ nl:
         Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chatroom %{chatroom}"
       send_btn: ⎷ Versturen
-      back_btn: ← Rug
+      back_btn: ←
       chose_chatroom: "Kies een chatroom: "
       confirm_btn: ⎷ Bevestigen
       chatrooms_title: "Chatrooms van %{club}"

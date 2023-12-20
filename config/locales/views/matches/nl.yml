@@ -1,8 +1,7 @@
 nl:
   matches:
-    match:
-      won: Gewonnen
-      lost: Verloren
+    match_winner:
+      winner: "Winaar:"
     edit:
       edit_match_title: Bewerk een partituur
       p01: Bewerk of verwijder partituur
@@ -15,7 +14,7 @@ nl:
       update_score_btn: ⎷ Bevestigen
       delete_score_btn: x Verwijderen
       sure: Jij bevestigt?
-      back_btn: ← Rug
+      back_btn: ←
     new:
       new_match_title: Nieuwe score
       p01: Voer de nieuwe score in
@@ -25,12 +24,12 @@ nl:
       set_2: 2e setje
       tie_break: Tie-break
       save_score_btn: ⎷ Bevestigen
-      back_btn: ← Rug
+      back_btn: ←
       round_not_started_flash: De ronde is nog niet begonnen.
     show:
-      match_played: "Wedstrijd gespeeld op %{date} op veld %{court}."
-      score: "Score : "
+      match_played: "Gespeeld op %{date} op veld %{court}."
+      score: Score
       submitted: "ingevoerd op %{date} door %{user}."
       points_earned: "Punten verdiend : "
       challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
-      back_btn: ← Terug naar Mijn box
+      back_btn: ← Mijn box

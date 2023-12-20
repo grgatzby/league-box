@@ -6,7 +6,7 @@ class UserBoxScoresController < ApplicationController
     set_club_round
 
     # @order dictates the sorting order of the selected header
-    # it is passed from the partial _table_header_lnk.html.erb when a header is clicked
+    # it is passed from the partial _header_to_link.html.erb when a header is clicked
     if params[:order] && (params[:exsort] == params[:sort])
       @order = params[:order].to_i
     else
@@ -121,7 +121,7 @@ class UserBoxScoresController < ApplicationController
   private
 
   def export_to_csv
-    # EXAMPLE from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    # EXAMPLE NOT USED from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     file = "#{Rails.root}/public/data.csv"
     table = User.all;0 # ";0" stops output.  Change "User" to any model.
     CSV.open(file, 'w') do |writer|

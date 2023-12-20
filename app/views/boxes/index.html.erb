@@ -1,21 +1,19 @@
 <!-- list of all boxes -->
 <div class="container">
-  <div class="same-line" style="width: 50%">
+  <div class="one-line">
     <h3><%= t '.all_box_title' %></h3>
-    <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
-  </div>
-  <div class="dont-print">
-    <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: t(".intro") %>
+    <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
   </div>
   <% if @round %>
-    <div class = "same-line">
-      <%= render "shared/display_club_round", round: @round %>
+    <div class = "one-line">
+      <%= render "shared/display_club_round", round: @round, fallback_path: boxes_path %>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+      <%= render "shared/select_round", fallback_path: boxes_path %>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 1000}'
         data-bs-content="<%= t '.message_box_pop' %>">
-      <div class="boxes expand-to-print box-scroller">
+      <div class="boxes print-all-content box-scroller">
         <% @boxes.each do |box| %>
           <div class="box small-font">
             <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
@@ -48,6 +46,11 @@
       <% elsif current_user && current_user.role == "referee" %>
           <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
       <% end %>
+    </div>
+  <% else %>
+    <div class="dont-print">
+      <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
+      <%= render "shared/select_club_round", fallback_path: boxes_path, intro_paragraph: t(".intro") %>
     </div>
   <% end %>
 </div>

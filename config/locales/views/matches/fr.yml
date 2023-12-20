@@ -1,8 +1,7 @@
 fr:
   matches:
-    match:
-      won: Gagné
-      lost: Perdu
+    match_winner:
+      winner: "Vainqueur:"
     edit:
       edit_match_title: Editer un score
       p01: Editer ou supprimer le score
@@ -15,7 +14,7 @@ fr:
       update_score_btn: ⎷ Valider
       delete_score_btn: x Supprimer le score
       sure: Confirmez-vous?
-      back_btn: ← Retour
+      back_btn: ←
     new:
       new_match_title: Nouveau score
       p01: Saisir le nouveau score
@@ -25,12 +24,12 @@ fr:
       set_2: 2ème set
       tie_break: Tie-break
       save_score_btn: ⎷ Valider
-      back_btn: ← Retour
+      back_btn: ←
       round_not_started_flash: Le Round n'a pas commencé.
     show:
-      match_played: "Match joué le %{date} sur le court %{court}."
-      score: "Score : "
+      match_played: "Disputé le %{date} sur le court %{court}."
+      score: Score
       submitted: "saisi le %{date} par %{user}."
       points_earned: "Points gagnés : "
       challenge: "Pour contester ou modifier ce score, contacter le club Referee %{referee}."
-      back_btn: ← Retour à Ma box
+      back_btn: ← Ma box

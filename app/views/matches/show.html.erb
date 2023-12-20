@@ -2,25 +2,34 @@
 <div class="container">
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:current_user.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id) %>
-  <h3><%= render "shared/fullname", user: current_user %><%= "(# #{player_ubs.rank})" %> vs
-  <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %></h3>
-
-  <div class="frame-shape home-wrap text-size">
-    <br><h4><%= render "match", my_card: @current_user_match_score %>by <%= render "shared/fullname", user: current_user %></h4>
+  <h3>
+    <%= render "shared/fullname", user: current_user %><%= "(# #{player_ubs.rank})" %> vs
+    <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
+  </h3>
+  <div class="frame-color-shape frame-padding-freetop text-size">
+    <br><h4><b><%= render "match_winner", winner: @current_user_match_score.is_winner ? current_user : @opponent %></b></h4>
+    <% tiebreak = @current_user_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
+    <h5>
+      <%= render "shared/score2", user_match_score: @current_user_match_score, tiebreak: tiebreak %><br>
+      <%= render "shared/score2", user_match_score: @opponent_match_score, tiebreak: tiebreak %>
+    </h5>
+    <%= t '.score' %>
+    <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
+    <% log_time = @tz.to_local(ums.input_date) %>
+    <% score_input_by = User.find(ums.input_user_id) %>
+    <span class=" color-tennis-blue">
+      <i><%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_at_hhmm),
+                             user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
+      </i>
+    </span>
+    <br>
     <% match_time = @tz.to_local(@match.time) %>
     <br>
     <%# t(".match_played", date: match_time.strftime("%a %-d %h %y"), time: match_time.strftime("%H:%M"), court: @match.court.name) %>
     <%= t(".match_played", date: l(match_time, format: :wwwddmmmyy_at_hhmm), court: @match.court.name) %>
 
-    <br><br>
-    <b><%= t '.score' %></b>
-    <%= (render "shared/score", user_score: @current_user_match_score, opponent_score: @opponent_match_score).strip %>,
-    <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: current_user.id) %>
-    <% log_time = @tz.to_local(ums.input_date) %>
-    <% score_input_by = User.find(ums.input_user_id) %>
-    <span class=" color-tennis-blue"><%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_at_hhmm), user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %></span>
-    <br><br>
-    <b><%= t '.points_earned' %></b>
+    <br><br><br>
+    <b><%= t '.points_earned' %></b><br>
     <%= (render "shared/fullname", user: current_user).strip %>
     <%= ": #{t("points", count: @current_user_match_score.points)} (#{t("box_pts", count: player_ubs.points)}) - " %>
     <%= (render "shared/fullname", user: @opponent).strip %>
@@ -31,7 +40,7 @@
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
         title="<%= name %>" data-bs-content="<%= message %>">
-      <%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %>
+      <i><%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %></i>
     </div>
     <br>
   </div>

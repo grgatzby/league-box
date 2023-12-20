@@ -16,45 +16,46 @@ export default class extends Controller {
   static targets = ["togglableButton", "togglableElement", "toggler", "topButton"]
   static values = {
     displayRules: String,
-    hideRules: String
+    hideRules: String,
+    screenType: String
   }
 
   connect() {
-    var context = this.togglableElementTarget
-    var button = this.topButtonTarget
-    var oldScrollY = context.scrollTop;
-    context.onscroll = function(e) {
-      // when scrolling UP in the scroll-box, scroll the entire window up
-      if (oldScrollY < context.scrollTop && context.scrollTop > 0) {
+    var currentElement = this.togglableElementTarget;
+    var oldScrollY = currentElement.scrollTop;
+    var screenType = this.screenTypeValue;
+    var topButton = this.topButtonTarget;
+
+    currentElement.onscroll = function(e) {
+      if (oldScrollY < currentElement.scrollTop && currentElement.scrollTop > 0 && screenType !== "mobile") {
+        // when scrolling UP in the scroll-box, scroll the entire window up if NOT on a mobile screen
         window.scrollTo(0, document.body.scrollHeight);
-        console.log("old:", oldScrollY, "context:", context.scrollTop, "half window:", window.innerHeight/2);
-        console.log("scrolling top")
       }
-      oldScrollY = context.scrollTop;
-      // when the scrolling in the scroll-box is half way down, show the Top button
-      if (context.scrollTop > window.innerHeight/2){
-        button.classList.remove("d-none");
+      oldScrollY = currentElement.scrollTop;
+      // console.log('top button', topButton.classList);
+      if (currentElement.scrollTop > window.innerHeight/3) {
+        // when the scrolling through the scroll-box, show the Top button
+        topButton.classList.remove("d-none");
       } else {
-        button.classList.add("d-none");
+        topButton.classList.add("d-none");
       }
     }
-    }
+  }
 
 
   scrollToTop() {
-    // when the user clicks on the Top button, scroll to the top of the document
+    // when the user clicks on the "Top" button, scroll to the top of the document
     // this.togglableElementTarget.scrollTop = 0 // instantaneous scrollTop
     this.togglableElementTarget.scrollTo({top: 0, behavior: 'smooth'});
   }
 
-  fire() {
-    // when the user clicks on the hide/display the rules button
+  toggleRules() {
+    // when the user clicks on the "hide/display the rules" button
     this.togglableElementTarget.scrollTop = 0 // instantaneous scrollTop
     this.togglableElementTarget.classList.toggle("d-none");
     this.togglableButtonTarget.classList.toggle("d-none");
     const btn = this.togglerTarget
     let txt = btn.innerText
-    // btn.textContent = txt == "Display the rules" ? "Hide the rules" : "Display the rules"
     btn.textContent = txt == this.displayRulesValue ? this.hideRulesValue : this.displayRulesValue
     window.scrollTo({top: window.innerHeight-66-24, behaviour: "smooth"});
   }

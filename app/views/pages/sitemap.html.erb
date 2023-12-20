@@ -1,7 +1,7 @@
 <%= render "shared/image_front", sticky: false %>
 
 <div class="container" data-controller="toggle">
-  <div class="frame-shape home-wrap text-size box-scroller"
+  <div class="frame-color-shape frame-padding-freetop text-size box-scroller"
        data-toggle-target="togglableElement" >
     <br><h3><%= t(".sitemap_title").upcase %></h3>
     <br><h5><%= t '.home' %></h5>
@@ -78,9 +78,9 @@
 
     <br><h5><%= t '.chatrooms' %></h5>
     <% if current_user && current_user.role != "player" %>
-      <p><%= t '.p28_html' %></p>
-    <% else %>
       <p><%= t '.p27_html' %></p>
+    <% else %>
+      <p><%= t '.p28_html' %></p>
     <% end %>
     <ul>
       <li><%= t '.li08_html' %></li>

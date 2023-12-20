@@ -1,4 +1,4 @@
-.do-print {
+.will-print {
   // elements that appear only when printing
   opacity: 0;
 }
@@ -15,11 +15,11 @@
     display: none;
   }
 
-  .do-print {
+  .will-print {
     opacity: 0.6;
   }
 
-  .expand-to-print, .chatroom .messages {
+  .print-all-content, .chatroom .messages {
     display: block;
     width: auto;
     height: auto;

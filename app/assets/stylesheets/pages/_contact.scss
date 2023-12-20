@@ -23,18 +23,6 @@
   .contact-space-between {
     justify-content: space-between;
   }
-
-  .contact-message {
-    background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
-    position: fixed;
-    bottom: 50%; /* Place the button relative to the bottom of the page */
-    right: 45%; /* Place the button 5px from the right */
-    border: 1px solid $gray-600;
-    padding: 20px;
-    border-radius: 0.25rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-    opacity: 1;
-  }
 }
 
 @media only screen and (max-width: 990px) {
@@ -51,10 +39,8 @@
 @media only screen and (max-width: 1200px) {
  .contact-wrap {
   //  padding: 25px calc(var(--bs-gutter-x) * 2) 5px;
-
    .contact-align {
     width: 100%;
-
   }
   }
 }

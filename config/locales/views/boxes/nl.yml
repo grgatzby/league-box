@@ -1,19 +1,21 @@
 nl:
-  back_btn: ← Rug
+  back_btn: ←
   boxes:
+    switch: naar
     list_view: resultaten lijst
     referee_view: pagina Referee
     table_view: resultatenraster
     intro_lines:
-      my_box_btn: Mijn box
+      my_box_btn: Mijn scores
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
-      my_current_box: mijn huidige box
+      my_current_box: huidige box
+      all_boxes_link: Naar boxen
     index:
       all_box_title: Bekijk de boxen
-      intro: "Bekijk voor de gekozen ronde in één oogopslag de <b>spelers, ranglijsten, gespeelde wedstrijden en cumulatieve punten</b> van jouw club<br />"
-      message_box_pop: <b>Kopteksten</b><br />speler, ranking,<br />gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
+      intro: In één oogopslag, bekijk de <b>spelers, <b>ranglijsten, gespeelde wedstrijden en cumulatieve punten</b><br />
+      message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
     my_box:
@@ -26,35 +28,34 @@ nl:
       played_on_header: Wedstrijd gespeeld
       action_header: Actie
       view_box_results_btn: Mijn boxresultaten
-      see_match_result_btn: Wedstrijdscore
+      see_match_card_btn: Wedstrijdkaart
       enter_score_btn: Voer een score in
-      chat_in_my_box: Chat met de spelers in uw box
+      chat_in_my_box: Organiseer uw wedstrijden
       access_chatroom_btn: Chatroom van uw box
-    show_list:
+    show_lr_headers:
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
       opponent_points_header: Tegenstander punten
       opponent_total_points_header: Tegenstander accumulatiepunten
       points_pop: >
-        De winnaar verdient 20 punten.<br />
+        De winnaar verdient 20 punten voor de wedstrijd.<br />
         De verliezer verdient 10 punten per gewonnen set + aantal games per verloren set.<br />
         De tiebreak voor het kampioenschap telt als een set (er worden geen punten toegekend aan de verliezer).
+    show_lr_data:
       won: Won
       lost: Verloren
       on_date: "op"
-      dont_forget_html: Vergeet niet uw wedstrijden te spelen en uw scores in <b>Mijn box</b> in te voeren!
-    show_referee:
-      not_authorised: Ongeautoriseerde pagina
-      match_score_header: Wedstrijdscores
-      player_points_header: Spelerpunten
-      opponent_points_header: Tegenstander punten
-      opponent_total_points_header: Tegenstander accumulatiepunten
+      dont_forget_html: <i>Vergeet niet uw wedstrijden te spelen en uw scores in <span class='color-tennis-red'><b>Mijn scores</b></span> in te voeren!</i>
+    no_match_line:
+      not_played: Nog niet gespeeld
+    match_line:
       pop01: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
       won: Won
       lost: Verloren
       on_date: "op"
-      not_played: Nog niet gespeeld
+    show_referee:
+      not_authorised: Ongeautoriseerde pagina
       pop02_a: Klik om de score in te voeren<br />
     show:
       not_played: Nog niet gespeeld

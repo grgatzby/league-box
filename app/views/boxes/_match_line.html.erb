@@ -1,0 +1,37 @@
+<% match = player_match[0]
+    opponent = player_match[1]
+    user_score = player_match[2]
+    opponent_score = player_match[3] %>
+<% if match %>
+  <% name = "Score"
+      score_input_by = User.find(user_score.input_user_id)
+      input_date = @tz.to_local(user_score.input_date) %>
+  <% message = "#{t(".pop01", user: "#{score_input_by.role} #{render "shared/fullname", user: score_input_by}",
+                              date: l(input_date, format: :wwwddmmmyy_at_hhmm))}" %>
+  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+      data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+      data-bs-content="<%= message %>">
+    <li>
+      <div class="row player-to-orange">
+        <div class="col-4">
+          <%= "#{user_score.is_winner ? t(".won") : t(".lost")}" %>
+          <i>vs</i>
+          <span class="color-tennis-blue">
+            <%= render "shared/fullname", user: opponent %>
+            <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
+          </span>
+          <% match_time = @tz.to_local(match.time) %>
+          <%= " #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
+        </div>
+        <div class="col-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
+        <div class="col-2"><%= t("pts", count: user_score.points) %></div>
+        <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
+        <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
+        <!-- click on player line to update/delete match and user_match_scores details -->
+        <% if current_user.role != "player" %>
+          <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
+        <% end %>
+      </div>
+    </li>
+  </div>
+<% end %>

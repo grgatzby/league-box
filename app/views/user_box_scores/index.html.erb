@@ -1,80 +1,35 @@
-<!-- display the league table -->
-<div class="container" data-controller="toggle">
+<!-- index page: league table -->
+<div class="container" data-controller="toggle"
+     data-toggle-screen-type-value="<%= @browser_device_mobile ? "mobile" : "widescreen" %>">
   <br>
-  <div class="same-line" style="width: 20rem">
+  <div class="one-line">
     <h3><%= t '.league_table_title' %></h3>
-    <span class="do-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+    <!-- the following line will display when printing the page -->
+    <span class="will-print one-line">
+      <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
+      <div>League Box ©</div>
+      <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
+    </span>
   </div>
   <% if @round %>
     <div class="text-size">
-      <div class="same-line">
-        <%= render "shared/display_club_round", round: @round %>
-        <span class="nav-item time-color top-bottom-padding do-print">
-          <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>
-        </span>
-        <% if !@render_to_text %>
-          <div>
-            <%= link_to t('print_btn'), '#',
-                onclick: 'window.print();return false;',
-                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-            <%= link_to t('.to_text_btn'),
-                user_box_scores_path(to_text: true, round_start: @round.start_date, club_name: @round.club.name),
-                method: :get,
-                onclick: 'JavaScript:location.reload(true);',
-                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-            <%= link_to t('.to_csv_btn'),
-                user_box_scores_path(to_csv: true, round_start: @round.start_date, club_name: @round.club.name),
-                method: :get,
-                onclick: 'JavaScript:location.reload(true);',
-                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-            <%= link_to 'Download', download_path(round_start: @round.start_date, club_name: @round.club.name),
-                class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-          </div>
-        <% end %>
+      <div class="one-line">
+        <%= render "shared/display_club_round", round: @round,
+                                                mobile_screen: @browser_device_mobile ? true : false,
+                                                fallback_path: user_box_scores_path %>
+        <%= render "shared/select_round", fallback_path: user_box_scores_path %>
       </div>
-
       <% if !@render_to_text %>
-        <% if params["sort"] %>
-          <% params["sort"] = nil  %>
-          <p class="stick-rules dont-print text-size">
-            <%= link_to t(".top_line_html"), user_box_scores_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-green no-padding-no-border"%>
-          </p>
-        <% else %>
-          <p class="stick-rules dont-print text-size">
-            <%= t '.top_line_html' %>
-          </p>
-          <div class="photo-wrap frame-shape frame-padding text-size dont-print">
-            <%= sanitize t('.rules') %>
-          </div><br>
-        <% end %>
+        <%# exclude buttons and top line from exporting to text (in user_box_score index) %>
+        <br><%= render 'buttons', round: @round %>
+        <%= render 'top_line', round: @round, browser_device_mobile: @browser_device_mobile %>
       <% end %>
-      <%# <div class="league-frame"> %>
-      <% if @browser_device_mobile %>
-        <%= render 'league_to_mobile' %>
-      <% else %>
-        <%= render 'league_to_widescreen' %>
-      <% end %>
-
-
-
-
-
-
-      <!-- league-frame and league-container allow overflow-x (horizontal scroll) but kills stickiness
-      stickiness do not marry well with overflow, solve it with https://uxdesign.cc/position-stuck-96c9f55d9526  -->
-<!--       <div class="frame-shape frame-padding text-size table-text-size">
-      <%# <div class="frame-shape frame-padding text-size league-container"> %>
-        <%= render "table_headers" %>
-        <div class="expand-to-print box-scroller" data-toggle-target="togglableElement" >
-          <ol type="1"><%= render "table_data", user_box_scores: @user_box_scores %></ol>
-          <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-            class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
-          </button>
-        </div>
-      </div>  -->
+      <%= render 'league_table' %>
     </div>
   <% else %>
-    <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
-    <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: t(".intro") %>
+    <div class="dont-print">
+      <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
+      <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: t(".intro") %>
+    </div>
   <% end %>
 </div>

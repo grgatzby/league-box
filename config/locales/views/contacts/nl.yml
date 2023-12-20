@@ -27,6 +27,22 @@ nl:
       phone_placeholder: Telefoon
       file_attached: Er is geen bestand bijgevoegd. Toch versturen?
       send_btn: ⎷ Verzenden
+    staff:
+      your_club_staff_title: Clubpersoneel
+      staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
+      staff_p02_html: >
+        De clubReferee is uw aanspreekpunt als <b>u het niet eens bent over een score</b> die al in het systeem is ingevoerd,
+        of <b>u heeft een slechte score ingevoerd</b>: wijzig of verwijder deze. Neem contact op met uw Referee via uw boxchatroom of per telefoon.
+      staff_p03_html: >
+        Als om wat voor reden dan <b>ook noch jij, noch je tegenstander je score in het systeem kunnen invoeren</b>, neem dan contact op met de beheerder die deze daarna voor je zal invoeren
+        validatie van de Referee.
+      header_name: Naam
+      header_club: 🎾 Club
+      header_email: ✉️ E-mail
+      header_phone: 📞 Telefoon
+      header_role: 🧩 Rol
+      website_admin: Sitebeheerder (admin)
+      club_referee_html: "Referee van %{club_name}"
     sent:
       sent_title: Bericht verzonden!
       p01_html: Bedankt voor je bericht. Uw <b>admin</b> neemt binnenkort contact met u op.
@@ -35,7 +51,7 @@ nl:
       p04_html: >
         Bedankt voor het aanvragen van een nieuwe rondecreatie voor %{club_name}.<br>
         Uw <b>admin</b> neemt binnenkort contact met u op.
-      back_btn: ← Rug
+      back_btn: ←
       home_btn: Home-pagina
     create:
       error_flash: Fout bij verzenden van bericht

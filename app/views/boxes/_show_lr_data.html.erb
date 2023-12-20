@@ -1,0 +1,38 @@
+<div class="box-scroller" data-toggle-target="togglableElement">
+  <!-- show list data (list view and referee view)-->
+  <ul>
+    <%#  @box_matches = [user_box_score , player_matches, player]
+          and player_matches = [match, opponent, user_score, opponent_score] %>
+    <% sorted_players = @box_matches.map { |bm| bm[2]} %>
+    <% @box_matches.each do |user_box_matches| %>
+      <li class="top-bottom-padding">
+        <% user_box_score = user_box_matches[0]
+           player_matches = user_box_matches[1]
+           player = user_box_matches[2] %>
+        <div class=<%=user_box_score.user == current_user ? "color-orange" : ""%>>
+          <%= render "shared/fullname", user: player %>
+          <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
+        </div>
+        <ul>
+          <% sorted_players.each do |player_opponent| %>
+            <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
+            <% if player_match %>
+              <%= render "match_line", player_match: player_match, user_box_score: user_box_score %>
+            <% elsif player_opponent != player && view == "referee"%>
+              <%= render "no_match_line", player: player, player_opponent: player_opponent %>
+            <% end %>
+          <% end %>
+          <% if player_matches.count == 1 && view == "player" %>
+            <%# no match played for this player %>
+            <div class="col-4"></div>
+            <div class="col-6"><%= t '.dont_forget_html' %></div>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+    class="btn buttons-shape btn-blue button-top d-none">
+    <i class="fa-solid fa-up-long"></i>
+  </button>
+</div>

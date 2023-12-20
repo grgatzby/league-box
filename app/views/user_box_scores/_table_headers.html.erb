@@ -1,11 +1,11 @@
-<% up = ["↓", "↑"] %>
-<% down = ["↑", "↓"]%>
+<!-- league table headers -->
+<% topdown = ["↑", "↓"] %>
 
-<div class="col-3"><%=render "table_header_lnk", header: t('.player_header'), dir: up%></div>
-<div class="col-1"><%=render "table_header_lnk", header: t('.rank_header'), dir: up%></div>
-<div class="col-1"><%=render "table_header_lnk", header: t('.points_header'), dir: down%></div>
-<div class="col-1"><%=render "table_header_lnk", header: t('.box_header'), dir: up%></div>
-<div class="col-2"><%=render "table_header_lnk", header: t('.matches_played_header'), dir: down%></div>
-<div class="col-2"><%=render "table_header_lnk", header: t('.matches_won_header'), dir: down%></div>
-<div class="col-1"><%=render "table_header_lnk", header: t('.sets_played_header'), dir: down%></div>
-<div class="col-1"><%=render "table_header_lnk", header: t('.sets_won_header'), dir: down%></div>
+<div class="col-3"><%=render "header_to_link", header: t('.player_header'), direction: topdown.reverse%></div>
+<div class="col-1"><%=render "header_to_link", header: t('.rank_header'), direction: topdown.reverse%></div>
+<div class="col-1"><%=render "header_to_link", header: t('.points_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_to_link", header: t('.box_header'), direction: topdown.reverse%></div>
+<div class="col-2"><%=render "header_to_link", header: t('.matches_played_header'), direction: topdown%></div>
+<div class="col-2"><%=render "header_to_link", header: t('.matches_won_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_to_link", header: t('.sets_played_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_to_link", header: t('.sets_won_header'), direction: topdown%></div>

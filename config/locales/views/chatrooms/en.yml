@@ -11,7 +11,7 @@ en:
         Messages are displayed on the left of the screen, except for your messages which are on the right
       chatroom_title: "%{chatroom} chatroom"
       send_btn: ⎷ Send
-      back_btn: ← Back
+      back_btn: ←
       chose_chatroom: "Chose a chatroom: "
       confirm_btn: ⎷ Confirm
       chatrooms_title: "%{club} chatrooms"

@@ -1,13 +1,13 @@
 fr:
   user_box_scores:
     index:
-      intro: Pour le round choisi, consultez la <b>league table</b> du club
-      to_text_btn: Exporter vers un fichier texte
-      to_csv_btn: Exporter vers un fichier CSV
+      intro: La <b>league table</b> est mise à jour dès qu'un score est saisi
       league_table_title: League table
+      file_csv_flash: fichier data.csv créé
+    top_line:
       top_line_html: >
-        Cliquer sur la <span class="color-orange-light"><b>ligne du joueur</b></span> pour accéder à sa box
-        ou trier par <span class="color-tennis-blue"><b>entête</b></span> en cliquant dessus.
+        Cliquer <span class="color-orange-light"><b>la ligne d'un joueur</b></span> pour <b>accéder à sa box</b>
+        ou <span class="color-tennis-blue"><b>sur un entête</b></span> pour <b>réordonner la table</b>
       rules: >
         Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
         Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
@@ -17,7 +17,9 @@ fr:
           <li>Ratio sets gagnés sur sets joués</li>
           <li>Ratio jeux gagnés sur jeux joués</li>
         </ol>
-      file_csv_flash: fichier data.csv créé
+    buttons:
+      to_text_btn: Exporter vers un fichier texte
+      to_csv_btn: Exporter vers un fichier CSV
       # player_header: Joueurs
       # rank_header: Rang
       # points_header: Points
@@ -60,7 +62,7 @@ fr:
       round_dates: dates du round
       load_csv_file: charger le fichier CSV
       submit_btn: ⎷ Valider
-      back_btn: ← Retour
+      back_btn: ←
     create:
       header_flash: Les entêtes doivent être "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
       file_type_flash: Choisissez un fichier de type csv.

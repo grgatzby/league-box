@@ -1,25 +1,25 @@
 class BoxesController < ApplicationController
   def index
     @page_from = params[:page_from]
-    set_club_round    # define variables @club and @round
+    set_club_round    # set variables @club and @round (ApplicationController)
   end
 
   def show
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
-    # @box_matches is an array of [user_box_score , matches(user_box_score.user)]
-    # matches(user_box_score.user) is an array of [match, opponent, user_score, opponent_score]
-    @box_matches = box_matches(@box)
+    # @box_matches = array [user_box_score , matches_details(user), user]
+    # matches_details(user) = array [match, opponent, user_score, opponent_score]
+    @box_matches = box_matches(@box)    # sorted by descending points scores
     @this_is_my_box = my_box?(@box)
     @my_current_box = my_own_box(current_round(current_user.club_id))
   end
 
   def show_list
-    show        # inherited from #show method
+    show        # inherit from #show
   end
 
   def show_referee
-    show        # inherited from #show method
+    show        # inherit from #show
   end
 
   def my_box

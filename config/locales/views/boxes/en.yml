@@ -1,19 +1,21 @@
 en:
-  back_btn: ← Back
+  back_btn: ←
   boxes:
+    switch: switch to
     list_view: list view
     referee_view: Referee view
     table_view: table view
     intro_lines:
-      my_box_btn: My box
+      my_box_btn: My scores
       pop01_a: select a match to edit or delete the score
       pop01_b: ", or enter a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
-      my_current_box: my current box
+      my_current_box: current box
+      all_boxes_link: All boxes
     index:
       all_box_title: View all boxes
-      intro: "For a given round, view for all boxes at a glance <b>player names, rankings, games played and box points</b><br />in your club"
-      message_box_pop: <b>Box columns:</b><br />player name, rank,<br />games played, box points.<br /><br />Click on a box to view match details
+      intro: "At a glance, see <b>all players name, their ranking, <b>number of played games, and their cumulated box points</b><br />"
+      message_box_pop: <b>Box columns:</b><br />Player name, rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       create_round_btn: ⎷ Create the next round
       request_round_btn: Request the admin the next round
     my_box:
@@ -26,35 +28,34 @@ en:
       played_on_header: Match played on
       action_header: Action
       view_box_results_btn: Display my box
-      see_match_result_btn: See match score
+      see_match_card_btn: Match card
       enter_score_btn: Enter new score
-      chat_in_my_box: Chat with other players in my box
+      chat_in_my_box: Organise your matches
       access_chatroom_btn: Access the box chatroom
-    show_list:
+    show_lr_headers:
       match_earnings: Match earnings
       match_score_header: Match scores
       player_points_header: Player's points
       opponent_points_header: Opponent's points
       opponent_total_points_header: Opponent's total points
       points_pop: >
-        Winner earns 20 points.<br />
+        Winner earns 20 points for the match.<br />
         Looser earns 10 points per set won + number of games per lost set.<br />
         The championship tie-break counts as one set (no points awarded for the looser).
+    show_lr_data:
       won: Won
       lost: Lost
       on_date: "on"
-      dont_forget_html: Don't forget to play your matches and enter your scores in <b>My box</b>!
-    show_referee:
-      not_authorised: As a player, this page is not authorised
-      match_score_header: Match scores
-      player_points_header: Player's points
-      opponent_points_header: Opponent's points
-      opponent_total_points_header: Opponent's total points
+      dont_forget_html: <i>Don't forget to play your matches and enter the scores in <span class='color-tennis-red'><b>My scores</b></span>!</i>
+    no_match_line:
+      not_played: Not played yet
+    match_line:
       pop01: "<b>Score entered</b><br />by %{user}<br />on %{date}"
       won: Won
       lost: Lost
       on_date: "on"
-      not_played: not played
+    show_referee:
+      not_authorised: As a player, this page is not authorised
       pop02_a: Click to enter the new match score for<br />
     show:
       not_played: Not played yet

@@ -1,0 +1,12 @@
+<div>
+  <%= form_with url: fallback_path, method: :get do |form| %>
+    <%= form.label :round_start, local_assigns[:label] ? label : t('.select_round_start') %>
+    <%= hidden_field_tag(:club_name, @club.name) %>
+    <% if @round%>
+      <%= form.select(:round_start, @start_dates, {:selected => params[:round_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <% else %>
+      <%= form.select :round_start, @start_dates, :selected => params[:round_start] %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+    <% end %>
+  <% end %>
+</div>

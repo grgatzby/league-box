@@ -13,7 +13,7 @@
     <% if @user_not_in_round %>
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
-      <div class="same-line">
+      <div class="one-line">
         <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
         <div>
           <!-- Back -->
@@ -29,10 +29,10 @@
           <% end %>
         </div>
       </div>
-      <div class="frame-shape players frame-padding text-size">
+      <div class="frame-color-shape players frame-padding text-size">
         <h4><%= t '.view_enter_scores' %></h4>
         <h6>
-          <div class="row justify-content-center top-bottom-padding font-bold text-size">
+          <div class="row justify-content-center top-bottom-padding bold-font text-size">
             <div class="col-3"><%= t '.player_header' %></div>
             <div class="col-2"><%= t '.total_points_header' %></div>
             <div class="col-2"><%= t '.played_on_header' %></div>
@@ -68,16 +68,16 @@
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn buttons-shape btn-blue text-size" %>
               <% elsif match %>
                 &emsp;&emsp;&emsp;&emsp;&emsp;
-                <%= link_to t(".see_match_result_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn button-ghost text-size" %>
+                <%= link_to t(".see_match_card_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn btn-ghost text-size" %>
               <% else %>
                 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-                <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn button-ghost text-size" %>
+                <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn btn-ghost text-size" %>
               <% end %>
             </div>
           </div>
         <% end %>
       </div><br>
-      <div class="frame-shape players frame-padding text-size">
+      <div class="frame-color-shape players frame-padding text-size">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
           <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: "btn buttons-shape btn-blue text-size" %>
