@@ -15,7 +15,7 @@ en:
       contact_p02: Score disputes should be dealt in your box chatroom.
       prompt: Select a topic →
       topics:
-      - feedback: Feedback
+      - feedback: Feedback on this website
       - join_club: Join one of our clubs
       - other_topic: Any other topic
       new_round_subject: "New round request for the %{club}"
@@ -27,20 +27,6 @@ en:
       phone_placeholder: Phone number
       file_attached: No file is attached. Send anyway?
       send_btn: ⎷ Send
-    staff:
-      your_club_staff_title: Your club staff
-      staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and on this website.
-      staff_p02_html: >
-        The club Referee is your point of contact, should <b>you have a dispute on a match score</b> that was previously input
-        in the system, or if <b>you entered a bad score</b>: he can edit the score, or delete it. Get in touch with your Referee through box chatroom or by phone.
-      staff_p03_html: If for any reason, <b>neither you nor your opponent can enter the match score</b> in the system, please contact the admin who will enter the Referee-approved score for you.
-      header_name: Name
-      header_club: 🎾 Club
-      header_email: ✉️ email
-      header_phone: 📞 Telephone
-      header_role: 🧩 Role
-      website_admin: Website admin
-      club_referee_html: "%{club_name} Referee"
     sent:
       sent_title: Message sent!
       p01_html: Thank you for your message. Your <b>admin</b> will get back to you soon.

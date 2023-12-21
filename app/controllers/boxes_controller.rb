@@ -23,6 +23,8 @@ class BoxesController < ApplicationController
   end
 
   def my_box
+    # passing 0 to my_box_path, forces user to choose a round
+    # <%= link_to "My box", my_box_path(0), class: "btn buttons-shape btn-green" %>
     @page_from = params[:page_from]
     @current_player = current_user
     # allow player to view their box and select enter new score / view played match

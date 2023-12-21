@@ -142,22 +142,6 @@ fr:
       mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email}"
       mail_to_admin_html: "votre admin à %{admin_email}"
       p42_html: "les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
-    staff:
-      your_club_staff_title: Personnel du club
-      staff_p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
-      staff_p02_html: >
-        Le Referee du club sera votre point de contact, pour arbitrer un <b>désaccord sur un score déjà entré</b> dans le système,
-        ou si <b>vous avez saisi un mauvais score</b>: il pourra le modifier ou le supprimer. Contactez votre Referee via la chatroom de votre box ou par téléphone.
-      staff_p03_html: >
-        Si pour une raison quelconque, <b>ni votre adversaire ni vous-même ne pouvez entrer votre score</b> dans le système, contactez l'admin qui le rentrera pour vous après
-        validation par le Referee.
-      header_name: Nom
-      header_club: 🎾 Club
-      header_email: ✉️ email
-      header_phone: 📞 Téléphone
-      header_role: 🧩 Rôle
-      website_admin: Administrateur du site
-      club_referee_html: "Referee du %{club_name}"
     sitemap:
       sitemap_title: Plan du site LeagueBox
       home: Page d'accueil
