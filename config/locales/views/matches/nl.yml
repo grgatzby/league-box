@@ -3,26 +3,31 @@ nl:
     match_winner:
       winner: "Winaar:"
     edit:
-      edit_match_title: Bewerk een partituur
-      p01: Bewerk of verwijder partituur
-      match_played: "Veld: "
-      date_time: "Datum en uur:"
+      edit_match_title: Bewerk een wedstrijdscore
+      p01: Update of verwijder een bestaande wedstrijdscore
+      match_played: "Tennisbaan:"
+      date_time: "Wedstrijd gespeeld:"
       set_1: 1e set
       set_2: 2e setje
       tie_break: Tie-break
-      submitted: "Skern ingevoerd op %{date} door %{player}."
+      submitted: "Score ingevoerd op %{date} door %{player}."
       update_score_btn: ⎷ Bevestigen
       delete_score_btn: x Verwijderen
       sure: Jij bevestigt?
       back_btn: ←
     new:
       new_match_title: Nieuwe score
-      p01: Voer de nieuwe score in
-      match_played: "Veld: "
-      date_time: "Datum en uur:"
+      p01: Voer een nieuwe score in
+      match_played: "Tennisbaan:"
+      date_time: "Wedstrijd gespeeld:"
+      score: "Wedstrijdscore:"
+      player_1: Speler 1
+      player_2: Speler 2
       set_1: 1e set
       set_2: 2e setje
       tie_break: Tie-break
+      input_score: kies een score
+      and_more: en meer
       save_score_btn: ⎷ Bevestigen
       back_btn: ←
       round_not_started_flash: De ronde is nog niet begonnen.

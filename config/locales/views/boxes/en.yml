@@ -49,13 +49,14 @@ en:
       dont_forget_html: <i>Don't forget to play your matches and enter the scores in <span class='color-tennis-red'><b>My scores</b></span>!</i>
     no_match_line:
       not_played: Not played yet
+      pop02_a: Click to enter the new match score for<br />
     match_line:
       pop01: "<b>Score entered</b><br />by %{user}<br />on %{date}"
+      pop02: <br />Click to edit or delete this match score
       won: Won
       lost: Lost
       on_date: "on"
     show_referee:
       not_authorised: As a player, this page is not authorised
-      pop02_a: Click to enter the new match score for<br />
     show:
       not_played: Not played yet

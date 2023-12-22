@@ -36,6 +36,7 @@ class RoundsController < ApplicationController
     # TO DO: create a chatroom for each new box:
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
     current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
+
     @new_round = Round.create(club_id: current_round.club_id,
                               start_date: params[:round][:start_date].to_date,
                               end_date: params[:round][:end_date].to_date)
@@ -43,6 +44,7 @@ class RoundsController < ApplicationController
     current_boxes = current_round.boxes
     temp_boxes = new_temp_boxes(current_boxes.count)
     apply_shifts(current_boxes, temp_boxes)
+
     clean_boxes(temp_boxes, current_boxes[0].user_box_score_ids.length)
 
     # redirect to boxes/index
@@ -55,7 +57,7 @@ class RoundsController < ApplicationController
     # return array of temporary boxes; nb_boxes : number of boxes in the current round
     boxes = []
     nb_boxes.times do |box_index|
-      boxes << Box.create(round_id: @new_round.id, box_number: box_index + 1)
+      boxes << Box.create(round_id: @new_round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
     end
     boxes
   end

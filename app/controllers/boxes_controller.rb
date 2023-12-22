@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
     @box = Box.find(params[:id])
     # @box_matches = array [user_box_score , matches_details(user), user]
     # matches_details(user) = array [match, opponent, user_score, opponent_score]
-    @box_matches = box_matches(@box)    # sorted by descending points scores
+    @box_matches = box_matches(@box) # sorted by descending points scores
     @this_is_my_box = my_box?(@box)
     @my_current_box = my_own_box(current_round(current_user.club_id))
   end

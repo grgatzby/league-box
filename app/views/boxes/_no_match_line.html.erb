@@ -3,6 +3,7 @@
     <div class="col-4"><%= render "shared/fullname", user: player_opponent %></div>
     <div class="col-8"><%= t '.not_played' %></div>
     <% if current_user == @admin %>
+    <%# for now only the admin may enter a new score on behalf of a player %>
       <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: player_opponent}" %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'

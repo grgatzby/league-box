@@ -93,7 +93,7 @@ class UserBoxScoresController < ApplicationController
         box_players = []
         boxes = []
         nb_boxes.times do |box_index|
-          boxes << Box.create(round_id: round.id, box_number: box_index + 1)
+          boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
           box_players << players.shift(players_per_box)
           box_players[box_index].each do |player|
             UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
