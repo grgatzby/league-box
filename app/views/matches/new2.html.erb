@@ -1,5 +1,5 @@
-<!-- player: enter a new match score-->
-<div class = "container" id="form">
+<!-- player: enter a new match score (OLD VERSION)-->
+<div class = "container">
   <br>
   <h3><%= t(".new_match_title") %></h3>
   <p><%= t '.p01' %></p>
@@ -9,10 +9,10 @@
   <br>
   <div class="one-line">
     <div>
-      <h4>
+      <h5>
         <%= render "shared/fullname", user: @current_player %><%= " vs " %>
         <%= render "shared/fullname", user: @opponent %>
-      </h4>
+      </h5>
     </div>
   </div>
 
@@ -20,12 +20,12 @@
     <div class = "frame-color-shape frame-padding-freetop">
       <br>
       <div class="row">
-        <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>
+        <div class="col-3"><%= f.label :court_id, t(".match_played") %> </div>
         <div class="col-1"><%= f.select :court_id, 1..@round.club.courts.count, default: 1 %></div>
       </div>
       <br>
       <div class="row">
-        <div class="col-3"><b><%= t '.date_time' %></b></div>
+        <div class="col-3"><%= t '.date_time' %></div>
         <div class="col-3">
           <%= f.date_field(:time, min: @round.start_date, max: @end_select, value: @end_select ) %>
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
@@ -33,29 +33,27 @@
         </div>
       </div>
       <br>
-      <b><%= t '.score' %></b>
       <div class="row">
-        <div class="col-2"><%= t '.player_1' %></div>
+        <div class="col-3"><%= t '.score' %></div>
         <div class="col-2"><%= t '.set_1' %></div>
         <div class="col-2"><%= t '.set_2' %></div>
         <div class="col-2"><%= t '.tie_break' %></div>
-        <div class="col-1"></div>
-        <div class="col-2"><%= t '.player_2' %></div>
       </div>
-      <% scores = [[t('.input_score'), "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
-      <% score_tb = [[t('.input_score'),
-                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{t('.and_more')}",
-                    "11-9 #{t('.and_more')}", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0" ]] %>
+      <% scores = [[t('.winner'),"0-4", "1-4","2-4","3-4"],[t('.winner'),"4-0", "4-1","4-2","4-3"]] %>
+      <% score_tb = [[t('.winner_tb'),"0-10", "1-10","2-10","3-10","4-10", "5-10","6-10","7-10","8-10", t('.lost_tb')],
+                     [t('.winner_tb'),"10-0", "10-1","10-2","10-3","10-4", "10-5","10-6","10-7","10-8", t('.lost_tb')]] %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
-          <div class="col-2"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
+          <div class="col-3"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_set1, scores[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_set2, scores[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_tiebreak,score_tb[user_match_score.index] %></div>
-          <div class="col-1"></div>
-          <div class="col-2"><%= render "shared/fullname", user: players[1] %></div>
         </div>
       <% end %>
+      <div class="row">
+        <div class="col-3"></div>
+        <%= t '.notice' %><br>
+      </div>
       <%= hidden_field_tag(:player_id, @current_player.id) %>
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>
       <%= hidden_field_tag(:round_start, @round.start_date) %>
@@ -65,7 +63,6 @@
     <br>
     <div class="buttons-wrap">
       <%= f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
-      <%# f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
         <%= link_to t(".back_btn"), my_box_path(@box, page_from: my_box_path(@box)), class: "btn buttons-shape btn-blue" %>

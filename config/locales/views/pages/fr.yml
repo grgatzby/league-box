@@ -81,8 +81,8 @@ fr:
       p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité
       points: Points
       p20: "Les points gagnés sont calculés de façon à encourager les joueurs à gagner autant de jeux que possible et sont déterminés ainsi:"
-      li06: Gagnant du match 20 points
-      li07: Perdant 10 points par sets gagnés + nombre de jeux par sets perdus
+      li06: "Gagnant du match: 20 points"
+      li07: "Perdant: 10 points par sets gagnés + nombre de jeux par sets perdus"
       li08: Le tie-break compte pour un set (pas de points attribués au perdant)
       p21: "Exemples:"
       li09: "4-2 4-3 : gagnant 20 pts, perdant 5 pts"

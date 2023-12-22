@@ -82,8 +82,8 @@ en:
       p19: The Receiver then would determine which side to receive the serve on a Sudden Death Deuce
       points: Points
       p20: "Points earned are calculated to provide incentive to win as many games as possible and are calculated as follows:"
-      li06: Winner 20 points
-      li07: Looser 10 points per set won + number of games per lost set
+      li06: "Winner: 20 points"
+      li07: "Looser: 10 points per set won + number of games per lost set"
       li08: The championship tie-break counts as one set (no points awarded for the looser)
       p21: "Examples:"
       li09: "4-2 4-3 : winner 20 pts, looser 5 pts"

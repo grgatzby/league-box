@@ -7,8 +7,8 @@ fr:
     table_view: grille de résultats
     intro_lines:
       my_box_btn: Mes scores
-      pop01_a: choisissez un match pour éditer ou supprimer son score
-      pop01_b: ", ou saisissez un nouveau score"
+      pop01_a: cliquer sur un match pour éditer ou supprimer son score
+      pop01_b: ", ou saisir un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
       my_current_box: box en cours
       all_boxes_link: Les box
@@ -34,7 +34,7 @@ fr:
       access_chatroom_btn: Chatroom de votre box
     show_lr_headers:
       match_earnings: Points du match
-      match_score_header: Score matchs
+      match_score_header: Scores
       player_points_header: Points joueur
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
@@ -49,13 +49,14 @@ fr:
       dont_forget_html: <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans <span class='color-tennis-red'><b>Mes scores</b></span>!</i>
     no_match_line:
       not_played: Pas encore joué
+      pop02_a: "Cliquer pour entrer le score du match "
     match_line:
-      pop01: "<b>Score saisi</b><br />par %{user}<br />%{date}"
+      pop01: "<b>Score entré</b><br />par %{user}<br />%{date}"
+      pop02: <br />Cliquer pour modifier ou supprimer ce score
       won: Gagné
       lost: Perdu
       on_date: "le"
     show_referee:
       not_authorised: Page non autorisée
-      pop02_a: Cliquez pour saisir le score pour<br />
     show:
       not_played: Pas encore joué

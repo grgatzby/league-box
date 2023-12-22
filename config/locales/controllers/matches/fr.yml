@@ -1,7 +1,5 @@
 fr:
   matches:
-    test_scores01_flash: Un des scores du 1er et du 2ème set doit être 4.
-    test_scores02_flash: 4-4 n'est pas un score valable.
-    test_scores03_flash: Un des scores du tiebreak doit être au moins à 10
-    test_scores04_flash: Un des scores du tiebreak doit être à 10.
-    test_scores05_flash: Au moins 2 points d'écart au tiebreak.
+    test_scores01_flash: Un score doit être entré pour chaque set.
+    test_scores02_flash: Il doit y avoir un gagnant au tiebreak.
+    test_scores03_flash: "2 sets à 0: aucun tiebreak nécessaire."

@@ -1,7 +1,5 @@
 nl:
   matches:
-    test_scores01_flash: Eén van de scores van de 1e en 2e set moet 4 zijn.
-    test_scores02_flash: 4-4 is geen geldige score.
-    test_scores03_flash: Eén van de tiebreakscores moet minimaal 10 zijn
-    test_scores04_flash: Eén van de tiebreakscores moet 10 zijn.
-    test_scores05_flash: Minimaal 2 punten verschil in de tiebreak.
+    test_scores01_flash: Voor elke set moet een score worden ingevuld.
+    test_scores02_flash: Er moet een winnaar zijn voor de tiebreak.
+    test_scores03_flash: Geen tiebreak nodig als 2 sets op 0 staan.

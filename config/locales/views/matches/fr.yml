@@ -4,25 +4,30 @@ fr:
       winner: "Vainqueur:"
     edit:
       edit_match_title: Editer un score
-      p01: Editer ou supprimer le score
-      match_played: "Court: "
-      date_time: "Date & heure:"
+      p01: Editer ou supprimer un score déjà saisi
+      match_played: "Court nº:"
+      date_time: "Match joué le:"
       set_1: 1er set
       set_2: 2ème set
       tie_break: Tie-break
-      submitted: "Score saisi le %{date} par %{player}."
+      submitted: "Score entré %{date} par %{player}."
       update_score_btn: ⎷ Valider
       delete_score_btn: x Supprimer le score
       sure: Confirmez-vous?
       back_btn: ←
     new:
       new_match_title: Nouveau score
-      p01: Saisir le nouveau score
-      match_played: "Court: "
-      date_time: "Date & heure:"
+      p01: Saisir un nouveau score
+      match_played: "Court nº:"
+      date_time: "Match joué le:"
+      score: "Score du match:"
+      player_1: Joueur 1
+      player_2: Joueur 2
       set_1: 1er set
       set_2: 2ème set
       tie_break: Tie-break
+      input_score: choisir un score
+      and_more: et plus
       save_score_btn: ⎷ Valider
       back_btn: ←
       round_not_started_flash: Le Round n'a pas commencé.

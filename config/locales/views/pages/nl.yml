@@ -81,8 +81,8 @@ nl:
       p19: De ontvanger zal dan beslissen van welke kant hij service zal krijgen bij een gelijkspel met plotselinge dood.
       points: Punten
       p20: "Verdiende punten worden berekend om spelers aan te moedigen zoveel mogelijk games te winnen en worden als volgt bepaald:"
-      li06: Wedstrijdwinnaar 20 punten
-      li07: Verliezer 10 punten per gewonnen set + aantal games per verloren set
+      li06: "Wedstrijdwinnaar: 20 punten"
+      li07: "Verliezer: 10 punten per gewonnen set + aantal games per verloren set"
       li08: De tiebreak telt als een set (er worden geen punten toegekend aan de verliezer)
       p21: "Voorbeelden:"
       li09: "4-2 4-3 : winnaar 20 punten, verliezer 5 punten"

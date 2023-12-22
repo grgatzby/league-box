@@ -49,13 +49,14 @@ nl:
       dont_forget_html: <i>Vergeet niet uw wedstrijden te spelen en uw scores in <span class='color-tennis-red'><b>Mijn scores</b></span> in te voeren!</i>
     no_match_line:
       not_played: Nog niet gespeeld
+      pop02_a: Klik om de score in te voeren<br />
     match_line:
       pop01: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
+      pop02: <br />Klik om deze score te bewerken of te verwijderen
       won: Won
       lost: Verloren
       on_date: "op"
     show_referee:
       not_authorised: Ongeautoriseerde pagina
-      pop02_a: Klik om de score in te voeren<br />
     show:
       not_played: Nog niet gespeeld
