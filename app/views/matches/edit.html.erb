@@ -6,7 +6,7 @@
 
   <% players = [@current_player, @opponent] %>
   <br>
-  <div class="one-line">
+  <div class="one-liner">
     <div>
       <h5>
         <%= render "shared/fullname", user: @user_match_scores[0].user %><%= " vs " %>
@@ -16,7 +16,7 @@
   </div>
 
   <%= form_for @match do |f| %>
-    <div class = "frame-color-shape frame-padding-freetop">
+    <div class = "frame-color-shape frame-padding-no-top">
       <br>
       <div class="row">
         <div class="col-3"><%= f.label :court_id, t(".match_played") %></div>

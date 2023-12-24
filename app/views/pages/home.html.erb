@@ -1,7 +1,7 @@
-<%= render "shared/image_front", sticky: false %>
+<%= render "shared/image_front" %>
 
 <div class="container" data-controller="toggle">
-  <div class="frame-color-shape frame-padding-freetop text-size box-scroller"
+  <div class="frame-color-shape frame-padding-no-top text-size box-scroller"
        data-toggle-target="togglableElement" >
     <br><br><h3><%= t(".main_title").upcase %></h3><br>
     <h5><%= t '.welcome_title' %></h5>
@@ -31,7 +31,7 @@
     <br><h5><%= t '.happy_tournament' %></h5>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-      class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+      class="btn buttons-shape btn-blue top-button d-none"><i class="fa-solid fa-up-long"></i>
     </button>
   </div>
 

@@ -37,4 +37,4 @@ fr:
       submitted: "saisi le %{date} par %{user}."
       points_earned: "Points gagnés : "
       challenge: "Pour contester ou modifier ce score, contacter le club Referee %{referee}."
-      back_btn: ← Ma box
+      back_btn: ← Mes scores

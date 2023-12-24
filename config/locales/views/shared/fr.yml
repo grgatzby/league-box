@@ -4,11 +4,10 @@ fr:
       sitemap_lnk: Plan du Site
       contact_us_lnk: Nous contacter
     navbar:
-      home_link: Accueil
       tournament_rules_link: Le Tournoi
       club_staff_link: Personnel du Club
       login_link: Connexion
-    dropdown_menu:
+    navbar_dropdown:
       tournament_rules_link: Tournoi & règles
       club_staff_link: Le staff
       all_boxes_link: Les box
@@ -31,11 +30,11 @@ fr:
       your_club_staff_title: Personnel du club
       staff_p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >
-        Le Referee du club sera votre point de contact, pour arbitrer un <b>désaccord sur un score déjà entré</b> dans le système,
-        ou si <b>vous avez saisi un mauvais score</b>: il pourra le modifier ou le supprimer. Contactez votre Referee via la chatroom de votre box ou par téléphone.
+        <b>Désaccord ou erreur sur un score déjà entré</b>?<br>
+        &emsp;&emsp;&emsp;contactez votre Referee via votre <b>chatroom</b>: → Il pourra le modifier ou le supprimer.
       staff_p03_html: >
-        Si pour une raison quelconque, <b>ni votre adversaire ni vous-même ne pouvez entrer votre score</b> dans le système, contactez l'admin qui le rentrera pour vous après
-        validation par le Referee.
+        <b>Vous ne pouvez entrer votre score</b>?<br>
+        &emsp;&emsp;&emsp;contactez l'admin: → Il le rentrera pour vous après validation par le Referee.
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email

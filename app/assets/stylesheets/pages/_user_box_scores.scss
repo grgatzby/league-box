@@ -13,14 +13,14 @@
   text-align: center;
 }
 
-.league-table-headers {
-  position: sticky;
-  top: 0;
-  background-color: $tennis-beige;
-  opacity: 1;
-  z-index: 1;
-  border-radius: 0.25rem;
-}
+// .league-table-headers {
+//   position: sticky;
+//   top: 0;
+//   background-color: $tennis-beige;
+//   opacity: 1;
+//   z-index: 1;
+//   border-radius: 0.25rem;
+// }
 
 .header-ghost {
   margin: 0 0 5px; /* top | left and right | bottom */
@@ -40,4 +40,20 @@
   padding-top: 0;
   padding-bottom: 0;
   border: 0;
+}
+
+.photo-wrap {
+  border-radius: 0.2rem;
+  height: 20rem;
+  // width: 90rem;
+  background-position: center;
+  background-image: url("social_tennis.jpg");
+  background-size: cover;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+@media only screen and (max-width: 768px) {
+  .photo-wrap {
+      display: none;
+    }
 }

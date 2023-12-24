@@ -1,7 +1,7 @@
 <!-- in grid, list or referee show views: display first lines -->
 <br>
 <div class="header-flex">
-    <div class="one-line" style="width: 100%">
+    <div class="one-liner" style="width: 100%">
     <h3>
       <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
       <% if current_user.role != "player" %>
@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<div class="one-line">
+<div class="one-liner">
   <div><%= render "shared/display_club_round", round: box.round %></div>
 </div>
 

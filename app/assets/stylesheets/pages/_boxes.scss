@@ -11,11 +11,7 @@
   // white-space: nowrap;
 }
 
-.box-grid-width {
-  width: 80rem;
-}
-
-.staff-grid-width {
+.box-width {
   width: 80rem;
 }
 
@@ -67,7 +63,7 @@
   }
 }
 
-.box {
+.box-frame {
   background-color: $tennis-green;
   background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
   position: relative;
@@ -104,5 +100,6 @@
 
 
 .left-padding {
+  // align list view/referee view headers vithe corresponding data (compensate <ul> indentation)
   padding-left: 64px;
 }

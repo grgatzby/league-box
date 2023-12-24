@@ -8,8 +8,7 @@
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
           data-bs-content="<%= message %>">
-        <div class="row justify-content-center player-to-orange">
-        <%# <div class="row justify-content-center player-to-orange grid-container box-grid-width"> %>
+        <div class="one-liner player-to-orange">
           <div class="col-3"><%= render "shared/fullname", user: player %></div>
           <div class="col-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
           <div class="col-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>

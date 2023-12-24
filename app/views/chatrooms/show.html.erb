@@ -9,15 +9,15 @@ a chatroom is created in Box controller #my_box.
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
   >
-    <br><div class="one-line" style="width: 50%">
+    <br><div class="one-liner" style="width: 50%">
       <h3>Chatroom</h3>
       <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
     </div>
-    <h5  class="one-line">
+    <h5  class="one-liner">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
     </h5>
-    <div class="frame-color-shape chatroom">
+    <div class="frame-color-shape chatroom-frame">
         <!-- previous messages -->
       <div class="messages print-all-content" data-chatroom-subscription-target="messages">
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"

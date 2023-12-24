@@ -7,7 +7,7 @@
   <br><%= render "shared/display_club_round", round: @round %>
   <% players = [@current_player, @opponent] %>
   <br>
-  <div class="one-line">
+  <div class="one-liner">
     <div>
       <h4>
         <%= render "shared/fullname", user: @current_player %><%= " vs " %>
@@ -17,7 +17,7 @@
   </div>
 
   <%= form_for @match do |f| %>
-    <div class = "frame-color-shape frame-padding-freetop">
+    <div class = "frame-color-shape frame-padding-no-top">
       <br>
       <div class="row">
         <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>

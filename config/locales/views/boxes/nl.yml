@@ -19,7 +19,7 @@ nl:
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
     my_box:
-      my_box_results: Mijn box
+      my_box_results: Mijn scores
       intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       not_in_round: " jij zit niet in deze ronde!"
       view_enter_scores: Bekijk of voer uw scores in

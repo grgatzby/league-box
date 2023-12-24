@@ -14,7 +14,7 @@
       <!-- <%= link_to t('.general_chat_link'), chatroom_path(@general_chatroom), class: "dropdown-item" %> -->
     <%# else %>
     <% if current_user.role != "player" %>
-      <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item color-green" %>
+      <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item color-orange" %>
     <% end %>
   </div>
 </li>

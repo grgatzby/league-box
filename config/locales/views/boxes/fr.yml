@@ -19,7 +19,7 @@ fr:
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
     my_box:
-      my_box_results: Ma box
+      my_box_results: Mes scores
       intro: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
       view_enter_scores: Consultez ou entrez vos scores
@@ -27,7 +27,7 @@ fr:
       total_points_header: Cumul points
       played_on_header: Match joué le
       action_header: Action
-      view_box_results_btn: Résultats de ma box
+      view_box_results_btn: Ma box
       see_match_card_btn: Tableau du match
       enter_score_btn: Saisir un score
       chat_in_my_box: Organisez vos matchs

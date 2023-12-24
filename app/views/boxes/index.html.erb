@@ -1,11 +1,11 @@
 <!-- list of all boxes -->
 <div class="container">
-  <div class="one-line">
+  <div class="one-liner">
     <h3><%= t '.all_box_title' %></h3>
     <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
   </div>
   <% if @round %>
-    <div class = "one-line">
+    <div class = "one-liner">
       <%= render "shared/display_club_round", round: @round, fallback_path: boxes_path %>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
       <%= render "shared/select_round", fallback_path: boxes_path %>
@@ -15,7 +15,7 @@
         data-bs-content="<%= t '.message_box_pop' %>">
       <div class="boxes print-all-content box-scroller">
         <% @boxes.each do |box| %>
-          <div class="box small-font">
+          <div class="box-frame small-font">
             <div class="box-title"><strong><%= "Box #{box.box_number}" %></strong></div>
             <ol type="1">
               <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>

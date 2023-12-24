@@ -1,5 +1,5 @@
 .will-print {
-  // elements that appear only when printing
+  // elements which appear only when printing
   opacity: 0;
 }
 
@@ -11,21 +11,32 @@
     content: none !important;
   }
 
-  .dont-print, .navbar-league-box, .footer-wrap {
+  .dont-print, .navbar-sticky, .footer-wrap {
     display: none;
   }
 
   .will-print {
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
-  .print-all-content, .chatroom .messages {
-    display: block;
-    width: auto;
+  .print-scroller {
+    max-height: auto !important;
     height: auto;
-    overflow: visible;
+    overflow: visible !important;
+  }
+
+
+  .print-all-content, .chatroom .messages {
+    // display: block;
+    justify-content: space-between;
+    // max-height: auto !important;
+    width: auto;
+    // height: auto;
+    position: relative;
+    overflow: visible !important;
+
     // page-break-inside: avoid;  // has no effect
-    font-size: smaller;
+    // font-size: smaller;
   }
 
   @page {
