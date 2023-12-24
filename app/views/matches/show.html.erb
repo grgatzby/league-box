@@ -6,7 +6,7 @@
     <%= render "shared/fullname", user: current_user %><%= "(# #{player_ubs.rank})" %> vs
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h3>
-  <div class="frame-color-shape frame-padding-freetop text-size">
+  <div class="frame-color-shape frame-padding-no-top text-size">
     <br><h4><b><%= render "match_winner", winner: @current_user_match_score.is_winner ? current_user : @opponent %></b></h4>
     <% tiebreak = @current_user_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
     <h5>
@@ -46,7 +46,6 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%# link_to "Back to my box", my_box_path(@my_current_box), class: "btn buttons-shape btn-blue" %>
     <%= link_to t(".back_btn"), my_box_path(@match.box), class: "btn buttons-shape btn-blue" %>
   </div>
 </div>

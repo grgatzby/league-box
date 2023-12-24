@@ -17,13 +17,12 @@
   transition: background 0.3s ease;
 }
 
-.button-top {
+.top-button {
   position: fixed;
   bottom: $footer-height+15; /* Place the button relative to the bottom of the page */
   right: 25%;                /* Place the button relative to the right of the page */
   z-index: 99;               /* Make sure the button does not overlap */
 }
-
 
 .btn-green {
   background: $tennis-green;

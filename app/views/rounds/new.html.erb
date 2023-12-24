@@ -33,7 +33,7 @@
             </div>
           <% end %>
 
-          <div class="box_select small-font">
+          <div class="new_round-box small-font">
             <div class="box-title"><b><%= "New round" %></b></div>
             <br><br><%= t '.start_date' %>
             <%= f.date_field(:start_date, min: @current_round.end_date + 1, value: @current_round.end_date + 1 ) %>

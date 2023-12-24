@@ -1,7 +1,7 @@
-<div class="dont-print"><%= render "shared/image_front", sticky: false %></div>
+<div class="dont-print"><%= render "shared/image_front" %></div>
 
 <div class="container">
-  <div class="frame-color-shape frame-padding-freetop text-size dont-print">
+  <div class="frame-color-shape frame-padding-no-top text-size dont-print">
     <br><h3><%= t(".overview_title").upcase %></h3><br>
     <p><%= t('.p01_html', clubname: current_user == @admin ? "club" : @club.name) %></p>
     <p><%= t '.p02' %></p>
@@ -21,7 +21,7 @@
     </div>
 
     <div data-toggle-target="togglableElement"
-         class="d-none frame-color-shape frame-padding-freetop text-size print-all-content box-scroller">
+         class="d-none frame-color-shape frame-padding-no-top text-size print-all-content box-scroller">
       <br><h3><%= t(".rules").upcase %></h3><br>
       <h5><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>
@@ -119,7 +119,7 @@
       <p><%= t(".p42_html", mailto: mailto) %></p>
 
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+        class="btn buttons-shape btn-blue top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
   </div>

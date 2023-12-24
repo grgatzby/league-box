@@ -1,7 +1,7 @@
-<%= render "shared/image_front", sticky: false %>
+<%= render "shared/image_front" %>
 
 <div class="container" data-controller="toggle">
-  <div class="frame-color-shape frame-padding-freetop text-size box-scroller"
+  <div class="frame-color-shape frame-padding-no-top text-size box-scroller"
        data-toggle-target="togglableElement" >
     <br><h3><%= t(".sitemap_title").upcase %></h3>
     <br><h5><%= t '.home' %></h5>
@@ -57,7 +57,7 @@
 
       <br><h5><%= t '.my_box' %></h5>
       <p><%= t '.p22_html' %></p>
-      <p><%= t '.p23' %></p>
+      <p><%= t '.p23_html' %></p>
     <% end %>
 
     <br><h5><%= t '.match_results' %></h5>
@@ -92,7 +92,7 @@
     <p><%= t '.p29' %></p>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-      class="btn buttons-shape btn-blue button-top d-none"><i class="fa-solid fa-up-long"></i>
+      class="btn buttons-shape btn-blue top-button d-none"><i class="fa-solid fa-up-long"></i>
     </button>
   </div>
 

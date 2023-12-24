@@ -4,11 +4,10 @@ en:
       sitemap_lnk: Sitemap
       contact_us_lnk: Contact us
     navbar:
-      home_link: Home
       tournament_rules_link: Tournament rules
       club_staff_link: Club staff
       login_link: Log in
-    dropdown_menu:
+    navbar_dropdown:
       tournament_rules_link: Overview & Rules
       club_staff_link: Staff
       all_boxes_link: All boxes
@@ -29,11 +28,13 @@ en:
       select_round_start: "Select a round start date: "
     staff:
       your_club_staff_title: Your club staff
-      staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and on this website.
+      staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
       staff_p02_html: >
-        The club Referee is your point of contact, should <b>you have a dispute on a match score</b> that was previously input
-        in the system, or if <b>you entered a bad score</b>: he can edit the score, or delete it. Get in touch with your Referee through box chatroom or by phone.
-      staff_p03_html: If for any reason, <b>neither you nor your opponent can enter the match score</b> in the system, please contact the admin who will enter the Referee-approved score for you.
+        <b>A dispute on a match score or you entered a bad score</b>?<br>
+        &emsp;&emsp;&emsp;get in touch with your Referee through <b>box chatroom</b>: → he will fix it for you.
+      staff_p03_html: >
+        <b>You cannot enter the match score</b>?<br>
+        &emsp;&emsp;&emsp; contact the admin: → he will enter the Referee-approved score for you.
       header_name: Name
       header_club: 🎾 Club
       header_email: ✉️ email
@@ -41,4 +42,3 @@ en:
       header_role: 🧩 Role
       website_admin: Website admin
       club_referee_html: "%{club_name} Referee"
- 

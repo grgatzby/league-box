@@ -2,10 +2,10 @@
 <div class="container" data-controller="toggle"
      data-toggle-screen-type-value="<%= @browser_device_mobile ? "mobile" : "widescreen" %>">
   <br>
-  <div class="one-line">
+  <div class="one-liner">
     <h3><%= t '.league_table_title' %></h3>
     <!-- the following line will display when printing the page -->
-    <span class="will-print one-line">
+    <span class="will-print one-liner">
       <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
       <div>League Box ©</div>
       <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
@@ -13,7 +13,7 @@
   </div>
   <% if @round %>
     <div class="text-size">
-      <div class="one-line">
+      <div class="one-liner">
         <%= render "shared/display_club_round", round: @round,
                                                 mobile_screen: @browser_device_mobile ? true : false,
                                                 fallback_path: user_box_scores_path %>

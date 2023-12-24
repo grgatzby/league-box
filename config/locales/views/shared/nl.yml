@@ -4,11 +4,10 @@ nl:
       sitemap_lnk: Sitemap
       contact_us_lnk: Contact
     navbar:
-      home_link: Home
       tournament_rules_link: Toernooiregels
       club_staff_link: Clubpersoneel
       login_link: Log in
-    dropdown_menu:
+    navbar_dropdown:
       tournament_rules_link: Toernooiregels
       club_staff_link: Clubpersoneel
       all_boxes_link: Naar boxen
@@ -31,11 +30,11 @@ nl:
       your_club_staff_title: Clubpersoneel
       staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
       staff_p02_html: >
-        De clubReferee is uw aanspreekpunt als <b>u het niet eens bent over een score</b> die al in het systeem is ingevoerd,
-        of <b>u heeft een slechte score ingevoerd</b>: wijzig of verwijder deze. Neem contact op met uw Referee via uw boxchatroom of per telefoon.
+        <b>Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd</b>?<br>
+        &emsp;&emsp;&emsp;Neem contact op met uw scheidsrechter via <b>box chatroom</b>: → hij zal het voor u repareren.
       staff_p03_html: >
-        Als om wat voor reden dan <b>ook noch jij, noch je tegenstander je score in het systeem kunnen invoeren</b>, neem dan contact op met de beheerder die deze daarna voor je zal invoeren
-        validatie van de Referee.
+        <b>U kunt de wedstrijdscore niet invoeren</b>?<br>
+        &emsp;&emsp;&emsp;neem contact op met de beheerder: → hij zal de door de scheidsrechter goedgekeurde score voor u invoeren.
       header_name: Naam
       header_club: 🎾 Club
       header_email: ✉️ E-mail
