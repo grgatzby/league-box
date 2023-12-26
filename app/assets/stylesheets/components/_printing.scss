@@ -25,7 +25,6 @@
     overflow: visible !important;
   }
 
-
   .print-all-content, .chatroom .messages {
     // display: block;
     justify-content: space-between;
@@ -40,13 +39,12 @@
   }
 
   @page {
-    margin-top: 0;
-    margin-bottom: 0;
+    // margin-top: 0;
+    // margin-bottom: 0;
+    margin: 0px;
   }
   body {
     padding-top: 72px;
     padding-bottom: 72px ;
   }
-
-
 }

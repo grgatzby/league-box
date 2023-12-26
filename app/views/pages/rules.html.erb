@@ -1,7 +1,7 @@
 <div class="dont-print"><%= render "shared/image_front" %></div>
 
 <div class="container">
-  <div class="frame-color-shape frame-padding-no-top text-size dont-print">
+  <div class="frame-color-shape frame-margin-rl frame-padding-no-top text-size dont-print">
     <br><h3><%= t(".overview_title").upcase %></h3><br>
     <p><%= t('.p01_html', clubname: current_user == @admin ? "club" : @club.name) %></p>
     <p><%= t '.p02' %></p>
