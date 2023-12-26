@@ -31,10 +31,10 @@ fr:
       staff_p01: Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >
         <b>Désaccord ou erreur sur un score déjà entré</b>?<br>
-        &emsp;&emsp;&emsp;contactez votre Referee via votre <b>chatroom</b>: → Il pourra le modifier ou le supprimer.
+        &emsp;&emsp;&emsp;→ contactez votre Referee via la <b>chatroom</b>.
       staff_p03_html: >
         <b>Vous ne pouvez entrer votre score</b>?<br>
-        &emsp;&emsp;&emsp;contactez l'admin: → Il le rentrera pour vous après validation par le Referee.
+        &emsp;&emsp;&emsp;→ contactez votre Referee, ou l'admin via <b>Nous Contacter</b>.
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email

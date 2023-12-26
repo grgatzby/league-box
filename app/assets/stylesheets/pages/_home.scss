@@ -3,17 +3,6 @@
   margin-bottom: $btn-margin;
 }
 
-// .sticky-header {
-//   position: sticky;
-//   // top: $navbar-height;
-//   top: 0;
-//   // background-color: $tennis-green;
-//   background-color: $tennis-beige;
-//   opacity: 1;
-//   z-index: 1;
-//   border-radius: 0.25rem;
-// }
-
 .box-scroller {
   overflow: scroll;
   max-height: calc(100vh - 200px);
@@ -29,36 +18,15 @@
   // background-color: $tennis-green;
   // background: rgb(2,0,36);
   background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
-  margin: 0 auto;
   // border: 2px solid #8A8A8A;
   border-radius: 0.25rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: justify;
 }
 
-.frame-padding {
-  padding: 15px calc(var(--bs-gutter-x) * 2);
-}
-
-.frame-padding-no-top {
-  padding-bottom: 15px;
-  padding-left: calc(var(--bs-gutter-x) * 6);
-  padding-right: calc(var(--bs-gutter-x) * 6);
-}
-
 .frame-scroller-wrap {
   overflow: scroll;
   position: sticky;
-}
-
-@media only screen and (max-width: 1400px) {
-  .frame-padding-no-top {
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-  .frame-padding {
-    padding: 15px calc(var(--bs-gutter-x) * 0.5);
-  }
 }
 
 .image-front {
@@ -76,7 +44,35 @@
   }
 }
 
+.frame-margin-rl {
+  // margin: auto calc(var(--bs-gutter-x) * 13);
+  max-width: 680px;
+  min-width: 0px;
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
+
+.frame-padding {
+  padding: 15px calc(var(--bs-gutter-x) * 2);
+}
+
+.frame-padding-no-top {
+  padding-bottom: 15px;
+  padding-left: calc(var(--bs-gutter-x) * 2);
+  padding-right: calc(var(--bs-gutter-x) * 2);
+}
+
 @media only screen and (max-width: 1200px) {
+  .frame-padding {
+    padding: 15px calc(var(--bs-gutter-x) * 1);
+  }
+
+  .frame-padding-no-top {
+    padding-left: calc(var(--bs-gutter-x) * 1);
+    padding-right: calc(var(--bs-gutter-x) * 1);
+  }
+
   .image-front {
       .image-front-text {
         font-size: 3vw;
@@ -85,6 +81,11 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .frame-padding-no-top {
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
   .image-front {
       .image-front-text {
         font-size: 4vw;

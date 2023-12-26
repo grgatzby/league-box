@@ -1,13 +1,13 @@
 <!-- league table data -->
 <ol type="1">
-  <% user_box_scores.each do |user_box_score| %>
+  <% user_box_scores.each_with_index do |user_box_score, index| %>
     <% player = user_box_score.user %>
     <li class=<%=player == current_user ? "color-tennis-blue" : ""%>>
       <% name = "#{render "shared/fullname", user: player}" %>
       <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-          data-bs-content="<%= message %>">
+          data-bs-content="<%= message %>" class=<%= index % 2 == 0 ? "color-tennis-blue" : "" %>>
         <div class="one-liner player-to-orange">
           <div class="col-3"><%= render "shared/fullname", user: player %></div>
           <div class="col-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
