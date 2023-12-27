@@ -43,6 +43,14 @@
   grid-gap: 16px;
 }
 
+@media print {
+  .boxes {
+    margin: 8px 0;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 8px;
+  }
+}
+
 @media only screen and (max-width: 1400px) {
   .boxes {
     grid-template-columns: repeat(3, 1fr);
@@ -102,6 +110,6 @@
 
 
 .left-padding {
-  // align list view/referee view headers vithe corresponding data (compensate <ul> indentation)
+  // align list view/referee view headers with the corresponding data (compensate <ul> indentation)
   padding-left: 64px;
 }

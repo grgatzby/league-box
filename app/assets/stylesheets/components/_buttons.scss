@@ -25,7 +25,8 @@
 }
 
 .btn-green {
-  background: $tennis-green;
+  // background: $tennis-green;
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
   color: $tennis-blue;
 
   &:hover {
@@ -37,8 +38,10 @@
 }
 
 .btn-blue {
-  background: $tennis-blue;
-  color: white;
+  // background: $tennis-blue;
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-aqua 100%);
+  // color: white;
+  color: $tennis-blue;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);

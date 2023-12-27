@@ -17,6 +17,7 @@ fr:
       topics:
       - feedback: Commentaire sur le site
       - join_club: Rejoindre un de nos clubs
+      - input_score: Saisir un score
       - other_topic: Autre sujet
       new_round_subject: "Demande: nouveau round pour le %{club} - New round request"
       new_round_message: >

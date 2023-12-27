@@ -1,17 +1,16 @@
 <%= render "shared/image_front" %>
 
 <div class="container">
-  <br>
   <%# processing_round_request = params[:round_id] || (params[:contact] && params[:contact][:club_name]) %>
   <% processing_new_round = params[:round_id] || (params[:contact] && params[:contact][:round_id]) %>
-  <% if processing_new_round %>
-    <!--- from the Boxes show_referee view (request a new round creation) -->
-    <h3><%= t '.new_round_title' %></h3>
-  <% else %>
-    <!--- from the footer partial (contact us) -->
-    <h3><%= t '.contact_title' %></h3><hr>
-  <% end %>
   <div class="frame-color-shape contact-wrap">
+    <% if processing_new_round %>
+      <!--- from the Boxes index view (request a new round creation) -->
+      <br><h4><div class="title"><b><%= t(".new_round_title").upcase %></b></div></h4><br>
+    <% else %>
+      <!--- from the footer partial (contact us) -->
+      <br><h4><div class="title"><b><%= t(".contact_title").upcase %></b></div></h4><br>
+    <% end %>
     <% if !processing_new_round %>
       <p><%= t '.contact_p01_html' %></p>
       <p><%= t '.contact_p02' %></p>
@@ -49,8 +48,9 @@
             <!--- from the footer partial (contact us) -->
             <%= f.input :subject,
               label: false,
-              # collection: ['Provide feedback', 'Join one of our clubs', 'Any other topic'],
-              collection: t('.topics').map { |item| item.values }.flatten,
+              # collection: ['Provide feedback', 'Join one of our clubs', 'Input a new score'*, 'Any other topic']
+              # * if user signed in
+              collection: t('.topics').map { |item| item.values if item.keys[0] != :input_score || current_user && current_user != @admin }.compact.flatten,
               prompt: t('.prompt'),
               input_html: {class: "contact-field", style: "width: 20em"},
               required: true

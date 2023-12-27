@@ -13,7 +13,7 @@ nl:
       my_current_box: huidige box
       all_boxes_link: Naar boxen
     index:
-      all_box_title: Bekijk de boxen
+      all_box_title: De boxen
       intro: In één oogopslag, bekijk de <b>spelers, <b>ranglijsten, gespeelde wedstrijden en cumulatieve punten</b><br />
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       create_round_btn: ⎷ Maak de volgende ronde
@@ -46,7 +46,7 @@ nl:
       won: Won
       lost: Verloren
       on_date: "op"
-      dont_forget_html: <i>Vergeet niet uw wedstrijden te spelen en uw scores in <span class='color-tennis-red'><b>Mijn scores</b></span> in te voeren!</i>
+      dont_forget_html: <i>Vergeet niet uw wedstrijden te spelen en uw scores in </i><span class='color-tennis-red'><b>Mijn scores</b></span><i> in te voeren!</i>
     no_match_line:
       not_played: Nog niet gespeeld
       pop02_a: Klik om de score in te voeren<br />

@@ -15,8 +15,9 @@ en:
       contact_p02: Score disputes should be dealt in your box chatroom.
       prompt: Select a topic →
       topics:
-      - feedback: Feedback on this website
+      - feedback: Provide feedback
       - join_club: Join one of our clubs
+      - input_score: Input a new score
       - other_topic: Any other topic
       new_round_subject: "New round request for the %{club}"
       new_round_message: >

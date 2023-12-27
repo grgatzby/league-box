@@ -1,8 +1,8 @@
 <div class="dont-print"><%= render "shared/image_front" %></div>
 
 <div class="container">
-  <div class="frame-color-shape frame-margin-rl frame-padding-no-top text-size dont-print">
-    <br><h3><%= t(".overview_title").upcase %></h3><br>
+  <div class="frame-color-shape frame-margin-rl frame-padding text-size dont-print">
+    <br><h4><div class="title"><b><%= t(".overview_title").upcase %></b></div></h4><br>
     <p><%= t('.p01_html', clubname: current_user == @admin ? "club" : @club.name) %></p>
     <p><%= t '.p02' %></p>
     <p><%= t '.p03' %></p>
@@ -21,8 +21,8 @@
     </div>
 
     <div data-toggle-target="togglableElement"
-         class="d-none frame-color-shape frame-padding-no-top text-size print-all-content box-scroller">
-      <br><h3><%= t(".rules").upcase %></h3><br>
+         class="d-none frame-color-shape frame-margin-rl frame-padding text-size print-all-content box-scroller">
+      <br><h4><div class="title"><b><%= t(".rules").upcase %></b></div></h4><br>
       <h5><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>
       <h5><%= t '.availability' %></h5>
@@ -119,7 +119,7 @@
       <p><%= t(".p42_html", mailto: mailto) %></p>
 
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn buttons-shape btn-blue top-button d-none"><i class="fa-solid fa-up-long"></i>
+        class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
   </div>

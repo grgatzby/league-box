@@ -44,8 +44,12 @@
   }
 }
 
+.title {
+  display: flex;
+  justify-content: center;
+}
+
 .frame-margin-rl {
-  // margin: auto calc(var(--bs-gutter-x) * 13);
   max-width: 680px;
   min-width: 0px;
   width: 100%;

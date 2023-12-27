@@ -1,7 +1,7 @@
 en:
   pages:
     home:
-      main_title: The path to social tennis playing
+      main_title: Social tennis in your club
       welcome_title: Welcome to your club's Social Tournament website
       p01: >
         The mixed Singles Social Tournament is organized as a Box League with one round every month (or three months in some
@@ -11,7 +11,7 @@ en:
         champagne to celebrate at the end of the run.
       p03: The league table will be updated and displayed on the league board at the end of each round.
       how_title: How does the Leaguebox work?
-      p04: "Each round lasts a month (in some clubs: 3 months), and players compete within their allocated box."
+      p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
       li01_html: 🎾 During the round period, play the matches in your box.
       li02_html: 💻 After each match, one of the two players <b>enters the match score</b>.
       li03_html: 🏆 The <b>league table</b> is automatically updated. You can also <b>view the boxes</b>.
@@ -20,15 +20,15 @@ en:
       use_title: How to use the Leaguebox website?
       p06: Easily follow the league table and see how you rank against other players in the box league.
       li05_html: >
-        Post your latest match score in <span class='color-tennis-blue'>My scores</span> after a match has been played, and see
-        where you and the other players stand in your box.
+        Post your latest match score in <span class='color-tennis-red'>My scores</span>.<br>
+        See where you and the other players stand in your box.
       li06_html: >
-        In <span class='color-tennis-blue'>All boxes</span> see at a glance every box of the league, and click on any box for
+        In <span class='color-green'>All boxes</span> see at a glance every box of the league, and click on any box for
         more details.<br/>You can even see the previous rounds.
       li07_html: >
-        Within a box, you'll see scores, date and time of game, and player's ranking in <span class='color-tennis-blue'>List view</span>
+        Within a box, you'll see games and scores, and player's ranking in <span class='color-tennis-blue'>List view</span>
         or in <span class='color-tennis-blue'>Table view</span>.
-      li08_html: The <span class='color-tennis-blue'>League Table</span> is updated in real time, you can keep track of where every other players rank in the tournament.
+      li08_html: The <span class='color-green'>League Table</span> is always up to date, you can keep track of where every other players rank in the tournament.
       happy_tournament: Happy tournament!
       create_club_btn: Create a new club
     rules:
@@ -144,7 +144,7 @@ en:
       mail_to_admin_html: "your admin at %{admin_email}"
       p42_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
     sitemap:
-      sitemap_title: LeagueBox sitemap
+      sitemap_title: Sitemap
       home: Home
       p01: General presentation of the Box League Tournament
       p02_html: For the admin, <b>Create a new club</b> button
@@ -175,16 +175,16 @@ en:
       table_view: Box Table view
       p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
-        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span> button appears
+        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
         next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Box List view
       p19_html: Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
       p20_html: >
-        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span> button appears
+        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      my_box: My scores
-      p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>Match card</span>, and <span class='color-tennis-blue'>Enter new score</span>.
-      p23_html: Link to the <span class='color-tennis-blue'>box chatroom</span>.
+      my_box: My box
+      p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.
+      p23: Link to the box chatroom.
       match_results: Match results view
       p24: "Details of a match played:"
       li05: game date and time, court number
@@ -196,12 +196,12 @@ en:
       p26: Form to modify match details, or delete score.
       chatrooms: Chatrooms
       p27_html: >
-        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='color-tennis-blue'>My scores</span> page for players.<br>
+        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='color-tennis-blue'>My box</span> page for players.<br>
         The <b>#general chatroom</b> is reserved for the admin and referees regardless of their club.
         Its vocation is general communication, and not for a specific club.
         A color is assigned to messages, according to their author:<br>
       p28_html: >
-        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='color-tennis-blue'>My scores</span> page available to players.<br><br>
+        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='color-tennis-blue'>My box</span> page available to players.<br><br>
         A color is assigned to messages, according to their author:<br>
       li08_html: <span class='color-tennis-blue'>Those of players from the same club appear in blue</span>
       li09_html: <span class='color-tennis-aqua'>Those of Referee of the same club appear in aqua</span>

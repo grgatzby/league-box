@@ -17,6 +17,7 @@ nl:
       topics:
       - feedback: Reacties op deze website
       - join_club: Sluit je aan bij een van onze clubs
+      - input_score: Voer een nieuwe score in
       - other_topic: Ander onderwerp
       new_round_subject: "Nieuw rondeverzoek voor de %{club} - New round request"
       new_round_message: >

@@ -13,7 +13,7 @@ en:
       my_current_box: current box
       all_boxes_link: All boxes
     index:
-      all_box_title: View all boxes
+      all_box_title: All boxes
       intro: "At a glance, see <b>all players name, their ranking, <b>number of played games, and their cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Player name, rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       create_round_btn: ⎷ Create the next round
@@ -37,7 +37,7 @@ en:
       match_score_header: Match scores
       player_points_header: Player's points
       opponent_points_header: Opponent's points
-      opponent_total_points_header: Opponent's total points
+      opponent_total_points_header: Opponent's overall pts
       points_pop: >
         Winner earns 20 points for the match.<br />
         Looser earns 10 points per set won + number of games per lost set.<br />
@@ -46,7 +46,7 @@ en:
       won: Won
       lost: Lost
       on_date: "on"
-      dont_forget_html: <i>Don't forget to play your matches and enter the scores in <span class='color-tennis-red'><b>My scores</b></span>!</i>
+      dont_forget_html: <i>Don't forget to play your matches and enter the scores in </i><span class='color-tennis-red'><b>My scores</b></span><i>!</i>
     no_match_line:
       not_played: Not played yet
       pop02_a: Click to enter the new match score for<br />
