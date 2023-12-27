@@ -1,8 +1,8 @@
 fr:
   pages:
     home:
-      main_title: Votre chemin vers le tennis associatif
-      welcome_title: Bienvenue sur le site Leaguebox de votre club
+      main_title: Le tennis associatif dans votre club
+      welcome_title: Bienvenue sur le site Leaguebox
       p01: >
         Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou chaque trimestre dans certains clubs).
         Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
@@ -11,7 +11,7 @@ fr:
         du champagne pour célébrer sa victoire à la fin du tournoi.
       p03: La league table sera mise à jour et affichée sur le tableau à la fin des rounds.
       how_title: Comment fonctionne la Leaguebox?
-      p04: Chaque round dure un mois (3 mois pour certains clubs), et les joueurs s'affrontent au sein de leur box.
+      p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
       li01_html: 🎾 <b>Pendant la durée du round</b>, jouez les matchs de votre box.
       li02_html: 💻 Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
       li03_html: 🏆 La <b>league table</b> est automatiquement mise à jour. Vous pouvez également <b>consulter les box</b>.
@@ -20,15 +20,15 @@ fr:
       use_title: Comment utilliser votre site Leaguebox?
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
-        Entrez votre dernier score dans <span class='color-tennis-blue'>Mes scores</span> après le match, et suivez
-        comment vous vous classez par rapport aux autres joueurs de votre box.
+        Après le match, entrez votre score dans <span class='color-tennis-red'>Mes scores</span>.<br>
+        Suivez comment vous vous classez par rapport aux autres joueurs de votre box.
       li06_html: >
-        Sur <span class='color-tennis-blue'>Les box</span> voyez d'un coup d'œil toutes les box de la league, et accédez aux box en
-        cliquant dessus pour la détailler.<br/>Vous avez également accès aux rounds précédents.
+        Sur <span class='color-green'>Les box</span> voyez d'un coup d'œil toutes les box de la league, et accédez aux box en
+        cliquant dessus pour la consulter plus en détail.<br/>Vous avez également accès aux rounds précédents.
       li07_html: >
-        Au sein d'une box, vous consulterez les scores, date et heure d'un match, et le classement d'un joueur en <span class='color-tennis-blue'>Vue par liste</span>
+        Au sein de chaque box, vous consulterez les matchs et scores, en <span class='color-tennis-blue'>Vue par liste</span>
         ou en <span class='color-tennis-blue'>Vue par grille</span>.
-      li08_html: La <span class='color-tennis-blue'>League Table</span> est mise à jour en temps réel, et vous pouvez suivre les classement de tous les autres joueurs dans le tournoi.
+      li08_html: La <span class='color-green'>League Table</span> du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
       happy_tournament: Que les meilleurs gagnent!
       create_club_btn: Créer un nouveau club
     rules:
@@ -143,7 +143,7 @@ fr:
       mail_to_admin_html: "votre admin à %{admin_email}"
       p42_html: "les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
-      sitemap_title: Plan du site LeagueBox
+      sitemap_title: Plan du site
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League
       p02_html: Pour l'admin, bouton <b>Créer un nouveau club</b>

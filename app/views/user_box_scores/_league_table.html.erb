@@ -1,6 +1,6 @@
 <!-- league table -->
 
-<div class="print-all-content frame-color-shape frame-padding frame-scroller-wrap">
+<div class="print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap">
   <div class="box-width row">
     <div class="one-liner bold-font">
       <%= render "table_headers" %>
@@ -9,7 +9,7 @@
     <div class="print-scroller box-scroller" data-toggle-target="togglableElement" >
       <%= render "table_data", user_box_scores: @user_box_scores %>
       <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn buttons-shape btn-blue top-button d-none">
+        class="btn buttons-shape btn-beige top-button d-none">
         <i class="fa-solid fa-up-long"></i>
       </button>
     </div>

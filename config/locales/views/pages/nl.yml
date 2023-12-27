@@ -1,17 +1,17 @@
 nl:
   pages:
     home:
-      main_title: Jouw pad naar verenigingstennis
-      welcome_title: Welkom op de Leaguebox-website van jouw club
+      main_title: Verenigingstennis in jouw club
+      welcome_title: Welkom op de Leaguebox-website
       p01: >
-        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of elke drie maanden, afhankelijk van de club).
+        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of elke drie maanden, in sommige club).
         De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
       p02: >
         De winnaar ontvangt de Singles Box League Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
       how_title: Hoe werkt Leaguebox?
-      p04: Elke ronde duurt een maand (3 maanden voor sommige clubs) en spelers strijden in hun box.
+      p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
       li01_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
       li02_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
       li03_html: 🏆 De <b>ranglijst</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen bekijken</b>.
@@ -20,15 +20,15 @@ nl:
       use_title: Gebruik van de Leaguebox-website
       p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
       li05_html: >
-        Voer je laatste score in <span class='color-tennis-blue'>Mijn scores</span> na de wedstrijd in en volg
-        hoe jij het doet ten opzichte van de andere spelers in jouw box.
+        Voer je laatste score in <span class='color-tennis-red'>Mijn scores</span>.<br>
+        Volg hoe jij het doet ten opzichte van de andere spelers in jouw box.
       li06_html: >
-        Op <span class='color-tennis-blue'>De boxen</span> zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
+        Op <span class='color-green'>De boxen</span> zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
         klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
       li07_html: >
-        Binnen een vak raadpleeg je de scores, datum en tijd van een wedstrijd en de rangschikking van een speler in <span class='color-tennis-blue'>Lijstweergave</span>
-        of in <span class='color-tennis-blue'>Rasterweergave</span>.
-      li08_html: De <span class='color-tennis-blue'>League Table</span> wordt in realtime bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
+        Binnen een box raadpleeg je de wedstrijd en scores, en de rangschikking van een speler in <span class='color-tennis-blue'>Resultaten lijst</span>
+        of in <span class='color-tennis-blue'>Resultatenraster</span>.
+      li08_html: De <span class='color-green'>League Table</span> wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       happy_tournament: Happy tournament!
       create_club_btn: Creëer een nieuwe club
     rules:
@@ -143,7 +143,7 @@ nl:
       mail_to_admin_html: "uw admin aan %{admin_email}"
       p42_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
     sitemap:
-      sitemap_title: Sitemap LeagueBox
+      sitemap_title: Sitemap
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
       p02_html: Voor de beheerder, knop <b>Creëer een nieuwe club</b>

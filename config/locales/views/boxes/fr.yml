@@ -13,7 +13,7 @@ fr:
       my_current_box: box en cours
       all_boxes_link: Les box
     index:
-      all_box_title: Consulter les box
+      all_box_title: Les box
       intro: "En un coup d'œil, consultez <b>les joueurs, leur classement, le nombre de matchs joués et leurs points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       create_round_btn: ⎷ Créer le prochain round
@@ -46,7 +46,7 @@ fr:
       won: Gagné
       lost: Perdu
       on_date: "le"
-      dont_forget_html: <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans <span class='color-tennis-red'><b>Mes scores</b></span>!</i>
+      dont_forget_html: <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans </i><span class='color-tennis-red'><b>Mes scores</b></span><i>!</i>
     no_match_line:
       not_played: Pas encore joué
       pop02_a: "Cliquer pour entrer le score du match "

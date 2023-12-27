@@ -16,7 +16,7 @@
   }
 
   .will-print {
-    opacity: 0.7;
+    opacity: 0.9;
   }
 
   .print-scroller {
@@ -25,8 +25,11 @@
     overflow: visible !important;
   }
 
+  .print-boxes-league {
+    display: flex;
+  }
+
   .print-all-content, .chatroom .messages {
-    // display: block;
     justify-content: space-between;
     // max-height: auto !important;
     width: auto;
