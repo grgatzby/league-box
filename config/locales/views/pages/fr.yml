@@ -20,14 +20,15 @@ fr:
       use_title: Comment utilliser LeagueBox?
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
-        Après le match, entrez votre score dans <span class='color-tennis-red'>Mes scores</span>.<br>
-        Suivez comment vous vous classez par rapport aux autres joueurs de votre box.
+        Après chaque match, entrez votre score dans <span class='color-tennis-red'>Mes scores</span>.<br>
+        Votre classement est mis à jour automatiquement.
       li06_html: >
-        Sur <span class='color-green'>Les box</span> voyez d'un coup d'œil toutes les box de la league, et accédez aux box en
-        cliquant dessus pour la consulter plus en détail.<br/>Vous avez également accès aux rounds précédents.
+        <span class='color-green'>Les box</span> montre toutes les box de la league:
+        accédez à la box de votre choix en cliquant dessus pour la consulter plus en détail.<br/>
+        Vous avez également accès aux rounds précédents.
       li07_html: >
-        Au sein de chaque box, vous consulterez les matchs et scores, en <span class='color-tennis-blue'>Vue par liste</span>
-        ou en <span class='color-tennis-blue'>Vue par grille</span>.
+        Pour chaque box, les <span class='color-tennis-blue'>Vue par liste</span> et <span class='color-tennis-blue'>Vue par grille</span>
+        vous détaillent les matchs et les scores.
       li08_html: La <span class='color-green'>League Table</span> du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
       happy_tournament: Que les meilleurs gagnent!
       add_club_btn: Ajouter un nouveau club
