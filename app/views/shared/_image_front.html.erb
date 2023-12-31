@@ -1,5 +1,5 @@
 <!-- inlay image from the presentation view pages (home, rules, staff and sitemap) and contact (sent) -->
 <div class="image-front"
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path 'social_tennis.jpg' %>')">
-  <div class="font-black image-front-text"><h1><b><%= current_user == @admin ? "" : @club.name.capitalize %> LeagueBox</b></h1></div>
+  <div class="font-black image-front-text"><h1><b><%= @club == @sample_club ? "" : @club.name.capitalize %> LeagueBox</b></h1></div>
 </div><br>
