@@ -12,7 +12,6 @@ fr:
         Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
         Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
         <ol>
-          <li>Head to Head result (if only 2 players on the same score)</li>
           <li>Le plus de matchs joués</li>
           <li>Ratio sets gagnés sur sets joués</li>
           <li>Ratio jeux gagnés sur jeux joués</li>
@@ -20,14 +19,6 @@ fr:
     buttons:
       to_text_btn: Exporter vers un fichier texte
       to_csv_btn: Exporter vers un fichier CSV
-      # player_header: Joueurs
-      # rank_header: Rang
-      # points_header: Points
-      # box_header: Box
-      # matches_played_header: Matchs Joués
-      # matches_won_header: Matchs Gagnés
-      # sets_played_header: Sets Joués
-      # sets_won_header: Sets Gagnés
     table_data:
       matches:
         zero: 0 match
@@ -41,11 +32,11 @@ fr:
       player_header: Joueur
       rank_header: Rang
       points_header: Points
-      box_header: Box
-      matches_played_header: Matchs Joués
-      matches_won_header: Matchs Gagnés
-      sets_played_header: Sets Joués
-      sets_won_header: Sets Gagnés
+      box_header: Box nº
+      matches_played_header: Joués
+      matches_won_header: Gagnés
+      sets_played_header: Joués
+      sets_won_header: Gagnés
     new:
       new_club_title: Générer un nouveau club et un round
       not_authorised: Vous n'êtes pas admin, cette page n'est pas authorisée.

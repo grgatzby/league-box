@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  print_btn: ⎷ Print
+  print_btn: Print
   points:
     zero: 0 points
     one: 1 point
@@ -47,6 +47,7 @@ en:
     formats:
       default: "%Y-%m-%d"
       mmmyy_date: "%b %y"
+      ddmmm_date: "%d %b"
       ddmmmyy_date: "%d %b %y"
   time:
     formats:
@@ -61,7 +62,7 @@ en:
       wwwddmmm_at_hhmm: "%a %-d %b, %H:%M"
       wwwddmmmyy_at_hhmm: "%A %-d %b %Y, %H:%M"
 fr:
-  print_btn: ⎷ Imprimer
+  print_btn: Imprimer
   points:
     zero: 0 point
     one: 1 point
@@ -80,6 +81,7 @@ fr:
       short: "%e %b"
       long: "%e %B %Y"
       mmmyy_date: "%b %y"             # avr. 23
+      ddmmm_date: "%d %b"             # 30 avr.
       ddmmmyy_date: "%d %b %y"        # 30 avr. 23
     day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
     abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
@@ -105,7 +107,7 @@ fr:
     am: 'am'
     pm: 'pm'
 nl:
-  print_btn: ⎷ Afdrukken
+  print_btn: Afdrukken
   points:
     zero: 0 punten
     one: 1 punt
@@ -125,6 +127,7 @@ nl:
       long: "%e %B %Y"
       only_day: "%e"
       mmmyy_date: "%b %y"
+      ddmmm_date: "%d %b"
       ddmmmyy_date: "%d %b %y"
     day_names: [zondag, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag]
     abbr_day_names: [zon, maa, din, woe, don, vri, zat]

@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
     # time_zone (dependency on gem tzinfo-data): used to convert UTC persisted times in local time
     @tz = TZInfo::Timezone.get("Europe/Paris")
+    @is_mobile = mobile_device?
   end
 
   # def after_sign_in_path_for(resource)
@@ -80,7 +81,7 @@ class ApplicationController < ActionController::Base
       # user belongs to a club (= is a player or a referee),
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
-      @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
+      @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @round = params[:round_start] ? Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id) : current_round(@club.id)
 
       @boxes = @round.boxes.sort
@@ -177,5 +178,9 @@ class ApplicationController < ActionController::Base
   def add_to_tieds(*players)
     players.each { |player| @tieds << player }
     @tieds.uniq!
+  end
+
+  def mobile_device?
+    request.user_agent =~ /Mobile|webOS/
   end
 end

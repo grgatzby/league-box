@@ -31,7 +31,7 @@ en:
     sent:
       sent_title: Message sent!
       p01_html: Thank you for your message. Your <b>admin</b> will get back to you soon.
-      p02: In the meantime, 🎾 keep playing your league box matches! 🎾
+      p02: In the meantime, 🎾 keep playing your LeagueBox matches! 🎾
       p03: In the meantime, 🎾 visit our Tournament rules pages! 🎾
       p04_html: >
         Thank you for requesting a new round creation for %{club_name}.<br>

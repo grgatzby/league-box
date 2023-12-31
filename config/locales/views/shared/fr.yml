@@ -16,7 +16,7 @@ fr:
       general_chat_link: "Chatroom #general"
       chatrooms_link: Les chatrooms
       log_out_link: Déconnexion
-    round:
+    display_round:
       round_period: "Round %{start} au %{end}"
     select_round:
       select_round_start: "Consulter un autre round: "
@@ -34,11 +34,11 @@ fr:
         &emsp;&emsp;&emsp;→ contactez votre Referee via la <b>chatroom</b>.
       staff_p03_html: >
         <b>Vous ne pouvez entrer votre score</b>?<br>
-        &emsp;&emsp;&emsp;→ contactez votre Referee, ou l'admin via <b>Nous Contacter</b>.
+        &emsp;&emsp;&emsp;→ contactez votre Referee, ou l'admin via le lien <b>Nous Contacter</b>.
+      header_role: 🧩 Fonction
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email
       header_phone: 📞 Téléphone
-      header_role: 🧩 Rôle
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"

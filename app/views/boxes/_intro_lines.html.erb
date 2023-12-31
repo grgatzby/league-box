@@ -15,7 +15,7 @@
         <%= "Box #{box.box_number} - #{view_types[0]}" %>
       </div>
     </h3>
-    <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+    <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     <% if @this_is_my_box %>
       <h5>
         <%= render "shared/fullname", user: current_user %>
@@ -30,7 +30,6 @@
 </div>
 
 <div class="dont-print">
-  <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
   <% if @this_is_my_box %>
     <%= link_to t(".my_box_btn"), my_box_path(box), class: "btn buttons-shape btn-orange mb-3" %>
   <% end %>
@@ -41,21 +40,22 @@
       <% case params[:caller] %>
         <% when "R" %>
           <%# if table view was called from Referee view, link back to Referee view %>
-          <%= link_to box_referee_path, class: "btn buttons-shape btn-blue mb-3" do %>
+          <%= link_to box_referee_path, class: "btn buttons-shape btn-yellow mb-3" do %>
             <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.referee_view")}" %>
           <% end %>
         <% else %>
           <%# if table view was called from list view, all boxes or league table, link back to list view %>
-          <%= link_to box_list_path, class: "btn buttons-shape btn-blue mb-3" do %>
+          <%= link_to box_list_path, class: "btn buttons-shape btn-yellow mb-3" do %>
             <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.list_view")}" %>
           <% end %>
       <% end %>
     <% else %>
       <%# if in list view or in Referee view, link back to table view %>
-      <%= link_to box_path(caller: view_types[0]==t("boxes.list_view") ? "L" : "R"), class: "btn buttons-shape btn-blue mb-3" do %>
+      <%= link_to box_path(caller: view_types[0]==t("boxes.list_view") ? "L" : "R"), class: "btn buttons-shape btn-yellow mb-3" do %>
         <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{view_types[1]}" %>
       <% end %>
   <% end %>
 
-  <%= link_to t('.all_boxes_link'), boxes_path, class: "btn buttons-shape btn-blue mb-3" %>
+  <%= link_to t('.all_boxes_link'), boxes_path, class: "btn buttons-shape btn-yellow mb-3" %>
+  <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
 </div>

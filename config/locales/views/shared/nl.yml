@@ -16,7 +16,7 @@ nl:
       general_chat_link: "Chatroom #general"
       chatrooms_link: Chatrooms
       log_out_link: Uitloggen
-    round:
+    display_round:
       round_period: "Ronde %{start} tot %{end}"
     select_round:
       select_round_start: "Bekijk een andere ronde: "
@@ -34,11 +34,11 @@ nl:
         &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter via jouw <b>box chatroom</b>.
       staff_p03_html: >
         <b>U kunt de wedstrijdscore niet invoeren</b>?<br>
-        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter, of de beheerder via <b>Contact</b>.
+        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter, of de beheerder via de link <b>Contact</b>.
+      header_role: 🧩 Rol
       header_name: Naam
       header_club: 🎾 Club
       header_email: ✉️ E-mail
       header_phone: 📞 Telefoon
-      header_role: 🧩 Rol
       website_admin: Sitebeheerder (admin)
       club_referee_html: "Referee van %{club_name}"

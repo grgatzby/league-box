@@ -7,9 +7,9 @@ nl:
       p01: Update of verwijder een bestaande wedstrijdscore
       match_played: "Tennisbaan:"
       date_time: "Wedstrijd gespeeld:"
-      set_1: 1e set
-      set_2: 2e setje
-      tie_break: Tie-break
+      set_1: set 1
+      set_2: set 2
+      tie_break: tiebreak
       submitted: "Score ingevoerd op %{date} door %{player}."
       update_score_btn: ⎷ Bevestigen
       delete_score_btn: x Verwijderen
@@ -23,11 +23,11 @@ nl:
       score: "Wedstrijdscore:"
       player_1: Speler 1
       player_2: Speler 2
-      set_1: 1e set
-      set_2: 2e setje
-      tie_break: Tie-break
+      set_1: set 1
+      set_2: set 2
+      tie_break: tiebreak
       input_score: kies een score
-      and_more: en meer
+      and_more: en +
       save_score_btn: ⎷ Bevestigen
       back_btn: ←
       round_not_started_flash: De ronde is nog niet begonnen.

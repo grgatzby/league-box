@@ -14,6 +14,6 @@ nl:
       back_btn: ←
       chose_chatroom: "Kies een chatroom: "
       confirm_btn: ⎷ Bevestigen
-      chatrooms_title: "Chatrooms van %{club}"
+      chatrooms_title: "Chatrooms %{club}"
       no_access_flash: U heeft geen toegang tot deze chatroom
       no_chatroom_flash: Deze chatroom bestaat niet

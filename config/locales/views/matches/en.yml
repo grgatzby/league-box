@@ -7,12 +7,12 @@ en:
       p01: Update or delete an existing match score
       match_played: "Court number: "
       date_time: "Match played on:"
-      set_1: Set 1
-      set_2: Set 2
-      tie_break: Tie-break
-      submitted: "Current score submitted on %{date} by %{player}."
-      update_score_btn: ⎷ Update score
-      delete_score_btn: x Delete score
+      set_1: set 1
+      set_2: set 2
+      tie_break: tiebreak
+      submitted: "Score submitted on %{date} by %{player}."
+      update_score_btn: ⎷ Update
+      delete_score_btn: x Delete
       sure: Are you sure?
       back_btn: ←
     new:
@@ -23,12 +23,12 @@ en:
       score: "Match score:"
       player_1: Player 1
       player_2: Player 2
-      set_1: Set 1
-      set_2: Set 2
-      tie_break: Tie-break
-      input_score: choose a score
-      and_more: and more
-      save_score_btn: ⎷ Save score
+      set_1: set 1
+      set_2: set 2
+      tie_break: tiebreak
+      input_score: input score
+      and_more: and +
+      save_score_btn: ⎷ Save
       back_btn: ←
       round_not_started_flash: Round has not started yet.
     show:

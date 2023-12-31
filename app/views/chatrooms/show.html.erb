@@ -11,11 +11,15 @@ a chatroom is created in Box controller #my_box.
   >
     <br><div class="one-liner" style="width: 50%">
       <h3>Chatroom</h3>
-      <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> League Box ©</span>
+      <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">
+      <div><%= render "shared/display_round", round: @chatroom.box.round %></div>
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+      <div>
+        <%= link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow" %>
+        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+      </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
         <!-- previous messages -->
@@ -55,8 +59,8 @@ a chatroom is created in Box controller #my_box.
 <% else %>
   <!-- referees and admin get to select a chatroom -->
   <div class="container">
-    <br><h3><%= t(".chatrooms_title", club: current_user.club.name) %></h3>
-    <div class="frame-color-shape players frame-padding text-size">
+    <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name) %></h3>
+    <div class="players frame-padding text-size">
       <%= form_with url: chatroom_path, method: :get do |form| %>
         <%= form.label :chatroom, t(".chose_chatroom") %>
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select :chatroom, @chatrooms.sort %>
@@ -68,6 +72,6 @@ a chatroom is created in Box controller #my_box.
 <br>
 <!--
 <div class="buttons-wrap dont-print">
-  <%= link_to t(".back_btn"), :back, class: "btn buttons-shape btn-blue" %>
+  <%= link_to t(".back_btn"), :back, class: "btn buttons-shape btn-yellow" %>
 </div>
 -->

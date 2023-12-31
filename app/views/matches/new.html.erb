@@ -1,23 +1,23 @@
 <!-- player: enter a new match score-->
 <div class = "container" id="form">
-  <br>
-  <h3><%= t(".new_match_title") %></h3>
-  <p><%= t '.p01' %></p>
-
-  <br><%= render "shared/display_club_round", round: @round %>
-  <% players = [@current_player, @opponent] %>
-  <br>
   <div class="one-liner">
-    <div>
-      <h4>
-        <%= render "shared/fullname", user: @current_player %><%= " vs " %>
-        <%= render "shared/fullname", user: @opponent %>
-      </h4>
-    </div>
+    <h3><%= t(".new_match_title") %></h3>
+  </div>
+  <div class="one-liner">
+    <%= render "shared/display_club_round", round: @round %>
+  </div>
+  <%= t '.p01' %><br><br>
+
+  <% players = [@current_player, @opponent] %>
+  <div class="one-liner frame-margin-rl">
+    <h5>
+      <%= render "shared/fullname", user: @current_player %><%= " vs " %>
+      <%= render "shared/fullname", user: @opponent %>
+    </h5>
   </div>
 
   <%= form_for @match do |f| %>
-    <div class = "frame-color-shape frame-padding-no-top">
+    <div class = "frame-color-shape frame-margin-rl frame-padding">
       <br>
       <div class="row">
         <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>
@@ -34,28 +34,27 @@
       </div>
       <br>
       <b><%= t '.score' %></b>
-      <div class="row">
-        <div class="col-2"><%= t '.player_1' %></div>
+      <i><div class="row">
+        <div class="col-3"><%= @is_mobile ? "" : t('.player_1') %></div>
         <div class="col-2"><%= t '.set_1' %></div>
         <div class="col-2"><%= t '.set_2' %></div>
         <div class="col-2"><%= t '.tie_break' %></div>
-        <div class="col-1"></div>
-        <div class="col-2"><%= t '.player_2' %></div>
-      </div>
-      <% scores = [[t('.input_score'), "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
-      <% score_tb = [[t('.input_score'),
-                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{t('.and_more')}",
-                    "11-9 #{t('.and_more')}", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0" ]] %>
+        <div class="col-3"><%= @is_mobile ? "" : t('.player_2') %></div>
+      </div></i>
+      <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
+      <% score_tb = [["---",
+                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{ @is_mobile ? "+" : t('.and_more') }",
+                    "11-9 #{ @is_mobile ? "+" : t('.and_more') }", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0" ]] %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
-          <div class="col-2"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
+          <div class="col-3"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_set1, scores[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_set2, scores[user_match_score.index] %></div>
           <div class="col-2"><%= user_match_score.select :score_tiebreak,score_tb[user_match_score.index] %></div>
-          <div class="col-1"></div>
-          <div class="col-2"><%= render "shared/fullname", user: players[1] %></div>
+          <div class="col-3 float-right"><%= render "shared/fullname", user: players[1] %></div>
         </div>
       <% end %>
+      <br>
       <%= hidden_field_tag(:player_id, @current_player.id) %>
       <%= hidden_field_tag(:opponent_id, @opponent.id) %>
       <%= hidden_field_tag(:round_start, @round.start_date) %>
@@ -63,14 +62,15 @@
       <%# hidden_field_tag(:page_from, @page_from) %>
     </div>
     <br>
+
     <div class="buttons-wrap">
       <%= f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       <%# f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), my_box_path(@box, page_from: my_box_path(@box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), my_box_path(@box, page_from: my_box_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% else %>
-        <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-blue" %>
+        <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% end %>
     </div>
   <% end %>

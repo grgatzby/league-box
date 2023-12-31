@@ -32,21 +32,23 @@
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     // background: #3e8e41;
-    background: #7f7f7f;
+    // background: #7f7f7f;
+    background: linear-gradient(180deg, #7f7f7f 0%, $tennis-green 100%);
     color: $tennis-blue;
   }
 }
 
-.btn-blue {
+.btn-yellow {
   // background: $tennis-blue;
-  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-aqua 100%);
+  background: linear-gradient(180deg, $yellow 0%, $tennis-beige 100%);
   // color: white;
   color: $tennis-blue;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
-    background: #7f7f7f;
-    color: white;
+    // background: #7f7f7f;
+    background: linear-gradient(180deg, #7f7f7f 0%, $orange 100%);
+    color: $tennis-blue;
   }
 }
 
@@ -63,11 +65,11 @@
 
 .btn-aqua {
   background: $tennis-aqua;
-  color: white;
+  color: $tennis-green;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
-    background: rgb(145, 91, 150);
+    background: $tennis-blue;
     color: white;
   }
 }
