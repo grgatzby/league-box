@@ -21,13 +21,13 @@ en:
       p06: Easily follow the league table and see how you rank against other players in the box league.
       li05_html: >
         Post your latest match score in <span class='color-tennis-red'>My scores</span>.<br>
-        See where you and the other players stand in your box.
+        Your ranking is automatically updated.
       li06_html: >
-        In <span class='color-green'>All boxes</span> see at a glance every box of the league, and click on any box for
+        In <span class='color-green'>All boxes</span> see at a glance every box in the league, and click on any box for
         more details.<br/>You can even see the previous rounds.
       li07_html: >
-        Within a box, you'll see games and scores, and player's ranking in <span class='color-tennis-blue'>List view</span>
-        or in <span class='color-tennis-blue'>Table view</span>.
+        Within a box, the <span class='color-tennis-blue'>List view</span> or the <span class='color-tennis-blue'>Table view</span>
+        show you the games and scores, and players' rankings.
       li08_html: The <span class='color-green'>League Table</span> is always up to date, you can keep track of where every other players rank in the tournament.
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
