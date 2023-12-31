@@ -19,11 +19,11 @@
           <!-- Back -->
           <% if @page_from %>
             <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-blue" do %>
+            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
           <% else %>
-            <%= link_to :back, class: "btn buttons-shape btn-blue" do %>
+            <%= link_to :back, class: "btn buttons-shape btn-yellow" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
           <% end %>
@@ -78,7 +78,7 @@
       <div class="frame-color-shape players frame-padding text-size">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
-          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: "btn buttons-shape btn-blue text-size" %>
+          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: "btn buttons-shape btn-yellow text-size" %>
         </div>
       </div>
     <% end %>
@@ -87,11 +87,11 @@
     <div class="buttons-wrap">
       <% if @page_from %>
         <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-        <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-blue text-size" %>
+        <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-yellow text-size" %>
       <% else %>
-        <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-blue" %>
-        <%= link_to "Back", :back, class: "btn buttons-shape btn-blue text-size" %>
-        <%= link_to "Back to top", "#", class: "btn buttons-shape btn-blue text-size" %>
+        <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-yellow" %>
+        <%= link_to "Back", :back, class: "btn buttons-shape btn-yellow text-size" %>
+        <%= link_to "Back to top", "#", class: "btn buttons-shape btn-yellow text-size" %>
       <% end %>
     </div>
     -->

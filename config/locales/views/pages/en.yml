@@ -10,14 +10,14 @@ en:
         The winner will receive the Singles Box League Tournament trophy, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       p03: The league table will be updated and displayed on the league board at the end of each round.
-      how_title: How does the Leaguebox work?
+      how_title: How does LeagueBox work?
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
       li01_html: 🎾 During the round period, play the matches in your box.
       li02_html: 💻 After each match, one of the two players <b>enters the match score</b>.
       li03_html: 🏆 The <b>league table</b> is automatically updated. You can also <b>view the boxes</b>.
       li04_html: "🎭 <b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
       p05_html: Visit our <b>Tournament rules</b> page for more details
-      use_title: How to use the Leaguebox website?
+      use_title: How to use LeagueBox?
       p06: Easily follow the league table and see how you rank against other players in the box league.
       li05_html: >
         Post your latest match score in <span class='color-tennis-red'>My scores</span>.<br>
@@ -30,12 +30,12 @@ en:
         or in <span class='color-tennis-blue'>Table view</span>.
       li08_html: The <span class='color-green'>League Table</span> is always up to date, you can keep track of where every other players rank in the tournament.
       happy_tournament: Happy tournament!
-      create_club_btn: Create a new club
+      add_club_btn: Add a new club
     rules:
       overview_title: Tournament overview
       p01_html: >
         Box Leagues are designed to enable members of %{clubname} to play competitive tennis on a regular basis.
-        They are also an ideal way to meet other members and build a broader network of players for social games.
+        They are an ideal way to meet other members and build a broader network of players for social games.
       p02: >
         However, box leagues only work if players are committed to getting matches played. Members who enter the leagues must make
         every effort to complete their fixture programme. If, for whatever reason, players are unable to fulfil fixtures they
@@ -100,14 +100,13 @@ en:
       p25: >
         A player's league position is determined by the total number of points won in a Round. In the event that two or more players
         have the same number of points the league position will be determined by:
-      li13: Head to Head result (if only 2 players on the same score)
-      li14: Most matches played
-      li15: Ratio of Sets Won to Sets Played %
-      li16: Ratio of Games Won to Games Played %
+      li13: Most matches played
+      li14: Ratio of Sets Won to Sets Played %
+      li15: Ratio of Games Won to Games Played %
       promotion_relegation: Promotion / Relegation
       p26: In normal circumstances
-      li17: the top two players will be promoted 1 box.
-      li18: the last two players will be relegated 1 box.
+      li16: the top two players will be promoted 1 box.
+      li17: the last two players will be relegated 1 box.
       new_entrants: New Entrants
       p27: Every effort will be made to accommodate new league players into a box that is appropriate to the player’s ability.
       disqualification: Disqualification
@@ -115,34 +114,35 @@ en:
         Players who do not play any matches in a round without good reason or advance notice may be withdrawn from the tournament,
         at the sole discretion of the Tournament Referee.
       no_show: No Show
-      p29: If a player is more than 5 minutes late on court the opponent has the right to claim 1 game.
-      p30: If a player is more than 10 minutes late on court the opponent has the right to claim 2 games.
-      p31: If a player is more than 15 minutes late on court the opponent has the right to claim a set.
+      p29: If a player is more than
+      li18: 5 minutes late on court the opponent has the right to claim 1 game.
+      li19: 10 minutes late on court the opponent has the right to claim 2 games.
+      li20: 15 minutes late on court the opponent has the right to claim a set.
       retire_from_match: Retire from Match
-      p32: If a player retires from a match, for example because of injury, all completed games will stand. Any unplayed games will be conceded.
-      p33: "For example:"
-      p34: "Player A is leading 2/1 and 30:15 in set 1 when player A has to retire."
-      p35: The match score should be entered as 2/4 0/4 to player B.
+      p30: If a player retires from a match, for example because of injury, all completed games will stand. Any unplayed games will be conceded.
+      p31: "For example:"
+      p32: "Player A is leading 2/1 and 30:15 in set 1 when player A has to retire."
+      p33: The match score should be entered as 2/4 0/4 to player B.
       withdrawing: Withdrawing before the start of a round
-      p36: Players should inform the Tournament Referee if they wish to withdraw from the box league.
-      p37: >
+      p34: Players should inform the Tournament Referee if they wish to withdraw from the box league.
+      p35: >
         If a player withdraws before the start of a round the Tournament Referee will make every effort to maintain the player's
         position should the player rejoin the box league at the start of the next round.
       walk_overs: Walk-overs
-      p38: "Walk-overs have been abolished and are not allowed for the following reasons:"
-      li19: complications in managing walk-overs
-      li20: impossibility for the Referee to verify walk-over claims
-      li21: unfair allocation of unplayed point
+      p36: "Walk-overs have been abolished and are not allowed for the following reasons:"
+      li21: complications in managing walk-overs
+      li22: impossibility for the Referee to verify walk-over claims
+      li23: unfair allocation of unplayed point
       deadline_extensions: Deadline Extensions
-      p39: Players should make every effort to play their matches within the box league period.
-      p40: >
+      p37: Players should make every effort to play their matches within the box league period.
+      p38: >
         Players can request an extension to the deadline providing the match has been arranged and the court booked. Such requests
         will be considered at the discretion of the Tournament Referee whose decision is final.
-      p41: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
+      p39: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
       disputes: Disputes
       mail_to_referee_html: "your Referee %{referee_name} at %{referee_email}"
       mail_to_admin_html: "your admin at %{admin_email}"
-      p42_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
+      p40_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
     sitemap:
       sitemap_title: Sitemap
       home: Home

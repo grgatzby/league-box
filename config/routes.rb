@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :matches, only: %i[show edit update new create destroy]
 
     resources :user_box_scores, only: %i[index new create]
-    get 'user_box_scores/download_csv', to: "user_box_scores#download_csv", as: "download"
+    get 'user_box_scores/league_table_to_csv', to: "user_box_scores#league_table_to_csv", as: "csv"
 
     resources :rounds, only: %i[new create]
 

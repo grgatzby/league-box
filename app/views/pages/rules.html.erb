@@ -1,4 +1,8 @@
-<div class="dont-print"><%= render "shared/image_front" %></div>
+<% if !@is_mobile %>
+  <div class="dont-print"><%= render "shared/image_front" %></div>
+<% else %>
+  <br>
+<% end %>
 
 <div class="container">
   <div class="frame-color-shape frame-margin-rl frame-padding text-size dont-print">
@@ -13,7 +17,7 @@
        data-toggle-hide-rules-value="<%= t '.btn_hide_rules' %>">
     <div class = "buttons-wrap dont-print">
       <button data-action="click->toggle#toggleRules" data-toggle-target="toggler"
-        class="btn buttons-shape btn-blue text-size"><%= t '.btn_display_rules' %>
+        class="btn buttons-shape btn-yellow text-size"><%= t '.btn_display_rules' %>
       </button>
       <span class="d-none" data-toggle-target="togglableButton">
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green text-size ms-2"%>
@@ -71,15 +75,15 @@
       <h5><%= t '.box_league_ranking' %></h5>
         <p><%= t '.p25' %></p>
         <ol>
-          <% (13..16).each do |i| %>
+          <% (13..15).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
           <% end %>
         </ol>
       <h5><%= t '.promotion_relegation' %></h5>
         <p><%= t '.p26' %></p>
         <ul>
+          <li><%= t '.li16' %></li>
           <li><%= t '.li17' %></li>
-          <li><%= t '.li18' %></li>
         </ul>
       <h5><%= t '.new_entrants' %></h5>
         <p><%= t '.p27' %></p>
@@ -87,36 +91,39 @@
         <p><%= t '.p28' %></p>
       <h5><%= t '.no_show' %></h5>
         <p><%= t '.p29' %></p>
+        <ul>
+          <% (18..20).each do |i| %>
+            <li><%= t ".li#{format '%02d',i}" %></li>
+          <% end %>
+        </ul>
+      <h5><%= t '.retire_from_match' %></h5>
         <p><%= t '.p30' %></p>
         <p><%= t '.p31' %></p>
-      <h5><%= t '.retire_from_match' %></h5>
-        <p><%= t '.p32' %></p>
-        <p><%= t '.p33' %></p>
         <i>
-          <p><%= t '.p34' %></p>
-          <p><%= t '.p35' %></p>
+          <p><%= t '.p32' %></p>
+          <p><%= t '.p33' %></p>
         </i>
       <h5><%= t '.withdrawing' %></h5>
-        <p><%= t '.p36' %></p>
-        <p><%= t '.p37' %></p>
+        <p><%= t '.p34' %></p>
+        <p><%= t '.p35' %></p>
       <h5><%= t '.walk_overs' %></h5>
-        <p><%= t '.p38' %></p>
+        <p><%= t '.p36' %></p>
         <ul>
-          <li><%= t '.li19' %></li>
-          <li><%= t '.li20' %></li>
-          <li><%= t '.li21' %></li>
+          <% (21..23).each do |i| %>
+            <li><%= t ".li#{format '%02d',i}" %></li>
+          <% end %>
         </ul>
       <h5><%= t '.deadline_extensions' %></h5>
+        <p><%= t '.p37' %></p>
+        <p><%= t '.p38' %></p>
         <p><%= t '.p39' %></p>
-        <p><%= t '.p40' %></p>
-        <p><%= t '.p41' %></p>
       <h5><%= t '.disputes' %></h5>
       <% if @referee %>
         <% mailto = t(".mail_to_referee_html", referee_name: "#{@referee.first_name} #{@referee.last_name}", referee_email: @referee.email) %>
       <% else %>
         <% mailto = t(".mail_to_admin_html", admin_email: @admin.email) %>
       <% end %>
-      <p><%= t(".p42_html", mailto: mailto) %></p>
+      <p><%= t(".p40_html", mailto: mailto) %></p>
 
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>

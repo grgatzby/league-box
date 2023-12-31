@@ -34,20 +34,10 @@ class UserBoxScoresController < ApplicationController
     when t('.table_headers.sets_won_header') # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
-    @browser_device_mobile = mobile_device?
     @render_to_text = false
     if params[:to_text] == "true"
       @render_to_text = true
-      # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
-      # to strip all html
-      html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
-      send_data(html_free_string, template: :raw, filename: "/object.txt", type: "text/txt")
-    elsif params[:to_csv] == "true"
-      league_table_to_csv(@round)
-      # flash[:notice] = t('.file_csv_flash')
-      # assign_params = params.dup
-      # assign_params.delete(:to_csv)
-      redirect_back(fallback_location: user_box_scores_path)
+      create_txt
     end
   end
 
@@ -111,36 +101,17 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
-  def download_csv(file = "#{Rails.root}/public/data.csv")
-    if File.exist?(file)
-      send_file file, filename: "data-#{Date.today}.csv", disposition: 'attachment', type: 'text/csv'
-      flash[:notice] = "file downoaded"
-    end
-  end
-
-  private
-
-  def export_to_csv
-    # EXAMPLE NOT USED from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    file = "#{Rails.root}/public/data.csv"
-    table = User.all;0 # ";0" stops output.  Change "User" to any model.
-    CSV.open(file, 'w') do |writer|
-      # table headers
-      writer << table.first.attributes.map { |a, _v| a }
-      table.each do |s|
-        writer << s.attributes.map { |_a, v| v }
-      end
-    end
-  end
-
-  def league_table_to_csv(round)
+  def league_table_to_csv
+    # from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    round = Round.find_by(start_date: params[:round_start].to_time,
+                          club_id: Club.find_by(name: params[:club_name]).id)
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
     user_box_scores = rank_players(round.user_box_scores)
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << [l(Time.now, format: :long),
+      writer << [l(Time.now, format: :short),
                  t('.table_headers.player_header'),
                  t('.table_headers.rank_header'),
                  t('.table_headers.points_header'),
@@ -164,7 +135,20 @@ class UserBoxScoresController < ApplicationController
     download_csv(file.pathmap)
   end
 
-  def mobile_device?
-    request.user_agent =~ /Mobile|webOS/
+  private
+
+  def download_csv(file = "#{Rails.root}/public/data.csv")
+    if File.exist?(file)
+      send_file file, filename: "league-table-#{Date.today}.csv", disposition: 'attachment', type: 'text/csv'
+      # flash[:notice] = "csv file downoaded"
+    end
+  end
+
+  def create_txt
+    # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
+    # strip all html
+    html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
+    send_data(html_free_string, template: :raw, filename: "league-table-#{Date.today}.txt", type: "text/txt")
+    # flash[:notice] = "text file created"
   end
 end

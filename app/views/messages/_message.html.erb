@@ -37,7 +37,7 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
         <% sender += render "shared/fullname", user: message.user %>
         <% color_name = message.user.club == current_user.club ? "color-tennis-aqua" : "color-black" %>
       <% when "admin" %>
-        <% sender += " League Box website admin"  %>
+        <% sender += " LeagueBox © admin"  %>
         <% color_name = "color-tennis-red" %>
       <% end %>
       <% sender += " #{message.user.role}"  %>

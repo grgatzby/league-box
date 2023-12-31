@@ -13,7 +13,6 @@ en:
         In the event that two or more players have the same number of points the league position will be
         determined by:<br /><br />
         <ol>
-          <li>Head to Head result (if only 2 players on the same score)</li>
           <li>Most matches played</li>
           <li>Ratio of sets won to sets played</li>
           <li>Ratio of games won to games played</li>
@@ -21,14 +20,6 @@ en:
     buttons:
       to_text_btn: Export page to text file
       to_csv_btn: Export page to CSV file
-      # player_header: Player
-      # rank_header: Rank
-      # points_header: Points
-      # box_header: Box
-      # matches_played_header: Matches Played
-      # matches_won_header: Matches Won
-      # sets_played_header: Sets Played
-      # sets_won_header: Sets Won
     table_data:
       matches:
         zero: 0 matches
@@ -42,11 +33,11 @@ en:
       player_header: Player
       rank_header: Rank
       points_header: Points
-      box_header: Box
-      matches_played_header: Matches Played
-      matches_won_header: Matches Won
-      sets_played_header: Sets Played
-      sets_won_header: Sets Won
+      box_header: Box nb
+      matches_played_header: Played
+      matches_won_header: Won
+      sets_played_header: Played
+      sets_won_header: Won
     new:
       new_club_title: Create a new club and a round
       not_authorised: You are not an admin, this page is not authorised.

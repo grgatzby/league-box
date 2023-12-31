@@ -1,5 +1,8 @@
-
-<%= render "shared/image_front" %>
+<% if !@is_mobile %>
+  <div class="dont-print"><%= render "shared/image_front" %></div>
+<% else %>
+  <br>
+<% end %>
 <div class="container">
   <div class="frame-color-shape frame-padding">
     <%= render "shared/staff", from:"pages" %>

@@ -1,4 +1,8 @@
-<%= render "shared/image_front" %>
+<% if !@is_mobile %>
+  <div class="dont-print"><%= render "shared/image_front" %></div>
+<% else %>
+  <br>
+<% end %>
 
 <div class="container" data-controller="toggle">
   <div class="frame-color-shape frame-margin-rl frame-padding text-size box-scroller"

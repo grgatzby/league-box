@@ -8,12 +8,6 @@
       method: :get,
       onclick: 'JavaScript:location.reload(true);',
       class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-  <%= link_to t('.to_csv_btn'),
-      user_box_scores_path(to_csv: true, round_start: round.start_date, club_name: round.club.name),
-      method: :get,
-      data: { turbo: "false" },
-      onclick: 'JavaScript:location.reload(true);',
-      class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
-  <%= link_to 'Download', download_path(round_start: round.start_date, club_name: round.club.name),
+  <%= link_to t('.to_csv_btn'), csv_path(round_start: round.start_date, club_name: round.club.name),
       class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
 </div>

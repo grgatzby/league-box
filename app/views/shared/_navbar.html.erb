@@ -17,7 +17,7 @@
       <ul class="navbar-nav me-auto">
         <li class="nav-item time-color top-bottom-padding">
           <% if user_signed_in? && @round %>
-            <%= render "shared/round", round: @round %>
+            <%= render "shared/display_round", round: @round %>
           <% end %>
         </li>
 

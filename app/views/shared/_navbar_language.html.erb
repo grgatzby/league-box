@@ -1,6 +1,10 @@
 <%# partial: dropdown language list from the navbar %>
+
 <li class="nav-item dropdown">
-  <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-globe"></i></a>
+  <a href="#" class= "nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="fa-solid fa-globe"></i>
+    <%= locale %>
+  </a>
   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
     <%# link_to 'EN', {controller: controller_name, action: action_name, locale: :en}, {class: "dropdown-item"} %>
     <%= link_to "EN", request.params.except(:commit).merge(locale: :en), class: "dropdown-item" %>

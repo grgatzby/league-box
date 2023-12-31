@@ -1,13 +1,13 @@
 <!-- index page: league table -->
 <div class="container" data-controller="toggle"
-     data-toggle-screen-type-value="<%= @browser_device_mobile ? "mobile" : "widescreen" %>">
+     data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <br>
   <div class="one-liner">
     <h3><%= t '.league_table_title' %></h3>
     <!-- the following line will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
-      <div>League Box ©</div>
+      <div>LeagueBox ©</div>
       <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
     </span>
   </div>
@@ -15,14 +15,14 @@
     <div class="text-size">
       <div class="one-liner">
         <%= render "shared/display_club_round", round: @round,
-                                                mobile_screen: @browser_device_mobile ? true : false,
+                                                mobile_screen: @is_mobile ? true : false,
                                                 fallback_path: user_box_scores_path %>
         <%= render "shared/select_round", fallback_path: user_box_scores_path %>
       </div>
       <% if !@render_to_text %>
         <%# exclude buttons and top line from exporting to text (in user_box_score index) %>
         <br><%= render 'buttons', round: @round %>
-        <%= render 'top_line', round: @round, browser_device_mobile: @browser_device_mobile %>
+        <%= render 'top_line', round: @round, is_mobile: @is_mobile %>
       <% end %>
       <%= render 'league_table' %>
     </div>

@@ -52,7 +52,13 @@ class BoxesController < ApplicationController
         # If the assigned chatroom is still #general, or if this box has no chatroom yet,
         # we create a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
         # it will NOT remain available to players when in the next round (a chatroom is round specific)
-        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{format('%02d', @box.round.id)}")
+        round_year = @box.round.start_date.year
+        rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
+                              .where(club_id: @box.round.club)
+                              .order('start_date ASC')
+                              .map(&:id)
+        round_number = "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(@box.round.id) + 1)}"
+        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number}")
         @box.update(chatroom_id: @chatroom.id)
       else
         @chatroom = @box.chatroom

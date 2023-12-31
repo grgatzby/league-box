@@ -1,23 +1,23 @@
 fr:
   pages:
     home:
-      main_title: Le tennis associatif dans votre club
-      welcome_title: Bienvenue sur le site Leaguebox
+      main_title: Le tennis associatif de votre club
+      welcome_title: Votre tournoi sur LeagueBox
       p01: >
         Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou chaque trimestre dans certains clubs).
         Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
       p02: >
         Le vainqueur recevra le trophée du Tournoi Box League, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
-      p03: La league table sera mise à jour et affichée sur le tableau à la fin des rounds.
-      how_title: Comment fonctionne la Leaguebox?
+      p03: La league table sera mise à jour automatiquement.
+      how_title: Comment fonctionne LeagueBox?
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
       li01_html: 🎾 <b>Pendant la durée du round</b>, jouez les matchs de votre box.
       li02_html: 💻 Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
       li03_html: 🏆 La <b>league table</b> est automatiquement mise à jour. Vous pouvez également <b>consulter les box</b>.
       li04_html: "🎭 <b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box."
       p05_html: Consultez notre page <b>Le tournoi</b> pour en savoir plus
-      use_title: Comment utilliser votre site Leaguebox?
+      use_title: Comment utilliser LeagueBox?
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
         Après le match, entrez votre score dans <span class='color-tennis-red'>Mes scores</span>.<br>
@@ -30,15 +30,15 @@ fr:
         ou en <span class='color-tennis-blue'>Vue par grille</span>.
       li08_html: La <span class='color-green'>League Table</span> du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
       happy_tournament: Que les meilleurs gagnent!
-      create_club_btn: Créer un nouveau club
+      add_club_btn: Ajouter un nouveau club
     rules:
       overview_title: Description du Tournoi
       p01_html: >
         Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif.
-        Elles sont également le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
+        Elles sont le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
       p02: >
-        Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent aux leagues
-        devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer les matchs prévus
+        Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent
+        devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs
         prévenez rapidement vos adversaires et votre Referee.
       p03: >
         Les joueurs devront notifier à leurs adversaires leurs périodes d'indisponibilité, ainsi que leurs disponibilités.
@@ -97,51 +97,51 @@ fr:
       p24: Veuillez noter que tous les résultats devront être entrés avant la fin du round, à moins qu'un délai ait été accordé par le Referee.
       box_league_ranking: Classement de la Box League
       p25: >
-        Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. Au cas où deux joueurs ou plus
-        auraient le même nombre de points le classement sera déterminé par:
-      li13: Head to Head result (if only 2 players on the same score)
-      li14: Le plus de matchs joués
-      li15: Le Ratio de Sets Gagnés sur Sets Joués %
-      li16: Le Ratio de Jeux Gagnés sur Jeux Joués %
+        Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
+        de points, le classement sera déterminé selon:
+      li13: Le plus de matchs joués
+      li14: Le Ratio de Sets Gagnés sur Sets Joués %
+      li15: Le Ratio de Jeux Gagnés sur Jeux Joués %
       promotion_relegation: Promotion / Relégation
-      p26: Dans les circonstances habituelles
-      li17: les deux meilleurs joueurs seront promus d'une 1 box.
-      li18: les deux derniers joueurs seront relégués d'une 1 box.
+      p26: Dans les circonstances habituelles, au prochain round
+      li16: les deux meilleurs joueurs seront promus d'une 1 box.
+      li17: les deux derniers joueurs seront relégués d'une 1 box.
       new_entrants: Nouveaux Entrants
-      p27: On essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
+      p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
       disqualification: Disqualification
       p28: >
         Les joueurs qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiés du tournoi,
         à la seule discrétion du Referee du Tournoi.
       no_show: No Show
-      p29: Si un joueur a plus de 5 minutes de retard sur le court son adversaire peut exiger 1 jeu.
-      p30: Si un joueur a plus de 10 minutes de retard sur le court son adversaire peut exiger 2 jeux.
-      p31: Si un joueur a plus de 15 minutes de retard sur le court son adversaire peut exiger a set.
+      p29: Si un joueur a plus de
+      li18: 5 minutes de retard sur le court son adversaire peut exiger 1 jeu.
+      li19: 10 minutes de retard sur le court son adversaire peut exiger 2 jeux.
+      li20: 15 minutes de retard sur le court son adversaire peut exiger a set.
       retire_from_match: Forfait d'un Match
-      p32: Si un joueur déclare forfait, pour blessure par exemple, tous les jeux joués compteront. Les jeux non joués seront déclarés perdus.
-      p33: "Par exemple:"
-      p34: "Le Joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
-      p35: Le score du match à saisir sera 2/4 0/4 à l'avantage du Joueur B.
+      p30: Si un joueur déclare forfait, pour blessure par exemple, tous les jeux joués compteront. Les jeux non joués seront déclarés perdus.
+      p31: "Par exemple:"
+      p32: "Le Joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
+      p33: Le score du match à saisir sera 2/4 0/4 à l'avantage du Joueur B.
       withdrawing: Retrait avant le début d'un round
-      p36: Les joueurs informeront le Referee s'ils souhaitent se retirer de la box league.
-      p37: >
+      p34: Les joueurs informeront le Referee s'ils souhaitent se retirer de la box league.
+      p35: >
         Si le joueur se retire avant le début du round, le Referee s'efforcera pour maintenir sa position dans la league
         s'il souhaitait participer au round suivant.
       walk_overs: Victoire par forfait ou absence (Walk-over)
-      p38: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
-      li19: compliqués à gérer
-      li20: il est impossible pour le Referee de vérifier les déclarations de walk-overs
-      li21: attribution injuste de points non joués
+      p36: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
+      li21: compliqués à gérer
+      li22: il est impossible pour le Referee de vérifier les déclarations de walk-overs
+      li23: attribution injuste de points non joués
       deadline_extensions: Deadline Extensions
-      p39: les joueurs devront s'efforcer de jouer leurs matchs dans la durée de la box league.
-      p40: >
+      p37: Les joueurs devront s'efforcer de jouer leurs matchs dans la durée de la box league.
+      p38: >
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
         sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
-      p41: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
+      p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
       disputes: Différends
       mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email}"
       mail_to_admin_html: "votre admin à %{admin_email}"
-      p42_html: "les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
+      p40_html: "Les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
       sitemap_title: Plan du site
       home: Page d'accueil

@@ -2,7 +2,7 @@ nl:
   pages:
     home:
       main_title: Verenigingstennis in jouw club
-      welcome_title: Welkom op de Leaguebox-website
+      welcome_title: Welkom op de LeagueBox-website
       p01: >
         Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of elke drie maanden, in sommige club).
         De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
@@ -10,14 +10,14 @@ nl:
         De winnaar ontvangt de Singles Box League Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
-      how_title: Hoe werkt Leaguebox?
+      how_title: Hoe werkt LeagueBox?
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
       li01_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
       li02_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
       li03_html: 🏆 De <b>ranglijst</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen bekijken</b>.
       li04_html: "🎭 <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
       p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
-      use_title: Gebruik van de Leaguebox-website
+      use_title: Gebruik van de LeagueBox-website
       p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
       li05_html: >
         Voer je laatste score in <span class='color-tennis-red'>Mijn scores</span>.<br>
@@ -30,7 +30,7 @@ nl:
         of in <span class='color-tennis-blue'>Resultatenraster</span>.
       li08_html: De <span class='color-green'>League Table</span> wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       happy_tournament: Happy tournament!
-      create_club_btn: Creëer een nieuwe club
+      add_club_btn: Een nieuwe club toevoegen
     rules:
       overview_title: Beschrijving van het toernooi
       p01_html: >
@@ -99,14 +99,13 @@ nl:
       p25: >
         De rangschikking van een speler wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer spelers
         hetzelfde aantal punten zou hebben, wordt de rangschikking bepaald door:
-      li13: Head to Head-resultaat (als slechts 2 spelers dezelfde score hebben)
-      li14: Meeste wedstrijden gespeeld
-      li15: De verhouding tussen gewonnen sets en gespeelde sets %
-      li16: De verhouding tussen gewonnen games en gespeelde games %
+      li13: Meeste wedstrijden gespeeld
+      li14: De verhouding tussen gewonnen sets en gespeelde sets %
+      li15: De verhouding tussen gewonnen games en gespeelde games %
       promotion_relegation: Promotie/degradatie
       p26: Onder normale omstandigheden
-      li17: de twee beste spelers promoveren met 1 box.
-      li18: de laatste twee spelers degraderen één box.
+      li16: de twee beste spelers promoveren met 1 box.
+      li17: de laatste twee spelers degraderen één box.
       new_entrants: Nieuwkomers
       p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
       disqualification: Diskwalificatie
@@ -114,34 +113,35 @@ nl:
         Spelers die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
         naar eigen goeddunken van de toernooiReferee.
       no_show: No Show
-      p29: Als een speler meer dan 5 minuten te laat op het speelveld is, mag zijn tegenstander 1 game eisen.
-      p30: Als een speler meer dan 10 minuten te laat op het speelveld is, mag zijn tegenstander 2 games eisen.
-      p31: Als een speler meer dan 15 minuten te laat op het speelveld is, mag zijn tegenstander een set eisen.
+      p29: Als een speler meer dan
+      li18: 5 minuten te laat op het speelveld is, mag zijn tegenstander 1 game eisen.
+      li19: 10 minuten te laat op het speelveld is, mag zijn tegenstander 2 games eisen.
+      li20: 15 minuten te laat op het speelveld is, mag zijn tegenstander een set eisen.
       retire_from_match: Terugtrekt van een Match
-      p32: Als een speler zich terugtrekt, bijvoorbeeld vanwege een blessure, tellen alle gespeelde wedstrijden mee. Niet gespeelde wedstrijden worden verloren verklaard.
-      p33: "Bijvoorbeeld:"
-      p34: "Speler A leidt 2/1, 30:15 in de eerste set en moet opgeven."
-      p35: De score van de in te voeren wedstrijd is 2/4 0/4 in het voordeel van speler B.
+      p30: Als een speler zich terugtrekt, bijvoorbeeld vanwege een blessure, tellen alle gespeelde wedstrijden mee. Niet gespeelde wedstrijden worden verloren verklaard.
+      p31: "Bijvoorbeeld:"
+      p32: "Speler A leidt 2/1, 30:15 in de eerste set en moet opgeven."
+      p33: De score van de in te voeren wedstrijd is 2/4 0/4 in het voordeel van speler B.
       withdrawing: Terugtrekking vóór aanvang van een ronde
-      p36: Spelers informeren de Referee als ze zich willen terugtrekken uit de Box League.
-      p37: >
+      p34: Spelers informeren de Referee als ze zich willen terugtrekken uit de Box League.
+      p35: >
         Als de speler zich vóór het begin van de ronde terugtrekt, zal de Referee proberen zijn positie in de competitie te behouden
         als hij wilde deelnemen aan de volgende ronde.
       walk_overs: Overwinning door verbeurdverklaring of afwezigheid (walk-over)
-      p38: "Walk-overs zijn afgeschaft en niet meer toegestaan ​​om de volgende redenen:"
-      li19: ingewikkeld om te beheren
-      li20: het is voor de Referee onmogelijk om walk-over-verklaringen te verifiëren
-      li21: oneerlijke toewijzing van niet-gespeelde punten
+      p36: "Walk-overs zijn afgeschaft en niet meer toegestaan ​​om de volgende redenen:"
+      li21: ingewikkeld om te beheren
+      li22: het is voor de Referee onmogelijk om walk-over-verklaringen te verifiëren
+      li23: oneerlijke toewijzing van niet-gespeelde punten
       deadline_extensions: Deadline-verlengingen
-      p39: Spelers zullen ernaar moeten streven hun wedstrijden binnen de duur van de Box League te spelen.
-      p40: >
+      p37: Spelers zullen ernaar moeten streven hun wedstrijden binnen de duur van de Box League te spelen.
+      p38: >
         Spelers kunnen om uitstel verzoeken, op voorwaarde dat de wedstrijd is geregeld en de baan is gereserveerd. Zo'n verzoek
         zal worden beoordeeld naar goeddunken van de toernooiReferee, wiens beslissing definitief zal zijn.
-      p41: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
+      p39: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
       disputes: Geschillen
       mail_to_referee_html: "uw Referee %{referee_name} aan %{referee_email}"
       mail_to_admin_html: "uw admin aan %{admin_email}"
-      p42_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
+      p40_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
     sitemap:
       sitemap_title: Sitemap
       home: Home

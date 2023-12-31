@@ -13,8 +13,8 @@
           <div class="col-1 top-bottom-padding"><%= "# #{user_box_score.rank}" %></div>
           <div class="col-1 top-bottom-padding"><%= t("pts", count: user_box_score.points) %></div>
           <div class="col-1 top-bottom-padding"><%= "#{user_box_score.box.box_number}" %></div>
-          <div class="col-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_played) %></div>
-          <div class="col-2 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_box_score.games_played) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_won) %></div>
           <% if current_user.role == "admin" || current_user.role == "referee" %>

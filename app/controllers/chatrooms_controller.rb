@@ -13,7 +13,7 @@ class ChatroomsController < ApplicationController
       # for the admin: all chatrooms; for a referee: only those from his own club + the #general chatroom
       if current_user == @admin
         @chatrooms = Chatroom.all
-      else
+      else # current_user is a Referee
         @chatrooms = Chatroom.select do |chatroom|
           box = chatroom.box
           club = box.round.club
