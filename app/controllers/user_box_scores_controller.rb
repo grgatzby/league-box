@@ -18,20 +18,35 @@ class UserBoxScoresController < ApplicationController
     end
     @sort = params[:sort]
     case params[:sort]
-    when t('.table_headers.player_header') # "Player"
+    # when t('.table_headers.player_header') # "Player"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
+    #   @user_box_scores.reverse! if @order == 1
+    # when t('.table_headers.points_header') # "Points"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
+    # when t('.table_headers.box_header') # "Box"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
+    # when t('.table_headers.matches_played_header') # "Matches Played"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
+    # when t('.table_headers.matches_won_header') # "Matches Won"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
+    # when t('.table_headers.sets_played_header') # "Sets Played"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
+    # when t('.table_headers.sets_won_header') # "Sets Won"
+    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
+    when "1" # "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
-    when t('.table_headers.points_header') # "Points"
+    when "3" # "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    when t('.table_headers.box_header') # "Box"
+    when "4" # "Box"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    when t('.table_headers.matches_played_header') # "Matches Played"
+    when "5" # "Matches Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    when t('.table_headers.matches_won_header') # "Matches Won"
+    when "6" # "Matches Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    when t('.table_headers.sets_played_header') # "Sets Played"
+    when "7" # "Sets Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    when t('.table_headers.sets_won_header') # "Sets Won"
+    when "8" # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
     @render_to_text = false
