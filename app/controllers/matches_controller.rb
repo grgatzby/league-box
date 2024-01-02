@@ -116,7 +116,7 @@ class MatchesController < ApplicationController
       rank_players(@match.box.round.user_box_scores)
 
       if current_user.role == "player"
-        redirect_to my_box_path(@match.box, page_from: my_box_path(@match.box))
+        redirect_to my_scores_path(@match.box, page_from: my_scores_path(@match.box))
       else
         redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
       end
@@ -231,7 +231,7 @@ class MatchesController < ApplicationController
       rank_players(@match.box.round.user_box_scores)
 
       if current_user.role == "player"
-        redirect_to my_box_path(@match.box, page_from: my_box_path(@match.box))
+        redirect_to my_scores_path(@match.box, page_from: my_scores_path(@match.box))
       else
         redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
       end
@@ -323,7 +323,7 @@ class MatchesController < ApplicationController
       rank_players(match.box.round.user_box_scores)
 
       if current_user.role == "player"
-        redirect_to my_box_path(match.box, page_from: my_box_path(match.box))
+        redirect_to my_scores_path(match.box, page_from: my_scores_path(match.box))
       else
         redirect_to box_referee_path(match.box, page_from: box_referee_path(match.box))
       end

@@ -180,7 +180,7 @@ nl:
       p20_html: >
         De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven en er verschijnt een <span class='color-tennis-blue'>Mijn scores</span>-knop
         links van de schakellink naar de <span class='color-tennis-blue'>resultatenraster</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i>).
-      my_box: Mijn scores
+      my_scores: Mijn scores
       p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Mijn boxresultaten</span>, <span class='color-tennis-blue'>Wedstrijdkaart</span> en <span class='color-tennis-blue'>Voer een score in</span>.
       p23_html: Link naar de <span class='color-tennis-blue'>box-chatroom</span>.
       match_results: Wedstrijdresultaten bekijken

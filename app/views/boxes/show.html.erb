@@ -1,5 +1,5 @@
 <!-- player show page by table of matches -->
-<div class="container">
+<div class="container text-size">
   <% view_types = [t("boxes.table_view"), t("boxes.list_view")]  %>
   <%= render "intro_lines", box: @box, view_types: view_types %>
 
@@ -8,7 +8,7 @@
     <div class="grid-container box-width row small-font">
       <div class="col-1 print-all-content">
         <div class="row">
-          <div class="col-12 bold-font"><%= "BOX #{@box.box_number}" %></div>
+          <div class="col-12 bold-font"><%= "Box #{@box.box_number}" %></div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>

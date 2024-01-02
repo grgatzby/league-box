@@ -1,7 +1,7 @@
 .top-bottom-padding {
   padding-top: 6px;
   padding-bottom: 6px;
-  margin-top: auto;
+  // margin-top: auto;
   margin-bottom: auto;
 }
 
@@ -13,7 +13,7 @@
 
 .box-width {
   // width: 85vw;
-  width: 80rem;
+  width: 81rem;
 }
 
 .grid-container {
@@ -50,6 +50,7 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 8px;
   }
+
 }
 
 @media only screen and (max-width: 1400px) {
@@ -102,13 +103,6 @@
   left: 0;
   width: 100%;
 }
-
-.header-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 
 .left-padding {
   // align list view/referee view headers with the corresponding data (compensate <ul> indentation)

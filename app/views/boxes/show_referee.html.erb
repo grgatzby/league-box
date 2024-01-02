@@ -1,5 +1,5 @@
 <!-- admin/referee show page by list of matches, allows to edit, delete score, input new score (admin only) -->
-<div class="container" data-controller="toggle">
+<div class="container text-size" data-controller="toggle">
   <% if current_user.role != "player" %>
     <% view_types = [t("boxes.referee_view"), t("boxes.table_view")]  %>
     <%= render "intro_lines", box: @box, view_types: view_types %>

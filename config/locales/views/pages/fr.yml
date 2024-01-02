@@ -181,7 +181,7 @@ fr:
       p20_html: >
         Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      my_box: Mes scores
+      my_scores: Mes scores
       p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Ma box</span>, <span class='color-tennis-blue'>Score du match</span> et <span class='color-tennis-blue'>Saisir un score</span>.
       p23_html: Lien vers la <span class='color-tennis-blue'>chatroom de box</span>.
       match_results: Affichage des résultats du match

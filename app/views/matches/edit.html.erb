@@ -1,10 +1,11 @@
 <!-- admin/referee: edit or delete a match and dependent user_match_scores -->
-<div class="container">
+<div class="container text-size">
+  <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.edit_match_title' %></h3>
   </div>
   <div class="one-liner">
-    <%= render "shared/display_club_round", round: @round %>
+    <h4><%= render "shared/display_club", round: @round, add_text: "" %></h4>
   </div>
   <p><%= t '.p01' %></p>
 
@@ -67,7 +68,7 @@
       data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), my_box_path(@match.box, page_from: my_box_path(@match.box)), class: "btn buttons-shape btn-yellow" %>
+        <%= link_to t(".back_btn"), my_scores_path(@match.box, page_from: my_scores_path(@match.box)), class: "btn buttons-shape btn-yellow" %>
       <% else %>
         <%= link_to t(".back_btn"), box_referee_path(@match.box, page_from: box_referee_path(@match.box)), class: "btn buttons-shape btn-yellow" %>
       <% end %>

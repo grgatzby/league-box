@@ -5,6 +5,7 @@ class BoxesController < ApplicationController
   end
 
   def show
+    set_club_round    # set variables @club and @round (ApplicationController)
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
     # @box_matches = array [user_box_score , matches_details(user), user]
@@ -22,9 +23,9 @@ class BoxesController < ApplicationController
     show        # inherit from #show
   end
 
-  def my_box
-    # passing 0 to my_box_path, forces user to choose a round
-    # <%= link_to "My scores", my_box_path(0), class: "btn buttons-shape btn-green" %>
+  def my_scores
+    # passing 0 to my_scores_path, forces user to choose a round
+    # <%= link_to "My scores", my_scores_path(0), class: "btn buttons-shape btn-green" %>
     @page_from = params[:page_from]
     @current_player = current_user
     # allow player to view their box and select enter new score / view played match
