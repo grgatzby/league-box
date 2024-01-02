@@ -1,8 +1,8 @@
 <!-- display the selected header with an up or down arrow, if chosen to sort the table -->
 <% header_arrow = @order == 1 ? direction[0] : direction[1] %>
-<% header_arrow = header == @sort ? header_arrow : "" %>
+<% header_arrow = nb == @sort.to_i ? header_arrow : "" %>
 <%=link_to header+header_arrow,
-  user_box_scores_path( exsort: @sort, order: -@order, sort: header,
+  user_box_scores_path( exsort: @sort, order: -@order, sort: nb,
                         round_start: @round.start_date, club_name: @round.club.name),
   class: "btn header-ghost text-size table-text-size"
 %>
