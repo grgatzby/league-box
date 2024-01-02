@@ -1,7 +1,7 @@
 <!-- index page: league table -->
-<div class="container" data-controller="toggle"
+<div class="container text-size" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
-  <br>
+  <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.league_table_title' %></h3>
     <!-- the following line will display when printing the page -->
@@ -13,10 +13,8 @@
   </div>
   <% if @round %>
     <div class="text-size">
-      <div class="one-liner">
-        <%= render "shared/display_club_round", round: @round,
-                                                mobile_screen: @is_mobile ? true : false,
-                                                fallback_path: user_box_scores_path %>
+      <div class=<%=@is_mobile ? "" : "one-liner"%>>
+        <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
         <%= render "shared/select_round", fallback_path: user_box_scores_path %>
       </div>
       <% if !@render_to_text %>

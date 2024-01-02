@@ -1,9 +1,16 @@
 .will-print {
   // elements which appear only when printing
   opacity: 0;
+  width: 0px;
+  height: 0;
 }
 
 @media print {
+  .frame-color-shape {
+    background: none;
+    box-shadow: none;
+  }
+
   a[href]::after {
     content: none !important;
   }
@@ -17,8 +24,12 @@
 
   .will-print {
     opacity: 0.9;
+    width: auto;
   }
 
+  .box-frame {
+    box-shadow: none;
+  }
   .print-scroller {
     max-height: auto !important;
     height: auto;

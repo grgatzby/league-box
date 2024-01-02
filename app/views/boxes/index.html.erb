@@ -1,12 +1,13 @@
 <!-- list of all boxes -->
-<div class="container">
+<div class="container text-size">
+  <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.all_box_title' %></h3>
     <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
   </div>
   <% if @round %>
     <div class = "one-liner">
-      <%= render "shared/display_club_round", round: @round, fallback_path: boxes_path %>
+      <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path, add_text: "" %></h4>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
       <%= render "shared/select_round", fallback_path: boxes_path %>
     </div>

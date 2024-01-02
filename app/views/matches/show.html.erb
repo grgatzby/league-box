@@ -1,4 +1,4 @@
-<!-- player: show match/user_match_scores details (called from boxes/my_box.html.erb) -->
+<!-- player: show match/user_match_scores details (called from boxes/my_scores.html.erb) -->
 <div class="container">
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:current_user.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id) %>
@@ -46,6 +46,6 @@
   </div>
   <br>
   <div class="buttons-wrap">
-    <%= link_to t(".back_btn"), my_box_path(@match.box), class: "btn buttons-shape btn-yellow" %>
+    <%= link_to t(".back_btn"), my_scores_path(@match.box), class: "btn buttons-shape btn-yellow" %>
   </div>
 </div>

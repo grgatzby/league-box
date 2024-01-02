@@ -1,12 +1,12 @@
 fr:
   back_btn: ←
   boxes:
-    switch: voir la
-    list_view: liste de résultats
-    referee_view: vue Referee
-    table_view: grille de résultats
+    switch: voir les
+    list_view: résultats en liste
+    referee_view: vue admin/Referee
+    table_view: résultats en grille
     intro_lines:
-      my_box_btn: Mes scores
+      my_scores_btn: Mes scores
       pop01_a: cliquer sur un match pour éditer ou supprimer son score
       pop01_b: ", ou saisir un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
@@ -18,8 +18,8 @@ fr:
       message_box_pop: <b>Colonnes</b><br />Nom joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
-    my_box:
-      my_box_results: Mes scores
+    my_scores:
+      my_scores: Mes scores
       intro: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
       view_enter_scores: Consultez ou entrez vos scores

@@ -12,12 +12,14 @@ en:
       club_staff_link: Staff
       all_boxes_link: All boxes
       league_table_link: League table
-      my_box_link: My scores
+      my_scores_link: My scores
       general_chat_link: "#general chatroom"
       chatrooms_link: Chatrooms
       log_out_link: Log out
     display_round:
       round_period: "Round %{start} to %{end}"
+      days_left: "(%{days} days left)"
+      players: ", %{nb_players} players"
     select_round:
       select_round_start: "Select a different round: "
       confirm_btn: ⎷ Confirm

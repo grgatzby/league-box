@@ -1,8 +1,9 @@
 class ChatroomsController < ApplicationController
   # Chatrooms have a one to one relation wth Boxes (has_one :box)
   def show
+    set_club_round    # set variables @club and @round (ApplicationController)
     # display a chatroom
-    # this method is accessed from either the navbar, or the show_referee or my_box view pages
+    # this method is accessed from either the navbar, or the show_referee or my_scores view pages
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
       # params[:chatroom] exists : coming from the show_referee view page form
@@ -24,7 +25,7 @@ class ChatroomsController < ApplicationController
       # add the '#' in front of the chatroom names (for display in the form)
       @chatrooms = @chatrooms.map { |chatroom| "##{chatroom.name}" }
     elsif Chatroom.exists?(params[:id])
-      # coming from the navbar or my_box view page
+      # coming from the navbar or my_scores view page
       @chatroom = Chatroom.find(params[:id])
       # if @chatroom != @general_chatroom && @chatroom.box.user_box_scores
       #             .select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
@@ -32,12 +33,12 @@ class ChatroomsController < ApplicationController
       if @chatroom.box.user_box_scores.select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
         # chatroom not available to current user
         flash[:notice] = t('.no_access_flash')
-        redirect_back(fallback_location: current_user.role == "player" ? my_box_path(0) : root_path)
+        redirect_back(fallback_location: current_user.role == "player" ? my_scores_path(0) : root_path)
       end
     else
       # chatroom Id does not exist
       flash[:notice] = t('.no_chatroom_flash')
-      redirect_back(fallback_location: current_user.role == "player" ? my_box_path(0) : root_path)
+      redirect_back(fallback_location: current_user.role == "player" ? my_scores_path(0) : root_path)
     end
     # instantiate new @message for the new message form
     @message = Message.new

@@ -1,29 +1,32 @@
 <!-- player page to view own match results, enter new scores -->
 <div class="container text-size">
-  <div>
-    <h3><%= t '.my_box_results' %></h3>
+  <% if !@is_mobile %><br><% end %>
+  <div class="one-liner">
+    <h3><%= t '.my_scores' %></h3>
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%= render "shared/select_club_round", fallback_path: my_box_path, intro_paragraph: t(".intro") %>
+      <%= render "shared/select_club_round", fallback_path: my_scores_path, intro_paragraph: t(".intro") %>
     <% end %>
   </div>
   <% if @round %>
-    <%= render "shared/display_club_round", round: @box.round %>
     <% if @user_not_in_round %>
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
       <div class="one-liner">
-        <div><h4><%= render "shared/fullname", user: @current_player %><%= " - box #{@box.box_number}" %></h4></div>
+        <h4><%= render "shared/display_club",
+            round: @box.round,
+            add_text: "#{render "shared/fullname", user: @current_player} - box #{@box.box_number}" %>
+        </h4>
         <div>
           <!-- Back -->
           <% if @page_from %>
             <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow" do %>
+            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
           <% else %>
-            <%= link_to :back, class: "btn buttons-shape btn-yellow" do %>
+            <%= link_to :back, class: "btn buttons-shape btn-yellow mb-3" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
           <% end %>

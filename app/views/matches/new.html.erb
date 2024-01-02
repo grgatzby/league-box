@@ -1,10 +1,11 @@
 <!-- player: enter a new match score-->
-<div class = "container" id="form">
+<div class = "container text-size" id="form">
+  <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t(".new_match_title") %></h3>
   </div>
   <div class="one-liner">
-    <%= render "shared/display_club_round", round: @round %>
+    <h4><%= render "shared/display_club", round: @round, add_text: "" %></h4>
   </div>
   <%= t '.p01' %><br><br>
 
@@ -68,7 +69,7 @@
       <%# f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), my_box_path(@box, page_from: my_box_path(@box)), class: "btn buttons-shape btn-yellow" %>
+        <%= link_to t(".back_btn"), my_scores_path(@box, page_from: my_scores_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% else %>
         <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% end %>

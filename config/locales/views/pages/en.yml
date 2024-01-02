@@ -182,7 +182,7 @@ en:
       p20_html: >
         If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
-      my_box: My box
+      my_scores: My scores
       p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.
       p23: Link to the box chatroom.
       match_results: Match results view

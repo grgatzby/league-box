@@ -3,10 +3,10 @@ en:
   boxes:
     switch: switch to
     list_view: list view
-    referee_view: Referee view
+    referee_view: admin/Referee view
     table_view: table view
     intro_lines:
-      my_box_btn: My scores
+      my_scores_btn: My scores
       pop01_a: select a match to edit or delete the score
       pop01_b: ", or enter a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
@@ -18,8 +18,8 @@ en:
       message_box_pop: <b>Box columns:</b><br />Player name, rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       create_round_btn: Create the next round
       request_round_btn: Request the admin the next round
-    my_box:
-      my_box_results: My scores
+    my_scores:
+      my_scores: My scores
       intro: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
       not_in_round: " you are not in this round!"
       view_enter_scores: View or enter match scores

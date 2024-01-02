@@ -4,7 +4,7 @@
   <h3><%= t(".new_match_title") %></h3>
   <p><%= t '.p01' %></p>
 
-  <br><%= render "shared/display_club_round", round: @round %>
+  <br><h4><%= render "shared/display_club", round: @round, add_text: "" %></h4>
   <% players = [@current_player, @opponent] %>
   <br>
   <div class="one-liner">
@@ -65,7 +65,7 @@
       <%= f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
       <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), my_box_path(@box, page_from: my_box_path(@box)), class: "btn buttons-shape btn-yellow" %>
+        <%= link_to t(".back_btn"), my_scores_path(@box, page_from: my_scores_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% else %>
         <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-yellow" %>
       <% end %>

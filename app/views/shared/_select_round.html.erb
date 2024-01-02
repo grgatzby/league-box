@@ -1,4 +1,4 @@
-<div>
+<div class="dont-print">
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= form.label :round_start, local_assigns[:label] ? label : t('.select_round_start') %>
     <%= hidden_field_tag(:club_name, @club.name) %>

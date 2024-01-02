@@ -3,10 +3,10 @@ nl:
   boxes:
     switch: naar
     list_view: resultaten lijst
-    referee_view: pagina Referee
+    referee_view: pagina admin/Referee
     table_view: resultatenraster
     intro_lines:
-      my_box_btn: Mijn scores
+      my_scores_btn: Mijn scores
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
@@ -18,8 +18,8 @@ nl:
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
-    my_box:
-      my_box_results: Mijn scores
+    my_scores:
+      my_scores: Mijn scores
       intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       not_in_round: " jij zit niet in deze ronde!"
       view_enter_scores: Bekijk of voer uw scores in
