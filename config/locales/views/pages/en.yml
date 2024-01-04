@@ -153,20 +153,20 @@ en:
       club_staff: Club staff
       p05: Details of the admin and the club Referee
       all_boxes: All Boxes
-      p07: "Display all boxes in one glance with following details for each player:"
+      p07: "Display all the boxes in one glance showing for each player their:"
       li01: name
       li02: ranking in the league
       li03: number of matches played
       li04: number of total points
       p08_html: "Current player appears in <span class='color-orange'>orange</span>."
-      p09a: Clicking on a box leads to the Box Referee view.
-      p09b: Clicking on a box leads to the Box Table view.
+      p09a: Clicking on a box leads to its admin/Referee view.
+      p09b: Clicking on a box leads to its Table view.
       p10a_html: When reaching the end of the round, a footpage button <span class='color-tennis-aqua'>Create the next round</span> appears.
-      p11_html: For the Referee, <b>Request the admin the next round</b> button
+      p11_html: For the Referee, <span class='color-tennis-aqua'>Request the admin the next round</span> button.
       league_table: League table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
       p13: Clicking on a header sorts the player according to this header.
-      referee_view: Box Referee view
+      referee_view: admin/Referee view
       p14_html: >
         Each player's matches which have been played are shown as list items.
         Headers are <b>Match scores</b>, <b>Player's points</b>, <b>Opponent's points</b>, <b>Opponent's total points</b>.<br>
@@ -184,10 +184,10 @@ en:
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
       my_scores: My scores
       p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.
-      p23: Link to the box chatroom.
+      p23_html: Link to the <span class='color-tennis-blue'>box chatroom</span>.
       match_results: Match results view
       p24: "Details of a match played:"
-      li05: game date and time, court number
+      li05: game date and court number
       li06: score, with date and time of submission
       li07: match earnings and total points.
       new_match_score: New match score
@@ -203,9 +203,9 @@ en:
       p28_html: >
         Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='color-tennis-blue'>My box</span> page available to players.<br><br>
         A color is assigned to messages, according to their author:<br>
-      li08_html: <span class='color-tennis-blue'>Those of players from the same club appear in blue</span>
-      li09_html: <span class='color-tennis-aqua'>Those of Referee of the same club appear in aqua</span>
-      li10_html: <span class= 'color-grey'>Those of players from other clubs appear in light gray</span>
-      li11_html: <span class= 'color-black'>Those of the Referee from another club appear in dark gray</span>
-      li12_html: <span class= 'color-tennis-red'>Those of the admin appear in red</span>
-      p29: Received messages appear on the left of the screen, and sent messages on the right.
+      li08_html: <span class='color-tennis-blue'>Messages from players of your own club appear in blue</span>
+      li09_html: <span class='color-tennis-aqua'>Messages from your Referee appear in aqua</span>
+      li10_html: <span class= 'color-grey'>Messages from players of other clubs appear in light gray</span>
+      li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
+      li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
+      p29: Received messages appear on the left, and sent messages on the right.

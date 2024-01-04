@@ -4,5 +4,5 @@
 <%=link_to header+header_arrow,
   user_box_scores_path( exsort: @sort, order: -@order, sort: nb,
                         round_start: @round.start_date, club_name: @round.club.name),
-  class: "btn header-ghost text-size table-text-size"
+  class: class_names("btn header-ghost", "table-text-size": @is_mobile, "text-size": !@is_mobile)
 %>
