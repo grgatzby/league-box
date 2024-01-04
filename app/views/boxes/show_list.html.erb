@@ -4,7 +4,10 @@
   <%= render "intro_lines", box: @box, view_types: view_types %>
 
   <div class = "frame-color-shape frame-padding frame-scroller-wrap">
-    <div class="box-width row">
+    <%#div class="box-width row"%>
+    <div class="<%=class_names( "row",
+                                "mobile-box-width mobile-text-size": @is_mobile,
+                                "box-width": !@is_mobile)%>">
       <%= render "show_lr_headers", view: "player" %>
       <%= render "show_lr_data", view: "player" %>
     </div>
