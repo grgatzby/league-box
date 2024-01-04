@@ -1,8 +1,8 @@
 <!-- index page: league table -->
-<div class="container text-size" data-controller="toggle"
+<div class="container" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
-  <div class="one-liner">
+  <div class="one-liner text-size">
     <h3><%= t '.league_table_title' %></h3>
     <!-- the following line will display when printing the page -->
     <span class="will-print one-liner">
@@ -12,20 +12,18 @@
     </span>
   </div>
   <% if @round %>
-    <div class="text-size">
-      <div class=<%=@is_mobile ? "" : "one-liner"%>>
-        <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
-        <%= render "shared/select_round", fallback_path: user_box_scores_path %>
-      </div>
-      <% if !@render_to_text %>
-        <%# exclude buttons and top line from exporting to text (in user_box_score index) %>
-        <br><%= render 'buttons', round: @round %>
-        <%= render 'top_line', round: @round, is_mobile: @is_mobile %>
-      <% end %>
-      <%= render 'league_table' %>
+    <div class=<%=@is_mobile ? "" : "one-liner"%>>
+      <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
+      <%= render "shared/select_round", fallback_path: user_box_scores_path %>
     </div>
+    <% if !@render_to_text %>
+      <%# exclude buttons and top line from exporting to text (in user_box_score index) %>
+      <br><%= render 'buttons', round: @round %>
+      <%= render 'top_line', round: @round, is_mobile: @is_mobile %>
+    <% end %>
+    <%= render 'league_table' %>
   <% else %>
-    <div class="dont-print">
+    <div class="dont-print text-size">
       <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
       <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: t(".intro") %>
     </div>

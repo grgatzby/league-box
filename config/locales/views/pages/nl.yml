@@ -158,14 +158,14 @@ nl:
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
       p08_html: "De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven."
-      p09a: Als u op een box klikt, komt u in de boxReferee-weergave.
+      p09a: Als u op een box klikt, komt u in de pagina admin/Referee.
       p09b: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span>.
-      p11_html: Voor de Referee, knop <b>Vraag de admin de volgende ronde aan</b>
+      p11_html: Voor de Referee, knop <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span>.
       league_table: League table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p13: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
-      referee_view: Box Referee view
+      referee_view: Pagina admin/Referee
       p14_html: >
         De door elke speler gespeelde wedstrijden worden weergegeven als lijstitems. De kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.<br>
         Als u op een wedstrijdregel klikt, komt u terecht op de pagina <b>Wedstrijd bewerken/verwijderen</b>.<br><br>
@@ -185,7 +185,7 @@ nl:
       p23_html: Link naar de <span class='color-tennis-blue'>box-chatroom</span>.
       match_results: Wedstrijdresultaten bekijken
       p24: "Details van een gespeelde wedstrijd:"
-      li05: datum en tijd van het spel, baannummer,
+      li05: datum van het spel, baannummer,
       li06: score, met datum en tijdstip van binnenkomst,
       li07: wedstrijdwinsten en totaal aantal punten.
       new_match_score: Nieuwe wedstrijdscore
@@ -201,9 +201,9 @@ nl:
       p28_html: >
         Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='color-tennis-blue'>Mijn scores</span>-pagina die beschikbaar is voor spelers.<br><br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
-      li08_html: <span class='color-tennis-blue'>Die van spelers van dezelfde club verschijnen in het blauw</span>
-      li09_html: <span class='color-tennis-aqua'>Die van de Referee van dezelfde club verschijnen in aqua</span>
-      li10_html: <span class= 'color-grey'>Die van spelers van andere clubs verschijnen in lichtgrijs</span>
-      li11_html: <span class= 'color-black'>Die van de Referee van een andere club verschijnen in donkergrijs</span>
-      li12_html: <span class= 'color-tennis-red'>Die van de beheerder verschijnen in het rood</span>
-      p29: Ontvangen berichten verschijnen aan de linkerkant van het scherm en verzonden berichten aan de rechterkant.
+      li08_html: <span class='color-tennis-blue'>Berichten van spelers van mijn club verschijnen in het blauw</span>
+      li09_html: <span class='color-tennis-aqua'>Berichten van mijn Referee verschijnen in aqua</span>
+      li10_html: <span class= 'color-grey'>Berichten van spelers van andere clubs verschijnen in lichtgrijs</span>
+      li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
+      li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
+      p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.

@@ -159,18 +159,18 @@ fr:
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: "Le joueur connecté apparaît en <span class='color-orange'>orange</span>."
-      p09a: Un clic sur une box conduit à la vue Box Referee.
-      p09b: Un clic sur une box conduit à la vue en Grille.
+      p09a: Un clic sur une box la présente en Vue admin/Referee.
+      p09b: Un clic sur une box présente les Résultats en grille.
       p10a_html: À l'approche de la fin du round, un bouton de pied de page pour <span class='color-tennis-aqua'>Créer le prochain round</span> apparaît.
-      p11_html: Pour le Referee, bouton <b>Demander la création du prochain round</b>
+      p11_html: Pour le Referee, bouton <span class='color-tennis-aqua'>Demander la création du prochain round</span>.
       league_table: League table
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13: En cliquant sur un entête, les joueurs se classent selon cet entête.
-      referee_view: Vue Referee
+      referee_view: Vue admin/Referee
       p14_html: >
-        Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
-        Les matchs non joués sont également répertoriés.<br><br>
-        En cliquant sur une ligne de match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
+        Les matchs joués par chaque joueur sont affichés sous forme de liste dont les entêtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
+        Les matchs non encore joués sont également listés.<br><br>
+        En cliquant sur la ligne d'un match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
       table_view: Vue en Grille
       p16: Les matchs de chaque joueur sont affichés sous leur adversaire correspondant.
       p17_html: >
@@ -186,11 +186,11 @@ fr:
       p23_html: Lien vers la <span class='color-tennis-blue'>chatroom de box</span>.
       match_results: Affichage des résultats du match
       p24: "Détails d'un match joué:"
-      li05: date, heure du match, et numéro du terrain
+      li05: date du match et numéro du terrain
       li06: score, avec date et heure de saisie
       li07: gains du match et total des points.
       new_match_score: Nouveau score
-      p25: Formulaire pour saisir les nouveaux détails du match.
+      p25: Formulaire pour saisir les détails d'un nouveau match.
       match_edit_score: Éditer le score
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
       chatrooms: Chatrooms
@@ -202,9 +202,9 @@ fr:
       p28_html: >
         Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <span class='color-tennis-blue'>Mes scores</span> disponible aux joueurs.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
-      li08_html: <span class='color-tennis-blue'>Ceux des joueurs du même club apparaîssent en bleu</span>
-      li09_html: <span class='color-tennis-aqua'>Ceux du Referee du même club apparaîssent en aqua</span>
-      li10_html: <span class= 'color-grey'>Ceux des joueurs des autres clubs apparaîssent en gris clair</span>
-      li11_html: <span class= 'color-black'>Ceux du Referee d'un autre club apparaîssent en gris foncé</span>
-      li12_html: <span class= 'color-tennis-red'>Ceux de l'admin apparaîssent en rouge</span>
-      p29: Les messages reçus apparaissent sur la gauche de l'écran, et les messages envoyés sur la droite.
+      li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaîssent en bleu</span>
+      li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaîssent en aqua</span>
+      li10_html: <span class= 'color-grey'>Les messages des joueurs d'autres clubs apparaîssent en gris clair</span>
+      li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaîssent en gris foncé</span>
+      li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaîssent en rouge</span>
+      p29: Les messages reçus sont à gauche de l'écran, et les messages envoyés à droite.
