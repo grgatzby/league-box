@@ -5,7 +5,9 @@
 
   <div class = "frame-color-shape frame-padding grid-wrap">
     <!-- the first column of the table uses 1/12th of the total width (bootstrap grid) -->
-    <div class="grid-container box-width row small-font">
+    <div class="<%=class_names( "row small-font",
+                                "mobile-box-width mobile-text-size mobile-grid-container": @is_mobile,
+                                "box-width grid-container": !@is_mobile)%>">
       <div class="col-1 print-all-content">
         <div class="row">
           <div class="col-12 bold-font"><%= "Box #{@box.box_number}" %></div>
@@ -69,7 +71,7 @@
                           <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
                         </span>
                       <% elsif opponent == line_player %>
-                        <%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %>
+                        <%= image_tag "tennis_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
                       <% end %>
                     <% else %>
                       <span style="color:grey"><br><%= t '.not_played' %></span>

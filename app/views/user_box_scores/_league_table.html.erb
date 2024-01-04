@@ -1,11 +1,11 @@
 <!-- league table -->
 
 
-<%#div class="print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap table-text-size"%>
+<%#div class="print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap mobile-text-size"%>
 <div class="<%= class_names("print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap",
-  "table-text-size": @is_mobile, "text-size": !@is_mobile) %>">
+  "mobile-text-size": @is_mobile) %>">
   <%#div class="box-width row"%>
-  <div class="<%= class_names("row", "table_box-width": @is_mobile, "box-width": !@is_mobile) %>">
+  <div class="<%= class_names("row", "mobile-table-width": @is_mobile, "box-width": !@is_mobile) %>">
     <div class="one-liner bold-font">
       <%= render "table_headers" %>
     </div>

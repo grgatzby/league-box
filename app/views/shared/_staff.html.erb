@@ -15,7 +15,10 @@
 <% end %>
 <br>
 <div class="grid-wrap text-size frame-color-shape ">
-  <div class="grid-container box-width">
+  <%#div class="grid-container box-width"%>
+  <div class="<%=class_names( "row",
+                              "mobile-grid-container mobile-box-width mobile-text-size": @is_mobile,
+                              "grid-container box-width": !@is_mobile)%>">
     <div class="row" style="font-weight: bold">
       <div class="col-3"><%= t '.header_role' %></div>
       <div class="col-2"><%= t '.header_name' %></div>
