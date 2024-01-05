@@ -76,7 +76,6 @@ class ApplicationController < ActionController::Base
     #   @round = @current_round
     #   @boxes = @round.boxes.sort
     # end
-
     if current_user != @admin || params[:club_name]
       # user belongs to a club (= is a player or a referee),
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)

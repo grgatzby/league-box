@@ -1,7 +1,5 @@
 en:
   matches:
-    match_winner:
-      winner: "Winner:"
     edit:
       edit_match_title: Edit match score
       p01: Update or delete an existing match score
@@ -36,5 +34,7 @@ en:
       score: Score
       submitted: "submitted on %{date} by %{user}."
       points_earned: "Points earned : "
-      challenge: "To challenge or edit this match score, please contact your club Referee %{referee}."
+      challenge: "To challenge or edit this match score, contact your club Referee %{referee}."
       back_btn: ← My scores
+    score_display:
+      winner: Winner

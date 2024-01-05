@@ -5,9 +5,10 @@ class BoxesController < ApplicationController
   end
 
   def show
-    set_club_round    # set variables @club and @round (ApplicationController)
+    # set_club_round    # set variables @club and @round (ApplicationController)
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
+    @round = @box.round
     # @box_matches = array [user_box_score , matches_details(user), user]
     # matches_details(user) = array [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box) # sorted by descending points scores
