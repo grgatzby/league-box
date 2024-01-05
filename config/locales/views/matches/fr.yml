@@ -1,7 +1,5 @@
 fr:
   matches:
-    match_winner:
-      winner: "Vainqueur:"
     edit:
       edit_match_title: Editer un score
       p01: Editer ou supprimer un score existant
@@ -36,5 +34,7 @@ fr:
       score: Score
       submitted: "saisi le %{date} par %{user}."
       points_earned: "Points gagnés : "
-      challenge: "Pour contester ou modifier ce score, contacter le club Referee %{referee}."
+      challenge: "Pour contester ou faire modifier ce score, contacter le club Referee %{referee}."
       back_btn: ← Mes scores
+    score_display:
+      winner: Vainqueur

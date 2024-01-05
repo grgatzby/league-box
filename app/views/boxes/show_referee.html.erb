@@ -3,6 +3,7 @@
   <% if current_user.role != "player" %>
     <% view_types = [t("boxes.referee_view"), t("boxes.table_view")]  %>
     <%= render "intro_lines", box: @box, view_types: view_types %>
+    <%= @round.start_date %><%= @club.name %>
     <div class = "frame-color-shape frame-padding frame-scroller-wrap">
       <%#div class="box-width row"%>
       <div class="<%=class_names( "row",

@@ -32,16 +32,16 @@
           <% end %>
         </div>
       </div>
-      <div class="frame-color-shape players frame-padding text-size">
+      <%#div class="frame-color-shape players frame-padding"%>
+      <div class="<%=class_names( "frame-color-shape players frame-padding",
+                                  "mobile-text-size": @is_mobile)%>">
         <h4><%= t '.view_enter_scores' %></h4>
-        <h6>
-          <div class="row justify-content-center top-bottom-padding bold-font text-size">
-            <div class="col-3"><%= t '.player_header' %></div>
-            <div class="col-2"><%= t '.total_points_header' %></div>
-            <div class="col-2"><%= t '.played_on_header' %></div>
-            <div class="col-2"><%= t '.action_header' %></div>
-          </div>
-        </h6>
+        <div class="row justify-content-center top-bottom-padding bold-font">
+          <div class="col-3"><%= t '.player_header' %></div>
+          <div class="col-2"><%= t '.total_points_header' %></div>
+          <div class="col-2"><%= t '.played_on_header' %></div>
+          <div class="col-2"><%= t '.action_header' %></div>
+        </div>
         <% @my_games.each do |my_game| %>
           <% opponent = my_game[0].user %>
           <% match = my_game[1] %>
@@ -67,21 +67,23 @@
               <% end %>
             </div>
             <div class="col-2">
+              <% class_btns = class_names( "btn btn-ghost", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
               <% if opponent == @current_player %>
-                <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: "btn btn-ghost text-size" %>
+                <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
               <% elsif match %>
-                <%= link_to t(".see_match_card_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: "btn btn-ghost text-size" %>
+                <%= link_to t(".see_match_card_btn"), match_path(:user_id => opponent.id, :match_id => match.id), class: class_btns %>
               <% else %>
-                <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: "btn btn-ghost text-size" %>
+                <%= link_to t(".enter_score_btn"), new_match_path(round_id: @round.id, opponent_id: opponent.id), class: class_btns %>
               <% end %>
             </div>
           </div>
         <% end %>
       </div><br>
-      <div class="frame-color-shape players frame-padding text-size">
+      <div class="frame-color-shape players frame-padding">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
-          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: "btn buttons-shape btn-yellow text-size" %>
+          <% class_btns = class_names( "btn buttons-shape btn-yellow", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
+          <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: class_btns %>
         </div>
       </div>
     <% end %>

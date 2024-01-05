@@ -1,7 +1,5 @@
 nl:
   matches:
-    match_winner:
-      winner: "Winaar:"
     edit:
       edit_match_title: Bewerk een wedstrijdscore
       p01: Update of verwijder een bestaande wedstrijdscore
@@ -38,3 +36,5 @@ nl:
       points_earned: "Punten verdiend : "
       challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
       back_btn: ← Mijn scores
+    score_display:
+      winner: Winaar
