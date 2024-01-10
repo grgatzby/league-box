@@ -1,25 +1,27 @@
 class MatchesController < ApplicationController
   def show
-    @opponent = User.find(params[:user_id])
-    @match = Match.find(params[:match_id])
-    @current_user_match_score = match_score(@match, current_user)
+    @page_from = local_path(params[:page_from])
+    @player = User.find(params[:player])
+    @opponent = User.find(params[:opponent])
+    @referee = @referee || User.find_by(role: "referee", club_id: @player.club.id)
+    @match = Match.find(params[:match])
+    @player_match_score = match_score(@match, @player)
     @opponent_match_score = match_score(@match, @opponent)
-    # @my_current_box = my_own_box(current_round(current_user.club_id))
   end
 
   def new
-    @page_from = params[:page_from]
-    @round = Round.find(params[:round_id])
-    @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
+    @page_from = local_path(params[:page_from])
+    @round = Round.find(params[:round])
+    @current_player = params[:player] ? User.find(params[:player]) : current_user
     @box = my_own_box(@round, @current_player)
     if @round.start_date > Time.now
       flash[:notice] = t('.round_not_started_flash')
-      redirect_back(fallback_location: box_referee_path(@box))
+      redirect_back(fallback_location: params[:page_from])
     else
-      @opponent = User.find(params[:opponent_id])
+      @opponent = User.find(params[:opponent])
       # max match date in the form: user can't post results in the future
-      @end_select = [@round.end_date, Time.now].min
-      @match = Match.new(time: @end_select)
+      @max_end_date = [@round.end_date, Time.now].min
+      @match = Match.new(time: @max_end_date)
       @match.user_match_scores.build
       # nested attributes for user_match_scores: comment out the line below allows separate input per player
       # for simplicity we now enter scores in 3 inputs rather than 6
@@ -27,31 +29,11 @@ class MatchesController < ApplicationController
     end
   end
 
-  def new2
-    # OLD VERSION
-    @page_from = params[:page_from]
-    @round = Round.find(params[:round_id])
-    @current_player = params[:player_id] ? User.find(params[:player_id]) : current_user
-    @box = my_own_box(@round, @current_player)
-    if @round.start_date > Time.now
-      flash[:notice] = t('.round_not_started_flash')
-      redirect_back(fallback_location: box_referee_path(@box))
-    else
-      @opponent = User.find(params[:opponent_id])
-      # max match date in the form: user can't post results in the future
-      @end_select = [@round.end_date, Time.now].min
-      @match = Match.new(time: @end_select)
-      # the matches/new.html.erb form accepts nested attributes for user_match_scores
-      @match.user_match_scores.build
-      @match.user_match_scores.build
-    end
-  end
-
   def create
     # create new Match instance with the matches/new.html.erb form and 2 UserMatchScore instances
     @match = Match.new
-    @current_player = User.find(params[:player_id])
-    @match.box = my_own_box(Round.find(params[:round_id]), @current_player)
+    @current_player = User.find(params[:player])
+    @match.box = my_own_box(Round.find(params[:round]), @current_player)
     # get the court from the input court number (user inputs court number in lieu of court id)
     @match.court = Court.find_by name: params[:match][:court_id]
 
@@ -72,8 +54,8 @@ class MatchesController < ApplicationController
       @match.save
 
       # create the two match scores for the match
-      UserMatchScore.create(user_id: params[:player_id], match_id: @match.id)
-      UserMatchScore.create(user_id: params[:opponent_id], match_id: @match.id)
+      UserMatchScore.create(user_id: params[:player], match_id: @match.id)
+      UserMatchScore.create(user_id: params[:opponent], match_id: @match.id)
 
       user_match_scores = UserMatchScore.where(match_id: @match.id)
 
@@ -115,126 +97,7 @@ class MatchesController < ApplicationController
       # update the league table
       rank_players(@match.box.round.user_box_scores)
 
-      if current_user.role == "player"
-        redirect_to my_scores_path(@match.box, page_from: my_scores_path(@match.box))
-      else
-        redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
-      end
-    else
-      # if score entered is not valid, retake the form
-      redirect_back(fallback_location: new_match_path)
-    end
-  end
-
-  def create2
-    # OLD VERSION
-    # create new Match instance with the matches/new.html.erb form and 2 UserMatchScore instances
-    @match = Match.new
-    @current_player = User.find(params[:player_id])
-    @match.box = my_own_box(Round.find(params[:round_id]), @current_player)
-    # get the court from the input court number (user inputs court number in lieu of court id)
-    @match.court = Court.find_by name: params[:match][:court_id]
-
-    test_score = test_new_score # ARRAY of won sets count if scores ok, false otherwise
-    match_scores = [{}, {}]
-
-    # update match scores for each player
-    # match_scores[0][:score_set1] = params[:match][:user_match_scores_attributes]["0"][:score_set1].to_i
-    # match_scores[0][:score_set2] = params[:match][:user_match_scores_attributes]["0"][:score_set2].to_i
-    # match_scores[0][:score_tiebreak] = params[:match][:user_match_scores_attributes]["0"][:score_tiebreak].to_i
-
-    # match_scores[1][:score_set1] = params[:match][:user_match_scores_attributes]["1"][:score_set1].to_i
-    # match_scores[1][:score_set2] = params[:match][:user_match_scores_attributes]["1"][:score_set2].to_i
-    # match_scores[1][:score_tiebreak] = params[:match][:user_match_scores_attributes]["1"][:score_tiebreak].to_i
-    if test_score
-      case params[:match][:user_match_scores_attributes]["0"][:score_set1]
-      when t('.winner')
-        match_scores[0][:score_set1] = 4
-        match_scores[1][:score_set1] = params[:match][:user_match_scores_attributes]["1"][:score_set1][2, 1].to_i
-      else
-        match_scores[1][:score_set1] = 4
-        match_scores[0][:score_set1] = params[:match][:user_match_scores_attributes]["0"][:score_set1][0, 1].to_i
-      end
-      case params[:match][:user_match_scores_attributes]["0"][:score_set2]
-      when t('.winner')
-        match_scores[0][:score_set2] = 4
-        match_scores[1][:score_set2] = params[:match][:user_match_scores_attributes]["1"][:score_set2][2, 1].to_i
-      else
-        match_scores[1][:score_set2] = 4
-        match_scores[0][:score_set2] = params[:match][:user_match_scores_attributes]["0"][:score_set2][0, 1].to_i
-      end
-      case params[:match][:user_match_scores_attributes]["0"][:score_tiebreak]
-      when t('.winner_tb')
-        case params[:match][:user_match_scores_attributes]["1"][:score_tiebreak]
-        when t('.lost_tb')
-          match_scores[0][:score_tiebreak] = 11
-          match_scores[1][:score_tiebreak] = 9
-        else
-          match_scores[0][:score_tiebreak] = 10
-          match_scores[1][:score_tiebreak] = params[:match][:user_match_scores_attributes]["1"][:score_tiebreak][3, 1].to_i
-        end
-      when t('.lost_tb')
-        match_scores[0][:score_tiebreak] = 9
-        match_scores[1][:score_tiebreak] = 11
-      else
-        match_scores[1][:score_tiebreak] = 10
-        match_scores[0][:score_tiebreak] = params[:match][:user_match_scores_attributes]["0"][:score_tiebreak][0, 1].to_i
-      end
-      results = compute_points(match_scores)
-
-      # if score entered is valid, store match date and match time in UTC Time
-      @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
-      @match.save
-
-      # create the two match scores for the match
-      UserMatchScore.create(user_id: params[:player_id], match_id: @match.id)
-      UserMatchScore.create(user_id: params[:opponent_id], match_id: @match.id)
-
-      user_match_scores = UserMatchScore.where(match_id: @match.id)
-
-      # update match scores and points for each player, determine winner and loser, and save user_match_scores
-      user_match_scores[0].score_set1 = match_scores[0][:score_set1]
-      user_match_scores[0].score_set2 = match_scores[0][:score_set2]
-      user_match_scores[0].score_tiebreak = match_scores[0][:score_tiebreak]
-      user_match_scores[0].points = match_scores[0][:points]
-
-      user_match_scores[1].score_set1 = match_scores[1][:score_set1]
-      user_match_scores[1].score_set2 = match_scores[1][:score_set2]
-      user_match_scores[1].score_tiebreak = match_scores[1][:score_tiebreak]
-      user_match_scores[1].points = match_scores[1][:points]
-
-      user_match_scores[0].is_winner = (results[0] > results[1])
-      user_match_scores[1].is_winner = (results[1] > results[0])
-
-      input_date = Time.now
-      user_match_scores[0].input_user_id = current_user.id
-      user_match_scores[0].input_date = input_date
-      user_match_scores[1].input_user_id = current_user.id
-      user_match_scores[1].input_date = input_date
-
-      user_match_scores[0].save
-      user_match_scores[1].save
-
-      # update user_box_score for each player
-      [0, 1].each do |index|
-        match = user_match_scores[index].match
-        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
-        user_box_score.points += user_match_scores[index].points
-        user_box_score.sets_won += results[index]
-        user_box_score.sets_played += results.sum
-        user_box_score.games_won += results[index] > results[1 - index] ? 1 : 0
-        user_box_score.games_played += 1
-        user_box_score.save
-      end
-
-      # update the league table
-      rank_players(@match.box.round.user_box_scores)
-
-      if current_user.role == "player"
-        redirect_to my_scores_path(@match.box, page_from: my_scores_path(@match.box))
-      else
-        redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
-      end
+      redirect_to local_path(params[:page_from])
     else
       # if score entered is not valid, retake the form
       redirect_back(fallback_location: new_match_path)
@@ -242,7 +105,7 @@ class MatchesController < ApplicationController
   end
 
   def edit
-    @page_from = params[:page_from]
+    @page_from = local_path(params[:page_from])
     # for admin and referees only
     # allows to edit match scores (match and 2 user_match_scores)
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
@@ -259,7 +122,7 @@ class MatchesController < ApplicationController
     @match.time += @tz.to_local(@match.time).utc_offset
     @round = @match.box.round
     # max match date in the form: user can't post results in the future
-    @end_select = [@round.end_date, Time.now].min
+    @max_end_date = [@round.end_date, Time.now].min
   end
 
   def update
@@ -321,12 +184,7 @@ class MatchesController < ApplicationController
 
       # update the league table
       rank_players(match.box.round.user_box_scores)
-
-      if current_user.role == "player"
-        redirect_to my_scores_path(match.box, page_from: my_scores_path(match.box))
-      else
-        redirect_to box_referee_path(match.box, page_from: box_referee_path(match.box))
-      end
+      redirect_to local_path(params[:page_from])
     else
       # if score entered is not valid
       redirect_back(fallback_location: edit_match_path)
@@ -354,8 +212,7 @@ class MatchesController < ApplicationController
     # update the league table
     rank_players(@match.box.round.user_box_scores)
     # TO DO: check what round: param is expected
-    # redirect_to user_box_scores_path(round_start: params[:round_start])
-    redirect_to box_referee_path(@match.box, page_from: box_referee_path(@match.box))
+    redirect_to local_path(params[:page_from])
   end
 
   private

@@ -1,16 +1,18 @@
+
 <% match = player_match[0]
-    opponent = player_match[1]
-    user_score = player_match[2]
-    opponent_score = player_match[3] %>
-<% if match %>
-  <% name = "Score"
-     score_input_by = User.find(user_score.input_user_id)
-     input_date = @tz.to_local(user_score.input_date)
-     message = "#{t(".pop01", user: "#{render "shared/fullname", user: score_input_by} (#{score_input_by.role})",
-                              date: l(input_date, format: :wwwddmmmyy_at_hhmm))}"
-     if current_user.role != "player"
+  opponent = player_match[1]
+  user_score = player_match[2]
+  opponent_score = player_match[3] %>
+<% if match
+    name = "Score"
+    score_input_by = User.find(user_score.input_user_id)
+    input_date = @tz.to_local(user_score.input_date)
+    message = "#{t(".pop01",
+                  user: "#{render "shared/fullname", user: score_input_by} (#{score_input_by.role})",
+                  date: l(input_date, format: :wwwddmmmyy_at_hhmm))}"
+    if current_user.role != "player"
       message += "#{t(".pop02")}"
-     end %>
+    end %>
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
@@ -30,10 +32,15 @@
         <div class="col-2"><%= t("pts", count: user_score.points) %></div>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
-        <!-- click on player line to update/delete match and user_match_scores details -->
+
         <% if current_user.role != "player" %>
-          <%= link_to '', edit_match_path(match_id: match.id), class: "line-link" %>
+          <%# admin, referee: click on player match line to update/delete match score (matches and user_match_scores details) %>
+          <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from), class: "line-link" %>
+        <% else %>
+          <%# player: click on player match line to view match score %>
+          <%= link_to '', match_path(player: player_match[2].user.id, opponent: opponent.id, match: match.id, page_from: page_from), class: "box-link" %>
         <% end %>
+
       </div>
     </li>
   </div>

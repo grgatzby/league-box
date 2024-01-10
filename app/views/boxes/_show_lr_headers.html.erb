@@ -2,8 +2,8 @@
   <!-- show list headers -->
   <div class="col-4"></div>
   <div class="col-2"><%= t '.match_score_header' %></div>
-  <% case view %>
-    <% when "player" %>
+  <% case page_from %>
+    <% when box_list_path %>
       <div class="col-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
           title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">

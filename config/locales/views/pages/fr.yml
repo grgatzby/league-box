@@ -172,14 +172,15 @@ fr:
         Les matchs non encore joués sont également listés.<br><br>
         En cliquant sur la ligne d'un match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
       table_view: Vue en Grille
-      p16: Les matchs de chaque joueur sont affichés sous leur adversaire correspondant.
+      p16: Les matchs de chaque joueur sont affichés sous la colonne de l'adversaire correspondant. Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score.
       p17_html: >
-        Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
+        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Vue en Liste
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
-        Le joueur connecté apparaît en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
+        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>; cliquez sur un score pour afficher la carte du match.<br>
+        Un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
       my_scores: Mes scores
       p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Ma box</span>, <span class='color-tennis-blue'>Score du match</span> et <span class='color-tennis-blue'>Saisir un score</span>.

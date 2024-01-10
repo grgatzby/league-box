@@ -28,7 +28,7 @@
       <div class="row">
         <div class="col-3"><b><%= t '.date_time' %></b></div>
         <div class="col-3">
-          <%= f.date_field(:time, min: @round.start_date, max: @end_select, value: @end_select ) %>
+          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, value: @max_end_date ) %>
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
           <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>
@@ -56,23 +56,19 @@
         </div>
       <% end %>
       <br>
-      <%= hidden_field_tag(:player_id, @current_player.id) %>
-      <%= hidden_field_tag(:opponent_id, @opponent.id) %>
+      <%= hidden_field_tag(:player, @current_player.id) %>
+      <%= hidden_field_tag(:opponent, @opponent.id) %>
       <%= hidden_field_tag(:round_start, @round.start_date) %>
-      <%= hidden_field_tag(:round_id, @round.id) %>
-      <%# hidden_field_tag(:page_from, @page_from) %>
+      <%= hidden_field_tag(:round, @round.id) %>
+      <%= hidden_field_tag(:page_from, @page_from) %>
     </div>
     <br>
 
     <div class="buttons-wrap">
       <%= f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
-      <%# f.submit t(".save_score_btn"), class: "btn buttons-shape btn-green" %>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <% if current_user.role == "player" %>
-        <%= link_to t(".back_btn"), my_scores_path(@box, page_from: my_scores_path(@box)), class: "btn buttons-shape btn-yellow" %>
-      <% else %>
-        <%= link_to t(".back_btn"), box_referee_path(@box, page_from: box_referee_path(@box)), class: "btn buttons-shape btn-yellow" %>
-      <% end %>
+      <%# link_to t(".back_btn"), :back, class: "btn buttons-shape btn-yellow" %>
+      <%= link_to t(".back_btn"), @page_from, class: "btn buttons-shape btn-yellow" %>
     </div>
   <% end %>
   <br>

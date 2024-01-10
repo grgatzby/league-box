@@ -46,9 +46,12 @@ en:
       won: Won
       lost: Lost
       on_date: "on"
-      dont_forget_html: <i>Don't forget to play your matches and enter the scores in </i><span class='color-tennis-red'><b>My scores</b></span><i>!</i>
+      dont_forget_html: >
+        <i>Don't forget to play your matches and enter the scores in </i><span class='color-tennis-red'><b>My scores</b></span>
+        <i>or in </i><b>Table view</b><i>!</i>
     no_match_line:
       not_played: Not played yet
+      enter_score: Enter score
       pop02_a: Click to enter the new match score for<br />
     match_line:
       pop01: "<b>Score entered</b><br />by %{user}<br />on %{date}"
@@ -60,3 +63,4 @@ en:
       not_authorised: As a player, this page is not authorised
     show:
       not_played: Not played yet
+      enter_score: Enter score

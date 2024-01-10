@@ -1,6 +1,8 @@
 <%# partial: display round start date and end date %>
 <%# t(".round_period", start: round.start_date.strftime("%d %b"), end: round.end_date.strftime("%d %b %y")) %>
-<%= t(".round_period", start: l(round.start_date, format: :ddmmm_date), end: l(round.end_date, format: :ddmmmyy_date)) %>
+<%= t(@is_mobile ? ".rd_period" : ".round_period",
+    start: l(round.start_date, format: :ddmmm_date),
+    end: l(round.end_date, format: @is_mobile ? :ddmmm_date : :ddmmmyy_date)) %>
 <% if round.end_date > Date.today %>
   <%= t(".days_left", days: (round.end_date - Date.today).to_i) %>
 <% end %>

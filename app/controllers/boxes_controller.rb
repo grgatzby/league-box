@@ -5,12 +5,11 @@ class BoxesController < ApplicationController
   end
 
   def show
-    # set_club_round    # set variables @club and @round (ApplicationController)
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
     @round = @box.round
-    # @box_matches = array [user_box_score , matches_details(user), user]
-    # matches_details(user) = array [match, opponent, user_score, opponent_score]
+    # @box_matches : array of [user_box_score , matches_details(user), user]
+    # matches_details(user) : array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box) # sorted by descending points scores
     @this_is_my_box = my_box?(@box)
     @my_current_box = my_own_box(current_round(current_user.club_id))
@@ -20,13 +19,8 @@ class BoxesController < ApplicationController
     show        # inherit from #show
   end
 
-  def show_referee
-    show        # inherit from #show
-  end
-
   def my_scores
     # passing 0 to my_scores_path, forces user to choose a round
-    # <%= link_to "My scores", my_scores_path(0), class: "btn buttons-shape btn-green" %>
     @page_from = params[:page_from]
     @current_player = current_user
     # allow player to view their box and select enter new score / view played match

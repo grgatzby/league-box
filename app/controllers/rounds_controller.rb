@@ -47,7 +47,6 @@ class RoundsController < ApplicationController
 
     clean_boxes(temp_boxes, current_boxes[0].user_box_score_ids.length)
 
-    # redirect to boxes/index
     redirect_to boxes_path(round_start: @new_round.start_date, club_name: current_round.club.name)
   end
 

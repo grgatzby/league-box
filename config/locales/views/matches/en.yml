@@ -35,6 +35,6 @@ en:
       submitted: "submitted on %{date} by %{user}."
       points_earned: "Points earned : "
       challenge: "To challenge or edit this match score, contact your club Referee %{referee}."
-      back_btn: ← My scores
+      back_btn: ←
     score_display:
       winner: Winner

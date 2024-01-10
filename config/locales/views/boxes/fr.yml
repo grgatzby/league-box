@@ -46,9 +46,12 @@ fr:
       won: Gagné
       lost: Perdu
       on_date: "le"
-      dont_forget_html: <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans </i><span class='color-tennis-red'><b>Mes scores</b></span><i>!</i>
+      dont_forget_html: >
+        <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans </i><span class='color-tennis-red'><b>Mes scores</b></span>
+        <i>ou dans les </i><b>résultats en grille</b><i>!</i>
     no_match_line:
       not_played: Pas encore joué
+      enter_score: Entrer votre score
       pop02_a: "Cliquer pour entrer le score du match "
     match_line:
       pop01: "<b>Score entré</b><br />par %{user}<br />%{date}"
@@ -60,3 +63,4 @@ fr:
       not_authorised: Page non autorisée
     show:
       not_played: Pas encore joué
+      enter_score: Entrer votre score

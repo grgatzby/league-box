@@ -17,11 +17,7 @@
           <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_box_score.games_won) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_box_score.sets_won) %></div>
-          <% if current_user.role == "admin" || current_user.role == "referee" %>
-            <%= link_to '', box_referee_path(user_box_score.box, page_from: user_box_scores_path), class: "line-link" %>
-          <% else %>
-            <%= link_to '', box_path(user_box_score.box, page_from: user_box_scores_path), class: 'line-link'%>
-          <% end %>
+          <%= link_to '', box_path(user_box_score.box, page_from: user_box_scores_path), class: 'line-link'%>
         </div>
       </div>
     </li>

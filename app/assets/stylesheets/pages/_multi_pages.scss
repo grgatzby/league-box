@@ -3,6 +3,8 @@
   margin-bottom: $btn-margin;
 }
 
+
+
 .box-scroller {
   overflow: scroll;
   max-height: calc(100vh - 200px);
@@ -59,6 +61,11 @@
 
 .frame-padding {
   padding: 15px calc(var(--bs-gutter-x) * 1);
+}
+
+.frame-no-margin-rl{
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .frame-padding-no-top {

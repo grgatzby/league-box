@@ -46,9 +46,12 @@ nl:
       won: Won
       lost: Verloren
       on_date: "op"
-      dont_forget_html: <i>Vergeet niet uw wedstrijden te spelen en uw scores in </i><span class='color-tennis-red'><b>Mijn scores</b></span><i> in te voeren!</i>
+      dont_forget_html: >
+        <i>Vergeet niet uw wedstrijden te spelen en uw scores in </i><span class='color-tennis-red'><b>Mijn scores</b></span><i> of
+        in </i><b>resultatenraster</b><i> in te voeren!</i>
     no_match_line:
       not_played: Nog niet gespeeld
+      enter_score: Voer uw score in
       pop02_a: Klik om de score in te voeren<br />
     match_line:
       pop01: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
@@ -60,3 +63,4 @@ nl:
       not_authorised: Ongeautoriseerde pagina
     show:
       not_played: Nog niet gespeeld
+      enter_score: Voer uw score in
