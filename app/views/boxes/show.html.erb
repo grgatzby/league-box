@@ -1,7 +1,6 @@
-<!-- player show page by table of matches -->
+<!-- show page of matches in table display -->
 <div class="container text-size">
-  <% view_types = [t("boxes.table_view"), t("boxes.list_view")]  %>
-  <%= render "intro_lines", box: @box, view_types: view_types %>
+  <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
 
   <div class = "frame-color-shape frame-padding grid-wrap">
     <!-- the first column of the table uses 1/12th of the total width (bootstrap grid) -->
@@ -10,7 +9,10 @@
                                 "box-width grid-container": !@is_mobile)%>">
       <div class="col-1 print-all-content">
         <div class="row">
-          <div class="col-12 bold-font"><%= "Box #{@box.box_number}" %></div>
+          <div class="<%=class_names( "col-12 bold-font",
+                                      "color-tennis-red": @this_is_my_box)%>">
+            <%= "Box #{@box.box_number}" %>
+          </div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>
         <% @box_matches.each do |user_box_matches| %>
@@ -19,7 +21,6 @@
             <div class="col-12">
               <% user_box_score = user_box_matches[0] %>
               <% line_player = user_box_score.user %>
-
               <% name = "#{render "shared/fullname", user: line_player}" %>
               <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
               <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
@@ -48,33 +49,53 @@
           <% end %>
         </div>
         <div id="grid-lines">
-          <% @box_matches.each do |user_box_matches| %>
+          <% @box_matches.each do |user_box_matches|
+             user_box_score = user_box_matches[0]
+             player_matches = user_box_matches[1]
+             player_matches.sort_by! { |x| sorted_players.index(x[1]) }
+             line_player = user_box_matches[2] %>
             <div class="row">
-              <% user_box_score = user_box_matches[0] %>
-              <% player_matches = user_box_matches[1] %>
-              <% line_player = user_box_matches[2] %>
-              <% player_matches.sort_by! { |x| sorted_players.index(x[1]) } %>
-              <% sorted_players.each do |column_player| %>
-                <% player_match = player_matches.select { |x| x[1] == column_player }[0] %>
+              <% sorted_players.each do |column_player|
+                player_match = player_matches.select { |x| x[1] == column_player }[0] %>
                 <div class="col-2 text-center grid-columns">
                   <span class="align-middle">
-                    <% if player_match %>
-                      <% match = player_match[0] %>
-                      <% opponent = player_match[1] %>
-                      <% user_score = player_match[2] %>
-                      <% opponent_score = player_match[3] %>
-                      <% if match %>
-                        <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
-                        <%= "[#{l(match.time, format: :wwwddmmm_date)}]" %>
-                        <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
-                        <span class=" color-tennis-blue">
-                          <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
-                        </span>
+                    <% if player_match
+                      match = player_match[0]
+                      opponent = player_match[1]
+                      user_score = player_match[2]
+                      opponent_score = player_match[3]
+                      if match %>
+                        <%# match played %>
+                        <div class="click-cell">
+                          <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
+                          <%= "[#{l(match.time, format: :wwwddmmm_date)}]" %>
+                          <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
+                          <span class=" color-tennis-blue">
+                            <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
+                          </span>
+
+                          <% if current_user.role != "player" %>
+                            <%# admin, referee: click on player match line to update/delete match score (matches and user_match_scores details) %>
+                            <%= link_to '', edit_match_path(match_id: match.id, page_from: box_path), class: "line-link" %>
+                          <% else %>
+                            <%# player: click on player match line to view match score %>
+                            <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match: match.id, page_from: box_path), class: "box-link" %>
+                          <% end %>
+                        </div>
                       <% elsif opponent == line_player %>
                         <%= image_tag "tennis_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
                       <% end %>
+
                     <% else %>
-                      <span style="color:grey"><br><%= t '.not_played' %></span>
+                      <%# no match played %>
+                      <% if current_user == column_player || current_user == line_player || current_user == @admin %>
+                        <div class="click-cell"><br><%= t '.enter_score' %>
+                          <%# click on opponent no-match line to enter a new match score %>
+                          <%= link_to '', new_match_path(player: line_player.id, opponent: column_player.id, round: @round.id, page_from: box_path), class: "box-link" %>
+                        </div>
+                      <% else %>
+                        <span style="color:grey"><br><%= t '.not_played' %></span>
+                      <% end %>
                     <% end %>
                   </span>
                 </div>

@@ -6,16 +6,16 @@ class ApplicationController < ActionController::Base
 
   # application schema in https://kitt.lewagon.com/db/95868
   # Existing features:
-  # - players can: view a box (in list or grid view), enter a new match score in their own box, view all boxes,
+  # - players can: view a box (in list or table view), enter a new match score in their own box, view all boxes,
   #                view the league table, access their box chatroom.
-  # - referees can: view a box (in referee view), edit / delete a match score, view all boxes,
+  # - referees can: view a box (in list or table view), edit / delete a match score, view all boxes,
   #                 view the league table, access the #general chatroom and all of their club's chatrooms,
   #                 request a new round creation.
-  # - admin can: view a box (in referee view), enter / edit / delete a match score, view all boxes,
+  # - admin can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
   #
-  # Question: should we allow referees to create a match (ie new score) as can the admin?
+  # Question: should referees be allowed to enter a new score (as can the admin)?
 
   def default_url_options
     { locale: I18n.locale }
@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
 
   # -------------------------------------------------------------------------------------------------------------------
   # the #current_round, #my_scores and #match_score methods are invoked
-  # - from #show, #show_list and #show_referee methods in BoxesControllers
+  # - from #show and #show_list methods in BoxesControllers
   # - from #show method in MatchesController
 
   def current_round(club_id)
@@ -181,5 +181,9 @@ class ApplicationController < ActionController::Base
 
   def mobile_device?
     request.user_agent =~ /Mobile|webOS/
+  end
+
+  def local_path(path)
+    path.gsub(/en|fr|nl/, locale.to_s)
   end
 end

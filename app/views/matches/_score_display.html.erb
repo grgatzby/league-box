@@ -1,11 +1,12 @@
 <div class="row">
-  <div class="col-2"><b><%= user_match_score.user.last_name %></b></div>
-  <div class="col-1"><%= "#{user_match_score.score_set1}" %></div>
-  <div class="col-1"><%= "#{user_match_score.score_set2}" %></div>
+  <%# sum of col- ust equal 12 %>
+  <div class="col-3"><b><%= match_score.user.last_name %></b></div>
+  <div class="col-1"><%= "#{match_score.score_set1}" %></div>
+  <div class="col-1"><%= "#{match_score.score_set2}" %></div>
   <% if tiebreak > 0 %>
-    <div class="col-1"><%= "#{user_match_score.score_tiebreak}" %></div>
+    <div class="col-1"><%= "#{match_score.score_tiebreak}" %></div>
   <% end %>
-  <div class="col-2 color-tennis-red"><%= user_match_score.is_winner ? t(".winner") : "" %></div>
-  <div class="col-2">+<%= t("pts", count: user_match_score.points) %></div>
-  <div class="col-3">: <%= t("box_pts", count: user_box_score.points) %></div>
+  <div class="col-2">&nbsp;&nbsp+<%= t("pts", count: match_score.points) %></div>
+  <div class="col-3">→<%= t("box_pts", count: user_box_score.points) %></div>
+  <div class="col-1 color-tennis-red"><%= match_score.is_winner ? t(".winner") : "" %></div>
 </div>

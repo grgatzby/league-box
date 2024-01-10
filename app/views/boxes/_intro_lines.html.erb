@@ -1,4 +1,4 @@
-<!-- in grid, list or referee show views: display first lines -->
+<!-- in grid or list view: display first lines -->
 <% if !@is_mobile %><br><% end %>
 <div class="one-liner" style="width: 100%">
   <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
@@ -10,7 +10,7 @@
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
-    <h3><%= "Box #{box.box_number} - #{view_types[0]}" %></h3>
+    <h3><%= "Box #{box.box_number} - #{view_type}" %></h3>
   </div>
 
   <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
@@ -28,16 +28,16 @@
     <%= link_to t(".my_scores_btn"), my_scores_path(box), class: "btn buttons-shape btn-orange mb-3" %>
   <% end %>
 
-  <% case view_types[0] %>
+  <% case view_type %>
     <% when t("boxes.table_view")%>
-      <%# if in table view, link back to Referee view or list view (whichever table view was called from)%>
-      <%= link_to (params[:caller] == "R" ? box_referee_path : box_list_path), class: "btn buttons-shape btn-yellow mb-3" do %>
+      <%# if in table view, link back to list view %>
+      <%= link_to box_list_path, class: "btn buttons-shape btn-yellow mb-3" do %>
         <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.list_view")}" %>
       <% end %>
     <% else %>
-      <%# if in list view or in Referee view, link back to table view %>
-      <%= link_to box_path(caller: view_types[0]==t("boxes.list_view") ? "L" : "R"), class: "btn buttons-shape btn-yellow mb-3" do %>
-        <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{view_types[1]}" %>
+      <%# if in list view, link back to table view %>
+      <%= link_to box_path, class: "btn buttons-shape btn-yellow mb-3" do %>
+        <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{t("boxes.table_view")}" %>
       <% end %>
   <% end %>
 

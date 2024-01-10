@@ -18,21 +18,6 @@ class UserBoxScoresController < ApplicationController
     end
     @sort = params[:sort]
     case params[:sort]
-    # when t('.table_headers.player_header') # "Player"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
-    #   @user_box_scores.reverse! if @order == 1
-    # when t('.table_headers.points_header') # "Points"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    # when t('.table_headers.box_header') # "Box"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    # when t('.table_headers.matches_played_header') # "Matches Played"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    # when t('.table_headers.matches_won_header') # "Matches Won"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    # when t('.table_headers.sets_played_header') # "Sets Played"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    # when t('.table_headers.sets_won_header') # "Sets Won"
-    #   @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     when "1" # "Player"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
@@ -155,7 +140,6 @@ class UserBoxScoresController < ApplicationController
   def download_csv(file = "#{Rails.root}/public/data.csv")
     if File.exist?(file)
       send_file file, filename: "league-table-#{Date.today}.csv", disposition: 'attachment', type: 'text/csv'
-      # flash[:notice] = "csv file downoaded"
     end
   end
 
@@ -164,6 +148,5 @@ class UserBoxScoresController < ApplicationController
     # strip all html
     html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
     send_data(html_free_string, template: :raw, filename: "league-table-#{Date.today}.txt", type: "text/txt")
-    # flash[:notice] = "text file created"
   end
 end

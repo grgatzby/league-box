@@ -173,14 +173,16 @@ en:
         Unplayed matchs are listed too.<br><br>
         Clicking on a match line lands on the <b>Match Edit/Delete</b> page, clicking on an unplayed match (admin only) lands on the <b>New match score</b> page.
       table_view: Box Table view
-      p16: Each player's matches are shown under their corresponding opponent.
+      p16: Each player's matches are shown under their corresponding opponent. Click on a match score to view the match card.
       p17_html: >
-        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
-        next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
+        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and you can enter a new score by clicking the relevant cell.<br>
+        A <span class='color-tennis-blue'>My scores</span> button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
       list_view: Box List view
-      p19_html: Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
+      p19_html: >
+        Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
+        Click on a match score to view the match card.
       p20_html: >
-        If on Current player's box, the name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My box</span> button appears
+        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span> button is displayed
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
       my_scores: My scores
       p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.

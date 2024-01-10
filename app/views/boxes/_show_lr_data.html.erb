@@ -17,15 +17,15 @@
           <% sorted_players.each do |player_opponent| %>
             <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
             <% if player_match %>
-              <%= render "match_line", player_match: player_match, user_box_score: user_box_score %>
-            <% elsif player_opponent != player && view == "referee"%>
-              <%= render "no_match_line", player: player, player_opponent: player_opponent %>
+              <%= render "match_line", player_match: player_match, user_box_score: user_box_score, page_from: page_from %>
+            <% elsif player_opponent != player && current_user == @admin %>
+              <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from %>
             <% end %>
           <% end %>
-          <% if player_matches.count == 1 && view == "player" %>
+          <% if player_matches.count == 1 && page_from == box_list_path %>
             <%# no match played for this player %>
             <div class="col-4"></div>
-            <div class="col-6"><%= t '.dont_forget_html' %></div>
+            <div class="col-8"><%= t '.dont_forget_html' %></div>
           <% end %>
         </ul>
       </li>

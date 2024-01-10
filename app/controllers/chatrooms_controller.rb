@@ -3,10 +3,10 @@ class ChatroomsController < ApplicationController
   def show
     set_club_round    # set variables @club and @round (ApplicationController)
     # display a chatroom
-    # this method is accessed from either the navbar, or the show_referee or my_scores view pages
+    # this method is accessed from either the navbar, or the show_list or my_scores view pages
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
-      # params[:chatroom] exists : coming from the show_referee view page form
+      # params[:chatroom] exists when coming from the show_list view page form
       # @chatroom = Chatroom.find_by(name: params[:chatroom][1..-1]) # [1..-1] removes the first character '#' of the name
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..]) # [1..] removes the first character '#' of the name
     elsif params[:id] == "0"

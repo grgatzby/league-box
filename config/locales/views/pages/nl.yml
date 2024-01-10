@@ -171,15 +171,15 @@ nl:
         Als u op een wedstrijdregel klikt, komt u terecht op de pagina <b>Wedstrijd bewerken/verwijderen</b>.<br><br>
         Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina <b>Nieuwe wedstrijdscore</b>.
       table_view: Box resultatenraster
-      p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
+      p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander. Klik op een wedstrijdscore om de wedstrijdkaart te bekijken.
       p17_html:
-        De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven en er verschijnt een <span class='color-tennis-blue'>Mijn scores</span>-knop
-        links van de schakellink naar de <span class='color-tennis-blue'>resultaten lijst</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
+        Als u uw vak bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en kunt u een nieuwe score invoeren door op de relevante cel te klikken.<br>
+        Er wordt een knop <span class='color-tennis-blue'>Mijn scores</span> weergegeven naast de schakellink naar <span class='color-tennis-blue'>Lijstweergave</span> ( <i class ='fa-solid fa-lijst kleur-tennis-blauw'></i> ).
       list_view: Box resultaten lijst
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >
-        De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven en er verschijnt een <span class='color-tennis-blue'>Mijn scores</span>-knop
-        links van de schakellink naar de <span class='color-tennis-blue'>resultatenraster</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i>).
+        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en wordt een knop <span class='color-tennis-blue'>Mijn scores</span> weergegeven
+        naast de schakellink naar <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).
       my_scores: Mijn scores
       p22_html: Al mijn wedstrijddata en spelerspunten met links zoals <span class='color-tennis-blue'>Mijn boxresultaten</span>, <span class='color-tennis-blue'>Wedstrijdkaart</span> en <span class='color-tennis-blue'>Voer een score in</span>.
       p23_html: Link naar de <span class='color-tennis-blue'>box-chatroom</span>.

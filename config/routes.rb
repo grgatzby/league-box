@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
     resources :boxes, only: %i[index show]
     get "boxes-list/:id", to: "boxes#show_list", as: "box_list"
-    get "boxes_referee/:id", to: "boxes#show_referee", as: "box_referee"
     get "my_scores/:id", to: "boxes#my_scores", as: "my_scores"
 
     resources :matches, only: %i[show edit update new create destroy]
