@@ -12,7 +12,7 @@
   <% players = [@current_player, @opponent] %>
   <div class="one-liner frame-margin-rl">
     <h5>
-      <%= render "shared/fullname", user: @user_match_scores[0].user %><%= " vs " %>
+      <%= render "shared/fullname", user: @user_match_scores[0].user %><i> vs </i>
       <%= render "shared/fullname", user: @user_match_scores[1].user %>
     </h5>
   </div>
@@ -33,12 +33,12 @@
         </div>
       </div>
       <br>
-      <i><div class="row">
+      <div class="row">
         <div class="col-4"></div>
         <div class="col-2"><%= t '.set_1' %></div>
         <div class="col-2"><%= t '.set_2' %></div>
         <div class="col-2"><%= t '.tie_break' %></div>
-      </div></i>
+      </div>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
           <div class="col-4"><%= render "shared/fullname", user: players[user_match_score.index] %></div>

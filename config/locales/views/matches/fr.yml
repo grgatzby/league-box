@@ -5,8 +5,8 @@ fr:
       p01: Editer ou supprimer un score existant
       match_played: "Court nº:"
       date_time: "Match joué le:"
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       submitted: "Score entré %{date} par %{player}."
       update_score_btn: ⎷ Valider
@@ -21,8 +21,8 @@ fr:
       score: "Score du match:"
       player_1: Joueur 1
       player_2: Joueur 2
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       input_score: score du set
       and_more: et +
@@ -30,11 +30,19 @@ fr:
       back_btn: ←
       round_not_started_flash: Le Round n'a pas commencé.
     show:
+      show_match_title: Score du match
       match_played: "Disputé le %{date} sur le court %{court}."
       score: Score
       submitted: "saisi le %{date} par %{user}."
       points_earned: "Points gagnés : "
       challenge: "Pour contester ou faire modifier ce score, contacter le club Referee %{referee}."
       back_btn: ←
+    score_headers:
+      player: Joueur
+      set_1: Set1
+      set_2: Set2
+      tie_break: tiebreak
+      match_points: Points match
+      total: Total
     score_display:
       winner: Vainqueur

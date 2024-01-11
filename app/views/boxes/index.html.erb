@@ -21,15 +21,15 @@
             <ol type="1">
               <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
               <% scores.each do |user_box_score| %>
-                <li class=<%=user_box_score.user == current_user ? "color-orange" : ""%>>
+                <li class=<%=user_box_score.user == current_user ? "color-orange" : "" %>>
                   <div class="row">
                     <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                     <div class="col-2"><%= "##{user_box_score.rank}" %></div>
-                    <div class="col-1 <%=user_box_score.games_played.zero? ? "color-tennis-red" : ""%>"><%= "#{user_box_score.games_played}" %></div>
+                    <div class="col-1 <%=user_box_score.games_played.zero? ? "color-tennis-red" : "" %>"><%= "#{user_box_score.games_played}" %></div>
                     <div class="col-3"><%= t("pts", count: user_box_score.points) %></div>
                   </div>
                 </li>
-                <%= link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link'%>
+                <%= link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link' %>
               <% end %>
             </ol>
           </div>

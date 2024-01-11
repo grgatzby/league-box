@@ -3,7 +3,6 @@ en:
   boxes:
     switch: switch to
     list_view: list view
-    referee_view: admin/Referee view
     table_view: table view
     intro_lines:
       my_scores_btn: My scores
@@ -26,13 +25,13 @@ en:
       player_header: Player
       total_points_header: Total points
       played_on_header: Match played on
-      action_header: Action
-      view_box_results_btn: Display my box
+      action_header: Click below
+      view_box_results_btn: To my box
       see_match_card_btn: Match card
-      enter_score_btn: Enter new score
+      enter_score_btn: Enter score
       chat_in_my_box: Organise your matches
       access_chatroom_btn: Access the box chatroom
-    show_lr_headers:
+    show_list_headers:
       match_earnings: Match earnings
       match_score_header: Match scores
       player_points_header: Player's points
@@ -42,7 +41,7 @@ en:
         Winner earns 20 points for the match.<br />
         Looser earns 10 points per set won + number of games per lost set.<br />
         The championship tie-break counts as one set (no points awarded for the looser).
-    show_lr_data:
+    show_list_data:
       won: Won
       lost: Lost
       on_date: "on"

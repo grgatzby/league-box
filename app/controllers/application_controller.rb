@@ -49,9 +49,8 @@ class ApplicationController < ActionController::Base
     @is_mobile = mobile_device?
   end
 
-  # def after_sign_in_path_for(resource)
-  def after_sign_in_path
-    root_path
+  def after_sign_in_path_for(resource)
+    boxes_path
   end
 
   def set_club_round

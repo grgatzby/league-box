@@ -5,8 +5,8 @@ nl:
       p01: Update of verwijder een bestaande wedstrijdscore
       match_played: "Tennisbaan:"
       date_time: "Wedstrijd gespeeld:"
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       submitted: "Score ingevoerd op %{date} door %{player}."
       update_score_btn: ⎷ Bevestigen
@@ -21,8 +21,8 @@ nl:
       score: "Wedstrijdscore:"
       player_1: Speler 1
       player_2: Speler 2
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       input_score: kies een score
       and_more: en +
@@ -30,11 +30,19 @@ nl:
       back_btn: ←
       round_not_started_flash: De ronde is nog niet begonnen.
     show:
+      show_match_title: Wedstrijdkaart
       match_played: "Gespeeld op %{date} op veld %{court}."
       score: Score
       submitted: "ingevoerd op %{date} door %{user}."
       points_earned: "Punten verdiend : "
       challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
       back_btn: ←
+    score_headers:
+      player: Speler
+      set_1: Set1
+      set_2: Set2
+      tie_break: tiebreak
+      match_points: Match punten
+      total: Totaal
     score_display:
       winner: Winaar

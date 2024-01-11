@@ -1,16 +1,21 @@
 <!-- player: show match/user_match_scores details (called from boxes/my_scores.html.erb) -->
-<div class="container">
+<div class="container text-size">
+  <% if !@is_mobile %><br><% end %>
+  <div class="one-liner">
+    <h3><%= t '.show_match_title' %></h3>
+  </div>
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@player.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id) %>
-  <h3>
-    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %> vs
+  <h5>
+    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> vs</i>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
-  </h3>
+  </h5>
   <div class="frame-color-shape frame-margin-rl frame-padding text-size">
     <br>
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
     <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,
                                 "grid-container score-width": !@is_mobile)%>">
+      <%= render "score_headers", tiebreak: tiebreak %><br>
       <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs %><br>
       <%= render "score_display", match_score: @opponent_match_score, tiebreak: tiebreak, user_box_score: opponent_ubs %>
     </div>
