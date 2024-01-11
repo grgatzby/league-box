@@ -18,7 +18,7 @@
             <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
             <% if player_match %>
               <%= render "match_line", player_match: player_match, user_box_score: user_box_score, page_from: page_from %>
-            <% elsif player_opponent != player && current_user == @admin %>
+            <% elsif current_user.role != "player" || current_user == player %>
               <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from %>
             <% end %>
           <% end %>

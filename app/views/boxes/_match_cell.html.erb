@@ -1,0 +1,25 @@
+<% match = player_match[0]
+opponent = player_match[1]
+user_score = player_match[2]
+opponent_score = player_match[3]
+if match %>
+  <%# match played %>
+  <div class="click-cell">
+    <%= render "shared/score", user_score: user_score, opponent_score: opponent_score %>
+    <%= "[#{l(match.time, format: :wwwddmmm_date)}]" %>
+    <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
+    <span class=" color-tennis-blue">
+      <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
+    </span>
+
+    <% if current_user.role != "player" %>
+      <%# admin, referee: click on player match line to update/delete match score (matches and user_match_scores details) %>
+      <%= link_to '', edit_match_path(match_id: match.id, page_from: box_path), class: "line-link" %>
+    <% else %>
+      <%# player: click on player match line to view match score %>
+      <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match: match.id, page_from: box_path), class: "box-link" %>
+    <% end %>
+  </div>
+<% elsif opponent == line_player %>
+  <%= image_tag "tennis_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
+<% end %>

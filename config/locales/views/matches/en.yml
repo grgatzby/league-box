@@ -5,8 +5,8 @@ en:
       p01: Update or delete an existing match score
       match_played: "Court number: "
       date_time: "Match played on:"
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       submitted: "Score submitted on %{date} by %{player}."
       update_score_btn: ⎷ Update
@@ -21,8 +21,8 @@ en:
       score: "Match score:"
       player_1: Player 1
       player_2: Player 2
-      set_1: set 1
-      set_2: set 2
+      set_1: Set1
+      set_2: Set2
       tie_break: tiebreak
       input_score: input score
       and_more: and +
@@ -30,11 +30,19 @@ en:
       back_btn: ←
       round_not_started_flash: Round has not started yet.
     show:
+      show_match_title: Match card
       match_played: "Played on %{date} on court %{court}."
       score: Score
       submitted: "submitted on %{date} by %{user}."
       points_earned: "Points earned : "
       challenge: "To challenge or edit this match score, contact your club Referee %{referee}."
       back_btn: ←
+    score_headers:
+      player: Player
+      set_1: Set1
+      set_2: Set2
+      tie_break: tiebreak
+      match_points: Match points
+      total: Total
     score_display:
       winner: Winner

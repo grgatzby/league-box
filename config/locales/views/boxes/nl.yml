@@ -3,7 +3,6 @@ nl:
   boxes:
     switch: naar
     list_view: resultaten lijst
-    referee_view: pagina admin/Referee
     table_view: resultatenraster
     intro_lines:
       my_scores_btn: Mijn scores
@@ -26,13 +25,13 @@ nl:
       player_header: Speler
       total_points_header: Accumulatiepunten
       played_on_header: Wedstrijd gespeeld
-      action_header: Actie
+      action_header: Klik hieronder
       view_box_results_btn: Mijn boxresultaten
       see_match_card_btn: Wedstrijdkaart
-      enter_score_btn: Voer een score in
+      enter_score_btn: Voer uw score in
       chat_in_my_box: Organiseer uw wedstrijden
       access_chatroom_btn: Chatroom van uw box
-    show_lr_headers:
+    show_list_headers:
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
@@ -42,7 +41,7 @@ nl:
         De winnaar verdient 20 punten voor de wedstrijd.<br />
         De verliezer verdient 10 punten per gewonnen set + aantal games per verloren set.<br />
         De tiebreak voor het kampioenschap telt als een set (er worden geen punten toegekend aan de verliezer).
-    show_lr_data:
+    show_list_data:
       won: Won
       lost: Verloren
       on_date: "op"

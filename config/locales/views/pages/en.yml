@@ -159,34 +159,39 @@ en:
       li03: number of matches played
       li04: number of total points
       p08_html: "Current player appears in <span class='color-orange'>orange</span>."
-      p09a: Clicking on a box leads to its admin/Referee view.
-      p09b: Clicking on a box leads to its Table view.
-      p10a_html: When reaching the end of the round, a footpage button <span class='color-tennis-aqua'>Create the next round</span> appears.
-      p11_html: For the Referee, <span class='color-tennis-aqua'>Request the admin the next round</span> button.
+      p09: Clicking on a box leads to its Table view.
+      p10a_html: When reaching the end of the round, a footpage button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
+      p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
       league_table: League table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
       p13: Clicking on a header sorts the player according to this header.
-      referee_view: admin/Referee view
+      referee_list_view: Box List view (admin/Referee)
       p14_html: >
         Each player's matches which have been played are shown as list items.
         Headers are <b>Match scores</b>, <b>Player's points</b>, <b>Opponent's points</b>, <b>Opponent's total points</b>.<br>
-        Unplayed matchs are listed too.<br><br>
-        Clicking on a match line lands on the <b>Match Edit/Delete</b> page, clicking on an unplayed match (admin only) lands on the <b>New match score</b> page.
+        Unplayed matchs are listed as well.<br><br>
+        Click on a match line to <b>Edit/Delete</b> the Match score.<br> The admin can click on an unplayed match line to enter the <b>New match score</b>.
       table_view: Box Table view
-      p16: Each player's matches are shown under their corresponding opponent. Click on a match score to view the match card.
+      p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
-        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and you can enter a new score by clicking the relevant cell.<br>
-        A <span class='color-tennis-blue'>My scores</span> button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
-      list_view: Box List view
+        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span>
+        button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
+        Click on a match score to view the match card or, from your own box, enter a new score by clicking the relevant cell.
+      p18_html: >
+        You can <b>Edit/Delete</b> a Match score.<br> The admin can click on an unplayed match cell to enter the <b>New match score</b>.<br>
+        A toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) is displayed.
+      list_view: Box List view (player)
       p19_html: >
         Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
-        Click on a match score to view the match card.
       p20_html: >
         If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span> button is displayed
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+        Click on a match score to view the match card or, from your own box, enter a new score by clicking your opponent name.
+      p21_html: >
+        A toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ) is displayed.
       my_scores: My scores
-      p22_html: Each of my box matches dates and players points with links such as <span class='color-tennis-blue'>Display my box</span>, <span class='color-tennis-blue'>See match score</span>, and <span class='color-tennis-blue'>Enter new score</span>.
-      p23_html: Link to the <span class='color-tennis-blue'>box chatroom</span>.
+      p22_html: Each of my box matches dates and players points with action links such as <span class='color-tennis-blue'>To my box</span>, <span class='color-tennis-blue'>Match card</span>, and <span class='color-tennis-blue'>Enter score</span>.
+      p23_html: A link to the <span class='color-tennis-blue'>box chatroom</span> allows you to easily organize your next fixtures.
       match_results: Match results view
       p24: "Details of a match played:"
       li05: game date and court number

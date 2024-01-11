@@ -30,11 +30,7 @@
     </ul>
     <p><%= t '.p08_html' %></p>
     <p>
-      <% if current_user && current_user.role != "player" %>
-        <%= t '.p09a' %>
-      <% else %>
-        <%= t '.p09b' %>
-      <% end %>
+      <%= t '.p09' %>
       <% if current_user && current_user.role == "admin" %>
         <%= t '.p10a_html' %>
       <% end %>
@@ -46,13 +42,15 @@
     <p><%= t '.p12_html' %></p>
     <p><%= t '.p13' %></p>
 
+    <br><h5><%= t '.table_view' %></h5>
+    <p><%= t '.p16' %></p>
     <% if current_user && current_user.role != "player" %>
-      <br><h5><%= t '.referee_view' %></h5>
-      <p><%= t '.p14_html' %></p>
+      <p><%= t '.p18_html' %></p>
 
+      <br><h5><%= t '.referee_list_view' %></h5>
+      <p><%= t '.p14_html' %></p>
+      <p><%= t '.p21_html' %></p>
     <% else %>
-      <br><h5><%= t '.table_view' %></h5>
-      <p><%= t '.p16' %></p>
       <p><%= t '.p17_html' %></p>
 
       <br><h5><%= t '.list_view' %></h5>

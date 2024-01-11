@@ -3,7 +3,6 @@ fr:
   boxes:
     switch: voir les
     list_view: résultats en liste
-    referee_view: vue admin/Referee
     table_view: résultats en grille
     intro_lines:
       my_scores_btn: Mes scores
@@ -26,13 +25,13 @@ fr:
       player_header: Joueur
       total_points_header: Cumul points
       played_on_header: Match joué le
-      action_header: Action
-      view_box_results_btn: Ma box
-      see_match_card_btn: Tableau du match
-      enter_score_btn: Saisir un score
+      action_header: Choix
+      view_box_results_btn: Vers ma box
+      see_match_card_btn: Carte du match
+      enter_score_btn: Entrer le score
       chat_in_my_box: Organisez vos matchs
       access_chatroom_btn: Chatroom de votre box
-    show_lr_headers:
+    show_list_headers:
       match_earnings: Points du match
       match_score_header: Scores
       player_points_header: Points joueur
@@ -42,7 +41,7 @@ fr:
         Le vainqueur gagne 20 points pour le match.<br />
         Le perdant gagne 10 points par set gagné + nombre de jeux par set perdu.<br />
         Le championship tie-break compte comme un set (pas de points attribué au perdant).
-    show_lr_data:
+    show_list_data:
       won: Gagné
       lost: Perdu
       on_date: "le"
@@ -51,7 +50,7 @@ fr:
         <i>ou dans les </i><b>résultats en grille</b><i>!</i>
     no_match_line:
       not_played: Pas encore joué
-      enter_score: Entrer votre score
+      enter_score: Entrer le score
       pop02_a: "Cliquer pour entrer le score du match "
     match_line:
       pop01: "<b>Score entré</b><br />par %{user}<br />%{date}"
@@ -61,6 +60,6 @@ fr:
       on_date: "le"
     show_referee:
       not_authorised: Page non autorisée
-    show:
+    no_match_cell:
       not_played: Pas encore joué
-      enter_score: Entrer votre score
+      enter_score: Entrer le score

@@ -159,32 +159,38 @@ fr:
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: "Le joueur connecté apparaît en <span class='color-orange'>orange</span>."
-      p09a: Un clic sur une box la présente en Vue admin/Referee.
-      p09b: Un clic sur une box présente les Résultats en grille.
-      p10a_html: À l'approche de la fin du round, un bouton de pied de page pour <span class='color-tennis-aqua'>Créer le prochain round</span> apparaît.
-      p11_html: Pour le Referee, bouton <span class='color-tennis-aqua'>Demander la création du prochain round</span>.
+      p09: Un clic sur une box présente les Résultats en grille de la box.
+      p10a_html: Quand approche de la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
+      p11_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (Referee).
       league_table: League table
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13: En cliquant sur un entête, les joueurs se classent selon cet entête.
-      referee_view: Vue admin/Referee
+      referee_list_view: Vue en Liste (admin/Referee)
       p14_html: >
         Les matchs joués par chaque joueur sont affichés sous forme de liste dont les entêtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
         Les matchs non encore joués sont également listés.<br><br>
-        En cliquant sur la ligne d'un match, vous accédez à la page <b>Modifier/Supprimer un match</b>, et en cliquant sur un match non joué (administrateur uniquement), vous accédez à la page <b>Nouveau score</b> du match.
+        En cliquant sur la ligne d'un match, vous accédez à la page <b>Modifier/Supprimer un score</b>, et l'admin peut cliquer sur une ligne de match non joué pour entrer un <b>Nouveau score</b>.
       table_view: Vue en Grille
-      p16: Les matchs de chaque joueur sont affichés sous la colonne de l'adversaire correspondant. Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score.
+      p16: Les matchs de chaque joueur sont affichés sous la colonne de l'adversaire correspondant.
       p17_html: >
         Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
-      list_view: Vue en Liste
+        Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score dans votre box.
+      p18_html: >
+        Un lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) est affiché.
+        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et l'admin peut cliquer sur une case "Entrer score" pour entrer un <b>Nouveau score</b>
+      list_view: Vue en Liste (joueur)
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
-        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>; cliquez sur un score pour afficher la carte du match.<br>
+        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>;
+        cliquez sur un score pour afficher la carte du match, ou entrez un nouveau score dans votre box.<br>
         Un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+      p21_html: >
+        Un lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ) est affiché.
       my_scores: Mes scores
-      p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Ma box</span>, <span class='color-tennis-blue'>Score du match</span> et <span class='color-tennis-blue'>Saisir un score</span>.
-      p23_html: Lien vers la <span class='color-tennis-blue'>chatroom de box</span>.
+      p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Vers ma box</span>, <span class='color-tennis-blue'>Carte du match</span> et <span class='color-tennis-blue'>Entrer le score</span>.
+      p23_html: Lien vers la <span class='color-tennis-blue'>chatroom de box</span> pour organiser vos prochains matchs.
       match_results: Affichage des résultats du match
       p24: "Détails d'un match joué:"
       li05: date du match et numéro du terrain
