@@ -178,7 +178,7 @@ nl:
       p18_html:
         Er wordt een schakellink <span class='color-tennis-blue'>Lijstweergave</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
         Als u op een wedstrijdregel klikt, komt u terecht op de pagina <b>Wedstrijd bewerken/verwijderen</b>.<br><br>
-        Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina <b>Nieuwe wedstrijdscore</b>.
+        Als u op een ongespeelde wedstrijd klikt, komt u terecht op de pagina <b>Nieuwe wedstrijdscore</b>.
       list_view: Box resultaten lijst (speller)
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >

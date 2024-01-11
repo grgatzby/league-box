@@ -178,7 +178,7 @@ fr:
         Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score dans votre box.
       p18_html: >
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) est affiché.
-        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et l'admin peut cliquer sur une case "Entrer score" pour entrer un <b>Nouveau score</b>
+        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et sur une case "Entrer score" pour entrer un <b>Nouveau score</b>
       list_view: Vue en Liste (joueur)
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >

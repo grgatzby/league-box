@@ -178,7 +178,7 @@ en:
         button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Click on a match score to view the match card or, from your own box, enter a new score by clicking the relevant cell.
       p18_html: >
-        You can <b>Edit/Delete</b> a Match score.<br> The admin can click on an unplayed match cell to enter the <b>New match score</b>.<br>
+        You can <b>Edit/Delete</b> a Match score, or click an unplayed match cell to enter the <b>New match score</b> on behalf of the players.<br>
         A toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) is displayed.
       list_view: Box List view (player)
       p19_html: >
