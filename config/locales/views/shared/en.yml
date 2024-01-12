@@ -33,11 +33,10 @@ en:
       your_club_staff_title: Your club staff
       staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
       staff_p02_html: >
-        <b>A dispute on a match score or you entered a bad score</b>?<br>
-        &emsp;&emsp;&emsp;→ contact your Referee through the <b>chatroom</b>.
+        They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
-        <b>You cannot enter the match score</b>?<br>
-        &emsp;&emsp;&emsp;→ contact your Referee, or the admin through the <b>Contact Us</b> link.
+        &emsp;&emsp;&emsp;→ contact your Referee through your box <b>chatroom</b> (<span class='color-tennis-red'>My scores</span> page).<br>
+        &emsp;&emsp;&emsp;→ contact the admin through the <b>Contact Us</b> link at the bottom of this page.
       header_role: 🧩 Role
       header_name: Name
       header_club: 🎾 Club

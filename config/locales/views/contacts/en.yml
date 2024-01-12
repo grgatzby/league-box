@@ -11,7 +11,8 @@ en:
       error_message: "prohibited this form from being sent:"
       contact_p01_html: >
         This request will be sent to the admin. For requests addressed to your Referee
-        please find their details in the <b>Club Staff</b> page.
+        please find their details in the <b>Club Staff</b> page
+        or contact them through your box <b>chatroom</b> (<span class='color-tennis-red'>My scores</span> page).
       contact_p02: Score disputes should be dealt in your box chatroom.
       prompt: Select a topic →
       topics:

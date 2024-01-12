@@ -8,7 +8,8 @@
 </div>
 <br>
 <div class="frame-no-margin-rl">
-  <div class="frame-color-shape grid-wrap text-size ">
+  <div class="<%=class_names("grid-wrap text-size", "frame-color-shape": from == "pages",
+                                                    "frame-color-shape-contact": from == "contact")%>">
     <%#div class="grid-container box-width"%>
     <div class="<%=class_names( "mobile-grid-container mobile-box-width mobile-text-size": @is_mobile,
                                 "grid-container box-width": !@is_mobile)%>">
