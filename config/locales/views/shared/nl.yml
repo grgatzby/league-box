@@ -33,11 +33,11 @@ nl:
       your_club_staff_title: Clubpersoneel
       staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
       staff_p02_html: >
-        <b>Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd</b>?<br>
-        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter via jouw <b>box chatroom</b>.
+        Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd?<br>
+        U kunt de wedstrijdscore niet invoeren?<br>
       staff_p03_html: >
-        <b>U kunt de wedstrijdscore niet invoeren</b>?<br>
-        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter, of de beheerder via de link <b>Contact</b>.
+        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (pagina <span class='color-tennis-red'>Mijn scores</span>).<br>
+        &emsp;&emsp;&emsp;→ Neem contact op met de beheerder via de link <b>Contact</b>.
       header_role: 🧩 Rol
       header_name: Naam
       header_club: 🎾 Club
