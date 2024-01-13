@@ -17,8 +17,8 @@ fr:
       chatrooms_link: Les chatrooms
       log_out_link: Déconnexion
     display_round:
-      rd_period: "R %{start} - %{end}"
-      round_period: "Round %{start} au %{end}"
+      rd_period: "R%{round}"
+      round_period: "Round %{round} (%{start} au %{end})"
       days_left: "(%{days} jours restants)"
       players: ", %{nb_players} joueurs"
     select_round:

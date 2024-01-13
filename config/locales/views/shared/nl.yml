@@ -17,8 +17,8 @@ nl:
       chatrooms_link: Chatrooms
       log_out_link: Uitloggen
     display_round:
-      rd_period: "R %{start} - %{end}"
-      round_period: "Ronde %{start} tot %{end}"
+      rd_period: "R%{round}"
+      round_period: "Ronde %{round} (%{start} tot %{end})"
       days_left: "(%{days} dagen over)"
       players: ", %{nb_players} spellers"
     select_round:

@@ -8,6 +8,7 @@ class BoxesController < ApplicationController
     @page_from = params[:page_from]
     @box = Box.find(params[:id])
     @round = @box.round
+    @round_nb = round_number(@round)
     # @box_matches : array of [user_box_score , matches_details(user), user]
     # matches_details(user) : array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box) # sorted by descending points scores
@@ -20,17 +21,18 @@ class BoxesController < ApplicationController
   end
 
   def my_scores
-    # passing 0 to my_scores_path, forces user to choose a round
     @page_from = params[:page_from]
     @current_player = current_user
     # allow player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
+      # passing 0 to my_scores_path, forces user to choose a round
       set_club_round # define variables @club and @round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
       @box = my_own_box(@round, @current_player) # gets my box from chosen round
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
+      @round_nb = round_number(@box.round)
     end
     if @box
       @my_games = []
@@ -42,19 +44,20 @@ class BoxesController < ApplicationController
       end
       @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # Create a new chatroom in this case:
+        # Create a new chatroom if it does not exist or if still set to "general":
         # reason : the Chatroom class was migrated after the Box class (with: a chatroom has one box)
         # and the migration script assigned the #general chatroom by default to existing boxes.
         # If the assigned chatroom is still #general, or if this box has no chatroom yet,
         # we create a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
         # it will NOT remain available to players when in the next round (a chatroom is round specific)
-        round_year = @box.round.start_date.year
-        rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
-                              .where(club_id: @box.round.club)
-                              .order('start_date ASC')
-                              .map(&:id)
-        round_number = "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(@box.round.id) + 1)}"
-        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number}")
+        # round_year = @box.round.start_date.year
+        # rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
+        #                       .where(club_id: @box.round.club)
+        #                       .order('start_date ASC')
+        #                       .map(&:id)
+        # round_number = "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(@box.round.id) + 1)}"
+        # @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number}")
+        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number(@box.round)}")
         @box.update(chatroom_id: @chatroom.id)
       else
         @chatroom = @box.chatroom
