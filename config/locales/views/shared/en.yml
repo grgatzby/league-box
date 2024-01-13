@@ -17,8 +17,8 @@ en:
       chatrooms_link: Chatrooms
       log_out_link: Log out
     display_round:
-      rd_period: "R %{start} - %{end}"
-      round_period: "Round %{start} to %{end}"
+      rd_period: "R%{round}"
+      round_period: "Round %{round} (%{start} to %{end})"
       days_left: "(%{days} days left)"
       players: ", %{nb_players} players"
     select_round:

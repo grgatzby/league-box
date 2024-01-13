@@ -27,9 +27,6 @@ class ChatroomsController < ApplicationController
     elsif Chatroom.exists?(params[:id])
       # coming from the navbar or my_scores view page
       @chatroom = Chatroom.find(params[:id])
-      # if @chatroom != @general_chatroom && @chatroom.box.user_box_scores
-      #             .select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
-      # changed the test so players are prevented from accessing chatroom #general
       if @chatroom.box.user_box_scores.select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
         # chatroom not available to current user
         flash[:notice] = t('.no_access_flash')

@@ -81,7 +81,7 @@ class ApplicationController < ActionController::Base
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @round = params[:round_start] ? Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id) : current_round(@club.id)
-
+      @round_nb = round_number(@round)
       @boxes = @round.boxes.sort
     end
   end
@@ -184,5 +184,14 @@ class ApplicationController < ActionController::Base
 
   def local_path(path)
     path.gsub(/en|fr|nl/, locale.to_s)
+  end
+
+  def round_number(round)
+    round_year = round.start_date.year
+    rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
+                          .where(club_id: round.club)
+                          .order('start_date ASC')
+                          .map(&:id)
+    "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(round.id) + 1)}"
   end
 end

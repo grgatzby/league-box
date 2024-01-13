@@ -17,7 +17,11 @@
 }
 
 .mobile-box-width {
-  width: 40rem;
+  width: calc(70vw+40px);
+}
+
+.mobile-box-show-width {
+  width: calc(min(1250px,140vw));
 }
 
 .grid-container {
