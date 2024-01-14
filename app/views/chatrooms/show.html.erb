@@ -3,7 +3,7 @@ For each box, if not already created in Round/new (TO DO?), or in UserBoxScore/n
 a chatroom is created in Box controller #my_scores.
 -->
 <% if @chatroom %>
-  <!-- coming from Box/my_scores -->
+  <!-- coming from Box/my_scores or if chatroom chosen by admin/Referee -->
   <div class="container text-size"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -11,7 +11,7 @@ a chatroom is created in Box controller #my_scores.
   >
     <% if !@is_mobile %><br><% end %>
     <div class="one-liner" style="width: 100%">
-      <h3>Chatroom</h3>
+      <h3><%= "Chatroom - Box #{@box_nb}" %></h3>
       <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">

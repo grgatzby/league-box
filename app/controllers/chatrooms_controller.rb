@@ -6,15 +6,16 @@ class ChatroomsController < ApplicationController
     # this method is accessed from either the navbar, or the show_list or my_scores view pages
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
-      # params[:chatroom] exists when coming from the show_list view page form
+      # coming from the chatrooms/show dropdown form (admin/referee): params[:chatroom] is defined
       # @chatroom = Chatroom.find_by(name: params[:chatroom][1..-1]) # [1..-1] removes the first character '#' of the name
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..]) # [1..] removes the first character '#' of the name
-    elsif params[:id] == "0"
-      # define the list of chatrooms available for the referee or the admin to select in the form
-      # for the admin: all chatrooms; for a referee: only those from his own club + the #general chatroom
-      if current_user == @admin
+      @box_nb = @chatroom.box.box_number
+      @round = @chatroom.box.round
+      @round_nb = round_number(@round)
+    elsif params[:id] == "0" # define the dropdown list of chatrooms available for the referee or the admin
+      if current_user == @admin # if the admin: all chatrooms
         @chatrooms = Chatroom.all
-      else # current_user is a Referee
+      else # if a Referee, only those from his club + the #general chatroom
         @chatrooms = Chatroom.select do |chatroom|
           box = chatroom.box
           club = box.round.club
@@ -27,6 +28,7 @@ class ChatroomsController < ApplicationController
     elsif Chatroom.exists?(params[:id])
       # coming from the navbar or my_scores view page
       @chatroom = Chatroom.find(params[:id])
+      @box_nb = @chatroom.box.box_number
       if @chatroom.box.user_box_scores.select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
         # chatroom not available to current user
         flash[:notice] = t('.no_access_flash')
