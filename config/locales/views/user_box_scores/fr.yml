@@ -6,8 +6,8 @@ fr:
       file_csv_flash: fichier data.csv créé
     top_line:
       top_line_html: >
-        Cliquer la ligne d'un <span class="color-orange-light"><b>joueur</b></span> pour <b>accéder à sa box</b>
-        ou <span class="color-tennis-blue"><b>sur un entête</b></span> pour <b>trier la table</b>
+        Cliquer la <span class="color-orange-light"><b>ligne d'un joueur</b></span> pour accéder à sa box
+        ou sur <span class="color-tennis-blue"><b>un entête</b></span> pour trier la table
       rules: >
         Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
         Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />

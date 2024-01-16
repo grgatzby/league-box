@@ -183,7 +183,7 @@ class ApplicationController < ActionController::Base
   end
 
   def local_path(path)
-    path.gsub(/en|fr|nl/, locale.to_s)
+    path.gsub(/en|fr|nl/, locale.to_s) if path
   end
 
   def round_number(round)
@@ -193,5 +193,14 @@ class ApplicationController < ActionController::Base
                           .order('start_date ASC')
                           .map(&:id)
     "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(round.id) + 1)}"
+  end
+
+  def redirect_to_back(options = {})
+    # redirect_back with modified params, courtesy of https://www.filippoliverani.com/pass-params-rails-redirect-back
+    uri = URI(request.referer)
+    new_query = Rack::Utils.parse_nested_query(uri.query).merge(options.transform_keys! {|k| k.to_s })
+    uri.query = options.delete(:params)&.to_query
+    uri.fragment = options.delete(:anchor)
+    redirect_to("#{uri.to_s}?#{new_query.to_query}")
   end
 end

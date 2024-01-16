@@ -9,7 +9,7 @@ fr:
       pop01_a: cliquer sur un match pour éditer ou supprimer son score
       pop01_b: ", ou saisir un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
-      my_current_box: box en cours
+      my_current_box: ma box en cours
       all_boxes_link: Les box
     index:
       all_box_title: Les box

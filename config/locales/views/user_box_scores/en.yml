@@ -6,8 +6,8 @@ en:
       file_csv_flash: file data.csv created
     top_line:
       top_line_html: >
-        Click on <span class="color-orange-light"><b>a player's line</b></span> to <b>access their box</b>
-        or on <span class="color-tennis-blue"><b>a header</b></span> to <b>sort the table</b>
+        Click on a <span class="color-orange-light"><b>player's line</b></span> to access their box
+        or on a <span class="color-tennis-blue"><b>header</b></span> to sort the table
       rules: >
         A player's league position is determined by the total number of points won in a round.<br />
         In the event that two or more players have the same number of points the league position will be
