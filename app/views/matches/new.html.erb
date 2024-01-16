@@ -16,13 +16,14 @@
       <%= render "shared/fullname", user: @opponent %>
     </h5>
   </div>
-
+  <%= "#{@match.user_match_scores[0][:score_set1]} #{@match.user_match_scores[0][:score_set2]} #{@match.user_match_scores[0][:score_tiebreak]}" %>
   <%= form_for @match do |f| %>
     <div class = "frame-color-shape frame-margin-rl frame-padding">
       <br>
       <div class="row">
         <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>
-        <div class="col-1"><%= f.select :court_id, 1..@round.club.courts.count, default: 1 %></div>
+        <div class="col-1"><%= f.select :court_id, 1..@round.club.courts.count %></div>
+        <div class="col-1 color-tennis-red"><%= params[:court_id] %></div>
       </div>
       <br>
       <div class="row">
@@ -32,6 +33,7 @@
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
           <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>
+        <div class="col-3 color-tennis-red"><%= params[:time]? Date.strptime(params[:time], '%Y-%m-%d').strftime('%d/%m/%Y') : "" %></div>
       </div>
       <br>
       <b><%= t '.score' %></b>
@@ -42,6 +44,15 @@
         <div class="col-2"><%= t '.tie_break' %></div>
         <div class="col-3"><%= @is_mobile ? "" : t('.player_2') %></div>
       </div></i>
+      <% if params[:score_set1] %>
+        <div class="row color-tennis-red">
+          <div class="col-3"></div>
+          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_set1] == t('.input_score') ? "---" : params[:score_set1] %></div>
+          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_set2] == t('.input_score') ? "---" : params[:score_set2] %></div>
+          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_tiebreak] %></div>
+        </div>
+      <% end %>
+
       <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
       <% score_tb = [["---",
                     "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{ @is_mobile ? "+" : t('.and_more') }",

@@ -6,8 +6,8 @@ nl:
       file_csv_flash: bestand data.csv gemaakt
     top_line:
       top_line_html: >
-        Klik op <span class="color-orange-light"><b>de lijn van de speler</b></span> om toegang te <b>krijgen tot zijn box</b>
-        of <b>sorteer op header</b> door <span class="color-tennis-blue"><b>erop te klikken</b></span>
+        Klik op de <span class="color-orange-light"><b>lijn van de speler</b></span> om toegang te krijgen tot zijn box
+        of sorteer op <span class="color-tennis-blue"><b>header</b></span> door erop te klikken
       rules: >
         De rangschikking van een speler in de ranglijst wordt bepaald door het totaal aantal punten dat tijdens de ronde is verdiend.<br />
         Als twee spelers hetzelfde aantal punten verzamelen, wordt de rangschikking bepaald op basis van de volgende criteria:<br /><br />

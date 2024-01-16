@@ -17,7 +17,7 @@ class BoxesController < ApplicationController
   end
 
   def show_list
-    show        # inherit from #show
+    show # inherit from #show
   end
 
   def my_scores
