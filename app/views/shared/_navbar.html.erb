@@ -13,9 +13,9 @@
         <% end %>
       </li>
     </div>
-          <% if user_signed_in? && @round && @is_mobile%>
-            <%= render "shared/display_round", round: @round %>
-          <% end %>
+    <% if user_signed_in? && @round && @is_mobile%>
+      <%= render "shared/display_round", round: @round %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
