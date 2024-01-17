@@ -8,7 +8,7 @@ fr:
       set_1: Set1
       set_2: Set2
       tie_break: tiebreak
-      submitted: "Score entré %{date} par %{player}."
+      submitted: "Score entré %{date} par %{user}."
       update_score_btn: ⎷ Valider
       delete_score_btn: x Supprimer
       sure: Confirmez-vous?
@@ -32,8 +32,7 @@ fr:
     show:
       show_match_title: Score du match
       match_played: "Disputé le %{date} sur le court %{court}."
-      score: Score
-      submitted: "saisi le %{date} par %{user}."
+      submitted: "Score entré %{date} par %{user}."
       points_earned: "Points gagnés : "
       challenge: "Pour contester ou faire modifier ce score, contacter le club Referee %{referee}."
       back_btn: ←

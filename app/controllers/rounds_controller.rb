@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   def new
-    # invoked from a button in Boxes index view
+    # called from a button in Boxes index view (referees only)
     # form request to admin to generate a next round derived from the current
     # if admin is logged in, the club is given by params[:club_id]
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
@@ -89,9 +89,9 @@ class RoundsController < ApplicationController
 
     all_user_box_scores = temp_boxes.map(&:user_box_scores).flatten
     # create groups of user_box_scores (nb_player_per_box items per group)
-    new_user_box_score_groups = []
     nb_new_boxes = all_user_box_scores.count / nb_player_per_box
     # shift(n) is an Array method: removes first n element from array and returns the array of these n elements
+    new_user_box_score_groups = []
     nb_new_boxes.times { new_user_box_score_groups << all_user_box_scores.shift(nb_player_per_box) }
     new_user_box_score_groups << all_user_box_scores unless all_user_box_scores.empty?
     nb_new_boxes = new_user_box_score_groups.count

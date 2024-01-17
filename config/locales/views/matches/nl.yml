@@ -8,7 +8,7 @@ nl:
       set_1: Set1
       set_2: Set2
       tie_break: tiebreak
-      submitted: "Score ingevoerd op %{date} door %{player}."
+      submitted: "Score ingevoerd op %{date} door %{user}."
       update_score_btn: ⎷ Bevestigen
       delete_score_btn: x Verwijderen
       sure: Jij bevestigt?
@@ -32,8 +32,7 @@ nl:
     show:
       show_match_title: Wedstrijdkaart
       match_played: "Gespeeld op %{date} op veld %{court}."
-      score: Score
-      submitted: "ingevoerd op %{date} door %{user}."
+      submitted: "Score ingevoerd op %{date} door %{user}."
       points_earned: "Punten verdiend : "
       challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
       back_btn: ←

@@ -2,5 +2,6 @@ nl:
   matches:
     test_scores01_flash: Voor elke set moet een score worden ingevuld.
     test_scores02_flash: Er moet een winnaar zijn voor de tiebreak.
-    test_scores03_flash: Geen tiebreak nodig als 2 sets op 0 staan.
+    test_scores03_flash: "4-4: voer een correcte score in voor set 1 en set 2"
     test_scores04_flash: "Tiebreak: eerste naar 10 met 2 punten verschil."
+    test_scores05_flash: Geen tiebreak nodig als 2 sets op 0 staan.

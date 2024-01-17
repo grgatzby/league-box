@@ -2,5 +2,6 @@ fr:
   matches:
     test_scores01_flash: Un score doit être entré pour chaque set.
     test_scores02_flash: Il doit y avoir un gagnant au tiebreak.
-    test_scores03_flash: "2 sets à 0: aucun tiebreak nécessaire."
+    test_scores03_flash: "4-4: entrer un score correct au set 1 et au set 2"
     test_scores04_flash: "Tiebreak: premier à 10 avec 2 points d'écart."
+    test_scores05_flash: "2 sets à 0: aucun tiebreak nécessaire."

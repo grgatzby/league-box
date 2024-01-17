@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
   # Chatrooms have a one to one relation wth Boxes (has_one :box)
   def show
-    set_club_round    # set variables @club and @round (ApplicationController)
+    set_club_round # set variables @club and @round (ApplicationController)
     # display a chatroom
     # this method is accessed from either the navbar, or the show_list or my_scores view pages
     @current_box = current_user.user_box_scores.map(&:box).last
@@ -39,7 +39,7 @@ class ChatroomsController < ApplicationController
       flash[:notice] = t('.no_chatroom_flash')
       redirect_back(fallback_location: current_user.role == "player" ? my_scores_path(0) : root_path)
     end
-    # instantiate new @message for the new message form
+    # instantiate @message for the new message form
     @message = Message.new
   end
 

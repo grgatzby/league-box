@@ -45,9 +45,10 @@ class UserBoxScoresController < ApplicationController
   end
 
   def create
-    # (admin only) create a club, its courts, players (from csv file), a round, its boxes and user_box_scores
-    # the csv file must contain fields id, email, first_name, last_name, nickname, phone_number, role (players, referee)
-    # players are allocated in boxes by id in descending order.
+    # (admin only) add a new club, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
+    # The csv file must contain the following fields:
+    #         id, email, first_name, last_name, nickname, phone_number, role (player or referee)
+    # Players are allocated in boxes by id (in descending order).
     # TO DO: create a chatroom for each new box
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
@@ -102,7 +103,8 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_to_csv
-    # from https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    # export the league table to a csv file
+    # code inspired by https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find_by(start_date: params[:round_start].to_time,
                           club_id: Club.find_by(name: params[:club_name]).id)
     # file = Rails.root.join('public', 'data.csv')
@@ -111,7 +113,7 @@ class UserBoxScoresController < ApplicationController
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << [l(Time.now, format: :short),
+      writer << [l(Time.now, format: :short), # to time stamp the csv file
                  t('.table_headers.player_header'),
                  t('.table_headers.rank_header'),
                  t('.table_headers.points_header'),

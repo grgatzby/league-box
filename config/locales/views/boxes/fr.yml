@@ -12,7 +12,7 @@ fr:
       my_current_box: ma box en cours
       all_boxes_link: Les box
     index:
-      all_box_title: Les box
+      all_box_title: Toutes les box
       intro: "En un coup d'œil, consultez <b>les joueurs, leur classement, le nombre de matchs joués et leurs points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       create_round_btn: ⎷ Créer le prochain round
