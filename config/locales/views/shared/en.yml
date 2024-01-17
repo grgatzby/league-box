@@ -17,10 +17,11 @@ en:
       chatrooms_link: Chatrooms
       log_out_link: Log out
     display_round:
-      rd_period: "R%{round}"
       round_period: "Round %{round} (%{start} to %{end})"
+      round_period_mobile: "R%{round}"
       days_left: "(%{days} days left)"
       players: ", %{nb_players} players"
+      players_mobile: ", %{nb_players} pl"
     select_round:
       select_round_start: "Select a different round: "
       confirm_btn: ⎷ Confirm

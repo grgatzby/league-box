@@ -2,5 +2,6 @@ en:
   matches:
     test_scores01_flash: A score must be entered for each set.
     test_scores02_flash: There must be a winner for the tiebreak.
-    test_scores03_flash: No tiebreak needed if 2 sets to love.
+    test_scores03_flash: "4-4: enter a correct score for set 1 and set 2"
     test_scores04_flash: "Tiebreak: first to 10 with 2 points clear."
+    test_scores05_flash: No tiebreak needed if 2 sets to love.

@@ -9,8 +9,8 @@ class BoxesController < ApplicationController
     @box = Box.find(params[:id])
     @round = @box.round
     @round_nb = round_number(@round)
-    # @box_matches : array of [user_box_score , matches_details(user), user]
-    # matches_details(user) : array of [match, opponent, user_score, opponent_score]
+    # @box_matches is an array of [user_box_score , matches_details(user), user]
+    # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
     @box_matches = box_matches(@box) # sorted by descending points scores
     @this_is_my_box = my_box?(@box)
     @my_current_box = my_own_box(current_round(current_user.club_id))
@@ -73,12 +73,13 @@ class BoxesController < ApplicationController
   end
 
   def opponent(match, player)
-    # for given match selects match score of other player, and returns other player
+    # for given match, selects match score of other player, and returns other player
     match.user_match_scores.reject { |user_match_score| user_match_score.user == player }.map(&:user)[0]
   end
 
   def box_matches(box)
     # return array of [user_box_score, matches_details, user] sorted by player's total points
+    # where matches_details is an array of [match, opponent, user_score, opponent_score]
     box_matches = []
     box.user_box_scores.each do |user_box_score|
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
@@ -87,6 +88,7 @@ class BoxesController < ApplicationController
   end
 
   def matches_details(user_box_score)
+    # return array of [match, opponent, user_score, opponent_score]
     user = user_box_score.user
     matches = user_matches(user, user_box_score.box)
     matches.map! do |match|
@@ -98,6 +100,7 @@ class BoxesController < ApplicationController
 
   def my_box?(box, player = current_user)
     # return true if player belongs to box, false if not
-    box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
+    # box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
+    player.role == "player" && box == player.user_box_scores.first.box
   end
 end

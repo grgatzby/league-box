@@ -103,7 +103,9 @@ class ApplicationController < ActionController::Base
   end
 
   def match_score(match, player)
-    match.user_match_scores.select { |user_match_score| user_match_score.user == player }[0]
+    # given a match (has two user_match_scores) and a player, returns the user_match_score for that player
+    # match.user_match_scores.select { |user_match_score| user_match_score.user == player }[0]
+    match.user_match_scores.where(user_id: player)[0]
   end
 
   # -------------------------------------------------------------------------------------------------------------------
@@ -112,12 +114,9 @@ class ApplicationController < ActionController::Base
   # - and by #create in MatchesController
 
   def rank_players(scores)
-    @tieds = [] # populated in #add_to_tieds
-    scores = scores.sort { |a, b| compare(a, b) }
     # updates the rank field in the UserBoxScore database
 
-    # simple ranking, based on points only :
-
+    # ranking based on points only (for initial tests):
     # points_array = scores.map(&:points)
     # sorted_points = points_array.sort.uniq.reverse
     # scores.each do |score|
@@ -125,6 +124,8 @@ class ApplicationController < ActionController::Base
     # end
 
     # correct ranking based on 4 sorting criterias and ties :
+    @tieds = [] # populated in #add_to_tieds called by #compare
+    scores = scores.sort { |a, b| compare(a, b) }
 
     rank_tied = 1
     player = scores.first
@@ -139,7 +140,8 @@ class ApplicationController < ActionController::Base
   end
 
   def compare(a, b)
-    # the 4 compare methods use the spaceship operator
+    # ranking based on 4 sorting criterias (points, nb of matches played, highest set ratio, highest game ratio)
+    # the 4 compare_ methods all use the spaceship operator:
     # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b are not comparable)
     comparison = compare_points(a, b)
     return comparison unless comparison.zero?
@@ -180,14 +182,17 @@ class ApplicationController < ActionController::Base
   end
 
   def mobile_device?
+    # returns true if device is a mobile (used for mobile display)
     request.user_agent =~ /Mobile|webOS/
   end
 
   def local_path(path)
+    # replaces stale locale with current locale in the path string
     path.gsub(/en|fr|nl/, locale.to_s) if path
   end
 
   def round_number(round)
+    # returns round number and its year in format "yy_nb"
     round_year = round.start_date.year
     rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
                           .where(club_id: round.club)
@@ -197,7 +202,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_back(options = {})
-    # redirect_back with modified params, courtesy of https://www.filippoliverani.com/pass-params-rails-redirect-back
+    # alternative to redirect_back method, adding more params, courtesy of https://www.filippoliverani.com/pass-params-rails-redirect-back
     uri = URI(request.referer)
     new_query = Rack::Utils.parse_nested_query(uri.query).merge(options.transform_keys! {|k| k.to_s })
     uri.query = options.delete(:params)&.to_query

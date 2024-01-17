@@ -37,9 +37,10 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
+    # Strong params; formely:
     # params.require(:contact).permit(:subject, :name, :email, :phone, :message, :formcheck, :files => [])
-    # replaced :files => [] with :files, files: [] to allow single file attachment (new round request)
-    # and multi file attachment (contact us)
+    # replaced ':files => []' with ':files, files: []' to allow single file attachment (for a new round request)
+    # and multi file attachment (contact us form) as both use the same form
     params.require(:contact).permit(:subject, :name, :email, :phone, :message, :formcheck, :files, files: [])
   end
 end
