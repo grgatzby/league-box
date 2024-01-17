@@ -52,7 +52,7 @@ nl:
       p05: Spelers moeten hun wedstrijden 's avonds en/of in het weekend kunnen spelen.
       qualifying_players: Spelers getroffen
       p06: Spelers moeten bij aanvang van de ronde 16 jaar of ouder zijn om aan het toernooi te kunnen deelnemen; elke vrijstelling is ter beoordeling van de Referee.
-      p07_html: "Spelers moeten volledige leden zijn van %{clubname}"
+      p07_html: "Spelers moeten volledige leden zijn van %{clubname}."
       p08: Leden die overdag spelen, kunnen bij wijze van uitzondering hun wedstrijden buiten de toegestane uren spelen door de gastentoeslag te betalen voordat ze beginnen met spelen.
       box_design: Constitutie van boxen
       p09: De Boxen bieden plaats aan 4 tot 6 spelers
@@ -100,8 +100,8 @@ nl:
         De rangschikking van een speler wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer spelers
         hetzelfde aantal punten zou hebben, wordt de rangschikking bepaald door:
       li13: Meeste wedstrijden gespeeld
-      li14: De verhouding tussen gewonnen sets en gespeelde sets %
-      li15: De verhouding tussen gewonnen games en gespeelde games %
+      li14: De verhouding tussen Gewonnen Sets en gespeelde sets %
+      li15: De verhouding tussen Gewonnen games en gespeelde games %
       promotion_relegation: Promotie/degradatie
       p26: Onder normale omstandigheden
       li16: de twee beste spelers promoveren met 1 box.
@@ -112,7 +112,7 @@ nl:
       p28: >
         Spelers die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
         naar eigen goeddunken van de toernooiReferee.
-      no_show: No Show
+      no_show: No show
       p29: Als een speler meer dan
       li18: 5 minuten te laat op het speelveld is, mag zijn tegenstander 1 game eisen.
       li19: 10 minuten te laat op het speelveld is, mag zijn tegenstander 2 games eisen.

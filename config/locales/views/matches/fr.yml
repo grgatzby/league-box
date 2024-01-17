@@ -42,7 +42,7 @@ fr:
       set_1: Set1
       set_2: Set2
       tie_break: tiebreak
-      match_points: Points match
+      match_points: Pts match
       total: Total
     score_display:
       winner: Vainqueur

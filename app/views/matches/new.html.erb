@@ -22,18 +22,17 @@
       <br>
       <div class="row">
         <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>
-        <div class="col-1"><%= f.select :court_id, 1..@round.club.courts.count %></div>
-        <div class="col-1 color-tennis-red"><%= params[:court_id] %></div>
+        <div class="col-1"><%= f.select(:court_id, 1..@round.club.courts.count, selected: params[:court_id]) %></div>
       </div>
       <br>
       <div class="row">
         <div class="col-3"><b><%= t '.date_time' %></b></div>
         <div class="col-3">
-          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, value: @max_end_date ) %>
+          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, value: params[:time]? Date.strptime(params[:time], '%Y-%m-%d') : @max_end_date ) %>
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
           <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>
-        <div class="col-3 color-tennis-red"><%= params[:time]? Date.strptime(params[:time], '%Y-%m-%d').strftime('%d/%m/%Y') : "" %></div>
+        <div class="col-3 color-tennis-red"><%# params[:time]? Date.strptime(params[:time], '%Y-%m-%d').strftime('%d/%m/%Y') : "" %></div>
       </div>
       <br>
       <b><%= t '.score' %></b>
@@ -44,14 +43,6 @@
         <div class="col-2"><%= t '.tie_break' %></div>
         <div class="col-3"><%= @is_mobile ? "" : t('.player_2') %></div>
       </div></i>
-      <% if params[:score_set1] %>
-        <div class="row color-tennis-red">
-          <div class="col-3"></div>
-          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_set1] == t('.input_score') ? "---" : params[:score_set1] %></div>
-          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_set2] == t('.input_score') ? "---" : params[:score_set2] %></div>
-          <div class="col-2">&nbsp;&nbsp;&nbsp;&nbsp;<%= params[:score_tiebreak] %></div>
-        </div>
-      <% end %>
 
       <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
       <% score_tb = [["---",
@@ -60,9 +51,9 @@
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
           <div class="col-3"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
-          <div class="col-2"><%= user_match_score.select :score_set1, scores[user_match_score.index] %></div>
-          <div class="col-2"><%= user_match_score.select :score_set2, scores[user_match_score.index] %></div>
-          <div class="col-2"><%= user_match_score.select :score_tiebreak,score_tb[user_match_score.index] %></div>
+          <div class="col-2"><%= user_match_score.select(:score_set1, scores[user_match_score.index], selected: params[:score_set1]) %></div>
+          <div class="col-2"><%= user_match_score.select( :score_set2, scores[user_match_score.index], selected: params[:score_set2]) %></div>
+          <div class="col-2"><%= user_match_score.select( :score_tiebreak,score_tb[user_match_score.index], selected: params[:score_tiebreak]) %></div>
           <div class="col-3 float-right"><%= render "shared/fullname", user: players[1] %></div>
         </div>
       <% end %>

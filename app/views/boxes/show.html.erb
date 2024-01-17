@@ -9,8 +9,8 @@
                                 "box-width grid-container": !@is_mobile)%>">
       <div class="col-1 print-all-content">
         <div class="row">
-          <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box)%>">
-            <%= "Box #{@box.box_number}" %>
+          <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-green": !@this_is_my_box)%>">
+            <%= "Box #{@box.box_number}".upcase %>
           </div>
         </div>
         <% sorted_players = @box_matches.map { |x| x[2]} %>

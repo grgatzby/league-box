@@ -80,6 +80,7 @@ class ApplicationController < ActionController::Base
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
+      @start_dates = @start_dates.map{|d| d.strftime('%d/%m/%Y') }
       @round = params[:round_start] ? Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id) : current_round(@club.id)
       @round_nb = round_number(@round)
       @boxes = @round.boxes.sort
@@ -201,6 +202,6 @@ class ApplicationController < ActionController::Base
     new_query = Rack::Utils.parse_nested_query(uri.query).merge(options.transform_keys! {|k| k.to_s })
     uri.query = options.delete(:params)&.to_query
     uri.fragment = options.delete(:anchor)
-    redirect_to("#{uri.to_s}?#{new_query.to_query}")
+    redirect_to("#{uri}?#{new_query.to_query}")
   end
 end

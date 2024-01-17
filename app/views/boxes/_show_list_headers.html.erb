@@ -1,6 +1,10 @@
 <div class="row bold-font top-bottom-padding left-padding">
   <!-- show list headers -->
-  <div class="col-4"></div>
+  <div class="col-4">
+    <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-green": !@this_is_my_box)%>">
+      <%= "Box #{@box.box_number}".upcase %>
+    </div>
+  </div>
   <div class="col-2"><%= t '.match_score_header' %></div>
   <% case page_from %>
     <% when box_list_path %>
