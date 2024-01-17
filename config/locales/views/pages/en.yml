@@ -53,7 +53,7 @@ en:
       p05: Players must be able to play matches in the evenings and / or weekends.
       qualifying_players: Qualifying Players
       p06: Players must be aged 16 years or above on the date of the start of the round in which the player joins the tournament unless otherwise agreed with the Tournament Referee.
-      p07_html: "All players must be fully subscribed members of %{clubname}"
+      p07_html: "All players must be fully subscribed members of %{clubname}."
       p08: Day time members will be exceptionally able to play their matches after their permissible hours by paying the Guest Fee before commencing play.
       box_design: Box Design
       p09: Boxes will be designed to accommodate 4 to 6 players
@@ -113,7 +113,7 @@ en:
       p28: >
         Players who do not play any matches in a round without good reason or advance notice may be withdrawn from the tournament,
         at the sole discretion of the Tournament Referee.
-      no_show: No Show
+      no_show: No show
       p29: If a player is more than
       li18: 5 minutes late on court the opponent has the right to claim 1 game.
       li19: 10 minutes late on court the opponent has the right to claim 2 games.

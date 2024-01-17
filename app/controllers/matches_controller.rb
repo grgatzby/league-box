@@ -61,19 +61,15 @@ class MatchesController < ApplicationController
       match_scores[index][:score_set2] = score_set2[index]
       match_scores[index][:score_tiebreak] = score_tiebreak[index]
     end
-    # match_scores[0][:score_set1] = params[:match][:user_match_scores_attributes]["0"][:score_set1].match(/.+?(?=-)/).to_s.to_i
-    # match_scores[1][:score_set1] = params[:match][:user_match_scores_attributes]["0"][:score_set1].split("-")[-1].to_i
-    # match_scores[0][:score_set2] = params[:match][:user_match_scores_attributes]["0"][:score_set2].match(/.+?(?=-)/).to_s.to_i
-    # match_scores[1][:score_set2] = params[:match][:user_match_scores_attributes]["0"][:score_set2].split("-")[-1].to_i
-    # match_scores[0][:score_tiebreak] = params[:match][:user_match_scores_attributes]["0"][:score_tiebreak].match(/.+?(?=-)/).to_s.to_i
-    # match_scores[1][:score_tiebreak] = params[:match][:user_match_scores_attributes]["0"][:score_tiebreak].split("-")[-1].to_i
 
     test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
     if test_score
       results = compute_points(match_scores)
 
       # if score entered is valid, store match date and match time in UTC Time
-      @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
+      # @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
+      # previously, user could enter match hour in the form, but it was deemed unnecessary and not ux friendly
+      @match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
       @match.save
 
       # create the two match scores for the match
@@ -176,7 +172,9 @@ class MatchesController < ApplicationController
     if test_edit_score(user_match_scores, results)
       # if score entered is valid, store match date and match time in UTC time
       match.court_id = Court.find_by(name: params[:match][:court_id], club_id: match.court.club_id).id
-      match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
+      # match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
+      # previously, user could enter match hour in the form, but it was deemed  unnecessary and not ux friendly
+      @match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
       match.save
 
       # if score entered is valid, update winner and loser booleans in user_match_scores

@@ -35,11 +35,11 @@ fr:
     rules:
       overview_title: Description du Tournoi
       p01_html: >
-        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif.
-        Elles sont le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
+        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif avec des joueurs du même niveau.
+        Elles sont aussi le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
       p02: >
         Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent
-        devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs
+        devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs,
         prévenez rapidement vos adversaires et votre Referee.
       p03: >
         Les joueurs devront notifier à leurs adversaires leurs périodes d'indisponibilité, ainsi que leurs disponibilités.
@@ -53,7 +53,7 @@ fr:
       p05: Les joueurs doivent pouvoir disputer leurs matchs le soir et / ou le week-end.
       qualifying_players: Joueurs concernés
       p06: Les joueurs devront avoir 16 ans ou plus au départ du round pour participer au tournoi; toute dérogation est à la discrétion du Referee.
-      p07_html: "Les joueurs devront être membres de plein droit du %{clubname}"
+      p07_html: "Les joueurs devront être membres de plein droit du %{clubname}."
       p08: Les membres journaliers pourront exceptionnellement jouer leurs matchs après les heures autorisées en payant les frais d'invité avant de commencer à jouer.
       box_design: Constitution des Box
       p09: Les Box pourront accueillir de 4 à 6 joueurs
@@ -101,19 +101,19 @@ fr:
         Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
         de points, le classement sera déterminé selon:
       li13: Le plus de matchs joués
-      li14: Le Ratio de Sets Gagnés sur Sets Joués %
-      li15: Le Ratio de Jeux Gagnés sur Jeux Joués %
+      li14: Le ratio de Sets Gagnés sur Sets Joués %
+      li15: Le ratio de Jeux Gagnés sur Jeux Joués %
       promotion_relegation: Promotion / Relégation
       p26: Dans les circonstances habituelles, au prochain round
       li16: les deux meilleurs joueurs seront promus d'une 1 box.
       li17: les deux derniers joueurs seront relégués d'une 1 box.
-      new_entrants: Nouveaux Entrants
+      new_entrants: Nouveaux entrants
       p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
       disqualification: Disqualification
       p28: >
         Les joueurs qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiés du tournoi,
         à la seule discrétion du Referee du Tournoi.
-      no_show: No Show
+      no_show: No show
       p29: Si un joueur a plus de
       li18: 5 minutes de retard sur le court son adversaire peut exiger 1 jeu.
       li19: 10 minutes de retard sur le court son adversaire peut exiger 2 jeux.
@@ -128,12 +128,12 @@ fr:
       p35: >
         Si le joueur se retire avant le début du round, le Referee s'efforcera pour maintenir sa position dans la league
         s'il souhaitait participer au round suivant.
-      walk_overs: Victoire par forfait ou absence (Walk-over)
+      walk_overs: Victoire par forfait ou absence (walk-over)
       p36: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
       li21: compliqués à gérer
       li22: il est impossible pour le Referee de vérifier les déclarations de walk-overs
       li23: attribution injuste de points non joués
-      deadline_extensions: Deadline Extensions
+      deadline_extensions: Dérogation de Deadline
       p37: Les joueurs devront s'efforcer de jouer leurs matchs dans la durée de la box league.
       p38: >
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
