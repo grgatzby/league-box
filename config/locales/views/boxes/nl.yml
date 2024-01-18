@@ -21,8 +21,8 @@ nl:
       my_scores: Mijn scores
       intro_html: >
         Op de pagina <b class='color-tennis-red'>Mijn scores</b> hebben spelers toegang tot hun eigen box-matchkaarten en kunnen ze nieuwe scores invoeren.<br />
-        Dit kan ook worden gedaan vanuit <b>resultaten lijst</b> en <b>resultatenraster</b>, maar deze pagina is specifiek voor hun eigen box.
-        en geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren.
+        Dit kan ook worden gedaan vanuit <b class='bold-font color-tennis-blue'>resultaten lijst</b> en <b class='bold-font color-tennis-blue'>resultatenraster</b>.<br><br>
+        <b class='color-tennis-red'>Mijn scores</b> geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren.<br>
       intro_stale: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       not_in_round: " jij zit niet in deze ronde!"
       view_enter_scores: Bekijk of voer uw scores in

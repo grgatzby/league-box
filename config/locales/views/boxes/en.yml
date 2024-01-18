@@ -21,8 +21,8 @@ en:
       my_scores: My scores
       intro_html: >
         <b class='color-tennis-red'>My scores</b> page allows players to access their own box match cards, and enter new scores.<br />
-        This can also be done from <b>List view</b> and <b>Grid view</b>, but this page is specific to their own box,
-        and also gives them access to the <b>Box chatroom</b> to easily organise their fixtures.
+        (nb: this can also be done from <b class='bold-font color-tennis-blue'>List view</b> and <b class='bold-font color-tennis-blue'>Grid view</b>).<br><br>
+        <b class='color-tennis-red'>My scores</b> also gives them access to the <b>Box chatroom</b> to easily organise their fixtures.<br>
       intro_stale: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
       not_in_round: " you are not in this round!"
       view_enter_scores: View or enter match scores

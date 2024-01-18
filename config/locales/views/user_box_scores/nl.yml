@@ -1,7 +1,7 @@
 nl:
   user_box_scores:
     index:
-      intro: De <b>competitietabel</b> wordt bij elke score-invoer bijgewerkt
+      intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt
       league_table_title: League table
       file_csv_flash: bestand data.csv gemaakt
     top_line:

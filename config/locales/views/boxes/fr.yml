@@ -20,9 +20,9 @@ fr:
     my_scores:
       my_scores: Mes scores
       intro_html: >
-        La page <b class='color-tennis-red'>Mes scores</b> donne accès aux joueurs à leurs cartes de match, dans leur propre Box, et leur permet d'entrer de nouveaux scores.<br />
-        Ils peuvent aussi le faire dans les <b>Résultats en liste</b> et <b>Résultats en table</b>, mais <b class='color-tennis-red'>Mes scores</b> est propre à leur box,
-        et donne aussi accès à la <b>Chatroom</b> pour organiser les matchs.
+        La page <b class='color-tennis-red'>Mes scores</b> donne accès aux joueurs à une vue de leur propre Box; ils y accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores.<br />
+        (nb: ils peuvent aussi le faire dans les <b class='bold-font color-tennis-blue'>Résultats en liste</b> et <b class='bold-font color-tennis-blue'>Résultats en table</b>).<br><br>
+        <b class='color-tennis-red'>Mes scores</b> leur donne aussi accès à la <b>Chatroom de la box</b> pour organiser leurs matchs.<br>
       intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
       view_enter_scores: Consultez ou entrez vos scores
