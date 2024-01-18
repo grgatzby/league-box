@@ -6,8 +6,10 @@
     <% end %>
     <div class="navbar-nav me-auto navbar-out-of-collapse">
       <li class="nav-item time-color top-bottom-padding">
-        <% unless @is_mobile %>
-          <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %>&nbsp;&nbsp
+        <% if @is_mobile %>
+          <%= "#{l(Time.now, format: :ddmmm_date)}" %>
+        <% else %>
+          <%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %>&nbsp;&nbsp;
         <% end %>
       </li>
     </div>
