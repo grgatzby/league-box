@@ -19,7 +19,11 @@ en:
       request_round_btn: Request the admin the next round
     my_scores:
       my_scores: My scores
-      intro: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
+      intro_html: >
+        <b class='color-tennis-red'>My scores</b> page allows players to access their own box match cards, and enter new scores.<br />
+        This can also be done from <b>List view</b> and <b>Grid view</b>, but this page is specific to their own box,
+        and also gives them access to the <b>Box chatroom</b> to easily organise their fixtures.
+      intro_stale: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
       not_in_round: " you are not in this round!"
       view_enter_scores: View or enter match scores
       player_header: Player
@@ -31,6 +35,10 @@ en:
       enter_score_btn: Enter score
       chat_in_my_box: Organise your matches
       access_chatroom_btn: Access the box chatroom
+    show_list:
+      intro_html: >
+        For a given box, the <span class='bold-font color-tennis-blue'>List view</span> page displays all played matches in list view, and give players access to the match cards.<br>
+        It can be accessed from the toggle button in <span class='bold-font color-tennis-blue'>Table view</span> which is accessed from <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">All boxes</a>.<br>
     show_list_headers:
       match_earnings: Match earnings
       match_score_header: Match scores
@@ -58,8 +66,12 @@ en:
       won: Won
       lost: Lost
       on_date: "on"
-    show_referee:
-      not_authorised: As a player, this page is not authorised
-    show:
-      not_played: Not played yet
+    no_match_cell:
+      not_played: Not played
       enter_score: Enter score
+    show:
+      intro_html: >
+        For a given box, the <span class='bold-font color-tennis-blue'>Table view</span> page displays all matches in a table, and give players access to the match cards.<br>
+        In their own box, players can enter new scores.<br>
+        It can be accessed from from <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">All boxes</a>,
+        and has a toggle button to <span class='bold-font color-tennis-blue'>List view</span>.<br>

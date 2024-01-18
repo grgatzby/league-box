@@ -10,26 +10,28 @@ fr:
         Le vainqueur recevra le trophée du Tournoi Box League, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
       p03: La league table sera mise à jour automatiquement.
-      how_title: Comment fonctionne LeagueBox?
+      how_title: "Les rounds: quatre étapes simples"
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
       li01_html: 🎾 <b>Pendant la durée du round</b>, jouez les matchs de votre box.
       li02_html: 💻 Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
       li03_html: 🏆 La <b>league table</b> est automatiquement mise à jour. Vous pouvez également <b>consulter les box</b>.
       li04_html: "🎭 <b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box."
       p05_html: Consultez notre page <b>Le tournoi</b> pour en savoir plus
-      use_title: Comment utilliser LeagueBox?
+      use_title: Votre LeagueBox en quelques clicks
       p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li05_html: >
-        Après chaque match, entrez votre score dans <span class='color-tennis-red'>Mes scores</span>.<br>
+        Après chaque match, entrez votre score dans <a class='btn btn-inlayed bold-font color-tennis-red' href="%{my_scores_path}">Mes scores</a>.<br>
         Votre classement est mis à jour automatiquement.
       li06_html: >
-        <span class='color-green'>Les box</span> montre toutes les box de la league:
+        La page <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a> montre toutes les box de la league:
         accédez à la box de votre choix en cliquant dessus pour la consulter plus en détail.<br/>
         Vous avez également accès aux rounds précédents.
       li07_html: >
-        Pour chaque box, les <span class='color-tennis-blue'>Vue par liste</span> et <span class='color-tennis-blue'>Vue par grille</span>
+        Pour chaque box, la page des <a class='btn btn-inlayed bold-font color-tennis-blue' href="%{box_list_path}">Résultats en liste</a>
+        et celle des <a class='btn btn-inlayed bold-font color-tennis-blue' href="%{box_path}">Résultats en grille</a>
         vous détaillent les matchs et les scores.
-      li08_html: La <span class='color-green'>League Table</span> du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
+      li08_html: >
+        La <a class='btn btn-inlayed bold-font color-green' href="%{user_box_scores_path}">League Table</a> du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
       happy_tournament: Que les meilleurs gagnent!
       add_club_btn: Ajouter un nouveau club
     rules:

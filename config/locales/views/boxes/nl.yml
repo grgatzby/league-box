@@ -19,7 +19,11 @@ nl:
       request_round_btn: Vraag de admin de volgende ronde aan
     my_scores:
       my_scores: Mijn scores
-      intro: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
+      intro_html: >
+        Op de pagina <b class='color-tennis-red'>Mijn scores</b> hebben spelers toegang tot hun eigen box-matchkaarten en kunnen ze nieuwe scores invoeren.<br />
+        Dit kan ook worden gedaan vanuit <b>resultaten lijst</b> en <b>resultatenraster</b>, maar deze pagina is specifiek voor hun eigen box.
+        en geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren.
+      intro_stale: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       not_in_round: " jij zit niet in deze ronde!"
       view_enter_scores: Bekijk of voer uw scores in
       player_header: Speler
@@ -31,6 +35,10 @@ nl:
       enter_score_btn: Voer uw score in
       chat_in_my_box: Organiseer uw wedstrijden
       access_chatroom_btn: Chatroom van uw box
+    show_list:
+      intro_html: >
+        Voor een box, geeft de pagina <span class='bold-font color-tennis-blue'>Resultaten lijst</span> alle gespeelde wedstrijden in lijstweergave weer en geeft spelers toegang tot de wedstrijdkaarten.<br>
+        Deze is toegankelijk via de schakelknop in <span class='bold-font color-tennis-blue'>Resultatenraster</span> die toegankelijk is via <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Alle boxen</a>.<br>
     show_list_headers:
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
@@ -58,8 +66,12 @@ nl:
       won: Won
       lost: Verloren
       on_date: "op"
-    show_referee:
-      not_authorised: Ongeautoriseerde pagina
-    show:
+    no_match_cell:
       not_played: Nog niet gespeeld
       enter_score: Voer uw score in
+    show:
+      intro_html: >
+        Voor een box, geeft de <span class='bold-font color-tennis-blue'>Resultatenraster</span> pagina alle wedstrijden in een tabel weer en geeft spelers toegang tot de wedstrijdkaarten.<br>
+        In hun eigen vak kunnen spelers nieuwe scores invoeren.<br>
+        Het is toegankelijk via <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Alle boxen</a>,
+        en heeft een schakelknop naar <span class='bold-font color-tennis-blue'>Resultaten lijst</span>.<br>

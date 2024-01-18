@@ -1,75 +1,79 @@
 <!-- show page of matches in table display -->
 <div class="container text-size">
-  <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
-
-  <div class = "frame-color-shape frame-padding grid-wrap">
-    <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
-    <div class="<%=class_names( "row small-font",
-                                "mobile-box-show-width mobile-text-size mobile-grid-container": @is_mobile,
-                                "box-width grid-container": !@is_mobile)%>">
-      <div class="col-1 print-all-content">
-        <div class="row">
-          <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-green": !@this_is_my_box)%>">
-            <%= "Box #{@box.box_number}".upcase %>
-          </div>
-        </div>
-        <% sorted_players = @box_matches.map { |x| x[2]} %>
-        <% @box_matches.each do |user_box_matches| %>
-          <div class="row first-col-lines bold-font">
-            <div class="col-12">
-              <% user_box_score = user_box_matches[0] %>
-              <% line_player = user_box_score.user %>
-              <% name = "#{render "shared/fullname", user: line_player}" %>
-              <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
-              <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-              data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
-              title="<%= name %>" data-bs-content="<%= message %>">
-                <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
-                  <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= t("pts", count: user_box_score.points) %>
-                </span>
-              </div>
+  <% if @box %>
+    <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
+    <div class = "frame-color-shape frame-padding grid-wrap">
+      <div class="<%=class_names( "row small-font",
+                                  "mobile-box-show-width mobile-text-size mobile-grid-container": @is_mobile,
+                                  "box-width grid-container": !@is_mobile)%>">
+        <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
+        <div class="col-1 print-all-content">
+          <div class="row mb-3">
+            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-green": !@this_is_my_box)%>">
+              <%= "Box #{@box.box_number}".upcase %>
             </div>
           </div>
-        <% end %>
-      </div>
-
-      <%# the rest of the table uses 11/12th of the total width (bootstrap grid) %>
-      <div class="col-11 print-all-content">
-        <div class="row bold-font">
+          <% sorted_players = @box_matches.map { |x| x[2]} %>
           <% @box_matches.each do |user_box_matches| %>
-            <div class="col-2 text-center">
-              <% user_box_score = user_box_matches[0] %>
-              <% column_player = user_box_score.user %>
-              <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
-                <%= render "shared/fullname", user: column_player %>
-              </span>
-            </div>
-          <% end %>
-        </div>
-        <div id="grid-lines">
-          <% @box_matches.each do |user_box_matches|
-             user_box_score = user_box_matches[0]
-             player_matches = user_box_matches[1]
-             player_matches.sort_by! { |x| sorted_players.index(x[1]) }
-             line_player = user_box_matches[2] %>
-            <div class="row">
-              <% sorted_players.each do |column_player|
-                player_match = player_matches.select { |x| x[1] == column_player }[0] %>
-                <div class="col-2 text-center grid-columns">
-                  <span class="align-middle">
-                    <% if player_match %>
-                      <%= render "match_cell", player_match: player_match, line_player: line_player %>
-                    <% else %>
-                      <%= render "no_match_cell", column_player: column_player, line_player: line_player %>
-                    <% end %>
+            <div class="row first-col-lines bold-font">
+              <div class="col-12">
+                <% user_box_score = user_box_matches[0] %>
+                <% line_player = user_box_score.user %>
+                <% name = "#{render "shared/fullname", user: line_player}" %>
+                <% message = "📞 #{line_player.phone_number}<br />✉️#{line_player.email}" %>
+                <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+                data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
+                title="<%= name %>" data-bs-content="<%= message %>">
+                  <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
+                    <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= t("pts", count: user_box_score.points) %>
                   </span>
                 </div>
-              <% end %>
+              </div>
             </div>
           <% end %>
+        </div>
+
+        <%# the rest of the table uses 11/12th of the total width (bootstrap grid) %>
+        <div class="col-11 print-all-content">
+          <div class="row bold-font mb-3">
+            <% @box_matches.each do |user_box_matches| %>
+              <div class="col-2 text-center">
+                <% user_box_score = user_box_matches[0] %>
+                <% column_player = user_box_score.user %>
+                <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
+                  <%= render "shared/fullname", user: column_player %>
+                </span>
+              </div>
+            <% end %>
+          </div>
+          <div id="grid-lines">
+            <% @box_matches.each do |user_box_matches|
+              user_box_score = user_box_matches[0]
+              player_matches = user_box_matches[1]
+              player_matches.sort_by! { |x| sorted_players.index(x[1]) }
+              line_player = user_box_matches[2] %>
+              <div class="row">
+                <% sorted_players.each do |column_player|
+                  player_match = player_matches.select { |x| x[1] == column_player }[0] %>
+                  <div class="col-2 text-center grid-columns">
+                    <span class="align-middle">
+                      <% if player_match %>
+                        <%= render "match_cell", player_match: player_match, line_player: line_player %>
+                      <% else %>
+                        <%= render "no_match_cell", column_player: column_player, line_player: line_player %>
+                      <% end %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <br>
+    <br>
+  <% else %>
+    <h3><%= t("boxes.table_view").capitalize %></h3><br>
+    <%= render "explain_page", intro_paragraph: t(".intro_html") %>
+  <% end %>
 </div>
