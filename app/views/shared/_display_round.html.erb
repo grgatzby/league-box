@@ -7,4 +7,4 @@
 <% if round.end_date > Date.today %>
   <%= t(".days_left", days: (round.end_date - Date.today).to_i) %>
 <% end %>
-<%= t(".players", nb_players: round.boxes.map {|box| box.user_box_scores.count}.sum) %>
+<%= t(".players", nb_players: round.boxes.map {|box| box.user_box_scores.count}.sum) %>&nbsp;
