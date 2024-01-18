@@ -21,7 +21,6 @@ fr:
       round_period_mobile: "R%{round}"
       days_left: "(%{days} jours restants)"
       players: ", %{nb_players} joueurs"
-      players_mobile: ", %{nb_players} mb"
     select_round:
       select_round_start: "Consulter un autre round: "
       confirm_btn: ⎷ Confirmer
