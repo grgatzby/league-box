@@ -38,7 +38,7 @@ fr:
     show_list:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Résultats en liste</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
-        On accède à cette page depuis les <span class='bold-font color-tennis-blue'>Résultats en grille</span> en venant de <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a>.<br>
+        On accède à cette page depuis les <span class='bold-font color-tennis-blue'>Résultats en grille</span> en venant de la page <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a>.<br>
     show_list_headers:
       match_earnings: Points du match
       match_score_header: Scores
