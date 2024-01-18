@@ -35,7 +35,7 @@
         <div>
           <!--- form field SUBJECT -->
           <% if processing_new_round %>
-            <!--- from the Boxes show_referee view (request a new round creation) -->
+            <!--- from the Boxes index view (request a new round creation) -->
             <% round = Round.find(processing_new_round) %>
             <% default_subject =  t('.new_round_subject', club: round.club.name)%>
             <%= f.input :subject,
@@ -90,7 +90,7 @@
 
       <!--- form field MESSAGE BODY -->
       <% if processing_new_round %>
-        <!--- from the Boxes show_referee view (request a new round creation) -->
+        <!--- from the Boxes index view (request a new round creation) -->
         <% round = Round.find(processing_new_round) %>
         <% duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round %>
         <% start_date = l(round.end_date + 1, format: :default) %>
@@ -115,7 +115,7 @@
         type:"hidden"
       %>
       <% if processing_new_round %>
-        <!--- from the Boxes show_referee view (request a new Round creation) -->
+        <!--- from the Boxes index view (request a new Round creation) -->
 
         <!--- form field ROUND ID = passing parameters to the Sent view (hidden) -->
         <%= f.text_field :round_id,
@@ -125,7 +125,7 @@
         <div>
           <!--- form field FILE ATTACHMENT (one file for new Round request) -->
           <!--- NB: "required: true" with "validate: { presence: true }" in the Contact model
-          would not work with "multiple : true" since no attachment yields "files"=>[""] in the params -->
+          would not work with "multiple : true" since no file attached yields "files"=>[""] in the params -->
           <%= f.file_field :files,
             class: 'btn buttons-shape btn-beige mb-3',
             accept: 'text/csv,application/msword,application/vnd.ms-excel,application/pdf',

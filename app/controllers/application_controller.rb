@@ -8,14 +8,13 @@ class ApplicationController < ActionController::Base
   # Existing features:
   # - players can: view a box (in list or table view), enter a new match score in their own box, view all boxes,
   #                view the league table, access their box chatroom.
-  # - referees can: view a box (in list or table view), edit / delete a match score, view all boxes,
+  # - referees can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
   #                 view the league table, access the #general chatroom and all of their club's chatrooms,
   #                 request a new round creation.
   # - admin can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
   #
-  # Question: should referees be allowed to enter a new score (as can the admin)?
 
   def default_url_options
     { locale: I18n.locale }

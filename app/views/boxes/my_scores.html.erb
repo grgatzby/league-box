@@ -1,12 +1,14 @@
 <!-- player page to view own match results, enter new scores -->
 <div class="container text-size">
   <% if !@is_mobile %><br><% end %>
-  <div class="one-liner">
+  <%# <div class="one-liner"> %>
+  <div>
     <h3><%= t '.my_scores' %></h3>
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%= render "shared/select_club_round", fallback_path: my_scores_path, intro_paragraph: t(".intro") %>
+      <%# render "shared/select_club_round", fallback_path: my_scores_path, intro_paragraph: t(".intro") %>
+      <%= render "explain_page", intro_paragraph: t(".intro_html") %>
     <% end %>
   </div>
   <% if @round %>
@@ -19,8 +21,7 @@
             add_text: "#{render "shared/fullname", user: @current_player} - box #{@box.box_number}" %>
         </h4>
         <div>
-          <!-- Back -->
-          <% @page_from = @page_from || box_list_path %>
+          <% @page_from ||= box_list_path %>
           <% if @page_from %>
             <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
             <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>

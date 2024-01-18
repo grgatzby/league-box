@@ -5,15 +5,17 @@ class BoxesController < ApplicationController
   end
 
   def show
-    @page_from = params[:page_from]
-    @box = Box.find(params[:id])
-    @round = @box.round
-    @round_nb = round_number(@round)
-    # @box_matches is an array of [user_box_score , matches_details(user), user]
-    # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
-    @box_matches = box_matches(@box) # sorted by descending points scores
-    @this_is_my_box = my_box?(@box)
-    @my_current_box = my_own_box(current_round(current_user.club_id))
+    unless params[:id].to_i.zero?
+      @page_from = params[:page_from]
+      @box = Box.find(params[:id])
+      @round = @box.round
+      @round_nb = round_number(@round)
+      # @box_matches is an array of [user_box_score , matches_details(user), user]
+      # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
+      @box_matches = box_matches(@box) # sorted by descending points scores
+      @this_is_my_box = my_box?(@box)
+      @my_current_box = my_own_box(current_round(current_user.club_id))
+    end
   end
 
   def show_list
@@ -25,7 +27,8 @@ class BoxesController < ApplicationController
     @current_player = current_user
     # allow player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
-      # passing 0 to my_scores_path, forces user to choose a round
+      # previously, passing 0 to my_scores_path, forced user to choose a round
+      # now the last round is automatically selected in Applications #set_club_round
       set_club_round # define variables @club and @round
       # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
       @box = my_own_box(@round, @current_player) # gets my box from chosen round
@@ -100,7 +103,7 @@ class BoxesController < ApplicationController
 
   def my_box?(box, player = current_user)
     # return true if player belongs to box, false if not
-    # box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
-    player.role == "player" && box == player.user_box_scores.first.box
+    # player.role == "player" && box == player.user_box_scores.first.box
+    box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
 end

@@ -7,7 +7,7 @@
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@player.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id) %>
   <h5>
-    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> vs</i>
+    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
   <div class="frame-color-shape frame-margin-rl frame-padding text-size">

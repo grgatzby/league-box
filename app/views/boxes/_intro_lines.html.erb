@@ -1,4 +1,4 @@
-<!-- in grid or list view: display first lines -->
+<!-- in grid or list view: display first lines of the page -->
 <% if !@is_mobile %><br><% end %>
 <div class="one-liner" style="width: 100%">
   <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>
@@ -22,7 +22,6 @@
       add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{t '.my_current_box'})" : "" %>
   </h4>
 </div>
-
 <div class="dont-print">
   <% if @this_is_my_box %>
     <%= link_to t(".my_scores_btn"), my_scores_path(box), class: "btn buttons-shape btn-orange mb-3" %>

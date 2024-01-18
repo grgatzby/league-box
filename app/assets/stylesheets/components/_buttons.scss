@@ -112,6 +112,20 @@
   }
 }
 
+.btn-inlayed {
+  margin: 0 auto; /* top and bottom | left and right */
+  // border: 1px solid #4A4A4A;
+  padding: 0px;
+  vertical-align: baseline;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.6;
+    // color: #7f7f7f;
+  }
+}
+
 .form-actions {
   justify-content: center;
 }

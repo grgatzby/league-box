@@ -19,7 +19,11 @@ fr:
       request_round_btn: Demander la création du prochain round
     my_scores:
       my_scores: Mes scores
-      intro: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
+      intro_html: >
+        La page <b class='color-tennis-red'>Mes scores</b> donne accès aux joueurs à leurs cartes de match, dans leur propre Box, et leur permet d'entrer de nouveaux scores.<br />
+        Ils peuvent aussi le faire dans les <b>Résultats en liste</b> et <b>Résultats en table</b>, mais <b class='color-tennis-red'>Mes scores</b> est propre à leur box,
+        et donne aussi accès à la <b>Chatroom</b> pour organiser les matchs.
+      intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
       view_enter_scores: Consultez ou entrez vos scores
       player_header: Joueur
@@ -31,6 +35,10 @@ fr:
       enter_score_btn: Entrer le score
       chat_in_my_box: Organisez vos matchs
       access_chatroom_btn: Chatroom de votre box
+    show_list:
+      intro_html: >
+        La page des <span class='bold-font color-tennis-blue'>Résultats en liste</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
+        On accède à cette page depuis les <span class='bold-font color-tennis-blue'>Résultats en grille</span> en venant de <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a>.<br>
     show_list_headers:
       match_earnings: Points du match
       match_score_header: Scores
@@ -58,8 +66,12 @@ fr:
       won: Gagné
       lost: Perdu
       on_date: "le"
-    show_referee:
-      not_authorised: Page non autorisée
     no_match_cell:
       not_played: Pas encore joué
       enter_score: Entrer le score
+    show:
+      intro_html: >
+        La page des <span class='bold-font color-tennis-blue'>Résultats en grille</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
+        Lorsqu'ils sont dans leur box, les joueurs peunvent y entrer les corres de leurs nouveaux matchs.<br>
+        On accède à cette page depuis <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a>,
+        et un bouton donne accès aux <span class='bold-font color-tennis-blue'>Résultats en liste</span>.<br>
