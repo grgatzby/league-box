@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home rules sitemap staff]
 
   def home
-    @box = my_own_box(current_round(current_user.club_id))
+    @box = my_own_box(current_round(current_user.club_id)) if current_user
   end
 
   def staff

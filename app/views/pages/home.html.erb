@@ -13,17 +13,23 @@
     <br><h5 class="top-bottom-padding"><%= t '.use_title' %></h5>
     <p><%= t '.p06' %></p>
     <ol>
+    <% if !current_user %>
+      <% (1..4).each do |i| %>
+        <li class="top-bottom-padding"><%= t ".li#{format('%02d', i)}_html" %></li>
+      <% end %>
+    <% else %>
       <li class="top-bottom-padding"><%= t(".li05_html", my_scores_path: my_scores_path(@box ? @box : 0)) %></li>
       <li class="top-bottom-padding"><%= t(".li06_html", boxes_path: boxes_path) %></li>
       <li class="top-bottom-padding"><%= t(".li07_html", box_path: box_path(@box ? @box : 0), box_list_path: box_list_path(@box ? @box : 0)) %></li>
       <li class="top-bottom-padding"><%= t(".li08_html", user_box_scores_path: user_box_scores_path) %></li>
+    <% end %>
     </ol><br>
 
     <br><h5 class="top-bottom-padding"><%= t '.how_title' %></h5>
     <p><%= t '.p04' %></p>
     <ol>
-      <% (1..4).each do |i| %>
-        <li class="top-bottom-padding"><%= t ".li0#{i}_html" %></li>
+      <% (9..12).each do |i| %>
+        <li class="top-bottom-padding"><%= t ".li#{format('%02d', i)}_html" %></li>
       <% end %>
     </ol>
     <p><%= t '.p05_html' %></p>

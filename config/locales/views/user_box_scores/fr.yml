@@ -1,7 +1,7 @@
 fr:
   user_box_scores:
     index:
-      intro: La <b>league table</b> est mise à jour dès qu'un score est saisi
+      intro: La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi
       league_table_title: League table
       file_csv_flash: fichier data.csv créé
     top_line:

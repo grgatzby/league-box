@@ -10,15 +10,19 @@ nl:
         De winnaar ontvangt de Singles Box League Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
-      how_title: "De rondes: 4 eenvoudige stappen"
-      p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
-      li01_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
-      li02_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
-      li03_html: 🏆 De <b>ranglijst</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen bekijken</b>.
-      li04_html: "🎭 <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
-      p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
       use_title: Jouw LeagueBox in een paar klikken
       p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
+      li01_html: >
+        Voer je laatste score in <span class="bold-font color-tennis-red">Mijn scores</span>.<br>
+        Je ranking wordt automatisch bijgewerkt.
+      li02_html: >
+        Op <span class="bold-font color-green">De boxen</span> zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
+        klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
+      li03_html: >
+        Binnen een box raadpleeg je de wedstrijd en scores, en de rangschikking van een speler in <span class="bold-font color-tennis-blue">Resultaten lijst</span>
+        of in <span class="bold-font color-tennis-blue">Resultatenraster</span>.
+      li04_html: >
+        De <span class="bold-font color-green">League Table</span> wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       li05_html: >
         Voer je laatste score in <a class='btn btn-inlayed bold-font color-tennis-red' href="%{my_scores_path}">Mijn scores</a>.<br>
         Je ranking wordt automatisch bijgewerkt.
@@ -30,6 +34,13 @@ nl:
         of in <a class='btn btn-inlayed bold-font color-tennis-blue' href="%{box_path}">Resultatenraster</a>.
       li08_html: >
         De <a class='btn btn-inlayed bold-font color-green' href="%{user_box_scores_path}">League Table</a> wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
+      how_title: "De rondes: 4 eenvoudige stappen"
+      p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
+      li09_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
+      li10_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
+      li11_html: 🏆 De <b>ranglijst</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen bekijken</b>.
+      li12_html: "🎭 <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
+      p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
       happy_tournament: Happy tournament!
       add_club_btn: Een nieuwe club toevoegen
     rules:
