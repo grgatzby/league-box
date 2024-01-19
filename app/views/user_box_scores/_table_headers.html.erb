@@ -1,7 +1,7 @@
 <!-- league table headers -->
 <% topdown = ["↑", "↓"] %>
 
-<div class="col-3"><%=render "header_to_link", nb: 1, header: t('.player_header'), direction: topdown.reverse%></div>
+<div class="col-3 league-header-left-padding"><%=render "header_to_link", nb: 1, header: t('.player_header'), direction: topdown.reverse%></div>
 <div class="col-1"><%=render "header_to_link", nb: 2, header: t('.rank_header'), direction: topdown.reverse%></div>
 <div class="col-1"><%=render "header_to_link", nb: 3, header: t('.points_header'), direction: topdown%></div>
 <div class="col-1"><%=render "header_to_link", nb: 4, header: t('.box_header'), direction: topdown.reverse%></div>

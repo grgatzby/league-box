@@ -3,6 +3,14 @@ class PagesController < ApplicationController
 
   def home
     @box = my_own_box(current_round(current_user.club_id)) if current_user
+    @path = {}
+    if current_user
+      @path["01"] = my_scores_path(@box ? @box : 0)
+      @path["02"] = boxes_path
+      @path["03a"] = box_list_path(@box ? @box : 0)
+      @path["03b"] = box_path(@box ? @box : 0)
+      @path["04"] = user_box_scores_path
+     end
   end
 
   def staff
