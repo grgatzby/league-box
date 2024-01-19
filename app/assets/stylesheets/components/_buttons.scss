@@ -88,7 +88,7 @@
 .btn-ghost {
   margin: 0 auto 5px; /* top | left and right | bottom */
   // border: 1px solid #4A4A4A;
-  padding: 6px 0px;
+  padding: 6px 0px; /* top and bottom | left and right */
   color: $tennis-blue;
   font-weight: bold;
   opacity: 1;
@@ -102,7 +102,7 @@
 .btn-top-line {
   margin: 0 auto 5px; /* top | left and right | bottom */
   // border: 1px solid #4A4A4A;
-  padding: 6px 0px;
+  padding: 6px 0px; /* top and bottom | left and right */
   opacity: 1;
   transition: opacity 0.3s ease;
 

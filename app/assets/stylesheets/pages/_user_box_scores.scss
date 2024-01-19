@@ -1,7 +1,4 @@
 // ------------ index page --------
-:root {
-  --top-header: 0px;  // this value WAS managed from JS toggle_controller to handle header y position; not used anymore
-}
 
 .stick-rules {
   position: sticky;
@@ -12,15 +9,6 @@
   border-radius: 2px;
   text-align: center;
 }
-
-// .league-table-headers {
-//   position: sticky;
-//   top: 0;
-//   background-color: $tennis-beige;
-//   opacity: 1;
-//   z-index: 1;
-//   border-radius: 0.25rem;
-// }
 
 .header-ghost {
   margin: 0 0 5px; /* top | left and right | bottom */
@@ -71,4 +59,12 @@
     background: none;
     box-shadow: none;
   }
+}
+
+ol {padding-inline-start: $league-table-left-padding;} // default value 40px
+
+
+.league-header-left-padding {
+  // aligns league table first header with the corresponding data (compensate <ol> indentation)
+  padding-left: $league-table-left-padding;
 }

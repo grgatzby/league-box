@@ -12,35 +12,22 @@ en:
       p03: The league table will be updated and displayed on the league board at the end of each round.
       use_title: Your LeagueBox in a few clicks
       p06: Easily follow the league table and see how you rank against other players in the box league.
-      li01_html: >
-        Post your latest match score in <span class="bold-font color-tennis-red">My scores</span>.<br>
-        Your ranking is automatically updated.
-      li02_html: >
-        In <span class="bold-font color-green">All boxes</span> see at a glance every box in your league, and click on any box for
-        more details.<br/>You can even go back to the previous rounds.
-      li03_html: >
-        Within a box, the <span class="bold-font color-tennis-blue">List view</span>
-        or the <span class="bold-font color-tennis-blue">Table view</span>
-        show you the games and scores, and players' rankings.
-      li04_html: >
-        The <span class="bold-font color-green">League Table</span> is always up to date, you can keep track of where every other players rank in the tournament.
-      li05_html: >
-        Post your latest match score in <a class='btn btn-inlayed bold-font color-tennis-red' href="%{my_scores_path}">My scores</a>.<br>
-        Your ranking is automatically updated.
+      li01: My scores
+      li02: All boxes
+      li03a: List view
+      li03b: Table view
+      li04: League Table
+      li05_html: Post your latest match score in %{inset}.<br>Your ranking is automatically updated.
       li06_html: >
-        In <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">All boxes</a> see at a glance every box in your league, and click on any box for
+        In %{inset} see at a glance every box in your league, and click on any box for
         more details.<br/>You can even go back to the previous rounds.
-      li07_html: >
-        Within a box, the <a class='btn btn-inlayed bold-font color-tennis-blue' href="%{box_list_path}">List view</a>
-        or the <a class='btn btn-inlayed bold-font color-tennis-blue' href="%{box_path}">Table view</a>
-        show you the games and scores, and players' rankings.
-      li08_html: >
-        The <a class='btn btn-inlayed bold-font color-green' href="%{user_box_scores_path}">League Table</a> is always up to date, you can keep track of where every other players rank in the tournament.
+      li07_html: Within any box, the %{inset_a} or the %{inset_b} show you the games and scores, and players' rankings.
+      li08_html: The %{inset} is always up to date, you can keep track of where every other players rank in the tournament.
       how_title: "The rounds: 4 simple steps"
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
       li09_html: 🎾 During the round period, play the matches in your box.
       li10_html: 💻 After each match, one of the two players <b>enters the match score</b>.
-      li11_html: 🏆 The <b>league table</b> is automatically updated. You can also <b>view the boxes</b>.
+      li11_html: 🏆 <b>The league table</b> is automatically updated. You can also <b>review the boxes and match scores</b>.
       li12_html: "🎭 <b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
       p05_html: Visit our <b>Tournament rules</b> page for more details
       happy_tournament: Happy tournament!

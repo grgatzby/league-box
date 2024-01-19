@@ -12,7 +12,6 @@
 }
 
 .box-width {
-  // width: 85vw;
   width: 81rem;
 }
 
@@ -21,7 +20,7 @@
 }
 
 .mobile-box-show-width {
-  width: calc(min(1250px,140vw));
+  width: calc(min(1250px,220vw));
 }
 
 .grid-container {
@@ -142,7 +141,7 @@
   width: 100%;
 }
 
-.left-padding {
+.header-left-padding {
   // align Boxes show_list headers with the corresponding data (compensate <ul> indentation)
   padding-left: 64px;
 }
