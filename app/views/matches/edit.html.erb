@@ -62,13 +62,13 @@
     </div>
     <br>
     <div class="buttons-wrap">
-      <%= f.submit t(".update_score_btn"), class: "btn buttons-shape btn-green" %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.submit t(".update_score_btn"), class: "btn buttons-shape btn-green mb-3" %>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <%= link_to t(".delete_score_btn"), match_path(@match, page_from: @page_from), class: "btn buttons-shape btn-green",
+      <%= link_to t(".delete_score_btn"), match_path(@match, page_from: @page_from), class: "btn buttons-shape btn-green mb-3",
       data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>&nbsp;&nbsp;&nbsp;&nbsp;
 
       <%# link_to t(".back_btn"), :back, class: "btn buttons-shape btn-yellow" %>
-      <%= link_to t(".back_btn"), @page_from, class: "btn buttons-shape btn-yellow" %>
+      <%= link_to t(".back_btn"), @page_from, class: "btn buttons-shape btn-yellow mb-3" %>
     </div>
   <% end %>
   <br>

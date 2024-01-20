@@ -10,7 +10,7 @@ class PagesController < ApplicationController
       @path["03a"] = box_list_path(@box ? @box : 0)
       @path["03b"] = box_path(@box ? @box : 0)
       @path["04"] = user_box_scores_path
-     end
+    end
   end
 
   def staff

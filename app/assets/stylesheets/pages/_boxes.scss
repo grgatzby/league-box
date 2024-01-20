@@ -16,7 +16,8 @@
 }
 
 .mobile-box-width {
-  width: calc(70vw+40px);
+  // width: calc(70vw+40px);
+  width: calc(min(1250px,220vw));
 }
 
 .mobile-box-show-width {
