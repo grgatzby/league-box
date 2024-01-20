@@ -79,8 +79,8 @@ fr:
       p15: "Chaque set sera joué comme le premier à 4 jeux avec un tie-break standard de 7 points à 3:3."
       p16: Le tie-break décisif sera joué comme le premier à 10 points avec 2 points d'écart minimum.
       p17: "OPTIONNEL: (à décider entre les joueurs avant le début du match)"
-      p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40"
-      p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité
+      p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40."
+      p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité.
       points: Points
       p20: "Les points gagnés sont calculés de façon à encourager les joueurs à gagner autant de jeux que possible et sont déterminés ainsi:"
       li06: "Gagnant du match: 20 points"
@@ -204,9 +204,9 @@ fr:
       chatrooms: Chatrooms
       p27_html: >
         Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='color-tennis-blue'>Mes scores</span> pour les joueurs.<br>
-        La <b>chatroom #general</b> est réservée à l'admin et aux referee quel que soit leur club.
-        Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.
-        Une couleur est attribuée aux messages, selon leur auteur:<br>
+        La <b>chatroom #general</b> est réservée à l'admin et aux referees quel que soit leur club.
+        Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.<br>
+        Dans les chatrooms, une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
         Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <span class='color-tennis-blue'>Mes scores</span> disponible aux joueurs.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
