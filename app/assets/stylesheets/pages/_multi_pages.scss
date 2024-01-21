@@ -125,3 +125,18 @@
   left: 0;
   width: 100%;
 }
+
+// ------------------------ Home page ------------------------
+#steps li:first-of-type {
+  list-style-type: "1.  🎾 ";
+}
+
+#steps li:nth-of-type(2) {
+  list-style-type: "2.  💻 "
+}
+#steps li:nth-of-type(3) {
+  list-style-type: "3.  🏆 "
+}
+#steps li:nth-of-type(4) {
+  list-style-type: "4.  🎭 "
+}

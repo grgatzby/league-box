@@ -1,7 +1,7 @@
 <li>
   <div class="row player-to-orange color-tennis-blue">
     <div class="col-4"><%= render "shared/fullname", user: opponent %></div>
-    <div class="col-8"><%= current_user == player ? t('.enter_score') : t('.not_played') %></div>
+    <div class="col-8"><%= current_user == player || current_user.role != "player" ? t('.enter_score') : t('.not_played') %></div>
 
     <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i><br />#{render "shared/fullname", user: opponent}" %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"

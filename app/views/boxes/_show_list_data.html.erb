@@ -22,7 +22,7 @@
               <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from %>
             <% end %>
           <% end %>
-          <% if player_matches.count == 1 && page_from == box_list_path %>
+          <% if player_matches.count == 1 && page_from == box_list_path && current_user.role == "player" %>
             <%# no match played for this player %>
             <div class="col-4"></div>
             <div class="col-8"><%= t '.dont_forget_html' %></div>

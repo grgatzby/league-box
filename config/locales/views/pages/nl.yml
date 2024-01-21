@@ -25,10 +25,10 @@ nl:
       li08_html: De %{inset} wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       how_title: "De rondes: 4 eenvoudige stappen"
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
-      li09_html: 🎾 <b>Gedurende de ronde</b> speel de wedstrijden in je box.
-      li10_html: 💻 Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
-      li11_html: 🏆 <b>De league table</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen en wedstrijdscoren bekijken</b>.
-      li12_html: "🎭 <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
+      li09_html: Gedurende de ronde <b>speel de wedstrijden in je box</b>.
+      li10_html: Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
+      li11_html: <b>De league table</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen en wedstrijdscoren bekijken</b>.
+      li12_html: "<b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
       p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
       happy_tournament: Happy tournament!
       add_club_btn: Een nieuwe club toevoegen
@@ -77,7 +77,8 @@ nl:
       p14: De wedstrijden worden gespeeld in twee minisets, eventueel met een beslissende tie-break.
       p15: "Elke set wordt gespeeld als de eerste met 4 games met een standaard tiebreak van 7 punten om 3:3."
       p16: De beslissende tie-break wordt net als de eerste gespeeld op 10 punten met een minimaal verschil van 2 punten.
-      p17: "OPTIONEEL: (nader te bepalen tussen de spelers vóór aanvang van de wedstrijd)"
+      p17_html: >
+        OPTIONEEL: <i>nader te bepalen tussen de spelers vóór aanvang van de wedstrijd</i>
       p18: "Om te voorkomen dat games zich voortslepen, kan een gelijkspel Sudden Death worden gespeeld om de wedstrijd om 40:40 te beslissen."
       p19: De ontvanger zal dan beslissen van welke kant hij service zal krijgen bij een gelijkspel met plotselinge dood.
       points: Punten
@@ -202,7 +203,7 @@ nl:
       p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.
       chatrooms: Chatrooms
       p27_html: >
-        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='color-tennis-blue'>Mijn scores</span> voor spelers.<br>
+        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='color-tennis-red'>Mijn scores</span> voor spelers.<br>
         De <b>#algemene chatroom</b> is gereserveerd voor de beheerder en scheidsrechters, ongeacht hun club.
         Zijn roeping is algemene communicatie, en niet voor een specifieke club, maar om te communiceren met de beheerder.<br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>

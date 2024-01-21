@@ -31,8 +31,8 @@
 
     <br><h5 class="top-bottom-padding"><b><%= t '.how_title' %></b></h5>
     <p><%= t '.p04' %></p>
-    <ol><% (9..12).each do |i| %>
-        <li class="top-bottom-padding"><%= t ".li#{format('%02d', i)}_html" %></li>
+    <ol id="steps"><% (9..12).each do |i| %>
+        <li class="top-bottom-padding ms-3"><%= t ".li#{format('%02d', i)}_html" %></li>
     <% end %></ol>
     <p><%= t '.p05_html' %></p>
     <br>
