@@ -12,7 +12,7 @@ fr:
       contact_p01_html: >
         Cette demande sera envoyée à l'admin. Pour les demandes adressées à votre Referee
         vous trouverez ses coordonnées en consultant la page <b>Personnel du Club</b>
-        ou contactez-le via la <b>Chatroom</b> de votre box (page <span class='color-tennis-red'>Mes scores</span>).
+        ou contactez-le via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).
       contact_p02: Les différends sur les scores devront être traités depuis la chatroom de votre box.
       prompt: Choisir un sujet →
       topics:

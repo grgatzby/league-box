@@ -12,7 +12,7 @@ nl:
       contact_p01_html: >
         Dit verzoek wordt naar de beheerder verzonden. Voor verzoeken gericht aan uw Referee
         Hun contactgegevens vindt u op de pagina <b>Clubpersoneel</b>
-        of neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (pagina <span class='color-tennis-red'>Mijn scores</span>).
+        of neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).
       contact_p02: Los scoregeschillen op vanuit uw box-chatroom.
       prompt: Kies een onderwerp →
       topics:

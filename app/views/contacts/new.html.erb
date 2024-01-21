@@ -12,7 +12,7 @@
       <br><h4><div class="title"><b><%= t(".contact_title").upcase %></b></div></h4><br>
     <% end %>
     <% if !processing_new_round %>
-      <p><%= t '.contact_p01_html' %></p>
+      <p><%= t('.contact_p01_html', path: my_scores_path(0)) %></p>
       <p><%= t '.contact_p02' %></p>
     <% end %>
     <%= simple_form_for @contact do |f| %>

@@ -35,7 +35,7 @@ en:
       staff_p02_html: >
         They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contact your Referee through your box <b>chatroom</b> (in <a class='btn btn-inlayed color-tennis-red' href='%{path}''>My scores</a> page).<br>
+        &emsp;&emsp;&emsp;→ contact your Referee through your box <b>chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
         &emsp;&emsp;&emsp;→ contact the admin through the <b>Contact Us</b> link at the bottom of this page.
       header_role: 🧩 Role
       header_name: Name
