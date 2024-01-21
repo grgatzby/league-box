@@ -25,11 +25,11 @@ en:
       li08_html: The %{inset} is always up to date, you can keep track of where every other players rank in the tournament.
       how_title: "The rounds: 4 simple steps"
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
-      li09_html: 🎾 During the round period, play the matches in your box.
-      li10_html: 💻 After each match, one of the two players <b>enters the match score</b>.
-      li11_html: 🏆 <b>The league table</b> is automatically updated. You can also <b>review the boxes and match scores</b>.
-      li12_html: "🎭 <b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
-      p05_html: Visit our <b>Tournament rules</b> page for more details
+      li09_html: During the round period, <b>play the matches in your box</b>.
+      li10_html: After each match, either player <b>enters the match score</b>.
+      li11_html: <b>The league table is updated</b> automatically. You can also <b>review the boxes and match scores</b>.
+      li12_html: "<b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
+      p05_html: Visit our <b>Overview & rules</b> page for more details
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
     rules:
@@ -65,20 +65,21 @@ en:
       matches_not_umpired: Matches not Umpired
       p12: "The following principles will apply when playing a match without a Chair Umpire:"
       li01: Each player is responsible for all line calls on their own side of the net
-      li02: All “out” and “fault” calls should be made promptly after the ball has bounced and loudly enough for the opponent(s) to hear
-      li03: If in doubt, the player must give the benefit of the doubt to the opponent(s)
+      li02: All “out” and “fault” calls should be made promptly after the ball has bounced and loudly enough for the opponent to hear
+      li03: If in doubt, the player must give the benefit of the doubt to the opponent
       li04: >
         If a player incorrectly calls a ball “out” and then realizes that the ball was good, the point should be replayed
         unless it was a point winning shot or unless that player made an incorrect “out” call earlier in the match.
         In these circumstances the player who called “out” loses the point
-      li05: The server should call the score before each first serve, loudly enough for the opponent(s) to hear
+      li05: The server should call the score before each first serve, loudly enough for the opponent to hear
       warm_up: Warm-up
       p13: To ensure that matches are completed within 1 hour warm-ups should be restricted to 5 minutes.
       match_format: Match Format
       p14: Matches will be played as two short sets with a deciding championship tie-break if required.
       p15: "Each set will be played as the first to 4 games with a normal 7 point tie-break at games 3:3."
       p16: The championship tiebreaker will be played as the first to 10 points with 2 clear.
-      p17: "OPTIONAL: (to be decided amongst players before the start of a match)"
+      p17_html: >
+        OPTIONAL: <i>to be decided amongst players before the start of a match</i>
       p18: "So that games do not become protracted, a sudden death deuce can be played to decide a game should the game score be 40:40."
       p19: The Receiver then would determine which side to receive the serve on a Sudden Death Deuce.
       points: Points
@@ -204,7 +205,7 @@ en:
       p26: Form to modify match details, or delete score.
       chatrooms: Chatrooms
       p27_html: >
-        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='color-tennis-blue'>My box</span> page for players.<br>
+        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='color-tennis-red'>My scores</span> page for players.<br>
         The <b>#general chatroom</b> is reserved for the admin and referees regardless of their club.
         Its vocation is general communication, and not for a specific club.
         A color is assigned to messages, according to their author:<br>

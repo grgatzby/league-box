@@ -53,7 +53,7 @@
         <p><%= t '.p13' %></p>
       <h5><%= t '.match_format' %></h5>
         <% (14..19).each do |i| %>
-          <p><%= t ".p#{format '%02d',i}" %></p>
+          <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
         <% end %>
       <h5><%= t '.points' %></h5>
         <p><%= t '.p20' %></p>

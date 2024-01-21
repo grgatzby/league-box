@@ -5,7 +5,7 @@
   <% end %>
   <br><p><%= t '.staff_p01' %></p>
   <p><%= t '.staff_p02_html' %></p>
-  <p><%= t '.staff_p03_html' %></p>
+  <p><%= t('.staff_p03_html', path: my_scores_path(@box || 0)) %></p>
 </div>
 <br>
 <div class="frame-no-margin-rl">

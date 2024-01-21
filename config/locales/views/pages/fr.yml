@@ -26,11 +26,11 @@ fr:
       li08_html: La %{inset} du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
       how_title: "Les rounds: quatre étapes simples"
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
-      li09_html: 🎾 <b>Pendant la durée du round</b>, jouez les matchs de votre box.
-      li10_html: 💻 Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
-      li11_html: 🏆 <b>La league table</b> est automatiquement à jour. Vous pouvez également <b>consulter les box et les scores</b>.
-      li12_html: "🎭 <b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs montent d'une box. Les deux derniers sont relégués d'une box."
-      p05_html: Consultez notre page <b>Le tournoi</b> pour en savoir plus
+      li09_html: Pendant la durée du round, <b>jouez les matchs de votre box</b>.
+      li10_html: Après chaque match, l'un des deux joueurs <b>entre le score du match</b>.
+      li11_html: <b>La league table reste à jour</b> automatiquement. Vous pouvez également <b>consulter les box et les scores</b>.
+      li12_html: "<b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs sont promus d'une box. Les deux derniers sont relégués d'une box."
+      p05_html: Consultez notre page <b>Tournoi & règles</b> pour en savoir plus
       happy_tournament: Que les meilleurs gagnent!
       add_club_btn: Ajouter un nouveau club
     rules:
@@ -78,7 +78,8 @@ fr:
       p14: Les matchs seront joués en deux mini-sets avec un tie-break décisif si nécessaire.
       p15: "Chaque set sera joué comme le premier à 4 jeux avec un tie-break standard de 7 points à 3:3."
       p16: Le tie-break décisif sera joué comme le premier à 10 points avec 2 points d'écart minimum.
-      p17: "OPTIONNEL: (à décider entre les joueurs avant le début du match)"
+      p17_html: >
+        OPTIONNEL: <i>à décider entre les joueurs avant le début du match</i>
       p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40."
       p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité.
       points: Points
@@ -185,7 +186,7 @@ fr:
       p20_html: >
         Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>;
         cliquez sur un score pour afficher la carte du match, ou entrez un nouveau score dans votre box.<br>
-        Un bouton <span class='color-tennis-blue'>Mes scores</span> apparaît
+        Un bouton <span class='color-tennis-red'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
       p21_html: >
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ) est affiché.
@@ -203,7 +204,7 @@ fr:
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
       chatrooms: Chatrooms
       p27_html: >
-        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='color-tennis-blue'>Mes scores</span> pour les joueurs.<br>
+        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='color-tennis-red'>Mes scores</span> pour les joueurs.<br>
         La <b>chatroom #general</b> est réservée à l'admin et aux referees quel que soit leur club.
         Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.<br>
         Dans les chatrooms, une couleur est attribuée aux messages, selon leur auteur:<br>
