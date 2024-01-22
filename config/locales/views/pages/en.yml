@@ -25,11 +25,12 @@ en:
       li08_html: The %{inset} is always up to date, you can keep track of where every other players rank in the tournament.
       how_title: "The rounds: 4 simple steps"
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
-      li09_html: During the round period, <b>play the matches in your box</b>.
-      li10_html: After each match, either player <b>enters the match score</b>.
-      li11_html: <b>The league table is updated</b> automatically. You can also <b>review the boxes and match scores</b>.
+      li09_html: During the round period, play <b>every match in your box</b>.
+      li10_html: After each match, either player enters the <b>match score</b>.
+      li11_html: <b>The league table</b> is updated automatically. You can also review the <b>boxes and match scores</b>.
       li12_html: "<b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
-      p05_html: Visit our <b>Overview & rules</b> page for more details
+      li13: Overview & rules
+      p05_html: Visit our %{inset} page for more details
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
     rules:
@@ -160,7 +161,7 @@ en:
       li02: ranking in the league
       li03: number of matches played
       li04: number of total points
-      p08_html: "Current player appears in <span class='color-orange'>orange</span>."
+      p08_html: <span class='color-orange'>The current player</span> appears in orange and its <span class='color-tennis-red'>box title</span> in red.
       p09: Clicking on a box leads to its Table view.
       p10a_html: When reaching the end of the round, a footpage button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
       p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
@@ -176,7 +177,7 @@ en:
       table_view: Box Table view
       p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
-        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span>
+        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-red'>My scores</span>
         button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Click on a match score to view the match card or, from your own box, enter a new score by clicking the relevant cell.
       p18_html: >
@@ -186,7 +187,7 @@ en:
       p19_html: >
         Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
       p20_html: >
-        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-blue'>My scores</span> button is displayed
+        If you are viewing your box, your name appears in <span class='color-orange'>orange</span>, and a <span class='color-tennis-red'>My scores</span> button is displayed
         next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
         Click on a match score to view the match card or, from your own box, enter a new score by clicking your opponent name.
       p21_html: >
@@ -205,12 +206,12 @@ en:
       p26: Form to modify match details, or delete score.
       chatrooms: Chatrooms
       p27_html: >
-        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='color-tennis-red'>My scores</span> page for players.<br>
+        The chatrooms are accessible from the main menu for the admin and referees and from the <span class='bold-font color-tennis-red'>My scores</span> page for players.<br>
         The <b>#general chatroom</b> is reserved for the admin and referees regardless of their club.
         Its vocation is general communication, and not for a specific club.
         A color is assigned to messages, according to their author:<br>
       p28_html: >
-        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='color-tennis-blue'>My box</span> page available to players.<br><br>
+        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='bold-font color-tennis-red'>My scores</span> page available to players.<br><br>
         A color is assigned to messages, according to their author:<br>
       li08_html: <span class='color-tennis-blue'>Messages from players of your own club appear in blue</span>
       li09_html: <span class='color-tennis-aqua'>Messages from your Referee appear in aqua</span>

@@ -39,7 +39,7 @@ a chatroom is created in Box controller #my_scores.
           html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
           <%= f.text_field :content,
             label: false,
-            placeholder: "#{t ".message_invite"} ##{@chatroom.name}",
+            placeholder: "#{t ".message_invite"} #{@chatroom.name[-10,200]}",
             class: "flex-grow-1 border-0 rounded-3"
           %>
           <%= f.submit t(".send_btn"), class: "btn buttons-shape btn-beige ms-2" %>

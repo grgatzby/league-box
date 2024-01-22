@@ -22,17 +22,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        <li>
+          <%= link_to root_path, class: "nav-link" do %>
+            <i class="fa-solid fa-house"></i>
+          <% end %>
+        </li>
+
         <li class="nav-item time-color top-bottom-padding">
           <% if user_signed_in? && @round && !@is_mobile %>
             <%= render "shared/display_round", round: @round %>
           <% end %>
         </li>
 
-        <li>
-          <%= link_to root_path, class: "nav-link" do %>
-            <i class="fa-solid fa-house"></i>
-          <% end %>
-        </li>
         <li><%= render "shared/navbar_language" %></li>
         <li>
           <% if user_signed_in?%>

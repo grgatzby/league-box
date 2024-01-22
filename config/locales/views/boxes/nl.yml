@@ -13,7 +13,7 @@ nl:
       all_boxes_link: Naar boxen
     index:
       all_box_title: Alle boxen
-      intro: In één oogopslag, bekijk de <b>spelers, <b>ranglijsten, gespeelde wedstrijden en cumulatieve punten</b><br />
+      intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan

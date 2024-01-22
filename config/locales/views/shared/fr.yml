@@ -17,10 +17,10 @@ fr:
       chatrooms_link: Les chatrooms
       log_out_link: Déconnexion
     display_round:
-      round_period: "Round %{round} (%{start} au %{end})"
-      round_period_mobile: "R%{round}"
-      days_left: "(%{days} jours restants)"
-      players: ", %{nb_players} joueurs"
+      round_period: Round %{round} (%{start} au %{end})
+      round_period_mobile: R%{round}
+      days_left: (%{days} jours restants)
+      players: "%{nb_players} joueurs"
     select_round:
       select_round_start: "Consulter un autre round: "
       confirm_btn: ⎷ Confirmer
@@ -37,7 +37,9 @@ fr:
         Il est également là pour résoudre les désaccords sur un score déjà entré, ou pour saisir un score à votre place.<br>
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contactez votre Referee via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
-        &emsp;&emsp;&emsp;→ contactez l'admin via le lien <b>Nous Contacter</b> en bas de page.
+        &emsp;&emsp;&emsp;→ contactez l'admin via
+      staff_p04a_html: le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> en bas de page.
+      staff_p04b_html: ce formulaire.
       header_role: 🧩 Fonction
       header_name: Nom
       header_club: 🎾 Club

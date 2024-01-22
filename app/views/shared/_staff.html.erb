@@ -5,7 +5,15 @@
   <% end %>
   <br><p><%= t '.staff_p01' %></p>
   <p><%= t '.staff_p02_html' %></p>
-  <p><%= t('.staff_p03_html', path: my_scores_path(0)) %></p>
+  <p>
+    <%= t('.staff_p03_html', path: my_scores_path(0)) %>
+    <% if from == "pages" %>
+      <%= t('.staff_p04a_html', path: new_contact_path) %>
+    <% else %>
+      <%= t('.staff_p04b_html') %>
+    <% end %>
+  </p>
+
 </div>
 <br>
 <div class="frame-no-margin-rl">

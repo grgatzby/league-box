@@ -25,7 +25,7 @@
                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                 title="<%= name %>" data-bs-content="<%= message %>">
                   <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
-                    <%= render "shared/fullname", user: line_player %><br><%= "# #{user_box_score.rank}: " %><%= t("pts", count: user_box_score.points) %>
+                    <%= render "shared/fullname", user: line_player %><br><%= "(# #{user_box_score.rank}) " %><%= t("pts", count: user_box_score.points) %>
                   </span>
                 </div>
               </div>

@@ -17,10 +17,10 @@ nl:
       chatrooms_link: Chatrooms
       log_out_link: Uitloggen
     display_round:
-      round_period: "Ronde %{round} (%{start} tot %{end})"
-      round_period_mobile: "R%{round}"
-      days_left: "(%{days} dagen over)"
-      players: ", %{nb_players} spellers"
+      round_period: Ronde %{round} (%{start} tot %{end})
+      round_period_mobile: R%{round}
+      days_left: (%{days} dagen over)
+      players: "%{nb_players} spellers"
     select_round:
       select_round_start: "Bekijk een andere ronde: "
       confirm_btn: ⎷ Bevestigen
@@ -37,7 +37,9 @@ nl:
         U kunt de wedstrijdscore niet invoeren?<br>
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
-        &emsp;&emsp;&emsp;→ Neem contact op met de beheerder via de link <b>Contact</b>.
+        &emsp;&emsp;&emsp;→ Neem contact op met de beheerder via
+      staff_p04a_html: de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.
+      staff_p04b_html: deze form.
       header_role: 🧩 Rol
       header_name: Naam
       header_club: 🎾 Club
