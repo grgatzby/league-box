@@ -16,8 +16,8 @@
         data-bs-content="<%= t '.message_box_pop' %>">
       <div class="boxes print-all-content print-boxes-league box-scroller">
         <% @boxes.each do |box| %>
-          <div class="box-frame small-font">
-            <div class="box-title <%= box == @my_current_box ? "color-green" : "" %>"><strong><%= "#{box == @my_current_box ? "* " : ""}Box #{box.box_number}#{box == @my_current_box ? " *" : ""}" %></strong></div>
+          <div class="<%=class_names( "box-frame small-font", "color-tennis-aqua": box == @my_current_box)%>">
+            <div class="<%=class_names( "box-title", "color-tennis-red": box == @my_box)%>"><strong><%= "Box #{box.box_number}" %></strong></div>
             <ol type="1">
               <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
               <% scores.each do |user_box_score| %>

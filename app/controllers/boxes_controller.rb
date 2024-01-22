@@ -1,8 +1,10 @@
 class BoxesController < ApplicationController
   def index
     @page_from = params[:page_from]
-    set_club_round    # set variables @club and @round (ApplicationController)
+    set_club_round    # set variables @club, @round and @boxes (ApplicationController)
     @my_current_box = my_own_box(current_round(current_user.club_id))
+    @my_box = 0
+    @boxes.each { |box| @my_box = box if my_box?(box) }
   end
 
   def show

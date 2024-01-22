@@ -34,7 +34,8 @@
     <ol id="steps"><% (9..12).each do |i| %>
         <li class="top-bottom-padding ms-3"><%= t ".li#{format('%02d', i)}_html" %></li>
     <% end %></ol>
-    <p><%= t '.p05_html' %></p>
+    <% class_prefix = "btn btn-inlayed bold-font color-" %>
+    <p class="top-bottom-padding"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
     <br>
     <br><h5><b><%= t '.happy_tournament' %></b></h5>
 

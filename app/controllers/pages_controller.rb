@@ -11,6 +11,7 @@ class PagesController < ApplicationController
       @path["03b"] = box_path(@box || 0)
       @path["04"] = user_box_scores_path
     end
+    @path["05"] = rules_path
   end
 
   def staff

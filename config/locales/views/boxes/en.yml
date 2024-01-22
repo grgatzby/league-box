@@ -13,7 +13,7 @@ en:
       all_boxes_link: All boxes
     index:
       all_box_title: All boxes
-      intro: "At a glance, see <b>all players name, their ranking, <b>number of played games, and their cumulated box points</b><br />"
+      intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Player name, rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       create_round_btn: Create the next round
       request_round_btn: Request the admin the next round

@@ -25,11 +25,12 @@ nl:
       li08_html: De %{inset} wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       how_title: "De rondes: 4 eenvoudige stappen"
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
-      li09_html: Gedurende de ronde <b>speel de wedstrijden in je box</b>.
-      li10_html: Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
-      li11_html: <b>De league table</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen en wedstrijdscoren bekijken</b>.
+      li09_html: Gedurende de ronde speel <b>elke wedstrijd in je box</b>.
+      li10_html: Na elke wedstrijd voert een van de twee spelers <b>de wedstrijdscore</b> in.
+      li11_html: <b>De league table</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen en wedstrijdscoren</b> bekijken.
       li12_html: "<b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
-      p05_html: Bezoek onze pagina <b>Toernooiregels</b> voor meer informatie
+      li13: Toernooiregels
+      p05_html: Bezoek onze pagina %{inset} voor meer informatie
       happy_tournament: Happy tournament!
       add_club_btn: Een nieuwe club toevoegen
     rules:
@@ -159,7 +160,7 @@ nl:
       li02: zijn ranking binnen het toernooi
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
-      p08_html: "De verbonden speler wordt <span class='color-orange'>oranje</span> weergegeven."
+      p08_html: <span class='color-orange'>De huidige speler</span> wordt in oranje weergegeven en de <span class='color-tennis-red'>boxtitel</span> in rood.
       p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (voor de admin),
       p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
@@ -175,7 +176,7 @@ nl:
       p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
       p17_html:
         Als u uw vak bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en kunt u een nieuwe score invoeren door op de relevante cel te klikken.<br>
-        Er wordt een knop <span class='color-tennis-blue'>Mijn scores</span> weergegeven, naast de schakellink naar <span class='color-tennis-blue'>Lijstweergave</span> ( <i class ='fa-solid fa-list color-tennis-blue'></i> ).<br>
+        Er wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven, naast de schakellink naar <span class='color-tennis-blue'>Lijstweergave</span> ( <i class ='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Klik op een wedstrijdscore om de wedstrijdkaart te bekijken of voer vanuit uw eigen vak een nieuwe score in door op de relevante cel te klikken.
       p18_html:
         Er wordt een schakellink <span class='color-tennis-blue'>Lijstweergave</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
@@ -184,7 +185,7 @@ nl:
       list_view: Box resultaten lijst (speller)
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >
-        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en wordt een knop <span class='color-tennis-blue'>Mijn scores</span> weergegeven
+        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven
         naast de schakellink naar <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).
         Klik op een wedstrijdscore om de wedstrijdkaart te bekijken of voer vanuit uw eigen veld een nieuwe score in door op de naam van uw tegenstander te klikken.
       p21_html: >
@@ -203,12 +204,12 @@ nl:
       p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.
       chatrooms: Chatrooms
       p27_html: >
-        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='color-tennis-red'>Mijn scores</span> voor spelers.<br>
+        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='bold-font color-tennis-red'>Mijn scores</span> voor spelers.<br>
         De <b>#algemene chatroom</b> is gereserveerd voor de beheerder en scheidsrechters, ongeacht hun club.
         Zijn roeping is algemene communicatie, en niet voor een specifieke club, maar om te communiceren met de beheerder.<br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       p28_html: >
-        Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='color-tennis-blue'>Mijn scores</span>-pagina die beschikbaar is voor spelers.<br><br>
+        Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='bold-font color-tennis-red'>Mijn scores</span>-pagina die beschikbaar is voor spelers.<br><br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       li08_html: <span class='color-tennis-blue'>Berichten van spelers van mijn club verschijnen in het blauw</span>
       li09_html: <span class='color-tennis-aqua'>Berichten van mijn Referee verschijnen in aqua</span>

@@ -13,15 +13,15 @@ fr:
       all_boxes_link: Les box
     index:
       all_box_title: Toutes les box
-      intro: "En un coup d'œil, consultez <b>les joueurs, leur classement, le nombre de matchs joués et leurs points cumulés</b><br />"
-      message_box_pop: <b>Colonnes</b><br />Nom joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
+      intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
+      message_box_pop: <b>Colonnes</b><br />Nom du joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
     my_scores:
       my_scores: Mes scores
       intro_html: >
-        La page <b class='color-tennis-red'>Mes scores</b> donne accès aux joueurs à une vue de leur propre Box; ils y accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores.<br />
-        (nb: ils peuvent aussi le faire dans les <b class='bold-font color-tennis-blue'>Résultats en liste</b> et <b class='bold-font color-tennis-blue'>Résultats en table</b>).<br><br>
+        La page <b class='color-tennis-red'>Mes scores</b> donne aux joueurs accès à une vue de leur propre Box, d'où ils accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores,<br />
+        ce qu'ils peuvent faire également dans les <b class='bold-font color-tennis-blue'>Résultats en liste</b> et <b class='bold-font color-tennis-blue'>Résultats en table</b>.<br><br>
         <b class='color-tennis-red'>Mes scores</b> leur donne aussi accès à la <b>Chatroom de la box</b> pour organiser leurs matchs.<br>
       intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       not_in_round: " vous n'êtes pas dans ce round!"
