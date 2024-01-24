@@ -9,7 +9,7 @@ fr:
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: Tournoi & règles
-      club_staff_link: Le staff
+      club_staff_link: Qui sommes-nous?
       all_boxes_link: Les box
       league_table_link: League table
       my_scores_link: Mes scores
@@ -30,7 +30,7 @@ fr:
       back_btn: ←
       select_round_start: "Date de début de round: "
     staff:
-      your_club_staff_title: Personnel du club
+      our_staff_title: Qui sommes-nous?
       staff_p01: >
         Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >

@@ -16,7 +16,7 @@ nl:
           <li>Verhouding tussen gewonnen sets en gespeelde sets</li>
           <li>Verhouding tussen gewonnen games en gespeelde games</li>
         </ol>
-    buttons:
+    action_buttons:
       to_text_btn: Exporteren naar tekstbestand
       to_csv_btn: Exporteren naar CSV-bestand
     table_data:
@@ -30,6 +30,8 @@ nl:
         other: "%{count} sets"
     table_headers:
       player_header: Speler
+      last_name_header: Achternaam
+      first_name_header: Voornaam
       rank_header: Rang
       points_header: Punten
       box_header: Box

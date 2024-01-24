@@ -1,4 +1,4 @@
-<!-- in grid or list view: display first lines of the page -->
+<!-- in table or list view: display first section of the view -->
 <% if !@is_mobile %><br><% end %>
 <div class="one-liner" style="width: 100%">
   <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />" %>

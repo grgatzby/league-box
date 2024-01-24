@@ -9,7 +9,7 @@
         <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
         <div class="col-1 print-all-content">
           <div class="row mb-3">
-            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-green": !@this_is_my_box)%>">
+            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-tennis-blue": !@this_is_my_box)%>">
               <%= "Box #{@box.box_number}".upcase %>
             </div>
           </div>
@@ -24,7 +24,7 @@
                 <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                 title="<%= name %>" data-bs-content="<%= message %>">
-                  <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
+                  <span class=<%=user_box_matches[0].user == current_user ? "color-tennis-red" : ""%>>
                     <%= render "shared/fullname", user: line_player %><br><%= "(# #{user_box_score.rank}) " %><%= t("pts", count: user_box_score.points) %>
                   </span>
                 </div>
@@ -40,7 +40,7 @@
               <div class="col-2 text-center">
                 <% user_box_score = user_box_matches[0] %>
                 <% column_player = user_box_score.user %>
-                <span class=<%=user_box_matches[0].user == current_user ? "color-orange" : ""%>>
+                <span class=<%=user_box_matches[0].user == current_user ? "color-tennis-red" : ""%>>
                   <%= render "shared/fullname", user: column_player %>
                 </span>
               </div>
@@ -74,6 +74,6 @@
     <br>
   <% else %>
     <h3><%= t("boxes.table_view").capitalize %></h3><br>
-    <%= render "explain_page", intro_paragraph: t(".intro_html") %>
+    <%= render "explain_page", explain_paragraph: t(".intro_html") %>
   <% end %>
 </div>

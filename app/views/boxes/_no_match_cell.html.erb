@@ -1,4 +1,4 @@
-<%# no match played %>
+<%# no match played (table view) %>
 <% if current_user == column_player || current_user == line_player || current_user.role != "player" %>
   <div class="click-cell"><br><%= t '.enter_score' %>
     <%# click on opponent no-match line to enter a new match score %>

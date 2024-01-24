@@ -16,7 +16,7 @@ fr:
           <li>Ratio sets gagnés sur sets joués</li>
           <li>Ratio jeux gagnés sur jeux joués</li>
         </ol>
-    buttons:
+    action_buttons:
       to_text_btn: Exporter vers un fichier texte
       to_csv_btn: Exporter vers un fichier CSV
     table_data:
@@ -30,6 +30,8 @@ fr:
         other: "%{count} sets"
     table_headers:
       player_header: Joueur
+      last_name_header: Nom
+      first_name_header: Prénom
       rank_header: Rang
       points_header: Points
       box_header: Box nº

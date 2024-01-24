@@ -7,8 +7,8 @@
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%# render "shared/select_club_round", fallback_path: my_scores_path, intro_paragraph: t(".intro") %>
-      <%= render "explain_page", intro_paragraph: t(".intro_html") %>
+      <%# render "shared/select_club_round", fallback_path: my_scores_path, explain_paragraph: t(".intro") %>
+      <%= render "explain_page", explain_paragraph: t(".intro_html") %>
     <% end %>
   </div>
   <% if @round %>
@@ -54,7 +54,7 @@
               <div class="mb-4" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                   data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                   title="<%= opponent_name %>" data-bs-content="<%= message %>">
-                <span style=<%=opponent == @current_player ? "color:green" : "" %>>
+                <span style=<%=opponent == @current_player ? "color:#c60407" : "" %>>
                   <%= "#{render "shared/fullname", user: opponent}" %>
                 </span>
               </div>

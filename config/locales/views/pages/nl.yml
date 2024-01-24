@@ -160,7 +160,7 @@ nl:
       li02: zijn ranking binnen het toernooi
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
-      p08_html: <span class='color-orange'>De huidige speler</span> wordt in oranje weergegeven en de <span class='color-tennis-red'>boxtitel</span> in rood.
+      p08_html: De <span class='color-tennis-red'>huidige speler</span> en de <span class='color-tennis-red'>boxtitel</span> worden in rood weergegeven.
       p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (voor de admin),
       p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
@@ -175,7 +175,7 @@ nl:
       table_view: Box resultatenraster
       p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.
       p17_html:
-        Als u uw vak bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en kunt u een nieuwe score invoeren door op de relevante cel te klikken.<br>
+        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-tennis-red'>rood</span> en kunt u een nieuwe score invoeren door op de relevante cel te klikken.<br>
         Er wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven, naast de schakellink naar <span class='color-tennis-blue'>Lijstweergave</span> ( <i class ='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Klik op een wedstrijdscore om de wedstrijdkaart te bekijken of voer vanuit uw eigen vak een nieuwe score in door op de relevante cel te klikken.
       p18_html:
@@ -185,7 +185,7 @@ nl:
       list_view: Box resultaten lijst (speller)
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >
-        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span> en wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven
+        Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-tennis-red'>rood</span> en wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven
         naast de schakellink naar <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).
         Klik op een wedstrijdscore om de wedstrijdkaart te bekijken of voer vanuit uw eigen veld een nieuwe score in door op de naam van uw tegenstander te klikken.
       p21_html: >

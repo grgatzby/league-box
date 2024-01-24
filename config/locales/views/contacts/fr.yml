@@ -11,7 +11,7 @@ fr:
       error_message: "l'envoi de ce formulaire:"
       contact_p01_html: >
         Cette demande sera envoyée à l'admin. Pour les demandes adressées à votre Referee
-        vous trouverez ses coordonnées en consultant la page <b>Personnel du Club</b>
+        vous trouverez ses coordonnées en consultant la page <b>Qui sommes-nous?</b>
         ou contactez-le via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).
       contact_p02: Les différends sur les scores devront être traités depuis la chatroom de votre box.
       prompt: Choisir un sujet →

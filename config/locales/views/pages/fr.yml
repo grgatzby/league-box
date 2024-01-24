@@ -153,7 +153,7 @@ fr:
       p02_html: Pour l'admin, bouton <b>Créer un nouveau club</b>
       overview_rules: Le Tournoi
       p03: Description du Tournoi et explication des règles de la Box League
-      club_staff: Personnel du club
+      club_staff: Qui sommes-nous?
       p05: Coordonnées de l'admin et du Referee du club
       all_boxes: Les Box
       p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
@@ -161,7 +161,7 @@ fr:
       li02: son classement dans le tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
-      p08_html: <span class='color-orange'>Le joueur connecté</span> apparaît en orange et <span class='color-tennis-red'>le nom de sa box</span> en rouge.
+      p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
       p09: Un clic sur une box présente les Résultats en grille de la box.
       p10a_html: Quand approche de la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
       p11_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (Referee).
@@ -176,7 +176,7 @@ fr:
       table_view: Vue en Grille
       p16: Les matchs de chaque joueur sont affichés sous la colonne de l'adversaire correspondant.
       p17_html: >
-        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>, et un bouton <span class='color-tennis-red'>Mes scores</span> apparaît
+        Si vous regardez votre box, votre nom sera affiché en <span class='color-tennis-red'>rouge</span>, et un bouton <span class='color-tennis-red'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).
         Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score dans votre box.
       p18_html: >
@@ -185,7 +185,7 @@ fr:
       list_view: Vue en Liste (joueur)
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
-        Si vous regardez votre box, votre nom sera affiché en <span class='color-orange'>orange</span>;
+        Si vous regardez votre box, votre nom sera affiché en <span class='color-tennis-red'>rouge</span>;
         cliquez sur un score pour afficher la carte du match, ou entrez un nouveau score dans votre box.<br>
         Un bouton <span class='color-tennis-red'>Mes scores</span> apparaît
         à gauche du lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).

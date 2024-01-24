@@ -38,10 +38,10 @@ nl:
       back_btn: ←
     score_headers:
       player: Speler
-      set_1: Set1
-      set_2: Set2
+      set_1: set1
+      set_2: set2
       tie_break: tiebreak
       match_points: Match punten
       total: Totaal
     score_display:
-      winner: Winaar
+      winner: W

@@ -1,11 +1,15 @@
 <!-- league table headers -->
 <% topdown = ["↑", "↓"] %>
 
-<div class="col-3 league-header-left-padding"><%=render "header_to_link", nb: 1, header: t('.player_header'), direction: topdown.reverse%></div>
-<div class="col-1"><%=render "header_to_link", nb: 2, header: t('.rank_header'), direction: topdown.reverse%></div>
-<div class="col-1"><%=render "header_to_link", nb: 3, header: t('.points_header'), direction: topdown%></div>
-<div class="col-1"><%=render "header_to_link", nb: 4, header: t('.box_header'), direction: topdown.reverse%></div>
-<div class="col-1"><%=render "header_to_link", nb: 5, header: t('.matches_played_header'), direction: topdown%></div>
-<div class="col-1"><%=render "header_to_link", nb: 6, header: t('.matches_won_header'), direction: topdown%></div>
-<div class="col-1"><%=render "header_to_link", nb: 7, header: t('.sets_played_header'), direction: topdown%></div>
-<div class="col-1"><%=render "header_to_link", nb: 8, header: t('.sets_won_header'), direction: topdown%></div>
+<div class="col-3">
+<span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile)%>"><%= t('.player_header') %> (</span>
+<%=render "header_link", nb: 1, header: t('.first_name_header'), direction: topdown.reverse%>
+<%=render "header_link", nb: 2, header: t('.last_name_header'), direction: topdown.reverse%>
+<span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile)%>">)</span></div>
+<div class="col-1"><%=render "header_link", nb: 3, header: t('.rank_header'), direction: topdown.reverse%></div>
+<div class="col-1"><%=render "header_link", nb: 4, header: t('.points_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_link", nb: 5, header: t('.box_header'), direction: topdown.reverse%></div>
+<div class="col-1"><%=render "header_link", nb: 6, header: t('.matches_played_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_link", nb: 7, header: t('.matches_won_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_link", nb: 8, header: t('.sets_played_header'), direction: topdown%></div>
+<div class="col-1"><%=render "header_link", nb: 9, header: t('.sets_won_header'), direction: topdown%></div>
