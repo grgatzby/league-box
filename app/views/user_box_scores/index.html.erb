@@ -3,12 +3,12 @@
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner text-size">
-    <h3><%= t '.league_table_title' %></h3>
+    <h3><%= t '.league_table_title' %><%= " R#{@round_nb}" %></h3>
     <!-- the following line will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
       <div>LeagueBox ©</div>
-      <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
+      <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
     </span>
   </div>
   <% if @round %>
@@ -17,15 +17,15 @@
       <%= render "shared/select_round", fallback_path: user_box_scores_path %>
     </div>
     <% if !@render_to_text %>
-      <%# exclude buttons and top line from exporting to text (in user_box_score index) %>
-      <br><%= render 'buttons', round: @round %>
+      <%# don't export to text buttons and top line (in user_box_score index) %>
+      <br><%= render 'action_buttons', round: @round %>
       <%= render 'top_line', round: @round, is_mobile: @is_mobile %>
     <% end %>
     <%= render 'league_table' %>
   <% else %>
     <div class="dont-print text-size">
-      <!-- if no round selected, invoke forms to select a club (admin only) and a round -->
-      <%= render "shared/select_club_round", fallback_path: user_box_scores_path, intro_paragraph: t(".intro") %>
+      <!-- if no round selected, display the forms to select a club (admin only) and a round -->
+      <%= render "shared/select_club_round", fallback_path: user_box_scores_path, explain_paragraph: t(".intro") %>
     </div>
   <% end %>
 </div>

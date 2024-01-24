@@ -18,20 +18,23 @@ class UserBoxScoresController < ApplicationController
     end
     @sort = params[:sort]
     case params[:sort]
-    when "1" # "Player"
+    when "1" # "Player first name"
+      @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.first_name, -@order * user_box_scores.rank] }
+      @user_box_scores.reverse! if @order == 1
+    when "2" # "Player last name"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [user_box_scores.user.last_name, -@order * user_box_scores.rank] }
       @user_box_scores.reverse! if @order == 1
-    when "3" # "Points"
+    when "4" # "Points"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.points, -@order * user_box_scores.rank] }
-    when "4" # "Box"
+    when "5" # "Box"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [-@order * user_box_scores.box.box_number, -@order * user_box_scores.rank] }
-    when "5" # "Matches Played"
+    when "6" # "Matches Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_played, -@order * user_box_scores.rank] }
-    when "6" # "Matches Won"
+    when "7" # "Matches Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.games_won, -@order * user_box_scores.rank] }
-    when "7" # "Sets Played"
+    when "8" # "Sets Played"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_played, -@order * user_box_scores.rank] }
-    when "8" # "Sets Won"
+    when "9" # "Sets Won"
       @user_box_scores = @round.user_box_scores.sort_by { |user_box_scores| [@order * user_box_scores.sets_won, -@order * user_box_scores.rank] }
     end
     @render_to_text = false

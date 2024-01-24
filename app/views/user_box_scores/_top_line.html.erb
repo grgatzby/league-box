@@ -1,14 +1,12 @@
 <% if params["sort"] %>
   <% params["sort"] = nil  %>
-  <%# <p class="stick-rules dont-print text-size"> %>
-  <p class="<%= is_mobile ? "" : "stick-rules " %> dont-print text-size">
+  <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= link_to t(".top_line_html"),
         user_box_scores_path(round_start: round.start_date, club_name: round.club.name),
         class: "btn buttons-shape btn-top-line no-padding-no-border" %>
   </p>
 <% else %>
-  <%# <p class="stick-rules dont-print text-size"> %>
-  <p class="<%= is_mobile ? "" : "stick-rules " %> dont-print text-size">
+  <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= t '.top_line_html' %>
   </p>
   <div class="photo-wrap frame-color-shape frame-padding text-size dont-print">

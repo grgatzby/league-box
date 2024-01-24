@@ -9,7 +9,7 @@ en:
       login_link: Log in
     navbar_dropdown:
       tournament_rules_link: Overview & Rules
-      club_staff_link: Staff
+      club_staff_link: Our staff
       all_boxes_link: All boxes
       league_table_link: League table
       my_scores_link: My scores
@@ -30,12 +30,12 @@ en:
       back_btn: ←
       select_round_start: "Select a round start date: "
     staff:
-      your_club_staff_title: Your club staff
+      our_staff_title: Our staff
       staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
       staff_p02_html: >
         They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contact your Referee through your box <b>chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
+        &emsp;&emsp;&emsp;→ contact your Referee through your <b>box chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
         &emsp;&emsp;&emsp;→ contact the admin
       staff_p04a_html: through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link at the bottom of this page.
       staff_p04b_html: through this form.

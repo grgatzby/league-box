@@ -11,7 +11,7 @@
 }
 
 .header-ghost {
-  margin: 0 0 5px; /* top | left and right | bottom */
+  margin: 0 0 2px;
   // border: 1px solid #4A4A4A;
   padding: 6px 0px;
   color: $tennis-blue;
@@ -22,6 +22,14 @@
   &:hover {
     color: #7f7f7f;
   }
+}
+
+.header-no-link {
+  margin: 0;
+  // border: 1px solid #4A4A4A;
+  padding: 6px 0px;
+  font-weight: bold;
+  opacity: 1;
 }
 
 .no-padding-no-border {

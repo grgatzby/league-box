@@ -15,6 +15,7 @@ fr:
       all_box_title: Toutes les box
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom du joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
+      my_current_box: (ma box en cours)
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
     my_scores:

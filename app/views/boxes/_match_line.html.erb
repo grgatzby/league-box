@@ -1,4 +1,4 @@
-
+<!-- match line (list view) -->
 <% match = player_match[0]
   opponent = player_match[1]
   user_score = player_match[2]
@@ -17,7 +17,7 @@
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
     <li>
-      <div class="row player-to-orange">
+      <div class="row hovered-payer">
         <div class="col-4">
           <%= "#{user_score.is_winner ? t(".won") : t(".lost")}" %>
           <i>vs</i>
@@ -28,7 +28,7 @@
           <% match_time = @tz.to_local(match.time) %>
           <%= " #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
         </div>
-        <div class="col-2"><%= render "shared/score", user_score: user_score, opponent_score: opponent_score %></div>
+        <div class="col-2"><%= render "match_score", user_score: user_score, opponent_score: opponent_score %></div>
         <div class="col-2"><%= t("pts", count: user_score.points) %></div>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
