@@ -23,7 +23,8 @@
         <div>
           <%# <% @page_from ||= box_list_path %>
           <% if @page_from %>
-            <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+            <%# parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
+            <% parameters = "?round_start=#{@box.round.start_date}&club_id=#{@box.round.club.id}" %>
             <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
@@ -89,17 +90,5 @@
       </div>
     <% end %>
     <br>
-    <!--
-    <div class="buttons-wrap">
-      <% if @page_from %>
-        <% parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-        <%= link_to "Back", @page_from+parameters, class: "btn buttons-shape btn-yellow text-size" %>
-      <% else %>
-        <%# link_to "Back", "javascript:history.back()", class: "btn buttons-shape btn-yellow" %>
-        <%= link_to "Back", :back, class: "btn buttons-shape btn-yellow text-size" %>
-        <%= link_to "Back to top", "#", class: "btn buttons-shape btn-yellow text-size" %>
-      <% end %>
-    </div>
-    -->
   <% end %>
 </div>
