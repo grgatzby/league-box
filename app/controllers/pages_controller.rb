@@ -15,7 +15,7 @@ class PagesController < ApplicationController
   end
 
   def staff
-    # deprecated code: now moved to ContactsController # new
+    # similar to ContactsController # new
     if current_user == @admin
       @referees = User.where(role: "referee")
     end

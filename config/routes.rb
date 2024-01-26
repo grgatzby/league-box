@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     resources :user_box_scores, only: %i[index new create]
     get 'user_box_scores/league_table_to_csv', to: "user_box_scores#league_table_to_csv", as: "csv"
+    get 'user_box_scores/league_table_to_csv_year', to: "user_box_scores#league_table_to_csv_year", as: "csv_year"
+    get 'user_box_scores/index_year', to: "user_box_scores#index_year", as: "index_year"
 
     resources :rounds, only: %i[new create]
 

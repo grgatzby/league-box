@@ -1,8 +1,13 @@
-<!-- display the selected header with an up or down arrow, if chosen to sort the table -->
+<!-- display the clicked header with an up or down arrow (denoting table sorting) -->
 <% header_arrow = @order == 1 ? direction[0] : direction[1] %>
 <% header_arrow = nb == @sort.to_i ? header_arrow : "" %>
 <%=link_to header+header_arrow,
+if from == "index"
   user_box_scores_path( exsort: @sort, order: -@order, sort: nb,
-                        round_start: @round.start_date, club_name: @round.club.name),
-  class: class_names("btn header-ghost", "mobile-text-size": @is_mobile)
+                        round_start: @round.start_date, club_name: @round.club.name)
+else
+  index_year_path( exsort: @sort, order: -@order, sort: nb,
+                        round_year: @year, club_id: @club.id)
+end,
+class: class_names("btn header-ghost", "mobile-text-size": @is_mobile)
 %>

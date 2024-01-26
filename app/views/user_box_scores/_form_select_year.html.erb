@@ -1,0 +1,14 @@
+<!-- partial: form to select a league table year -->
+<div class="dont-print">
+<%# @start_dates.map{|d| d.strftime('%d/%m/%Y')} %>
+  <%= form_with url: index_year_path, method: :get do |form| %>
+    <%= form.label :round_year, local_assigns[:label] ? label : t('.select_round_year') %>
+    <%= hidden_field_tag(:club_id, @club.id) %>
+    <% if @round%>
+      <%= form.select(:round_year, @round_years.unshift(t('.year_dropdown')), {selected: params[:round_year]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+    <% else %>
+      <%= form.select :round_year, @round_years, selected: params[:round_year] %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+    <% end %>
+  <% end %>
+</div>

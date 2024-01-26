@@ -2,12 +2,18 @@ fr:
   user_box_scores:
     index:
       intro: La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi
-      league_table_title: League table
+      league_table_title: League table du round
       file_csv_flash: fichier data.csv créé
+    index_year:
+      league_table_title: League table de l'année
+      valid_year_flash: Choisir une année
+    form_select_year:
+      select_round_year: League table de l'
+      year_dropdown: année
     top_line:
       top_line_html: >
-        Cliquer la <span class="color-orange-light"><b>ligne d'un joueur</b></span> pour accéder à sa box
-        ou sur <span class="color-tennis-blue"><b>un entête</b></span> pour trier la table
+        Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,
+        ou sur <span class="color-orange-light"><b>la ligne d'un joueur</b></span> pour accéder à sa box.
       rules: >
         Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
         Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
@@ -17,8 +23,8 @@ fr:
           <li>Ratio jeux gagnés sur jeux joués</li>
         </ol>
     action_buttons:
-      to_text_btn: Exporter vers un fichier texte
-      to_csv_btn: Exporter vers un fichier CSV
+      to_text_btn: Exporter en fichier texte
+      to_csv_btn: Exporter en fichier CSV
     table_data:
       matches:
         zero: 0 match

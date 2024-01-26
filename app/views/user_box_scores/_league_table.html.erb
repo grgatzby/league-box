@@ -1,5 +1,4 @@
-<!-- league table -->
-
+<!-- partial: league table wrap -->
 
 <%#div class="print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap mobile-text-size"%>
 <div class="<%= class_names("print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap",
@@ -7,11 +6,11 @@
   <%#div class="box-width row"%>
   <div class="<%= class_names("row", "mobile-table-width": @is_mobile, "table-width": !@is_mobile) %>">
     <div class="one-liner bold-font">
-      <%= render "table_headers" %>
+      <%= render "table_headers", from: from %>
     </div>
 
     <div class="print-scroller box-scroller" data-toggle-target="togglableElement" >
-      <%= render "table_data", user_box_scores: @user_box_scores %>
+      <%= render "table_data", user_box_scores: @user_box_scores, from: from %>
       <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn buttons-shape btn-beige top-button d-none">
         <i class="fa-solid fa-up-long"></i>
