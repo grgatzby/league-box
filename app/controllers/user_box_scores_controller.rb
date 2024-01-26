@@ -47,29 +47,17 @@ class UserBoxScoresController < ApplicationController
   end
 
   def index_year
+    my_own_box(current_round(@club), player = current_user)
     # displays the league table for the year, allows user to sort the table by click on headers
     @year = params[:round_year].to_i
     @club = Club.find(params[:club_id].to_i)
     rounds = Round.where('extract(year  from start_date) = ?', @year).where(club_id: params[:club_id].to_i)
-    @round = rounds.last
-    if @round
+    @round = current_round(@club.id)
+    if rounds.length.positive?
       users = User.where(club_id: params[:club_id].to_i, role: "player")
 
 
       @user_box_scores = league_table_year(rounds, users)
-      # round_ubs = rounds.map { |round| round.user_box_scores } # user_box_score collections for each round in the year
-      # users.each do |user|
-      #   @user_box_scores[user] =
-      #     { # for each player, sum of points, games_played, games_won, sets_played, sets_won across the chosen year rounds
-      #       index: 0,
-      #       rank: 0,
-      #       points: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:points) },
-      #       games_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
-      #       games_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
-      #       sets_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_played) },
-      #       sets_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) }
-      #     }
-      # end
       # @order dictates the sorting order of the selected header
       # it is passed from the partial _header_to_link.html.erb when a header is clicked
       if params[:order] && (params[:exsort] == params[:sort])
@@ -162,7 +150,7 @@ class UserBoxScoresController < ApplicationController
                                 sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
           end
         end
-        redirect_to boxes_path(round_start: round.start_date, club_name: club.name)
+        redirect_to boxes_path(round_start: round.start_date, club_id: club.id)
       else
         flash[:notice] = t('.header_flash')
         redirect_back(fallback_location: new_user_box_score_path)
@@ -272,7 +260,8 @@ class UserBoxScoresController < ApplicationController
           games_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
           games_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
           sets_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_played) },
-          sets_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) }
+          sets_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) },
+          last_round: last_round(user)
         }
     end
     league_table

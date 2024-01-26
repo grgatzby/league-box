@@ -40,6 +40,6 @@
       <% end %>
   <% end %>
 
-  <%= link_to t('.all_boxes_link'), boxes_path(round_start: @round.start_date, club_name: @round.club.name), class: "btn buttons-shape btn-yellow mb-3" %>
+  <%= link_to t('.all_boxes_link'), boxes_path(round_start: @round.start_date, club_id: @round.club.id), class: "btn buttons-shape btn-yellow mb-3" %>
   <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
 </div>

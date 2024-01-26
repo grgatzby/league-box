@@ -75,10 +75,10 @@ class ApplicationController < ActionController::Base
     #   @round = @current_round
     #   @boxes = @round.boxes.sort
     # end
-    if current_user != @admin || params[:club_name]
+    if current_user != @admin || params[:club_id]
       # user belongs to a club (= is a player or a referee),
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
-      @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
+      @club = Club.find(params[:club_id]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
       @round_years = @start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
@@ -96,6 +96,11 @@ class ApplicationController < ActionController::Base
   def current_round(club_id)
     # given a club_id, returns its current round or the last existing round
     Round.current.find_by(club_id: club_id) || Round.where(club_id: club_id).order(:start_date).last
+  end
+
+  def last_round(player = current_user)
+    # given a player, returns its last played round
+    player.user_box_scores.map(&:box).map(&:round).max { |a, b| a.start_date <=> b.start_date }
   end
 
   def my_own_box(round, player = current_user)
