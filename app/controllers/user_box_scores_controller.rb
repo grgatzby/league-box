@@ -4,7 +4,6 @@ class UserBoxScoresController < ApplicationController
   def index
     # displays the league table for the round, allows user to sort the table by click on headers
     set_club_round
-
     # @order dictates the sorting order of the selected header
     # it is passed from the partial _header_to_link.html.erb when a header is clicked
     if params[:order] && (params[:exsort] == params[:sort])
@@ -199,12 +198,10 @@ class UserBoxScoresController < ApplicationController
   def league_table_to_csv_year
     # export the league table to a csv file
     # code inspired by https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    # round = Round.find_by(start_date: params[:round_start].to_time,
-    #                       club_id: Club.find_by(name: params[:club_name]).id)
-    # file = Rails.root.join('public', 'data.csv')
     year = params[:round_year].to_i
     rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id: params[:club_id].to_i)
     users = User.where(club_id: params[:club_id].to_i, role: "player")
+    # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
     user_box_scores = league_table_year(rounds, users)
     user_box_scores = rank_players(user_box_scores, "index_year")

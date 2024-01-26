@@ -4,12 +4,12 @@
 <% end %>
 <br>
 <% if current_user == @admin %>
-  <% if !params[:round_start] || params[:club_name] %>
+  <% if !params[:round_start] || params[:club_id] %>
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
-      <%= form.label :club_name, t('.select_club') %>
-      <%= form.select :club_name, @club_names, :selected => params[:club_name] %>
-      <% if !params[:club_name] || params[:round_start] %>
+      <%= form.label :club_id, t('.select_club') %>
+      <%= form.select :club_id, @club_names %>
+      <% if !params[:club_id] || params[:round_start] %>
         <!-- name: "" to get rid of the name attribute, so commit does not appear in the url -->
         &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,8 +24,7 @@
     <br><br>
   <% end %>
 <% end %>
-<% if !params[:round_start] && params[:club_name] || (current_user != @admin) %>
+<% if !params[:round_start] && params[:club_id] || (current_user != @admin) %>
   <!-- for players and referees: display the round form IF a club is already set -->
-
   <%= render "shared/select_round", fallback_path: fallback_path, label: t('.select_round_start') %>
 <% end %>

@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
   # - admin can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
-  #
-  # TO DO = replace club_name params with club_id (in ubs#index, boxes#index etc calling #set_club_round)
 
   def default_url_options
     { locale: I18n.locale }
@@ -54,18 +52,11 @@ class ApplicationController < ActionController::Base
   end
 
   def set_club_round
-    # instantiate variables @club from params[:club_name], and @round from params[:round_start]
+    # instantiate variables @club from params[:club_id], and @round from params[:round_start]
     # if they have been selected from the _select_club_round forms
     # invoked by #index, #my_scores in Boxes and user_box_scores/index views forms
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown in the form
-
-    # if current_user != @admin || params[:club_name]
-    #   # user belongs to a club (= is a player or a referee),
-    #   # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
-    #   @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
-    #   @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the form
-    # end
 
     # if params[:round_start]
     #   # user has selected a round in the form
@@ -77,8 +68,10 @@ class ApplicationController < ActionController::Base
     # end
     if current_user != @admin || params[:club_id]
       # user belongs to a club (= is a player or a referee),
-      # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
-      @club = Club.find(params[:club_id]) if @club == @sample_club
+      # or admin has chosen a club in the clubs form (i.e. club name is defined as params[:club_id])
+      if @club == @sample_club
+        @club = check_string(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
+      end
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
       @round_years = @start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
@@ -86,6 +79,11 @@ class ApplicationController < ActionController::Base
       @round_nb = round_number(@round)
       @boxes = @round.boxes.sort
     end
+  end
+
+  def check_string(string)
+    # returns true if string contains only digits
+    string.scan(/\D/).empty?
   end
 
   # -------------------------------------------------------------------------------------------------------------------
