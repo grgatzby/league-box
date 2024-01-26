@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
   #
+  # TO DO = replace club_name params with club_id (in ubs#index, boxes#index etc calling #set_club_round)
 
   def default_url_options
     { locale: I18n.locale }
@@ -49,7 +50,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    boxes_path
+    user_box_scores_path
   end
 
   def set_club_round
@@ -79,7 +80,8 @@ class ApplicationController < ActionController::Base
       # or admin has chosen a club in the clubs form (i.e. params[:club_name] is defined)
       @club = Club.find_by(name: params[:club_name]) if @club == @sample_club
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
-      @start_dates = @start_dates.map{|d| d.strftime('%d/%m/%Y') }
+      @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
+      @round_years = @start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
       @round = params[:round_start] ? Round.find_by(start_date: params[:round_start].to_time, club_id: @club.id) : current_round(@club.id)
       @round_nb = round_number(@round)
       @boxes = @round.boxes.sort
@@ -112,67 +114,87 @@ class ApplicationController < ActionController::Base
   # - by #index in UserBoxScoresController
   # - and by #create in MatchesController
 
-  def rank_players(scores)
+  def rank_players(user_box_scores, *from)
     # updates the rank field in the UserBoxScore database
+    from = from[0] || "index"
 
-    # ranking based on points only (for initial tests):
+    # old ranking based on points only (not used, for initial tests only):
     # points_array = scores.map(&:points)
     # sorted_points = points_array.sort.uniq.reverse
     # scores.each do |score|
     #   score.update(rank: sorted_points.index(score.points) + 1)
     # end
 
-    # correct ranking based on 4 sorting criterias and ties :
+    # current correct ranking based on 4 sorting criterias and ties :
     @tieds = [] # populated in #add_to_tieds called by #compare
-    scores = scores.sort { |a, b| compare(a, b) }
-
+    user_box_scores = user_box_scores.sort { |a, b| compare(a, b, from) }
     rank_tied = 1
-    player = scores.first
-    ranks = scores.map do |score|
-      rank_tied = scores.index(score) + 1 unless @tieds.include?(score) && compare(player, score).zero?
+    player = user_box_scores.first
+    ranks = user_box_scores.map do |score|
+      rank_tied = user_box_scores.index(score) + 1 unless @tieds.include?(score) && compare(player, score, from).zero?
       player = score
       rank_tied
     end
 
     # updates ranks in the database
-    scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
+    if from == "index_year"
+      user_box_scores.each_with_index { |score, index| score[1][:rank] = ranks[index] }
+    else
+      user_box_scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
+    end
   end
 
-  def compare(a, b)
+  def compare(a, b, from)
     # ranking based on 4 sorting criterias (points, nb of matches played, highest set ratio, highest game ratio)
     # the 4 compare_ methods all use the spaceship operator:
     # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b are not comparable)
-    comparison = compare_points(a, b)
+    comparison = compare_points(a, b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_matches_played(a, b)
+    comparison = compare_matches_played(a, b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_set_ratio(a, b)
+    comparison = compare_set_ratio(a, b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_game_ratio(a, b)
+    comparison = compare_game_ratio(a, b, from)
     return comparison unless comparison.zero?
 
-    add_to_tieds(a, b)
+    add_to_tieds(a, b, from)
 
     comparison
   end
 
-  def compare_points(a, b)
-    b.points <=> a.points
+  def compare_points(a, b, from)
+    if from == "index_year"
+      b[1][:points] <=> a[1][:points]
+    else
+      b.points <=> a.points
+    end
   end
 
-  def compare_matches_played(a, b)
-    b.games_played <=> a.games_played
+  def compare_matches_played(a, b, from)
+    if from == "index_year"
+      b[1][:games_played] <=> a[1][:games_played]
+    else
+      b.games_played <=> a.games_played
+    end
   end
 
-  def compare_set_ratio(a, b)
-    (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
+  def compare_set_ratio(a, b, from)
+    if from == "index_year"
+      (b[1][:sets_played].zero? ? 0 : b[1][:sets_won].to_f / b[1][:sets_played]) <=> (a[1][:sets_played].zero? ? 0 : a[1][:sets_won].to_f / a[1][:sets_played])
+    else
+      (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
+    end
   end
 
-  def compare_game_ratio(a, b)
-    (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
+  def compare_game_ratio(a, b, from)
+    if from == "index_year"
+      (b[1][:games_played].zero? ? 0 : b[1][:games_won].to_f / b[1][:games_played]) <=> (a[1][:games_played].zero? ? 0 : a[1][:games_won].to_f / a[1][:games_played])
+    else
+      (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
+    end
   end
 
   def add_to_tieds(*players)
@@ -190,9 +212,9 @@ class ApplicationController < ActionController::Base
     path.gsub(/en|fr|nl/, locale.to_s) if path
   end
 
-  def round_number(round)
+  def round_number(round, *year)
     # returns round number and its year in format "yy_nb"
-    round_year = round.start_date.year
+    round_year = year.length.positive? ? year[0] : round.start_date.year
     rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
                           .where(club_id: round.club)
                           .order('start_date ASC')

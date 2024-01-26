@@ -49,7 +49,7 @@
       <% end %>
 
       <% if @referee %>
-        <!-- defined in application_controller#global_variables if current user is a referee-->
+        <!-- defined in application_controller#global_variables : current user's club referee-->
         <div class="row">
           <div class="col-3"><%= "#{@referee.club.name} #{@referee.role.capitalize}" %></div>
           <div class="col-2"><%= render "shared/fullname", user: @referee%></div>

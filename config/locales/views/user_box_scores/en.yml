@@ -2,12 +2,18 @@ en:
   user_box_scores:
     index:
       intro: The <b>league table</b> is updated upon each new score entry
-      league_table_title: League table
+      league_table_title: League table round
       file_csv_flash: file data.csv created
+    index_year:
+      league_table_title: League table for year
+      valid_year_flash: Choose a valid year
+    form_select_year:
+      select_round_year: League table for
+      year_dropdown: year
     top_line:
       top_line_html: >
-        Click on a <span class="color-orange-light"><b>player's line</b></span> to access their box
-        or on a <span class="color-tennis-blue"><b>header</b></span> to sort the table
+        Click on <span class="color-tennis-blue"><b>any header</b></span> to change sorting order,
+        or on <span class="color-orange-light"><b>a player's line</b></span> to access their box.
       rules: >
         A player's league position is determined by the total number of points won in a round.<br />
         In the event that two or more players have the same number of points the league position will be
@@ -18,8 +24,8 @@ en:
           <li>Ratio of games won to games played</li>
         </ol>
     action_buttons:
-      to_text_btn: Export page to text file
-      to_csv_btn: Export page to CSV file
+      to_text_btn: Export to text file
+      to_csv_btn: Export to CSV file
     table_data:
       matches:
         zero: 0 matches

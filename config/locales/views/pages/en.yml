@@ -46,9 +46,9 @@ en:
         Players should notify their opponents to block out the dates / times they are not available to play matches as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
         will make it easier to schedule your matches.
-      btn_display_rules: Display the rules
+      btn_display_rules: Display Tournament rules
       btn_hide_rules: Hide the rules
-      rules: The rules
+      rules: Leaguebox Tournament rules
       rounds: Rounds
       p04: There will be one round per month, unless local rules state otherwise.
       availability: Availability
