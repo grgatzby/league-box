@@ -18,6 +18,7 @@ nl:
       my_current_box: (mijn huidige box)
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
+      valid_round_flash: Kies een geldig rond.
     my_scores:
       my_scores: Mijn scores
       intro_html: >

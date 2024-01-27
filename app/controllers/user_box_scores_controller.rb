@@ -15,28 +15,29 @@ class UserBoxScoresController < ApplicationController
       # by default: sort player by rank
       @user_box_scores = rank_players(@round.user_box_scores)
       @user_box_scores.reverse! if @order == 1
-    end
-    @sort = params[:sort]
-    case params[:sort]
-    when "1" # "Player first name"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name, -@order * user_bs.rank] }
-      @user_box_scores.reverse! if @order == 1
-    when "2" # "Player last name"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name, -@order * user_bs.rank] }
-      @user_box_scores.reverse! if @order == 1
-    when "3" # "Ranking: default sorting order"
-    when "4" # "Points"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.points, -@order * user_bs.rank] }
-    when "5" # "Box"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
-    when "6" # "Matches Played"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
-    when "7" # "Matches Won"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
-    when "8" # "Sets Played"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
-    when "9" # "Sets Won"
-      @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
+
+      @sort = params[:sort]
+      case params[:sort]
+      when "1" # "Player first name"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name, -@order * user_bs.rank] }
+        @user_box_scores.reverse! if @order == 1
+      when "2" # "Player last name"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name, -@order * user_bs.rank] }
+        @user_box_scores.reverse! if @order == 1
+      when "3" # "Ranking: default sorting order"
+      when "4" # "Points"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.points, -@order * user_bs.rank] }
+      when "5" # "Box"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
+      when "6" # "Matches Played"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
+      when "7" # "Matches Won"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
+      when "8" # "Sets Played"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
+      when "9" # "Sets Won"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
+      end
     end
     @render_to_text = false
     if params[:to_text] == "true"

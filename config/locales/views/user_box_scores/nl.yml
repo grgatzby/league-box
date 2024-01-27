@@ -4,9 +4,10 @@ nl:
       intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt
       league_table_title: League table ronde
       file_csv_flash: bestand data.csv gemaakt
+      valid_round_flash: "League table: kies een geldig rond."
     index_year:
       league_table_title: League table voor jaar
-      valid_year_flash: Kies een geldig jaar.
+      valid_year_flash: "Jaarlijks league table: kies een geldig jaar."
     select_year:
       select_round_year: League table van
       year_dropdown: jaar

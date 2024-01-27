@@ -198,6 +198,7 @@ nl:
       li05: datum van het spel, baannummer,
       li06: score, met datum en tijdstip van binnenkomst,
       li07: wedstrijdwinsten en totaal aantal punten.
+      p24b: De lijn van de winnaar is groen, die van de verliezer rood..
       new_match_score: Nieuwe wedstrijdscore
       p25: Formulier om nieuwe wedstrijdgegevens in te voeren.
       match_edit_score: Wedstrijdbewerkingsscore

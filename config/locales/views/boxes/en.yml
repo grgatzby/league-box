@@ -18,6 +18,7 @@ en:
       my_current_box: (my current box)
       create_round_btn: Create the next round
       request_round_btn: Request the admin the next round
+      valid_round_flash: "League table: choose a valid round"
     my_scores:
       my_scores: My scores
       intro_html: >
@@ -69,7 +70,7 @@ en:
       on_date: "on"
     no_match_cell:
       not_played: Not played
-      enter_score: Enter score
+      enter_score: Enter match score
     show:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>Table view</span> page displays all matches in a table, and give players access to the match cards.<br>

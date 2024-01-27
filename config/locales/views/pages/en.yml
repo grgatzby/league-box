@@ -200,6 +200,7 @@ en:
       li05: game date and court number
       li06: score, with date and time of submission
       li07: match earnings and total points.
+      p24b: The winner's line is in green, the loser's in red.
       new_match_score: New match score
       p25: Form to enter new match details.
       match_edit_score: Match edit score
