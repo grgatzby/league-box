@@ -4,9 +4,10 @@ fr:
       intro: La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi
       league_table_title: League table du round
       file_csv_flash: fichier data.csv créé
+      valid_round_flash: "League table: choisir un round valide"
     index_year:
       league_table_title: League table de l'année
-      valid_year_flash: Choisir une année
+      valid_year_flash: "League table annuelle: choisir une année valide"
     select_year:
       select_round_year: League table de l'
       year_dropdown: année

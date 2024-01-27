@@ -9,7 +9,7 @@
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">
-          <div class="one-liner hovered-payer">
+          <div class="one-liner hovered-player">
             <div class="col-3"><%= render "shared/fullname", user: player %></div>
             <div class="col-1 top-bottom-padding"><%= "# #{user_bs.rank}" %></div>
             <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs.points) %></div>
@@ -33,7 +33,7 @@
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">
-          <div class="one-liner hovered-payer">
+          <div class="one-liner hovered-player">
             <div class="col-3"><%= render "shared/fullname", user: player %></div>
             <div class="col-1 top-bottom-padding"><%= "# #{user_bs[1][:rank]}" %></div>
             <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs[1][:points]) %></div>

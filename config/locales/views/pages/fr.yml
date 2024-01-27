@@ -199,6 +199,7 @@ fr:
       li05: date du match et numéro du terrain
       li06: score, avec date et heure de saisie
       li07: gains du match et total des points.
+      p24b: Le score du gagnant est en vert, celui du perdant en rouge.
       new_match_score: Nouveau score
       p25: Formulaire pour saisir les détails d'un nouveau match.
       match_edit_score: Éditer le score

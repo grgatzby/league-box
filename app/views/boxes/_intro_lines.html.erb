@@ -17,8 +17,7 @@
 </div>
 
 <div class="one-liner">
-  <h4><%= render "shared/display_club",
-      round: box.round,
+  <h4><%= render "shared/display_club", round: box.round,
       add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{t '.my_current_box'})" : "" %>
   </h4>
 </div>

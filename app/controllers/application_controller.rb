@@ -70,6 +70,13 @@ class ApplicationController < ActionController::Base
       @round_years = @start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
       if params[:round_id]
         @round = check_string(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date:params[:round_id].to_time, club_id: @club.id)
+        if @round
+          @selected_date = @round.start_date.strftime('%d/%m/%Y')
+        else
+          flash[:notice] = t('.valid_round_flash')
+          redirect_back(fallback_location: request.path)
+          return
+        end
       else
         @round = current_round(@club.id)
       end

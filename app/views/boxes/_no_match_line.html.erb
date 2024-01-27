@@ -1,6 +1,6 @@
 <!-- no match line (list view) -->
 <li>
-  <div class="row hovered-payer color-tennis-blue">
+  <div class="row hovered-player color-tennis-blue">
     <div class="col-4"><%= render "shared/fullname", user: opponent %></div>
     <div class="col-8"><%= current_user == player || current_user.role != "player" ? t('.enter_score') : t('.not_played') %></div>
 
