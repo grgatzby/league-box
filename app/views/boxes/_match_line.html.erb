@@ -38,7 +38,7 @@
           <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from), class: "line-link" %>
         <% else %>
           <%# player: click on player match line to view match score %>
-          <%= link_to '', match_path(player: player_match[2].user.id, opponent: opponent.id, match: match.id, page_from: page_from), class: "box-link" %>
+          <%= link_to '', match_path(player: player_match[2].user.id, opponent: opponent.id, match_id: match.id, page_from: page_from), class: "box-link" %>
         <% end %>
 
       </div>

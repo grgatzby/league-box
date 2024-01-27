@@ -55,7 +55,6 @@ class UserBoxScoresController < ApplicationController
     if rounds.length.positive?
       users = User.where(club_id: params[:club_id].to_i, role: "player")
 
-
       @user_box_scores = league_table_year(rounds, users)
       # @order dictates the sorting order of the selected header
       # it is passed from the partial _header_to_link.html.erb when a header is clicked
@@ -149,7 +148,7 @@ class UserBoxScoresController < ApplicationController
                                 sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
           end
         end
-        redirect_to boxes_path(round_start: round.start_date, club_id: club.id)
+        redirect_to boxes_path(round_id: round.id, club_id: club.id)
       else
         flash[:notice] = t('.header_flash')
         redirect_back(fallback_location: new_user_box_score_path)
@@ -163,8 +162,7 @@ class UserBoxScoresController < ApplicationController
   def league_table_to_csv
     # export the league table to a csv file
     # code inspired by https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    round = Round.find_by(start_date: params[:round_start].to_time,
-                          club_id: params[:club_id].to_i)
+    round = Round.find(params[:round_id])
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
     user_box_scores = rank_players(round.user_box_scores)
@@ -246,7 +244,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_year(rounds, users)
-    round_ubs = rounds.map { |round| round.user_box_scores } # user_box_score collections for each round in the year
+    round_ubs = rounds.map(&:user_box_scores) # user_box_score collections for each round in the year
     league_table = {}
     users.each do |user|
       league_table[user] =

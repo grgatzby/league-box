@@ -19,7 +19,7 @@
   <div class = "buttons-wrap">
     <% if params[:round_id] %>
       <%# link_to t(".back_btn"), boxes_path(request.params.except(:action, :controller)), class: "btn buttons-shape btn-green" %>
-      <%= link_to t(".back_btn"), boxes_path(round_start: @round.start_date, club_id: @round.club.id), class: "btn buttons-shape btn-green" %>
+      <%= link_to t(".back_btn"), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-green" %>
     <% else %>
       <%= link_to t(".home_btn"), root_path, class: "btn buttons-shape btn-green" %>
     <% end %>

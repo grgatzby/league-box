@@ -18,7 +18,7 @@ if match %>
       <%= link_to '', edit_match_path(match_id: match.id, page_from: box_path), class: "line-link" %>
     <% else %>
       <%# player: click on player match line to view match score %>
-      <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match: match.id, page_from: box_path), class: "box-link" %>
+      <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match_id: match.id, page_from: box_path), class: "box-link" %>
     <% end %>
   </div>
 <% elsif opponent == line_player %>

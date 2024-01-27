@@ -43,5 +43,6 @@ en:
       tie_break: tiebreak
       match_points: Match points
       total: Total
-    score_display:
-      winner: W
+    # score_display:
+    #   loser: l
+    #   winner: w

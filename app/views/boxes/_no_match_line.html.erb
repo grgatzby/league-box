@@ -9,7 +9,7 @@
         data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= message %>">
       <%# click on opponent no-match line to enter a new match score %>
-      <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round: @box.round.id, page_from: page_from), class: "line-link" %>
+      <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round.id, page_from: page_from), class: "line-link" %>
     </div>
   </div>
 </li>

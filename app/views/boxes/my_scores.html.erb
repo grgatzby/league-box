@@ -24,7 +24,7 @@
           <%# <% @page_from ||= box_list_path %>
           <% if @page_from %>
             <%# parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
-            <% parameters = "?round_start=#{@box.round.start_date}&club_id=#{@box.round.club.id}" %>
+            <% parameters = "?round_id=#{@box.round.id}&club_id=#{@box.round.club_id}" %>
             <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>
               <i class="fa-solid fa-left-long"></i>
             <% end %>
@@ -73,9 +73,9 @@
               <% if opponent == @current_player %>
                 <%= link_to t(".view_box_results_btn"), box_list_path, class: class_btns %>
               <% elsif match %>
-                <%= link_to t(".see_match_card_btn"), match_path(player: current_user.id, opponent: opponent.id, match: match.id, page_from: my_scores_path), class: class_btns %>
+                <%= link_to t(".see_match_card_btn"), match_path(player: current_user.id, opponent: opponent.id, match_id: match.id, page_from: my_scores_path), class: class_btns %>
               <% else %>
-                <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: opponent.id, round: @round.id, page_from: my_scores_path), class: class_btns %>
+                <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: opponent.id, round_id: @round.id, page_from: my_scores_path), class: class_btns %>
               <% end %>
             </div>
           </div>

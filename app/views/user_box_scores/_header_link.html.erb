@@ -3,11 +3,9 @@
 <% header_arrow = nb == @sort.to_i ? header_arrow : "" %>
 <%=link_to header+header_arrow,
 if from == "index"
-  user_box_scores_path( exsort: @sort, order: -@order, sort: nb,
-                        round_start: @round.start_date, club_id: @club.id)
+  user_box_scores_path( exsort: @sort, order: -@order, sort: nb, round_id: @round.id, club_id: @club.id)
 else
-  index_year_path( exsort: @sort, order: -@order, sort: nb,
-                        round_year: @year, club_id: @club.id)
+  index_year_path( exsort: @sort, order: -@order, sort: nb, round_year: @year, club_id: @club.id)
 end,
 class: class_names("btn header-ghost", "mobile-text-size": @is_mobile)
 %>

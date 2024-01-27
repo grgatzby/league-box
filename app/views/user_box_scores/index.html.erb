@@ -14,7 +14,7 @@
   <% if @round %>
     <div class=<%=@is_mobile ? "" : "one-liner"%>>
       <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
-      <%= render "form_select_year", fallback_path: user_box_scores_path, round_start: @round.start_date, club_id: @round.club.id %>
+      <%= render "select_year", fallback_path: user_box_scores_path %>
       <%= render "shared/select_round", fallback_path: user_box_scores_path %>
     </div>
     <% if !@render_to_text %>

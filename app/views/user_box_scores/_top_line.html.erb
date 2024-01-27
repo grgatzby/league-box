@@ -3,7 +3,7 @@
   <% params["sort"] = nil  %>
   <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= link_to t(".top_line_html"),
-        user_box_scores_path(round_start: round.start_date, club_id: round.club.id),
+        user_box_scores_path(round_id: round.id, club_id: round.club.id),
         class: "btn buttons-shape btn-top-line no-padding-no-border" %>
   </p>
 <% else %>

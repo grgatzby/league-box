@@ -7,7 +7,7 @@ fr:
     index_year:
       league_table_title: League table de l'année
       valid_year_flash: Choisir une année
-    form_select_year:
+    select_year:
       select_round_year: League table de l'
       year_dropdown: année
     top_line:
