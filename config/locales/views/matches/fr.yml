@@ -43,5 +43,6 @@ fr:
       tie_break: tiebreak
       match_points: Pts match
       total: Cumul
-    score_display:
-      winner: G
+    # score_display:
+    #   loser: p
+    #   winner: g

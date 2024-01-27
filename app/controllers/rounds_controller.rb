@@ -38,8 +38,8 @@ class RoundsController < ApplicationController
     current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
 
     @new_round = Round.create(club_id: current_round.club_id,
-                              start_date: params[:round][:start_date].to_date,
-                              end_date: params[:round][:end_date].to_date)
+                              start_date: params[:round_id][:start_date].to_date,
+                              end_date: params[:round_id][:end_date].to_date)
 
     current_boxes = current_round.boxes
     temp_boxes = new_temp_boxes(current_boxes.count)
@@ -47,7 +47,8 @@ class RoundsController < ApplicationController
 
     clean_boxes(temp_boxes, current_boxes[0].user_box_score_ids.length)
 
-    redirect_to boxes_path(round_start: @new_round.start_date, club_id: current_round.club.id)
+    # redirect_to boxes_path(round_start: @new_round.start_date.strftime('%d/%m/%Y'), club_id: current_round.club.id)
+    redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club.id)
   end
 
   private
@@ -67,7 +68,7 @@ class RoundsController < ApplicationController
     current_boxes.count.times do |box_index|
       nb_players = current_boxes[box_index].user_box_score_ids.count
       nb_players.times do |player_index|
-        player_shift = params[:round][:boxes_attributes][box_index.to_s][:user_box_scores_attributes][player_index.to_s][:box_id].to_i
+        player_shift = params[:round_id][:boxes_attributes][box_index.to_s][:user_box_scores_attributes][player_index.to_s][:box_id].to_i
         user_box_scores = current_boxes[box_index].user_box_scores.sort { |a, b| a.rank <=> b.rank }
         player_id = user_box_scores[player_index].user_id
         UserBoxScore.create(

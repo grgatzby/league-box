@@ -43,5 +43,6 @@ nl:
       tie_break: tiebreak
       match_points: Match punten
       total: Totaal
-    score_display:
-      winner: W
+    # score_display:
+    #   loser: v
+    #   winner: w

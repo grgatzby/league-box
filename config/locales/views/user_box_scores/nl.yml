@@ -7,7 +7,7 @@ nl:
     index_year:
       league_table_title: League table voor jaar
       valid_year_flash: Kies een geldig jaar.
-    form_select_year:
+    select_year:
       select_round_year: League table van
       year_dropdown: jaar
     top_line:
