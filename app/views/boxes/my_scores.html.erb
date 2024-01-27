@@ -7,7 +7,6 @@
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
-      <%# render "shared/select_club_round", fallback_path: my_scores_path, explain_paragraph: t(".intro") %>
       <%= render "explain_page", explain_paragraph: t(".intro_html") %>
     <% end %>
   </div>
@@ -23,7 +22,6 @@
         <div>
           <%# <% @page_from ||= box_list_path %>
           <% if @page_from %>
-            <%# parameters = "?round_start=#{@box.round.start_date}&club_name=#{@box.round.club.name}" %>
             <% parameters = "?round_id=#{@box.round.id}&club_id=#{@box.round.club_id}" %>
             <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>
               <i class="fa-solid fa-left-long"></i>

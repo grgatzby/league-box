@@ -167,7 +167,9 @@ en:
       p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
       league_table: League table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p13: Clicking on a header sorts the player according to this header.
+      p13_html: >
+        Clicking on a header sorts the player according to this header.<br>
+        The round league table gives you access to the <b>League table for the year</b>.
       referee_list_view: Box List view (admin/Referee)
       p14_html: >
         Each player's matches which have been played are shown as list items.
@@ -177,7 +179,7 @@ en:
       table_view: Box Table view
       p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
-        If you are viewing your box, your name appears in <span class='color-tennis-red'>red</span>, and a <span class='color-tennis-red'>My scores</span>
+        If you are viewing your box, your name appears in red, and a <span class='color-tennis-red'>My scores</span>
         button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Click on a match score to view the match card or, from your own box, enter a new score by clicking the relevant cell.
       p18_html: >
@@ -187,8 +189,9 @@ en:
       p19_html: >
         Each player's matches which have been played are shown as list items. Headers are <b>Match scores, Player's points, Opponent's points, Opponent's total points</b>.
       p20_html: >
-        If you are viewing your box, your name appears in <span class='color-tennis-red'>red</span>, and a <span class='color-tennis-red'>My scores</span> button is displayed
-        next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).
+        If you are viewing your box, your name appears in red, and a <span class='color-tennis-red'>My scores</span> button is displayed
+        next to the toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ).<br>
+        <span class='color-green'>Won matches</span> display in green, <span class='color-tennis-red'>lost matches</span> in red:
         Click on a match score to view the match card or, from your own box, enter a new score by clicking your opponent name.
       p21_html: >
         A toggle link to <span class='color-tennis-blue'>Table view</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ) is displayed.

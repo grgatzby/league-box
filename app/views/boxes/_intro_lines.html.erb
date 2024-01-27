@@ -15,7 +15,6 @@
 
   <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
 </div>
-
 <div class="one-liner">
   <h4><%= render "shared/display_club", round: box.round,
       add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{t '.my_current_box'})" : "" %>
@@ -38,6 +37,13 @@
         <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{t("boxes.table_view")}" %>
       <% end %>
   <% end %>
-  <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club.id), class: "btn buttons-shape btn-yellow mb-3" %>
+  <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow mb-3" %>
   <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
+  <% if @page_from %>
+    <% parameters = params[:round_id] ? "?round_id=#{@round.id}" : "?round_year=#{params[:round_year]}" %>
+    <% parameters += "&club_id=#{@round.club_id}" %>
+    <%= link_to t('back_btn'),
+    @page_from+parameters,
+    class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
+  <% end %>
 </div>

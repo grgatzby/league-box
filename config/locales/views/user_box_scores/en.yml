@@ -1,7 +1,7 @@
 en:
   user_box_scores:
     index:
-      intro: The <b>league table</b> is updated upon each new score entry
+      intro: The <b>league table</b> is updated upon each new score entry.<br>
       league_table_title: League table round
       file_csv_flash: file data.csv created
       valid_round_flash: "League table: choose a valid round"
