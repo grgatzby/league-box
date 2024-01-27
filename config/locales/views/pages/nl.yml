@@ -166,7 +166,9 @@ nl:
       p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
       league_table: League table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
-      p13: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.
+      p13_html: >
+        Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>
+        De ronde ranglijst geeft u toegang tot de <b>competitietabel voor het jaar</b>.
       referee_list_view: Box resultaten lijst (admin/Referee)
       p14_html: >
         De door elke speler gespeelde wedstrijden worden weergegeven als lijstitems. De kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.<br>
@@ -186,7 +188,8 @@ nl:
       p19_html: De gespeelde wedstrijden van elke speler worden weergegeven als lijstitems. Kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.
       p20_html: >
         Als u uw box bekijkt, wordt uw naam weergegeven in <span class='color-tennis-red'>rood</span> en wordt een knop <span class='color-tennis-red'>Mijn scores</span> weergegeven
-        naast de schakellink naar <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).
+        naast de schakellink naar <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).<br>
+        <span class='color-green'>Gewonnen wedstrijden</span> worden in het groen weergegeven, <span class='color-tennis-red'>verloren wedstrijden</span> in het rood.<br>
         Klik op een wedstrijdscore om de wedstrijdkaart te bekijken of voer vanuit uw eigen veld een nieuwe score in door op de naam van uw tegenstander te klikken.
       p21_html: >
         Er wordt een schakellink <span class='color-tennis-blue'>Tafelweergave</span> (<i class='fa-regular fa-table-list color-tennis-blue'></i>).

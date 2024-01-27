@@ -1,10 +1,10 @@
 nl:
   user_box_scores:
     index:
-      intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt
+      intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt.<br>
       league_table_title: League table ronde
       file_csv_flash: bestand data.csv gemaakt
-      valid_round_flash: "League table: kies een geldig rond."
+      valid_round_flash: "League table: kies een geldige ronde."
     index_year:
       league_table_title: League table voor jaar
       valid_year_flash: "Jaarlijks league table: kies een geldig jaar."
