@@ -41,11 +41,14 @@ fr:
       first_name_header: Prénom
       rank_header: Rang
       points_header: Points
-      box_header: Box nº
+      box_header: Box
       matches_played_header: Joués
       matches_won_header: Gagnés
       sets_played_header: Joués
       sets_won_header: Gagnés
+      rank_round: Rang round_
+      points_round: Points round_
+      box_round: Box round_
     new:
       new_club_title: Générer un nouveau club et un round
       not_authorised: Vous n'êtes pas admin, cette page n'est pas authorisée.

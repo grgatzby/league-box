@@ -47,6 +47,9 @@ en:
       matches_won_header: Won
       sets_played_header: Played
       sets_won_header: Won
+      rank_round: Rank round_
+      points_round: Points round_
+      box_round: Box nb round_
     new:
       new_club_title: Create a new club and a round
       not_authorised: You are not an admin, this page is not authorised.

@@ -46,6 +46,9 @@ nl:
       matches_won_header: Gewonnen
       sets_played_header: Gespeeld
       sets_won_header: Gewonnen
+      rank_round: Rang ronde_
+      points_round: Punten ronde_
+      box_round: Box ronde_
     new:
       new_club_title: Genereer een nieuwe club en ronde
       not_authorised: U bent geen beheerder, deze pagina is niet geautoriseerd.

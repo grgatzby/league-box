@@ -47,7 +47,6 @@ class UserBoxScoresController < ApplicationController
   end
 
   def index_year
-    my_own_box(current_round(@club), player = current_user)
     # displays the league table for the year, allows user to sort the table by click on headers
     @year = params[:round_year].to_i
     @club = Club.find(params[:club_id].to_i)
@@ -191,7 +190,7 @@ class UserBoxScoresController < ApplicationController
                    user_bs.sets_won]
       end
     end
-    download_csv(file.pathmap, "R#{round_number(round)}")
+    download_csv(file.pathmap, "R#{round_number(round)}", round.club.name)
   end
 
   def league_table_to_csv_year
@@ -207,33 +206,45 @@ class UserBoxScoresController < ApplicationController
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << [l(Time.now, format: :short), # to time stamp the csv file
-                 t('.table_headers.player_header'),
-                 t('.table_headers.rank_header'),
-                 t('.table_headers.points_header'),
-                 t('.table_headers.matches_played_header'),
-                 t('.table_headers.matches_won_header'),
-                 t('.table_headers.sets_played_header'),
-                 t('.table_headers.sets_won_header')]
+      header = [l(Time.now, format: :short), # to time stamp the csv file
+        t('.table_headers.player_header'),
+        t('.table_headers.rank_header'),
+        t('.table_headers.points_header'),
+        t('.table_headers.matches_played_header'),
+        t('.table_headers.matches_won_header'),
+        t('.table_headers.sets_played_header'),
+        t('.table_headers.sets_won_header')]
+      (1..rounds.size).each do |i|
+        header.push("#{t('.table_headers.rank_round')}#{i}")
+        header.push("#{t('.table_headers.points_round')}#{i}")
+        header.push("#{t('.table_headers.box_round')}#{i}")
+      end
+      writer << header
       table.each_with_index do |user_bs, index|
-        writer << [index + 1,
-                   "#{user_bs[0].first_name} #{user_bs[0].last_name}",
-                   user_bs[1][:rank],
-                   user_bs[1][:points],
-                   user_bs[1][:games_played],
-                   user_bs[1][:games_won],
-                   user_bs[1][:sets_played],
-                   user_bs[1][:sets_won]]
+        data = [index + 1,
+          "#{user_bs[0].first_name} #{user_bs[0].last_name}",
+          user_bs[1][:rank],
+          user_bs[1][:points],
+          user_bs[1][:games_played],
+          user_bs[1][:games_won],
+          user_bs[1][:sets_played],
+          user_bs[1][:sets_won]]
+        (1..rounds.size).each do |i|
+          data.push(user_bs[1]["rank_round#{i}"])
+          data.push(user_bs[1]["points_round#{i}"])
+          data.push(user_bs[1]["box_round#{i}"])
+        end
+        writer << data
       end
     end
-    download_csv(file.pathmap, year)
+    download_csv(file.pathmap, year, rounds[0].club.name)
   end
 
   private
 
-  def download_csv(file = "#{Rails.root}/public/data.csv", type)
+  def download_csv(file = "#{Rails.root}/public/data.csv", league_type, club_name)
     if File.exist?(file)
-      send_file file, filename: "League Table-#{type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
+      send_file file, filename: "League Table-#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
     end
   end
 
@@ -245,20 +256,34 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_year(rounds, users)
-    round_ubs = rounds.map(&:user_box_scores) # user_box_score collections for each round in the year
+    # return a hash of [player, hash of [index, rank, points, games_played, games_won, sets_played, sets_won, last_round]]
+    round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # user_box_score collections for each round in the year
     league_table = {}
     users.each do |user|
       league_table[user] =
         { # for each player, sum of points, games_played, games_won, sets_played, sets_won across the chosen year rounds
           index: 0,
           rank: 0,
-          points: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:points) },
-          games_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
-          games_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
-          sets_played: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_played) },
-          sets_won: round_ubs.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) },
+          points: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:points) },
+          games_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
+          games_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
+          sets_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_played) },
+          sets_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) },
           last_round: last_round(user)
         }
+      # add the ranks, points and box of each round of the year for the player
+      (1..rounds.size).each do |i|
+        user_box_score = round_user_bss[i - 1].select { |user_bs| user_bs.user_id == user.id }[0]
+        if user_box_score
+          league_table[user]["rank_round#{i}"] = user_box_score.rank
+          league_table[user]["points_round#{i}"] = user_box_score.points
+          league_table[user]["box_round#{i}"] = user_box_score.box.box_number
+        else
+          league_table[user]["rank_round#{i}"] = 0
+          league_table[user]["points_round#{i}"] = 0
+          league_table[user]["box_round#{i}"] = 0
+        end
+      end
     end
     league_table
   end

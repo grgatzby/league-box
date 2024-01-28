@@ -56,8 +56,7 @@ en:
       lost: Lost
       on_date: "on"
       dont_forget_html: >
-        <i>Don't forget to play your matches and enter the scores in </i><span class='color-tennis-red'><b>My scores</b></span>
-        <i>or in </i><b>Table view</b><i>!</i>
+        <i>Players must play their matches and enter the scores in <b>LeagueBox</b></i>.
     no_match_line:
       not_played: Not played yet
       enter_score: Enter score

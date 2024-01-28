@@ -56,8 +56,7 @@ fr:
       lost: Perdu
       on_date: "le"
       dont_forget_html: >
-        <i>N'oubliez pas de jouer vos matchs et d'entrer les scores dans </i><span class='color-tennis-red'><b>Mes scores</b></span>
-        <i>ou dans les </i><b>résultats en grille</b><i>!</i>
+        <i>Les joueurs doivent entrer leurs scores dans <b>LeagueBox</b></i>.
     no_match_line:
       not_played: Pas encore joué
       enter_score: Entrer le score
