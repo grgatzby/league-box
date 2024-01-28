@@ -56,7 +56,7 @@ fr:
       lost: Perdu
       on_date: "le"
       dont_forget_html: >
-        <i>Les joueurs doivententrer leurs scores dans <b>LeagueBox</b></i>.
+        <i>Les joueurs doivent entrer leurs scores dans <b>LeagueBox</b></i>.
     no_match_line:
       not_played: Pas encore joué
       enter_score: Entrer le score
