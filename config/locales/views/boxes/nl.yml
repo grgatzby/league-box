@@ -56,8 +56,7 @@ nl:
       lost: Verloren
       on_date: "op"
       dont_forget_html: >
-        <i>Vergeet niet uw wedstrijden te spelen en uw scores in </i><span class='color-tennis-red'><b>Mijn scores</b></span><i> of
-        in </i><b>resultatenraster</b><i> in te voeren!</i>
+        <i>Spelers moeten hun wedstrijden spelen en de scores invoeren in <b>LeagueBox</b></i>.
     no_match_line:
       not_played: Nog niet gespeeld
       enter_score: Voer uw score in

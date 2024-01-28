@@ -123,7 +123,7 @@ class ApplicationController < ActionController::Base
 
   def rank_players(user_box_scores, *from)
     # updates the rank field in the UserBoxScore database
-    from = from[0] || "index"
+    from = from[0] || "index" # "index_year" or "index"
 
     # old ranking based on points only (not used, for initial tests only):
     # points_array = scores.map(&:points)

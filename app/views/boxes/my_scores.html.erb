@@ -20,17 +20,8 @@
             add_text: "#{render "shared/fullname", user: @current_player} - box #{@box.box_number}" %>
         </h4>
         <div>
-          <%# <% @page_from ||= box_list_path %>
-          <% if @page_from %>
-            <% parameters = "?round_id=#{@box.round.id}&club_id=#{@box.round.club_id}" %>
-            <%= link_to @page_from+parameters, class: "btn buttons-shape btn-yellow mb-3" do %>
-              <i class="fa-solid fa-left-long"></i>
-            <% end %>
-          <% else %>
-            <%= link_to :back, class: "btn buttons-shape btn-yellow mb-3" do %>
-              <i class="fa-solid fa-left-long"></i>
-            <% end %>
-          <% end %>
+          <% parameters = "?round_id=#{@box.round.id}&club_id=#{@box.round.club_id}" %>
+          <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn buttons-shape btn-yellow mb-3" %>
         </div>
       </div>
       <div class="<%=class_names( "frame-color-shape players frame-padding",
@@ -69,7 +60,7 @@
             <div class="col-2">
               <% class_btns = class_names( "btn btn-ghost", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
               <% if opponent == @current_player %>
-                <%= link_to t(".view_box_results_btn"), box_list_path, class: class_btns %>
+                <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
               <% elsif match %>
                 <%= link_to t(".see_match_card_btn"), match_path(player: current_user.id, opponent: opponent.id, match_id: match.id, page_from: my_scores_path), class: class_btns %>
               <% else %>
