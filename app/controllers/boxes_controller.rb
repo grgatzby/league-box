@@ -41,14 +41,14 @@ class BoxesController < ApplicationController
       @round_nb = round_number(@box.round)
     end
     if @box
-      @my_games = []
+      @my_matches = []
       @box.user_box_scores.each do |user_box_score|
         opponent_matches = user_matches(user_box_score.user, @box)
         current_player_matches = user_matches(@current_player, @box)
         match_played = (opponent_matches & current_player_matches)[0]
-        @my_games << [user_box_score, match_played]
+        @my_matches << [user_box_score, match_played]
       end
-      @my_games = @my_games.sort { |a, b| b[0].points <=> a[0].points }
+      @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
         # Create a new chatroom if it does not exist or if still set to "general":
         # reason : the Chatroom class was migrated after the Box class (with: a chatroom has one box)

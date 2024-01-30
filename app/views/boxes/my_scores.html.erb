@@ -33,9 +33,9 @@
           <div class="col-2"><%= t '.played_on_header' %></div>
           <div class="col-2"><%= t '.action_header' %></div>
         </div>
-        <% @my_games.each do |my_game|
-          opponent = my_game[0].user
-          match = my_game[1] %>
+        <% @my_matches.each do |my_match|
+          opponent = my_match[0].user
+          match = my_match[1] %>
 
           <div class="row justify-content-center">
             <div class="col-3 top-bottom-padding">
@@ -50,7 +50,7 @@
               </div>
             </div>
             <div class="col-2 top-bottom-padding">
-                <%= t("pts", count: my_game[0].points) %>
+                <%= t("pts", count: my_match[0].points) %>
             </div>
             <div class="col-2 top-bottom-padding">
               <% if match && opponent != @current_player %>

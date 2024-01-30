@@ -16,7 +16,7 @@ class RoundsController < ApplicationController
       # - the top two players will be promoted 1 box,
       # - the last two players will be relegated 1 box,
       # A player who has played less than two matches will be removed from the league.
-      min_qualifying_games = 2
+      min_qualifying_matches = 2
       box_player_move = Hash.new(0)
       box_player_move[0] = box.box_number == 1 ? 0 : 1
       box_player_move[1] = box.box_number == 1 ? 0 : 1
@@ -25,7 +25,7 @@ class RoundsController < ApplicationController
       user_box_scores.each_with_index do |ubs, index|
         new_box.user_box_scores.build # one nested attribute per player for the form
         # array of proposed moves for each player in the round (99 = player removed from next round)
-        @player_moves << (ubs.games_played >= min_qualifying_games ? box_player_move[index] : 99)
+        @player_moves << (ubs.matches_played >= min_qualifying_matches ? box_player_move[index] : 99)
       end
     end
   end
@@ -78,8 +78,8 @@ class RoundsController < ApplicationController
           rank: 0,
           sets_won: 0,
           sets_played: 0,
-          games_won: 0,
-          games_played: 0
+          matches_won: 0,
+          matches_played: 0
         ) unless player_shift == 99
       end
     end

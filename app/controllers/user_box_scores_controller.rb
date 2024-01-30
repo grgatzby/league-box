@@ -30,13 +30,17 @@ class UserBoxScoresController < ApplicationController
       when "5" # "Box"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
       when "6" # "Matches Played"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_played, -@order * user_bs.rank] }
       when "7" # "Matches Won"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_won, -@order * user_bs.rank] }
       when "8" # "Sets Played"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
       when "9" # "Sets Won"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
+      when "10" # "Games Played"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
+      when "11" # "Games Won"
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
       end
     end
     @render_to_text = false
@@ -79,13 +83,17 @@ class UserBoxScoresController < ApplicationController
       when "4" # "Points"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:points], -@order * user_bs[1][:rank]] }
       when "6" # "Matches Played"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_played], -@order * user_bs[1][:rank]] }
+        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_played], -@order * user_bs[1][:rank]] }
       when "7" # "Matches Won"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
+        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_won], -@order * user_bs[1][:rank]] }
       when "8" # "Sets Played"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_played], -@order * user_bs[1][:rank]] }
       when "9" # "Sets Won"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_won], -@order * user_bs[1][:rank]] }
+      when "10" # "Games Played"
+        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_played], -@order * user_bs[1][:rank]] }
+      when "11" # "Games Won"
+        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
       end
       @render_to_text = false
       if params[:to_text] == "true"
@@ -145,7 +153,7 @@ class UserBoxScoresController < ApplicationController
           box_players << players.shift(players_per_box)
           box_players[box_index].each do |player|
             UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
-                                sets_won: 0, sets_played: 0, games_won: 0, games_played: 0)
+                                sets_won: 0, sets_played: 0, matches_won: 0, matches_played: 0)
           end
         end
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
@@ -170,24 +178,14 @@ class UserBoxScoresController < ApplicationController
     CSV.open(file, 'w') do |writer|
       # table headers
       writer << [l(Time.now, format: :short), # to time stamp the csv file
-                 t('.table_headers.player_header'),
-                 t('.table_headers.rank_header'),
-                 t('.table_headers.points_header'),
-                 t('.table_headers.box_header'),
-                 t('.table_headers.matches_played_header'),
-                 t('.table_headers.matches_won_header'),
-                 t('.table_headers.sets_played_header'),
-                 t('.table_headers.sets_won_header')]
+                "Player", "Rank", "Points", "Box", "M played", "M won", "S played", "S won", "G played", "G won"]
       table.each_with_index do |user_bs, index|
         writer << [index + 1,
                    "#{user_bs.user.first_name} #{user_bs.user.last_name}",
-                   user_bs.rank,
-                   user_bs.points,
-                   user_bs.box.box_number,
-                   user_bs.games_played,
-                   user_bs.games_won,
-                   user_bs.sets_played,
-                   user_bs.sets_won]
+                   user_bs.rank, user_bs.points, user_bs.box.box_number,
+                   user_bs.matches_played, user_bs.matches_won,
+                   user_bs.sets_played, user_bs.sets_won,
+                   user_bs.games_played, user_bs.games_won]
       end
     end
     download_csv(file.pathmap, "R#{round_number(round)}", round.club.name)
@@ -207,28 +205,20 @@ class UserBoxScoresController < ApplicationController
     CSV.open(file, 'w') do |writer|
       # table headers
       header = [l(Time.now, format: :short), # to time stamp the csv file
-        t('.table_headers.player_header'),
-        t('.table_headers.rank_header'),
-        t('.table_headers.points_header'),
-        t('.table_headers.matches_played_header'),
-        t('.table_headers.matches_won_header'),
-        t('.table_headers.sets_played_header'),
-        t('.table_headers.sets_won_header')]
-      (1..rounds.size).each do |i|
-        header.push("#{t('.table_headers.rank_round')}#{i}")
-        header.push("#{t('.table_headers.points_round')}#{i}")
-        header.push("#{t('.table_headers.box_round')}#{i}")
-      end
+        "Player", "Rank", "Points", "M played", "M won", "S played", "S won", "G played", "G won"]
+        (1..rounds.size).each do |i|
+          header.push("#{t('.table_headers.rank_round')}#{i}")
+          header.push("#{t('.table_headers.points_round')}#{i}")
+          header.push("#{t('.table_headers.box_round')}#{i}")
+        end
       writer << header
       table.each_with_index do |user_bs, index|
         data = [index + 1,
           "#{user_bs[0].first_name} #{user_bs[0].last_name}",
-          user_bs[1][:rank],
-          user_bs[1][:points],
-          user_bs[1][:games_played],
-          user_bs[1][:games_won],
-          user_bs[1][:sets_played],
-          user_bs[1][:sets_won]]
+          user_bs[1][:rank], user_bs[1][:points],
+          user_bs[1][:matches_played], user_bs[1][:matches_won],
+          user_bs[1][:sets_played], user_bs[1][:sets_won],
+          user_bs[1][:games_played], user_bs[1][:games_won]]
         (1..rounds.size).each do |i|
           data.push(user_bs[1]["rank_round#{i}"])
           data.push(user_bs[1]["points_round#{i}"])
@@ -256,19 +246,21 @@ class UserBoxScoresController < ApplicationController
   end
 
   def league_table_year(rounds, users)
-    # return a hash of [player, hash of [index, rank, points, games_played, games_won, sets_played, sets_won, last_round]]
-    round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # user_box_score collections for each round in the year
+    # return a hash : { player, { index, rank, points, matches_played, matches_won, games_played, games_won, sets_played, sets_won, last_round } }
+    round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # array of each round's array of user_box_scores in the year
     league_table = {}
     users.each do |user|
       league_table[user] =
-        { # for each player, sum of points, games_played, games_won, sets_played, sets_won across the chosen year rounds
+        { # for each player, sum of points, matches_played, matches_won, games_played, games_won, sets_played, sets_won across the chosen year rounds
           index: 0,
-          rank: 0,
+          rank: 0, # updated in Application#rank_players
           points: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:points) },
-          games_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
-          games_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
+          matches_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:matches_played) },
+          matches_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:matches_won) },
           sets_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_played) },
           sets_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) },
+          games_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
+          games_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
           last_round: last_round(user)
         }
       # add the ranks, points and box of each round of the year for the player

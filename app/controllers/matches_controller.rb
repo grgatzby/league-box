@@ -24,6 +24,7 @@ class MatchesController < ApplicationController
       @max_end_date = [@round.end_date, Time.now].min
       @match = Match.new(time: @max_end_date)
       @match.user_match_scores.build
+      # the code below was adapted to the previous form where scores were input individually
       # if params[:score_set1]
       #   @match_entry = Match.new
       #   score_set1 = split_score_to_array(params[:score_set1])
@@ -36,7 +37,6 @@ class MatchesController < ApplicationController
       #     @match_entry.user_match_scores[index][:score_set2] = score_set2[index]
       #     @match_entry.user_match_scores[index][:score_tiebreak] = score_tiebreak[index]
       #   end
-      #   # raise
       # end
       # nested attributes for user_match_scores: comment out the line below allows separate input per player
       # for simplicity we now enter scores in 3 inputs rather than 6
@@ -53,6 +53,7 @@ class MatchesController < ApplicationController
     @match.court = Court.find_by name: params[:match][:court_id]
 
     match_scores = [{}, {}]
+    # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
     score_set1 = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_set1])
     score_set2 = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_set2])
     score_tiebreak = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_tiebreak])
@@ -65,14 +66,13 @@ class MatchesController < ApplicationController
     test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
     if test_score
       results = compute_points(match_scores)
-
-      # if score entered is valid, store match date and match time in UTC Time
+      # if score is valid, store match date and match time in UTC Time
       # @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match_id]['time(4i)']}:#{params[:match_id]['time(5i)']}:00".to_datetime)
-      # previously, user could enter match hour in the form, but it was deemed unnecessary and not ux friendly
+      # previously, user could enter match hour in the form, but it was considered unnecessary and not ux friendly
       @match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
       @match.save
 
-      # create the two match scores for the match
+      # create and fill a user_match_score instance for each player of the match
       UserMatchScore.create(user_id: params[:player], match_id: @match.id)
       UserMatchScore.create(user_id: params[:opponent], match_id: @match.id)
 
@@ -97,8 +97,10 @@ class MatchesController < ApplicationController
         user_box_score.points += user_match_scores[index].points
         user_box_score.sets_won += results[index]
         user_box_score.sets_played += results.sum
-        user_box_score.games_won += results[index] > results[1 - index] ? 1 : 0
-        user_box_score.games_played += 1
+        user_box_score.games_won += won_games(user_match_scores[index])
+        user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+        user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+        user_box_score.matches_played += 1
         user_box_score.save
       end
 
@@ -154,7 +156,7 @@ class MatchesController < ApplicationController
       match_points[index][:points] = user_match_scores[index].points
       match_points[index][:sets_won] = results[index]
       match_points[index][:sets_played] = results.sum
-      match_points[index][:games_won] = results[index] > results[1 - index] ? 1 : 0
+      match_points[index][:matches_won] = results[index] > results[1 - index] ? 1 : 0
     end
 
     # updates match scores for each player (without saving)
@@ -192,8 +194,10 @@ class MatchesController < ApplicationController
         user_box_score.points += user_match_scores[index].points - match_points[index][:points]
         user_box_score.sets_won += results[index] - match_points[index][:sets_won]
         user_box_score.sets_played += results.sum - match_points[index][:sets_played]
-        user_box_score.games_won += (results[index] > results[1 - index] ? 1 : 0) - match_points[index][:games_won]
-        # user_box_score.games_played is unchanged: no need to update
+        user_box_score.games_won += won_games(user_match_scores[index]) - match_points[index][:games_won]
+        user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index]) - match_points[index][:games_played]
+        user_box_score.matches_won += (results[index] > results[1 - index] ? 1 : 0) - match_points[index][:matches_won]
+        # user_box_score.matches_played is unchanged: no need to update
         user_box_score.save
         @round = match.box.round
       end
@@ -219,8 +223,10 @@ class MatchesController < ApplicationController
       user_box_score.points -= user_match_scores[index].points
       user_box_score.sets_won -= results[index]
       user_box_score.sets_played -= results.sum
-      user_box_score.games_won -= results[index] > results[1 - index] ? 1 : 0
-      user_box_score.games_played -= 1
+      user_box_score.games_won -= won_games(user_match_scores[index])
+      user_box_score.games_played -= won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+      user_box_score.matches_won -= results[index] > results[1 - index] ? 1 : 0
+      user_box_score.matches_played -= 1
       user_box_score.save
     end
     @match.destroy
@@ -233,8 +239,13 @@ class MatchesController < ApplicationController
   private
 
   def compute_points(match_scores)
-    # compute match_scores (array of 2 hashes of scores),
-    # and returns results (array of won sets count for each player)
+    # match_scores (array of 2 hashes of scores) => results (array of won sets count for each player)
+    # eg: 4-2 1-3 10-7
+    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    # =>  [ 2 , 1 ] & transforms entry hash to:
+    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10, points: 20 },
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7, points: 12} ]
     # Points rules:
     #   - Winner earns 20 points
     #   - Looser earns 10 points per set won + number of games per lost set
@@ -276,6 +287,9 @@ class MatchesController < ApplicationController
 
   def compute_results(match_scores)
     # compute and returns results (array of won sets count for each player)
+    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    # =>  [ 2 , 1 ]
 
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
 
@@ -333,7 +347,7 @@ class MatchesController < ApplicationController
          (results[:sets_won1] == 1 || results[:sets_won2] == 1) # no score entered for the tiebreak with 1 set each
         flash[:alert] = t('.test_scores02_flash')
         false
-      elsif (match_scores[0][:score_tiebreak] > 0 || match_scores[1][:score_tiebreak] > 0) &&
+      elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
             (results[:sets_won1] == 2 || results[:sets_won2] == 2) # unnecessary tiebreak score entered
         flash[:notice] = t('.test_scores05_flash')
         true # return a notice but enter the score without the tiebreak score
@@ -343,7 +357,7 @@ class MatchesController < ApplicationController
         else
           results[:sets_won2] += 1
         end
-        # return results (ARRAY of won sets count for each player)
+        # return ARRAY of won sets count for each player
         [results[:sets_won1], results[:sets_won2]]
       end
     end
@@ -351,28 +365,32 @@ class MatchesController < ApplicationController
 
   def test_edit_score(match_scores, results)
     # return true if scores entered in matches/edit are valid, false otherwise
+    # match_scores (array of 2 hashes of scores)
+    # eg: 4-2 1-3 10-7
+    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
-      flash[:alert] = t('.test_scores01_flash')
+      flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
       false
     elsif (match_scores[0][:score_tiebreak] < 10 && match_scores[1][:score_tiebreak] < 10) &&
           (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
-      flash[:alert] = t('.test_scores02_flash')
+      flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
       false
     elsif (match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] == 4) ||
           (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
-      flash[:alert] = t('.test_scores03_flash')
+      flash[:alert] = t('.test_scores03_flash') # 4-4: enter a correct score for set 1 and set 2
       false
     elsif (((match_scores[0][:score_tiebreak] > 10 && match_scores[1][:score_tiebreak] < 9) ||
           (match_scores[0][:score_tiebreak] < 9 && match_scores[1][:score_tiebreak] > 10)) ||
           ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2)) &&
           (results[0] == 1 || results[1] == 1)
-      flash[:alert] = t('.test_scores04_flash')
+      flash[:alert] = t('.test_scores04_flash') # Tiebreak: first to 10 with 2 points clear.
       false
-    elsif (match_scores[0][:score_tiebreak] > 0 || match_scores[1][:score_tiebreak] > 0) &&
-          (results[0] == 2 || results[1] == 2) # unnecessary tiebreak score entered
-      flash[:notice] = t('.test_scores05_flash')
-      true # return a notice but enter the score without the tiebreak score
+    elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
+          (results[0] == 2 || results[1] == 2)
+      flash[:notice] = t('.test_scores05_flash') # No tiebreak needed if 2 sets to love.
+      true # true: return a notice but enter the score without the tiebreak score
     else
       true
     end
@@ -381,5 +399,10 @@ class MatchesController < ApplicationController
   def split_score_to_array(score)
     # converts string score format "s1-s2" into array format [s1, s2]
     [score.match(/.+?(?=-)/).to_s.to_i, score.split("-")[-1].to_i]
+  end
+
+  def won_games(user_match_score)
+    # sum of games of a player's match card
+    user_match_score.score_set1 + user_match_score.score_set2 + user_match_score.score_tiebreak
   end
 end

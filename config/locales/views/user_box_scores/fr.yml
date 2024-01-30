@@ -35,6 +35,10 @@ fr:
         zero: 0 set
         one: 1 set
         other: "%{count} sets"
+      games:
+        zero: 0 jeu
+        one: 1 jeu
+        other: "%{count} jeux"
     table_headers:
       player_header: Joueur
       last_name_header: Nom
@@ -44,6 +48,8 @@ fr:
       box_header: Box
       matches_played_header: Joués
       matches_won_header: Gagnés
+      games_played_header: Joués
+      games_won_header: Gagnés
       sets_played_header: Joués
       sets_won_header: Gagnés
       rank_round: Rang round_
