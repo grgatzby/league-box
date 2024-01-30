@@ -10,7 +10,7 @@
   <%= t '.p01' %><br><br>
 
   <% players = [@current_player, @opponent] %>
-  <div class="one-liner frame-margin-rl">
+  <div class="<%= class_names("one-liner", "frame-margin-rl": !@is_mobile, "mobile-frame-margin-rl": @is_mobile)%>">
     <h5>
       <%= render "shared/fullname", user: @current_player %><%= " versus " %>
       <%= render "shared/fullname", user: @opponent %>
@@ -18,7 +18,9 @@
   </div>
   <%= "#{@match.user_match_scores[0][:score_set1]} #{@match.user_match_scores[0][:score_set2]} #{@match.user_match_scores[0][:score_tiebreak]}" %>
   <%= form_for @match do |f| %>
-    <div class = "frame-color-shape frame-margin-rl frame-padding">
+    <div class="<%= class_names("frame-color-shape frame-padding",
+                                "frame-margin-rl": !@is_mobile,
+                                "mobile-frame-margin-rl": @is_mobile)%>">
       <br>
       <div class="row">
         <div class="col-3"><b><%= f.label :court_id, t(".match_played") %></b></div>
