@@ -2,9 +2,9 @@
 <div class="container text-size">
   <% if @box %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
-    <div class = "frame-color-shape frame-padding grid-wrap">
+    <div class = "frame-color-shape frame-padding box-table-wrap">
       <div class="<%=class_names( "row small-font",
-                                  "mobile-box-show-width mobile-text-size mobile-grid-container": @is_mobile,
+                                  "mobile-box-table-width mobile-grid-container mobile-text-size": @is_mobile,
                                   "box-width grid-container": !@is_mobile)%>">
         <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
         <div class="col-1 print-all-content">

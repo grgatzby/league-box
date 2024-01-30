@@ -43,7 +43,7 @@
 }
 
 .mobile-table-width {
-  width: 30rem;
+  width: calc(max(100%,30rem));
 }
 
 .photo-wrap {
