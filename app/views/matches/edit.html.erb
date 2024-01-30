@@ -1,5 +1,5 @@
 <!-- admin/referee: edit or delete a match and dependent user_match_scores -->
-<div class="container text-size">
+<div class="<%= class_names("text-size", "container": !@is_mobile)%>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.edit_match_title' %></h3>
@@ -10,7 +10,8 @@
   <p><%= t '.p01' %></p>
 
   <% players = [@current_player, @opponent] %>
-  <div class="<%= class_names("one-liner", "frame-margin-rl": !@is_mobile, "mobile-frame-margin-rl": @is_mobile)%>">
+  <div class="one-liner frame-margin-rl">
+<!--  <div class="<%= class_names("one-liner", "frame-margin-rl": !@is_mobile, "mobile-frame-margin-rl": @is_mobile)%>"> -->
     <h5>
       <%= render "shared/fullname", user: @user_match_scores[0].user %><i> versus </i>
       <%= render "shared/fullname", user: @user_match_scores[1].user %>
@@ -18,9 +19,10 @@
   </div>
 
   <%= form_for @match do |f| %>
-    <div class="<%= class_names("frame-color-shape frame-padding",
+    <div class="frame-color-shape frame-padding frame-margin-rl">
+<!--    <div class="<%= class_names("frame-color-shape frame-padding",
                                 "frame-margin-rl": !@is_mobile,
-                                "mobile-frame-margin-rl": @is_mobile)%>">
+                                "mobile-frame-margin-rl": @is_mobile)%>"> -->
         <br>
       <div class="row">
         <div class="col-4"><%= f.label :court_id, t(".match_played") %></div>

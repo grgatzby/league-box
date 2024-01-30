@@ -1,5 +1,5 @@
 <!-- player: show match/user_match_scores details (called from boxes/my_scores, show, show_list) -->
-<div class="container text-size">
+<div class="<%= class_names("text-size", "container": !@is_mobile)%>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.show_match_title' %></h3>
@@ -10,9 +10,10 @@
     <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
-  <div class="<%= class_names("frame-color-shape frame-padding text-size",
-                              "frame-margin-rl": !@is_mobile,
-                              "mobile-frame-margin-rl": @is_mobile)%>">
+    <div class="frame-color-shape frame-padding frame-margin-rl text-size">
+<!--    <div class="<%= class_names("frame-color-shape frame-padding text-size",
+                                "frame-margin-rl": !@is_mobile,
+                                "mobile-frame-margin-rl": @is_mobile)%>"> -->
     <br>
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
     <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,

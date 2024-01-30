@@ -1,6 +1,7 @@
 // ----------- Most pages -----------
 .container {
   margin-bottom: $btn-margin;
+  // margin: $btn-margin 10px;
 }
 
 .box-scroller {
@@ -64,16 +65,9 @@
   margin-bottom: 15px;
 }
 
-.mobile-frame-margin-rl {
-  // max-width: 700px;
-  min-width: 0px;
-  width: 100%;
-  margin-top: 0px;
-  // margin-bottom: 15px;
-}
-
 .frame-padding {
-  padding: 15px calc(var(--bs-gutter-x) * 1);
+  // padding: 15px calc(var(--bs-gutter-x) * 1);
+  padding: 15px 25px;
 }
 
 .frame-no-margin-rl{
@@ -83,20 +77,12 @@
 
 .frame-padding-no-top {
   padding-bottom: 15px;
-  padding-left: calc(var(--bs-gutter-x) * 1);
-  padding-right: calc(var(--bs-gutter-x) * 1);
+  // padding-left: calc(var(--bs-gutter-x) * 1);
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 @media only screen and (max-width: 1200px) {
-  // .frame-padding {
-  //   padding: 15px calc(var(--bs-gutter-x) * 1);
-  // }
-
-  // .frame-padding-no-top {
-  //   padding-left: calc(var(--bs-gutter-x) * 1);
-  //   padding-right: calc(var(--bs-gutter-x) * 1);
-  // }
-
   .image-front {
       .image-front-text {
         font-size: 3vw;
@@ -105,11 +91,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  // .frame-padding-no-top {
-  //   padding-left: 75px;
-  //   padding-right: 75px;
-  // }
-
   .image-front {
       .image-front-text {
         font-size: 4vw;
