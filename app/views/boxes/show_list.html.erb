@@ -1,13 +1,12 @@
 <!-- show page by list of matches -->
-<div class="container text-size" data-controller="toggle">
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>" data-controller="toggle">
   <% if @box %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.list_view") %>
 
     <div class = "frame-color-shape frame-padding frame-scroller-wrap">
-      <%#div class="box-width row"%>
       <div class="<%=class_names( "row",
                                   "mobile-box-width mobile-text-size": @is_mobile,
-                                  "box-width": !@is_mobile)%>">
+                                  "box-width": !@is_mobile) %>">
         <%= render "show_list_headers", page_from: box_list_path %>
         <%= render "show_list_data", page_from: box_list_path %>
       </div>

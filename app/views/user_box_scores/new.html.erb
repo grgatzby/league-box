@@ -1,7 +1,7 @@
 <!-- admin only: create a new club, its courts, players (from csv file), a round, its boxes and user_box_scores
 the csv file must contain fields id, email, first_name, last_name, (nickname), phone_number, role (players + 1 referee)
 players are allocated in boxes by id in descending order  -->
-<div class="container">
+<div class="<%= class_names("container": !@is_mobile) %>">
   <h3><%= t '.new_club_title' %></h3><br>
   <% unless current_user.role == "admin" %>
     <br><br><%= t '.not_authorised' %>

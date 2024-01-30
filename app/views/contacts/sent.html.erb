@@ -1,6 +1,6 @@
 <%= render "shared/image_front" %>
 
-<div class="container">
+<div class="<%= class_names("container": !@is_mobile) %>">
   <div class="frame-color-shape frame-padding text-size">
     <h3><%= t '.sent_title' %></h3>
     <br>

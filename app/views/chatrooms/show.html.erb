@@ -4,7 +4,7 @@ a chatroom is created in Box controller #my_scores.
 -->
 <% if @chatroom %>
   <!-- coming from Box/my_scores or if chatroom chosen by admin/Referee -->
-  <div class="container text-size"
+  <div class="<%= class_names("text-size", "container": !@is_mobile) %>"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
     data-chatroom-subscription-chatroom-name-value="<%= @chatroom.name %>"
@@ -22,7 +22,7 @@ a chatroom is created in Box controller #my_scores.
       </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
-        <!-- previous messages -->
+        <!-- list of previous messages -->
       <div class="messages print-all-content" data-chatroom-subscription-target="messages">
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="click" data-bs-placement="center" data-bs-delay= '{ "show": 500 }'

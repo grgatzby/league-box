@@ -1,7 +1,6 @@
 <!-- player page to view own match results, enter new scores -->
-<div class="container text-size">
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
-  <%# <div class="one-liner"> %>
   <div>
     <h3><%= t '.my_scores' %></h3>
     <% if @box %>
@@ -25,7 +24,7 @@
         </div>
       </div>
       <div class="<%=class_names( "frame-color-shape players frame-padding",
-                                  "mobile-text-size": @is_mobile)%>">
+                                  "mobile-text-size": @is_mobile) %>">
         <h4><%= t '.view_enter_scores' %></h4>
         <div class="row justify-content-center top-bottom-padding bold-font">
           <div class="col-3"><%= t '.player_header' %></div>

@@ -3,7 +3,7 @@
 <% else %>
   <br>
 <% end %>
-<div class="container">
+<div class="<%= class_names("container": !@is_mobile) %>">
   <div class="frame-color-shape frame-padding">
     <%= render "shared/staff", from:"pages" %>
   </div>

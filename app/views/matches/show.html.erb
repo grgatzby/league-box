@@ -1,5 +1,5 @@
 <!-- player: show match/user_match_scores details (called from boxes/my_scores, show, show_list) -->
-<div class="<%= class_names("text-size", "container": !@is_mobile)%>">
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
     <h3><%= t '.show_match_title' %></h3>
@@ -11,13 +11,10 @@
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
     <div class="frame-color-shape frame-padding frame-margin-rl text-size">
-<!--    <div class="<%= class_names("frame-color-shape frame-padding text-size",
-                                "frame-margin-rl": !@is_mobile,
-                                "mobile-frame-margin-rl": @is_mobile)%>"> -->
     <br>
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
     <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,
-                                "grid-container score-width": !@is_mobile)%>">
+                                "grid-container score-width": !@is_mobile) %>">
       <%= render "score_headers", tiebreak: tiebreak %><br>
       <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs %><br>
       <%= render "score_display", match_score: @opponent_match_score, tiebreak: tiebreak, user_box_score: opponent_ubs %>
@@ -43,7 +40,6 @@
     <br>
   </div>
   <div class="buttons-wrap">
-    <%# link_to t(".back_btn"), :back, class: "btn buttons-shape btn-yellow" %>
     <%= link_to t(".back_btn"), @page_from, class: "btn buttons-shape btn-yellow" %>
   </div>
 </div>
