@@ -209,7 +209,7 @@ Match.all.each do |match|
   puts ubs.save
 
   obs = UserBoxScore.find_by(user_id: oms.user.id, box_id: oms.match.box.id)
-  obs.games_won += ums.score_set1 + ums.score_set2 + ums.score_tiebreak
+  obs.games_won += oms.score_set1 + oms.score_set2 + oms.score_tiebreak
   obs.games_played += ums.score_set1 + ums.score_set2 + ums.score_tiebreak +
                       oms.score_set1 + oms.score_set2 + oms.score_tiebreak
   puts "  > OBS id: #{obs.id}, games won    #{obs.games_won}"
