@@ -1,6 +1,6 @@
 <%= render "shared/image_front" %>
 
-<div class="<%= class_names("container": !@is_mobile)%>"
+<div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
          data-toggle-target="togglableElement" >
@@ -26,7 +26,7 @@
       <li class="top-bottom-padding"><%= t(".li05_html", inset: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li01"}</a>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li02"}</a>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li03a"}</a>".html_safe,
-                                                        inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe)%></li>
+                                                        inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li08_html", inset: "<a class='#{class_prefix}green' href='#{@path["04"]}'>#{t ".li04"}</a>".html_safe) %></li>
     <% end %></ol><br>
 

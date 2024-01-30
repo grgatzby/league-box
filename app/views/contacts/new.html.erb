@@ -1,6 +1,6 @@
 <%= render "shared/image_front" %>
 
-<div class="container">
+<div class="<%= class_names("container": !@is_mobile) %>">
   <% processing_new_round = params[:round_id] || (params[:contact] && params[:contact][:round_id]) %>
   <div class="frame-color-shape">
   <div class="contact-wrap">
@@ -37,7 +37,7 @@
           <% if processing_new_round %>
             <!--- from the Boxes index view (request a new round creation) -->
             <% round = Round.find(processing_new_round) %>
-            <% default_subject =  t('.new_round_subject', club: round.club.name)%>
+            <% default_subject =  t('.new_round_subject', club: round.club.name) %>
             <%= f.input :subject,
               label: false,
               prompt: t('.prompt'),

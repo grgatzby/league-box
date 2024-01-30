@@ -1,15 +1,15 @@
 <!-- show page of matches in table display -->
-<div class="container text-size">
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if @box %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
     <div class = "frame-color-shape frame-padding box-table-wrap">
       <div class="<%=class_names( "row small-font",
                                   "mobile-box-table-width mobile-grid-container mobile-text-size": @is_mobile,
-                                  "box-width grid-container": !@is_mobile)%>">
+                                  "box-width grid-container": !@is_mobile) %>">
         <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
         <div class="col-1 print-all-content">
           <div class="row mb-3">
-            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-tennis-blue": !@this_is_my_box)%>">
+            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-tennis-blue": !@this_is_my_box) %>">
               <%= "Box #{@box.box_number}".upcase %>
             </div>
           </div>

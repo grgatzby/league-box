@@ -1,5 +1,5 @@
 <!-- index page: league table -->
-<div class="container" data-controller="toggle"
+<div class="<%= class_names("container": !@is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner text-size">

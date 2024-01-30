@@ -50,8 +50,8 @@ class BoxesController < ApplicationController
       end
       @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # Create a new chatroom if it does not exist or if still set to "general":
-        # reason : the Chatroom class was migrated after the Box class (with: a chatroom has one box)
+        # create a new chatroom if it does not exist or if still set to "general":
+        # why? : the Chatroom class was migrated after the Box class (with: chatroom has one box)
         # and the migration script assigned the #general chatroom by default to existing boxes.
         # If the assigned chatroom is still #general, or if this box has no chatroom yet,
         # we create a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"

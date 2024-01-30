@@ -112,7 +112,7 @@ class UserBoxScoresController < ApplicationController
   def create
     # (admin only) add a new club, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
     # The csv file must contain the following fields:
-    #         id, email, first_name, last_name, nickname, phone_number, role (player or referee)
+    #      id, email, first_name, last_name, nickname, phone_number, role (player / referee)
     # Players are allocated in boxes by id (in descending order).
     # TO DO: create a chatroom for each new box
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
@@ -169,7 +169,7 @@ class UserBoxScoresController < ApplicationController
 
   def league_table_to_csv
     # export the league table to a csv file
-    # code inspired by https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
@@ -193,7 +193,7 @@ class UserBoxScoresController < ApplicationController
 
   def league_table_to_csv_year
     # export the league table to a csv file
-    # code inspired by https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     year = params[:round_year].to_i
     rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id: params[:club_id].to_i)
     users = User.where(club_id: params[:club_id].to_i, role: "player")
@@ -239,7 +239,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def create_txt
-    # from https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
+    # credits https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
     # strip all html
     html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
     send_data(html_free_string, template: :raw, filename: "league-table-#{Date.today}.txt", type: "text/txt")

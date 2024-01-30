@@ -17,7 +17,7 @@
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
     <li>
-      <div class="<%= class_names("row hovered-player", "color-green": user_score.is_winner, "color-tennis-red": !user_score.is_winner)%>">
+      <div class="<%= class_names("row hovered-player", "color-green": user_score.is_winner, "color-tennis-red": !user_score.is_winner) %>">
         <div class="col-4">
           <%= "#{user_score.is_winner ? t(".won") : t(".lost")}" %>
           <i>vs</i>
