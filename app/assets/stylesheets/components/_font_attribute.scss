@@ -3,7 +3,8 @@
 }
 
 .small-font {
-  font-size: smaller;
+  // font-size: smaller;
+  font-size: 13px;
 }
 
 .color-tennis-blue {
@@ -65,5 +66,6 @@
 }
 
 .mobile-text-size {
-  font-size: calc(0.4rem + 0.5vw);
+  // font-size: calc(min(0.4rem + 0.5vw,0.9rem + 0.1vw));
+  font-size: calc(max(0.4rem + 0.45vw, 9px));
 }

@@ -28,9 +28,9 @@ nl:
       to_csv_btn: Exporteren naar CSV-bestand
     table_data:
       matches:
-        zero: 0 wedstrijden
-        one: 1 wedstrijd
-        other: "%{count} wedstrijden"
+        zero: 0 wed.
+        one: 1 wed.
+        other: "%{count} wed."
       sets:
         zero: 0 sets
         one: 1 set

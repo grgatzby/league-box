@@ -8,7 +8,7 @@
   <% if @round %>
     <div class = "one-liner">
       <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path, add_text: "" %></h4>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print me-3"%>
       <%= render "shared/select_round", fallback_path: boxes_path %>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"

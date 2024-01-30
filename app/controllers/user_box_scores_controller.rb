@@ -207,9 +207,9 @@ class UserBoxScoresController < ApplicationController
       header = [l(Time.now, format: :short), # to time stamp the csv file
         "Player", "Rank", "Points", "M played", "M won", "S played", "S won", "G played", "G won"]
         (1..rounds.size).each do |i|
-          header.push("#{t('.table_headers.rank_round')}#{i}")
-          header.push("#{t('.table_headers.points_round')}#{i}")
-          header.push("#{t('.table_headers.box_round')}#{i}")
+          header.push("Rank_round#{i}")
+          header.push("Points_round#{i}")
+          header.push("Box_round#{i}")
         end
       writer << header
       table.each_with_index do |user_bs, index|
