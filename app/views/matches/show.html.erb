@@ -10,7 +10,9 @@
     <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
-  <div class="frame-color-shape frame-margin-rl frame-padding text-size">
+  <div class="<%= class_names("frame-color-shape frame-padding text-size",
+                              "frame-margin-rl": !@is_mobile,
+                              "mobile-frame-margin-rl": @is_mobile)%>">
     <br>
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
     <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,

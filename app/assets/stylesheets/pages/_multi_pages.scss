@@ -64,6 +64,14 @@
   margin-bottom: 15px;
 }
 
+.mobile-frame-margin-rl {
+  // max-width: 700px;
+  min-width: 0px;
+  width: 100%;
+  margin-top: 0px;
+  // margin-bottom: 15px;
+}
+
 .frame-padding {
   padding: 15px calc(var(--bs-gutter-x) * 1);
 }

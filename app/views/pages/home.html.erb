@@ -1,8 +1,10 @@
 <%= render "shared/image_front" %>
 
 <div class="container" data-controller="toggle">
-  <div class="frame-color-shape frame-margin-rl frame-padding text-size box-scroller"
-       data-toggle-target="togglableElement" >
+  <div class="<%= class_names("frame-color-shape frame-padding text-size box-scroller",
+                              "frame-margin-rl": !@is_mobile,
+                              "mobile-frame-margin-rl": @is_mobile)%>"
+                  data-toggle-target="togglableElement" >
     <br><h4><div class="title"><b><%= t(".main_title").upcase %></b></div></h4>
     <br><br>
     <h5><b><%= t '.welcome_title' %></b></h5>
