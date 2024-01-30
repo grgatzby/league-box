@@ -125,7 +125,7 @@ class ApplicationController < ActionController::Base
     # updates the rank field in the UserBoxScore database
     from = from[0] || "index" # "index_year" or "index"
 
-    # old ranking based on points only (not used, for initial tests only):
+    # old type ranking based on points only (not used, for initial tests only):
     # points_array = scores.map(&:points)
     # sorted_points = points_array.sort.uniq.reverse
     # scores.each do |score|
@@ -146,28 +146,34 @@ class ApplicationController < ActionController::Base
     # updates ranks in the database
     if from == "index_year"
       user_box_scores.each_with_index { |score, index| score[1][:rank] = ranks[index] }
-    else
+    else # from == "index"
       user_box_scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
     end
   end
 
-  def compare(a, b, from)
+  def compare(ubs_a, ubs_b, from)
     # ranking based on 4 sorting criterias (points, nb of matches played, highest set ratio, highest game ratio)
     # the 4 compare_ methods all use the spaceship operator:
     # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b are not comparable)
-    comparison = compare_points(a, b, from)
+
+    # Ranking criterias:
+    # 1 - most points won in the round
+    comparison = compare_points(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_matches_played(a, b, from)
+    # 2 - most matches played
+    comparison = compare_matches_played(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_set_ratio(a, b, from)
+    # 3 - highest ratio of Sets Won to Sets Played %
+    comparison = compare_set_ratio(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    comparison = compare_game_ratio(a, b, from)
+    # 4 - highest ratio of Games Won to Games Played %
+    comparison = compare_game_ratio(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    add_to_tieds(a, b, from)
+    add_to_tieds(ubs_a, ubs_b, from)
 
     comparison
   end
@@ -175,23 +181,23 @@ class ApplicationController < ActionController::Base
   def compare_points(a, b, from)
     if from == "index_year"
       b[1][:points] <=> a[1][:points]
-    else
+    else # from == "index"
       b.points <=> a.points
     end
   end
 
   def compare_matches_played(a, b, from)
     if from == "index_year"
-      b[1][:games_played] <=> a[1][:games_played]
+      b[1][:matches_played] <=> a[1][:matches_played]
     else
-      b.games_played <=> a.games_played
+      b.matches_played <=> a.matches_played
     end
   end
 
   def compare_set_ratio(a, b, from)
     if from == "index_year"
       (b[1][:sets_played].zero? ? 0 : b[1][:sets_won].to_f / b[1][:sets_played]) <=> (a[1][:sets_played].zero? ? 0 : a[1][:sets_won].to_f / a[1][:sets_played])
-    else
+    else # from == "index"
       (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
     end
   end
@@ -199,7 +205,7 @@ class ApplicationController < ActionController::Base
   def compare_game_ratio(a, b, from)
     if from == "index_year"
       (b[1][:games_played].zero? ? 0 : b[1][:games_won].to_f / b[1][:games_played]) <=> (a[1][:games_played].zero? ? 0 : a[1][:games_won].to_f / a[1][:games_played])
-    else
+    else # from == "index"
       (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
     end
   end
@@ -216,7 +222,8 @@ class ApplicationController < ActionController::Base
 
   def local_path(path)
     # replaces stale locale with current locale in the path string
-    path.gsub(/en|fr|nl/, locale.to_s) if path
+    # path.gsub(/en|fr|nl/, locale.to_s) if path
+    path&.gsub(/en|fr|nl/, locale.to_s) # Ruby Safe Navigation
   end
 
   def round_number(round, *year)

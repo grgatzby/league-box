@@ -14,17 +14,18 @@
             <div class="col-1 top-bottom-padding"><%= "# #{user_bs.rank}" %></div>
             <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs.points) %></div>
             <div class="col-1 top-bottom-padding"><%= "#{user_bs.box.box_number}" %></div>
-            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.games_played) %></div>
-            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.games_won) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.matches_played) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.matches_won) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs.sets_played) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs.sets_won) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs.games_played) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs.games_won) %></div>
             <%= link_to '', box_path(user_bs.box, page_from: user_box_scores_path, round_id: @round.id, club_id: @club.id), class: 'line-link'%>
           </div>
         </div>
       </li>
     <% end %>
-  <% else %>
-    <%# index_year : user_box_scores is a hash %>
+  <% else %>  <%# from == "index_year" : user_box_scores is a hash %>
     <% user_box_scores.each_with_index do |user_bs, index| %>
       <% player = user_bs[0] %>
       <li class=<%=player == current_user ? "color-tennis-red" : (index % 2 == 0 ? "color-tennis-blue" : "color-tennis-aqua") %>>
@@ -37,10 +38,12 @@
             <div class="col-3"><%= render "shared/fullname", user: player %></div>
             <div class="col-1 top-bottom-padding"><%= "# #{user_bs[1][:rank]}" %></div>
             <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs[1][:points]) %></div>
-            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:games_played]) %></div>
-            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:games_won]) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:matches_played]) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:matches_won]) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs[1][:sets_played]) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs[1][:sets_won]) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_played]) %></div>
+            <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_won]) %></div>
             <% box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0] %>
             <%= link_to '', box_path(box, page_from: index_year_path, round_year: @year, club_id: @club.id), class: 'line-link'%>
           </div>

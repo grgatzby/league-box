@@ -35,6 +35,10 @@ nl:
         zero: 0 sets
         one: 1 set
         other: "%{count} sets"
+      games:
+        zero: 0 spellen
+        one: 1 spel
+        other: "%{count} spellen"
     table_headers:
       player_header: Speler
       first_name_header: Voor-
@@ -44,6 +48,8 @@ nl:
       box_header: Box
       matches_played_header: Gespeeld
       matches_won_header: Gewonnen
+      games_played_header: Gespeeld
+      games_won_header: Gewonnen
       sets_played_header: Gespeeld
       sets_won_header: Gewonnen
       rank_round: Rang ronde_
