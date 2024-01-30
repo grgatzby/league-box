@@ -4,10 +4,11 @@
   <br>
 <% end %>
 
-<div class="container">
-  <div class="<%= class_names("frame-color-shape frame-padding text-size dont-print",
-                              "frame-margin-rl": !@is_mobile,
-                              "mobile-frame-margin-rl": @is_mobile)%>">
+<div class="<%= class_names("container": !@is_mobile)%>">
+    <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
+<!--    <div class="<%= class_names("frame-color-shape frame-padding text-size dont-print",
+                                "frame-margin-rl": !@is_mobile,
+                                "mobile-frame-margin-rl": @is_mobile)%>"> -->
     <br><h4><div class="title"><b><%= t(".overview_title").upcase %></b></div></h4><br>
     <p><%= t('.p01_html', clubname: current_user == @admin ? "club" : @club.name) %></p>
     <p><%= t '.p02' %></p>
@@ -26,10 +27,12 @@
       </span>
     </div>
 
-    <div class="<%= class_names("d-none frame-color-shape frame-padding text-size print-all-content box-scroller",
+    <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
+                    data-toggle-target="togglableElement">
+<!--    <div class="<%= class_names("d-none frame-color-shape frame-padding text-size print-all-content box-scroller",
                                 "frame-margin-rl": !@is_mobile,
                                 "mobile-frame-margin-rl": @is_mobile)%>"
-                    data-toggle-target="togglableElement">
+                    data-toggle-target="togglableElement"> -->
       <br><h4><div class="title"><b><%= t(".rules").upcase %></b></div></h4><br>
       <h5><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>
