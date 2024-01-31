@@ -19,6 +19,7 @@ en:
       create_round_btn: Create the next round
       request_round_btn: Request the admin the next round
       valid_round_flash: "League table: choose a valid round"
+      to_csv_btn: Export to CSV file
     my_scores:
       my_scores: My scores
       intro_html: >

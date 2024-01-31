@@ -244,4 +244,10 @@ class ApplicationController < ActionController::Base
     uri.fragment = options.delete(:anchor)
     redirect_to("#{uri}?#{new_query.to_query}")
   end
+
+  def download_csv(file = "#{Rails.root}/public/data.csv", league_type, club_name)
+    if File.exist?(file)
+      send_file file, filename: "#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
+    end
+  end
 end

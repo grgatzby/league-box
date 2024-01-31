@@ -8,11 +8,13 @@
                                   "box-width grid-container": !@is_mobile) %>">
         <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
         <div class="col-1 print-all-content">
+          <%# top left corner %>
           <div class="row mb-3">
             <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-tennis-blue": !@this_is_my_box) %>">
               <%= "Box #{@box.box_number}".upcase %>
             </div>
           </div>
+          <%# 1st column: labels %>
           <% sorted_players = @box_matches.map { |x| x[2]} %>
           <% @box_matches.each do |user_box_matches| %>
             <div class="row first-col-lines bold-font">
@@ -24,8 +26,8 @@
                 <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                 title="<%= name %>" data-bs-content="<%= message %>">
-                  <span class=<%=user_box_matches[0].user == current_user ? "color-tennis-red" : ""%>>
-                    <%= render "shared/fullname", user: line_player %><br><%= "(# #{user_box_score.rank}) " %><%= t("pts", count: user_box_score.points) %>
+                  <span class="<%=class_names( "color-tennis-red": user_box_matches[0].user == current_user) %>">
+                    <%= render "shared/fullname", user: line_player %><br><%= t("pts", count: user_box_score.points) %><%= " ##{user_box_score.rank} " %>
                   </span>
                 </div>
               </div>
@@ -40,7 +42,7 @@
               <div class="col-2 text-center">
                 <% user_box_score = user_box_matches[0] %>
                 <% column_player = user_box_score.user %>
-                <span class=<%=user_box_matches[0].user == current_user ? "color-tennis-red" : ""%>>
+                <span class="<%=class_names( "color-tennis-red": user_box_matches[0].user == current_user) %>">
                   <%= render "shared/fullname", user: column_player %>
                 </span>
               </div>
