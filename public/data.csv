@@ -1,85 +1,66 @@
-30 jan. 13:54,Player,Rank,Points,M played,M won,S played,S won,G played,G won,Rank_round1,Points_round1,Box_round1,Rank_round2,Points_round2,Box_round2,Rank_round3,Points_round3,Box_round3
-1,Luther Cormier,1,144,9,7,19,14,107,69,1,80,8,29,64,8,20,0,4
-2,Kristopher Cronin,2,130,9,5,22,12,166,83,17,0,3,23,74,3,1,56,2
-3,Dick Cartwright,3,128,10,5,23,12,146,74,15,0,3,1,100,3,7,28,1
-4,Korey Hoeger,4,125,7,6,14,12,78,53,17,0,3,6,85,3,4,40,1
-5,Ramiro DuBuque,5,115,7,5,16,11,116,63,17,0,5,13,82,5,6,33,2
-6,Graig Cruickshank,6,114,10,5,20,10,104,54,6,20,3,38,45,3,3,49,2
-7,Lewis Luettgen,7,108,8,5,16,10,84,48,17,0,5,15,80,5,8,28,2
-8,Octavio Wisoky,8,105,8,5,16,10,82,45,4,25,8,14,80,8,20,0,4
-9,Stanton Schmidt,9,104,6,4,16,10,90,49,6,20,1,9,84,1,20,0,1
-10,Frederic Brakus,10,103,7,6,15,12,82,52,14,0,1,11,83,1,10,20,1
-11,Frederick Nicolas,11,102,8,4,20,9,157,74,10,11,1,25,68,1,9,23,1
-12,Robt Haag,12,94,10,3,23,8,150,66,5,20,8,57,23,8,2,51,5
-13,Aurelio Boyle,13,93,9,4,21,8,114,54,2,40,1,35,53,1,19,0,2
-14,Alfonzo O'Kon,14,92,5,4,11,9,64,41,17,0,2,2,92,2,20,0,10
-15,Aurelio Auer,15,92,5,4,11,9,60,38,17,0,4,3,92,4,20,0,9
-16,Brent Emard,16,90,7,3,16,7,117,62,11,5,1,27,65,1,14,20,1
-17,Andreas McDermott,17,86,5,4,11,8,72,47,17,0,10,4,86,10,0,0,0
-18,Cedric Zemlak,18,86,5,4,13,8,110,64,17,0,2,5,86,2,20,0,11
-19,Valentin Abbott,19,85,5,4,10,8,55,37,17,0,6,6,85,6,20,0,9
-20,Donald Denesik,20,85,5,4,11,8,75,45,17,0,13,8,85,13,20,0,7
-21,Chuck Cartwright,21,84,8,3,26,7,93,43,15,0,1,42,44,1,5,40,2
-22,Rosendo Homenick,22,83,5,4,10,8,56,35,17,0,11,10,83,11,0,0,0
-23,Elvin Murazik,23,83,5,4,11,8,76,44,17,0,4,12,83,4,20,0,9
-24,Weldon Ernser,24,82,6,3,13,7,81,47,12,4,2,20,78,2,20,0,11
-25,Jeffry Gottlieb,25,80,5,4,10,8,50,32,17,0,6,16,80,6,20,0,9
-26,Bryce Goodwin,26,80,5,4,11,8,71,41,17,0,13,17,80,13,20,0,7
-27,Irvin Harvey,27,79,5,3,11,7,79,44,17,0,7,18,79,7,20,0,3
-28,Tobias Nicolas,28,79,5,3,12,7,80,43,17,0,7,19,79,7,20,0,3
-29,Kory Wyman,29,78,5,3,11,7,71,44,17,0,5,21,78,5,20,0,3
-30,Bradly Bergstrom,30,76,6,3,13,7,82,40,9,12,8,43,44,8,11,20,5
-31,Nathaniel Mohr,31,76,5,3,12,7,94,48,17,0,4,22,76,4,20,0,9
-32,Reyes Willms,32,72,5,3,12,7,79,40,17,0,7,24,72,7,20,0,4
-33,Rueben McKenzie,33,66,5,3,10,6,57,30,17,0,7,26,66,7,20,0,4
-34,Hilario D'Amore,34,65,6,3,14,6,90,44,17,0,7,40,45,7,15,20,5
-35,Warner Corwin,35,64,5,3,10,6,53,28,17,0,6,28,64,6,20,0,10
-36,Oscar Hudson,36,64,4,3,8,6,46,28,17,0,11,30,64,11,0,0,0
-37,Rueben Effertz,37,63,5,3,11,6,68,33,17,0,5,31,63,5,20,0,3
-38,Arturo Cassin,38,62,4,3,9,6,56,34,17,0,11,32,62,11,0,0,0
-39,Duncan Pfannerstill,39,59,5,2,12,5,90,43,17,0,10,33,59,10,0,0,0
-40,Rodrick Witting,40,55,5,2,10,4,62,31,17,0,6,34,55,6,20,0,10
-41,Kendrick Bahringer,41,54,6,2,12,4,71,30,6,20,2,53,34,2,20,0,11
-42,Ahmad Mante,42,50,5,2,10,4,58,26,17,0,6,36,50,6,20,0,10
-43,Abe Koepp,43,48,6,1,13,3,82,33,17,0,5,44,42,5,18,6,4
-44,Albert Rosenbaum,44,48,5,2,11,4,67,33,17,0,4,37,48,4,20,0,9
-45,Glenn Raynor,45,45,5,2,10,4,57,21,17,0,2,39,45,2,20,0,11
-46,Lindsay Jakubowski,46,44,6,1,13,3,77,28,17,0,7,54,32,7,17,12,5
-47,Hobert Beier,47,44,5,1,12,3,85,38,17,0,4,41,44,4,20,0,10
-48,Rubin Collier,48,40,3,2,6,4,29,16,17,0,10,45,40,10,0,0,0
-49,Moses McCullough,49,38,5,1,11,3,71,24,17,0,2,46,38,2,20,0,11
-50,Ted Nienow,50,38,3,1,7,3,53,26,17,0,13,47,38,13,20,0,8
-51,Barrett Heidenreich,51,37,4,1,10,3,69,29,17,0,11,48,37,11,0,0,0
-52,Russel Bechtelar,52,36,5,1,11,3,62,21,17,0,4,49,36,4,20,0,10
-53,Horace Harber,53,35,3,1,7,3,54,26,17,0,10,50,35,10,0,0,0
-54,Val Waelchi,54,35,3,1,7,3,50,20,17,0,13,51,35,13,20,0,8
-55,Johnathon Crooks,55,34,5,1,10,2,56,22,17,0,3,52,34,3,20,0,3
-56,Dorian Osinski,56,34,4,1,8,2,46,22,3,26,8,63,8,8,20,0,6
-57,Sanford Schroeder,57,33,6,1,12,2,67,21,17,0,5,60,13,5,13,20,4
-58,Ollie Haley,58,26,3,1,6,2,36,14,17,0,10,55,26,10,0,0,0
-59,Stanley Vandervort,59,24,4,0,9,1,58,19,17,0,11,56,24,11,0,0,0
-60,Keneth Towne,60,23,3,1,6,2,33,11,17,0,10,58,23,10,0,0,0
-61,Parker Wisozk,61,20,5,0,11,1,65,16,17,0,3,59,20,3,20,0,3
-62,Carrol O'Conner,62,20,1,1,2,2,12,8,17,0,9,67,0,9,12,20,5
-63,Royal Ondricka,63,20,1,1,3,2,28,15,17,0,9,67,0,9,16,20,5
-64,Val Kihn,64,10,5,0,10,0,50,10,17,0,6,61,10,6,0,0,0
-65,Wilmer Crist,65,9,2,0,4,0,25,9,17,0,13,62,9,13,20,0,8
-66,Raleigh Reynolds,66,8,2,0,4,0,24,8,17,0,13,63,8,13,20,0,8
-67,Dong Metz,67,5,3,0,6,0,29,5,13,1,8,65,4,8,20,0,6
-68,Leonel Lubowitz,68,3,1,0,2,0,11,3,17,0,11,66,3,11,0,0,0
-69,Lino Bins,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
-70,Jospeh Senger,69,0,0,0,0,0,0,0,17,0,9,67,0,9,20,0,7
-71,Rey Mills,69,0,0,0,0,0,0,0,17,0,9,67,0,9,20,0,6
-72,Elmo Weimann,69,0,0,0,0,0,0,0,17,0,9,67,0,9,20,0,6
-73,Lester O'Connell,69,0,0,0,0,0,0,0,17,0,9,67,0,9,20,0,7
-74,Ron Pacocha,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,6
-75,Miguel Sawayn,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,7
-76,Allen Spencer,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,8
-77,Abel Kuvalis,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,8
-78,Lloyd Padberg,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,6
-79,Pat Johnson,69,0,0,0,0,0,0,0,17,0,12,67,0,12,20,0,7
-80,Rudolph Morissette,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
-81,Wilburn Rippin,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
-82,Rufus Lindgren,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
-83,Isreal Frami,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
-84,Truman Beer,69,0,0,0,0,0,0,0,17,0,14,67,0,14,0,0,0
+31 Jan 22:04,id,email,first_name,last_name,nickname,phone_number,role,box,club
+1,221,dong.metz@club.be,Dong,Metz,DongM,596-081-8298,player,6,Wimbledon Ltc Club
+2,225,rey.mills@club.be,Rey,Mills,ReyM,628-759-1271,player,6,Wimbledon Ltc Club
+3,240,ron.pacocha@club.be,Ron,Pacocha,RonP,1-893-540-3542,player,6,Wimbledon Ltc Club
+4,219,dorian.osinski@club.be,Dorian,Osinski,DorianO,469.738.3506,player,6,Wimbledon Ltc Club
+5,226,elmo.weimann@club.be,Elmo,Weimann,ElmoW,472-901-3571,player,6,Wimbledon Ltc Club
+6,244,lloyd.padberg@club.be,Lloyd,Padberg,LloydP,451-260-0736,player,6,Wimbledon Ltc Club
+7,227,lester.o'connell@club.be,Lester,O'Connell,LesterO,1-388-302-4503,player,7,Wimbledon Ltc Club
+8,245,pat.johnson@club.be,Pat,Johnson,PatJ,564-187-9797,player,7,Wimbledon Ltc Club
+9,241,miguel.sawayn@club.be,Miguel,Sawayn,MiguelS,514-435-5766,player,7,Wimbledon Ltc Club
+10,224,jospeh.senger@club.be,Jospeh,Senger,JospehS,902-257-2953,player,7,Wimbledon Ltc Club
+11,248,bryce.goodwin@club.be,Bryce,Goodwin,BryceG,1-434-167-4260,player,7,Wimbledon Ltc Club
+12,249,donald.denesik@club.be,Donald,Denesik,DonaldD,223-353-5022,player,7,Wimbledon Ltc Club
+13,251,raleigh.reynolds@club.be,Raleigh,Reynolds,RaleighR,(949) 245-4681,player,8,Wimbledon Ltc Club
+14,242,allen.spencer@club.be,Allen,Spencer,AllenS,1-665-888-2270,player,8,Wimbledon Ltc Club
+15,246,wilmer.crist@club.be,Wilmer,Crist,WilmerC,185-870-5707,player,8,Wimbledon Ltc Club
+16,250,ted.nienow@club.be,Ted,Nienow,TedN,499-926-5445,player,8,Wimbledon Ltc Club
+17,247,val.waelchi@club.be,Val,Waelchi,ValW,1-456-909-1058,player,8,Wimbledon Ltc Club
+18,243,abel.kuvalis@club.be,Abel,Kuvalis,AbelK,521.533.5917,player,8,Wimbledon Ltc Club
+19,195,nathaniel.mohr@club.be,Nathaniel,Mohr,NathanielM,(369) 553-3975,player,9,Wimbledon Ltc Club
+20,206,jeffry.gottlieb@club.be,Jeffry,Gottlieb,JeffryG,(668) 874-4472,player,9,Wimbledon Ltc Club
+21,208,valentin.abbott@club.be,Valentin,Abbott,ValentinA,(116) 503-1292,player,9,Wimbledon Ltc Club
+22,193,aurelio.auer@club.be,Aurelio,Auer,AurelioA,748.139.5371,player,9,Wimbledon Ltc Club
+23,196,elvin.murazik@club.be,Elvin,Murazik,ElvinM,(970) 950-4938,player,9,Wimbledon Ltc Club
+24,192,albert.rosenbaum@club.be,Albert,Rosenbaum,AlbertR,(789) 744-9615,player,9,Wimbledon Ltc Club
+25,197,russel.bechtelar@club.be,Russel,Bechtelar,RusselB,(394) 608-6881,player,10,Wimbledon Ltc Club
+26,209,ahmad.mante@club.be,Ahmad,Mante,AhmadM,395-218-5037,player,10,Wimbledon Ltc Club
+27,207,rodrick.witting@club.be,Rodrick,Witting,RodrickW,1-818-264-0346,player,10,Wimbledon Ltc Club
+28,182,alfonzo.o'kon@club.be,Alfonzo,O'Kon,AlfonzoO,1-322-123-1832,player,10,Wimbledon Ltc Club
+29,204,warner.corwin@club.be,Warner,Corwin,WarnerC,764.182.9683,player,10,Wimbledon Ltc Club
+30,194,hobert.beier@club.be,Hobert,Beier,HobertB,391.824.3587,player,10,Wimbledon Ltc Club
+31,180,kendrick.bahringer@club.be,Kendrick,Bahringer,KendrickB,1-243-302-3856,player,11,Wimbledon Ltc Club
+32,184,cedric.zemlak@club.be,Cedric,Zemlak,CedricZ,1-696-014-1741,player,11,Wimbledon Ltc Club
+33,181,weldon.ernser@club.be,Weldon,Ernser,WeldonE,1-159-284-4191,player,11,Wimbledon Ltc Club
+34,185,glenn.raynor@club.be,Glenn,Raynor,GlennR,197.487.2456,player,11,Wimbledon Ltc Club
+35,183,moses.mccullough@club.be,Moses,McCullough,MosesM,847.700.9327,player,11,Wimbledon Ltc Club
+36,191,korey.hoeger@club.be,Korey,Hoeger,KoreyH,1-636-101-7747,player,1,Wimbledon Ltc Club
+37,178,stanton.schmidt@club.be,Stanton,Schmidt,StantonS,175-672-6053,player,1,Wimbledon Ltc Club
+38,186,dick.cartwright@club.be,Dick,Cartwright,DickC,984.155.2336,player,1,Wimbledon Ltc Club
+39,175,brent.emard@club.be,Brent,Emard,BrentE,602.155.5616,player,1,Wimbledon Ltc Club
+40,179,frederick.nicolas@club.be,Frederick,Nicolas,FrederickN,(839) 348-5521,player,1,Wimbledon Ltc Club
+41,174,frederic.brakus@club.be,Frederic,Brakus,FredericB,843-851-5544,player,1,Wimbledon Ltc Club
+42,200,kory.wyman@club.be,Kory,Wyman,KoryW,134-830-5270,player,3,Wimbledon Ltc Club
+43,189,parker.wisozk@club.be,Parker,Wisozk,ParkerW,798-121-3883,player,3,Wimbledon Ltc Club
+44,214,irvin.harvey@club.be,Irvin,Harvey,IrvinH,(215) 523-4931,player,3,Wimbledon Ltc Club
+45,202,rueben.effertz@club.be,Rueben,Effertz,RuebenE,197.873.5236,player,3,Wimbledon Ltc Club
+46,190,johnathon.crooks@club.be,Johnathon,Crooks,JohnathonC,727.702.2774,player,3,Wimbledon Ltc Club
+47,215,tobias.nicolas@club.be,Tobias,Nicolas,TobiasN,815.454.2407,player,3,Wimbledon Ltc Club
+48,199,ramiro.dubuque@club.be,Ramiro,DuBuque,RamiroD,1-748-092-4490,player,2,Wimbledon Ltc Club
+49,187,kristopher.cronin@club.be,Kristopher,Cronin,KristopherC,343.873.3324,player,2,Wimbledon Ltc Club
+50,177,aurelio.boyle@club.be,Aurelio,Boyle,AurelioB,(565) 886-7164,player,2,Wimbledon Ltc Club
+51,176,chuck.cartwright@club.be,Chuck,Cartwright,ChuckC,1-870-464-0847,player,2,Wimbledon Ltc Club
+52,198,lewis.luettgen@club.be,Lewis,Luettgen,LewisL,1-459-227-6481,player,2,Wimbledon Ltc Club
+53,188,graig.cruickshank@club.be,Graig,Cruickshank,GraigC,156-767-0361,player,2,Wimbledon Ltc Club
+54,220,robt.haag@club.be,Robt,Haag,RobtH,1-910-338-2490,player,5,Wimbledon Ltc Club
+55,223,royal.ondricka@club.be,Royal,Ondricka,RoyalO,(347) 477-4825,player,5,Wimbledon Ltc Club
+56,218,bradly.bergstrom@club.be,Bradly,Bergstrom,BradlyB,(735) 382-4780,player,5,Wimbledon Ltc Club
+57,210,lindsay.jakubowski@club.be,Lindsay,Jakubowski,LindsayJ,862-054-8991,player,5,Wimbledon Ltc Club
+58,222,carrol.o'conner@club.be,Carrol,O'Conner,CarrolO,(234) 690-6150,player,5,Wimbledon Ltc Club
+59,212,hilario.d'amore@club.be,Hilario,D'Amore,HilarioD,(192) 705-6696,player,5,Wimbledon Ltc Club
+60,216,luther.cormier@club.be,Luther,Cormier,LutherC,1-846-247-9230,player,4,Wimbledon Ltc Club
+61,217,octavio.wisoky@club.be,Octavio,Wisoky,OctavioW,(252) 498-2201,player,4,Wimbledon Ltc Club
+62,211,reyes.willms@club.be,Reyes,Willms,ReyesW,246.308.1655,player,4,Wimbledon Ltc Club
+63,213,rueben.mckenzie@club.be,Rueben,McKenzie,RuebenM,485.929.8431,player,4,Wimbledon Ltc Club
+64,203,sanford.schroeder@club.be,Sanford,Schroeder,SanfordS,307.820.8720,player,4,Wimbledon Ltc Club
+65,201,abe.koepp@club.be,Abe,Koepp,AbeK,399-268-9229,player,4,Wimbledon Ltc Club

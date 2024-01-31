@@ -1,4 +1,6 @@
 class BoxesController < ApplicationController
+  require "csv"
+
   def index
     @page_from = params[:page_from]
     set_club_round    # set variables @club, @round and @boxes (ApplicationController)
@@ -69,6 +71,31 @@ class BoxesController < ApplicationController
         @chatroom = @box.chatroom
       end
     end
+  end
+
+  def league_boxes_to_csv
+    # export the league table to a csv file
+    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    round = Round.find(params[:round_id])
+    # file = Rails.root.join('public', 'data.csv')
+    file = "#{Rails.root}/public/data.csv"
+    boxes = round.boxes
+    table = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
+    CSV.open(file, 'w') do |writer|
+      # table headers
+      writer << [l(Time.now, format: :short), # to time stamp the csv file
+                 "id", "email", "first_name", "last_name", "nickname", "phone_number", "role", "box", "club"]
+      table.each_with_index do |user_bs, index|
+        writer << [index + 1,
+                   user_bs.user.id,
+                   user_bs.user.email,
+                   user_bs.user.first_name, user_bs.user.last_name, user_bs.user.nickname,
+                   user_bs.user.phone_number,
+                   user_bs.user.role, user_bs.box.box_number,
+                   round.club.name]
+      end
+    end
+    download_csv(file.pathmap, "Boxes-R#{round_number(round)}", round.club.name)
   end
 
   private

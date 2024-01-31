@@ -20,7 +20,7 @@ en:
       round_period: Round %{round} (%{start} to %{end})
       round_period_mobile: R%{round}
       days_left: (%{days} days left)
-      players: "%{nb_players} players"
+      players: ", %{nb_players} players"
     select_round:
       select_round_start: "Select a different round: "
       confirm_btn: ⎷ Confirm

@@ -178,7 +178,8 @@ class UserBoxScoresController < ApplicationController
     CSV.open(file, 'w') do |writer|
       # table headers
       writer << [l(Time.now, format: :short), # to time stamp the csv file
-                "Player", "Rank", "Points", "Box", "M played", "M won", "S played", "S won", "G played", "G won"]
+                 "player", "rank", "points", "box",
+                 "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
       table.each_with_index do |user_bs, index|
         writer << [index + 1,
                    "#{user_bs.user.first_name} #{user_bs.user.last_name}",
@@ -188,10 +189,10 @@ class UserBoxScoresController < ApplicationController
                    user_bs.games_played, user_bs.games_won]
       end
     end
-    download_csv(file.pathmap, "R#{round_number(round)}", round.club.name)
+    download_csv(file.pathmap, "League Table-R#{round_number(round)}", round.club.name)
   end
 
-  def league_table_to_csv_year
+  def league_year_to_csv
     # export the league table to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     year = params[:round_year].to_i
@@ -205,7 +206,8 @@ class UserBoxScoresController < ApplicationController
     CSV.open(file, 'w') do |writer|
       # table headers
       header = [l(Time.now, format: :short), # to time stamp the csv file
-        "Player", "Rank", "Points", "M played", "M won", "S played", "S won", "G played", "G won"]
+                "player", "rank", "points",
+                "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
         (1..rounds.size).each do |i|
           header.push("Rank_round#{i}")
           header.push("Points_round#{i}")
@@ -227,16 +229,10 @@ class UserBoxScoresController < ApplicationController
         writer << data
       end
     end
-    download_csv(file.pathmap, year, rounds[0].club.name)
+    download_csv(file.pathmap, "League Table-#{year}", rounds[0].club.name)
   end
 
   private
-
-  def download_csv(file = "#{Rails.root}/public/data.csv", league_type, club_name)
-    if File.exist?(file)
-      send_file file, filename: "League Table-#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
-    end
-  end
 
   def create_txt
     # credits https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
