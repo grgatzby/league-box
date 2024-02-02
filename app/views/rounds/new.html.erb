@@ -25,20 +25,24 @@
                     <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                     <div class="col-2"><%= "##{user_box_score.rank}" %></div>
                     <div class="col-1"><%= "#{user_box_score.matches_played}" %></div>
-                    <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
                     <!-- shift is an array method: removes first element from array and returns the element -->
+                    <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
                   </div></li>
                 <% end %>
               </ol>
             </div>
           <% end %>
 
+          <!--  end of the form: input start_date, end_date and submit -->
           <div class="new_round-box small-font">
-            <div class="box-title"><b><%= "New round" %></b></div>
+            <div class="box-title"><b><%= t '.new_round' %></b></div>
             <br><br><%= t '.start_date' %>
+            <%#  proposed start_date : current end_date + 1 day, min value : current end_date + 1 day %>
             <%= f.date_field(:start_date, min: @current_round.end_date + 1, value: @current_round.end_date + 1 ) %>
+            <%#  current round's duration in months %>
             <% duration = ((@current_round.end_date + 1 - @current_round.start_date).to_f / 365 * 12).round %>
             <br><%= t '.end_date' %>
+            <%#  proposed end_date : current end_date + duration in months, min value : current end_date + 1 month %>
             <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
             <div class="buttons-wrap">

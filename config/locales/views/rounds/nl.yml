@@ -9,7 +9,8 @@ nl:
           -1 = ga één box naar beneden,<br />
           -2 = kom langs 2 boxen.<br /><br />
           Kies 99 om de speler uit de volgende ronde te elimineren (bijvoorbeeld als er minder dan 2 wedstrijden gespeeld zijn).
-      message_boxes: speler, rangschikking,<br />aantal gespeelde partijen, voorgestelde zet
+      message_boxes: speler, rangschikking,<br />aantal gespeelde wedstrijden, voorgestelde zet
       start_date: "Begin datum:"
       end_date: "Einddatum:"
       create_round_btn: ⎷ Maak de ronde
+      new_round: Volgende ronde
