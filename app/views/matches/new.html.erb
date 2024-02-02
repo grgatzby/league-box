@@ -28,7 +28,8 @@
       <div class="row">
         <div class="col-3"><b><%= t '.date_time' %></b></div>
         <div class="col-3">
-          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, value: params[:time]? Date.strptime(params[:time], '%Y-%m-%d') : @max_end_date ) %>
+          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, selected: @round.start_date,
+                                  value: params[:time] ? Date.strptime(params[:time], '%Y-%m-%d') : @max_end_date ) %>
           <!-- TO DO: allow start_hour and end_hour to be customised by club referee -->
           <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>

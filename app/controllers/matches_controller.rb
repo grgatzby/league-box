@@ -95,10 +95,10 @@ class MatchesController < ApplicationController
         match = user_match_scores[index].match
         user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
         user_box_score.points += user_match_scores[index].points
-        user_box_score.sets_won += results[index]
-        user_box_score.sets_played += results.sum
         user_box_score.games_won += won_games(user_match_scores[index])
         user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+        user_box_score.sets_won += results[index]
+        user_box_score.sets_played += results.sum
         user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
         user_box_score.matches_played += 1
         user_box_score.save
@@ -114,11 +114,11 @@ class MatchesController < ApplicationController
 
       # keep and display the invalid entries to the resubmitted new match form (not possible with redirect_back)
       more_params = {
-        time: params[:match_id][:time],
-        court_id: params[:match_id][:court_id],
-        score_set1: params[:match_id][:user_match_scores_attributes]["0"][:score_set1],
-        score_set2: params[:match_id][:user_match_scores_attributes]["0"][:score_set2],
-        score_tiebreak: params[:match_id][:user_match_scores_attributes]["0"][:score_tiebreak]
+        time: params[:match][:time],
+        court_id: params[:match][:court_id],
+        score_set1: params[:match][:user_match_scores_attributes]["0"][:score_set1],
+        score_set2: params[:match][:user_match_scores_attributes]["0"][:score_set2],
+        score_tiebreak: params[:match][:user_match_scores_attributes]["0"][:score_tiebreak]
       }
       redirect_to_back(more_params)
     end
@@ -154,6 +154,8 @@ class MatchesController < ApplicationController
     match_points = [{}, {}]
     [0, 1].each do |index|
       match_points[index][:points] = user_match_scores[index].points
+      match_points[index][:games_won] = won_games(user_match_scores[index])
+      match_points[index][:games_played] = won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
       match_points[index][:sets_won] = results[index]
       match_points[index][:sets_played] = results.sum
       match_points[index][:matches_won] = results[index] > results[1 - index] ? 1 : 0
@@ -197,7 +199,7 @@ class MatchesController < ApplicationController
         user_box_score.games_won += won_games(user_match_scores[index]) - match_points[index][:games_won]
         user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index]) - match_points[index][:games_played]
         user_box_score.matches_won += (results[index] > results[1 - index] ? 1 : 0) - match_points[index][:matches_won]
-        # user_box_score.matches_played is unchanged: no need to update
+        # user_box_score.matches_played unchanged: no need to update
         user_box_score.save
         @round = match.box.round
       end

@@ -6,7 +6,7 @@ class BoxesController < ApplicationController
     set_club_round    # set variables @club, @round and @boxes (ApplicationController)
     @my_current_box = my_own_box(current_round(current_user.club_id))
     @my_box = 0
-    @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation
+    @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
   end
 
   def show

@@ -25,7 +25,7 @@ fr:
         </ol>
     action_buttons:
       to_text_btn: Exporter en fichier texte
-      to_csv_btn: Exporter en fichier CSV
+      to_csv_btn: Exporter en CSV
     table_data:
       matches:
         zero: 0 match
@@ -75,3 +75,7 @@ fr:
     create:
       header_flash: Les entêtes doivent être "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
       file_type_flash: Choisissez un fichier de type csv.
+    club_created:
+      zero: Club créé avec %{players} joueurs par box. Tous les joueurs ont été inclus.
+      one: Club créé avec %{players} joueurs par box. Le dernier joueur n'a pu être inclus.
+      other: Club créé avec %{players} joueurs par box. Les %{count} derniers joueurs n'ont pu être inclus.

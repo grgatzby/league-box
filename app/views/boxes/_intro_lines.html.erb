@@ -40,10 +40,12 @@
   <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow mb-3" %>
   <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
   <% if @page_from %>
-    <% parameters = params[:round_id] ? "?round_id=#{@round.id}" : "?round_year=#{params[:round_year]}" %>
-    <% parameters += "&club_id=#{@round.club_id}" %>
-    <%= link_to t('back_btn'),
-    @page_from+parameters,
-    class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
+    <% parameters = "?club_id=#{@round.club_id}" %>
+    <% if params[:round_id] %>
+      <% parameters += "&round_id=#{@round.id}" %>
+    <% elsif params[:round_year] %>
+      <% parameters += "&round_year=#{params[:round_year]}" %>
+    <% end %>
+    <%= link_to t('back_btn'), @page_from+parameters, class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
   <% end %>
 </div>

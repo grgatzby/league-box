@@ -1,5 +1,6 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
+  MIN_PLAYERS_PER_BOX = 4
 
   def index
     # displays the league table for the round, allows user to sort the table by click on headers
@@ -51,7 +52,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def index_year
-    # displays the league table for the year, allows user to sort the table by click on headers
+    # displays the league table for entire the year, allows user to sort the table by click on headers
     @year = params[:round_year].to_i
     @club = Club.find(params[:club_id].to_i)
     rounds = Round.where('extract(year  from start_date) = ?', @year).where(club_id: params[:club_id].to_i)
@@ -114,8 +115,8 @@ class UserBoxScoresController < ApplicationController
     # The csv file must contain the following fields:
     #      id, email, first_name, last_name, nickname, phone_number, role (player / referee)
     # Players are allocated in boxes by id (in descending order).
-    # TO DO: create a chatroom for each new box
-    # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
+    # TO DO: for each new box, the assigned chatroom is the #general chatroom which is later replaced with
+    # a box chatroom when a player visits My Scores. Pb: referee and admin can't visit the chatroom until then
 
     csv_file = params[:csv_file]
     if csv_file.content_type == "text/csv"
@@ -143,18 +144,26 @@ class UserBoxScoresController < ApplicationController
 
         # create boxes and user_box_scores
         players_per_box = params[:players_per_box].to_i
-        players_per_box = 6
-        players_per_box -= 1 while players.count % players_per_box in 1..3
-        nb_boxes = players.count / players_per_box
+        # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
+        players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
         box_players = []
         boxes = []
         nb_boxes.times do |box_index|
+          # TO DO: create a now chatroom for the box
           boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
           box_players << players.shift(players_per_box)
           box_players[box_index].each do |player|
-            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id, points: 0, rank: 1,
-                                sets_won: 0, sets_played: 0, matches_won: 0, matches_played: 0)
+            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                points: 0, rank: 1,
+                                sets_won: 0, sets_played: 0,
+                                matches_won: 0, matches_played: 0,
+                                games_won: 0, games_played: 0)
           end
+        end
+        flash[:notice] += t('.club_created', count: players.count % players_per_box, players: players_per_box)
+        if (players.count % players_per_box).positive?
+          players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
         end
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
       else
