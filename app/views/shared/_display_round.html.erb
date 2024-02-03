@@ -5,6 +5,8 @@
     end: l(round.end_date, format: @is_mobile ? :ddmmm_date : :ddmmmyy_date),
     round: @round_nb) %>
 <% if round.end_date > Date.today %>
-  <span class="color-tennis-red"><%= t(".days_left", days: (round.end_date - Date.today).to_i) %></span>
+  <span class="color-green"><%= t(".days_left", days: (round.end_date - Date.today).to_i) %></span>
+  <% else %>
+  <span class="color-tennis-red"><%= t(".expired") %></span>
 <% end %>
 <%= t(".players", nb_players: round.boxes.map {|box| box.user_box_scores.count}.sum) %>&nbsp;
