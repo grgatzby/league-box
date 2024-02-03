@@ -14,6 +14,9 @@
   <% if @year %>
     <div class=<%=@is_mobile ? "" : "one-liner"%>>
       <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
+      <% if @round_years.size > 1 %>
+        <%= render "select_year", fallback_path: user_box_scores_path, from: "index_year" %>
+      <% end %>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>

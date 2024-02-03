@@ -52,6 +52,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def index_year
+    set_club_round
     # displays the league table for entire the year, allows user to sort the table by click on headers
     @year = params[:round_year].to_i
     @club = Club.find(params[:club_id].to_i)
