@@ -20,6 +20,7 @@ en:
       round_period: Round %{round} (%{start} to %{end})
       round_period_mobile: R%{round}
       days_left: "%{days} days left"
+      expired: round expired
       players: ", %{nb_players} players"
     select_round:
       select_round_start: "Select a different round: "
