@@ -1,7 +1,8 @@
 en:
   rounds:
     new:
-      new_round_title: Proposed player moves for next round
+      new_round_title: Next round creation
+      new_round_subtitle: Upload a CSV file or enter player moves
       message: >
           Select box move, for example:<br />
           2 = two boxes up,<br />
@@ -12,5 +13,12 @@ en:
       message_boxes: player name, rank,<br />nb matches played, proposed box move
       start_date: "Start date :"
       end_date: "End date :"
-      create_round_btn: ⎷ Create new round
+      warning: If a file is uploaded, player moves won't operate
+      create_round_btn: ⎷ Create round
       new_round: New round
+    create:
+      header_flash: Your headers must include "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      round_created:
+        zero: Round created with %{players} players per box. All players were included.
+        one: Round created with %{players} players per box. Last player could not be accomodated.
+        other: Round created with %{players} players per box. Last %{count} players could not be accommodated.

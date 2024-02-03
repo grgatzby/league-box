@@ -75,7 +75,7 @@ nl:
     create:
       header_flash: De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' zijn.
       file_type_flash: Kies een csv-bestandstype.
-    club_created:
-      zero: Club gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
-      one: Club gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.
-      other: Club gemaakt met %{players} spelers per box. De laatste %{count} spelers konden niet worden ondergebracht.
+      club_created:
+        zero: Club gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
+        one: Club gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.
+        other: Club gemaakt met %{players} spelers per box. De laatste %{count} spelers konden niet worden ondergebracht.

@@ -4,6 +4,7 @@
       data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
       title="Box moves" data-bs-content="<%= t '.message' %>">
     <h3><%= t '.new_round_title' %></h3>
+    <h4><%= t '.new_round_subtitle' %></h4>
   </div>
   <% if @new_round %>
     <h4><%= @current_round.club.name %></h4>
@@ -36,7 +37,12 @@
           <!--  end of the form: input start_date, end_date and submit -->
           <div class="new_round-box small-font">
             <div class="box-title"><b><%= t '.new_round' %></b></div>
-            <br><br><%= t '.start_date' %>
+            <br><div>
+              <%# file_field_tag :csv_file, accept: 'text/csv' %>
+              <%= f.file_field :csv_file, accept: 'text/csv' %>
+              <br class="small-font"><i><%= t '.warning' %></i>
+            </div>
+            <%= t '.start_date' %>
             <%#  proposed start_date : current end_date + 1 day, min value : current end_date + 1 day %>
             <%= f.date_field(:start_date, min: @current_round.end_date + 1, value: @current_round.end_date + 1 ) %>
             <%#  current round's duration in months %>
@@ -45,10 +51,10 @@
             <%#  proposed end_date : current end_date + duration in months, min value : current end_date + 1 month %>
             <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
-            <div class="buttons-wrap">
-              <div class="box-title"><%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %></div>
+            <div class="one-liner">
+              <%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <%= link_to "Back", :back, class: "btn buttons-shape btn-yellow" %>
+              <%= link_to "Back", boxes_path(round_id: @current_round.id, club_id: @current_round.club_id), class: "btn buttons-shape btn-yellow" %>
             </div>
           </div>
         </div>

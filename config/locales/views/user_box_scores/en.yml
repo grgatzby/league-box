@@ -76,7 +76,7 @@ en:
     create:
       header_flash: Your headers must be "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
       file_type_flash: Please chose a csv file type.
-    club_created:
-      zero: Club created with %{players} players per box. All players were included.
-      one: Club created with %{players} players per box. Last player could not be accomodated.
-      other: Club created with %{players} players per box. Last %{count} players could not be accommodated.
+      club_created:
+        zero: Club created with %{players} players per box. All players were included.
+        one: Club created with %{players} players per box. Last player could not be accomodated.
+        other: Club created with %{players} players per box. Last %{count} players could not be accommodated.

@@ -19,7 +19,7 @@ nl:
     display_round:
       round_period: Ronde %{round} (%{start} tot %{end})
       round_period_mobile: R%{round}
-      days_left: (%{days} dagen over)
+      days_left: "%{days} dagen over"
       players: "%{nb_players} spellers"
     select_round:
       select_round_start: "Bekijk een andere ronde: "

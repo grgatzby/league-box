@@ -150,7 +150,7 @@ class UserBoxScoresController < ApplicationController
         box_players = []
         boxes = []
         nb_boxes.times do |box_index|
-          # TO DO: create a now chatroom for the box
+          # TO DO: create a new chatroom for the box
           boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
           box_players << players.shift(players_per_box)
           box_players[box_index].each do |player|
@@ -161,7 +161,7 @@ class UserBoxScoresController < ApplicationController
                                 games_won: 0, games_played: 0)
           end
         end
-        flash[:notice] += t('.club_created', count: players.count % players_per_box, players: players_per_box)
+        flash[:notice] = t('.club_created', count: players.count % players_per_box, players: players_per_box)
         if (players.count % players_per_box).positive?
           players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
         end
