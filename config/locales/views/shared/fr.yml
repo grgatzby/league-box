@@ -19,7 +19,7 @@ fr:
     display_round:
       round_period: Round %{round} (%{start} au %{end})
       round_period_mobile: R%{round}
-      days_left: (%{days} jours restants)
+      days_left: "%{days} jours restants"
       players: "%{nb_players} joueurs"
     select_round:
       select_round_start: "Consulter un autre round: "

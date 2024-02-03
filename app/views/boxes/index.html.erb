@@ -42,11 +42,11 @@
         <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print text-size" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
-      <% if current_user && current_user.role == "admin" %>
+      <% if current_user && current_user.role == "admin" && @new_round_required %>
           <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round
           TO DO: add a time related condition here for the button to appear -->
           <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
-      <% elsif current_user && current_user.role == "referee" %>
+      <% elsif current_user && current_user.role == "referee" && @new_round_request%>
           <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
       <% end %>
     </div>

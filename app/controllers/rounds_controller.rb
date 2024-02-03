@@ -1,5 +1,7 @@
 class RoundsController < ApplicationController
   MIN_QUALIFYING_MATCHES = 2
+  MIN_PLAYERS_PER_BOX = 4
+  REQUIRED_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "phone_number", "role"].sort
 
   def new
     # called from a button in Boxes index view (referees only)
@@ -37,20 +39,79 @@ class RoundsController < ApplicationController
     # if user is admin, club is given by params[:club_id], else: the referee's club
     # TO DO: create a chatroom for each new box:
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
-    current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
 
-    @new_round = Round.create(club_id: current_round.club_id,
-                              start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date)
+    csv_file = params[:round][:csv_file]
+    if csv_file.content_type == "text/csv"
+      # a CSV file is attached, create new round using it
+      headers = CSV.foreach(csv_file).first
+      if headers.sort - ["nickname"] == REQUIRED_HEADERS
+        club = Club.find(params[:club_id])
+        players_per_box = club.rounds.last.boxes[0].user_box_scores.count
 
-    current_boxes = current_round.boxes.sort_by(&:box_number)
-    temp_boxes = new_temp_boxes(current_boxes.count) # array of temporary boxes; as many as current_boxes'
-    apply_shifts(current_boxes, temp_boxes) # shift current_boxes' players within temp_boxes using the form shifts
+        # create new round
+        round = Round.create(start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date, club_id: params[:club_id])
 
-    nb_players_per_box = current_boxes[0].user_box_score_ids.length
-    clean_boxes(temp_boxes, nb_players_per_box)
+        # array of users (players and club referees)
+        users = []
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
+          # test if user already created, if not, create user
+          if User.exists?(row[:id])
+            user = User.find(row[:id])
+          else
+            user = User.create(row)
+            user.update(club_id: params[:club_id], password: "123456", nickname: user.nickname || (user.first_name + user.last_name[0]))
+            user.update(password: "654321") if user.role == "referee"
+          end
+          users << user
+        end
 
-    redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club.id)
+        players = users.select { |user| user.role == "player" }
+
+        # create boxes and user_box_scores
+        # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
+        players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+        box_players = []
+        boxes = []
+        nb_boxes.times do |box_index|
+          # TO DO: create a new chatroom for each new box
+          boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+          box_players << players.shift(players_per_box)
+          box_players[box_index].each do |player|
+            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                points: 0, rank: 1,
+                                sets_won: 0, sets_played: 0,
+                                matches_won: 0, matches_played: 0,
+                                games_won: 0, games_played: 0)
+          end
+        end
+        flash[:notice] = t('.round_created', count: players.count % players_per_box, players: players_per_box)
+        if (players.count % players_per_box).positive?
+          players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
+        end
+        redirect_to boxes_path(round_id: round.id, club_id: club.id)
+      else
+        flash[:notice] = t('.header_flash')
+        redirect_back(fallback_location: new_user_box_score_path)
+      end
+    else
+      # no CSV file is attached, create new round using the form shifts
+      current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
+
+      @new_round = Round.create(club_id: current_round.club_id,
+                                start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date)
+
+      current_boxes = current_round.boxes.sort_by(&:box_number)
+      temp_boxes = new_temp_boxes(current_boxes.count) # array of temporary boxes; as many as current_boxes'
+      apply_shifts(current_boxes, temp_boxes) # shift current_boxes' players within temp_boxes using the form shifts
+
+      nb_players_per_box = current_boxes[0].user_box_score_ids.length
+      clean_boxes(temp_boxes, nb_players_per_box)
+
+      redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club.id)
+    end
   end
+
 
   private
 

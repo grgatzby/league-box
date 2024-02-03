@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
     resources :boxes, only: %i[index show]
-    get 'boxes_csv/boxes', to: "boxes#league_boxes_to_csv", as: "csv_boxes"
+    get 'boxes_csv/boxes', to: "boxes#league_round_to_csv", as: "csv_boxes"
     get "boxes_list/:id", to: "boxes#show_list", as: "box_list"
     get "my_scores/:id", to: "boxes#my_scores", as: "my_scores"
 

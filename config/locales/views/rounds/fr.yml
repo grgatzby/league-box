@@ -1,7 +1,8 @@
 fr:
   rounds:
     new:
-      new_round_title: "Prochain round: mouvement des joueurs"
+      new_round_title: Création du prochain round
+      new_round_subtitle: Charger un fichier CSV ou choisir le mouvement des joueurs
       message: >
           Choisir une promotion, par exemple:<br />
           2 = promotion deux box,<br />
@@ -12,5 +13,12 @@ fr:
       message_boxes: joueur, classement,<br />nb matchs joués, mouvement proposé
       start_date: "Date de départ:"
       end_date: "Date de fin:"
-      create_round_btn: ⎷ Créer le round
+      warning: Si un fichier est chargé, les movements ne seront pas considérés
+      create_round_btn: ⎷ Créer round
       new_round: Nouveau round
+    create:
+      header_flash: Les entêtes doivent inclure "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
+      round_created:
+        zero: Round créé avec %{players} joueurs par box. Tous les joueurs ont été inclus.
+        one: Round créé avec %{players} joueurs par box. Le dernier joueur n'a pu être inclus.
+        other: Round créé avec %{players} joueurs par box. Les %{count} derniers joueurs n'ont pu être inclus.

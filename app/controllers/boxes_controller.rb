@@ -1,5 +1,6 @@
 class BoxesController < ApplicationController
   require "csv"
+  DAYS_BEFORE_NEW_ROUND_CREATION = 15
 
   def index
     @page_from = params[:page_from]
@@ -7,6 +8,11 @@ class BoxesController < ApplicationController
     @my_current_box = my_own_box(current_round(current_user.club_id))
     @my_box = 0
     @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
+    days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
+    # admin : create button appears in last days or after if round is the most recent
+    @new_round_required = days_left <= DAYS_BEFORE_NEW_ROUND_CREATION && @start_dates.first == @round.start_date.strftime('%d/%m/%Y')
+    # referee : request button appears only before end of the last round
+    @new_round_request = days_left.positive? && @new_round_required
   end
 
   def show
@@ -73,28 +79,29 @@ class BoxesController < ApplicationController
     end
   end
 
-  def league_boxes_to_csv
-    # export the league table to a csv file
+  def league_round_to_csv
+    # export the selected round players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
+    referee = User.find_by(role: "referee", club_id: round.club_id)
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
     boxes = round.boxes
     table = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << [l(Time.now, format: :short), # to time stamp the csv file
-                 "id", "email", "first_name", "last_name", "nickname", "phone_number", "role", "box", "club"]
+      writer << ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
       table.each_with_index do |user_bs, index|
-        writer << [index + 1,
-                   user_bs.user.id,
+        writer << [user_bs.user.id, round.club.id,
                    user_bs.user.email,
                    user_bs.user.first_name, user_bs.user.last_name, user_bs.user.nickname,
-                   user_bs.user.phone_number,
-                   user_bs.user.role, user_bs.box.box_number,
-                   round.club.name]
+                   user_bs.user.phone_number, user_bs.user.role]
       end
-    end
+      writer << [referee.id, round.club.id,
+                 referee.email,
+                 referee.first_name, referee.last_name, referee.nickname,
+                 referee.phone_number, referee.role]
+end
     download_csv(file.pathmap, "Boxes-R#{round_number(round)}", round.club.name)
   end
 
