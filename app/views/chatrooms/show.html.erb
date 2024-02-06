@@ -70,7 +70,7 @@ a chatroom is created in Box controller #my_scores.
             <div class="col-1"></div>
             <div class="col-2"><%= form.label :club, t(".club") %></div>
             <div class="col-3">
-              <%= form.select(:club, @clubs.unshift("club"), {selected: params[:club] ? params[:club] : "club"}, {onchange: "this.form.submit();"}) %>
+              <%= form.select(:club, params[:club] ? @clubs : @clubs.unshift("club"), {selected: params[:club] ? params[:club] : "club"}, {onchange: "this.form.submit();"}) %>
             </div>
           </div>
         <% end %>
