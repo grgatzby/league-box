@@ -26,3 +26,12 @@ en:
       round: Round start date
       box: Box number
       chatroom_created_flash: New chatroom created
+      message1_box_pop: >
+        The chatrooms names :<br />
+        #[Club] - R[YY_NN]:B[Box nb]<br />
+        YY_NN is the round number (YY is the round's year, NN the round rank in the year)
+      message2_box_pop: >
+        Open a chatroom by selecting:<br />
+        - the club, the round and the box (admin) or<br />
+        - the round and the box (referee) or<br />
+        - the round (player)
