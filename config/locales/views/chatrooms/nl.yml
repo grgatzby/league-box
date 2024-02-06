@@ -14,7 +14,7 @@ nl:
       send_btn: ⎷ Versturen
       back_btn: ←
       chatroom_choice: Toegang tot een chatroom
-      chose_chatroom: "Kies een bestaande chatroom: "
+      chose_chatroom: "Kies een open chatroom: "
       chatroom_name: Chatroom naam
       confirm_btn: ⎷ Bevestigen
       chatrooms_title: "Chatrooms %{club}"

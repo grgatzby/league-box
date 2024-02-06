@@ -74,7 +74,7 @@ a chatroom is created in Box controller #my_scores.
             </div>
           </div>
         <% end %>
-      <% else %>
+      <% else %> <%# current user is a referee %>
         <div class="row">
           <div class="col-1"></div>
           <div class="col-2"><%= "Club" %></div>
@@ -101,19 +101,19 @@ a chatroom is created in Box controller #my_scores.
       <% end %>
       <% if params[:round] %>
         <% club_index = @data.index {|club| club[:name] == params[:club]}
-           round_index = @data[club_index][:rounds].index {|round| round[:start_date] == params[:round]}
-           boxes = @data[club_index][:rounds][round_index][:boxes].map{|box| box[:box_number]}.sort %>
+          round_index = @data[club_index][:rounds].index {|round| round[:start_date] == params[:round]}
+          boxes = @data[club_index][:rounds][round_index][:boxes].map{|box| box[:box_number]}.sort %>
         <%= form_with url: chatroom_path, method: :get do |form| %>
           <%# select a box in the selected round %>
-        <div class="row">
-          <div class="col-1"></div>
-          <div class="col-2"><%= form.label :box, t(".box") %></div>
-          <div class="col-3">
-            <%= form.select(:box, boxes.unshift("box"), {selected: "box"}, {onchange: "this.form.submit();"}) %>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-2"><%= form.label :box, t(".box") %></div>
+            <div class="col-3">
+              <%= form.select(:box, boxes.unshift("box"), {selected: "box"}, {onchange: "this.form.submit();"}) %>
+            </div>
+            <%= hidden_field_tag(:club, params[:club]) %>
+            <%= hidden_field_tag(:round, params[:round]) %>
           </div>
-          <%= hidden_field_tag(:club, params[:club]) %>
-          <%= hidden_field_tag(:round, params[:round]) %>
-        </div>
         <% end %>
       <% end %>
       <br>

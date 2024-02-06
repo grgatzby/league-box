@@ -133,10 +133,4 @@ end
     end
     matches << [nil, user, nil, nil] # add user to the list
   end
-
-  def my_box?(box, player = current_user)
-    # return true if player belongs to box, false if not
-    # player.role == "player" && box == player.user_box_scores.first.box
-    box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
-  end
 end

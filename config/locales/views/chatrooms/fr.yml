@@ -14,7 +14,7 @@ fr:
       send_btn: ⎷ Envoi
       back_btn: ←
       chatroom_choice: Accéder à une chatroom
-      chose_chatroom: "Choisir une chatroom existante: "
+      chose_chatroom: "Choisir une chatroom ouverte: "
       chatroom_name: Nom de la chatroom
       confirm_btn: ⎷ Confirmer
       chatrooms_title: "Chatrooms %{club}"
@@ -22,7 +22,7 @@ fr:
       no_chatroom_flash: Cette chatroom n'existe pas
       or: ou
       new_chatroom: "Ouvrir une chatroom: "
-      club: Choix du club
+      club: Choix d'un club
       round: Début du round
       box: Numéro de box
       chatroom_created_flash: Création d'une nouvelle chatroom

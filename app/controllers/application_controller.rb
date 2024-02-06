@@ -250,4 +250,10 @@ class ApplicationController < ActionController::Base
       send_file file, filename: "#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
     end
   end
+
+  def my_box?(box, player = current_user)
+    # return true if player belongs to box, false if not
+    # player.role == "player" && box == player.user_box_scores.first.box
+    box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
+  end
 end
