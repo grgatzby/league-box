@@ -11,6 +11,7 @@
 # # set as true to append new round to existing clubs
 # new_round = false
 
+# 1/ seeding 2 clubs, players, referees, rounds, boxes, user_box_scores, courts
 # if true
 #   # if Rails.env.development?
 #     puts "-------------------"
@@ -190,30 +191,47 @@
 #   end
 # end
 
-# populate columns games_won and games_played in UserBoxScore records (empty from new migration 29/1/2024)
-UserBoxScore.update_all(games_won: 0, games_played: 0)
 
-Match.all.each do |match|
-  user_match_scores = match.user_match_scores
-  ums = user_match_scores[0] # player
-  oms = user_match_scores[1] # opponent
-  ubs = UserBoxScore.find_by(user_id: ums.user.id, box_id: ums.match.box.id)
-  puts "UMS id #{ums.id}, #{ums.score_set1}  #{ums.score_set2}  #{ums.score_tiebreak}"
-  puts "OMS id #{oms.id}, #{oms.score_set1}  #{oms.score_set2}  #{oms.score_tiebreak}"
-  ubs.games_won += ums.score_set1 + ums.score_set2 + ums.score_tiebreak
-  ubs.games_played += ums.score_set1 + ums.score_set2 + ums.score_tiebreak +
-                      oms.score_set1 + oms.score_set2 + oms.score_tiebreak
-  puts "  > UBS id: #{ubs.id}, games won    #{ubs.games_won}"
-  puts "  > UBS id: #{ubs.id}, games played #{ubs.games_played}"
-  puts ""
-  puts ubs.save
 
-  obs = UserBoxScore.find_by(user_id: oms.user.id, box_id: oms.match.box.id)
-  obs.games_won += oms.score_set1 + oms.score_set2 + oms.score_tiebreak
-  obs.games_played += ums.score_set1 + ums.score_set2 + ums.score_tiebreak +
-                      oms.score_set1 + oms.score_set2 + oms.score_tiebreak
-  puts "  > OBS id: #{obs.id}, games won    #{obs.games_won}"
-  puts "  > OBS id: #{obs.id}, games played #{obs.games_played}"
-  puts obs.save
-  puts "------------------------------------"
+
+
+# 2/ populate columns games_won and games_played in UserBoxScore records (empty from new migration 29/1/2024)
+# UserBoxScore.update_all(games_won: 0, games_played: 0)
+
+# Match.all.each do |match|
+#   user_match_scores = match.user_match_scores
+#   ums = user_match_scores[0] # player
+#   oms = user_match_scores[1] # opponent
+#   ubs = UserBoxScore.find_by(user_id: ums.user.id, box_id: ums.match.box.id)
+#   puts "UMS id #{ums.id}, #{ums.score_set1}  #{ums.score_set2}  #{ums.score_tiebreak}"
+#   puts "OMS id #{oms.id}, #{oms.score_set1}  #{oms.score_set2}  #{oms.score_tiebreak}"
+#   ubs.games_won += ums.score_set1 + ums.score_set2 + ums.score_tiebreak
+#   ubs.games_played += ums.score_set1 + ums.score_set2 + ums.score_tiebreak +
+#                       oms.score_set1 + oms.score_set2 + oms.score_tiebreak
+#   puts "  > UBS id: #{ubs.id}, games won    #{ubs.games_won}"
+#   puts "  > UBS id: #{ubs.id}, games played #{ubs.games_played}"
+#   puts ""
+#   puts ubs.save
+
+#   obs = UserBoxScore.find_by(user_id: oms.user.id, box_id: oms.match.box.id)
+#   obs.games_won += oms.score_set1 + oms.score_set2 + oms.score_tiebreak
+#   obs.games_played += ums.score_set1 + ums.score_set2 + ums.score_tiebreak +
+#                       oms.score_set1 + oms.score_set2 + oms.score_tiebreak
+#   puts "  > OBS id: #{obs.id}, games won    #{obs.games_won}"
+#   puts "  > OBS id: #{obs.id}, games played #{obs.games_played}"
+#   puts obs.save
+#   puts "------------------------------------"
+# end
+
+# 3/ rename chatrooms from eg: "Wimbledon Ltc Club - B04/R23_03" to "Wimbledon Ltc Club - R23_03:B04"
+general = Chatroom.find_by(name: "general")
+chatrooms = Chatroom.excluding(general)
+
+chatrooms.each do |chatroom|
+  puts "Chatroom id: #{chatroom.id}, old name: #{chatroom.name}"
+  roundname = chatroom.name[-6, 6]
+  boxname = chatroom.name[-10, 3]
+  newname = "#{chatroom.name[0, chatroom.name.size - 10]}#{roundname}:#{boxname}"
+  chatroom.update(name: newname)
+  puts ">> new name: #{chatroom.name}"
 end

@@ -13,8 +13,16 @@ en:
       message_invite: "> Message to"
       send_btn: ⎷ Send
       back_btn: ←
-      chose_chatroom: "Chose a chatroom: "
+      chatroom_choice: Access a chatroom
+      chose_chatroom: "Choose an existing chatroom: "
+      chatroom_name: Name of the chatroom
       confirm_btn: ⎷ Confirm
       chatrooms_title: "%{club} chatrooms"
       no_access_flash: You have no access to this chatroom
       no_chatroom_flash: This chatroom does not exist
+      or: or
+      new_chatroom: "Open a chatroom: "
+      club: Club choice
+      round: Round start date
+      box: Box number
+      chatroom_created_flash: New chatroom created

@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
   def set_club_round
     # instantiate variables @club from params[:club_id], and @round from params[:round_id]
     # if they have been selected from the _select_club_round forms
-    # invoked by #index, #my_scores in Boxes and user_box_scores/index views forms
+    # method called from #index, #my_scores in Boxes and user_box_scores/index views forms
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown list in the select_club form
 

@@ -8,11 +8,13 @@ class BoxesController < ApplicationController
     @my_current_box = my_own_box(current_round(current_user.club_id))
     @my_box = 0
     @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
-    days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
-    # admin : create button appears in last days or after if round is the most recent
-    @new_round_required = days_left <= DAYS_BEFORE_NEW_ROUND_CREATION && @start_dates.first == @round.start_date.strftime('%d/%m/%Y')
-    # referee : request button appears only before end of the last round
-    @new_round_request = days_left.positive? && @new_round_required
+    if @round
+      days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
+      # admin : create button appears in last days or after if round is the most recent
+      @new_round_required = days_left <= DAYS_BEFORE_NEW_ROUND_CREATION && @start_dates.first == @round.start_date.strftime('%d/%m/%Y')
+      # referee : request button appears only before end of the last round
+      @new_round_request = days_left.positive? && @new_round_required
+    end
   end
 
   def show
@@ -34,9 +36,10 @@ class BoxesController < ApplicationController
   end
 
   def my_scores
+    # allow player to view their box and select enter new score / view played match
+    # create the box chatroom if necessary
     @page_from = params[:page_from]
     @current_player = current_user
-    # allow player to view their box and select enter new score / view played match
     if params[:id].to_i.zero?
       # previously, passing 0 to my_scores_path, forced user to choose a round
       # now the last round is automatically selected in Applications #set_club_round
@@ -58,20 +61,13 @@ class BoxesController < ApplicationController
       end
       @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # create a new chatroom if it does not exist or if still set to "general":
-        # why? : the Chatroom class was migrated after the Box class (with: chatroom has one box)
+        # create here a new chatroom if it does not exist yet or if it is still set to "general":
+        # rationale : the Chatroom class was migrated after the Box class (with: chatroom has one box)
         # and the migration script assigned the #general chatroom by default to existing boxes.
         # If the assigned chatroom is still #general, or if this box has no chatroom yet,
-        # we create a new chatroom here whith the name: "[Club name] - b[Box number]/R[Round id]"
-        # it will NOT remain available to players when in the next round (a chatroom is round specific)
-        # round_year = @box.round.start_date.year
-        # rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
-        #                       .where(club_id: @box.round.club)
-        #                       .order('start_date ASC')
-        #                       .map(&:id)
-        # round_number = "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(@box.round.id) + 1)}"
-        # @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number}")
-        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - B#{format('%02d', @box.box_number)}/R#{round_number(@box.round)}")
+        # create a new chatroom here whith the name: "[Club name] - R[Round id]:B[Box number]"
+        # it will NOT remain available to players when in the next round (a chatroom is box and round specific)
+        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - R#{round_number(@box.round)}:B#{format('%02d', @box.box_number)}")
         @box.update(chatroom_id: @chatroom.id)
       else
         @chatroom = @box.chatroom

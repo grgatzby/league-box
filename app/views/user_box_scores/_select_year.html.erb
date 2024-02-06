@@ -7,7 +7,7 @@
       <%= form.label :round_year, local_assigns[:label] ? label : t('.select_round_year') %>
       <%= form.select(:round_year, @round_years.unshift(t('.year_dropdown')), {selected: params[:round_year]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% else %>
-      <%= form.label :round_year, local_assigns[:label] ? label : t('.select_round_year')+t('.year_dropdown') %>
+      <%= form.label :round_year, local_assigns[:label] ? label : t('.select_round_year')+" "+t('.year_dropdown') %>
       <%= form.select(:round_year, @round_years, {selected: params[:round_year]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% end %>
   <% end %>
