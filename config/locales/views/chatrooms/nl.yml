@@ -13,8 +13,16 @@ nl:
       message_invite: "> Bericht naar"
       send_btn: ⎷ Versturen
       back_btn: ←
-      chose_chatroom: "Kies een chatroom: "
+      chatroom_choice: Toegang tot een chatroom
+      chose_chatroom: "Kies een bestaande chatroom: "
+      chatroom_name: Chatroom naam
       confirm_btn: ⎷ Bevestigen
       chatrooms_title: "Chatrooms %{club}"
       no_access_flash: U heeft geen toegang tot deze chatroom
       no_chatroom_flash: Deze chatroom bestaat niet
+      or: of
+      new_chatroom: "Open een chatroom: "
+      club: Kies een club
+      round: Start van de ronde
+      box: Box nummer
+      chatroom_created_flash: Newe chatroom gemaakt
