@@ -23,6 +23,15 @@ fr:
       or: ou
       new_chatroom: "Ouvrir une chatroom: "
       club: Choix d'un club
-      round: Début du round
+      round: Date de début du round
       box: Numéro de box
       chatroom_created_flash: Création d'une nouvelle chatroom
+      message1_box_pop: >
+        Nom des chatrooms :<br />
+        #[Nom du Club] - R[AA_NN]:B[Nº Box]<br />
+        AA_NN, est le numéro du round (AA est l'année du round, NN son rang dans l'année)
+      message2_box_pop: >
+        Ouvrir une chatroom en choisissant<br />
+        - le club, le round et la box (admin) ou<br />
+        - le round et la box (referee) ou<br />
+        - le round (joueur)

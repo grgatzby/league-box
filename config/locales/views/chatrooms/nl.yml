@@ -26,3 +26,13 @@ nl:
       round: Start van de ronde
       box: Box nummer
       chatroom_created_flash: Newe chatroom gemaakt
+      message1_box_pop: >
+        De namen van de chatrooms zijn als volgt opgebouwd:<br />
+        #[Club] - R[JJ_NN]:B[Boxnummer]<br />
+        JJ_NN is het ronde getal (JJ is het jaar van de ronde, RR de ronderang in het jaar)
+      message2_box_pop: >
+        Open een chatroom door:<br />
+        - de club, ronde en box (admin) of<br />
+        - de ronde en box (referee) of<br />
+        - de ronde (speller)<br />
+        te selecteren
