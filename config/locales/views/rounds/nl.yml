@@ -13,7 +13,7 @@ nl:
       message_boxes: speler, rangschikking,<br />aantal gespeelde wedstrijden, voorgestelde zet
       start_date: "Begin datum:"
       end_date: "Einddatum:"
-      warning: Als een bestand wordt geüpload, worden de spelerbewegingen niet gebruikt
+      warning: "Optioneel: bestand maakt voorrang op spelerverschuivingen"
       create_round_btn: ⎷ Maak de ronde
       new_round: Volgende ronde
     create:

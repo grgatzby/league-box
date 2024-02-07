@@ -11,9 +11,9 @@ fr:
           -2 = baisser de 2 box.<br /><br />
           Choisir 99 pour éliminer le joueur du prochain round (par ex. si moins de 2 matchs joués).
       message_boxes: joueur, classement,<br />nb matchs joués, mouvement proposé
-      start_date: "Date de départ:"
+      start_date: "Date de début:"
       end_date: "Date de fin:"
-      warning: Si un fichier est chargé, les movements ne seront pas considérés
+      warning: "Optionnel: remplace les mouvements de joueurs"
       create_round_btn: ⎷ Créer round
       new_round: Nouveau round
     create:

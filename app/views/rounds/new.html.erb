@@ -34,7 +34,7 @@
             </div>
           <% end %>
 
-          <!--  end of the form: input start_date, end_date and submit -->
+          <!--  end of the form: load CSV file (optional preempts shifts entries), input new start_date, end_date and submit -->
           <div class="new_round-box small-font">
             <div class="box-title"><b><%= t '.new_round' %></b></div>
             <br><div>
@@ -43,13 +43,14 @@
               <br class="small-font"><i><%= t '.warning' %></i>
             </div>
             <%= t '.start_date' %>
-            <%#  proposed start_date : current end_date + 1 day, min value : current end_date + 1 day %>
-            <%= f.date_field(:start_date, min: @current_round.end_date + 1, value: @current_round.end_date + 1 ) %>
+            <%#  proposed start_date : current end_date + 1 day, with min value : end_date + 1 day %>
+            <% enddate = @current_round.end_date + 1 %>
+            <%= f.date_field(:start_date, value: enddate, min: enddate ) %>
             <%#  current round's duration in months %>
-            <% duration = ((@current_round.end_date + 1 - @current_round.start_date).to_f / 365 * 12).round %>
+            <% duration = ((enddate - @current_round.start_date).to_f / 365 * 12).round %>
             <br><%= t '.end_date' %>
-            <%#  proposed end_date : current end_date + duration in months, min value : current end_date + 1 month %>
-            <%= f.date_field(:end_date, min: @current_round.end_date >> 1, value: @current_round.end_date >> duration ) %>
+            <%#  proposed new end_date: current end_date + duration in months, with min value: end_date + 1 month %>
+            <%= f.date_field(:end_date, value: (enddate >> duration) - 1, min: (enddate >> 1) - 1 ) %>
             <%= hidden_field_tag(:club_id, @current_round.club_id) %>
             <div class="one-liner">
               <%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %>

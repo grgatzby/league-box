@@ -240,12 +240,46 @@ class MatchesController < ApplicationController
 
   private
 
+  def compute_results(match_scores)
+    # compute and returns results (array of won sets count for each player)
+    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    # =>  [ 2 , 1 ]
+
+    results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
+
+    # first set
+    if match_scores[0][:score_set1] > match_scores[1][:score_set1]
+      results[:sets_won1] += 1
+    elsif match_scores[0][:score_set1] < match_scores[1][:score_set1]
+      results[:sets_won2] += 1
+    end
+
+    # second set
+    if match_scores[0][:score_set2] > match_scores[1][:score_set2]
+      results[:sets_won1] += 1
+    elsif match_scores[0][:score_set2] < match_scores[1][:score_set2]
+      results[:sets_won2] += 1
+    end
+
+    # championship tie break
+    if results[:sets_won1] == 1 || results[:sets_won2] == 1
+      if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
+        results[:sets_won1] += 1
+      elsif match_scores[0][:score_tiebreak] < match_scores[1][:score_tiebreak]
+        results[:sets_won2] += 1
+      end
+    end
+    # return results (ARRAY of won sets count for each player)
+    [results[:sets_won1], results[:sets_won2]]
+  end
+
   def compute_points(match_scores)
     # match_scores (array of 2 hashes of scores) => results (array of won sets count for each player)
     # eg: 4-2 1-3 10-7
     #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
     #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    # =>  [ 2 , 1 ] & transforms entry hash to:
+    # =>  [ 2 , 1 ] & transforms entry array:
     #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10, points: 20 },
     #       {score_set1: 2, score_set2: 3, score_tiebreak: 7, points: 12} ]
     # Points rules:
@@ -287,42 +321,11 @@ class MatchesController < ApplicationController
     results
   end
 
-  def compute_results(match_scores)
-    # compute and returns results (array of won sets count for each player)
-    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    # =>  [ 2 , 1 ]
-
-    results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
-
-    # first set
-    if match_scores[0][:score_set1] > match_scores[1][:score_set1]
-      results[:sets_won1] += 1
-    elsif match_scores[0][:score_set1] < match_scores[1][:score_set1]
-      results[:sets_won2] += 1
-    end
-
-    # second set
-    if match_scores[0][:score_set2] > match_scores[1][:score_set2]
-      results[:sets_won1] += 1
-    elsif match_scores[0][:score_set2] < match_scores[1][:score_set2]
-      results[:sets_won2] += 1
-    end
-
-    # championship tie break
-    if results[:sets_won1] == 1 || results[:sets_won2] == 1
-      if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
-        results[:sets_won1] += 1
-      elsif match_scores[0][:score_tiebreak] < match_scores[1][:score_tiebreak]
-        results[:sets_won2] += 1
-      end
-    end
-    # return results (ARRAY of won sets count for each player)
-    [results[:sets_won1], results[:sets_won2]]
-  end
-
   def test_new_score(match_scores)
+    # for a new match
     # return ARRAY of won sets count for each player if scores entered in matches/new are valid,
+    # eg: 4-2 1-3 10-7
+    #     => [ 2, 1 ]
     # returns false otherwise
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
     # test scores entries for first set and second set
@@ -330,7 +333,7 @@ class MatchesController < ApplicationController
        (match_scores[0][:score_set2].zero? && match_scores[1][:score_set2].zero?) # no score entered for either set 1 or set 2
       flash[:alert] = t('.test_scores01_flash')
       false
-    else # score entries are ok for set 1 and set 2 => count won sets for each player
+    else # score entries are OK for set 1 and set 2 => count won sets for each player
       # first set
       if match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] < 4
         results[:sets_won1] += 1
@@ -366,11 +369,12 @@ class MatchesController < ApplicationController
   end
 
   def test_edit_score(match_scores, results)
+    # for a score edit
     # return true if scores entered in matches/edit are valid, false otherwise
-    # match_scores (array of 2 hashes of scores)
+    # return match_scores (array of 2 hashes of scores)
     # eg: 4-2 1-3 10-7
-    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    #     => [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #          {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
@@ -399,7 +403,7 @@ class MatchesController < ApplicationController
   end
 
   def split_score_to_array(score)
-    # converts string score format "s1-s2" into array format [s1, s2]
+    # converts score from string format "s1-s2" into array format [s1, s2]
     [score.match(/.+?(?=-)/).to_s.to_i, score.split("-")[-1].to_i]
   end
 
