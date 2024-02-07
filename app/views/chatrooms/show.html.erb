@@ -59,10 +59,11 @@ a chatroom is created in Box controller #my_scores.
       data-bs-content="<%= t '.message1_box_pop' %>">
         <%= form_with url: chatroom_path, method: :get do |form| %>
           <%# choose existing chatroom from list of names %>
-          <%= form.label :chatroom, t(".chose_chatroom") %>
-          &nbsp;&nbsp;&nbsp;&nbsp;<%= form.select(:chatroom, @chatrooms.sort.unshift(t(".chatroom_name")), {selected: "chatroom"}, {onchange: "this.form.submit();"}) %>
-          <%# form.submit t(".confirm_btn"), class: "btn buttons-shape btn-green", name: "" %>
-          <%# form.select(:round_id, @start_dates, {selected: @selected_date}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="row">
+            <div class="col-3"><%= form.label :chatroom, t(".chose_chatroom") %></div>
+            <div class="col-3"><%= form.select(:chatroom, @chatrooms.sort.unshift(t(".chatroom_name")), {selected: "chatroom"}, {onchange: "this.form.submit();"}) %></div>
+            <%# form.submit t(".confirm_btn"), class: "btn buttons-shape btn-green", name: "" %>
+          </div>
         <% end %>
       </div>
       <br><b><%= t(".or") %>:</b><br><br>
@@ -102,6 +103,11 @@ a chatroom is created in Box controller #my_scores.
             <div class="col-2"><%= form.label :round, t(".round") %></div>
             <div class="col-3">
               <%= form.select(:round, rounds.unshift("round"), {selected: params[:round] ? params[:round] : "round"}, {onchange: "this.form.submit();"}) %>
+              <% if params[:round] %>
+                <% club = Club.find_by(name: params[:club])
+                  round = Round.find_by(club_id: club.id, start_date: params[:round].to_date) %>
+                => R<%= round_number(round) %>
+              <% end %>
             </div>
             <%= hidden_field_tag(:club, params[:club]) %>
           </div>

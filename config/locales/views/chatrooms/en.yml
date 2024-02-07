@@ -15,7 +15,7 @@ en:
       back_btn: ←
       chatroom_choice: Access a chatroom
       chose_chatroom: "Choose an open chatroom: "
-      chatroom_name: Name of the chatroom
+      chatroom_name: Chatroom name
       confirm_btn: ⎷ Confirm
       chatrooms_title: "%{club} chatrooms"
       no_access_flash: You have no access to this chatroom
