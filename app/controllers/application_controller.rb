@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
+  helper_method :round_number  # allows teh method to be called vrom views
   # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
