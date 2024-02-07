@@ -23,7 +23,7 @@ fr:
       expired: round terminé
       players: "%{nb_players} joueurs"
     select_round:
-      select_round_start: "Consulter un autre round: "
+      select_round_start: "Consulter un autre round (date de début): "
       confirm_btn: ⎷ Confirmer
     select_club_round:
       select_club: "Choisir un club: "

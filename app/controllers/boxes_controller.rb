@@ -3,8 +3,9 @@ class BoxesController < ApplicationController
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
 
   def index
+    # display all boxes and the shared select_round form
     @page_from = params[:page_from]
-    set_club_round    # set variables @club, @round and @boxes (ApplicationController)
+    set_club_round # set variables @club, @round and @boxes (ApplicationController)
     @my_current_box = my_own_box(current_round(current_user.club_id))
     @my_box = 0
     @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
@@ -18,6 +19,7 @@ class BoxesController < ApplicationController
   end
 
   def show
+    # display one box in table view, links to view and edit match cards
     unless params[:id].to_i.zero?
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
@@ -32,12 +34,13 @@ class BoxesController < ApplicationController
   end
 
   def show_list
+    # display one box in list view, links to view and edit match cards
     show # inherit from #show
   end
 
   def my_scores
-    # allow player to view their box and select enter new score / view played match
-    # create the box chatroom if necessary
+    # player: view their box and select enter new score / view played match
+    # open the box chatroom if necessary and link to access it
     @page_from = params[:page_from]
     @current_player = current_user
     if params[:id].to_i.zero?
@@ -61,12 +64,12 @@ class BoxesController < ApplicationController
       end
       @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # create here a new chatroom if it does not exist yet or if it is still set to "general":
+        # create here (open) a new chatroom if it does not exist yet or if it is still set to "general":
         # rationale : the Chatroom class was migrated after the Box class (with: chatroom has one box)
         # and the migration script assigned the #general chatroom by default to existing boxes.
-        # If the assigned chatroom is still #general, or if this box has no chatroom yet,
-        # create a new chatroom here whith the name: "[Club name] - R[Round id]:B[Box number]"
-        # it will NOT remain available to players when in the next round (a chatroom is box and round specific)
+        # The name format: "[Club name] - R[Round id]:B[Box number]"
+        # a chatroom is box and round specific:
+        # players can access it when visiting My Scores or from the navbar menu Chatrooms
         @chatroom = Chatroom.create(name: "#{@box.round.club.name} - R#{round_number(@box.round)}:B#{format('%02d', @box.box_number)}")
         @box.update(chatroom_id: @chatroom.id)
       else
@@ -76,7 +79,7 @@ class BoxesController < ApplicationController
   end
 
   def league_round_to_csv
-    # export the selected round players and the referee to a csv file
+    # export for the selected round a list of players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
     referee = User.find_by(role: "referee", club_id: round.club_id)
@@ -97,19 +100,19 @@ class BoxesController < ApplicationController
                  referee.email,
                  referee.first_name, referee.last_name, referee.nickname,
                  referee.phone_number, referee.role]
-end
+    end
     download_csv(file.pathmap, "Boxes-R#{round_number(round)}", round.club.name)
   end
 
   private
 
   def user_matches(user, box)
-    # for given user, selects match scores in box, and returns array of matches
+    # for a given user, select match scores in box, and returns array of matches
     user.user_match_scores.select { |user_match_score| user_match_score.match.box == box }.map(&:match)
   end
 
   def opponent(match, player)
-    # for given match, selects match score of other player, and returns other player
+    # for a given match, select match score of other player, and returns other player
     match.user_match_scores.reject { |user_match_score| user_match_score.user == player }.map(&:user)[0]
   end
 

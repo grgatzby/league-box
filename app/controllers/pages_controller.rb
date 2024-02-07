@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @box = my_own_box(current_round(current_user.club_id)) if current_user
     @path = {}
     if current_user
+      # paths associated with the links in the home page
       @path["01"] = my_scores_path(0)
       @path["02"] = boxes_path
       @path["03a"] = box_list_path(@box || 0)

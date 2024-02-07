@@ -13,7 +13,7 @@ en:
       message_boxes: player name, rank,<br />nb matches played, proposed box move
       start_date: "Start date :"
       end_date: "End date :"
-      warning: If a file is uploaded, player moves won't operate
+      warning: "Optional: if a file is uploaded, shifts won't operate"
       create_round_btn: ⎷ Create round
       new_round: New round
     create:

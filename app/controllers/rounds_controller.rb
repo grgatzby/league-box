@@ -6,7 +6,7 @@ class RoundsController < ApplicationController
   def new
     # called from a button in Boxes index view (referees only)
     # form request to admin to generate a next round derived from the current
-    # TO DO : Add a file upload in the form so the admin can create the round from a CSV file
+    # There is a file upload field in the form so the admin can create the round from a CSV file
     # if admin is logged in, the club is given by params[:club_id]
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
@@ -35,8 +35,9 @@ class RoundsController < ApplicationController
   end
 
   def create
-    # admin or referee to generate next round from current
+    # admin or referee to generate next round from the current one
     # if user is admin, club is given by params[:club_id], else: the referee's club
+    # the new round is seeded through the uploaded CSV file or if none, through the form
     # TO DO: create a chatroom for each new box:
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
@@ -46,8 +47,8 @@ class RoundsController < ApplicationController
       headers = CSV.foreach(csv_file).first
       if headers.sort - ["nickname"] == REQUIRED_HEADERS
         club = Club.find(params[:club_id])
-        players_per_box = club.rounds.last.boxes[0].user_box_scores.count
-
+        # estimate the nb of players of the current box as current box 1's nb of players
+        players_per_box = club.rounds.last.boxes.find_by(box_number:1).user_box_scores.count
         # create new round
         round = Round.create(start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date, club_id: params[:club_id])
 
@@ -69,7 +70,9 @@ class RoundsController < ApplicationController
 
         # create boxes and user_box_scores
         # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-        players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        if (players.count % players_per_box).positive?
+          players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        end
         nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
         box_players = []
         boxes = []
