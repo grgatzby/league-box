@@ -111,7 +111,7 @@ class RoundsController < ApplicationController
       nb_players_per_box = current_boxes[0].user_box_score_ids.length
       clean_boxes(temp_boxes, nb_players_per_box)
 
-      redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club.id)
+      redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club_id)
     end
   end
 
