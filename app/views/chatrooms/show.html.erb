@@ -3,7 +3,7 @@ For each box, if not already created in Round/new (TO DO?), or in UserBoxScore/n
 a chatroom is created in Box controller #my_scores.
 -->
 <% if @chatroom %>
-  <!-- coming from Box/my_scores or if chatroom chosen by admin/Referee -->
+  <!-- coming from Box/my_scores or if chatroom chosen from the form -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>"
     data-controller="chatroom-subscription"
     data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
@@ -48,46 +48,46 @@ a chatroom is created in Box controller #my_scores.
     </div>
   </div>
 <% else %>
-  <!-- referees and admin get to select a chatroom -->
+  <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
     <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name).strip.titleize %></h3>
     <h5><%= t(".chatroom_choice") %></h5>
-    <div class="frame-color-shape frame-padding text-size">
+    <div class="frame-color-shape frame-padding frame-margin-rl text-size">
       <br>
+      <%# form 1: choose an existing chatroom from a list of chatroom names %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= t '.message1_box_pop' %>">
+        <%= t(".chose_chatroom") %>
         <%= form_with url: chatroom_path, method: :get do |form| %>
-          <%# choose existing chatroom from list of names %>
           <div class="row">
-            <div class="col-3"><%= form.label :chatroom, t(".chose_chatroom") %></div>
-            <div class="col-3"><%= form.select(:chatroom, @chatrooms.sort.unshift(t(".chatroom_name")), {selected: "chatroom"}, {onchange: "this.form.submit();"}) %></div>
+            <div class="col-1"></div>
+            <div class="col-11"><%= form.select(:chatroom, @chatrooms.sort.unshift(t(".chatroom_name")), {selected: "chatroom"}, {onchange: "this.form.submit();"}) %></div>
             <%# form.submit t(".confirm_btn"), class: "btn buttons-shape btn-green", name: "" %>
           </div>
         <% end %>
       </div>
       <br><b><%= t(".or") %>:</b><br><br>
+
+      <%# form 2: select a club, a round and a box to open the corresponding chatroom, or create it %>
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-      data-bs-content="<%= t '.message2_box_pop' %>">
+      data-bs-content="<%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{current_user.role}")}" %>">
         <%= t(".new_chatroom") %><br>
         <% if current_user == @admin %>
-          <%# select a club, a round and a box to open the corresponding chatroom, or create it %>
           <%= form_with url: chatroom_path, method: :get do |form| %>
             <%# as some chatrooms are not open yet, select a club (admin) %>
             <div class="row">
               <div class="col-1"></div>
-              <div class="col-2"><%= form.label :club, t(".club") %></div>
-              <div class="col-3">
-                <%= form.select(:club, params[:club] ? @clubs : @clubs.unshift("club"), {selected: params[:club] ? params[:club] : "club"}, {onchange: "this.form.submit();"}) %>
+              <div class="col-11">
+                <%= form.select(:club, params[:club] ? @clubs : @clubs.unshift(t(".club")), {selected: params[:club] ? params[:club] : t(".club")}, {onchange: "this.form.submit();"}) %>
               </div>
             </div>
           <% end %>
         <% else %> <%# current user is a referee or a player: club is set %>
           <div class="row">
             <div class="col-1"></div>
-            <div class="col-2"><%= "Club" %></div>
-            <div class="col-3">
+            <div class="col-11">
               <%= current_user.club.name %>
             </div>
           </div>
@@ -100,10 +100,10 @@ a chatroom is created in Box controller #my_scores.
             <%# select a round in the selected club %>
           <div class="row">
             <div class="col-1"></div>
-            <div class="col-2"><%= form.label :round, t(".round") %></div>
-            <div class="col-3">
-              <%= form.select(:round, rounds.unshift("round"), {selected: params[:round] ? params[:round] : "round"}, {onchange: "this.form.submit();"}) %>
+            <div class="col-11">
+              <%= form.select(:round, rounds.unshift(t(".round")), {selected: params[:round] ? params[:round] : t(".round")}, {onchange: "this.form.submit();"}) %>
               <% if params[:round] %>
+                <%# display round number in RYY_NN format %>
                 <% club = Club.find_by(name: params[:club])
                   round = Round.find_by(club_id: club.id, start_date: params[:round].to_date) %>
                 => R<%= round_number(round) %>
@@ -121,9 +121,8 @@ a chatroom is created in Box controller #my_scores.
             <%# select a box in the selected round %>
             <div class="row">
               <div class="col-1"></div>
-              <div class="col-2"><%= form.label :box, t(".box") %></div>
-              <div class="col-3">
-                <%= form.select(:box, boxes.unshift("box"), {selected: "box"}, {onchange: "this.form.submit();"}) %>
+              <div class="col-11">
+                <%= form.select(:box, boxes.unshift(t(".box")), {selected: t(".box")}, {onchange: "this.form.submit();"}) %>
               </div>
               <%= hidden_field_tag(:club, params[:club]) %>
               <%= hidden_field_tag(:round, params[:round]) %>
@@ -132,7 +131,11 @@ a chatroom is created in Box controller #my_scores.
         <% end %>
       </div>
       <br>
+
     </div>
   </div>
+
+
+
 <% end %>
 <br>

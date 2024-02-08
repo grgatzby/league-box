@@ -30,9 +30,7 @@ nl:
         De namen van de chatrooms zijn als volgt opgebouwd:<br />
         #[Club] - R[JJ_NN]:B[Boxnummer]<br />
         JJ_NN is het ronde getal (JJ is het jaar van de ronde, RR de ronderang in het jaar)
-      message2_box_pop: >
-        Open een chatroom door:<br />
-        - de club, ronde en box (admin) of<br />
-        - de ronde en box (referee) of<br />
-        - de ronde (speller)<br />
-        te selecteren
+      message2_box_pop: Open een chatroom door
+      message2_box_pop_admin: de club, ronde en box te selecteren.
+      message2_box_pop_referee: de ronde en box te selecteren.
+      message2_box_pop_player: de round te selecteren.
