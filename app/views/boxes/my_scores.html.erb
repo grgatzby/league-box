@@ -19,7 +19,7 @@
             add_text: "#{render "shared/fullname", user: @current_player} - box #{@box.box_number}" %>
         </h4>
         <div>
-          <% parameters = "?round_id=#{@box.round.id}&club_id=#{@box.round.club_id}" %>
+          <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
           <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn buttons-shape btn-yellow mb-3" %>
         </div>
       </div>

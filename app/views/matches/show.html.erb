@@ -4,8 +4,8 @@
   <div class="one-liner">
     <h3><%= t '.show_match_title' %></h3>
   </div>
-  <% player_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@player.id) %>
-  <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box.id, user_id:@opponent.id) %>
+  <% player_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@player.id) %>
+  <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@opponent.id) %>
   <h5>
     <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>

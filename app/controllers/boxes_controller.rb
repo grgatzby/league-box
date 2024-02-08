@@ -91,12 +91,12 @@ class BoxesController < ApplicationController
       # table headers
       writer << ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
       table.each_with_index do |user_bs, index|
-        writer << [user_bs.user.id, round.club.id,
+        writer << [user_bs.user.id, round.club_id,
                    user_bs.user.email,
                    user_bs.user.first_name, user_bs.user.last_name, user_bs.user.nickname,
                    user_bs.user.phone_number, user_bs.user.role]
       end
-      writer << [referee.id, round.club.id,
+      writer << [referee.id, round.club_id,
                  referee.email,
                  referee.first_name, referee.last_name, referee.nickname,
                  referee.phone_number, referee.role]
