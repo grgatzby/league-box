@@ -51,18 +51,19 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
-  def index_year
+  def index_league
     set_club_round
-    # displays the league table for entire the year, allows user to sort the table by click on headers
-    @year = params[:round_year].to_i
-    @club = Club.find(params[:club_id].to_i)
-    rounds = Round.where('extract(year  from start_date) = ?', @year).where(club_id: params[:club_id].to_i)
+    # displays the league table for the tournament (same club, same league_start), allows user to sort the table by click on headers
+    @league_start = "#{params[:league_start]}/01".to_date
+    club_id = params[:club_id].to_i
+    @club = Club.find(club_id)
+    rounds = Round.where(league_start: @league_start, club_id:)
     @round = current_round(@club.id)
     if rounds.length.positive?
-      users = User.where(club_id: params[:club_id].to_i, role: "player")
+      users = User.where(club_id:, role: "player")
 
-      @user_box_scores = league_table_year(rounds, users)
-      # @order dictates the sorting order of the selected header
+      @user_box_scores = league_table(rounds, users)
+      # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
       # it is passed from the partial _header_to_link.html.erb when a header is clicked
       if params[:order] && (params[:exsort] == params[:sort])
         @order = params[:order].to_i
@@ -70,7 +71,7 @@ class UserBoxScoresController < ApplicationController
         @order = -1
       end
 
-      @user_box_scores = rank_players(@user_box_scores, "index_year")
+      @user_box_scores = rank_players(@user_box_scores, "index_league")
       @user_box_scores.sort_by! { |user_bs| -@order * user_bs[1][:rank] }
       @user_box_scores.each_with_index { |user_bs, index| user_bs[1][:index] = index }
       @sort = params[:sort]
@@ -103,7 +104,7 @@ class UserBoxScoresController < ApplicationController
         create_txt
       end
     else
-      flash[:notice] = t('.valid_year_flash')
+      flash[:notice] = t('.valid_league_flash')
       redirect_back(fallback_location: user_box_scores_path)
     end
   end
@@ -177,8 +178,8 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
-  def league_table_to_csv
-    # export the league table to a csv file
+  def round_league_table_to_csv
+    # export the round league table to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
     # file = Rails.root.join('public', 'data.csv')
@@ -199,19 +200,19 @@ class UserBoxScoresController < ApplicationController
                    user_bs.games_played, user_bs.games_won]
       end
     end
-    download_csv(file.pathmap, "League Table-R#{round_number(round)}", round.club.name)
+    download_csv(file.pathmap, "League Table-R#{round_label(round)}", round.club.name)
   end
 
-  def league_year_to_csv
-    # export the league table to a csv file
-    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
-    year = params[:round_year].to_i
-    rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id: params[:club_id].to_i)
-    users = User.where(club_id: params[:club_id].to_i, role: "player")
-    # file = Rails.root.join('public', 'data.csv')
+  def league_table_to_csv
+    # export the league table to a csv file for the tournament (= collection of rounds with same league_start)
+    league = "#{params[:league_start]}/01".to_date
+    club_id = params[:club_id].to_i
+    # rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id:)
+    rounds = Round.where(league_start: league, club_id:)
+    users = User.where(club_id:, role: "player")
     file = "#{Rails.root}/public/data.csv"
-    user_box_scores = league_table_year(rounds, users)
-    user_box_scores = rank_players(user_box_scores, "index_year")
+    user_box_scores = league_table(rounds, users)
+    user_box_scores = rank_players(user_box_scores, "index_league")
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
@@ -239,7 +240,7 @@ class UserBoxScoresController < ApplicationController
         writer << data
       end
     end
-    download_csv(file.pathmap, "League Table-#{year}", rounds[0].club.name)
+    download_csv(file.pathmap, "League Table-T#{params[:league_start]}", rounds[0].club.name)
   end
 
   private
@@ -251,13 +252,15 @@ class UserBoxScoresController < ApplicationController
     send_data(html_free_string, template: :raw, filename: "league-table-#{Date.today}.txt", type: "text/txt")
   end
 
-  def league_table_year(rounds, users)
+  def league_table(rounds, users)
+    # rounds is the collection of rounds in the tournament (same club, same league_start)
+    # users is the collection of players in the club
     # return a hash : { player, { index, rank, points, matches_played, matches_won, games_played, games_won, sets_played, sets_won, last_round } }
-    round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # array of each round's array of user_box_scores in the year
+    round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # array of each round's array of user_box_scores in one tournament
     league_table = {}
     users.each do |user|
       league_table[user] =
-        { # for each player, sum of points, matches_played, matches_won, games_played, games_won, sets_played, sets_won across the chosen year rounds
+        { # for each player, sum of points, matches_played, matches_won, games_played, games_won, sets_played, sets_won across the chosen league's rounds
           index: 0,
           rank: 0, # updated in Application#rank_players
           points: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:points) },
@@ -269,7 +272,7 @@ class UserBoxScoresController < ApplicationController
           games_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
           last_round: last_round(user)
         }
-      # add the ranks, points and box of each round of the year for the player
+      # add the ranks, points and box of each round of the league for the player
       (1..rounds.size).each do |i|
         user_box_score = round_user_bss[i - 1].select { |user_bs| user_bs.user_id == user.id }[0]
         if user_box_score

@@ -24,7 +24,7 @@ class BoxesController < ApplicationController
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
       @round = @box.round
-      @round_nb = round_number(@round)
+      @round_nb = round_label(@round)
       # @box_matches is an array of [user_box_score , matches_details(user), user]
       # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
       @box_matches = box_matches(@box) # sorted by descending points scores
@@ -52,7 +52,7 @@ class BoxesController < ApplicationController
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
-      @round_nb = round_number(@box.round)
+      @round_nb = round_label(@box.round)
     end
     if @box
       @my_matches = []
@@ -70,7 +70,7 @@ class BoxesController < ApplicationController
         # The name format: "[Club name] - R[Round id]:B[Box number]"
         # a chatroom is box and round specific:
         # players can access it when visiting My Scores or from the navbar menu Chatrooms
-        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - R#{round_number(@box.round)}:B#{format('%02d', @box.box_number)}")
+        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - R#{round_label(@box.round)}:B#{format('%02d', @box.box_number)}")
         @box.update(chatroom_id: @chatroom.id)
       else
         @chatroom = @box.chatroom
@@ -78,7 +78,7 @@ class BoxesController < ApplicationController
     end
   end
 
-  def league_round_to_csv
+  def round_boxes_to_csv
     # export for the selected round a list of players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
@@ -101,7 +101,7 @@ class BoxesController < ApplicationController
                  referee.first_name, referee.last_name, referee.nickname,
                  referee.phone_number, referee.role]
     end
-    download_csv(file.pathmap, "Boxes-R#{round_number(round)}", round.club.name)
+    download_csv(file.pathmap, "Boxes-R#{round_label(round)}", round.club.name)
   end
 
   private

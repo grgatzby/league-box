@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
-  helper_method :round_number  # allows teh method to be called vrom views
+  helper_method :round_label  # allows teh method to be called vrom views
   # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
@@ -65,12 +65,12 @@ class ApplicationController < ActionController::Base
       if @club == @sample_club
         @club = check_string(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
       end
-      # @club = Club.find_by(name: "Wimbledon Ltc Club")
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
-      @round_years = @start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
+      @league_starts = @club.rounds.map(&:league_start).sort
+      @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%Y/%m') }.uniq
       if params[:round_id]
-        @round = check_string(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date:params[:round_id].to_time, club_id: @club.id)
+        @round = check_string(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: params[:round_id].to_time, club_id: @club.id)
         if @round
           @selected_date = @round.start_date.strftime('%d/%m/%Y')
         else
@@ -81,7 +81,7 @@ class ApplicationController < ActionController::Base
       else
         @round = current_round(@club.id)
       end
-      @round_nb = round_number(@round)
+      @round_nb = round_label(@round)
       @boxes = @round.boxes.sort
     end
   end
@@ -124,7 +124,7 @@ class ApplicationController < ActionController::Base
 
   def rank_players(user_box_scores, *from)
     # updates the rank field in the UserBoxScore database
-    from = from[0] || "index" # "index_year" or "index"
+    from = from[0] || "index" # "index_league" or "index"
 
     # old type ranking based on points only (not used, for initial tests only):
     # points_array = scores.map(&:points)
@@ -145,7 +145,7 @@ class ApplicationController < ActionController::Base
     end
 
     # updates ranks in the database
-    if from == "index_year"
+    if from == "index_league"
       user_box_scores.each_with_index { |score, index| score[1][:rank] = ranks[index] }
     else # from == "index"
       user_box_scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
@@ -180,7 +180,7 @@ class ApplicationController < ActionController::Base
   end
 
   def compare_points(a, b, from)
-    if from == "index_year"
+    if from == "index_league"
       b[1][:points] <=> a[1][:points]
     else # from == "index"
       b.points <=> a.points
@@ -188,7 +188,7 @@ class ApplicationController < ActionController::Base
   end
 
   def compare_matches_played(a, b, from)
-    if from == "index_year"
+    if from == "index_league"
       b[1][:matches_played] <=> a[1][:matches_played]
     else
       b.matches_played <=> a.matches_played
@@ -196,7 +196,7 @@ class ApplicationController < ActionController::Base
   end
 
   def compare_set_ratio(a, b, from)
-    if from == "index_year"
+    if from == "index_league"
       (b[1][:sets_played].zero? ? 0 : b[1][:sets_won].to_f / b[1][:sets_played]) <=> (a[1][:sets_played].zero? ? 0 : a[1][:sets_won].to_f / a[1][:sets_played])
     else # from == "index"
       (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
@@ -204,7 +204,7 @@ class ApplicationController < ActionController::Base
   end
 
   def compare_game_ratio(a, b, from)
-    if from == "index_year"
+    if from == "index_league"
       (b[1][:games_played].zero? ? 0 : b[1][:games_won].to_f / b[1][:games_played]) <=> (a[1][:games_played].zero? ? 0 : a[1][:games_won].to_f / a[1][:games_played])
     else # from == "index"
       (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
@@ -227,14 +227,14 @@ class ApplicationController < ActionController::Base
     path&.gsub(/en|fr|nl/, locale.to_s) # Ruby Safe Navigation
   end
 
-  def round_number(round, *year)
-    # returns round number and its year in format "yy_nb"
-    round_year = year.length.positive? ? year[0] : round.start_date.year
-    rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
-                          .where(club_id: round.club)
+  def round_label(round)
+    # returns round label in format "yy/mm_Rnn" where
+    # yy/mm is the tourament start date and nn is the rank of the round in the tournament
+    league_start = round.league_start
+    rounds_ordered = Round.where(league_start:, club_id: round.club)
                           .order('start_date ASC')
                           .map(&:id)
-    "#{round_year - (round_year / 100 * 100)}_#{format('%02d',rounds_ordered.index(round.id) + 1)}"
+    "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
   end
 
   def redirect_to_back(options = {})

@@ -106,7 +106,7 @@ a chatroom is created in Box controller #my_scores.
                 <%# display round number in RYY_NN format %>
                 <% club = Club.find_by(name: params[:club])
                   round = Round.find_by(club_id: club.id, start_date: params[:round].to_date) %>
-                => R<%= round_number(round) %>
+                => R<%= round_label(round) %>
               <% end %>
             </div>
             <%= hidden_field_tag(:club, params[:club]) %>

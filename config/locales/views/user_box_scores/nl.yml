@@ -2,15 +2,15 @@ nl:
   user_box_scores:
     index:
       intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt.<br>
-      league_table_title: League table ronde
+      round_league_table_title: League table ronde
       file_csv_flash: bestand data.csv gemaakt
-      valid_round_flash: "League table: kies een geldige ronde."
-    index_year:
-      league_table_title: League table voor jaar
-      valid_year_flash: "Jaarlijks league table: kies een geldig jaar."
-    select_year:
-      select_round_year: League table van
-      year_dropdown: jaar
+      valid_round_flash: "Ronde league table: kies een geldige ronde."
+    index_league:
+      league_table_title: League table van het toernooi
+      valid_league_flash: "League table: kies een geldig toernooi startdatum."
+    select_league:
+      select_league: League table van het
+      league_dropdown: toernooi
     top_line:
       top_line_html: >
         Klik op <span class="color-orange-light"><b>de lijn van de speler</b></span> om toegang te krijgen tot zijn box,
