@@ -11,7 +11,7 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..])
       @box_nb = @chatroom.box.box_number
       @round = @chatroom.box.round
-      @round_nb = round_number(@round)
+      @round_nb = round_label(@round)
     elsif (params[:round] && current_user.role == "player") || params[:box]
       # [B] display a chatroom after selecting a club, a round and a box number
       # either select an open chatroom or create (open) a chatroom
@@ -22,7 +22,7 @@ class ChatroomsController < ApplicationController
       else
         @box = Box.find_by(box_number: params[:box], round_id: round.id) # admin/referees choose a box number
       end
-      chatroom_name = "#{@box.round.club.name} - R#{round_number(@box.round)}:B#{format('%02d', @box.box_number)}"
+      chatroom_name = "#{@box.round.club.name} - R#{round_label(@box.round)}:B#{format('%02d', @box.box_number)}"
       if Chatroom.find_by(name: chatroom_name)
         # chatroom already open, select it
         @chatroom = Chatroom.find_by(name: chatroom_name)
@@ -34,7 +34,7 @@ class ChatroomsController < ApplicationController
       end
       @box_nb = @chatroom.box.box_number
       @round = @chatroom.box.round
-      @round_nb = round_number(@round)
+      @round_nb = round_label(@round)
     elsif params[:id]
       if params[:id] == "0"
         # [C] coming from the navbar dropdown: display the forms (a dropdown list of available chatrooms

@@ -5,7 +5,7 @@
 if from == "index"
   user_box_scores_path( exsort: @sort, order: -@order, sort: nb, round_id: @round.id, club_id: @club.id)
 else
-  index_year_path( exsort: @sort, order: -@order, sort: nb, round_year: @year, club_id: @club.id)
+  index_league_path( exsort: @sort, order: -@order, sort: nb, league_start: @league_start, club_id: @club.id)
 end,
 class: class_names("btn header-ghost", "mobile-text-size": @is_mobile)
 %>

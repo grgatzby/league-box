@@ -43,8 +43,8 @@
     <% parameters = "?club_id=#{@round.club_id}" %>
     <% if params[:round_id] %>
       <% parameters += "&round_id=#{@round.id}" %>
-    <% elsif params[:round_year] %>
-      <% parameters += "&round_year=#{params[:round_year]}" %>
+    <% elsif params[:league_start] %>
+      <% parameters += "&league_start=#{params[:league_start]}" %>
     <% end %>
     <%= link_to t('back_btn'), @page_from+parameters, class: "btn buttons-shape btn-green mb-3 dont-print text-size" %>
   <% end %>

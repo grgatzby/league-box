@@ -1,9 +1,9 @@
-<!-- index year page: league table for the entire year-->
+<!-- index league page: league table for the tournament -->
 <div class="<%= class_names("container": !@is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner text-size">
-    <h3><%= t '.league_table_title' %><%= " #{@year}" %></h3>
+    <h3><%= t '.league_table_title' %><%= " #{l(@league_start, format: :yyymm_date)}" %></h3>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
@@ -11,18 +11,18 @@
       <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
     </span>
   </div>
-  <% if @year %>
+  <% if @league_start %>
     <div class=<%=@is_mobile ? "" : "one-liner"%>>
       <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
-      <% if @round_years.size > 1 %>
-        <%= render "select_year", fallback_path: user_box_scores_path, from: "index_year" %>
+      <% if @league_starts.size > 1 %>
+        <%= render "select_league", fallback_path: user_box_scores_path, from: "index_league" %>
       <% end %>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>
-      <br><%= render 'action_buttons', round: @round, from: "index_year", year: @year %>
+      <br><%= render 'action_buttons', round: @round, from: "index_league" %>
     <% end %>
-    <%= render 'league_table', from: "index_year" %>
+    <%= render 'league_table', from: "index_league" %>
   <% else %>
     <!-- if no round selected, display the forms to select a club (admin only) and a round -->
     <div class="dont-print text-size">

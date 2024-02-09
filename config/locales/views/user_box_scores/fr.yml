@@ -2,15 +2,15 @@ fr:
   user_box_scores:
     index:
       intro: La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi.<br>
-      league_table_title: League table du round
+      round_league_table_title: League table du round
       file_csv_flash: fichier data.csv créé
-      valid_round_flash: "League table: choisir un round valide"
-    index_year:
-      league_table_title: League table de l'année
-      valid_year_flash: "League table annuelle: choisir une année valide"
-    select_year:
-      select_round_year: League table annuelle
-      year_dropdown: année
+      valid_round_flash: "League table du round: choisir un round valide"
+    index_league:
+      league_table_title: League table du tournoi
+      valid_league_flash: "League table: choisir un début de tournoi valide"
+    select_league:
+      select_league: League table du
+      league_dropdown: tournoi
     top_line:
       top_line_html: >
         Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,

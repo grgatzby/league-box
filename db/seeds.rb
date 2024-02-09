@@ -224,14 +224,39 @@
 # end
 
 # 3/ rename chatrooms from eg: "Wimbledon Ltc Club - B04/R23_03" to "Wimbledon Ltc Club - R23_03:B04"
-general = Chatroom.find_by(name: "general")
-chatrooms = Chatroom.excluding(general)
+# general = Chatroom.find_by(name: "general")
+# chatrooms = Chatroom.excluding(general)
 
-chatrooms.each do |chatroom|
-  puts "Chatroom id: #{chatroom.id}, old name: #{chatroom.name}"
-  roundname = chatroom.name[-6, 6]
-  boxname = chatroom.name[-10, 3]
-  newname = "#{chatroom.name[0, chatroom.name.size - 10]}#{roundname}:#{boxname}"
-  chatroom.update(name: newname)
-  puts ">> new name: #{chatroom.name}"
+# chatrooms.each do |chatroom|
+#   puts "Chatroom id: #{chatroom.id}, old name: #{chatroom.name}"
+#   roundname = chatroom.name[-6, 6]
+#   boxname = chatroom.name[-10, 3]
+#   newname = "#{chatroom.name[0, chatroom.name.size - 10]}#{roundname}:#{boxname}"
+#   chatroom.update(name: newname)
+#   puts ">> new name: #{chatroom.name}"
+# end
+
+# 4/ Following migration 20240208214333_add_league_start_to_rounds, populate field league_start with the
+# start_date of the first round of the year; going forward, this field allows creating tournaments starting
+# any time in the year
+sample_club = Club.find_by(name: "your tennis club")
+clubs = Club.all.reject { |club| club == sample_club }
+clubs.each do |club|
+  puts "Club: #{club.name}"
+  start_dates = club.rounds.map(&:start_date).sort.reverse
+  start_dates = start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
+  round_years = start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
+  round_years.each do |round_year|
+    rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
+    .where(club_id: club)
+    .order('start_date ASC')
+    .map(&:id)
+    rounds_ordered.each do |round_id|
+      round = Round.find(round_id)
+      puts "Round: #{round_id}: #{round.start_date}"
+      league_start = Date.new(round.start_date.year, 1, 1)
+      round.update(league_start:)
+      puts ">>>>>: #{round.league_start}"
+    end
+  end
 end

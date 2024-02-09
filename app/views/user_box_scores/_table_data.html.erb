@@ -25,13 +25,13 @@
         </div>
       </li>
     <% end %>
-  <% else %>  <%# from == "index_year" : user_box_scores is a hash %>
+  <% else %>  <%# from == "index_league" : user_box_scores is a hash %>
     <% user_box_scores.each_with_index do |user_bs, index| %>
       <% player = user_bs[0] %>
       <li class=<%=player == current_user ? "color-tennis-red" : (index % 2 == 0 ? "color-tennis-blue" : "color-tennis-aqua") %>>
         <% name = "#{render "shared/fullname", user: player}"
-           boxes = player.user_box_scores.map{ |ubs| "[R#{round_number(ubs.box.round)} - B#{format('%02d', ubs.box.box_number)}], " }.sort.join[0...-2]
-           message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}<br />Round - box:<br />#{boxes}" %>
+           boxes = player.user_box_scores.map{ |ubs| "[#{round_label(ubs.box.round)} - B#{format('%02d', ubs.box.box_number)}] ##{ubs.rank},<br />" }.sort.join[0...-7]
+           message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>[Round - box] #rank:</u><br />#{boxes}" %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">
@@ -46,7 +46,7 @@
             <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_played]) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_won]) %></div>
             <% box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0] %>
-            <%= link_to '', box_path(box, page_from: index_year_path, round_year: @year, club_id: @club.id), class: 'line-link'%>
+            <%= link_to '', box_path(box, page_from: index_league_path, league_start: @league_start, club_id: @club.id), class: 'line-link'%>
           </div>
         </div>
       </li>
