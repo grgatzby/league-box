@@ -1,10 +1,18 @@
 class MatchesController < ApplicationController
+  REQUIRED_SCORE_HEADERS = ["first_name_player", "last_name_player",
+                            "first_name_opponent", "last_name_opponent",
+                            "points_player", "points_opponent",
+                            "box_number", "score_winner", "score_winner2"]
+  REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
+                                 "email_opponent", "phone_number_opponent", "role_opponent"]
+
   def show
     @page_from = local_path(params[:page_from])
     @player = User.find(params[:player])
     @opponent = User.find(params[:opponent])
     # @referee = @referee || User.find_by(role: "referee", club_id: @player.club.id)
-    @referee ||= User.find_by(role: "referee", club_id: @player.club.id)
+    # @referee ||= User.find_by(role: "referee", club_id: @player.club.id) #TO DO : role includes referee
+    @referee ||= User.find_by("club_id = ? AND role like ?", @player.club.id, "%referee%")
     @match = Match.find(params[:match_id])
     @player_match_score = match_score(@match, @player)
     @opponent_match_score = match_score(@match, @opponent)
@@ -27,9 +35,9 @@ class MatchesController < ApplicationController
       # the code below was adapted to the previous form where scores were input individually
       # if params[:score_set1]
       #   @match_entry = Match.new
-      #   score_set1 = split_score_to_array(params[:score_set1])
-      #   score_set2 = split_score_to_array(params[:score_set2])
-      #   score_tiebreak = split_score_to_array(params[:score_tiebreak])
+      #   score_set1 = score_to_a(params[:score_set1])
+      #   score_set2 = score_to_a(params[:score_set2])
+      #   score_tiebreak = score_to_a(params[:score_tiebreak])
       #   @match_entry.user_match_scores.build
       #   @match_entry.user_match_scores.build
       #   [0, 1].each do |index|
@@ -54,13 +62,13 @@ class MatchesController < ApplicationController
 
     match_scores = [{}, {}]
     # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
-    score_set1 = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_set1])
-    score_set2 = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_set2])
-    score_tiebreak = split_score_to_array(params[:match][:user_match_scores_attributes]["0"][:score_tiebreak])
+    score_set1 = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_set1])
+    score_set2 = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_set2])
+    score_tiebreak = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_tiebreak])
     [0, 1].each do |index|
       match_scores[index][:score_set1] = score_set1[index]
       match_scores[index][:score_set2] = score_set2[index]
-      match_scores[index][:score_tiebreak] = score_tiebreak[index]
+      match_scores[index][:score_tiebreak] = score_tiebreak[index] || 0
     end
 
     test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
@@ -216,11 +224,106 @@ class MatchesController < ApplicationController
   def destroy
     # for admin and referees only
     @match = Match.find(params[:id])
-    user_match_scores = UserMatchScore.where(match_id: @match.id)
+    destroy_match(@match)
+    redirect_to local_path(params[:page_from])
+  end
+
+  def load_scores
+  end
+
+  def create_scores
+    # populate match_scores for a chosen club and round from a CSV file
+    # if players don't exist in the database, create them
+
+    csv_file = params[:csv_file]
+    separator = params[:separator]
+    round = Round.find(params[:round_id])
+    # 1/ remove existing scores for the round and clean user_box_score values
+    Box.where(round_id: round.id).each do |box|
+      box.matches.each do |match|
+        destroy_match(match)
+      end
+    end
+    # 2/ read CSV scores file
+    court_id = Court.find_by(club_id: round.club_id, name: "1").id
+    if csv_file.content_type == "text/csv"
+      # user_box_scores are already created with users loading the round create CSV file
+      # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
+      headers = CSV.foreach(csv_file, col_sep: separator).first
+      if headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORE_HEADERS + REQUIRED_SCORE_HEADERS_PLUS).sort
+        # create and fill user_match_scores and matches
+        input_date = Time.now
+        user_match_scores = []
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
+          match_players = player_opponent(row)
+          player = match_players[0]
+          opponent = match_players[1]
+          box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
+
+          # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
+          match_scores = match_scores_to_a(row[:score_winner])
+          # create matches
+          # if (row[:last_name_player] == "Clark" && row[:last_name_opponent] == "Whittle") ||
+          #   (row[:last_name_player] == "Mardinian" && row[:last_name_opponent] == "Sevaux")
+          #   raise
+          # end
+          test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
+          if test_score
+            @match = Match.create(box_id:, court_id:, time: round.start_date)
+            results = compute_points(match_scores)
+
+            # create and fill a user_match_score instance for each player of the match
+            UserMatchScore.create(user_id: player.id, match_id: @match.id)
+            UserMatchScore.create(user_id: opponent.id, match_id: @match.id)
+
+            # user_match_scores = UserMatchScore.where(match_id: @match.id)
+            user_match_scores = @match.user_match_scores
+
+            [0, 1].each do |index|
+              user_match_scores[index].score_set1 = match_scores[index][:score_set1]
+              user_match_scores[index].score_set2 = match_scores[index][:score_set2]
+              user_match_scores[index].score_tiebreak = match_scores[index][:score_tiebreak]
+              user_match_scores[index].points = match_scores[index][:points]
+              user_match_scores[index].is_winner = (results[index] > results[1 - index])
+              user_match_scores[index].input_user_id = current_user.id
+              user_match_scores[index].input_date = input_date
+              user_match_scores[index].save
+            end
+
+            # update user_box_score for each player
+            [0, 1].each do |index|
+              match = user_match_scores[index].match
+              user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+              user_box_score.points += user_match_scores[index].points
+              user_box_score.games_won += won_games(user_match_scores[index])
+              user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+              user_box_score.sets_won += results[index]
+              user_box_score.sets_played += results.sum
+              user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+              user_box_score.matches_played += 1
+              user_box_score.save
+            end
+
+            # update the league table
+            rank_players(@match.box.round.user_box_scores) # compute user_box_scores
+          end
+        end
+      else
+        flash[:notice] = t('.header_flash')
+        redirect_back(fallback_location: load_scores_path)
+      end
+    end
+    redirect_to user_box_scores_path(round_id: round.id, club_id: round.club_id)
+  end
+
+  private
+
+  def destroy_match(match)
+    user_match_scores = UserMatchScore.where(match_id: match.id)
     results = compute_results(user_match_scores)
     # update user_box_score for each player
     [0, 1].each do |index|
-      user_box_score = UserBoxScore.find_by(box_id: @match.box_id, user_id: user_match_scores[index].user_id)
+      user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
 
       user_box_score.points -= user_match_scores[index].points
       user_box_score.sets_won -= results[index]
@@ -231,52 +334,49 @@ class MatchesController < ApplicationController
       user_box_score.matches_played -= 1
       user_box_score.save
     end
-    @match.destroy
+    match.destroy
 
     # update the league table
-    rank_players(@match.box.round.user_box_scores)
-    redirect_to local_path(params[:page_from])
+    rank_players(match.box.round.user_box_scores)
   end
 
-  private
-
-  def compute_results(match_scores)
-    # compute and returns results (array of won sets count for each player)
-    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    # =>  [ 2 , 1 ]
-
-    results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
-
-    # first set
-    if match_scores[0][:score_set1] > match_scores[1][:score_set1]
-      results[:sets_won1] += 1
-    elsif match_scores[0][:score_set1] < match_scores[1][:score_set1]
-      results[:sets_won2] += 1
+  def test_edit_score(match_scores, results)
+    # for a score edit
+    # return true if scores entered in matches/edit are valid, false otherwise
+    # return match_scores (array of 2 hashes of scores)
+    # eg: 4-2 1-3 10-7
+    #     => [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #          {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
+       (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
+      flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
+      false
+    elsif (match_scores[0][:score_tiebreak] < 10 && match_scores[1][:score_tiebreak] < 10) &&
+          (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
+      flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
+      false
+    elsif (match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] == 4) ||
+          (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
+      flash[:alert] = t('.test_scores03_flash') # 4-4: enter a correct score for set 1 and set 2
+      false
+    elsif (((match_scores[0][:score_tiebreak] > 10 && match_scores[1][:score_tiebreak] < 9) ||
+          (match_scores[0][:score_tiebreak] < 9 && match_scores[1][:score_tiebreak] > 10)) ||
+          ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2)) &&
+          (results[0] == 1 || results[1] == 1)
+      flash[:alert] = t('.test_scores04_flash') # Tiebreak: first to 10 with 2 points clear.
+      false
+    elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
+          (results[0] == 0 || results[1] == 0)
+      flash[:notice] = t('.test_scores05_flash') # No tiebreak needed if 2 sets to love.
+      true # true: return a notice but enter the score without the tiebreak score
+    else
+      true
     end
-
-    # second set
-    if match_scores[0][:score_set2] > match_scores[1][:score_set2]
-      results[:sets_won1] += 1
-    elsif match_scores[0][:score_set2] < match_scores[1][:score_set2]
-      results[:sets_won2] += 1
-    end
-
-    # championship tie break
-    if results[:sets_won1] == 1 || results[:sets_won2] == 1
-      if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
-        results[:sets_won1] += 1
-      elsif match_scores[0][:score_tiebreak] < match_scores[1][:score_tiebreak]
-        results[:sets_won2] += 1
-      end
-    end
-    # return results (ARRAY of won sets count for each player)
-    [results[:sets_won1], results[:sets_won2]]
   end
 
   def compute_points(match_scores)
     # match_scores (array of 2 hashes of scores) => results (array of won sets count for each player)
-    # eg: 4-2 1-3 10-7
+    # eg: for 4-2 1-3 10-7
     #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
     #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
     # =>  [ 2 , 1 ] & transforms entry array:
@@ -329,8 +429,9 @@ class MatchesController < ApplicationController
     # returns false otherwise
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
     # test scores entries for first set and second set
-    if (match_scores[0][:score_set1].zero? && match_scores[1][:score_set1].zero?) ||
-       (match_scores[0][:score_set2].zero? && match_scores[1][:score_set2].zero?) # no score entered for either set 1 or set 2
+    if !match_scores ||
+       ((match_scores[0][:score_set1].zero? && match_scores[1][:score_set1].zero?) ||
+       (match_scores[0][:score_set2].zero? && match_scores[1][:score_set2].zero?)) # no score entered for either set 1 or set 2
       flash[:alert] = t('.test_scores01_flash')
       false
     else # score entries are OK for set 1 and set 2 => count won sets for each player
@@ -357,7 +458,7 @@ class MatchesController < ApplicationController
         flash[:notice] = t('.test_scores05_flash')
         true # return a notice but enter the score without the tiebreak score
       else
-        if match_scores[0][:score_tiebreak] == 4
+        if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
           results[:sets_won1] += 1
         else
           results[:sets_won2] += 1
@@ -368,47 +469,94 @@ class MatchesController < ApplicationController
     end
   end
 
-  def test_edit_score(match_scores, results)
-    # for a score edit
-    # return true if scores entered in matches/edit are valid, false otherwise
-    # return match_scores (array of 2 hashes of scores)
-    # eg: 4-2 1-3 10-7
-    #     => [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #          {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
-       (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
-      flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
-      false
-    elsif (match_scores[0][:score_tiebreak] < 10 && match_scores[1][:score_tiebreak] < 10) &&
-          (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
-      flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
-      false
-    elsif (match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] == 4) ||
-          (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
-      flash[:alert] = t('.test_scores03_flash') # 4-4: enter a correct score for set 1 and set 2
-      false
-    elsif (((match_scores[0][:score_tiebreak] > 10 && match_scores[1][:score_tiebreak] < 9) ||
-          (match_scores[0][:score_tiebreak] < 9 && match_scores[1][:score_tiebreak] > 10)) ||
-          ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2)) &&
-          (results[0] == 1 || results[1] == 1)
-      flash[:alert] = t('.test_scores04_flash') # Tiebreak: first to 10 with 2 points clear.
-      false
-    elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
-          (results[0] == 2 || results[1] == 2)
-      flash[:notice] = t('.test_scores05_flash') # No tiebreak needed if 2 sets to love.
-      true # true: return a notice but enter the score without the tiebreak score
-    else
-      true
+  def compute_results(match_scores)
+    # compute and returns results (array of won sets count for each player)
+    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
+    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
+    # =>  [ 2 , 1 ]
+
+    results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
+
+    # first set
+    if match_scores[0][:score_set1] > match_scores[1][:score_set1]
+      results[:sets_won1] += 1
+    elsif match_scores[0][:score_set1] < match_scores[1][:score_set1]
+      results[:sets_won2] += 1
     end
+
+    # second set
+    if match_scores[0][:score_set2] > match_scores[1][:score_set2]
+      results[:sets_won1] += 1
+    elsif match_scores[0][:score_set2] < match_scores[1][:score_set2]
+      results[:sets_won2] += 1
+    end
+
+    # championship tie break
+    if results[:sets_won1] == 1 && results[:sets_won2] == 1
+      if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
+        results[:sets_won1] += 1
+      elsif match_scores[0][:score_tiebreak] < match_scores[1][:score_tiebreak]
+        results[:sets_won2] += 1
+      end
+    end
+    # return results (ARRAY of won sets count for each player)
+    [results[:sets_won1], results[:sets_won2]]
   end
 
-  def split_score_to_array(score)
-    # converts score from string format "s1-s2" into array format [s1, s2]
-    [score.match(/.+?(?=-)/).to_s.to_i, score.split("-")[-1].to_i]
+  def score_to_a(score)
+    # converts set score "4-3" into array [4, 3]
+    score.split("-").map(&:to_i)
+  end
+
+  def match_scores_to_a(score)
+    # convert score "4-2 1-3 10-7" into match_scores
+    # [{:score_set1=>4, :score_set2=>1, :score_tiebreak=>10}, {:score_set1=>2, :score_set2=>3, :score_tiebreak=>7}]
+    # first conversion of "4-2 1-3 10-7" into array of arrays [[4, 2], [1, 3], [10, 7]]
+    score = score.split.map { |s| s.split("-").map(&:to_i) }
+    score << [0, 0] if score.length == 2 # in case no tiebreak
+    if score.length >= 2
+      match_scores = [{}, {}]
+      # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
+      [0, 1].each do |index|
+        match_scores[index][:score_set1] = score[0][index] # set1
+        match_scores[index][:score_set2] = score[1][index] # set2
+        match_scores[index][:score_tiebreak] = score[2][index] # tiebreak
+      end
+      match_scores
+    else
+      false
+    end
   end
 
   def won_games(user_match_score)
     # sum of games of a player's match card
     user_match_score.score_set1 + user_match_score.score_set2 + user_match_score.score_tiebreak
+  end
+
+  def player_opponent(row)
+    # in PM Holland Park spreadsheet the score is input as the winner's score and the points_opponent columns
+    # provides info as to whether its the payer's score or the opponent's score
+    if row[:role_player] && row[:role_opponent]
+      if row[:points_opponent].to_i != 20
+        player = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
+        player ||= User.create(email: row[:email_player],
+          first_name: row[:first_name_player], last_name: row[:last_name_player],
+          phone_number: row[:phone_number_player], role: row[:role_player].downcase)
+        opponent = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
+        opponent ||= User.create(email: row[:email_opponent],
+          first_name: row[:first_name_opponent], last_name: row[:last_name_opponent],
+          phone_number: row[:phone_number_opponent], role: row[:role_opponent].downcase)
+      else
+        opponent = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
+        opponent ||= User.create(email: row[:email_player],
+          first_name: row[:first_name_player], last_name: row[:last_name_player],
+          phone_number: row[:phone_number_player], role: row[:role_player].downcase)
+        player = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
+        player ||= User.create(email: row[:email_opponent],
+          first_name: row[:first_name_opponent], last_name: row[:last_name_opponent],
+          phone_number: row[:phone_number_opponent], role: row[:role_opponent].downcase)
+      end
+    end
+    [player, opponent]
   end
 end

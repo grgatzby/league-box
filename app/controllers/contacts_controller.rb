@@ -4,7 +4,8 @@ class ContactsController < ApplicationController
   def new
     @contact = Contact.new
     if current_user == @admin
-      @referees = User.where(role: "referee")
+      # @referees = User.where(role: "referee") #TO DO : role includes 'referee' or 'player referee'
+      @referees = User.where("role like ?", "%referee%")
     end
   end
 

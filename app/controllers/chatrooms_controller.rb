@@ -1,5 +1,7 @@
 class ChatroomsController < ApplicationController
   # Chatrooms have a one to one relation wth Boxes (has_one :box)
+  REFEREE = ["referee", "player referee"]
+
   def show
     set_club_round # set variables @club and @round (ApplicationController)
     # choose/display a chatroom
@@ -43,7 +45,8 @@ class ChatroomsController < ApplicationController
         if current_user == @admin
           # admin can access all existing chatrooms (including the #general chatroom)
           @chatrooms = Chatroom.all
-        elsif current_user.role == "referee"
+        # elsif current_user.role == "referee" || current_user.role == "player referee"
+        elsif REFEREE.include?(row[:role])
           # referees have access to all chatrooms from their club + the #general chatroom
           @chatrooms = Chatroom.select do |chatroom|
             chatroom.box.round.club == current_user.club

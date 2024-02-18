@@ -1,6 +1,7 @@
 class BoxesController < ApplicationController
   require "csv"
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
+  PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
 
   def index
     # display all boxes and the shared select_round form
@@ -82,14 +83,15 @@ class BoxesController < ApplicationController
     # export for the selected round a list of players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
-    referee = User.find_by(role: "referee", club_id: round.club_id)
+    # referee = User.find_by(role: "referee", club_id: round.club_id) #TO DO : role includes 'player referee'
+    referee = User.find_by("club_id = ? AND role like ?", round.club_id, "%referee%")
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
     boxes = round.boxes
     table = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+      writer << PLAYERS_HEADERS
       table.each_with_index do |user_bs, index|
         writer << [user_bs.user.id, round.club_id,
                    user_bs.user.email,

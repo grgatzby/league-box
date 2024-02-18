@@ -46,3 +46,17 @@ en:
     # score_display:
     #   loser: l
     #   winner: w
+    load_scores:
+      p01: "Upload list of match scores for the round from a standard CSV file containing the following headers:"
+      p02_html: >
+          <br>&emsp;&emsp;&emsp;
+          <i>first_name_player, last_name_player,
+             first_name_opponent, last_name_opponent,
+             points_player, points_opponent,
+             box_number, score_winner, score_winner2</i>.<br>
+          and:<br>
+          <i>email_player, phone_number_player, role_player,
+             email_opponent, phone_number_opponent, role_opponent</i>
+      load_csv_file: load CSV file
+      submit_btn: ⎷ Submit
+      back_btn: ←

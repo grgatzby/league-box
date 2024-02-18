@@ -46,3 +46,17 @@ fr:
     # score_display:
     #   loser: p
     #   winner: g
+    load_scores:
+      p01: "À partir d'un fichier CSV avec les entêtes ci-dessous, charger le scores des matchs du round:"
+      p02_html: >
+          <br>&emsp;&emsp;&emsp;
+          <i>first_name_player, last_name_player,
+             first_name_opponent, last_name_opponent,
+             points_player, points_opponent,
+             box_number, score_winner, score_winner2</i>.<br>
+          et:<br>
+          <i>email_player, phone_number_player, role_player,
+             email_opponent, phone_number_opponent, role_opponent</i>
+      load_csv_file: charger le fichier CSV
+      submit_btn: ⎷ Valider
+      back_btn: ←

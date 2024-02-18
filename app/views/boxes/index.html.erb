@@ -10,6 +10,9 @@
       <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path, add_text: "" %></h4>
       <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print me-3"%>
       <%= render "shared/select_round", fallback_path: boxes_path %>
+      <% if current_user == @admin %>
+        <%= link_to "load_scores", load_scores_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
+      <% end %>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -46,7 +49,8 @@
           <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round
           TO DO: add a time related condition here for the button to appear -->
           <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
-      <% elsif current_user && current_user.role == "referee" && @new_round_request%>
+      <%# elsif current_user && (current_user.role == "referee" || current_user.role == "player referee") && @new_round_request%>
+      <% elsif current_user && (["referee", "player referee"].include?(current_user.role)) && @new_round_request%>
           <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
       <% end %>
     </div>

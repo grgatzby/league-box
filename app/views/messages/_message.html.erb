@@ -33,7 +33,7 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
         <% sender += render "shared/fullname", user: message.user %>
         <% sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"  %>
         <% color_name = message.user.club == current_user.club ? "color-tennis-blue" : "color-grey" %>
-      <% when "referee" %>
+      <% when "referee", "player referee" %>
         <% sender += render "shared/fullname", user: message.user %>
         <% color_name = message.user.club == current_user.club ? "color-tennis-aqua" : "color-black" %>
       <% when "admin" %>

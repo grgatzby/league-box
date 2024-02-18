@@ -41,7 +41,8 @@ class ApplicationController < ActionController::Base
     @club = current_user ? current_user.club : @sample_club
     @current_round = current_round(@club.id)
     @admin = User.find_by(role: "admin")
-    @referee = User.find_by(role: "referee", club_id: @club.id)
+    # @referee = User.find_by(role: "referee", club_id: @club.id) #TO DO : role includes referee
+    @referee = User.find_by("club_id = ? AND role like ?", @club.id, "%referee%")
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
     # time_zone (dependency on gem tzinfo-data): used to convert UTC persisted times in local time
     @tz = TZInfo::Timezone.get("Europe/Paris")
@@ -68,7 +69,7 @@ class ApplicationController < ActionController::Base
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
       @league_starts = @club.rounds.map(&:league_start).sort
-      @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%Y/%m') }.uniq
+      @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%d/%m/%Y') }.uniq
       if params[:round_id]
         @round = check_string(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: params[:round_id].to_time, club_id: @club.id)
         if @round

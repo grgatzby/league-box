@@ -1,6 +1,14 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
   MIN_PLAYERS_PER_BOX = 4
+  NEW_CLUB_HEADERS = ["id", "email", "first_name", "last_name", "phone_number", "role"]
+  CSV_LEAGUE_TABLE_HEADERS = ["player", "rank", "points",
+    "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
+  ROUND_CSV_LEAGUE_TABLE_HEADERS = CSV_LEAGUE_TABLE_HEADERS + ["box_number"]
+  REFEREE = ["referee", "player referee"]
+  PLAYERS = ["player", "player referee"]
+  PLAYERS_AND_SPARES = PLAYERS + ["spare"] # referee can play in lieu of missing player in a box as a 'spare' player
+  # spare players do not appear ine the box league ranking
 
   def index
     # displays the league table for the round, allows user to sort the table by click on headers
@@ -18,29 +26,29 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores.reverse! if @order == 1
 
       @sort = params[:sort]
-      case params[:sort]
-      when "1" # "Player first name"
+      case params[:sort].to_i
+      when 1 # "Player first name"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name, -@order * user_bs.rank] }
         @user_box_scores.reverse! if @order == 1
-      when "2" # "Player last name"
+      when 2 # "Player last name"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name, -@order * user_bs.rank] }
         @user_box_scores.reverse! if @order == 1
-      when "3" # "Ranking: default sorting order"
-      when "4" # "Points"
+      when 3 # "Ranking: default sorting order"
+      when 4 # "Points"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.points, -@order * user_bs.rank] }
-      when "5" # "Box"
+      when 5 # "Box"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
-      when "6" # "Matches Played"
+      when 6 # "Matches Played"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_played, -@order * user_bs.rank] }
-      when "7" # "Matches Won"
+      when 7 # "Matches Won"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_won, -@order * user_bs.rank] }
-      when "8" # "Sets Played"
+      when 8 # "Sets Played"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
-      when "9" # "Sets Won"
+      when 9 # "Sets Won"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
-      when "10" # "Games Played"
+      when 10 # "Games Played"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
-      when "11" # "Games Won"
+      when 11 # "Games Won"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
       end
     end
@@ -54,13 +62,14 @@ class UserBoxScoresController < ApplicationController
   def index_league
     set_club_round
     # displays the league table for the tournament (same club, same league_start), allows user to sort the table by click on headers
-    @league_start = "#{params[:league_start]}/01".to_date
+    @league_start = "#{params[:league_start]}".to_date
     club_id = params[:club_id].to_i
     @club = Club.find(club_id)
     rounds = Round.where(league_start: @league_start, club_id:)
     @round = current_round(@club.id)
     if rounds.length.positive?
-      users = User.where(club_id:, role: "player")
+      # users = User.where(club_id:, role: "player")
+      users = User.where(club_id:)
 
       @user_box_scores = league_table(rounds, users)
       # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
@@ -75,27 +84,27 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores.sort_by! { |user_bs| -@order * user_bs[1][:rank] }
       @user_box_scores.each_with_index { |user_bs, index| user_bs[1][:index] = index }
       @sort = params[:sort]
-      case params[:sort]
-      when "1" # "Player first name"
+      case params[:sort].to_i
+      when 1 # "Player first name"
         @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name, -@order * user_bs[1][:rank]] }
         @user_box_scores.reverse! if @order == 1
-      when "2" # "Player last name"
+      when 2 # "Player last name"
         @user_box_scores.sort_by! { |user_bs| [user_bs[0].last_name, -@order * user_bs[1][:rank]] }
         @user_box_scores.reverse! if @order == 1
-      when "3" # "Ranking: default sorting order"
-      when "4" # "Points"
+      when 3 # "Ranking: default sorting order"
+      when 4 # "Points"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:points], -@order * user_bs[1][:rank]] }
-      when "6" # "Matches Played"
+      when 6 # "Matches Played"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_played], -@order * user_bs[1][:rank]] }
-      when "7" # "Matches Won"
+      when 7 # "Matches Won"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_won], -@order * user_bs[1][:rank]] }
-      when "8" # "Sets Played"
+      when 8 # "Sets Played"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_played], -@order * user_bs[1][:rank]] }
-      when "9" # "Sets Won"
+      when 9 # "Sets Won"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_won], -@order * user_bs[1][:rank]] }
-      when "10" # "Games Played"
+      when 10 # "Games Played"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_played], -@order * user_bs[1][:rank]] }
-      when "11" # "Games Won"
+      when 11 # "Games Won"
         @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
       end
       @render_to_text = false
@@ -113,64 +122,121 @@ class UserBoxScoresController < ApplicationController
   end
 
   def create
-    # (admin only) add a new club, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
+    # (admin only) create a new club, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
     # The csv file must contain the following fields:
-    #      id, email, first_name, last_name, nickname, phone_number, role (player / referee)
+    #      id, email, first_name, last_name, nickname, phone_number, role (player / referee / player referee / spare)
     # Players are allocated in boxes by id (in descending order).
+    # The csv file may also contain the field box_number. Players are then allocated in the corresponding box.
     # TO DO: for each new box, the assigned chatroom is the #general chatroom which is later replaced with
-    # a box chatroom when a player visits My Scores. Pb: referee and admin can't visit the chatroom until then
+    # a box chatroom when a player visits My Scores.
 
     csv_file = params[:csv_file]
+    separator = params[:separator]
     if csv_file.content_type == "text/csv"
-      headers = CSV.foreach(csv_file).first
-      if headers.sort - ["nickname"] == ["id", "email", "first_name", "last_name", "phone_number", "role"].sort
+      headers = CSV.foreach(csv_file, col_sep: separator).first
+      if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_CLUB_HEADERS.sort
+        box_players = [] # array (one per box) of array of box players
+        boxes = [] # array of boxes
         # create club
         club = Club.create(name: params[:new_club_name])
 
         # create courts
         params[:nb_of_courts].to_i.times { |court_number| Court.create(name: court_number + 1, club_id: club.id) }
 
-        # create round
-        round = Round.create(start_date: params[:start_date].to_date, end_date: params[:end_date].to_date, club_id: club.id)
+        # create first round
+        round = Round.create(club_id: club.id,
+                             start_date: params[:start_date].to_date,
+                             end_date: params[:end_date].to_date,
+                             league_start: params[:start_date].to_date)
 
         # create array of users (players and club referees)
         users = []
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
-          user = User.create(row)
-          user.update(club_id: club.id, password: "123456", nickname: user.nickname || (user.first_name + user.last_name[0]))
-          users << user
+        box_numbers = []
+        nb_spare = 0
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
+          if row[:role]
+            if row[:box_number]
+              if row[:role].downcase == "spare" # generate new e-mail address for spare player
+                nb_spare += 1
+                email = "spare#{format('%02d', nb_spare)}@club#{club.id}.com"
+              else
+                email = row[:email]
+              end
+              user = User.create(email:,
+                                 first_name: row[:first_name], last_name: row[:last_name],
+                                  phone_number: row[:phone_number], role: row[:role].downcase)
+
+              box_numbers << row[:box_number].to_i
+
+              # if user.role == "player" || user.role == "player referee" || user.role == "spare"
+              if PLAYERS_AND_SPARES.include?(user.role)
+                if box_players[row[:box_number].to_i]
+                  box_players[row[:box_number].to_i] << user
+                else
+                  box_players[row[:box_number].to_i] = [user]
+                end
+              end
+            else
+              user = User.create(row)
+            end
+            user.update(club_id: club.id, password: "123456", nickname: user.nickname || (user.first_name + user.last_name[0]))
+          end
+          users << user if row[:email]
         end
-        referees = users.select { |user| user.role == "referee" }
+        referees = users.select { |user| REFEREE.include?(user.role) }
         referees.each { |referee| referee.update(password: "654321") }
-        players = users.select { |user| user.role == "player" }
+        players = users.select { |user| PLAYERS.include?(user.role) }
 
         # create boxes and user_box_scores
-        players_per_box = params[:players_per_box].to_i
-        # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-        players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
-        nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
-        box_players = []
-        boxes = []
-        nb_boxes.times do |box_index|
-          # TO DO: create a new chatroom for the box
-          boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
-          box_players << players.shift(players_per_box)
-          box_players[box_index].each do |player|
-            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
-                                points: 0, rank: 1,
-                                sets_won: 0, sets_played: 0,
-                                matches_won: 0, matches_played: 0,
-                                games_won: 0, games_played: 0)
+        if headers.include?("box_number")
+          box_numbers = box_numbers.uniq.sort
+          nb_boxes = box_numbers.count
+          nb_boxes.times do |box_index|
+            boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
+                                chatroom_id: @general_chatroom.id)
+
+            box_players[box_numbers[box_index]].each do |player|
+              UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                  points: 0, rank: 1,
+                                  sets_won: 0, sets_played: 0,
+                                  matches_won: 0, matches_played: 0,
+                                  games_won: 0, games_played: 0)
+            end
+          end
+          players_per_box = box_players[1].count
+        else
+          players_per_box = params[:players_per_box].to_i
+          # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
+          players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+          nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+          nb_boxes.times do |box_index|
+            boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+            box_players << players.shift(players_per_box) # adds one array of box players
+            box_players[box_index].each do |player|
+              UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                  points: 0, rank: 1,
+                                  sets_won: 0, sets_played: 0,
+                                  matches_won: 0, matches_played: 0,
+                                  games_won: 0, games_played: 0)
+            end
+          end
+          if (players.count % players_per_box).positive?
+            players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
           end
         end
         flash[:notice] = t('.club_created', count: players.count % players_per_box, players: players_per_box)
-        if (players.count % players_per_box).positive?
-          players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
-        end
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
       else
         flash[:notice] = t('.header_flash')
-        redirect_back(fallback_location: new_user_box_score_path)
+        more_params = {
+          new_club_name: params[:new_club_name],
+          nb_of_courts: params[:nb_of_courts],
+          players_per_box: params[:players_per_box],
+          start_date: params[:start_date],
+          end_date: params[:end_date]
+        }
+        redirect_to_back(more_params)
+        # redirect_back(fallback_location: new_user_box_score_path)
       end
     else
       flash[:notice] = t('.file_type_flash')
@@ -188,16 +254,15 @@ class UserBoxScoresController < ApplicationController
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      writer << [l(Time.now, format: :short), # to time stamp the csv file
-                 "player", "rank", "points", "box",
-                 "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
+      writer << ([l(Time.now, format: :short)] + ROUND_CSV_LEAGUE_TABLE_HEADERS)
       table.each_with_index do |user_bs, index|
         writer << [index + 1,
                    "#{user_bs.user.first_name} #{user_bs.user.last_name}",
-                   user_bs.rank, user_bs.points, user_bs.box.box_number,
+                   user_bs.rank, user_bs.points,
                    user_bs.matches_played, user_bs.matches_won,
                    user_bs.sets_played, user_bs.sets_won,
-                   user_bs.games_played, user_bs.games_won]
+                   user_bs.games_played, user_bs.games_won,
+                   user_bs.box.box_number]
       end
     end
     download_csv(file.pathmap, "League Table-R#{round_label(round)}", round.club.name)
@@ -205,25 +270,24 @@ class UserBoxScoresController < ApplicationController
 
   def league_table_to_csv
     # export the league table to a csv file for the tournament (= collection of rounds with same league_start)
-    league = "#{params[:league_start]}/01".to_date
+    league_start = params[:league_start].to_date
     club_id = params[:club_id].to_i
     # rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id:)
-    rounds = Round.where(league_start: league, club_id:)
-    users = User.where(club_id:, role: "player")
+    rounds = Round.where(league_start:, club_id:)
+    # users = User.where(club_id:, role: "player")
+    users = User.where(club_id:)
     file = "#{Rails.root}/public/data.csv"
     user_box_scores = league_table(rounds, users)
     user_box_scores = rank_players(user_box_scores, "index_league")
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      header = [l(Time.now, format: :short), # to time stamp the csv file
-                "player", "rank", "points",
-                "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
-        (1..rounds.size).each do |i|
-          header.push("Rank_round#{i}")
-          header.push("Points_round#{i}")
-          header.push("Box_round#{i}")
-        end
+      header = [l(Time.now, format: :short)] + LEAGUE_TABLE_HEADERS
+      (1..rounds.size).each do |i|
+        header.push("Rank_round#{i}")
+        header.push("Points_round#{i}")
+        header.push("Box_round#{i}")
+      end
       writer << header
       table.each_with_index do |user_bs, index|
         data = [index + 1,

@@ -1,7 +1,10 @@
 class RoundsController < ApplicationController
   MIN_QUALIFYING_MATCHES = 2
   MIN_PLAYERS_PER_BOX = 4
-  REQUIRED_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "phone_number", "role"].sort
+  NEW_ROUND_HEADERS = ["email", "first_name", "last_name", "phone_number", "role"].sort
+  REFEREE = ["referee", "player referee"]
+  PLAYERS = ["player", "player referee"]
+  PLAYERS_AND_SPARES = PLAYERS + ["spare"]
 
   def new
     # called from a button in Boxes index view (referees only)
@@ -42,54 +45,123 @@ class RoundsController < ApplicationController
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
     csv_file = params[:round][:csv_file]
+    separator = params[:separator]
     if csv_file.content_type == "text/csv"
       # a CSV file is attached, create new round using it
-      headers = CSV.foreach(csv_file).first
-      if headers.sort - ["nickname"] == REQUIRED_HEADERS
+      headers = CSV.foreach(csv_file, col_sep: separator).first
+      if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_ROUND_HEADERS
         club = Club.find(params[:club_id])
+        box_players = [] # array (one per box) of array of box players
+        boxes = [] # array of boxes
         # estimate the nb of players of the current box as current box 1's nb of players
         players_per_box = club.rounds.last.boxes.find_by(box_number:1).user_box_scores.count
         # create new round
-        round = Round.create(start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date, club_id: params[:club_id])
+        round = Round.create(start_date: params[:round][:start_date].to_date,
+                             end_date: params[:round][:end_date].to_date,
+                             club_id: params[:club_id],
+                             league_start: params[:round][:league_start].to_date)
 
         # array of users (players and club referees)
         users = []
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol) do |row|
+        box_numbers = []
+        nb_spare = 0
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
           # test if user already created, if not, create user
-          if User.exists?(row[:id])
-            user = User.find(row[:id])
-          else
-            user = User.create(row)
+          if PLAYERS_AND_SPARES.include?(row[:role])
+            if row[:box_number]
+              if User.exists?(first_name: row[:first_name], last_name: row[:last_name])
+                user = User.find_by(first_name: row[:first_name], last_name: row[:last_name])
+              else
+                if row[:role].downcase == "spare"
+                  nb_spare += 1
+                  email = "spare#{format('%02d', nb_spare)}@club.com"
+                else
+                  email = row[:email]
+                end
+                user = User.create(email:,
+                                  first_name: row[:first_name], last_name: row[:last_name],
+                                  phone_number: row[:phone_number], role: row[:role].downcase)
+
+              end
+              box_numbers << row[:box_number].to_i
+              # if user.role == "player" || user.role == "player referee" || user.role == "spare"
+              if PLAYERS_AND_SPARES.include?(user.role)
+                if box_players[row[:box_number].to_i]
+                  box_players[row[:box_number].to_i] << user
+                else
+                  box_players[row[:box_number].to_i] = [user]
+                end
+              end
+            else
+              user = User.create(row)
+            end
+
             user.update(club_id: params[:club_id], password: "123456", nickname: user.nickname || (user.first_name + user.last_name[0]))
-            user.update(password: "654321") if user.role == "referee"
+            # user.update(password: "654321") if user.role == "referee" || user.role == "player referee"
+            user.update(password: "654321") if REFEREE.include?(user.role)
+            users << user
           end
-          users << user
         end
 
-        players = users.select { |user| user.role == "player" }
+        # players = users.select { |user| user.role == "player" || user.role == "player referee" }
+        players = users.select { |user| PLAYERS.include?(user.role) }
 
         # create boxes and user_box_scores
-        # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-        if (players.count % players_per_box).positive?
+        if headers.include?("box_number")
+          box_numbers = box_numbers.uniq.sort
+          nb_boxes = box_numbers.count
+          nb_boxes.times do |box_index|
+            boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
+              chatroom_id: @general_chatroom.id)
+
+              box_players[box_numbers[box_index]].each do |player|
+              UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                  points: 0, rank: 1,
+                                  sets_won: 0, sets_played: 0,
+                                  matches_won: 0, matches_played: 0,
+                                  games_won: 0, games_played: 0)
+            end
+          end
+          players_per_box = box_players[1].count
+        else
+          players_per_box = params[:players_per_box].to_i
+          # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
           players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
-        end
-        nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
-        box_players = []
-        boxes = []
-        nb_boxes.times do |box_index|
-          # TO DO: create a new chatroom for each new box
-          boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
-          box_players << players.shift(players_per_box)
-          box_players[box_index].each do |player|
-            UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
-                                points: 0, rank: 1,
-                                sets_won: 0, sets_played: 0,
-                                matches_won: 0, matches_played: 0,
-                                games_won: 0, games_played: 0)
+          nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+          nb_boxes.times do |box_index|
+            # TO DO: create a new chatroom for the box
+            boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+            box_players << players.shift(players_per_box) # adds one array of box players
+            box_players[box_index].each do |player|
+              UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+                                  points: 0, rank: 1,
+                                  sets_won: 0, sets_played: 0,
+                                  matches_won: 0, matches_played: 0,
+                                  games_won: 0, games_played: 0)
+            end
           end
         end
+        # # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
+        # if (players.count % players_per_box).positive?
+        #   players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        # end
+        # nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+        # box_players = []
+        # boxes = []
+        # nb_boxes.times do |box_index|
+        #   # TO DO: create a new chatroom for each new box
+        #   boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+        #   box_players << players.shift(players_per_box)
+        #   box_players[box_index].each do |player|
+        #     UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
+        #                         points: 0, rank: 1,
+        #                         sets_won: 0, sets_played: 0,
+        #                         matches_won: 0, matches_played: 0,
+        #                         games_won: 0, games_played: 0)
+        #   end
+        # end
         flash[:notice] = t('.round_created', count: players.count % players_per_box, players: players_per_box)
-        if (players.count % players_per_box).positive?
+        if (players.count % players_per_box).positive? && box_numbers.empty?
           players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
         end
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
@@ -114,7 +186,6 @@ class RoundsController < ApplicationController
       redirect_to boxes_path(round_id: @new_round.id, club_id: current_round.club_id)
     end
   end
-
 
   private
 

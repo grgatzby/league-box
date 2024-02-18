@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get "my_scores/:id", to: "boxes#my_scores", as: "my_scores"
 
     resources :matches, only: %i[show edit update new create destroy]
+    get 'matches_scores/load_scores', to: "matches#load_scores", as: "load_scores"
+    post 'matches_scores/create_scores', to: "matches#create_scores", as: "create_scores"
 
     resources :user_box_scores, only: %i[index new create]
     get 'user_box_scores/index_league', to: "user_box_scores#index_league", as: "index_league"

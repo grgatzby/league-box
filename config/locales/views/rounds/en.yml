@@ -11,6 +11,7 @@ en:
           -2 = two boxes down.<br /><br />
           Select 99 to remove player from next league round (e.g. if less than 2 games played).
       message_boxes: player name, rank,<br />nb matches played, proposed box move
+      league_start: "League start date :"
       start_date: "Start date :"
       end_date: "End date :"
       warning: "Optional: if a file is uploaded, shifts won't operate"

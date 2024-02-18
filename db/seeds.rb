@@ -260,3 +260,47 @@ clubs.each do |club|
     end
   end
 end
+
+# 5/ destroy matches and user_match_scores for a club
+# Court.where(club_id: 65).each{ |court| court.matches.each {|match| match.destroy }}
+# or:
+Box.where(round_id: 178).each do |box|
+  box.matches.each do |match|
+    match.destroy
+  end
+end
+# 6/ clean user box scores
+# # User.where(club_id:65).each{|user| user.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
+                                    #  sets_won: 0, sets_played: 0,
+                                    #  matches_won: 0, matches_played: 0,
+                                    #  games_won: 0, games_played: 0)}}
+# or:
+# Box.where(round_id:178).each{|box| box.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
+#                                         sets_won: 0, sets_played: 0,
+#                                         matches_won: 0, matches_played: 0,
+#                                         games_won: 0, games_played: 0)}}
+
+
+def destroy(match)
+  # for admin and referees only
+  # @match = Match.find(params[:id])
+  user_match_scores = UserMatchScore.where(match_id: match.id)
+  results = compute_results(user_match_scores)
+  # update user_box_score for each player
+  [0, 1].each do |index|
+    user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+
+    user_box_score.points -= user_match_scores[index].points
+    user_box_score.sets_won -= results[index]
+    user_box_score.sets_played -= results.sum
+    user_box_score.games_won -= won_games(user_match_scores[index])
+    user_box_score.games_played -= won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+    user_box_score.matches_won -= results[index] > results[1 - index] ? 1 : 0
+    user_box_score.matches_played -= 1
+    user_box_score.save
+  end
+  match.destroy
+
+  # update the league table
+  rank_players(match.box.round.user_box_scores)
+end
