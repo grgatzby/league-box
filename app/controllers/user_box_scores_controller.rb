@@ -1,7 +1,7 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
   MIN_PLAYERS_PER_BOX = 4
-  NEW_CLUB_HEADERS = ["id", "email", "first_name", "last_name", "phone_number", "role"]
+  NEW_CLUB_HEADERS = ["email", "first_name", "last_name", "phone_number", "role"]
   CSV_LEAGUE_TABLE_HEADERS = ["player", "rank", "points",
     "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
   ROUND_CSV_LEAGUE_TABLE_HEADERS = CSV_LEAGUE_TABLE_HEADERS + ["box_number"]

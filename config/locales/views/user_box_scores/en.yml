@@ -74,7 +74,7 @@ en:
       submit_btn: ⎷ Submit
       back_btn: ←
     create:
-      header_flash: Your headers must be "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      header_flash: Your headers must be "email", "first_name", "last_name", "nickname"[optional], "box_number"[optional], "phone_number", and "role"..
       file_type_flash: Please chose a csv file type.
       club_created:
         zero: Club created with %{players} players per box. All players were included.

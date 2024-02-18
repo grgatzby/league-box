@@ -1,66 +1,103 @@
-18 Feb 10:58,player,rank,points,matches played,matches won,sets played,sets won,games played,games won,box_number
-1,Dick Cartwright,1,45,3,1,9,4,79,37,1
-2,Cedric Zemlak,2,23,2,1,5,2,33,19,11
-3,Glenn Raynor,3,20,1,1,2,2,11,8,11
-4,Weldon Ernser,4,20,1,1,2,2,12,8,11
-5,Frederic Brakus,5,20,1,1,3,2,26,16,1
-6,Frederick Nicolas,6,20,1,1,3,2,27,16,1
-7,Kendrick Bahringer,7,16,2,0,5,1,34,10,11
-8,Korey Hoeger,8,11,1,0,3,1,26,10,1
-9,Hilario D'Amore,9,0,0,0,0,0,0,0,5
-10,Royal Ondricka,9,0,0,0,0,0,0,0,5
-11,Lindsay Jakubowski,9,0,0,0,0,0,0,0,5
-12,Robt Haag,9,0,0,0,0,0,0,0,5
-13,Dong Metz,9,0,0,0,0,0,0,0,6
-14,Rey Mills,9,0,0,0,0,0,0,0,6
-15,Ron Pacocha,9,0,0,0,0,0,0,0,6
-16,Dorian Osinski,9,0,0,0,0,0,0,0,6
-17,Elmo Weimann,9,0,0,0,0,0,0,0,6
-18,Lloyd Padberg,9,0,0,0,0,0,0,0,6
-19,Lester O'Connell,9,0,0,0,0,0,0,0,7
-20,Pat Johnson,9,0,0,0,0,0,0,0,7
-21,Miguel Sawayn,9,0,0,0,0,0,0,0,7
-22,Jospeh Senger,9,0,0,0,0,0,0,0,7
-23,Bryce Goodwin,9,0,0,0,0,0,0,0,7
-24,Donald Denesik,9,0,0,0,0,0,0,0,7
-25,Raleigh Reynolds,9,0,0,0,0,0,0,0,8
-26,Allen Spencer,9,0,0,0,0,0,0,0,8
-27,Wilmer Crist,9,0,0,0,0,0,0,0,8
-28,Ted Nienow,9,0,0,0,0,0,0,0,8
-29,Val Waelchi,9,0,0,0,0,0,0,0,8
-30,Abel Kuvalis,9,0,0,0,0,0,0,0,8
-31,Nathaniel Mohr,9,0,0,0,0,0,0,0,9
-32,Jeffry Gottlieb,9,0,0,0,0,0,0,0,9
-33,Valentin Abbott,9,0,0,0,0,0,0,0,9
-34,Aurelio Auer,9,0,0,0,0,0,0,0,9
-35,Elvin Murazik,9,0,0,0,0,0,0,0,9
-36,Albert Rosenbaum,9,0,0,0,0,0,0,0,9
-37,Russel Bechtelar,9,0,0,0,0,0,0,0,10
-38,Rodrick Witting,9,0,0,0,0,0,0,0,10
-39,Alfonzo O'Kon,9,0,0,0,0,0,0,0,10
-40,Warner Corwin,9,0,0,0,0,0,0,0,10
-41,Hobert Beier,9,0,0,0,0,0,0,0,10
-42,Moses McCullough,9,0,0,0,0,0,0,0,11
-43,Ahmad Mante,9,0,0,0,0,0,0,0,10
-44,Sanford Schroeder,9,0,0,0,0,0,0,0,4
-45,Kory Wyman,9,0,0,0,0,0,0,0,3
-46,Ramiro DuBuque,9,0,0,0,0,0,0,0,2
-47,Aurelio Boyle,9,0,0,0,0,0,0,0,2
-48,Graig Cruickshank,9,0,0,0,0,0,0,0,2
-49,Parker Wisozk,9,0,0,0,0,0,0,0,3
-50,Irvin Harvey,9,0,0,0,0,0,0,0,3
-51,Luther Cormier,9,0,0,0,0,0,0,0,4
-52,Johnathon Crooks,9,0,0,0,0,0,0,0,3
-53,Tobias Nicolas,9,0,0,0,0,0,0,0,3
-54,Abe Koepp,9,0,0,0,0,0,0,0,4
-55,Lewis Luettgen,9,0,0,0,0,0,0,0,2
-56,Rueben Effertz,9,0,0,0,0,0,0,0,3
-57,Carrol O'Conner,9,0,0,0,0,0,0,0,5
-58,Kristopher Cronin,9,0,0,0,0,0,0,0,2
-59,Stanton Schmidt,9,0,0,0,0,0,0,0,1
-60,Chuck Cartwright,9,0,0,0,0,0,0,0,2
-61,Brent Emard,9,0,0,0,0,0,0,0,1
-62,Octavio Wisoky,9,0,0,0,0,0,0,0,4
-63,Reyes Willms,9,0,0,0,0,0,0,0,4
-64,Rueben McKenzie,9,0,0,0,0,0,0,0,4
-65,Bradly Bergstrom,9,0,0,0,0,0,0,0,5
+id,club_id,email,first_name,last_name,nickname,phone_number,role
+2981,73,natashamardinian@hotmail.com,Natasha,Mardinian,NatashaM,07927 271 665,player
+2983,73,gouilliardf@gmail.com,Francois,Gouilliard,FrancoisG,07776 290 381,player
+2984,73,matteogabba@gmail.com,Matteo,Gabba,MatteoG,07808 317 305,player
+2982,73,spyros_varoutsis@hotmail.com,Spyridon,Varoutsis,SpyridonV,07901 710 916,player
+2985,73,georgina.barclay@capgemini.com,Giorgina,Barclay,GiorginaB,07785 686 069,player
+2986,73,gareth.isaac2@gmail.com,Gareth,Isaac,GarethI,07990 507 277,player
+2987,73,daspickavance@aol.com,Dom,Pickavance,DomP,07939 724 601,player
+2988,73,willsarne@icloud.com,Will,Sarne,WillS,07837 615 370,player
+2989,73,prudkovaa@gmail.com,Anya,Prudkova,AnyaP,07479 384 898,player
+2990,73,matteo.moro1@googlemail.com,Matteo,Moro,MatteoM,07552 219 448,player
+2992,73,mchulme2015@gmail.com,Michael,Hulme,MichaelH,07366 308 996,player
+2991,73,andrewimorrow@hotmail.co.uk,Andy,Morrow,AndyM,07837 197 322,player
+2993,73,roger.ridsdill-smith@h-park.com,Roger,Ridsdill Smith,RogerR,0,player
+2994,73,sam.3897@hotmail.com,Sam,Behrens,SamB,07908 817 425,player
+2995,73,clarkconrad@gmail.com,Conrad,Clark,ConradC,07949 833 587,player
+2996,73,samhkeat@hotmail.com,Sam,Keat,SamK,07933 621 094,player
+2997,73,aurelieztromp@gmail.com,Aurélie,Tromp,AurélieT,07780 478 970,player
+2998,73,d.frollani@gmail.com,Daniele,Frollani,DanieleF,07427 442 985,player
+2999,73,jakeedwardstevens@gmail.com,Jake,Stevens,JakeS,07519 061 163,player
+3000,73,oliviercollart@outlook.com,Olivier,Collart,OlivierC,07788 133 259,player
+3001,73,karimbazzi@homes-one.com,Karim,Bazzi,KarimB,07958 485 611,player
+3002,73,henryforsyth@hotmail.com,Henry,Forsyth,HenryF,07710 380 902,player
+3003,73,adam.balon@innocentdrinks.co.uk,Adam,Balon,AdamB,07802 851 461,player
+3004,73,allison.l.zender@gmail.com,Allison,Zender,AllisonZ,07929 729 881,player
+3005,73,arnaud.fleccia@h-park.com,Arnaud,Fleccia,ArnaudF,0,player
+3006,73,daniele.chiarella@icloud.com,Daniele,Chiarella,DanieleC,07583 685 503,player
+3007,73,miguelnavarro26@hotmail.com,Miguel,Navarro,MiguelN,07717 884 405,player
+3008,73,dnikolako@gmail.com,Dimitrios,Nikolakopoulos,DimitriosN,07956 365 038,player
+3009,73,mark@markmather.co.uk,Mark,Mather,MarkM,07973 750 793,player
+3010,73,james.mccrossen@h-park.com,James,McCrossen ,JamesM,0,player
+3011,73,paolo.zampiga@icloud.com,Paolo,Zampiga,PaoloZ,07776 192 869,player
+3012,73,varouts@gmail.com,George,Varoutsis,GeorgeV,07786 704 074,player
+3013,73,d_f_sharp@hotmail.com,Dan,Sharp,DanS,07900 901 369,player
+3014,73,michael.omara@brcm.co.uk,Michael,Omara,MichaelO,07748 622 314,player
+3015,73,burdyhk@gmail.com,George,Burdon,GeorgeB,07721 693 399,player
+3017,73,lf@cyruscapital.com,Lucien,Farrell,LucienF,07867 535 510,player
+3018,73,daniel.gargiulo@btgpactual.com,Daniel,Gargiulo,DanielG,07590 976 836,player
+3019,73,olegbasin@gmail.com,Oleg,Basin,OlegB,07702 080 627,player
+3016,73,charles.hawes@simmons-simmons.com,Charles `,Hawes,Charles `H,07921 584 449,player
+3020,73,i.gladman@yahoo.com,Ian,Gladman,IanG,07785 596 936,player
+3021,73,jamie.younger@saffery.com,Jamie,Younger,JamieY,07827 278 797,player
+3022,73,eyres.harry@gmail.com,Harry,Eyres,HarryE,07854 419 476,player
+3023,73,saeed@cat-ltd.co.uk,Saeed,Ferdos,SaeedF,07958 740 581,player
+3024,73,sam@whittakers.net,Sam,Whittaker,SamW,07979 706 569,player
+3025,73,ajameyer@yahoo.com,James,Meyer,JamesM,07470 001 653,player
+3026,73,dom.moro@gmail.com,Dom,Moro,DomM,07392 871 605,player
+3027,73,deburetel@because.tv,Emmanuel,DeBuretel,EmmanuelD,0207 371 2274,player
+3028,73,yaoyiyi@hotmail.com,Yi,Buckley,YiB,07968 702 730,player
+3029,73,orecchiae@gmail.com,Emilio,Orecchia,EmilioO,07773 909 848,player
+3030,73,elisa.kerr@btinternet.com,Elisa,Kerr,ElisaK,07767 885 780,player
+3031,73,nicholas.mellor@lsngroup.org,Nicholas,Mellor,NicholasM,07971 809 262,player
+3032,73,elisaknebel@msn.com,Elisa,Knebel,ElisaK,07397 171 664,player
+3033,73,th@idler.co.uk,Tom,Hodgkinson,TomH,07970 720 352,player
+3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee
+3035,73,twalker8000@gmail.com,Tom,Walker,TomW,07801 468 313,player
+3036,73,catherine-whittle@outlook.com,Catherine,Whittle,CatherineW,07949 053 231,player
+3039,73,kmeducation27@gmail.com,Riki,Mian,RikiM,07784 392 324,player
+3037,73,sevauxj@gmail.com,Julien,Sevaux,JulienS,07802 961 186,player
+3038,73,laurent@fplhomes.com,Laurent,Lakatos,LaurentL,07899 996 962,player
+3040,73,sophie.s.muir@gmail.com,Sophie,Muir,SophieM,‭07793 744 459‬,player
+3041,73,fausto.zanetton@gmail.com,Fausto,Zanetton,FaustoZ,07899 985 840,player
+3042,73,aldomareuse1@gmail.com,Aldo,Mareuse,AldoM,07710 349 275,player
+3043,73,robertbeton@hotmail.co.uk,Robert,Beton,RobertB,07501 989 312,player
+3044,73,mike@hla.net,Mike,Wells,MikeW,07831 358 456,player
+3045,73,charlesgouilliard@outlook.com,Charles,Gouilliard,CharlesG,07775 186 790,player
+3046,73,g.griffin344@btinternet.com,Graham,Griffin,GrahamG,‭07796 336 521‬,player
+3047,73,mpalencia@btinternet.com,Mario,Palencia,MarioP,07778 595 959,player
+3048,73,stephenedwardbehrens@hotmail.com,Stephen,Behrens,StephenB,0,player
+3049,73,joe.cerrell@gatesfoundation.org,Joe,Cerrell,JoeC,07943 175 032,player
+3050,73,mattfriend05@gmail.com,Matt,Friend,MattF,07796 511 977,player
+3051,73,jbperrin@ymail.com,Jean-Baptiste,Perrin,Jean-BaptisteP,07514 819 853,player
+3052,73,chrisogden@compuserve.com,Christopher,Ogden,ChristopherO,07786 932 999,player
+3053,73,martinlangleyjones@gmail.com,Martin,Jones,MartinJ,07798 811 784,player
+3054,73,isaac.lydia@gmail.com,Lydia ,Isaac,Lydia I,07884 295 221,player
+3055,73,vdang93@gmail.com,Vinh,Dang,VinhD,07454 819 671,player
+3056,73,virginiabrix@aol.com,Virginia,Brix,VirginiaB,07788 414 344,player
+3057,73,peterjkarlsen@gmail.com,Peter,Karlsen,PeterK,07785 528 190,player
+3058,73,romaphul@gmail.com,Roma,Phulwani,RomaP,07909 988 787,player
+3059,73,reza.f@mac.com,Reza,Farhat,RezaF,07795 430 094,player
+3060,73,grcwatson@hotmail.con,Georgie,Watson,GeorgieW,07900 018 239,player
+3061,73,dorothee.de.la.chevardiere@gmail.com,Dorothée,de La Chevardiere,Dorothéed,07500 774 791,player
+3062,73,johnmturner69@yahoo.com,John,Turner,JohnT,07850 144 865,player
+3063,73,gabeomara@gmail.com,Gabriel,Omara,GabrielO,07468 537 259,player
+3064,73,alicebeaumont@gmail.com,Alice,Beaumont,AliceB,07803 943 073,player
+3065,73,stefan.r.bollinger@gmail.com,Stefan,Bollinger,StefanB,07771 767 355,player
+3066,73,laurencetimmons@gmail.com,Laurence P.,Timmons,Laurence P.T,07768 123 321,player
+3067,73,andrew.melrose@hotmail.co.uk,Andrew,Melrose,AndrewM,07795 528 375,player
+3068,73,candidauren@h-park.com,Candida,Uren,CandidaU,0,player
+3069,73,juliengurcel@hotmail.co.uk,Julien,Gurcel,JulienG,07533 440 442,player
+3070,73,christian.synetos@gmail.com,Christian,Synetos,ChristianS,07769 743 482,player
+3071,73,larkbruce@gmail.com,Linda,Bruce,LindaB,07480 295 323,player
+3072,73,nicholaslambardescott@gmail.com,Nick,Lambarde-Scott,NickL,07774 659 947,player
+3073,73,yasminelever@gmail.com,Yasmine,Lever,YasmineL,07546 359 624,player
+3074,73,spare01@club.com,Paul,Sparetwo,PaulS,,spare
+3075,73,corina141@hotmail.co.uk,Corina,Penna,CorinaP,07834 602 938,player
+3076,73,piraneh@gmail.com,Ehzan,Parvizian,EhzanP,07775 752 445,player
+3077,73,gkingfriend@gmail.com,Gina,King,GinaK,07551 883 680,player
+3078,73,marius@mnasta.com,Marius,Nasta,MariusN,07801 916 279,player
+3079,73,b00629659@essec.edu,Marie,Jolly,MarieJ,33 06421 76739,player
+3080,73,premolars@hotmail.com,Bimal,Bawa,BimalB,07799 563 955,player
+3081,73,spare02@club.com,Paul,Spareone,PaulS,,spare
+3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee

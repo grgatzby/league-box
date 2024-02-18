@@ -271,9 +271,9 @@ Box.where(round_id: 178).each do |box|
 end
 # 6/ clean user box scores
 # # User.where(club_id:65).each{|user| user.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
-                                    #  sets_won: 0, sets_played: 0,
-                                    #  matches_won: 0, matches_played: 0,
-                                    #  games_won: 0, games_played: 0)}}
+                                     sets_won: 0, sets_played: 0,
+                                     matches_won: 0, matches_played: 0,
+                                     games_won: 0, games_played: 0)}}
 # or:
 # Box.where(round_id:178).each{|box| box.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
 #                                         sets_won: 0, sets_played: 0,
