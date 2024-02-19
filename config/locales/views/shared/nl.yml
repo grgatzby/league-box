@@ -23,7 +23,7 @@ nl:
       expired: ronde verlopen
       players: "%{nb_players} spellers"
     select_round:
-      select_round_start: "Bekijk een andere ronde startdatum: "
+      select_round_start: "Ronde startdatum: "
       confirm_btn: ⎷ Bevestigen
     select_club_round:
       select_club: "Kies een club: "

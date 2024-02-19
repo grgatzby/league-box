@@ -3,7 +3,13 @@
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner text-size">
-    <h3><%= t '.league_table_title' %><%= " #{l(@league_start, format: :yyymm_date)}" %></h3>
+    <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
+      message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+        data-bs-content="<%= message %>">
+      <h3><%= t '.league_table_title' %><%= " #{l(@league_start, format: :yyymm_date)}" %></h3>
+    </div>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %></div>
