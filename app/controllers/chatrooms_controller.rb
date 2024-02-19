@@ -46,7 +46,7 @@ class ChatroomsController < ApplicationController
           # admin can access all existing chatrooms (including the #general chatroom)
           @chatrooms = Chatroom.all
         # elsif current_user.role == "referee" || current_user.role == "player referee"
-        elsif REFEREE.include?(row[:role])
+        elsif REFEREE.include?(current_user.role)
           # referees have access to all chatrooms from their club + the #general chatroom
           @chatrooms = Chatroom.select do |chatroom|
             chatroom.box.round.club == current_user.club
