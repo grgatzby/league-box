@@ -122,7 +122,7 @@ class UserBoxScoresController < ApplicationController
   end
 
   def create
-    # (admin only) create a new club, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
+    # (admin only) CREATE A NEW CLUB, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
     # The csv file must contain the following fields:
     #      id, email, first_name, last_name, nickname, phone_number, role (player / referee / player referee / spare)
     # Players are allocated in boxes by id (in descending order).
