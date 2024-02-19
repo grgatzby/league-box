@@ -6,6 +6,7 @@ fr:
       file_csv_flash: fichier data.csv créé
       valid_round_flash: "League table du round: choisir un round valide"
     index_league:
+      rounds: Rounds
       league_table_title: League table du tournoi
       valid_league_flash: "League table: choisir un début de tournoi valide"
     select_league:

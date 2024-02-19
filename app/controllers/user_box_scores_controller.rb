@@ -65,13 +65,13 @@ class UserBoxScoresController < ApplicationController
     @league_start = "#{params[:league_start]}".to_date
     club_id = params[:club_id].to_i
     @club = Club.find(club_id)
-    rounds = Round.where(league_start: @league_start, club_id:)
+    @rounds = Round.where(league_start: @league_start, club_id:)
     @round = current_round(@club.id)
-    if rounds.length.positive?
+    if @rounds.length.positive?
       # users = User.where(club_id:, role: "player")
       users = User.where(club_id:)
 
-      @user_box_scores = league_table(rounds, users)
+      @user_box_scores = league_table(@rounds, users)
       # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
       # it is passed from the partial _header_to_link.html.erb when a header is clicked
       if params[:order] && (params[:exsort] == params[:sort])

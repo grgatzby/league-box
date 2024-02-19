@@ -6,6 +6,7 @@ nl:
       file_csv_flash: bestand data.csv gemaakt
       valid_round_flash: "Ronde league table: kies een geldige ronde."
     index_league:
+      rounds: Ronden
       league_table_title: League table van het toernooi
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
