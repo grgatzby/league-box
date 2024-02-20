@@ -134,8 +134,11 @@ a chatroom is created in Box controller #my_scores.
 
     </div>
   </div>
-
-
-
+  <% if params[:club]
+      club = Club.find_by(name: params[:club]) %>
+    <div class="buttons-wrap">
+      <%= link_to t('.back_btn'), user_box_scores_path(club_id: club.id), class: "btn buttons-shape btn-yellow" %>
+    </div>
+  <% end %>
 <% end %>
 <br>

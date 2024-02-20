@@ -69,7 +69,7 @@ class UserBoxScoresController < ApplicationController
     @round = current_round(@club.id)
     if @rounds.length.positive?
       # users = User.where(club_id:, role: "player")
-      users = User.select { |user| PLAYERS.include?(user.role) }
+      users = User.select { |user| PLAYERS.include?(user.role) && user.club == @club }
 
       @user_box_scores = league_table(@rounds, users)
       # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
@@ -275,7 +275,7 @@ class UserBoxScoresController < ApplicationController
     # rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id:)
     rounds = Round.where(league_start:, club_id:)
     # users = User.where(club_id:, role: "player")
-    users = User.where(club_id:)
+    users = User.select { |user| PLAYERS.include?(user.role) && user.club_id == club_id }
     file = "#{Rails.root}/public/data.csv"
     user_box_scores = league_table(rounds, users)
     user_box_scores = rank_players(user_box_scores, "index_league")
