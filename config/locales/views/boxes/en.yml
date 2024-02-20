@@ -10,6 +10,7 @@ en:
       pop01_b: ", or enter a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
       my_current_box: my current box
+      my_box: my box
       all_boxes_link: All boxes
     index:
       all_box_title: All boxes
