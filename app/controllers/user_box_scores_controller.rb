@@ -69,7 +69,7 @@ class UserBoxScoresController < ApplicationController
     @round = current_round(@club.id)
     if @rounds.length.positive?
       # users = User.where(club_id:, role: "player")
-      users = User.where(club_id:)
+      users = User.select { |user| PLAYERS.include?(user.role) }
 
       @user_box_scores = league_table(@rounds, users)
       # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
