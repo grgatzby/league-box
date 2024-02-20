@@ -10,6 +10,7 @@ nl:
       pop01_b: ", of voer een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
       my_current_box: mijn huidige box
+      my_box: mijn box
       all_boxes_link: Naar boxen
     index:
       all_box_title: Alle boxen

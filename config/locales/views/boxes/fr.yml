@@ -10,6 +10,7 @@ fr:
       pop01_b: ", ou saisir un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
       my_current_box: ma box en cours
+      my_box: ma box
       all_boxes_link: Les box
     index:
       all_box_title: Toutes les box
