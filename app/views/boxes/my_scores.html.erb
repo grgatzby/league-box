@@ -16,8 +16,8 @@
       <div class="one-liner">
         <h4><%= render "shared/display_club",
             round: @box.round,
-            add_text: "#{render "shared/fullname", user: @current_player} - box #{@box.box_number}" %>
-        </h4>
+       add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
+       </h4>
         <div>
           <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
           <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn buttons-shape btn-yellow mb-3" %>
@@ -62,8 +62,10 @@
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
               <% elsif match %>
                 <%= link_to t(".see_match_card_btn"), match_path(player: current_user.id, opponent: opponent.id, match_id: match.id, page_from: my_scores_path), class: class_btns %>
-              <% else %>
+              <% elsif @box == @my_current_box %>
                 <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: opponent.id, round_id: @round.id, page_from: my_scores_path), class: class_btns %>
+              <% else %>
+                <div class="top-bottom-padding"><%= t(".match_not_played") %></div>
               <% end %>
             </div>
           </div>
