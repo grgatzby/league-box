@@ -28,6 +28,8 @@ fr:
         ce qu'ils peuvent faire également dans les <b class='bold-font color-tennis-blue'>Résultats en liste</b> et <b class='bold-font color-tennis-blue'>Résultats en table</b>.<br><br>
         <b class='color-tennis-red'>Mes scores</b> donne aussi accès à la <b>Chatroom de la box</b> pour organiser les matchs entre joueurs.<br>
       intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
+      my_current_box: ma box en cours
+      my_box: ma box
       not_in_round: " vous n'êtes pas dans ce round!"
       view_enter_scores: Consultez ou entrez vos scores
       player_header: Joueur
@@ -37,6 +39,7 @@ fr:
       view_box_results_btn: Vers ma box
       see_match_card_btn: Carte du match
       enter_score_btn: Entrer le score
+      match_not_played: Match non joué
       chat_in_my_box: Organisez vos matchs
       access_chatroom_btn: Chatroom de votre box
     show_list:

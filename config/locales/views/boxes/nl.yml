@@ -28,6 +28,8 @@ nl:
         Dit kan ook worden gedaan vanuit <b class='bold-font color-tennis-blue'>resultaten lijst</b> en <b class='bold-font color-tennis-blue'>resultatenraster</b>.<br><br>
         <b class='color-tennis-red'>Mijn scores</b> geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren.<br>
       intro_stale: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
+      my_current_box: mijn huidige box
+      my_box: mijn box
       not_in_round: " jij zit niet in deze ronde!"
       view_enter_scores: Bekijk of voer uw scores in
       player_header: Speler
@@ -37,6 +39,7 @@ nl:
       view_box_results_btn: Mijn boxresultaten
       see_match_card_btn: Wedstrijdkaart
       enter_score_btn: Voer uw score in
+      match_not_played: Match niet gespeeld
       chat_in_my_box: Organiseer uw wedstrijden
       access_chatroom_btn: Chatroom van uw box
     show_list:

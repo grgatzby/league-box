@@ -53,6 +53,8 @@ class BoxesController < ApplicationController
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
+      @this_is_my_box = my_box?(@box)
+      @my_current_box = my_own_box(current_round(current_user.club_id))
       @round_nb = round_label(@box.round)
     end
     if @box
