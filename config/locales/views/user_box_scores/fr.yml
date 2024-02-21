@@ -1,11 +1,14 @@
 fr:
   user_box_scores:
     index:
-      intro: La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi.<br>
-      round_league_table_title: League table du round
+      intro: Le <b>classement du round</b> est mis à jour dès qu'un nouveau score est saisi.<br>
+      round_league_table_title: Classement du round
       file_csv_flash: fichier data.csv créé
-      valid_round_flash: "League table du round: choisir un round valide"
+      valid_round_flash: "Classement du round: choisir un round valide"
     index_league:
+      intro: >
+        La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi.<br>
+        Elle agrège l'ensemble des rounds du même tournoi
       rounds: Rounds
       league_table_title: League table du tournoi
       valid_league_flash: "League table: choisir un début de tournoi valide"

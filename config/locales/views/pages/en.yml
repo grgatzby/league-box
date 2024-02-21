@@ -165,11 +165,9 @@ en:
       p09: Clicking on a box leads to its Table view.
       p10a_html: When reaching the end of the round, a footpage button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
       p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
-      league_table: League table
+      league_table: Round ranking and Tournament League table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p13_html: >
-        Clicking on a header sorts the player according to this header.<br>
-        The round league table gives you access to the <b>League table for the year</b>.
+      p13_html: Clicking on a header sorts the player according to this header.<br>
       referee_list_view: Box List view (admin/Referee)
       p14_html: >
         Each player's matches which have been played are shown as list items.

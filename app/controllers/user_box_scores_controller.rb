@@ -62,59 +62,63 @@ class UserBoxScoresController < ApplicationController
   def index_league
     set_club_round
     # displays the league table for the tournament (same club, same league_start), allows user to sort the table by click on headers
-    @league_start = "#{params[:league_start]}".to_date
-    club_id = params[:club_id].to_i
-    @club = Club.find(club_id)
-    @rounds = Round.where(league_start: @league_start, club_id:)
-    @round = current_round(@club.id)
-    if @rounds.length.positive?
-      # users = User.where(club_id:, role: "player")
-      users = User.select { |user| PLAYERS.include?(user.role) && user.club == @club }
+    # club_id = params[:club_id].to_i
+    # club_id = @club.id
+    #@club = Club.find(club_id)
+    # @round = current_round(@club.id)
+    if @round
+      @league_start = "#{params[:league_start]}".to_date || @round.league_start
+      # @rounds = Round.where(league_start: @league_start, club_id:)
+      @rounds = Round.where(league_start: @league_start, club_id:@club.id)
+      if @rounds.length.positive?
+        # users = User.where(club_id:, role: "player")
+        users = User.select { |user| PLAYERS.include?(user.role) && user.club == @club }
 
-      @user_box_scores = league_table(@rounds, users)
-      # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
-      # it is passed from the partial _header_to_link.html.erb when a header is clicked
-      if params[:order] && (params[:exsort] == params[:sort])
-        @order = params[:order].to_i
+        @user_box_scores = league_table(@rounds, users)
+        # @order (1 or -1) determines the sorting order (ASC / DES) of the selected header
+        # it is passed from the partial _header_to_link.html.erb when a header is clicked
+        if params[:order] && (params[:exsort] == params[:sort])
+          @order = params[:order].to_i
+        else
+          @order = -1
+        end
+
+        @user_box_scores = rank_players(@user_box_scores, "index_league")
+        @user_box_scores.sort_by! { |user_bs| -@order * user_bs[1][:rank] }
+        @user_box_scores.each_with_index { |user_bs, index| user_bs[1][:index] = index }
+        @sort = params[:sort]
+        case params[:sort].to_i
+        when 1 # "Player first name"
+          @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name, -@order * user_bs[1][:rank]] }
+          @user_box_scores.reverse! if @order == 1
+        when 2 # "Player last name"
+          @user_box_scores.sort_by! { |user_bs| [user_bs[0].last_name, -@order * user_bs[1][:rank]] }
+          @user_box_scores.reverse! if @order == 1
+        when 3 # "Ranking: default sorting order"
+        when 4 # "Points"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:points], -@order * user_bs[1][:rank]] }
+        when 6 # "Matches Played"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_played], -@order * user_bs[1][:rank]] }
+        when 7 # "Matches Won"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_won], -@order * user_bs[1][:rank]] }
+        when 8 # "Sets Played"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_played], -@order * user_bs[1][:rank]] }
+        when 9 # "Sets Won"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_won], -@order * user_bs[1][:rank]] }
+        when 10 # "Games Played"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_played], -@order * user_bs[1][:rank]] }
+        when 11 # "Games Won"
+          @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
+        end
+        @render_to_text = false
+        if params[:to_text] == "true"
+          @render_to_text = true
+          create_txt
+        end
       else
-        @order = -1
+        flash[:notice] = t('.valid_league_flash')
+        redirect_back(fallback_location: user_box_scores_path)
       end
-
-      @user_box_scores = rank_players(@user_box_scores, "index_league")
-      @user_box_scores.sort_by! { |user_bs| -@order * user_bs[1][:rank] }
-      @user_box_scores.each_with_index { |user_bs, index| user_bs[1][:index] = index }
-      @sort = params[:sort]
-      case params[:sort].to_i
-      when 1 # "Player first name"
-        @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name, -@order * user_bs[1][:rank]] }
-        @user_box_scores.reverse! if @order == 1
-      when 2 # "Player last name"
-        @user_box_scores.sort_by! { |user_bs| [user_bs[0].last_name, -@order * user_bs[1][:rank]] }
-        @user_box_scores.reverse! if @order == 1
-      when 3 # "Ranking: default sorting order"
-      when 4 # "Points"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:points], -@order * user_bs[1][:rank]] }
-      when 6 # "Matches Played"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_played], -@order * user_bs[1][:rank]] }
-      when 7 # "Matches Won"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:matches_won], -@order * user_bs[1][:rank]] }
-      when 8 # "Sets Played"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_played], -@order * user_bs[1][:rank]] }
-      when 9 # "Sets Won"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:sets_won], -@order * user_bs[1][:rank]] }
-      when 10 # "Games Played"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_played], -@order * user_bs[1][:rank]] }
-      when 11 # "Games Won"
-        @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
-      end
-      @render_to_text = false
-      if params[:to_text] == "true"
-        @render_to_text = true
-        create_txt
-      end
-    else
-      flash[:notice] = t('.valid_league_flash')
-      redirect_back(fallback_location: user_box_scores_path)
     end
   end
 

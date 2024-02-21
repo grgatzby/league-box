@@ -2,6 +2,8 @@
 <div class="<%= class_names("container": !@is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
+  <% if @rounds %>
+
   <div class="one-liner text-size">
     <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
@@ -17,7 +19,8 @@
       <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
     </span>
   </div>
-  <% if @league_start %>
+  <% end %>
+  <% if @league_start && @round %>
     <div class=<%=@is_mobile ? "" : "one-liner"%>>
       <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
       <% if @league_starts.size > 1 %>
@@ -32,7 +35,7 @@
   <% else %>
     <!-- if no round selected, display the forms to select a club (admin only) and a round -->
     <div class="dont-print text-size">
-      <%= render "shared/select_club_round", fallback_path: user_box_scores_path, explain_paragraph: t(".intro") %>
+      <%= render "shared/select_club_round", fallback_path: index_league_path, explain_paragraph: t(".intro") %>
     </div>
   <% end %>
 </div>
