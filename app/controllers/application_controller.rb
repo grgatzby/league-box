@@ -64,14 +64,15 @@ class ApplicationController < ActionController::Base
       # user is a player or a referee (belongs to a club)),
       # or admin has selected a club from the form (club name is defined as params[:club_id])
       if @club == @sample_club
-        @club = check_string(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
+        @club = is_number?(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
+        # raise
       end
       @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
       @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
       @league_starts = @club.rounds.map(&:league_start).sort
       @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%d/%m/%Y') }.uniq
       if params[:round_id]
-        @round = check_string(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: params[:round_id].to_time, club_id: @club.id)
+        @round = is_number?(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: params[:round_id].to_time, club_id: @club.id)
         if @round
           @selected_date = @round.start_date.strftime('%d/%m/%Y')
         else
@@ -87,7 +88,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def check_string(string)
+  def is_number?(string)
     # returns true if string contains only digits
     string.scan(/\D/).empty?
   end

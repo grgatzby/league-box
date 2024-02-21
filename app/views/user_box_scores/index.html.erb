@@ -14,8 +14,8 @@
   <% if @round %>
     <div class=<%=@is_mobile ? "" : "one-liner"%>>
       <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path, add_text: "" %></h4>
-      <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
       <%= render "shared/select_round", fallback_path: user_box_scores_path %>
+      <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>

@@ -164,11 +164,9 @@ nl:
       p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (voor de admin),
       p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
-      league_table: League table
+      league_table: Ronde rangschikking, League table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
-      p13_html: >
-        Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>
-        De ronde ranglijst geeft u toegang tot de <b>competitietabel voor het jaar</b>.
+      p13_html: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>
       referee_list_view: Box resultaten lijst (admin/Referee)
       p14_html: >
         De door elke speler gespeelde wedstrijden worden weergegeven als lijstitems. De kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.<br>

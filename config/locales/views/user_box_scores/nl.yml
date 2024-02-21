@@ -1,11 +1,12 @@
 nl:
   user_box_scores:
     index:
-      intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt.<br>
-      round_league_table_title: League table ronde
+      intro: De <b>ronde rangschikking</b> wordt bij elke score-invoer bijgewerkt.<br>
+      round_league_table_title: Ronde rangschikking
       file_csv_flash: bestand data.csv gemaakt
-      valid_round_flash: "Ronde league table: kies een geldige ronde."
+      valid_round_flash: "Ronde rangschikking: kies een geldige ronde."
     index_league:
+      intro: De <b>league table</b> wordt bij elke score-invoer bijgewerkt.<br>
       rounds: Ronden
       league_table_title: League table van het toernooi
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
