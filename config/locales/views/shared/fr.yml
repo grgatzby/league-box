@@ -49,3 +49,9 @@ fr:
       header_phone: 📞 Téléphone
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
+    stats:
+      stats: Stats du round
+      round: Round
+      line1: "%{players} joueurs, %{boxes} box<br>%{matches} matchs, %{played} joués (%{ratio}%)<br>"
+      line2: "total %{total_days} jours, %{days_left} jours restants (%{ratio}%)"
+      round_expired: round expiré

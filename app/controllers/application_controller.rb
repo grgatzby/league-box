@@ -259,4 +259,14 @@ class ApplicationController < ActionController::Base
     # player.role == "player" && box == player.user_box_scores.first.box
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
+
+  def init_stats
+    @nb_matches = @round.boxes.map { |box| box.user_box_scores.count * (box.user_box_scores.count - 1) / 2 }.sum
+    @nb_matches_played = @round.boxes.map { |box| box.matches.count }.sum
+    @elapsed_days = @round.end_date - Date.today
+    @round_days = @round.end_date - @round.start_date
+    @nb_boxes = @round.boxes.count
+    @nb_players = @round.boxes.map { |box| box.user_box_scores.count }.sum
+    # raise
+  end
 end

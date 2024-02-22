@@ -11,6 +11,7 @@ class BoxesController < ApplicationController
     @my_box = 0
     @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
     if @round
+      init_stats
       days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
       # admin : create button appears in last days or after if round is the most recent
       @new_round_required = days_left <= DAYS_BEFORE_NEW_ROUND_CREATION && @start_dates.first == @round.start_date.strftime('%d/%m/%Y')
@@ -25,6 +26,7 @@ class BoxesController < ApplicationController
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
       @round = @box.round
+      init_stats
       @round_nb = round_label(@round)
       # @box_matches is an array of [user_box_score , matches_details(user), user]
       # matches_details(user) is an array of [match, opponent, user_score, opponent_score]

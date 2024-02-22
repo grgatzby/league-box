@@ -1,0 +1,18 @@
+<% title = "<b>#{t('.round')} #{@round_nb}</b>"
+message = t('.line1', players: @nb_players, boxes: @nb_boxes, matches: @nb_matches, played: @nb_matches_played, ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
+if @elapsed_days.positive?
+  message += t('.line2', days_left: @elapsed_days.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@elapsed_days.to_f/@round_days))
+else
+  message += t('.round_expired')
+end %>
+<a tabindex="0" class="btn buttons-shape btn-orange mb-3 dont-print text-size popover-dismiss"
+role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-html="true"
+title="<%= title %>" data-bs-content="<%= message %>">
+  <%= t('.stats') %>
+</a>
+
+<script>
+  var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+    trigger: 'focus'
+  })
+</script>

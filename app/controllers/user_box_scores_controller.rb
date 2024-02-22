@@ -26,6 +26,7 @@ class UserBoxScoresController < ApplicationController
       @user_box_scores.reverse! if @order == 1
 
       @sort = params[:sort]
+      init_stats
       case params[:sort].to_i
       when 1 # "Player first name"
         @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name, -@order * user_bs.rank] }

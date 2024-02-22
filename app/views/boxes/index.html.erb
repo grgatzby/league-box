@@ -8,7 +8,8 @@
   <% if @round %>
     <div class = "one-liner">
       <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path, add_text: "" %></h4>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print me-3"%>
+      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
+      <%= render 'shared/stats' %>
       <%= render "shared/select_round", fallback_path: boxes_path %>
       <% if current_user == @admin %>
         <%= link_to "load_scores", load_scores_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>

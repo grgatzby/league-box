@@ -11,7 +11,7 @@ nl:
       tournament_rules_link: Toernooiregels
       club_staff_link: Contact
       all_boxes_link: Naar boxen
-      round_ranking_link: Round ranking
+      round_ranking_link: Ronde rangschikking
       league_table_link: League table
       my_scores_link: Mijn scores
       general_chat_link: "Chatroom #general"
@@ -49,3 +49,9 @@ nl:
       header_phone: 📞 Telefoon
       website_admin: Sitebeheerder (admin)
       club_referee_html: "Referee van %{club_name}"
+    sats:
+      stats: Ronde stat
+      round: Ronde
+      line1: "%{players} spelers, %{boxes} dozen<br>%{matches} wedstrijden, %{played} gespeeld (%{ratio}%)<br>"
+      line2: "totaal %{total_days} dagen, %{days_left} dagen resterend (%{ratio}%)"
+      round_expired: ronde verlopen
