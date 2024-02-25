@@ -1,9 +1,17 @@
 <% title = "<b>#{t('.round')} #{@round_nb}</b>"
-message = t('.line1', players: @nb_players, boxes: @nb_boxes, matches: @nb_matches, played: @nb_matches_played, ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
+message = t(".line1",
+    start: l(@round.start_date, format: :ddmmm_date),
+    end: l(@round.end_date, format: :ddmmmyyy_date))
+message += t('.line2', players: @nb_players, boxes: @nb_boxes)
 if @elapsed_days.positive?
-  message += t('.line2', days_left: @elapsed_days.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@elapsed_days.to_f/@round_days))
+  message += t('.line3', days_left: @elapsed_days.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@elapsed_days.to_f/@round_days))
 else
   message += t('.round_expired')
+end
+message += t('.nb_matches', count: @nb_matches) + t('.nb_matches_played', count: @nb_matches_played, ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
+if ["player", "player referee"].include?(current_user.role)
+  message += t('.line4') + t('.nb_matches', count: @nb_box_matches) + t('.nb_matches_played', count: @nb_box_matches_played, ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))
+  message += t('.line5') + t('.nb_matches', count: @my_nb_matches) + t('.nb_matches_played', count: @my_nb_matches_played, ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))
 end %>
 <a tabindex="0" class="btn buttons-shape btn-orange mb-3 dont-print text-size popover-dismiss"
 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-html="true"

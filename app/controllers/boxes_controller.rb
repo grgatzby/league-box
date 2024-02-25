@@ -7,7 +7,7 @@ class BoxesController < ApplicationController
     # display all boxes and the shared select_round form
     @page_from = params[:page_from]
     set_club_round # set variables @club, @round and @boxes (ApplicationController)
-    @my_current_box = my_own_box(current_round(current_user.club_id))
+    # @my_current_box = my_own_box(current_round(current_user.club_id))
     @my_box = 0
     @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
     if @round
@@ -32,7 +32,7 @@ class BoxesController < ApplicationController
       # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
       @box_matches = box_matches(@box) # sorted by descending points scores
       @this_is_my_box = my_box?(@box)
-      @my_current_box = my_own_box(current_round(current_user.club_id))
+      # @my_current_box = my_own_box(current_round(current_user.club_id))
     end
   end
 
@@ -56,10 +56,12 @@ class BoxesController < ApplicationController
     else
       @box = Box.find(params[:id])
       @this_is_my_box = my_box?(@box)
-      @my_current_box = my_own_box(current_round(current_user.club_id))
+      # @my_current_box = my_own_box(current_round(current_user.club_id))
       @round_nb = round_label(@box.round)
     end
     if @box
+      @round = @box.round
+      init_stats
       @my_matches = []
       @box.user_box_scores.each do |user_box_score|
         opponent_matches = user_matches(user_box_score.user, @box)
