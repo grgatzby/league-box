@@ -2,7 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
-  helper_method :round_label  # allows teh method to be called vrom views
+  helper_method :round_label  # allows the #round_label method to be called from views
+  PLAYERS = ["player", "player referee"]
   # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
@@ -258,5 +259,21 @@ class ApplicationController < ActionController::Base
     # return true if player belongs to box, false if not
     # player.role == "player" && box == player.user_box_scores.first.box
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
+  end
+
+  def init_stats
+    @nb_matches = @round.boxes.map { |box| box.user_box_scores.count * (box.user_box_scores.count - 1) / 2 }.sum
+    @nb_matches_played = @round.boxes.map { |box| box.matches.count }.sum
+    @elapsed_days = @round.end_date - Date.today
+    @round_days = @round.end_date - @round.start_date
+    @nb_boxes = @round.boxes.count
+    @nb_players = @round.boxes.map { |box| box.user_box_scores.count }.sum
+    if PLAYERS.include?(current_user.role)
+      @my_current_box = my_own_box(@round)
+      @nb_box_matches = @my_current_box.user_box_scores.count * (@my_current_box.user_box_scores.count - 1) / 2
+      @nb_box_matches_played = @my_current_box.matches.count
+      @my_nb_matches = @my_current_box.user_box_scores.count - 1
+      @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
+    end
   end
 end

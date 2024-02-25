@@ -19,6 +19,7 @@
        add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
        </h4>
         <div>
+          <%= render 'shared/stats' %>
           <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
           <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn buttons-shape btn-yellow mb-3" %>
         </div>
