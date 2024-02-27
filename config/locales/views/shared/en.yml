@@ -16,6 +16,7 @@ en:
       my_scores_link: My scores
       general_chat_link: "#general chatroom"
       chatrooms_link: Chatrooms
+      round_end_link: Change round end
       log_out_link: Log out
     display_round:
       round_period: Round %{round} (%{start} to %{end})

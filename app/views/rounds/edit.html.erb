@@ -1,0 +1,77 @@
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
+  <!-- admin/referee: modify the round end date. Accessed from navbar dropdown menu -->
+  <% unless current_user.role == "admin" %>
+    <br><br><%= t '.not_authorised' %>
+  <% else %>
+    <% if !@is_mobile %><br><% end %>
+    <h3><%= t '.round_end_title' %></h3>
+    <div class="frame-color-shape frame-padding frame-margin-rl">
+    <% if current_user == @admin && !params[:club]%>
+      <%= form_with url: edit_round_path, method: :get do |form| %>
+        <%# select a club (admin) %>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-3"><%= form.label :club, t('.select_club') %></div>
+          <div class="col-5">
+            <%= form.select(:club, params[:club] ? @clubs : @clubs.unshift(t(".club")), {selected: params[:club] ? params[:club] : t(".club")}, {onchange: "this.form.submit();"}) %>
+          </div>
+        </div>
+      <% end %>
+    <% elsif params[:club] || (["referee", "player referee"].include?(current_user.role)) %>
+      <%# current user is a referee or the club is provided by the form: display the club name %>
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><%= t '.club' %></div>
+        <div class="col-5">
+          <%= params[:club] %>
+        </div>
+      </div>
+      <% params[:club] = current_user.club.name %>
+    <% end %>
+
+    <% if params[:club] %>
+      <br>
+      <div class="row">
+      <%# a round is selected by its start date: display current end date and enter a new end date for the round %>
+      <div class="row" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+         data-bs-content="<%= t('.last_match_date', date: @last_match_date.strftime('%d/%m/%Y')) %>">
+        <div class="col-1"></div>
+        <%# display round number in RYY_NN format %>
+        <div class="col-4">Round R<%= round_label(@round) %></div>
+      </div>
+      <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3"><i><%= t '.current_end_date' %></i></div>
+          <div class="col-2"><i><%= @round.end_date.strftime('%d/%m/%Y') %></i></div>
+      </div>
+      <%= form_with model: @round do |form| %>
+        <%# input a new round end date (minimum = start date + 1 month) %>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-3"><%= form.label :end_date, t('.new_end_date') %></div>
+          <div class="col-2">
+            <%= form.date_field(:end_date, min: @round.start_date >> 1) %>
+          </div>
+        </div>
+        <% if @next_round %>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-4">Next round start date</div>
+            <div class="col-5"><%= @next_round.start_date.strftime('%d/%m/%Y') %></div>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            If new end date is set later than the next round, the latter will be moved forward too.
+          </div>
+        <% end %>
+        <br>
+        <div class="one-liner">
+          <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to "Back", boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow" %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

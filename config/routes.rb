@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'user_box_scores_csv/league_table_round', to: "user_box_scores#round_league_table_to_csv", as: "csv_round_league_table"
     get 'user_box_scores_csv/league_table', to: "user_box_scores#league_table_to_csv", as: "csv_league_table"
 
-    resources :rounds, only: %i[new create]
+    resources :rounds, only: %i[new create edit update]
 
     resources :chatrooms, only: :show do
       resources :messages, only: :create

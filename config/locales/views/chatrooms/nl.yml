@@ -10,6 +10,7 @@ nl:
           - De beheerder wordt in het rood weergegeven<br /><br />
         Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chatroom %{chatroom}"
+      not_authorised: Deze pagina is niet geautoriseerd.
       message_invite: "> Bericht naar"
       send_btn: ⎷ Versturen
       back_btn: ←

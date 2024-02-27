@@ -16,6 +16,7 @@ nl:
       my_scores_link: Mijn scores
       general_chat_link: "Chatroom #general"
       chatrooms_link: Chatrooms
+      round_end_link: Ronde end
       log_out_link: Uitloggen
     display_round:
       round_period: Ronde %{round} (%{start} tot %{end})
