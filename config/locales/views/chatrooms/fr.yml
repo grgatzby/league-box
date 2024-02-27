@@ -10,6 +10,7 @@ fr:
           - L'admin apparaît en rouge<br /><br />
         Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
       chatroom_title: "Chatroom %{chatroom}"
+      not_authorised: Cette page n'est pas autorisée.
       message_invite: "> Message vers"
       send_btn: ⎷ Envoi
       back_btn: ←

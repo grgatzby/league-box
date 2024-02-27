@@ -61,7 +61,7 @@ fr:
       box_round: Box round_
     new:
       new_club_title: Générer un nouveau club et un round
-      not_authorised: Vous n'êtes pas admin, cette page n'est pas authorisée.
+      not_authorised: Vous n'êtes pas admin, cette page n'est pas autorisée.
       p01: "À partir d'un fichier CSV avec les entêtes ci-dessous, générer un nouveu club avec ses joueurs et un Referee:"
       p02_html: >
         <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

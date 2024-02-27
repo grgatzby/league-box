@@ -16,6 +16,7 @@ fr:
       my_scores_link: Mes scores
       general_chat_link: "Chatroom #general"
       chatrooms_link: Les chatrooms
+      round_end_link: Fin du round
       log_out_link: Déconnexion
     display_round:
       round_period: Round %{round} (%{start} au %{end})

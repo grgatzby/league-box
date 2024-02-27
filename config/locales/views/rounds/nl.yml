@@ -23,3 +23,14 @@ nl:
         zero: Round gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
         one: Round gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.
         other: Round gemaakt met %{players} spelers per box. De laatste %{count} spelers konden niet worden ondergebracht.
+    edit:
+      round_end_title: Wijzig de huidige einddatum van de ronde
+      not_authorised: Deze pagina is niet geautoriseerd.
+      select_club: Kies een club
+      last_match_date: De laatste wedstrijd van de ronde werd gespeeld op %{date}
+      club: Club
+      select_round: Kies een ronde
+      current_end_date: Huidige einddatum
+      new_end_date: Nieuwe einddatum
+      round: Start van de ronde
+      confirm_btn: ⎷ Bevestigen

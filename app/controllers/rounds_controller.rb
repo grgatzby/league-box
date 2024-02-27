@@ -54,7 +54,7 @@ class RoundsController < ApplicationController
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
         # estimate the nb of players of the current box as current box 1's nb of players
-        players_per_box = club.rounds.last.boxes.find_by(box_number:1).user_box_scores.count
+        players_per_box = club.rounds.last.boxes.find_by(box_number: 1).user_box_scores.count
         # create new round
         round = Round.create(start_date: params[:round][:start_date].to_date,
                              end_date: params[:round][:end_date].to_date,
@@ -79,8 +79,8 @@ class RoundsController < ApplicationController
                   email = row[:email]
                 end
                 user = User.create(email:,
-                                  first_name: row[:first_name], last_name: row[:last_name],
-                                  phone_number: row[:phone_number], role: row[:role].downcase)
+                                   first_name: row[:first_name], last_name: row[:last_name],
+                                   phone_number: row[:phone_number], role: row[:role].downcase)
 
               end
               box_numbers << row[:box_number].to_i
@@ -112,9 +112,9 @@ class RoundsController < ApplicationController
           nb_boxes = box_numbers.count
           nb_boxes.times do |box_index|
             boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
-              chatroom_id: @general_chatroom.id)
+                                chatroom_id: @general_chatroom.id)
 
-              box_players[box_numbers[box_index]].each do |player|
+            box_players[box_numbers[box_index]].each do |player|
               UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
                                   points: 0, rank: 1,
                                   sets_won: 0, sets_played: 0,
@@ -187,7 +187,41 @@ class RoundsController < ApplicationController
     end
   end
 
+  def edit
+    # allow admin and referee to modify the last round end_date
+    data = Club.all.includes(rounds: :boxes).as_json(
+      include: { rounds: { only: [:id, :start_date, :end_date, :league_start] } })
+    # transform the hash format convention {"round" => value} to {round: value} and exclude the sample club
+    data.each(&:deep_symbolize_keys!).reject! { |a| a[:id] == @sample_club.id }
+    @clubs = data.map { |club| club[:name] }
+    params[:club] = current_user.club.name if REFEREE.include?(current_user.role)
+    if params[:club]
+      club_index = data.index { |club| club[:name] == params[:club] }
+      club_id = Club.find_by(name: params[:club]).id
+      rounds = data[club_index][:rounds].map { |round| [round[:league_start], round[:start_date]] }.sort
+      # pick the last round in the most recent tournament
+      @round = Round.find_by(start_date: rounds.last[1], club_id:)
+      @last_match_date = last_match_date(@round)
+    end
+  end
+
+  def update
+    @round = Round.find(params[:id])
+    # check if any match was played after the new round end date
+    if last_match_date(@round) > params[:round][:end_date].to_date
+      flash[:alert] = "Some match have been played beyond the proposed end date" # Match
+      render :edit, status: :unprocessable_entity
+    else
+      @round.update(round_params)
+      redirect_to boxes_path(round_id: @round.id, club_id: @round.club_id)
+    end
+  end
+
   private
+
+  def last_match_date(round)
+    round.boxes.map { |box| box.matches if box.matches.count.positive? }.flatten.compact.map(&:time).sort.last
+  end
 
   def new_temp_boxes(nb_boxes)
     # return array of temporary boxes; nb_boxes = number of boxes in the current round
@@ -240,5 +274,9 @@ class RoundsController < ApplicationController
     # shift(n) is an Array method: removes first n element from array and returns the array of these n elements
     temp_boxes.shift(nb_new_boxes) # remove populated boxes from temp_boxes array
     temp_boxes.each(&:delete)
+  end
+
+  def round_params
+    params.require(:round).permit(:end_date)
   end
 end
