@@ -10,7 +10,7 @@ en:
           -1 = one box down,<br />
           -2 = two boxes down.<br /><br />
           Select 99 to remove player from next league round (e.g. if less than 2 games played).
-      message_boxes: player name, rank,<br />nb matches played, proposed box move
+      message_boxes: player name, player rank,<br />nb matches played, proposed box move
       league_start: "League start date :"
       start_date: "Start date :"
       end_date: "End date :"
@@ -24,7 +24,8 @@ en:
         one: Round created with %{players} players per box. Last player could not be accomodated.
         other: Round created with %{players} players per box. Last %{count} players could not be accommodated.
     edit:
-      round_end_title: Change the current round end date
+      round_end_title: Round end date
+      change_end_date: Change the current round end date
       not_authorised: This page is not authorised.
       select_club: Select a club
       club: Club

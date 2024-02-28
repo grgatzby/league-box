@@ -4,32 +4,31 @@ fr:
       main_title: Le tennis associatif de votre club
       welcome_title: Votre tournoi sur LeagueBox
       p01: >
-        Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou chaque trimestre dans certains clubs).
+        Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou plus dans certains clubs).
         Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
       p02: >
-        Le vainqueur recevra le trophée du Tournoi Box League, son nom sur le tableau d'honneur et pourquoi pas
+        Le vainqueur recevra le trophée du Tournoi Box League 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
-      p03: La league table sera mise à jour automatiquement.
+      p03_html: 🥇🥈🥉 La <b>league table</b> sera mise à jour automatiquement.
       use_title: Votre LeagueBox en quelques clicks
-      p06: Suivez la league table pour vous comparer aux autres joueurs de votre box league.
       li01: Mes scores
       li02: Les box
-      li03a: Résultats en liste
-      li03b: Résultats en grille
-      li04: League Table
-      li05_html: Après chaque match, entrez votre score dans %{inset}.<br>Votre classement est mis à jour automatiquement.
       li06_html: >
         La page %{inset} montre toutes les box de la league:
-        accédez à la box de votre choix en cliquant dessus pour la consulter plus en détail.<br/>
+        accédez aux détails d'une box en cliquant dessus.<br/>
         Vous avez également accès aux rounds précédents.
-      li07_html: Pour chaque box, la page des %{inset_a} et celle des %{inset_b} vous détaillent les matchs et les scores.
-      li08_html: La %{inset} du round est toujours à jour, et vous pouvez vous comparer aux autres joueurs dans le tournoi.
+      li03a: Résultats en liste
+      li03b: Résultats en grille
+      li07_html: Après chaque match, entrez votre score dans les %{inset_a}, les %{inset_b}, ou dans %{inset_c}.<br>Votre classement est mis à jour automatiquement.
+      li04a: classement du round
+      li04b: league table
+      li08_html: Le %{inset_a} et la %{inset_b} du round sont toujours à jour, vous pouvez vous comparer aux autres joueurs du tournoi.
       how_title: "Les rounds: quatre étapes simples"
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
-      li09_html: Pendant la durée du round, jouez <b>tous les matchs de votre box</b>.
-      li10_html: Après chaque match, vous ou votre adversaire entrez <b>le score du match</b>.
-      li11_html: <b>La league table</b> est mise à jour automatiquement. Vous pouvez également consulter <b>les box et les scores</b>.
-      li12_html: "<b>Promotion / relégation</b> : À la fin du round, les deux meilleurs joueurs sont promus d'une box. Les deux derniers sont relégués d'une box."
+      li09_html: Pendant la durée du round, <b>jouez tous les matchs</b> de votre box.
+      li10_html: Après chaque match, vous ou votre adversaire <b>entrez le score</b> du match.
+      li11_html: Le <b>classement du round</b> et la <b>league table</b> sont mis à jour automatiquement.
+      li12_html: À la fin du round, les deux meilleurs joueurs sont <b>promus</b> d'une box. Les deux derniers sont <b>relégués</b> d'une box.
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
       happy_tournament: Que les meilleurs gagnent!

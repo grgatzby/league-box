@@ -4,30 +4,30 @@ nl:
       main_title: Verenigingstennis in jouw club
       welcome_title: Welkom op de LeagueBox-website
       p01: >
-        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of elke drie maanden, in sommige club).
+        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of meer, in sommige club).
         De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
       p02: >
-        De winnaar ontvangt de Singles Box League Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
+        De winnaar ontvangt de Singles Box League Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
-      p03: De ranglijst wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
+      p03_html: 🥇🥈🥉 De <b>league table</b> wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
       use_title: Jouw LeagueBox in een paar klikken
-      p06: Volg de ranglijst om jezelf te vergelijken met andere spelers in je competitievak
       li01: Mijn scores
+      li05_html:
       li02: De boxen
-      li03a: Resultaten lijst
-      li03b: Resultatenraster
-      li04: League Table
-      li05_html: Voer je laatste score in %{inset}.<br>Je ranking wordt automatisch bijgewerkt.
       li06_html: >
         Op %{inset} zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
         klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
-      li07_html: Binnen een box raadpleeg je de wedstrijd en scores, en de rangschikking van een speler in %{inset_a} of in %{inset_b}.
-      li08_html: De %{inset} wordt altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
+      li03a: Resultaten lijst
+      li03b: Resultatenraster
+      li07_html: Voer je laatste score in %{inset_a}, in %{inset_b} of in %{inset_c}.<br>Je ranking wordt automatisch bijgewerkt.
+      li04a: ronde rangschikking
+      li04b: league table
+      li08_html: De %{inset_a} en de %{inset_b} worden altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       how_title: "De rondes: 4 eenvoudige stappen"
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
-      li09_html: Gedurende de ronde speel <b>elke wedstrijd in je box</b>.
+      li09_html: Gedurende de ronde speel <b>elke wedstrijd</b> in je box.
       li10_html: Na elke wedstrijd voert een van de twee spelers <b>de wedstrijdscore</b> in.
-      li11_html: <b>De league table</b> wordt automatisch bijgewerkt. U kunt ook <b>de boxen en wedstrijdscoren</b> bekijken.
+      li11_html: De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt.
       li12_html: "<b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
       li13: Toernooiregels
       p05_html: Bezoek onze pagina %{inset} voor meer informatie

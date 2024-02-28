@@ -4,31 +4,30 @@ en:
       main_title: Social tennis in your club
       welcome_title: Welcome to your club's Social Tournament website
       p01: >
-        The mixed Singles Social Tournament is organized as a Box League with one round every month (or three months in some
+        The mixed Singles Social Tournament is organized as a Box League with one round every month (or more in some
         clubs). Points earned in each round of the Box League will accumulate to give an overall Tournament winner.
       p02: >
-        The winner will receive the Singles Box League Tournament trophy, listing on the club honors board and possibly some
+        The winner will receive the Singles Box League Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
-      p03: The league table will be updated and displayed on the league board at the end of each round.
+      p03_html: 🥇🥈🥉 The <b>league table</b> will be updated after each score entry and displayed on the league board at the end of each round.
       use_title: Your LeagueBox in a few clicks
-      p06: Easily follow the league table and see how you rank against other players in the box league.
       li01: My scores
       li02: All boxes
-      li03a: List view
-      li03b: Table view
-      li04: League Table
-      li05_html: Post your latest match score in %{inset}.<br>Your ranking is automatically updated.
       li06_html: >
         In %{inset} see at a glance every box in your league, and click on any box for
         more details.<br/>You can even go back to the previous rounds.
-      li07_html: Within any box, the %{inset_a} or the %{inset_b} show you the games and scores, and players' rankings.
-      li08_html: The %{inset} is always up to date, you can keep track of where every other players rank in the tournament.
+      li03a: List view
+      li03b: Table view
+      li07_html: Post your latest match score in the %{inset_a} or the %{inset_b} pages, or in %{inset_c}.<br>Your ranking is automatically updated.
+      li04a: round ranking
+      li04b: league table
+      li08_html: The %{inset_a} and the %{inset_b} are always up to date, showing how you rank against other players in the tournament.
       how_title: "The rounds: 4 simple steps"
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
-      li09_html: During the round period, play <b>every match in your box</b>.
+      li09_html: During the round period, <b>play every match</b> in your box.
       li10_html: After each match, either player enters the <b>match score</b>.
-      li11_html: <b>The league table</b> is updated automatically. You can also review the <b>boxes and match scores</b>.
-      li12_html: "<b>Promotion / relegation</b>: At the end of the round, the top two players will be promoted 1 box. The last two players will be relegated 1 box."
+      li11_html: The <b>round ranking</b> and <b>league table</b> are updated automatically.
+      li12_html: At the end of the round, the top two players will be <b>promoted</b> 1 box. The last two players will be <b>relegated</b> 1 box.
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
       happy_tournament: Happy tournament!

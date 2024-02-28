@@ -26,8 +26,8 @@ nl:
           <li>Verhouding tussen gewonnen games en gespeelde games</li>
         </ol>
     action_buttons:
-      to_text_btn: Exporteren naar tekstbestand
-      to_csv_btn: Exporteren naar CSV-bestand
+      to_text_btn: 📄 tekstbestand
+      to_csv_btn: 📄 CSV-bestand
     table_data:
       matches:
         zero: 0 wed.

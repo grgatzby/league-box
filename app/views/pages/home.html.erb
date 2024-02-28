@@ -9,25 +9,26 @@
     <h5><b><%= t '.welcome_title' %></b></h5>
     <p><%= t '.p01' %></p>
     <p><%= t '.p02' %></p>
-    <p><%= t '.p03' %></p>
+    <p><%= t '.p03_html' %></p>
     <br>
 
     <br><h5 class="top-bottom-padding"><b><%= t '.use_title' %></b></h5>
-    <p><%= t '.p06' %></p>
     <ol><% if !current_user
       class_prefix = "bold-font color-" %>
-      <li class="top-bottom-padding"><%= t(".li05_html", inset: "<span class='#{class_prefix}tennis-red'>#{t ".li01"}</span>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li02"}</span>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li07_html", inset_a: "<span class='#{class_prefix}tennis-blue'>#{t ".li03a"}</span>".html_safe,
-                                                        inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li03b"}</span>".html_safe) %></li>
-      <li class="top-bottom-padding"><%= t(".li05_html", inset: "<span class='#{class_prefix}green'>#{t ".li04"}</span>".html_safe) %></li>
+                                                        inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li03b"}</span>".html_safe,
+                                                        inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li01"}</span>".html_safe) %></li>
+      <li class="top-bottom-padding"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li04a"}</span>".html_safe,
+                                                        inset_b: "<span class='#{class_prefix}green'>#{t ".li04b"}</span>".html_safe) %></li>
     <% else
       class_prefix = "btn btn-inlayed bold-font color-" %>
-      <li class="top-bottom-padding"><%= t(".li05_html", inset: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li01"}</a>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li02"}</a>".html_safe) %></li>
       <li class="top-bottom-padding"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li03a"}</a>".html_safe,
-                                                        inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe) %></li>
-      <li class="top-bottom-padding"><%= t(".li08_html", inset: "<a class='#{class_prefix}green' href='#{@path["04"]}'>#{t ".li04"}</a>".html_safe) %></li>
+                                                        inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe,
+                                                        inset_c: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li01"}</a>".html_safe) %></li>
+      <li class="top-bottom-padding"><%= t(".li08_html", inset_a: "<a class='#{class_prefix}green' href='#{@path["04a"]}'>#{t ".li04a"}</a>".html_safe,
+                                                        inset_b: "<a class='#{class_prefix}green' href='#{@path["04b"]}'>#{t ".li04b"}</a>".html_safe) %></li>
     <% end %></ol><br>
 
     <br><h5 class="top-bottom-padding"><b><%= t '.how_title' %></b></h5>

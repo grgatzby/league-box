@@ -14,7 +14,7 @@ en:
       message_invite: "> Message to"
       send_btn: ⎷ Send
       back_btn: ←
-      chatroom_choice: Access a chatroom
+      chatroom_choice: Access an open chatroom, or
       chose_chatroom: "Choose an open chatroom: "
       chatroom_name: Chatroom name
       confirm_btn: ⎷ Confirm
@@ -28,10 +28,13 @@ en:
       box: Box number
       chatroom_created_flash: New chatroom created
       message1_box_pop: >
-        The chatrooms names :<br />
-        #[Club] - R[YY_NN]:B[Box nb]<br />
-        YY_NN is the round number (YY is the round's year, NN the round rank in the year)
-      message2_box_pop: Open a chatroom by selecting
+        Chatroom name format :<br />
+        #[ClubName] - yyyy/mm_Rnn:Bbb<br /><br />
+        yyyy/mm : tournament year/month,<br />
+        nn : round number,<br />
+        bb : box number.
+      message2_box_pop: open a chatroom by selecting
       message2_box_pop_admin: the club, the round and the box.
       message2_box_pop_referee: the round and the box.
+      message2_box_pop_player_referee: the round and the box.
       message2_box_pop_player: the round.
