@@ -53,17 +53,17 @@ nl:
     stats:
       stats: 📈 ronde stat
       round: Ronde
-      line1: "<b>Het ronde</b><br><i>%{start} tot %{end}</i><br>"
-      line2: "%{players} spelers, %{boxes} boxen<br>"
+      round_dates: "<b>Het ronde</b><br><i>%{start} tot %{end}</i><br>"
+      round_players_boxes: "%{players} spelers, %{boxes} boxen<br>"
       nb_matches:
         zero: 0 wedstrijd
         one: 1 wedstrijd
         other: "%{count} wedstrijden"
       nb_matches_played: ", %{count} gespeeld (%{ratio}%)<br>"
-      line3:
+      round_days_left:
         zero: totaal %{total_days} dagen, 0 dag resterend (%{ratio}%)<br>
         one: totaal %{total_days} dagen, 1 dag resterend (%{ratio}%)<br>
         other: totaal %{total_days} dagen, %{count} dagen resterend (%{ratio}%)<br>
-      line4: <b>Mijn box</b><br>
+      box: <b>De box</b><br>
       round_expired: ronde verlopen<br>
-      line5: <b>Mijn wedstrijden</b><br>
+      player_matches: <b>Mijn wedstrijden</b><br>

@@ -41,7 +41,8 @@
   <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
   <% if @page_from %>
     <% parameters = "?club_id=#{@round.club_id}" %>
-    <% if params[:round_id] %>
+    <%# if params[:round_id] %>
+    <% if @round %>
       <% parameters += "&round_id=#{@round.id}" %>
     <% elsif params[:league_start] %>
       <% parameters += "&league_start=#{params[:league_start]}" %>
