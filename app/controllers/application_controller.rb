@@ -271,11 +271,11 @@ class ApplicationController < ActionController::Base
     if @box
       @nb_box_matches = @box.user_box_scores.count * (@box.user_box_scores.count - 1) / 2
       @nb_box_matches_played = @box.matches.count
-    end
-    @my_current_box = my_own_box(@round)
-    if @box == @my_current_box
-      @my_nb_matches = @my_current_box.user_box_scores.count - 1
-      @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
+      @my_current_box = my_own_box(@round)
+      if @box == @my_current_box
+        @my_nb_matches = @my_current_box.user_box_scores.count - 1
+        @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
+      end
     end
   end
 
