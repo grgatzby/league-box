@@ -53,8 +53,8 @@ fr:
     stats:
       stats: 📈 stats du round
       round: Round
-      line1: <b>Le round</b><br><i>%{start} au %{end}</i><br>
-      line2: "%{players} joueurs, %{boxes} box<br>"
+      round_dates: <b>Le round</b><br><i>%{start} au %{end}</i><br>
+      round_players_boxes: "%{players} joueurs, %{boxes} box<br>"
       nb_matches:
         zero: 0 match
         one: 1 match
@@ -63,10 +63,10 @@ fr:
         zero: ", %{count} joué (%{ratio}%)<br>"
         one: ", %{count} joué (%{ratio}%)<br>"
         other: ", %{count} joués (%{ratio}%)<br>"
-      line3:
+      round_days_left:
         zero: total %{total_days} jours, 0 jour restant (%{ratio}%)<br>
         one: total %{total_days} jours, 1 jour restant (%{ratio}%)<br>
         other: total %{total_days} jours, %{count} jours restants (%{ratio}%)<br>
-      line4: <b>Ma box</b><br>
+      box: <b>La box</b><br>
       round_expired: round expiré<br>
-      line5: <b>Mes matchs</b><br>
+      player_matches: <b>Mes matchs</b><br>
