@@ -3,8 +3,8 @@ message = t(".line1",
     start: l(@round.start_date, format: :ddmmm_date),
     end: l(@round.end_date, format: :ddmmmyyy_date))
 message += t('.line2', players: @nb_players, boxes: @nb_boxes)
-if @elapsed_days.positive?
-  message += t('.line3', days_left: @elapsed_days.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@elapsed_days.to_f/@round_days))
+if @days_left.positive?
+  message += t('.line3', count: @days_left.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@days_left.to_f/@round_days))
 else
   message += t('.round_expired')
 end

@@ -20,7 +20,7 @@ fr:
       create_round_btn: ⎷ Créer le prochain round
       request_round_btn: Demander la création du prochain round
       valid_round_flash: "League table annuel: choisir un round valide"
-      to_csv_btn: Exporter en CSV
+      to_csv_btn: 📄 fichier CSV
     my_scores:
       my_scores: Mes scores
       intro_html: >

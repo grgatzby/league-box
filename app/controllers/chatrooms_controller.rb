@@ -24,7 +24,7 @@ class ChatroomsController < ApplicationController
       else
         @box = Box.find_by(box_number: params[:box], round_id: round.id) # admin/referees choose a box number
       end
-      chatroom_name = "#{@box.round.club.name} - R#{round_label(@box.round)}:B#{format('%02d', @box.box_number)}"
+      chatroom_name = chatroom_name(@box)
       if Chatroom.find_by(name: chatroom_name)
         # chatroom already open, select it
         @chatroom = Chatroom.find_by(name: chatroom_name)

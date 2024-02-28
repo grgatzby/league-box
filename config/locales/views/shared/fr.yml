@@ -25,7 +25,7 @@ fr:
       expired: round terminé
       players: "%{nb_players} joueurs"
     select_round:
-      select_round_start: "Départ du round: "
+      select_round_start: "Changer de round: "
       confirm_btn: ⎷ Confirmer
     select_club_round:
       select_club: "Choisir un club: "
@@ -51,7 +51,7 @@ fr:
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
     stats:
-      stats: Stats du round
+      stats: 📈 stats du round
       round: Round
       line1: <b>Le round</b><br><i>%{start} au %{end}</i><br>
       line2: "%{players} joueurs, %{boxes} box<br>"
@@ -63,7 +63,10 @@ fr:
         zero: ", %{count} joué (%{ratio}%)<br>"
         one: ", %{count} joué (%{ratio}%)<br>"
         other: ", %{count} joués (%{ratio}%)<br>"
-      line3: "total %{total_days} jours, %{days_left} jours restants (%{ratio}%)<br>"
+      line3:
+        zero: total %{total_days} jours, 0 jour restant (%{ratio}%)<br>
+        one: total %{total_days} jours, 1 jour restant (%{ratio}%)<br>
+        other: total %{total_days} jours, %{count} jours restants (%{ratio}%)<br>
       line4: <b>Ma box</b><br>
       round_expired: round expiré<br>
       line5: <b>Mes matchs</b><br>

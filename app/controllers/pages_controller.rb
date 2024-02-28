@@ -10,7 +10,8 @@ class PagesController < ApplicationController
       @path["02"] = boxes_path
       @path["03a"] = box_list_path(@box || 0)
       @path["03b"] = box_path(@box || 0)
-      @path["04"] = user_box_scores_path
+      @path["04a"] = user_box_scores_path
+      @path["04b"] = index_league_path
     end
     @path["05"] = rules_path
   end

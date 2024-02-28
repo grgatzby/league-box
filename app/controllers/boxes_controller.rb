@@ -77,7 +77,7 @@ class BoxesController < ApplicationController
         # The name format: "[Club name] - R[Round id]:B[Box number]"
         # a chatroom is box and round specific:
         # players can access it when visiting My Scores or from the navbar menu Chatrooms
-        @chatroom = Chatroom.create(name: "#{@box.round.club.name} - R#{round_label(@box.round)}:B#{format('%02d', @box.box_number)}")
+        @chatroom = Chatroom.create(name: chatroom_name(@box))
         @box.update(chatroom_id: @chatroom.id)
       else
         @chatroom = @box.chatroom

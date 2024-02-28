@@ -28,8 +28,8 @@ fr:
           <li>Ratio jeux gagnés sur jeux joués</li>
         </ol>
     action_buttons:
-      to_text_btn: Exporter en fichier texte
-      to_csv_btn: Exporter en CSV
+      to_text_btn: 📄 fichier texte
+      to_csv_btn: 📄 fichier CSV
     table_data:
       matches:
         zero: 0 match

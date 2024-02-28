@@ -29,10 +29,10 @@ class UserBoxScoresController < ApplicationController
       init_stats
       case params[:sort].to_i
       when 1 # "Player first name"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name, -@order * user_bs.rank] }
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name.upcase, -@order * user_bs.rank] }
         @user_box_scores.reverse! if @order == 1
       when 2 # "Player last name"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name, -@order * user_bs.rank] }
+        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name.upcase, -@order * user_bs.rank] }
         @user_box_scores.reverse! if @order == 1
       when 3 # "Ranking: default sorting order"
       when 4 # "Points"
@@ -90,10 +90,10 @@ class UserBoxScoresController < ApplicationController
         @sort = params[:sort]
         case params[:sort].to_i
         when 1 # "Player first name"
-          @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name, -@order * user_bs[1][:rank]] }
+          @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name.upcase, -@order * user_bs[1][:rank]] }
           @user_box_scores.reverse! if @order == 1
         when 2 # "Player last name"
-          @user_box_scores.sort_by! { |user_bs| [user_bs[0].last_name, -@order * user_bs[1][:rank]] }
+          @user_box_scores.sort_by! { |user_bs| [user_bs[0].last_name.upcase, -@order * user_bs[1][:rank]] }
           @user_box_scores.reverse! if @order == 1
         when 3 # "Ranking: default sorting order"
         when 4 # "Points"

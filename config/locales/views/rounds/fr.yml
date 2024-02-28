@@ -24,7 +24,8 @@ fr:
         one: Round créé avec %{players} joueurs par box. Le dernier joueur n'a pu être inclus.
         other: Round créé avec %{players} joueurs par box. Les %{count} derniers joueurs n'ont pu être inclus.
     edit:
-      round_end_title: Changer la date de fin du round en cours
+      round_end_title: Fin du round en cours
+      change_end_date: Changer la date de fin du round en cours
       not_authorised: Cette page n'est pas autorisée.
       select_club: Choisir un club
       club: Club

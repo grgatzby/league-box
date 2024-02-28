@@ -232,7 +232,7 @@ class ApplicationController < ActionController::Base
 
   def round_label(round)
     # returns round label in format "yy/mm_Rnn" where
-    # yy/mm is the tourament start date and nn is the rank of the round in the tournament
+    # yy/mm is the tournament start date and nn is the rank of the round in the tournament
     league_start = round.league_start
     rounds_ordered = Round.where(league_start:, club_id: round.club)
                           .order('start_date ASC')
@@ -262,9 +262,10 @@ class ApplicationController < ActionController::Base
   end
 
   def init_stats
+    # set the global statistic variables for the stats to be displayed in the view pages
     @nb_matches = @round.boxes.map { |box| box.user_box_scores.count * (box.user_box_scores.count - 1) / 2 }.sum
     @nb_matches_played = @round.boxes.map { |box| box.matches.count }.sum
-    @elapsed_days = @round.end_date - Date.today
+    @days_left = @round.end_date - Date.today
     @round_days = @round.end_date - @round.start_date
     @nb_boxes = @round.boxes.count
     @nb_players = @round.boxes.map { |box| box.user_box_scores.count }.sum
@@ -275,5 +276,10 @@ class ApplicationController < ActionController::Base
       @my_nb_matches = @my_current_box.user_box_scores.count - 1
       @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
     end
+  end
+
+  def chatroom_name(box)
+    # for a given box, return the chatroom name
+    "#{box.round.club.name} - #{round_label(box.round)}:B#{format('%02d', box.box_number)}"
   end
 end

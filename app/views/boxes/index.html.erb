@@ -9,13 +9,13 @@
     <div class = "one-liner">
       <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path, add_text: "" %></h4>
       <div>
+        <% if current_user && current_user.role != "player" %>
+          <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
+        <% end %>
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
         <%= render 'shared/stats' %>
       </div>
       <%= render "shared/select_round", fallback_path: boxes_path %>
-      <% if current_user == @admin %>
-        <%= link_to "load_scores", load_scores_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
-      <% end %>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -44,9 +44,8 @@
     </div>
 
     <div class="buttons-wrap dont-print">
-      <% if current_user && current_user.role != "player" %>
-        <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print text-size" %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+      <% if current_user == @admin %>
+        <%= link_to "load_scores", load_scores_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
       <% end %>
       <% if current_user && current_user.role == "admin" && @new_round_required %>
           <!-- allow referee/admin to create next round up to 15 days before or 300 days after end of last round

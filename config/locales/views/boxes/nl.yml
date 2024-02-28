@@ -20,7 +20,7 @@ nl:
       create_round_btn: ⎷ Maak de volgende ronde
       request_round_btn: Vraag de admin de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
-      to_csv_btn: Exporteren naar CSV-bestand
+      to_csv_btn: 📄 naar CSV-bestand
     my_scores:
       my_scores: Mijn scores
       intro_html: >

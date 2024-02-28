@@ -15,12 +15,12 @@ en:
     index:
       all_box_title: All boxes
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
-      message_box_pop: <b>Box columns:</b><br />Player name, rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
+      message_box_pop: <b>Box columns:</b><br />Player name, player rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       my_current_box: (my current box)
       create_round_btn: Create the next round
       request_round_btn: Request the admin the next round
       valid_round_flash: "League table: choose a valid round"
-      to_csv_btn: Export to CSV file
+      to_csv_btn: 📄 CSV file
     my_scores:
       my_scores: My scores
       intro_html: >

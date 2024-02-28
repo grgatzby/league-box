@@ -29,8 +29,8 @@ en:
           <li>Ratio of games won to games played</li>
         </ol>
     action_buttons:
-      to_text_btn: Export to text file
-      to_csv_btn: Export to CSV file
+      to_text_btn: 📄 text file
+      to_csv_btn: 📄 CSV file
     table_data:
       matches:
         zero: 0 matches

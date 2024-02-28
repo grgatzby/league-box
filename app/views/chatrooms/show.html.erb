@@ -18,7 +18,7 @@ a chatroom is created in Box controller #my_scores.
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <div>
         <%= link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow dont-print" %>
-        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+        <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
       </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
@@ -50,11 +50,12 @@ a chatroom is created in Box controller #my_scores.
 <% else %>
   <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
-    <% unless current_user.role == "admin" %>
+    <% unless (["admin", "referee", "player referee"].include?(current_user.role)) %>
       <br><br><%= t '.not_authorised' %>
     <% else %>
+      <% suffix = current_user.role.split.map(&:capitalize).join.underscore %>
       <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name).strip.titleize %></h3>
-      <h5><%= t(".chatroom_choice") %></h5>
+      <h5><%= t(".chatroom_choice") %> <%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{suffix}")}" %></h5>
       <div class="frame-color-shape frame-padding frame-margin-rl text-size">
         <br>
         <%# form 1: choose an existing chatroom from a list of chatroom names %>
@@ -72,10 +73,10 @@ a chatroom is created in Box controller #my_scores.
         </div>
         <br><b><%= t(".or") %>:</b><br><br>
 
-        <%# form 2: select a club, a round and a box to open the corresponding chatroom, or create it %>
+        <%# form 2: select a club, a round and a box to open or create the corresponding chatroom %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-        data-bs-content="<%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{current_user.role}")}" %>">
+        data-bs-content="<%= "#{t('.message2_box_pop').capitalize} #{t(".message2_box_pop_#{suffix}")}" %>">
           <%= t(".new_chatroom") %><br>
           <% if current_user == @admin %>
             <%= form_with url: chatroom_path, method: :get do |form| %>
@@ -87,7 +88,7 @@ a chatroom is created in Box controller #my_scores.
                 </div>
               </div>
             <% end %>
-          <% else %> <%# current user is a referee or a player: club is set %>
+          <% else %> <%# if current user is a referee or a player, a club is set %>
             <div class="row">
               <div class="col-1"></div>
               <div class="col-11">
@@ -110,7 +111,7 @@ a chatroom is created in Box controller #my_scores.
                     <%# display round number in RYY_NN format %>
                     <% club = Club.find_by(name: params[:club])
                       round = Round.find_by(club_id: club.id, start_date: params[:round].to_date) %>
-                    => R<%= round_label(round) %>
+                    <%= "=> round R#{round_label(round)}" %>
                   <% end %>
                 </div>
                 <%= hidden_field_tag(:club, params[:club]) %>

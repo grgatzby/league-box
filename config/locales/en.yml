@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  print_btn: Print
+  print_btn: 🖨 print
   points:
     zero: 0 points
     one: 1 point
@@ -64,7 +64,7 @@ en:
       wwwddmmm_at_hhmm: "%a %-d %b, %H:%M"
       wwwddmmmyy_at_hhmm: "%A %-d %b %Y, %H:%M"
 fr:
-  print_btn: Imprimer
+  print_btn: 🖨 imprimer
   points:
     zero: 0 point
     one: 1 point
@@ -111,7 +111,7 @@ fr:
     am: 'am'
     pm: 'pm'
 nl:
-  print_btn: Afdrukken
+  print_btn: 🖨 afdrukken
   points:
     zero: 0 punten
     one: 1 punt
