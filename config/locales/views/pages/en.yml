@@ -164,7 +164,7 @@ en:
       p09: Clicking on a box leads to its Table view.
       p10a_html: When reaching the end of the round, a footpage button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
       p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
-      league_table: Round ranking and Tournament League table
+      league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
       p13_html: Clicking on a header sorts the player according to this header.<br>
       referee_list_view: Box List view (admin/Referee)
@@ -212,7 +212,7 @@ en:
         Its vocation is general communication, and not for a specific club.
         A color is assigned to messages, according to their author:<br>
       p28_html: >
-        Each <b>box chatroom</b> dedicated to a box in the tournament is accessible from the <span class='bold-font color-tennis-red'>My scores</span> page available to players.<br><br>
+        Each box includes a dedicated <b>chatroom</b> which players can access from the <span class='bold-font color-tennis-red'>My scores</span>.<br><br>
         A color is assigned to messages, according to their author:<br>
       li08_html: <span class='color-tennis-blue'>Messages from players of your own club appear in blue</span>
       li09_html: <span class='color-tennis-aqua'>Messages from your Referee appear in aqua</span>

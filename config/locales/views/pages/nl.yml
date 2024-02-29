@@ -64,7 +64,7 @@ nl:
       p11: De wedstrijden zijn volgens de ITF-tennisregels die kunnen worden bekeken op www.itftennis.com
       matches_not_umpired: Wedstrijden zonder Referee
       p12: "De volgende principes zijn van toepassing op wedstrijden gespeeld zonder Referee:"
-      li01: Elke speler is verantwoordelijk voor het Refereeen van de lijnen aan zijn kant van het net
+      li01: Elke speler is verantwoordelijk voor het Referee en van de lijnen aan zijn kant van het net
       li02: “Uit” en “foute” oproepen moeten onmiddellijk na de rebound worden gedaan en luid genoeg om door de tegenstander te worden gehoord.
       li03: In geval van twijfel zal de speler het voordeel van de twijfel aan zijn tegenstander geven
       li04: >
@@ -164,7 +164,7 @@ nl:
       p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (voor de admin),
       p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
-      league_table: Ronde rangschikking, League table
+      league_table: Ronde rangschikking een league table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p13_html: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>
       referee_list_view: Box resultaten lijst (admin/Referee)

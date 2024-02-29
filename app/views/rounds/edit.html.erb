@@ -36,7 +36,7 @@
       <%# a round is selected by its start date: display current end date and enter a new end date for the round %>
       <div class="row" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-         data-bs-content="<%= t('.last_match_date', date: @last_match_date.strftime('%d/%m/%Y')) %>">
+         data-bs-content="<%= t('.last_round_match_date', date: @last_round_match_date.strftime('%d/%m/%Y')) %>">
         <div class="col-1"></div>
         <%# display round number in RYY_NN format %>
         <div class="col-4">Round R<%= round_label(@round) %></div>

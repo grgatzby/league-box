@@ -28,7 +28,7 @@ nl:
       change_end_date: Wijzig de huidige einddatum van de ronde
       not_authorised: Deze pagina is niet geautoriseerd.
       select_club: Kies een club
-      last_match_date: De laatste wedstrijd van de ronde werd gespeeld op %{date}
+      last_round_match_date: De laatste wedstrijd van de ronde werd gespeeld op %{date}
       club: Club
       select_round: Kies een ronde
       current_end_date: Huidige einddatum

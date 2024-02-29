@@ -29,7 +29,7 @@ en:
       not_authorised: This page is not authorised.
       select_club: Select a club
       club: Club
-      last_match_date: Last match of the round was played on %{date}
+      last_round_match_date: Last match of the round was played on %{date}
       select_round: Select a round
       round: Round start date
       current_end_date: Current end date

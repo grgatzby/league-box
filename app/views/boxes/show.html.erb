@@ -17,7 +17,7 @@
           <%# 1st column: labels %>
           <% sorted_players = @box_matches.map { |x| x[2]} %>
           <% @box_matches.each do |user_box_matches| %>
-            <div class="row first-col-lines bold-font">
+            <div class="row first-col-lines">
               <div class="col-12">
                 <% user_box_score = user_box_matches[0] %>
                 <% line_player = user_box_score.user %>
@@ -26,16 +26,17 @@
                 <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                 title="<%= name %>" data-bs-content="<%= message %>">
-                  <span class="<%=class_names( "color-tennis-red": user_box_matches[0].user == current_user) %>">
-                    <%= render "shared/fullname", user: line_player %><br><%= t("pts", count: user_box_score.points) %><%= " ##{user_box_score.rank} " %>
-                  </span>
+                  <span class="<%=class_names("bold-font", "color-tennis-red": user_box_matches[0].user == current_user) %>">
+                    <%= render "shared/fullname", user: line_player %>
+                  </span><br>
+                  <%= t("pts", count: user_box_score.points) %><%= " ##{user_box_score.rank} " %>
                 </div>
               </div>
             </div>
           <% end %>
         </div>
 
-        <%# the rest of the table uses 11/12th of the total width (bootstrap grid) %>
+        <%# the rest of the table spans over 11/12th of the total width (bootstrap grid) %>
         <div class="col-11 print-all-content">
           <div class="row bold-font mb-3">
             <% @box_matches.each do |user_box_matches| %>

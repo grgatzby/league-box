@@ -266,12 +266,14 @@ class ApplicationController < ActionController::Base
     @nb_matches_played = @round.boxes.map { |box| box.matches.count }.sum
     @days_left = @round.end_date - Date.today
     @round_days = @round.end_date - @round.start_date
+    @last_round_match_date = last_round_match_date(@round)
     @nb_boxes = @round.boxes.count
     @nb_players = @round.boxes.map { |box| box.user_box_scores.count }.sum
     if @box
       @nb_box_matches = @box.user_box_scores.count * (@box.user_box_scores.count - 1) / 2
       @nb_box_matches_played = @box.matches.count
       @my_current_box = my_own_box(@round)
+      @last_box_match_date = last_box_match_date(@box)
       if @box == @my_current_box
         @my_nb_matches = @my_current_box.user_box_scores.count - 1
         @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
@@ -282,5 +284,13 @@ class ApplicationController < ActionController::Base
   def chatroom_name(box)
     # for a given box, return the chatroom name
     "#{box.round.club.name} - #{round_label(box.round)}:B#{format('%02d', box.box_number)}"
+  end
+
+  def last_round_match_date(round)
+    round.boxes.map { |box| box.matches if box.matches.count.positive? }.flatten.compact.map(&:time).max
+  end
+
+  def last_box_match_date(box)
+    box.matches.map(&:time).max if box.matches.count.positive?
   end
 end
