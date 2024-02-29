@@ -201,14 +201,14 @@ class RoundsController < ApplicationController
       rounds = data[club_index][:rounds].map { |round| [round[:league_start], round[:start_date]] }.sort
       # pick the last round in the most recent tournament
       @round = Round.find_by(start_date: rounds.last[1], club_id:)
-      @last_match_date = last_match_date(@round)
+      @last_round_match_date = last_round_match_date(@round)
     end
   end
 
   def update
     @round = Round.find(params[:id])
     # check if any match was played after the new round end date
-    if last_match_date(@round) > params[:round][:end_date].to_date
+    if last_round_match_date(@round) > params[:round][:end_date].to_date
       flash[:alert] = "Some match have been played beyond the proposed end date" # Match
       render :edit, status: :unprocessable_entity
     else
@@ -218,10 +218,6 @@ class RoundsController < ApplicationController
   end
 
   private
-
-  def last_match_date(round)
-    round.boxes.map { |box| box.matches if box.matches.count.positive? }.flatten.compact.map(&:time).sort.last
-  end
 
   def new_temp_boxes(nb_boxes)
     # return array of temporary boxes; nb_boxes = number of boxes in the current round

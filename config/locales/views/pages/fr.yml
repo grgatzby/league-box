@@ -157,14 +157,14 @@ fr:
       all_boxes: Les Box
       p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
       li01: son nom
-      li02: son classement dans le tournoi
+      li02: son classement dans le Tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
       p09: Un clic sur une box présente les Résultats en grille de la box.
       p10a_html: Quand approche de la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
       p11_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (Referee).
-      league_table: Classement d'un round et League table du Tournoi
+      league_table: Classement d'un round et league table du Tournoi
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13_html: En cliquant sur un entête, les joueurs se classent selon cet entête.<br>
       referee_list_view: Vue en Liste (admin/Referee)
@@ -211,7 +211,7 @@ fr:
         Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.<br>
         Dans les chatrooms, une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
-        Chaque <b>chatroom de box</b> dédiée à une box du tournoi, est accessible depuis la page <span class='bold-font color-tennis-red'>Mes scores</span> disponible aux joueurs.<br><br>
+        Chaque box dispose d'une <b>chatroom</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Mes scores</span>.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaîssent en bleu</span>
       li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaîssent en aqua</span>
