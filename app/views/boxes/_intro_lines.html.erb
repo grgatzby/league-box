@@ -12,10 +12,10 @@
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
-    <h3><%= "Box #{box.box_number} - #{view_type}" %></h3><h5><%= my_box_text %></h5>
+    <h3><%= "Box #{box.box_number} - #{view_type}" %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
   </div>
 
-  <span class="will-print"><%= image_tag "tennis_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
+  <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
 </div>
 <div class="one-liner">
   <h4><%= render "shared/display_club", round: box.round %>

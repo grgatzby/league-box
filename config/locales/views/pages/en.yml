@@ -148,7 +148,7 @@ en:
         will be considered at the discretion of the Tournament Referee whose decision is final.
       p39: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
       disputes: Disputes
-      mail_to_referee_html: "your Referee %{referee_name} at %{referee_email}"
+      mail_to_referee_html: "your Referee %{referee_name} to %{referee_email}"
       mail_to_admin_html: "your admin at %{admin_email}"
       p40_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
     sitemap:

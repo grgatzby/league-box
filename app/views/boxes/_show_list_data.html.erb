@@ -9,8 +9,8 @@
         <% user_box_score = user_box_matches[0]
            player_matches = user_box_matches[1]
            player = user_box_matches[2] %>
-        <div class=<%=user_box_score.user == current_user ? "color-tennis-red" : ""%>>
-          <%= render "shared/fullname", user: player %>
+        <div>
+          <span class=<%=user_box_score.user == current_user ? "color-tennis-red" : ""%>><b><%= render "shared/fullname", user: player %></b></span>
           <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
         </div>
         <ul>
