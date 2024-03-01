@@ -1,22 +1,29 @@
 <% title = "<b>#{t('.round')} #{@round_nb}</b>"
-message = t(".round_dates",
-    start: l(@round.start_date, format: :ddmmm_date),
-    end: l(@round.end_date, format: :ddmmmyyy_date))
+message = t(".round_dates", start: l(@round.start_date, format: :ddmmm_date),
+                            end: l(@round.end_date, format: :ddmmmyyy_date))
 message += t('.round_players_boxes', players: @nb_players, boxes: @nb_boxes)
 if @days_left.positive?
-  message += t('.round_days_left', count: @days_left.to_i, total_days: @round_days.to_i, ratio: format("%.1f", 100 - 100*@days_left.to_f/@round_days))
+  message += t('.round_days_left', count: @days_left.to_i, total_days: @round_days.to_i, \
+                                   ratio: format("%.1f", 100 - 100*@days_left.to_f/@round_days))
 else
   message += t('.round_expired')
 end
-message += t('.nb_matches', count: @nb_matches) + t('.nb_matches_played', count: @nb_matches_played, ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
+message += t('.nb_matches', count: @nb_matches) + \
+           t('.nb_matches_played', count: @nb_matches_played, \
+                                   ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
 message += t('.last_match', last_match_date: l(@last_round_match_date, format: :wwwddmmm_date)) if @last_round_match_date
 if @box
-  message += t('.box') + t('.nb_matches', count: @nb_box_matches) + t('.nb_matches_played', count: @nb_box_matches_played, ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))
+  message += t('.box') + t('.nb_matches', count: @nb_box_matches) \
+                       + t('.nb_matches_played', count: @nb_box_matches_played, \
+                                                 ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))
   if @box == @my_current_box
-    message += t('.player_matches') + t('.nb_matches', count: @my_nb_matches) + t('.nb_matches_played', count: @my_nb_matches_played, ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))
+    message += t('.player_matches') + t('.nb_matches', count: @my_nb_matches)
+             + t('.nb_matches_played', count: @my_nb_matches_played, \
+                                       ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))
   end
   message += t('.last_match', last_match_date: l(@last_box_match_date, format: :wwwddmmm_date)) if @last_box_match_date
 end %>
+
 <a tabindex="0" class="btn buttons-shape btn-orange mb-3 dont-print text-size popover-dismiss"
 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-html="true"
 title="<%= title %>" data-bs-content="<%= message %>">
@@ -24,7 +31,5 @@ title="<%= title %>" data-bs-content="<%= message %>">
 </a>
 
 <script>
-  var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-    trigger: 'focus'
-  })
+  var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), { trigger: 'focus' })
 </script>

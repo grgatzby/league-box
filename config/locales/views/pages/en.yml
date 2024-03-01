@@ -6,10 +6,10 @@ en:
       p01: >
         The mixed Singles Social Tournament is organized as a Box League with one round every month (or more in some
         clubs). Points earned in each round of the Box League will accumulate to give an overall Tournament winner.
-      p02: >
+      p02_html: 🥇🥈🥉 The <b>round ranking</b> and <b>league table</b> will be updated after each score entry and displayed on the league board at the end of each round.
+      p03: >
         The winner will receive the Singles Box League Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
-      p03_html: 🥇🥈🥉 The <b>league table</b> will be updated after each score entry and displayed on the league board at the end of each round.
       use_title: Your LeagueBox in a few clicks
       li01: My scores
       li02: All boxes
@@ -25,11 +25,17 @@ en:
       how_title: "The rounds: 4 simple steps"
       p04: "Each round lasts a month (or more in some clubs), and players compete within their allocated box."
       li09_html: During the round period, <b>play every match</b> in your box.
-      li10_html: After each match, either player enters the <b>match score</b>.
+      li10_html: After each match, either player enters the <b>match score</b> on League Box.
       li11_html: The <b>round ranking</b> and <b>league table</b> are updated automatically.
       li12_html: At the end of the round, the top two players will be <b>promoted</b> 1 box. The last two players will be <b>relegated</b> 1 box.
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
+      club_join_title: "Club manager: tempted to join us?"
+      li14: Contact us
+      p06_html: >
+        Offer your members the opportunity to play competitive tennis together within the club by joining League Box.<br>
+        League Box takes care of everything for you!<br>
+        Visit our %{inset} page to learn more.
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
     rules:
@@ -149,11 +155,11 @@ en:
       sitemap_title: Sitemap
       home: Home
       p01: General presentation of the Box League Tournament
-      p02_html: For the admin, <b>Create a new club</b> button
+      p02_html: For the admin, <span class='color-tennis-aqua'>Add a new club</span> button.
       overview_rules: Tournament rules
-      p03: Tournament overview and explanation of the Box League rules
+      p03: Tournament overview and explanation of the Box League rules.
       club_staff: Club staff
-      p05: Details of the admin and the club Referee
+      p05: Details of the admin and the club Referee.
       all_boxes: All Boxes
       p07: "Display all the boxes in one glance showing for each player their:"
       li01: name
@@ -162,7 +168,7 @@ en:
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
       p09: Clicking on a box leads to its Table view.
-      p10a_html: When reaching the end of the round, a footpage button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
+      p10a_html: When reaching the end of the round, a button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
       p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
       league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).

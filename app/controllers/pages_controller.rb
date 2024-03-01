@@ -14,6 +14,7 @@ class PagesController < ApplicationController
       @path["04b"] = index_league_path
     end
     @path["05"] = rules_path
+    @path["06"] = new_contact_path
   end
 
   def staff

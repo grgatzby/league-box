@@ -6,10 +6,10 @@ nl:
       p01: >
         Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of meer, in sommige club).
         De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
-      p02: >
+      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
+      p03: >
         De winnaar ontvangt de Singles Box League Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
-      p03_html: 🥇🥈🥉 De <b>league table</b> wordt aan het einde van de rondes bijgewerkt en op het bord weergegeven.
       use_title: Jouw LeagueBox in een paar klikken
       li01: Mijn scores
       li05_html:
@@ -30,7 +30,13 @@ nl:
       li11_html: De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt.
       li12_html: "<b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
       li13: Toernooiregels
-      p05_html: Bezoek onze pagina %{inset} voor meer informatie
+      p05_html: Bezoek onze pagina %{inset} voor meer informatie.
+      club_join_title: "Clubmanager: zin om zich bij ons aan te sluiten?"
+      li14: Contact
+      p06_html: >
+        Bied uw leden de mogelijkheid om samen competitietennis te spelen binnen de club door zich aan te sluiten bij League Box.<br>
+        League Box regelt alles voor u!<br>
+        Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Happy tournament!
       add_club_btn: Een nieuwe club toevoegen
     rules:
@@ -149,11 +155,11 @@ nl:
       sitemap_title: Sitemap
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
-      p02_html: Voor de beheerder, knop <b>Creëer een nieuwe club</b>
+      p02_html: Voor de beheerder, knop <span class='color-tennis-aqua'>Een nieuwe club toevoegen</span>.
       overview_rules: Toernooiregels
-      p03: Toernooibeschrijving en Box League-regels uitgelegd
+      p03: Toernooibeschrijving en Box League-regels uitgelegd.
       club_staff: Clubpersoneel
-      p05: Gegevens van de beheerder (admin) en de club Referee
+      p05: Gegevens van de beheerder (admin) en de club Referee.
       all_boxes: Boxen
       p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
       li01: zijn naam

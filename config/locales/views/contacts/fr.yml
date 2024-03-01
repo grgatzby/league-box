@@ -19,6 +19,7 @@ fr:
       - feedback: Commentaire sur le site
       - join_club: Rejoindre un de nos clubs
       - input_score: Saisir un score
+      - affiliate: Affilier mon club à League Box
       - other_topic: Autre sujet
       new_round_subject: "Demande: nouveau round pour le %{club} - New round request"
       new_round_message: >

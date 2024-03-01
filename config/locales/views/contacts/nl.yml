@@ -19,6 +19,7 @@ nl:
       - feedback: Reacties op deze website
       - join_club: Sluit je aan bij een van onze clubs
       - input_score: Voer een nieuwe score in
+      - affiliate: Sluit je aan bij League Box (nieuwe club)
       - other_topic: Ander onderwerp
       new_round_subject: "Nieuw rondeverzoek voor de %{club} - New round request"
       new_round_message: >

@@ -2,7 +2,9 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div>
-    <h3><%= t '.my_scores' %></h3>
+  <% my_box_text = @this_is_my_box ? "#{render "shared/fullname", user: current_user} \
+                   (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
+    <h3><%= t '.my_scores' %></h3><h5><%= my_box_text %></h5>
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
@@ -14,10 +16,7 @@
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
       <div class="one-liner">
-        <h4><%= render "shared/display_club",
-            round: @box.round,
-       add_text: @this_is_my_box ? "#{render "shared/fullname", user: current_user} (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
-       </h4>
+        <h4><%= render "shared/display_club", round: @box.round %></h4>
         <div>
           <%= render 'shared/stats' %>
           <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
@@ -31,7 +30,7 @@
           <div class="col-3"><%= t '.player_header' %></div>
           <div class="col-2"><%= t '.total_points_header' %></div>
           <div class="col-2"><%= t '.played_on_header' %></div>
-          <div class="col-2"><%= t '.action_header' %></div>
+          <div class="col-2"></div>
         </div>
         <% @my_matches.each do |my_match|
           opponent = my_match[0].user

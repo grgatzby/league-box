@@ -5,20 +5,20 @@ en:
     list_view: list view
     table_view: table view
     intro_lines:
-      my_scores_btn: My scores
+      my_scores_btn: my scores
       pop01_a: select a match to edit or delete the score
       pop01_b: ", or enter a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
       my_current_box: my current box
       my_box: my box
-      all_boxes_link: All boxes
+      all_boxes_link: all boxes
     index:
       all_box_title: All boxes
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Player name, player rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       my_current_box: (my current box)
-      create_round_btn: Create the next round
-      request_round_btn: Request the admin the next round
+      create_round_btn: create the next round
+      request_round_btn: request the admin the next round
       valid_round_flash: "League table: choose a valid round"
       to_csv_btn: 📄 CSV file
     my_scores:
@@ -35,13 +35,12 @@ en:
       player_header: Player
       total_points_header: Total points
       played_on_header: Match played on
-      action_header: Click below
       view_box_results_btn: To my box
       see_match_card_btn: Match card
       enter_score_btn: Enter score
       match_not_played: Match not played
-      chat_in_my_box: Organise your matches
-      access_chatroom_btn: Access the box chatroom
+      chat_in_my_box: Organise my matches
+      access_chatroom_btn: to the box chatroom
     show_list:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>List view</span> page displays all played matches in list view, and give players access to the match cards.<br>

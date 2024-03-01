@@ -264,7 +264,7 @@ end
 # 5/ destroy matches and user_match_scores for a club
 # Court.where(club_id: 65).each{ |court| court.matches.each {|match| match.destroy }}
 # or:
-Box.where(round_id: 178).each do |box|
+Box.where(round_id: 180).each do |box|
   box.matches.each do |match|
     match.destroy
   end
@@ -275,10 +275,10 @@ end
                                      matches_won: 0, matches_played: 0,
                                      games_won: 0, games_played: 0)}}
 # or:
-# Box.where(round_id:178).each{|box| box.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
-#                                         sets_won: 0, sets_played: 0,
-#                                         matches_won: 0, matches_played: 0,
-#                                         games_won: 0, games_played: 0)}}
+# Box.where(round_id:180).each{|box| box.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
+                                        sets_won: 0, sets_played: 0,
+                                        matches_won: 0, matches_played: 0,
+                                        games_won: 0, games_played: 0)}}
 
 
 def destroy(match)

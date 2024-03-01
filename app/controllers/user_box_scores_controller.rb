@@ -287,7 +287,7 @@ class UserBoxScoresController < ApplicationController
     table = user_box_scores;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
-      header = [l(Time.now, format: :short)] + LEAGUE_TABLE_HEADERS
+      header = [l(Time.now, format: :short)] + CSV_LEAGUE_TABLE_HEADERS
       (1..rounds.size).each do |i|
         header.push("Rank_round#{i}")
         header.push("Points_round#{i}")
