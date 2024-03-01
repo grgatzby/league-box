@@ -19,9 +19,9 @@ fr:
       round_end_link: Fin du round
       log_out_link: Déconnexion
     display_round:
-      round_period: Round %{round} (%{start} au %{end})
-      round_period_mobile: R%{round}
-      days_left: "%{days} jours restants"
+      round_period: Round %{round} (%{start} au %{end}),
+      round_period_mobile: R%{round},
+      days_left: "%{days} jours restants,"
       expired: round terminé
       players: "%{nb_players} joueurs"
     select_round:
@@ -31,7 +31,7 @@ fr:
       select_club: "Choisir un club: "
       confirm_btn: ⎷ Confirmer
       back_btn: ←
-      select_round_start: "Départ du round: "
+      select_round_start: "Choisir un round: "
     staff:
       our_staff_title: Qui sommes-nous?
       staff_p01: >
@@ -64,9 +64,9 @@ fr:
         one: ", %{count} joué (%{ratio}%)<br>"
         other: ", %{count} joués (%{ratio}%)<br>"
       round_days_left:
-        zero: total %{total_days} jours, 0 jour restant (%{ratio}%)<br>
-        one: total %{total_days} jours, 1 jour restant (%{ratio}%)<br>
-        other: total %{total_days} jours, %{count} jours restants (%{ratio}%)<br>
+        zero: "%{total_days} jours, 0 jour restant (%{ratio}%)<br>"
+        one: "%{total_days} jours, 1 jour restant (%{ratio}%)<br>"
+        other: "%{total_days} jours, %{count} jours restants (%{ratio}%)<br>"
       last_match: dernier match joué le %{last_match_date}<br>
       box: <b>La box</b><br>
       round_expired: round expiré<br>

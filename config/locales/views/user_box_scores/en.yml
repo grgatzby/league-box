@@ -14,7 +14,7 @@ en:
       valid_league_flash: "League table: choose a valid league start date"
     select_league:
       select_league: League table for the
-      league_dropdown: tournament
+      league_dropdown: tournament starting
     top_line:
       top_line_html: >
         Click on <span class="color-tennis-blue"><b>any header</b></span> to change sorting order,

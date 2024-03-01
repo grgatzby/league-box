@@ -1,12 +1,11 @@
 <div class="dont-print">
-<%# @start_dates.map{|d| d.strftime('%d/%m/%Y')} %>
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round_start') %>
     <%= hidden_field_tag(:club_id, @club.id) %>
     <% if @round%>
-      <%= form.select(:round_id, @start_dates, {selected: @selected_date}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% else %>
-      <%= form.select :round_id, @start_dates, selected: @selected_date %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= form.select :round_id, @rounds_dropdown, selected: @selected_label %>&nbsp;&nbsp;&nbsp;&nbsp;
       <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
     <% end %>
   <% end %>
