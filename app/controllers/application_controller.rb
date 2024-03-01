@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
   #              view the league table, access the #general chatroom and all other chatrooms,
   #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
 
-  rescue_from ActionController::InvalidAuthenticityToken, :with => :bad_token
+  rescue_from ActionController::InvalidAuthenticityToken, with: :bad_token
   def bad_token
-    flash[:notice] = "Invalid password"
+    flash[:notice] = t('.invalid_login_alert')
     redirect_to root_path
   end
 
