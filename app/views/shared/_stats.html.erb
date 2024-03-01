@@ -17,7 +17,7 @@ if @box
                        + t('.nb_matches_played', count: @nb_box_matches_played, \
                                                  ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))
   if @box == @my_current_box
-    message += t('.player_matches') + t('.nb_matches', count: @my_nb_matches)
+    message += t('.player_matches') + t('.nb_matches', count: @my_nb_matches) \
              + t('.nb_matches_played', count: @my_nb_matches_played, \
                                        ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))
   end
