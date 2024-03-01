@@ -6,10 +6,10 @@ fr:
       p01: >
         Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou plus dans certains clubs).
         Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
-      p02: >
+      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
+      p03: >
         Le vainqueur recevra le trophée du Tournoi Box League 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
-      p03_html: 🥇🥈🥉 La <b>league table</b> sera mise à jour automatiquement.
       use_title: Votre LeagueBox en quelques clicks
       li01: Mes scores
       li02: Les box
@@ -31,6 +31,12 @@ fr:
       li12_html: À la fin du round, les deux meilleurs joueurs sont <b>promus</b> d'une box. Les deux derniers sont <b>relégués</b> d'une box.
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
+      club_join_title: "Manager de Club: rejoindre League Box?"
+      li14: Nous contacter
+      p06_html: >
+        Offrez à vos adhérents l'opportunité de jouer ensemble un tennis compétitif au sein du club en vous affiliant à League Box.<br>
+        League Box s'occupe de tout pour vous!<br>
+        Consultez notre page %{inset} pour en savoir plus.
       happy_tournament: Que les meilleurs gagnent!
       add_club_btn: Ajouter un nouveau club
     rules:
@@ -148,12 +154,12 @@ fr:
     sitemap:
       sitemap_title: Plan du site
       home: Page d'accueil
-      p01: Présentation générale du Tournoi de la Box League
-      p02_html: Pour l'admin, bouton <b>Créer un nouveau club</b>
+      p01: Présentation générale du Tournoi de la Box League.
+      p02_html: Pour l'admin, bouton <span class='color-tennis-aqua'>Ajouter un nouveau club</span>.
       overview_rules: Le Tournoi
-      p03: Description du Tournoi et explication des règles de la Box League
+      p03: Description du Tournoi et explication des règles de la Box League.
       club_staff: Qui sommes-nous?
-      p05: Coordonnées de l'admin et du Referee du club
+      p05: Coordonnées de l'admin et du Referee du club.
       all_boxes: Les Box
       p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
       li01: son nom
@@ -162,7 +168,7 @@ fr:
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
       p09: Un clic sur une box présente les Résultats en grille de la box.
-      p10a_html: Quand approche de la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
+      p10a_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
       p11_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (Referee).
       league_table: Classement d'un round et league table du Tournoi
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
@@ -180,11 +186,11 @@ fr:
         Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score dans votre box.
       p18_html: >
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) est affiché.
-        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et sur une case "Entrer score" pour entrer un <b>Nouveau score</b>
+        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et sur une case "Entrer score" pour entrer un <b>Nouveau score</b>.
       list_view: Vue en Liste (joueur)
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
-        Si vous regardez votre box, votre nom sera affiché en rouge<br>
+        Si vous regardez votre box, votre nom sera affiché en rouge<br>.
         Les <span class='color-green'>matchs gagnés</span> apparaissent en vert, les <span class='color-tennis-red'>matchs perdus</span> en rouge.
         Cliquez sur un score pour afficher la carte du match, ou entrez un nouveau score dans votre box.<br>
         Un bouton <span class='color-tennis-red'>Mes scores</span> apparaît à gauche du lien de bascule vers
@@ -213,9 +219,9 @@ fr:
       p28_html: >
         Chaque box dispose d'une <b>chatroom</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Mes scores</span>.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
-      li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaîssent en bleu</span>
-      li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaîssent en aqua</span>
-      li10_html: <span class= 'color-grey'>Les messages des joueurs d'autres clubs apparaîssent en gris clair</span>
-      li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaîssent en gris foncé</span>
-      li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaîssent en rouge</span>
-      p29: Les messages reçus sont à gauche de l'écran, et les messages envoyés à droite.
+      li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaissent en bleu</span>
+      li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaissent en aqua</span>
+      li10_html: <span class= 'color-grey'>Les messages des joueurs d'autres clubs apparaissent en gris clair</span>
+      li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
+      li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
+      p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.

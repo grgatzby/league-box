@@ -1,103 +1,107 @@
-id,club_id,email,first_name,last_name,nickname,phone_number,role
-2981,73,natashamardinian@hotmail.com,Natasha,Mardinian,NatashaM,07927 271 665,player
-2983,73,gouilliardf@gmail.com,Francois,Gouilliard,FrancoisG,07776 290 381,player
-2984,73,matteogabba@gmail.com,Matteo,Gabba,MatteoG,07808 317 305,player
-2982,73,spyros_varoutsis@hotmail.com,Spyridon,Varoutsis,SpyridonV,07901 710 916,player
-2985,73,georgina.barclay@capgemini.com,Giorgina,Barclay,GiorginaB,07785 686 069,player
-2986,73,gareth.isaac2@gmail.com,Gareth,Isaac,GarethI,07990 507 277,player
-2987,73,daspickavance@aol.com,Dom,Pickavance,DomP,07939 724 601,player
-2988,73,willsarne@icloud.com,Will,Sarne,WillS,07837 615 370,player
-2989,73,prudkovaa@gmail.com,Anya,Prudkova,AnyaP,07479 384 898,player
-2990,73,matteo.moro1@googlemail.com,Matteo,Moro,MatteoM,07552 219 448,player
-2992,73,mchulme2015@gmail.com,Michael,Hulme,MichaelH,07366 308 996,player
-2991,73,andrewimorrow@hotmail.co.uk,Andy,Morrow,AndyM,07837 197 322,player
-2993,73,roger.ridsdill-smith@h-park.com,Roger,Ridsdill Smith,RogerR,0,player
-2994,73,sam.3897@hotmail.com,Sam,Behrens,SamB,07908 817 425,player
-2995,73,clarkconrad@gmail.com,Conrad,Clark,ConradC,07949 833 587,player
-2996,73,samhkeat@hotmail.com,Sam,Keat,SamK,07933 621 094,player
-2997,73,aurelieztromp@gmail.com,Aurélie,Tromp,AurélieT,07780 478 970,player
-2998,73,d.frollani@gmail.com,Daniele,Frollani,DanieleF,07427 442 985,player
-2999,73,jakeedwardstevens@gmail.com,Jake,Stevens,JakeS,07519 061 163,player
-3000,73,oliviercollart@outlook.com,Olivier,Collart,OlivierC,07788 133 259,player
-3001,73,karimbazzi@homes-one.com,Karim,Bazzi,KarimB,07958 485 611,player
-3002,73,henryforsyth@hotmail.com,Henry,Forsyth,HenryF,07710 380 902,player
-3003,73,adam.balon@innocentdrinks.co.uk,Adam,Balon,AdamB,07802 851 461,player
-3004,73,allison.l.zender@gmail.com,Allison,Zender,AllisonZ,07929 729 881,player
-3005,73,arnaud.fleccia@h-park.com,Arnaud,Fleccia,ArnaudF,0,player
-3006,73,daniele.chiarella@icloud.com,Daniele,Chiarella,DanieleC,07583 685 503,player
-3007,73,miguelnavarro26@hotmail.com,Miguel,Navarro,MiguelN,07717 884 405,player
-3008,73,dnikolako@gmail.com,Dimitrios,Nikolakopoulos,DimitriosN,07956 365 038,player
-3009,73,mark@markmather.co.uk,Mark,Mather,MarkM,07973 750 793,player
-3010,73,james.mccrossen@h-park.com,James,McCrossen ,JamesM,0,player
-3011,73,paolo.zampiga@icloud.com,Paolo,Zampiga,PaoloZ,07776 192 869,player
-3012,73,varouts@gmail.com,George,Varoutsis,GeorgeV,07786 704 074,player
-3013,73,d_f_sharp@hotmail.com,Dan,Sharp,DanS,07900 901 369,player
-3014,73,michael.omara@brcm.co.uk,Michael,Omara,MichaelO,07748 622 314,player
-3015,73,burdyhk@gmail.com,George,Burdon,GeorgeB,07721 693 399,player
-3017,73,lf@cyruscapital.com,Lucien,Farrell,LucienF,07867 535 510,player
-3018,73,daniel.gargiulo@btgpactual.com,Daniel,Gargiulo,DanielG,07590 976 836,player
-3019,73,olegbasin@gmail.com,Oleg,Basin,OlegB,07702 080 627,player
-3016,73,charles.hawes@simmons-simmons.com,Charles `,Hawes,Charles `H,07921 584 449,player
-3020,73,i.gladman@yahoo.com,Ian,Gladman,IanG,07785 596 936,player
-3021,73,jamie.younger@saffery.com,Jamie,Younger,JamieY,07827 278 797,player
-3022,73,eyres.harry@gmail.com,Harry,Eyres,HarryE,07854 419 476,player
-3023,73,saeed@cat-ltd.co.uk,Saeed,Ferdos,SaeedF,07958 740 581,player
-3024,73,sam@whittakers.net,Sam,Whittaker,SamW,07979 706 569,player
-3025,73,ajameyer@yahoo.com,James,Meyer,JamesM,07470 001 653,player
-3026,73,dom.moro@gmail.com,Dom,Moro,DomM,07392 871 605,player
-3027,73,deburetel@because.tv,Emmanuel,DeBuretel,EmmanuelD,0207 371 2274,player
-3028,73,yaoyiyi@hotmail.com,Yi,Buckley,YiB,07968 702 730,player
-3029,73,orecchiae@gmail.com,Emilio,Orecchia,EmilioO,07773 909 848,player
-3030,73,elisa.kerr@btinternet.com,Elisa,Kerr,ElisaK,07767 885 780,player
-3031,73,nicholas.mellor@lsngroup.org,Nicholas,Mellor,NicholasM,07971 809 262,player
-3032,73,elisaknebel@msn.com,Elisa,Knebel,ElisaK,07397 171 664,player
-3033,73,th@idler.co.uk,Tom,Hodgkinson,TomH,07970 720 352,player
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee
-3035,73,twalker8000@gmail.com,Tom,Walker,TomW,07801 468 313,player
-3036,73,catherine-whittle@outlook.com,Catherine,Whittle,CatherineW,07949 053 231,player
-3039,73,kmeducation27@gmail.com,Riki,Mian,RikiM,07784 392 324,player
-3037,73,sevauxj@gmail.com,Julien,Sevaux,JulienS,07802 961 186,player
-3038,73,laurent@fplhomes.com,Laurent,Lakatos,LaurentL,07899 996 962,player
-3040,73,sophie.s.muir@gmail.com,Sophie,Muir,SophieM,‭07793 744 459‬,player
-3041,73,fausto.zanetton@gmail.com,Fausto,Zanetton,FaustoZ,07899 985 840,player
-3042,73,aldomareuse1@gmail.com,Aldo,Mareuse,AldoM,07710 349 275,player
-3043,73,robertbeton@hotmail.co.uk,Robert,Beton,RobertB,07501 989 312,player
-3044,73,mike@hla.net,Mike,Wells,MikeW,07831 358 456,player
-3045,73,charlesgouilliard@outlook.com,Charles,Gouilliard,CharlesG,07775 186 790,player
-3046,73,g.griffin344@btinternet.com,Graham,Griffin,GrahamG,‭07796 336 521‬,player
-3047,73,mpalencia@btinternet.com,Mario,Palencia,MarioP,07778 595 959,player
-3048,73,stephenedwardbehrens@hotmail.com,Stephen,Behrens,StephenB,0,player
-3049,73,joe.cerrell@gatesfoundation.org,Joe,Cerrell,JoeC,07943 175 032,player
-3050,73,mattfriend05@gmail.com,Matt,Friend,MattF,07796 511 977,player
-3051,73,jbperrin@ymail.com,Jean-Baptiste,Perrin,Jean-BaptisteP,07514 819 853,player
-3052,73,chrisogden@compuserve.com,Christopher,Ogden,ChristopherO,07786 932 999,player
-3053,73,martinlangleyjones@gmail.com,Martin,Jones,MartinJ,07798 811 784,player
-3054,73,isaac.lydia@gmail.com,Lydia ,Isaac,Lydia I,07884 295 221,player
-3055,73,vdang93@gmail.com,Vinh,Dang,VinhD,07454 819 671,player
-3056,73,virginiabrix@aol.com,Virginia,Brix,VirginiaB,07788 414 344,player
-3057,73,peterjkarlsen@gmail.com,Peter,Karlsen,PeterK,07785 528 190,player
-3058,73,romaphul@gmail.com,Roma,Phulwani,RomaP,07909 988 787,player
-3059,73,reza.f@mac.com,Reza,Farhat,RezaF,07795 430 094,player
-3060,73,grcwatson@hotmail.con,Georgie,Watson,GeorgieW,07900 018 239,player
-3061,73,dorothee.de.la.chevardiere@gmail.com,Dorothée,de La Chevardiere,Dorothéed,07500 774 791,player
-3062,73,johnmturner69@yahoo.com,John,Turner,JohnT,07850 144 865,player
-3063,73,gabeomara@gmail.com,Gabriel,Omara,GabrielO,07468 537 259,player
-3064,73,alicebeaumont@gmail.com,Alice,Beaumont,AliceB,07803 943 073,player
-3065,73,stefan.r.bollinger@gmail.com,Stefan,Bollinger,StefanB,07771 767 355,player
-3066,73,laurencetimmons@gmail.com,Laurence P.,Timmons,Laurence P.T,07768 123 321,player
-3067,73,andrew.melrose@hotmail.co.uk,Andrew,Melrose,AndrewM,07795 528 375,player
-3068,73,candidauren@h-park.com,Candida,Uren,CandidaU,0,player
-3069,73,juliengurcel@hotmail.co.uk,Julien,Gurcel,JulienG,07533 440 442,player
-3070,73,christian.synetos@gmail.com,Christian,Synetos,ChristianS,07769 743 482,player
-3071,73,larkbruce@gmail.com,Linda,Bruce,LindaB,07480 295 323,player
-3072,73,nicholaslambardescott@gmail.com,Nick,Lambarde-Scott,NickL,07774 659 947,player
-3073,73,yasminelever@gmail.com,Yasmine,Lever,YasmineL,07546 359 624,player
-3074,73,spare01@club.com,Paul,Sparetwo,PaulS,,spare
-3075,73,corina141@hotmail.co.uk,Corina,Penna,CorinaP,07834 602 938,player
-3076,73,piraneh@gmail.com,Ehzan,Parvizian,EhzanP,07775 752 445,player
-3077,73,gkingfriend@gmail.com,Gina,King,GinaK,07551 883 680,player
-3078,73,marius@mnasta.com,Marius,Nasta,MariusN,07801 916 279,player
-3079,73,b00629659@essec.edu,Marie,Jolly,MarieJ,33 06421 76739,player
-3080,73,premolars@hotmail.com,Bimal,Bawa,BimalB,07799 563 955,player
-3081,73,spare02@club.com,Paul,Spareone,PaulS,,spare
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee
+29 fév. 22:05,player,rank,points,matches played,matches won,sets played,sets won,games played,games won,Rank_round1,Points_round1,Box_round1,Rank_round2,Points_round2,Box_round2,Rank_round3,Points_round3,Box_round3,Rank_round4,Points_round4,Box_round4
+1,Sam Behrens,1,202,12,9,30,19,213,124,19,46,4,29,36,3,7,60,4,1,60,2
+2,Paul Mardinian,2,181,11,8,26,17,186,112,3,60,14,40,29,14,4,60,15,13,32,10
+3,Nicholas Mellor,3,163,11,6,28,15,229,117,24,43,13,32,34,8,14,46,9,6,40,10
+4,Ian Gladman,4,158,9,7,21,15,144,88,8,60,11,8,53,10,15,45,9,50,0,8
+5,James McCrossen ,5,156,10,6,26,15,191,99,42,30,8,6,60,10,12,52,8,30,14,5
+6,Jake Stevens,6,152,8,7,18,15,116,78,2,60,5,5,60,2,33,32,1,0,0,0
+7,Emilio Orecchia,7,151,9,6,23,14,184,100,9,60,13,9,53,8,73,5,6,9,33,8
+8,Virginia Brix,8,150,9,7,19,14,112,75,1,60,20,10,46,15,17,44,13,50,0,12
+9,Julien Gurcel,9,140,7,7,15,14,87,65,55,20,23,1,60,20,6,60,9,50,0,5
+10,Mark Mather,10,138,10,5,25,12,185,91,37,35,8,7,60,9,66,10,7,11,33,8
+11,Stephen Behrens,11,138,9,6,23,13,163,83,22,44,18,34,32,17,54,20,14,5,42,15
+12,Elisa Kerr,12,132,11,4,26,11,183,87,36,39,13,31,34,14,70,7,12,3,52,14
+13,Fausto Zanetton,13,126,8,6,17,12,102,63,7,60,16,23,40,14,46,23,11,45,3,12
+14,Michael Omara,14,125,8,4,22,12,197,99,15,51,9,47,24,8,13,50,10,50,0,7
+15,Mike Wells,15,125,7,5,20,12,198,104,31,40,17,63,12,11,28,40,12,10,33,8
+16,Andrew Melrose,16,123,7,6,18,12,136,79,88,0,22,55,20,21,19,43,17,2,60,16
+17,Catherine Whittle,17,121,10,5,24,11,156,71,26,42,15,15,42,16,59,17,13,20,20,15
+18,Dan Sharp,18,121,9,5,19,11,124,67,38,34,9,42,27,10,1,60,11,50,0,7
+19,Laurent Lakatos,19,116,8,4,20,11,151,75,23,43,15,39,30,14,32,33,14,41,10,9
+20,Paolo Zampiga,20,114,9,3,22,10,162,77,25,43,8,57,18,4,8,53,6,50,0,3
+21,Saeed Ferdos,21,113,9,4,22,10,164,80,62,18,11,59,15,12,5,60,13,26,20,9
+22,Georgie Watson,22,113,9,3,24,10,193,90,64,17,21,36,32,21,10,53,19,39,11,15
+23,Jean-Baptiste Perrin,23,113,6,5,15,11,104,65,12,53,18,24,40,12,0,0,0,24,20,13
+24,Marie Jolly,24,112,7,5,15,11,91,53,73,11,26,16,41,20,2,60,17,50,0,12
+25,Riki Mian,25,111,9,4,22,10,159,78,74,10,15,17,40,16,21,41,13,27,20,14
+26,Conrad Clark,26,111,6,5,13,11,85,51,6,60,4,66,11,2,24,40,2,50,0,1
+27,Miguel Navarro,27,110,7,5,17,10,123,69,33,40,7,25,40,4,66,10,2,21,20,4
+28,Jamie Younger,28,109,10,4,24,9,186,86,43,28,11,46,24,9,70,7,8,4,50,10
+29,James Meyer,29,109,8,5,19,10,142,71,86,2,12,11,45,12,48,22,10,8,40,11
+30,Sophie Muir,30,107,10,4,23,9,156,76,49,25,16,50,22,17,39,28,15,12,32,17
+31,George Burdon,31,107,7,4,16,10,105,58,11,53,9,38,30,4,52,20,3,43,4,2
+32,Matt Friend,32,106,8,4,18,10,111,53,41,30,18,48,23,18,18,43,15,40,10,14
+33,Julien Sevaux,33,104,9,3,21,9,154,73,13,51,15,68,9,10,35,32,12,33,12,11
+34,Martin Jones,34,104,8,3,19,9,137,65,52,24,19,20,40,18,38,29,15,37,11,16
+35,Olivier Collart,35,101,6,5,12,10,67,41,27,41,5,2,60,3,78,0,1,50,0,4
+36,Harry Eyres,36,100,8,4,17,9,107,48,14,51,11,43,25,6,44,24,7,50,0,6
+37,Mario Palencia,37,100,7,4,16,9,111,60,21,44,17,65,11,16,23,40,18,42,5,14
+38,Sam Keat,38,97,7,4,15,9,89,48,45,27,4,17,40,5,37,30,4,50,0,3
+39,Charles Gouilliard,39,96,6,4,13,9,83,49,39,32,17,51,20,17,22,40,16,43,4,13
+40,Aldo Mareuse,40,95,6,4,14,9,99,54,16,50,16,82,0,11,56,20,14,16,25,13
+41,Elisa Knebel,41,94,11,3,25,7,166,70,44,27,14,70,8,15,58,19,17,7,40,18
+42,Matteo Gabba,42,94,6,4,14,9,107,55,56,20,1,30,34,1,27,40,1,50,0,1
+43,Emmanuel DeBuretel,43,92,5,4,11,9,87,49,88,0,12,4,60,15,34,32,12,50,0,13
+44,Henry Forsyth,44,92,5,4,12,9,92,53,58,20,6,35,32,5,57,20,6,19,20,5
+45,Tom Hodgkinson,45,88,10,3,24,8,161,66,80,4,14,12,43,22,50,21,19,25,20,20
+46,Dorothée de La Chevardiere,46,88,9,2,22,7,154,70,48,25,21,60,14,16,29,36,17,32,13,18
+47,Daniele Chiarella,47,87,6,4,14,8,110,56,83,4,7,27,40,8,25,40,7,45,3,4
+48,Yi Buckley,48,86,10,2,23,6,154,65,74,10,13,41,28,15,30,35,16,31,13,15
+49,Sam Whittaker,49,85,6,4,15,8,110,58,30,40,12,81,0,7,16,45,10,50,0,9
+50,George Varoutsis,50,84,9,2,23,7,189,85,46,27,9,37,31,11,60,15,9,36,11,11
+51,Natasha Mardinian,51,83,5,4,11,8,74,41,85,3,1,22,40,1,26,40,2,50,0,1
+52,Rafael Birnbaum,52,83,5,3,13,8,99,54,0,0,0,0,0,0,3,60,20,17,23,16
+53,Nick Lambarde-Scott,53,82,9,1,22,6,155,66,78,7,24,28,37,22,41,27,20,38,11,20
+54,Michael Hulme,54,81,8,3,20,7,138,59,50,25,3,14,42,5,76,2,3,35,12,2
+55,Roger Ridsdill Smith,55,80,7,3,15,7,89,42,65,16,4,20,40,6,43,24,5,50,0,4
+56,Joe Cerrell,56,78,6,3,15,7,114,54,66,16,18,52,20,19,49,22,16,29,20,17
+57,Dimitrios Nikolakopoulos,57,78,5,3,13,7,98,53,34,40,8,33,33,7,73,5,6,50,0,7
+58,Vinh Dang,58,77,8,3,18,6,128,57,53,21,19,45,25,19,68,9,14,18,22,16
+59,Adam Balon,59,77,6,3,15,7,112,58,58,20,6,13,42,3,61,15,2,50,0,3
+60,Linda Bruce,60,76,10,2,23,5,152,61,76,8,24,70,8,22,40,28,20,14,32,20
+61,Robert Beton,61,75,10,2,23,6,157,61,80,4,16,72,7,18,11,52,19,34,12,18
+62,Will Sarne,62,74,7,1,18,6,148,64,63,18,2,44,25,3,36,31,5,50,0,3
+63,Peter Karlsen,63,73,5,3,12,7,83,37,54,20,20,82,0,19,9,53,20,50,0,19
+64,Christopher Ogden,64,73,4,3,9,7,61,38,3,60,19,82,0,13,63,13,16,50,0,18
+65,Gareth Isaac,65,72,7,3,16,6,116,54,32,40,2,49,23,1,70,7,1,48,2,2
+66,Karim Bazzi,66,72,6,3,15,6,125,62,76,8,6,26,40,7,45,24,5,50,0,6
+67,Gabriel Omara,67,72,4,3,11,7,92,51,10,60,21,62,12,12,0,0,0,0,0,0
+68,Margaux Meyer,68,71,5,3,10,6,65,35,0,0,0,2,60,22,65,11,18,50,0,19
+69,Dom Moro,69,67,5,2,13,6,103,50,69,12,12,56,20,11,62,15,10,21,20,12
+70,Aurélie Tromp,70,66,5,3,10,6,55,30,47,26,5,17,40,6,0,0,0,0,0,0
+71,Charles ` Hawes,71,65,9,1,21,5,130,48,72,11,10,73,5,9,42,24,11,15,25,10
+72,John Turner,72,61,4,2,10,6,83,42,17,50,21,64,11,19,78,0,18,0,0,0
+73,Dom Pickavance,73,59,5,2,12,5,86,37,51,25,2,78,2,2,64,12,4,28,20,5
+74,Daniele Frollani,74,57,6,1,14,4,105,46,70,11,5,61,13,7,31,33,8,50,0,7
+75,Anya Prudkova,75,50,4,2,8,4,48,26,18,46,3,74,4,1,0,0,0,0,0,0
+76,Lucien Farrell,76,49,5,2,12,4,84,37,60,20,10,68,9,6,55,20,8,50,0,9
+77,Arnaud Fleccia,77,48,5,1,12,4,78,34,40,31,7,58,17,5,0,0,0,0,0,0
+78,Tom Walker,78,44,3,2,6,4,35,20,20,44,14,82,0,13,0,0,0,0,0,0
+79,Matteo Moro,79,44,3,2,6,4,37,20,29,40,3,74,4,2,78,0,3,50,0,6
+80,Paulina Bukaty,80,42,3,2,7,4,49,27,0,0,0,0,0,0,20,42,19,50,0,19
+81,Yasmine Lever,81,41,3,2,6,4,32,17,27,41,24,0,0,0,0,0,0,0,0,0
+82,Graham Griffin,82,39,4,1,9,3,65,28,61,19,17,52,20,18,0,0,0,0,0,0
+83,Andy Morrow,83,34,3,1,7,3,41,17,67,14,3,54,20,4,78,0,5,0,0,0
+84,Reza Farhat,84,27,3,1,6,2,34,15,83,4,20,0,0,0,75,3,21,21,20,21
+85,Candida Uren,85,24,5,1,10,2,47,12,82,4,23,80,0,20,53,20,21,50,0,19
+86,Andrea Petreanu,86,24,3,1,6,2,31,12,0,0,0,0,0,0,46,23,21,49,1,17
+87,Gina King,87,22,4,1,8,2,37,10,88,0,25,77,2,20,51,20,18,50,0,17
+88,Christian Synetos,88,20,1,1,2,2,11,8,56,20,23,82,0,23,0,0,0,0,0,0
+89,Allison Zender,89,12,2,0,5,1,38,14,86,2,7,67,10,9,0,0,0,0,0,0
+90,Bimal Bawa,90,12,1,0,3,1,30,15,68,12,26,0,0,0,0,0,0,0,0,0
+91,Lydia  Isaac,91,11,3,0,6,0,35,11,70,11,19,0,0,0,0,0,0,0,0,0
+92,Roma Phulwani,92,10,4,0,8,0,42,10,79,6,20,79,1,17,78,0,21,45,3,21
+93,Edward Roussel,93,8,2,0,4,0,24,8,0,0,0,0,0,0,69,8,4,50,0,6
+94,Laurence P. Timmons,94,4,1,0,2,0,12,4,88,0,22,74,4,21,0,0,0,0,0,0
+95,Sarah Helm,95,1,2,0,4,0,17,1,0,0,0,0,0,0,77,1,11,0,0,0
+96,Marius Nasta,96,0,0,0,0,0,0,0,88,0,25,82,0,23,0,0,0,0,0,0
+97,Stefan Bollinger,96,0,0,0,0,0,0,0,88,0,22,0,0,0,0,0,0,0,0,0
+98,Alice Beaumont,96,0,0,0,0,0,0,0,88,0,22,0,0,0,0,0,0,0,0,0
+99,Spyridon Varoutsis,96,0,0,0,0,0,0,0,88,0,1,0,0,0,0,0,0,50,0,1
+100,Daniel Gargiulo,96,0,0,0,0,0,0,0,88,0,10,82,0,13,0,0,0,0,0,0
+101,Ehzan Parvizian,96,0,0,0,0,0,0,0,88,0,25,82,0,23,0,0,0,0,0,0
+102,Corina Penna,96,0,0,0,0,0,0,0,88,0,25,82,0,23,0,0,0,0,0,0
+103,Aneta Gunn,96,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,50,0,11
+104,Giorgina Barclay,96,0,0,0,0,0,0,0,88,0,2,0,0,0,0,0,0,0,0,0
+105,Oleg Basin,96,0,0,0,0,0,0,0,88,0,10,82,0,13,0,0,0,0,0,0
+106,Francois Gouilliard,96,0,0,0,0,0,0,0,88,0,1,0,0,0,0,0,0,0,0,0

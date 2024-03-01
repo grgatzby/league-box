@@ -1,24 +1,24 @@
 fr:
   back_btn: ←
   boxes:
-    switch: voir les
+    switch: ""
     list_view: résultats en liste
     table_view: résultats en grille
     intro_lines:
-      my_scores_btn: Mes scores
+      my_scores_btn: mes scores
       pop01_a: cliquer sur un match pour éditer ou supprimer son score
       pop01_b: ", ou saisir un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
       my_current_box: ma box en cours
       my_box: ma box
-      all_boxes_link: Les box
+      all_boxes_link: les box
     index:
       all_box_title: Toutes les box
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom du joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       my_current_box: (ma box en cours)
-      create_round_btn: ⎷ Créer le prochain round
-      request_round_btn: Demander la création du prochain round
+      create_round_btn: ⎷ créer le prochain round
+      request_round_btn: demander la création du prochain round
       valid_round_flash: "League table annuel: choisir un round valide"
       to_csv_btn: 📄 fichier CSV
     my_scores:
@@ -31,17 +31,16 @@ fr:
       my_current_box: ma box en cours
       my_box: ma box
       not_in_round: " vous n'êtes pas dans ce round!"
-      view_enter_scores: Consultez ou entrez vos scores
+      view_enter_scores: Consulter ou entrer mes scores
       player_header: Joueur
       total_points_header: Cumul points
       played_on_header: Match joué le
-      action_header: Choix
       view_box_results_btn: Vers ma box
       see_match_card_btn: Carte du match
       enter_score_btn: Entrer le score
       match_not_played: Match non joué
-      chat_in_my_box: Organisez vos matchs
-      access_chatroom_btn: Chatroom de votre box
+      chat_in_my_box: Organiser mes matchs
+      access_chatroom_btn: chatroom de ma box
     show_list:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Résultats en liste</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>

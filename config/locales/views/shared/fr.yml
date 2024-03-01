@@ -68,6 +68,6 @@ fr:
         one: total %{total_days} jours, 1 jour restant (%{ratio}%)<br>
         other: total %{total_days} jours, %{count} jours restants (%{ratio}%)<br>
       last_match: dernier match joué le %{last_match_date}<br>
-      box: <b>%La box</b><br>
+      box: <b>La box</b><br>
       round_expired: round expiré<br>
       player_matches: <b>Mes matchs</b><br>
