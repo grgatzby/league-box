@@ -49,6 +49,8 @@ fr:
       signed_in: "Connecté"
       signed_out: "Déconnecté"
       already_signed_out: "Déconnecté"
+      new:
+        invalid_login_alert: Identifiant invalide
     unlocks:
       send_instructions: "Vous allez recevoir les instructions nécessaires au déverrouillage de votre compte dans quelques instants"
       send_paranoid_instructions: "Si votre compte existe, vous allez bientôt recevoir un email contenant les instructions pour le déverrouiller"
