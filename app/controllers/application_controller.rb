@@ -71,16 +71,14 @@ class ApplicationController < ActionController::Base
       # or admin has selected a club from the form (club name is defined as params[:club_id])
       if @club == @sample_club
         @club = is_number?(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
-        # raise
       end
-      @start_dates = @club.rounds.map(&:start_date).sort.reverse # dropdown in the select round form
-      @start_dates = @start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
+      @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
       @league_starts = @club.rounds.map(&:league_start).sort
       @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%d/%m/%Y') }.uniq
       if params[:round_id]
-        @round = is_number?(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: params[:round_id].to_time, club_id: @club.id)
+        @round = is_number?(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: round_dropdown_to_start_date(params[:round_id]), club_id: @club.id)
         if @round
-          @selected_date = @round.start_date.strftime('%d/%m/%Y')
+          @selected_label = rounds_dropdown(@round)
         else
           flash[:notice] = t('.valid_round_flash')
           redirect_back(fallback_location: request.path)
@@ -243,6 +241,15 @@ class ApplicationController < ActionController::Base
                           .order('start_date ASC')
                           .map(&:id)
     "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
+  end
+
+  def rounds_dropdown(round)
+    "#{round_label(round)} (#{round.start_date.strftime('%d/%m/%Y')}-#{round.end_date.strftime('%d/%m/%Y')})"
+  end
+
+  def round_dropdown_to_start_date(label)
+    # [13, 10] to extract the round start_date (in '%d/%m/%Y' format) from the dropdown label
+    label[13, 10].to_time
   end
 
   def redirect_to_back(options = {})

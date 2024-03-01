@@ -19,19 +19,19 @@ en:
       round_end_link: Change round end
       log_out_link: Log out
     display_round:
-      round_period: Round %{round} (%{start} to %{end})
-      round_period_mobile: R%{round}
-      days_left: "%{days} days left"
+      round_period: Round %{round} (%{start} to %{end}),
+      round_period_mobile: R%{round},
+      days_left: "%{days} days left,"
       expired: round expired
-      players: ", %{nb_players} players"
+      players: "%{nb_players} players"
     select_round:
-      select_round_start: "Choose another round start date: "
+      select_round_start: "Choose another round: "
       confirm_btn: ⎷ Confirm
     select_club_round:
       select_club: "Select a club: "
       confirm_btn: ⎷ Confirm
       back_btn: ←
-      select_round_start: "Select a round start date: "
+      select_round_start: "Select a round: "
     staff:
       our_staff_title: Our staff
       staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
@@ -60,9 +60,9 @@ en:
         other: "%{count} matches"
       nb_matches_played: ", %{count} played (%{ratio}%)<br>"
       round_days_left:
-        zero: total days %{total_days}, 0 days left (%{ratio}%)<br>
-        one: total days %{total_days}, 1 day left (%{ratio}%)<br>
-        other: total days %{total_days}, %{count} days left (%{ratio}%)<br>
+        zero: "%{total_days} days, 0 days left (%{ratio}%)<br>"
+        one: "%{total_days} days, 1 day left (%{ratio}%)<br>"
+        other: "%{total_days} days, %{count} days left (%{ratio}%)<br>"
       last_match: last match played on %{last_match_date}<br>
       box: <b>The box</b><br>
       round_expired: round expired<br>

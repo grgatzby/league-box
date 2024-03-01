@@ -14,7 +14,7 @@ class BoxesController < ApplicationController
       init_stats
       days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
       # admin : create button appears in last days or after if round is the most recent
-      @new_round_required = days_left <= DAYS_BEFORE_NEW_ROUND_CREATION && @start_dates.first == @round.start_date.strftime('%d/%m/%Y')
+      @new_round_required = (days_left <= DAYS_BEFORE_NEW_ROUND_CREATION) && (round_dropdown_to_start_date(@rounds_dropdown.first) == @round.start_date)
       # referee : request button appears only before end of the last round
       @new_round_request = days_left.positive? && @new_round_required
     end

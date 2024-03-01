@@ -19,19 +19,19 @@ nl:
       round_end_link: Ronde end
       log_out_link: Uitloggen
     display_round:
-      round_period: Ronde %{round} (%{start} tot %{end})
-      round_period_mobile: R%{round}
-      days_left: "%{days} dagen over"
+      round_period: Ronde %{round} (%{start} tot %{end}),
+      round_period_mobile: R%{round},
+      days_left: "%{days} dagen over,"
       expired: ronde verlopen
       players: "%{nb_players} spellers"
     select_round:
-      select_round_start: "Andere ronde startdatum: "
+      select_round_start: "Andere ronde: "
       confirm_btn: ⎷ Bevestigen
     select_club_round:
       select_club: "Kies een club: "
       confirm_btn: ⎷ Bevestigen
       back_btn: ←
-      select_round_start: "Ronde startdatum: "
+      select_round_start: "Kies een ronde: "
     staff:
       our_staff_title: Clubpersoneel
       staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
@@ -61,9 +61,9 @@ nl:
         other: "%{count} wedstrijden"
       nb_matches_played: ", %{count} gespeeld (%{ratio}%)<br>"
       round_days_left:
-        zero: totaal %{total_days} dagen, 0 dag resterend (%{ratio}%)<br>
-        one: totaal %{total_days} dagen, 1 dag resterend (%{ratio}%)<br>
-        other: totaal %{total_days} dagen, %{count} dagen resterend (%{ratio}%)<br>
+        zero: "%{total_days} dagen, 0 dag resterend (%{ratio}%)<br>"
+        one: "%{total_days} dagen, 1 dag resterend (%{ratio}%)<br>"
+        other: "%{total_days} dagen, %{count} dagen resterend (%{ratio}%)<br>"
       last_match: laatste wedstrijd gespeeld op %{last_match_date}<br>
       box: <b>De box</b><br>
       round_expired: ronde verlopen<br>
