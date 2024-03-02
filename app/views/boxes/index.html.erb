@@ -6,7 +6,7 @@
     <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
   </div>
   <% if @round %>
-    <div class = "one-liner">
+    <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path %></h4>
       <%= render "shared/select_round", fallback_path: boxes_path %>
       <div>

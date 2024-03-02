@@ -18,7 +18,7 @@ en:
       message_box_pop: <b>Box columns:</b><br />Player name, player rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       my_current_box: (my current box)
       create_round_btn: create the next round
-      request_round_btn: request the admin the next round
+      request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
       to_csv_btn: 📄 CSV file
     my_scores:
