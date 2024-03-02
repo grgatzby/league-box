@@ -45,10 +45,10 @@ class RoundsController < ApplicationController
     # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
     csv_file = params[:round][:csv_file]
-    separator = params[:separator]
+    delimiter = params[:delimiter]
     if csv_file.content_type == "text/csv"
       # a CSV file is attached, create new round using it
-      headers = CSV.foreach(csv_file, col_sep: separator).first
+      headers = CSV.foreach(csv_file, col_sep: delimiter).first
       if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_ROUND_HEADERS
         club = Club.find(params[:club_id])
         box_players = [] # array (one per box) of array of box players
@@ -65,7 +65,7 @@ class RoundsController < ApplicationController
         users = []
         box_numbers = []
         nb_spare = 0
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
           # test if user already created, if not, create user
           if PLAYERS_AND_SPARES.include?(row[:role])
             if row[:box_number]

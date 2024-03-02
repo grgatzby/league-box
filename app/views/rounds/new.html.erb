@@ -39,14 +39,13 @@
             <div class="box-title"><b><%= t '.new_round' %></b></div>
             <br><div>
               <%# file_field_tag :csv_file, accept: 'text/csv' %>
+              <br class="small-font"><i><%= t '.file_warning' %></i>
               <%= f.file_field :csv_file, accept: 'text/csv' %>
-              <br class="small-font"><i><%= t '.warning' %></i>
-              <%= t '.league_start' %>
-              <%#  proposed league_start : current start_date %>
-              <% league_start = @current_round.start_date %>
-              <%= f.date_field(:league_start, value: league_start ) %>
-              <br><div class="col-2"><%= label_tag 'separator' %></div>
-              <div class="col-1"><%= text_field_tag :separator, params[:separator] || ";", size: 2 %></div>
+              <%= label_tag 'delimiter' %>
+              <%= text_field_tag :delimiter, params[:delimiter] || ";", size: 2 %>
+              <br><%= t '.league_start' %>
+              <%#  proposed league_start : current round league_start %>
+              <%= f.date_field(:league_start, value: @current_round.league_start ) %>
             </div>
             <%= t '.start_date' %>
             <%#  proposed start_date : current end_date + 1 day, with min value : end_date + 1 day %>

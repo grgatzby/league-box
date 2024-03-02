@@ -23,7 +23,8 @@ fr:
       - other_topic: Autre sujet
       new_round_subject: "Demande: nouveau round pour le %{club} - New round request"
       new_round_message: >
-        Du %{start_date} au %{end_date} (dd/mm/yy). La liste des joueurs est en attachement (a players list is attached)
+        Du %{start_date} au %{end_date}. Départ du tournoi %{league_start}.
+        Liste des joueurs en attachement; entêtes ["email", "first_name", "last_name", "phone_number", "role"].
         Cordialement %{sender}
       name_placeholder: Nom complet
       email_placeholder: adresse e-mail user@domain.com

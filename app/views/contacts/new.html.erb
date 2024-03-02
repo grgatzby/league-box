@@ -93,10 +93,11 @@
         <!--- from the Boxes index view (request a new round creation) -->
         <% round = Round.find(processing_new_round) %>
         <% duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round %>
-        <% start_date = l(round.end_date + 1, format: :default) %>
-        <% end_date = l(round.end_date >> duration, format: :default) %>
+        <% start_date = l(round.end_date + 1, format: :ddmmmyyy_date) %>
+        <% end_date = l(round.end_date >> duration, format: :ddmmmyyy_date) %>
+        <% league_start = l(round.league_start, format: :ddmmmyyy_date) %>
         <% default_message = t('.new_round_message',
-                                  start_date: start_date, end_date: end_date,
+                                  start_date: start_date, end_date: end_date, league_start: league_start,
                                   club: round.club.name,
                                   sender: default_name) %>
       <% else %>

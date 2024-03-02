@@ -23,8 +23,8 @@ players are allocated in boxes by id in descending order  -->
           <div class="col-1"></div>
           <br><div class="col-2"><%= label_tag t '.players_per_box' %></div>
           <div class="col-1"><%= text_field_tag :players_per_box, params[:players_per_box] || 6, size: 2 %></div>
-          <br><div class="col-2"><%= label_tag 'separator' %></div>
-          <div class="col-1"><%= text_field_tag :separator, params[:separator] || ";", size: 2 %></div>
+          <br><div class="col-2"><%= label_tag 'delimiter' %></div>
+          <div class="col-1"><%= text_field_tag :delimiter, params[:delimiter] || ";", size: 2 %></div>
         </div><br>
         <div class="row"><br>
           <div class="col-2"><%= label_tag t '.round_dates' %></div>

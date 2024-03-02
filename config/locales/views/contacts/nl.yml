@@ -23,7 +23,8 @@ nl:
       - other_topic: Ander onderwerp
       new_round_subject: "Nieuw rondeverzoek voor de %{club} - New round request"
       new_round_message: >
-        Van %{start_date} tot %{end_date} (dd/mm/yy). Een spelerslijst is bijgevoegd (a players list is attached)
+        Van %{start_date} tot %{end_date}. Toernooistartdatum %{league_start}.
+        Een spelerslijst is bijgevoegd met headers ["email", "first_name", "last_name", "phone_number", "role"].
         Groetjes %{sender}
       name_placeholder: Voor-en achternaam
       email_placeholder: e-mailadres user@domain.com

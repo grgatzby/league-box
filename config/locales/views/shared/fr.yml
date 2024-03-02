@@ -25,13 +25,14 @@ fr:
       expired: round terminé
       players: "%{nb_players} joueurs"
     select_round:
-      select_round_start: "Changer de round: "
+      select_round: "Changer de round: "
+      select_round_label: nom du round (départ du round)
       confirm_btn: ⎷ Confirmer
     select_club_round:
       select_club: "Choisir un club: "
       confirm_btn: ⎷ Confirmer
       back_btn: ←
-      select_round_start: "Choisir un round: "
+      select_round: "Choisir un round: "
     staff:
       our_staff_title: Qui sommes-nous?
       staff_p01: >

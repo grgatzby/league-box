@@ -25,13 +25,14 @@ en:
       expired: round expired
       players: "%{nb_players} players"
     select_round:
-      select_round_start: "Choose another round: "
+      select_round: "Choose another round: "
+      select_round_label: round name (round start date)
       confirm_btn: ⎷ Confirm
     select_club_round:
       select_club: "Select a club: "
       confirm_btn: ⎷ Confirm
       back_btn: ←
-      select_round_start: "Select a round: "
+      select_round: "Select a round: "
     staff:
       our_staff_title: Our staff
       staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
