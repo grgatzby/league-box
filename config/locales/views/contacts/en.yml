@@ -23,7 +23,8 @@ en:
       - other_topic: Any other topic
       new_round_subject: "New round request for the %{club}"
       new_round_message: >
-        From %{start_date} until %{end_date} (dd/mm/yy). A players list is attached.
+        From %{start_date} until %{end_date}. Tournament start date %{league_start}.
+        A players list is attached with headers ["email", "first_name", "last_name", "phone_number", "role"].
         Regards %{sender}
       name_placeholder: Full name
       email_placeholder: e-mail address user@domain.com

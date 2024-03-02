@@ -14,7 +14,7 @@ en:
       league_start: "League start date :"
       start_date: "Start date :"
       end_date: "End date :"
-      warning: "Optional: if a file is uploaded, shifts won't operate"
+      file_warning: "if a file is uploaded, shifts won't operate"
       create_round_btn: ⎷ Create round
       new_round: New round
     create:

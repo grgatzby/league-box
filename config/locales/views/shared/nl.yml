@@ -25,13 +25,14 @@ nl:
       expired: ronde verlopen
       players: "%{nb_players} spellers"
     select_round:
-      select_round_start: "Andere ronde: "
+      select_round: "Andere ronde: "
+      select_round_label: ronde naam (ronde startdatum)
       confirm_btn: ⎷ Bevestigen
     select_club_round:
       select_club: "Kies een club: "
       confirm_btn: ⎷ Bevestigen
       back_btn: ←
-      select_round_start: "Kies een ronde: "
+      select_round: "Kies een ronde: "
     staff:
       our_staff_title: Clubpersoneel
       staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.

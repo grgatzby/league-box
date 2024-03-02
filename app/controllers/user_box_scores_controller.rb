@@ -136,9 +136,9 @@ class UserBoxScoresController < ApplicationController
     # a box chatroom when a player visits My Scores.
 
     csv_file = params[:csv_file]
-    separator = params[:separator]
+    delimiter = params[:delimiter]
     if csv_file.content_type == "text/csv"
-      headers = CSV.foreach(csv_file, col_sep: separator).first
+      headers = CSV.foreach(csv_file, col_sep: delimiter).first
       if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_CLUB_HEADERS.sort
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
@@ -158,7 +158,7 @@ class UserBoxScoresController < ApplicationController
         users = []
         box_numbers = []
         nb_spare = 0
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
           if row[:role]
             if row[:box_number]
               if row[:role].downcase == "spare" # generate new e-mail address for spare player

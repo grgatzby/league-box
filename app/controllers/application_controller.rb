@@ -244,12 +244,12 @@ class ApplicationController < ActionController::Base
   end
 
   def rounds_dropdown(round)
-    "#{round_label(round)} (#{round.start_date.strftime('%d/%m/%Y')}-#{round.end_date.strftime('%d/%m/%Y')})"
+    "#{round_label(round)} (#{round.start_date.strftime('%d/%m/%Y')})"
   end
 
   def round_dropdown_to_start_date(label)
     # [13, 10] to extract the round start_date (in '%d/%m/%Y' format) from the dropdown label
-    label[13, 10].to_time
+    label[13, 10].to_date
   end
 
   def redirect_to_back(options = {})

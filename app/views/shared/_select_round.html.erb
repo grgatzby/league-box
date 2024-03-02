@@ -1,12 +1,16 @@
 <div class="dont-print">
   <%= form_with url: fallback_path, method: :get do |form| %>
-    <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round_start') %>
+    <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round') %>
     <%= hidden_field_tag(:club_id, @club.id) %>
-    <% if @round%>
-      <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
-    <% else %>
-      <%= form.select :round_id, @rounds_dropdown, selected: @selected_label %>&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
-    <% end %>
+    <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+      data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
+      data-bs-content="<%= t '.select_round_label' %>">
+      <% if @round%>
+        <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <% else %>
+        <%= form.select :round_id, @rounds_dropdown, selected: @selected_label %>&nbsp;&nbsp;&nbsp;&nbsp;
+        <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+      <% end %>
+    </span>
   <% end %>
 </div>

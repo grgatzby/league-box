@@ -236,7 +236,7 @@ class MatchesController < ApplicationController
     # if players don't exist in the database, create them
 
     csv_file = params[:csv_file]
-    separator = params[:separator]
+    delimiter = params[:delimiter]
     round = Round.find(params[:round_id])
     # 1/ remove existing scores for the round and clean user_box_score values
     Box.where(round_id: round.id).each do |box|
@@ -249,12 +249,12 @@ class MatchesController < ApplicationController
     if csv_file.content_type == "text/csv"
       # user_box_scores are already created with users loading the round create CSV file
       # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
-      headers = CSV.foreach(csv_file, col_sep: separator).first
+      headers = CSV.foreach(csv_file, col_sep: delimiter).first
       if headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORE_HEADERS + REQUIRED_SCORE_HEADERS_PLUS).sort
         # create and fill user_match_scores and matches
         input_date = Time.now
         user_match_scores = []
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: separator) do |row|
+        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
           match_players = player_opponent(row)
           player = match_players[0]
           opponent = match_players[1]

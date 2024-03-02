@@ -11,10 +11,10 @@ nl:
           -2 = kom langs 2 boxen.<br /><br />
           Kies 99 om de speler uit de volgende ronde te elimineren (bijvoorbeeld als er minder dan 2 wedstrijden gespeeld zijn).
       message_boxes: speler, rangschikking,<br />aantal gespeelde wedstrijden, voorgestelde zet
-      league_start: "League startdatum :"
+      league_start: "Toernooistartdatum :"
       start_date: "Begin datum:"
       end_date: "Einddatum:"
-      warning: "Optioneel: bestand maakt voorrang op spelerverschuivingen"
+      file_warning: "bestand maakt voorrang op spelerverschuivingen"
       create_round_btn: ⎷ Maak de ronde
       new_round: Volgende ronde
     create:

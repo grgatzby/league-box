@@ -29,5 +29,5 @@
 <% end %>
 <% if !params[:round_id] && params[:club_id] || (current_user != @admin) %>
   <!-- for players and referees: display the round form IF a club is already set -->
-  <%= render "shared/select_round", fallback_path: fallback_path, label: t('.select_round_start') %>
+  <%= render "shared/select_round", fallback_path: fallback_path, label: t('.select_round') %>
 <% end %>
