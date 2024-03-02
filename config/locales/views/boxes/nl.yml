@@ -18,7 +18,7 @@ nl:
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       my_current_box: (mijn huidige box)
       create_round_btn: ⎷ maak de volgende ronde
-      request_round_btn: vraag de admin de volgende ronde aan
+      request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
       to_csv_btn: 📄 naar CSV-bestand
     my_scores:

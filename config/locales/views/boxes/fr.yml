@@ -18,7 +18,7 @@ fr:
       message_box_pop: <b>Colonnes</b><br />Nom du joueur, classement,<br />nb matchs joués, nb points cumulés<br /><br />Cliquer sur une box pour voir les détails des matchs.
       my_current_box: (ma box en cours)
       create_round_btn: ⎷ créer le prochain round
-      request_round_btn: demander la création du prochain round
+      request_round_btn: faire créer le prochain round
       valid_round_flash: "League table annuel: choisir un round valide"
       to_csv_btn: 📄 fichier CSV
     my_scores:
