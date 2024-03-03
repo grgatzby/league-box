@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
     @club = current_user ? current_user.club : @sample_club
     @current_round = current_round(@club.id)
     @admin = User.find_by(role: "admin")
-    @my_current_box = my_own_box(current_round(current_user.club_id))
+    @my_current_box = my_own_box(current_round(current_user.club_id)) if current_user
     # @referee = User.find_by(role: "referee", club_id: @club.id) #TO DO : role includes referee
     @referee = User.find_by("club_id = ? AND role like ?", @club.id, "%referee%")
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
