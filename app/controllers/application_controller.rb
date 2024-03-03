@@ -47,6 +47,7 @@ class ApplicationController < ActionController::Base
     @club = current_user ? current_user.club : @sample_club
     @current_round = current_round(@club.id)
     @admin = User.find_by(role: "admin")
+    @my_current_box = my_own_box(current_round(current_user.club_id))
     # @referee = User.find_by(role: "referee", club_id: @club.id) #TO DO : role includes referee
     @referee = User.find_by("club_id = ? AND role like ?", @club.id, "%referee%")
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
@@ -285,11 +286,10 @@ class ApplicationController < ActionController::Base
     if @box
       @nb_box_matches = @box.user_box_scores.count * (@box.user_box_scores.count - 1) / 2
       @nb_box_matches_played = @box.matches.count
-      @my_current_box = my_own_box(@round)
       @last_box_match_date = last_box_match_date(@box)
-      if @box == @my_current_box
-        @my_nb_matches = @my_current_box.user_box_scores.count - 1
-        @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_current_box }.map(&:match).count
+      if @box == @my_box
+        @my_nb_matches = @my_box.user_box_scores.count - 1
+        @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_box }.map(&:match).count
       end
     end
   end

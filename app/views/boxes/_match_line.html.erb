@@ -20,13 +20,13 @@
       <div class="<%= class_names("row hovered-player", "color-green": user_score.is_winner, "color-tennis-red": !user_score.is_winner) %>">
         <div class="col-4">
           <%= "#{user_score.is_winner ? t(".won") : t(".lost")}" %>
+          <% match_time = @tz.to_local(match.time) %>
+          <%= " #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
           <i>vs</i>
           <span class="color-tennis-blue">
             <%= render "shared/fullname", user: opponent %>
             <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
           </span>
-          <% match_time = @tz.to_local(match.time) %>
-          <%= " #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
         </div>
         <div class="col-2"><%= render "match_score", user_score: user_score, opponent_score: opponent_score %></div>
         <div class="col-2"><%= t("pts", count: user_score.points) %></div>
