@@ -2,14 +2,21 @@
 <li>
   <div class="row hovered-player color-tennis-blue">
     <div class="col-4"><%= render "shared/fullname", user: opponent %></div>
-    <div class="col-8"><%= current_user == player || current_user.role != "player" ? t('.enter_score') : t('.not_played') %></div>
-
-    <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}" %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-        data-bs-content="<%= message %>">
-      <%# click on opponent no-match line to enter a new match score %>
-      <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round_id, page_from: page_from), class: "line-link" %>
-    </div>
+    <% may_enter_score = (current_user == player \
+                           || current_user.role == "admin" \
+                           || (["referee", "player referee"].include?(current_user.role) && @round == @current_round)) %>
+    <div class="col-8">
+      <% if may_enter_score %>
+        <%= t('.enter_score') %>
+        <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}" %>
+        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+            data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+            data-bs-content="<%= message %>">
+          <%# click on opponent no-match line to enter a new match score %>
+          <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round_id, page_from: page_from), class: "line-link" %>
+        </div>
+      <% else %>
+        <%= t('.not_played') %>
+      <% end %>
   </div>
 </li>

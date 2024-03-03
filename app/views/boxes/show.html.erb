@@ -10,7 +10,7 @@
         <div class="col-1 print-all-content">
           <%# top left corner %>
           <div class="row mb-3">
-            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @this_is_my_box, "color-tennis-blue": !@this_is_my_box) %>">
+            <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @is_this_my_box, "color-tennis-blue": !@is_this_my_box) %>">
               <%= "Box #{@box.box_number}".upcase %>
             </div>
           </div>

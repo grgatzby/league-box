@@ -4,13 +4,13 @@ class BoxesController < ApplicationController
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
 
   def index
-    
+
     # display all boxes and the shared select_round form
     @page_from = params[:page_from]
     set_club_round # set variables @club, @round and @boxes (ApplicationController)
-    # @my_current_box = my_own_box(current_round(current_user.club_id))
-    @my_box = 0
-    @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
+    # @my_box = 0
+    # @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
+    @my_box = my_own_box(@round)
     if @round
       init_stats
       days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
@@ -27,13 +27,13 @@ class BoxesController < ApplicationController
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
       @round = @box.round
+      @my_box = my_own_box(@round)
       init_stats
       @round_nb = round_label(@round)
       # @box_matches is an array of [user_box_score , matches_details(user), user]
       # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
       @box_matches = box_matches(@box) # sorted by descending points scores
-      @this_is_my_box = my_box?(@box)
-      # @my_current_box = my_own_box(current_round(current_user.club_id))
+      @is_this_my_box = my_box?(@box)
     end
   end
 
@@ -56,8 +56,7 @@ class BoxesController < ApplicationController
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
-      @this_is_my_box = my_box?(@box)
-      # @my_current_box = my_own_box(current_round(current_user.club_id))
+      @is_this_my_box = my_box?(@box)
       @round_nb = round_label(@box.round)
     end
     if @box

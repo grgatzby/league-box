@@ -2,7 +2,7 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div>
-  <% my_box_text = @this_is_my_box ? "#{render "shared/fullname", user: current_user} \
+  <% my_box_text = @is_this_my_box ? "#{render "shared/fullname", user: current_user} \
                    (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
     <h3><%= t '.my_scores' %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
     <% if @box %>
