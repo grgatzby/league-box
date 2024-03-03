@@ -38,7 +38,7 @@ class RoundsController < ApplicationController
   end
 
   def create
-    # admin or referee to generate next round from the current one
+    # admin to generate next round from the current one
     # if user is admin, club is given by params[:club_id], else: the referee's club
     # the new round is seeded through the uploaded CSV file or if none, through the form
     # TO DO: create a chatroom for each new box:
@@ -46,7 +46,7 @@ class RoundsController < ApplicationController
 
     csv_file = params[:round][:csv_file]
     delimiter = params[:delimiter]
-    if csv_file.content_type == "text/csv"
+    if csv_file && csv_file.content_type == "text/csv"
       # a CSV file is attached, create new round using it
       headers = CSV.foreach(csv_file, col_sep: delimiter).first
       if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_ROUND_HEADERS
@@ -56,9 +56,9 @@ class RoundsController < ApplicationController
         # estimate the nb of players of the current box as current box 1's nb of players
         players_per_box = club.rounds.last.boxes.find_by(box_number: 1).user_box_scores.count
         # create new round
-        round = Round.create(start_date: params[:round][:start_date].to_date,
+        round = Round.create(club_id: params[:club_id],
+                             start_date: params[:round][:start_date].to_date,
                              end_date: params[:round][:end_date].to_date,
-                             club_id: params[:club_id],
                              league_start: params[:round][:league_start].to_date)
 
         # array of users (players and club referees)
@@ -174,7 +174,9 @@ class RoundsController < ApplicationController
       current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
 
       @new_round = Round.create(club_id: current_round.club_id,
-                                start_date: params[:round][:start_date].to_date, end_date: params[:round][:end_date].to_date)
+                                start_date: params[:round][:start_date].to_date,
+                                end_date: params[:round][:end_date].to_date,
+                                league_start: params[:round][:league_start].to_date)
 
       current_boxes = current_round.boxes.sort_by(&:box_number)
       temp_boxes = new_temp_boxes(current_boxes.count) # array of temporary boxes; as many as current_boxes'

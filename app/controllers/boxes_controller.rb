@@ -4,6 +4,7 @@ class BoxesController < ApplicationController
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
 
   def index
+    
     # display all boxes and the shared select_round form
     @page_from = params[:page_from]
     set_club_round # set variables @club, @round and @boxes (ApplicationController)
