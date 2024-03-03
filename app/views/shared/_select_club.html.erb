@@ -1,0 +1,13 @@
+<%# partial: let the user select a club %>
+<% if current_user == @admin %>
+  <% if !params[:round_id] || params[:club_id] %>
+    <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
+    <%= form_with url: fallback_path, method: :get do |form| %>
+      <%# form.label :club_id, "Club:" %>
+      <%= form.select(:club_id, @club_names, {selected: @club.name}, {onchange: "this.form.submit();"}) %>
+    <% end %>
+  <% end %>
+<% else %>
+  <h4><%= @club.name %></h4>
+  <br><br>
+<% end %>

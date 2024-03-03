@@ -7,7 +7,8 @@
   </div>
   <% if @round %>
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
-      <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path %></h4>
+      <!-- <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path %></h4> -->
+      <%= render "shared/select_club", fallback_path: boxes_path %>
       <%= render "shared/select_round", fallback_path: boxes_path %>
       <div>
         <%= render 'shared/stats' %>
