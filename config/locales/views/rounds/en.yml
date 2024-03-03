@@ -2,7 +2,7 @@ en:
   rounds:
     new:
       new_round_title: Next round creation
-      new_round_subtitle: Upload a CSV file or enter player moves
+      new_round_subtitle: Enter player moves or upload a CSV file
       message: >
           Select box move, for example:<br />
           2 = two boxes up,<br />
@@ -11,14 +11,16 @@ en:
           -2 = two boxes down.<br /><br />
           Select 99 to remove player from next league round (e.g. if less than 2 games played).
       message_boxes: player name, player rank,<br />nb matches played, proposed box move
-      league_start: "League start date :"
-      start_date: "Start date :"
-      end_date: "End date :"
-      file_warning: "if a file is uploaded, shifts won't operate"
+      league_start: "Tournament start:"
+      start_date: "Round start:"
+      end_date: "Round end:"
+      file_warning: Input the shifts in the form, or upload a file.
+      delimiter: "Delimiter:"
       create_round_btn: ⎷ Create round
       new_round: New round
+      header_flash: Upload a CSV file.<br />Headers must include "id", "email", "first_name", "last_name", "nickname"[<i>optional</i>], "phone_number", and "role".
     create:
-      header_flash: Your headers must include "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      header_flash: CSV file headers must include "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
       round_created:
         zero: Round created with %{players} players per box. All players were included.
         one: Round created with %{players} players per box. Last player could not be accomodated.
@@ -26,7 +28,6 @@ en:
     edit:
       round_end_title: Round end date
       change_end_date: Change the current round end date
-      not_authorised: This page is not authorised.
       select_club: Select a club
       club: Club
       last_round_match_date: Last match of the round was played on %{date}

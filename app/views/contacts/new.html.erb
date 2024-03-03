@@ -91,14 +91,15 @@
       <!--- form field MESSAGE BODY -->
       <% if processing_new_round %>
         <!--- from the Boxes index view (request a new round creation) -->
-        <% round = Round.find(processing_new_round) %>
-        <% duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round %>
-        <% start_date = l(round.end_date + 1, format: :ddmmmyyy_date) %>
-        <% end_date = l(round.end_date >> duration, format: :ddmmmyyy_date) %>
-        <% league_start = l(round.league_start, format: :ddmmmyyy_date) %>
-        <% default_message = t('.new_round_message',
+        <% round = Round.find(processing_new_round)
+           duration = ((round.end_date + 1 - round.start_date).to_f / 365 * 12).round
+           start_date = l(round.end_date + 1, format: :ddmmmyyy_date)
+           end_date = l(round.end_date >> duration, format: :ddmmmyyy_date)
+           league_start = l(round.league_start, format: :ddmmmyyy_date)
+           admin_name = "#{(render "shared/fullname", user: @admin).strip}"
+           default_message = t('.new_round_message',
                                   start_date: start_date, end_date: end_date, league_start: league_start,
-                                  club: round.club.name,
+                                  club: round.club.name, admin_name: admin_name,
                                   sender: default_name) %>
       <% else %>
         <!--- from the footer partial (contact us) -->
@@ -107,7 +108,7 @@
       <%= f.input :message,
         as: "text",
         label: false,
-        input_html: {class: "contact-field contact-content", value: default_message},
+        input_html: {class: "contact-field contact-content", value: default_message.html_safe},
         required: true
       %>
 
@@ -129,7 +130,7 @@
           would not work with "multiple : true" since no file attached yields "files"=>[""] in the params -->
           <%= f.file_field :files,
             class: 'btn buttons-shape btn-beige mb-3',
-            accept: 'text/csv,application/msword,application/vnd.ms-excel,application/pdf',
+            accept: 'text/csv,application/msword,application/vnd.ms-excel,application/pdf,application/x-iwork-numbers-sffnumbers,application/vnd.apple.pages',
             required: true
           %>
         </div>

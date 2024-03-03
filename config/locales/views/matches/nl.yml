@@ -57,6 +57,5 @@ nl:
           en:<br>
           <i>email_player, phone_number_player, role_player,
              email_opponent, phone_number_opponent, role_opponent</i>
-      load_csv_file: CSV-bestand laden
       submit_btn: ⎷ Bevestigen
       back_btn: ←

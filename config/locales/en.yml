@@ -30,7 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  title_pop: CSV file
+  message_pop: CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet.
+  load_csv_file: load CSV file
   print_btn: 🖨 print
+  not_authorised: This page is not authorised.
   points:
     zero: 0 points
     one: 1 point
@@ -64,7 +68,11 @@ en:
       wwwddmmm_at_hhmm: "%a %-d %b, %H:%M"
       wwwddmmmyy_at_hhmm: "%A %-d %b %Y, %H:%M"
 fr:
+  title_pop: fichier CSV
+  message_pop: CSV (comma separated values) est un fichier texte dont les données sont separées par des virgules. Il peut être généré facilement à partir d'un tableur.
+  load_csv_file: charger le fichier CSV
   print_btn: 🖨 imprimer
+  not_authorised: Cette page n'est pas autorisée.
   points:
     zero: 0 point
     one: 1 point
@@ -111,7 +119,11 @@ fr:
     am: 'am'
     pm: 'pm'
 nl:
+  title_pop: CSV-bestand
+  message_pop: CSV (Comma Separated Values) is een tekstbestand waarvan de gegevens door komma's worden gescheiden. Het kan eenvoudig worden gegenereerd vanuit een spreadsheet.
+  load_csv_file: CSV-bestand laden
   print_btn: 🖨 afdrukken
+  not_authorised: Deze pagina is niet geautoriseerd.
   points:
     zero: 0 punten
     one: 1 punt

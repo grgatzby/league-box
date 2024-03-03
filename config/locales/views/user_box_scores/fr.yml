@@ -61,19 +61,15 @@ fr:
       box_round: Box round_
     new:
       new_club_title: Générer un nouveau club et un round
-      not_authorised: Vous n'êtes pas admin, cette page n'est pas autorisée.
       p01: "À partir d'un fichier CSV avec les entêtes ci-dessous, générer un nouveu club avec ses joueurs et un Referee:"
       p02_html: >
         <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <i>id, email, first_name, last_name, nickname [optionnel], phone_number, role</i>.<br><br>
         Les joueurs seront répartis dans les box en fonction de leur ordre d'id fourni par le fichier.
-      title_pop: fichier CSV
-      message_pop: CSV (comma separated values) est un fichier texte dont les données sont separées par des virgules. Il peut être généré facilement à partir d'un tableur.
       new_club_name: nom de club
       nb_of_courts: nombre de courts
       players_per_box: joueurs par box
       round_dates: dates du round
-      load_csv_file: charger le fichier CSV
       submit_btn: ⎷ Valider
       back_btn: ←
     create:

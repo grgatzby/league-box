@@ -2,7 +2,7 @@
 <% topdown = ["↑", "↓"] %>
 
 <div class="col-3">
-  <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"><%= t('.player_header') %></span>
+  <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"><%# t('.player_header') %></span>
   <%=render "header_link", from: from, nb: 1, header: t('.first_name_header'), direction: topdown.reverse%>
   <%=render "header_link", from: from, nb: 2, header: t('.last_name_header'), direction: topdown.reverse%>
   <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"></span>

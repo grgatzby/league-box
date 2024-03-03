@@ -13,7 +13,7 @@ en:
       my_box: my box
       all_boxes_link: all boxes
     index:
-      all_box_title: All boxes
+      all_box_title: The boxes in the round
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Player name, player rank,<br />nb of games played, box points earned.<br /><br />Click on a box to view match details
       my_current_box: (my current box)

@@ -57,6 +57,5 @@ en:
           and:<br>
           <i>email_player, phone_number_player, role_player,
              email_opponent, phone_number_opponent, role_opponent</i>
-      load_csv_file: load CSV file
       submit_btn: ⎷ Submit
       back_btn: ←

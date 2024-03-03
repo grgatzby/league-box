@@ -59,19 +59,15 @@ nl:
       box_round: Box ronde_
     new:
       new_club_title: Genereer een nieuwe club en ronde
-      not_authorised: U bent geen beheerder, deze pagina is niet geautoriseerd.
       p01: "Upload een lijst met spelers en een Referee vanuit een CSV-bestand met de volgende headers:"
       p02_html: >
         <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <i>ID, e-mailadres, voornaam, achternaam, bijnaam [optioneel], telefoonnummer, rol</i>.<br><br>
         Spelers worden in dozen geplaatst op basis van ID-volgorde in het bestand.
-      title_pop: CSV-bestand
-      message_pop: CSV (Comma Separated Values) is een tekstbestand waarvan de gegevens door komma's worden gescheiden. Het kan eenvoudig worden gegenereerd vanuit een spreadsheet.
       new_club_name: nieuwe clubnaam
       nb_of_courts: aantal rechtbanken
       players_per_box: spelers per box
       round_dates: ronde data
-      load_csv_file: CSV-bestand laden
       submit_btn: ⎷ Bevestigen
       back_btn: ←
     create:

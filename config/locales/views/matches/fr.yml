@@ -57,6 +57,5 @@ fr:
           et:<br>
           <i>email_player, phone_number_player, role_player,
              email_opponent, phone_number_opponent, role_opponent</i>
-      load_csv_file: charger le fichier CSV
       submit_btn: ⎷ Valider
       back_btn: ←

@@ -33,8 +33,9 @@
       <%= t '.p09' %>
       <% if current_user && current_user.role == "admin" %>
         <%= t '.p10a_html' %>
+        <%= t '.p10b_html' %>
       <% end %>
-      <% if current_user && current_user.role != "player" %>
+      <% if current_user && (["referee", "player referee"].include?(current_user.role)) %>
         <%= t '.p11_html' %>
       <% end %>
     </p>

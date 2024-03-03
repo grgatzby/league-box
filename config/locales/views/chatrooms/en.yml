@@ -10,7 +10,6 @@ en:
           - The admin appears in red<br /><br />
         Messages are displayed on the left of the screen, except for your messages which are on the right
       chatroom_title: "%{chatroom} chatroom"
-      not_authorised: This page is not authorised.
       message_invite: "> Message to"
       send_btn: ⎷ Send
       back_btn: ←
