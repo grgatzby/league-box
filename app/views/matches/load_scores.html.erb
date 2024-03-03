@@ -10,7 +10,7 @@ the csv file must contain fields
 <div class="<%= class_names("container": !@is_mobile) %>">
   <h3><%= "Load scores" %></h3><br>
   <% unless current_user.role == "admin" %>
-    <br><br><%= t '.not_authorised' %>
+    <br><br><%= t 'not_authorised' %>
   <% else %>
     <p><%= t '.p01' %>
     <%= t '.p02_html' %></p>
@@ -27,8 +27,8 @@ the csv file must contain fields
           <div class="col-2">
             <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-                title="<%= t('.title_pop') %>" data-bs-content="<%= t('.message_pop') %>">
-              <%= label_tag t '.load_csv_file' %>
+                title="<%= t('title_pop') %>" data-bs-content="<%= t('message_pop') %>">
+              <%= label_tag t 'load_csv_file' %>
             </div>
           </div>
               <%= hidden_field_tag(:round_id, params[:round_id]) %>

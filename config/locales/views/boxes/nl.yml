@@ -13,7 +13,7 @@ nl:
       my_box: mijn box
       all_boxes_link: naar boxen
     index:
-      all_box_title: Alle boxen
+      all_box_title: De boxen van de ronde
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
       my_current_box: (mijn huidige box)

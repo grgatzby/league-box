@@ -2,7 +2,7 @@ nl:
   rounds:
     new:
       new_round_title: Volgende ronde creatie
-      new_round_subtitle: Upload een CSV-bestand of voer spelerbewegingen in
+      new_round_subtitle: Voer spelerbewegingen in of upload een CSV-bestand
       message: >
           Kies een promotie, bijvoorbeeld:<br />
           2 = promotie twee boxen,<br />
@@ -11,14 +11,16 @@ nl:
           -2 = kom langs 2 boxen.<br /><br />
           Kies 99 om de speler uit de volgende ronde te elimineren (bijvoorbeeld als er minder dan 2 wedstrijden gespeeld zijn).
       message_boxes: speler, rangschikking,<br />aantal gespeelde wedstrijden, voorgestelde zet
-      league_start: "Toernooistartdatum :"
-      start_date: "Begin datum:"
-      end_date: "Einddatum:"
-      file_warning: "bestand maakt voorrang op spelerverschuivingen"
+      league_start: "Toernooistartdatum:"
+      start_date: "Rondestartdatum:"
+      end_date: "Rondeeinddatum:"
+      file_warning: Voer de diensten in, of upload een bestand.
+      delimiter: "Scheidingsteken:"
       create_round_btn: ⎷ Maak de ronde
       new_round: Volgende ronde
+      header_flash: Upload een CSV-bestand.<br />De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [<i>optioneel</i>], 'telefoonnummer' en 'rol' bevatten.
     create:
-      header_flash: De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' bevatten.
+      header_flash: De headers van de CSV-bestand moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' bevatten.
       round_created:
         zero: Round gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
         one: Round gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.
@@ -26,7 +28,6 @@ nl:
     edit:
       round_end_title: Einddatum van de ronde
       change_end_date: Wijzig de huidige einddatum van de ronde
-      not_authorised: Deze pagina is niet geautoriseerd.
       select_club: Kies een club
       last_round_match_date: De laatste wedstrijd van de ronde werd gespeeld op %{date}
       club: Club

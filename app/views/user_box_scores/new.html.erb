@@ -4,7 +4,7 @@ players are allocated in boxes by id in descending order  -->
 <div class="<%= class_names("container": !@is_mobile) %>">
   <h3><%= t '.new_club_title' %></h3><br>
   <% unless current_user.role == "admin" %>
-    <br><br><%= t '.not_authorised' %>
+    <br><br><%= t 'not_authorised' %>
   <% else %>
     <p><%= t '.p01' %>
     <%= t '.p02_html' %></p>
@@ -37,8 +37,8 @@ players are allocated in boxes by id in descending order  -->
           <div class="col-2">
             <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-                title="<%= t('.title_pop') %>" data-bs-content="<%= t('.message_pop') %>">
-              <%= label_tag t '.load_csv_file' %>
+                title="<%= t('title_pop') %>" data-bs-content="<%= t('message_pop') %>">
+              <%= label_tag t 'load_csv_file' %>
             </div>
           </div>
           <div class="col-1"><%= file_field_tag :csv_file %></div>

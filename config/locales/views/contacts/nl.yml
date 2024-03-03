@@ -21,11 +21,14 @@ nl:
       - input_score: Voer een nieuwe score in
       - affiliate: Sluit je aan bij League Box (nieuwe club)
       - other_topic: Ander onderwerp
-      new_round_subject: "Nieuw rondeverzoek voor de %{club} - New round request"
+      new_round_subject: "LeagueBox - Nieuw rondeverzoek voor de %{club}"
       new_round_message: >
-        Van %{start_date} tot %{end_date}. Toernooistartdatum %{league_start}.
-        Een spelerslijst is bijgevoegd met headers ["email", "first_name", "last_name", "phone_number", "role"].
-        Groetjes %{sender}
+        Geachte %{admin_name},
+        &#013;&#013;Maak een nieuwe ronde aan voor %{club} van %{start_date} tot %{end_date} voor het toernooi dat begint op %{league_start}.
+        &#013;&#013;Een spelerslijst is bijgevoegd* met headers ["email", "first_name", "last_name", "phone_number", "role"].
+        &#013;&#013;Groetjes
+        &#013;%{sender}
+        &#013;&#013;*Geaccepteerde typen: csv, pdf, microsoft (word, excel), apple (pages, numbers).
       name_placeholder: Voor-en achternaam
       email_placeholder: e-mailadres user@domain.com
       phone_placeholder: Telefoon

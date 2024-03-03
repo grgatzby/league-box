@@ -1,7 +1,7 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <!-- admin/referee: modify the round end date. Accessed from navbar dropdown menu -->
   <% unless (["admin", "referee", "player referee"].include?(current_user.role)) %>
-    <br><br><%= t '.not_authorised' %>
+    <br><br><%= t 'not_authorised' %>
   <% else %>
     <% if !@is_mobile %><br><% end %>
     <h3><%= t '.round_end_title' %></h3>

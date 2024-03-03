@@ -13,7 +13,7 @@ nl:
       use_title: Jouw LeagueBox in een paar klikken
       li01: Mijn scores
       li05_html:
-      li02: De boxen
+      li02: De boxen van de ronde
       li06_html: >
         Op %{inset} zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
         klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
@@ -160,7 +160,7 @@ nl:
       p03: Toernooibeschrijving en Box League-regels uitgelegd.
       club_staff: Clubpersoneel
       p05: Gegevens van de beheerder (admin) en de club Referee.
-      all_boxes: Boxen
+      all_boxes: De boxen van de ronde
       p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
       li01: zijn naam
       li02: zijn ranking binnen het toernooi
@@ -168,8 +168,9 @@ nl:
       li04: accumulatie van punten
       p08_html: De <span class='color-tennis-red'>huidige speler</span> en de <span class='color-tennis-red'>boxtitel</span> worden in rood weergegeven.
       p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
-      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (voor de admin),
-      p11_html: of <span class='color-tennis-aqua'>Vraag de admin de volgende ronde aan</span> (voor de Referee).
+      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (admin),
+      p10b_html: of <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span> (referee).
+      p11_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span>.
       league_table: Ronde rangschikking een league table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
       p13_html: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>

@@ -62,19 +62,15 @@ en:
       box_round: Box nb round_
     new:
       new_club_title: Create a new club and a round
-      not_authorised: You are not an admin, this page is not authorised.
       p01: "Upload a list of players and a Referee from a standard CSV file containing the following headers:"
       p02_html: >
           <br>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
           <i>id, email, first_name, last_name, nickname [optional], phone_number, role</i>.<br><br>
           Players will be allocated in boxes based on the id order in the file.
-      title_pop: CSV file
-      message_pop: CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet.
       new_club_name: new club name
       nb_of_courts: number of courts
       players_per_box: players per box
       round_dates: round dates
-      load_csv_file: load CSV file
       submit_btn: ⎷ Submit
       back_btn: ←
     create:

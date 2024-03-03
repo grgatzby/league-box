@@ -21,11 +21,14 @@ en:
       - input_score: Input a new score
       - affiliate: Join League Box (new club)
       - other_topic: Any other topic
-      new_round_subject: "New round request for the %{club}"
+      new_round_subject: "LeagueBox - New round request for %{club}"
       new_round_message: >
-        From %{start_date} until %{end_date}. Tournament start date %{league_start}.
-        A players list is attached with headers ["email", "first_name", "last_name", "phone_number", "role"].
-        Regards %{sender}
+        Dear %{admin_name},
+        &#013;&#013;Please create a new round for %{club} starting on %{start_date} and ending on %{end_date} for the tournament starting on %{league_start}.
+        &#013;&#013;A players list is attached* with headers ["email", "first_name", "last_name", "phone_number", "role"].
+        &#013;&#013;Regards
+        &#013;%{sender}
+        &#013;&#013;*Accepted types : csv, pdf, microsoft (word, excel), apple (pages, numbers).
       name_placeholder: Full name
       email_placeholder: e-mail address user@domain.com
       phone_placeholder: Phone number

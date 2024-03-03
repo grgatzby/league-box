@@ -1,70 +1,83 @@
 <!-- admin/referee: create new next round. Accessed from Box index view -->
 <div class="container">
-  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-      data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-      title="Box moves" data-bs-content="<%= t '.message' %>">
-    <h3><%= t '.new_round_title' %></h3>
-    <h4><%= t '.new_round_subtitle' %></h4>
-  </div>
-  <% if @new_round %>
-    <h4><%= @current_round.club.name %></h4>
-    <%= form_for @new_round do |f| %>
+  <% unless (["admin"].include?(current_user.role)) %>
+    <br><br><%= t 'not_authorised' %>
+  <% else %>
+    <div class="frame-color-shape frame-padding">
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-        title="Box moves" data-bs-content="<%= t '.message_boxes' %>">
-        <div class="boxes">
+          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+          title="Box moves" data-bs-content="<%= t '.message' %>">
+        <h3><%= t '.new_round_title' %></h3>
+        <h4><%= t '.new_round_subtitle' %></h4>
+      </div>
+      <% if @new_round %>
+        <h4><%= @current_round.club.name %></h4>
+        <%= form_for @new_round do |f| %>
+          <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+            data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+            title="Box moves" data-bs-content="<%= t '.message_boxes' %>">
+            <div class="boxes">
 
-          <%= f.fields_for :boxes do |new_box| %>
-            <% box = @boxes[new_box.index] %>
-            <div class="box small-font">
-              <div class="box-title"><b><%= "Box #{box.box_number}" %></b></div>
-              <ol type="1">
-                <% user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
-                <%= new_box.fields_for :user_box_scores do |new_user_box_score| %>
-                  <% user_box_score = user_box_scores[new_user_box_score.index] %>
-                  <li><div class="row">
-                    <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
-                    <div class="col-2"><%= "##{user_box_score.rank}" %></div>
-                    <div class="col-1"><%= "#{user_box_score.matches_played}" %></div>
-                    <!-- shift is an array method: removes first element from array and returns the element -->
-                    <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
-                  </div></li>
-                <% end %>
-              </ol>
-            </div>
-          <% end %>
+              <%= f.fields_for :boxes do |new_box| %>
+                <% box = @boxes[new_box.index] %>
+                <div class="box small-font">
+                  <div class="box-title"><b><%= "Box #{box.box_number}" %></b></div>
+                  <ol type="1">
+                    <% user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
+                    <%= new_box.fields_for :user_box_scores do |new_user_box_score| %>
+                      <% user_box_score = user_box_scores[new_user_box_score.index] %>
+                      <li><div class="row">
+                        <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
+                        <div class="col-2"><%= "##{user_box_score.rank}" %></div>
+                        <div class="col-1"><%= "#{user_box_score.matches_played}" %></div>
+                        <!-- shift is an array method: removes first element from array and returns the element -->
+                        <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
+                      </div></li>
+                    <% end %>
+                  </ol>
+                </div>
+              <% end %>
 
-          <!--  end of the form: load CSV file (optional preempts shifts entries), input new start_date, end_date and submit -->
-          <div class="new_round-box small-font">
-            <div class="box-title"><b><%= t '.new_round' %></b></div>
-            <br><div>
-              <%# file_field_tag :csv_file, accept: 'text/csv' %>
-              <br class="small-font"><i><%= t '.file_warning' %></i>
-              <%= f.file_field :csv_file, accept: 'text/csv' %>
-              <%= label_tag 'delimiter' %>
-              <%= text_field_tag :delimiter, params[:delimiter] || ";", size: 2 %>
-              <br><%= t '.league_start' %>
-              <%#  proposed league_start : current round league_start %>
-              <%= f.date_field(:league_start, value: @current_round.league_start ) %>
-            </div>
-            <%= t '.start_date' %>
-            <%#  proposed start_date : current end_date + 1 day, with min value : end_date + 1 day %>
-            <% enddate = @current_round.end_date + 1 %>
-            <%= f.date_field(:start_date, value: enddate, min: enddate ) %>
-            <%#  current round's duration in months %>
-            <% duration = ((enddate - @current_round.start_date).to_f / 365 * 12).round %>
-            <br><%= t '.end_date' %>
-            <%#  proposed new end_date: current end_date + duration in months, with min value: end_date + 1 month %>
-            <%= f.date_field(:end_date, value: (enddate >> duration) - 1, min: (enddate >> 1) - 1 ) %>
-            <%= hidden_field_tag(:club_id, @current_round.club_id) %>
-            <div class="one-liner">
-              <%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <%= link_to "Back", boxes_path(round_id: @current_round.id, club_id: @current_round.club_id), class: "btn buttons-shape btn-yellow" %>
+              <!--  end of the form: load CSV file (optional preempts shifts entries), input new start_date, end_date and submit -->
+              <div class="new_round-box small-font">
+                <div class="box-title"><b><%= t '.new_round' %></b></div>
+                <div>
+                  <%# file_field_tag :csv_file, accept: 'text/csv' %>
+                  <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+                    data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
+                    title="<%= t '.new_round' %>" data-bs-content="<%= t '.header_flash' %>">
+                    <br class="small-font"><i><%= t '.file_warning' %></i>
+                  </div>
+                  <div class="one-liner">
+                    <%= label_tag t '.delimiter' %>
+                    <%= text_field_tag :delimiter, params[:delimiter] || ";", size: 1 %>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= f.file_field :csv_file, accept: 'text/csv' %>
+                  </div>
+                  <br><%= t '.league_start' %>
+                  <%#  proposed league_start : current round league_start %>
+                  <%= f.date_field(:league_start, value: @current_round.league_start ) %>
+                </div>
+                <div class="one-liner">
+                  <% enddate = @current_round.end_date + 1 %>
+                  <%#  current round's duration in months %>
+                  <% duration = ((enddate - @current_round.start_date).to_f / 365 * 12).round %>
+                  <%= t '.start_date' %>
+                  <%#  proposed start_date : current end_date + 1 day, with min value : end_date + 1 day %>
+                  <%= f.date_field(:start_date, value: enddate, min: enddate ) %>
+                  <%= t '.end_date' %>
+                  <%#  proposed new end_date: current end_date + duration in months, with min value: end_date + 1 month %>
+                  <%= f.date_field(:end_date, value: (enddate >> duration) - 1, min: (enddate >> 1) - 1 ) %>
+                </div><br>
+                <%= hidden_field_tag(:club_id, @current_round.club_id) %>
+                <div class="one-liner">
+                  <%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %>
+                  <%= link_to "Back", boxes_path(round_id: @current_round.id, club_id: @current_round.club_id), class: "btn buttons-shape btn-yellow" %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>

@@ -12,7 +12,7 @@ en:
         champagne to celebrate at the end of the run.
       use_title: Your LeagueBox in a few clicks
       li01: My scores
-      li02: All boxes
+      li02: The boxes in the round
       li06_html: >
         In %{inset} see at a glance every box in your league, and click on any box for
         more details.<br/>You can even go back to the previous rounds.
@@ -160,7 +160,7 @@ en:
       p03: Tournament overview and explanation of the Box League rules.
       club_staff: Club staff
       p05: Details of the admin and the club Referee.
-      all_boxes: All Boxes
+      all_boxes: The boxes in the round
       p07: "Display all the boxes in one glance showing for each player their:"
       li01: name
       li02: ranking in the league
@@ -168,8 +168,9 @@ en:
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
       p09: Clicking on a box leads to its Table view.
-      p10a_html: When reaching the end of the round, a button appears <span class='color-tennis-aqua'>Create the next round</span> (for the admin),
-      p11_html: or <span class='color-tennis-aqua'>Request the admin the next round</span> (for the Referee).
+      p10a_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Create the next round</span> (admin),
+      p10b_html: or to <span class='color-tennis-aqua'>Request the next round</span> (referee).
+      p11_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Request the next round</span>.
       league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
       p13_html: Clicking on a header sorts the player according to this header.<br>

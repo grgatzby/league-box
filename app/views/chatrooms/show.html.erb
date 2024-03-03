@@ -51,7 +51,7 @@ a chatroom is created in Box controller #my_scores.
   <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
     <% unless (["admin", "referee", "player referee"].include?(current_user.role)) %>
-      <br><br><%= t '.not_authorised' %>
+      <br><br><%= t 'not_authorised' %>
     <% else %>
       <% suffix = current_user.role.split.map(&:capitalize).join.underscore %>
       <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name).strip.titleize %></h3>

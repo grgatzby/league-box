@@ -2,7 +2,7 @@ fr:
   rounds:
     new:
       new_round_title: Création du prochain round
-      new_round_subtitle: Charger un fichier CSV ou choisir le mouvement des joueurs
+      new_round_subtitle: Choisir le mouvement des joueurs ou charger un fichier CSV
       message: >
           Choisir une promotion, par exemple:<br />
           2 = promotion deux box,<br />
@@ -11,14 +11,16 @@ fr:
           -2 = baisser de 2 box.<br /><br />
           Choisir 99 pour éliminer le joueur du prochain round (par ex. si moins de 2 matchs joués).
       message_boxes: joueur, classement,<br />nb matchs joués, mouvement proposé
-      league_start: "Départ du tournoi :"
-      start_date: "Date de début:"
-      end_date: "Date de fin:"
-      file_warning: "Le fichier remplace les mouvements de joueurs"
+      league_start: "Départ du tournoi:"
+      start_date: "Départ du round:"
+      end_date: "Fin du round:"
+      file_warning: Saisir les mouvements de joueurs ou attacher un fichier.
+      delimiter: "Séparateur:"
       create_round_btn: ⎷ Créer round
       new_round: Nouveau round
+      header_flash: Téléverser un fichier CSV.<br />Les entêtes doivent inclure "id", "email", "first_name", "last_name", "nickname"[<i>optionnel</i>], "phone_number", et "role".
     create:
-      header_flash: Les entêtes doivent inclure "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
+      header_flash: Les entêtes du fichier CSV doivent inclure "id", "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
       round_created:
         zero: Round créé avec %{players} joueurs par box. Tous les joueurs ont été inclus.
         one: Round créé avec %{players} joueurs par box. Le dernier joueur n'a pu être inclus.
@@ -26,7 +28,6 @@ fr:
     edit:
       round_end_title: Fin du round en cours
       change_end_date: Changer la date de fin du round en cours
-      not_authorised: Cette page n'est pas autorisée.
       select_club: Choisir un club
       club: Club
       last_round_match_date: Le dernier match du round a été joué le %{date}

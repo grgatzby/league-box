@@ -12,13 +12,13 @@ fr:
         du champagne pour célébrer sa victoire à la fin du tournoi.
       use_title: Votre LeagueBox en quelques clicks
       li01: Mes scores
-      li02: Les box
+      li02: Les box du round
       li06_html: >
         La page %{inset} montre toutes les box de la league:
         accédez aux détails d'une box en cliquant dessus.<br/>
         Vous avez également accès aux rounds précédents.
-      li03a: Résultats en liste
-      li03b: Résultats en grille
+      li03a: Vue en liste
+      li03b: Vue en grille
       li07_html: Après chaque match, entrez votre score dans les %{inset_a}, les %{inset_b}, ou dans %{inset_c}.<br>Votre classement est mis à jour automatiquement.
       li04a: classement du round
       li04b: league table
@@ -160,16 +160,17 @@ fr:
       p03: Description du Tournoi et explication des règles de la Box League.
       club_staff: Qui sommes-nous?
       p05: Coordonnées de l'admin et du Referee du club.
-      all_boxes: Les Box
+      all_boxes: Les box du round
       p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
       li01: son nom
       li02: son classement dans le Tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
-      p09: Un clic sur une box présente les Résultats en grille de la box.
+      p09: Un clic sur une box présente la Vue en grille de la box.
       p10a_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
-      p11_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (Referee).
+      p10b_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (referee).
+      p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Demander la création du prochain round</span>.
       league_table: Classement d'un round et league table du Tournoi
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13_html: En cliquant sur un entête, les joueurs se classent selon cet entête.<br>
