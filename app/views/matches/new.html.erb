@@ -2,7 +2,7 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>" id="form">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
-    <h3><%= t(".new_match_title") %></h3>
+    <h3><%= t(".new_match_title", box: @box.box_number) %></h3>
   </div>
   <div class="one-liner">
     <h4><%= render "shared/display_club", round: @round %></h4>
@@ -45,10 +45,10 @@
         <div class="col-3"><%= @is_mobile ? "" : t('.player_2') %></div>
       </div></i>
 
-      <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "0-4", "1-4", "2-4", "3-4", "4-3", "4-2", "4-1", "4-0"]] %>
+      <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "4-3", "4-2", "4-1", "4-0", "0-4", "1-4", "2-4", "3-4"]] %>
       <% score_tb = [["---",
-                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{ @is_mobile ? "+" : t('.and_more') }",
-                    "11-9 #{ @is_mobile ? "+" : t('.and_more') }", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0" ]] %>
+                    "11-9 #{ @is_mobile ? "+" : t('.and_more') }", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0",
+                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{ @is_mobile ? "+" : t('.and_more') }" ]] %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
           <div class="col-3"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
