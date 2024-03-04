@@ -14,7 +14,7 @@ en:
       sure: Are you sure?
       back_btn: ←
     new:
-      new_match_title: New match score
+      new_match_title: New match score (Box %{box})
       p01: Enter a new match score
       match_played: "Court number:"
       date_time: "Match played on:"

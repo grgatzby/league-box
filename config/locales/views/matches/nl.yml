@@ -14,7 +14,7 @@ nl:
       sure: Jij bevestigt?
       back_btn: ←
     new:
-      new_match_title: Nieuwe score
+      new_match_title: Nieuwe score (Box %{box})
       p01: Voer een nieuwe score in
       match_played: "Tennisbaan:"
       date_time: "Wedstrijd gespeeld:"

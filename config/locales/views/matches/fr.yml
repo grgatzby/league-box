@@ -14,7 +14,7 @@ fr:
       sure: Confirmez-vous?
       back_btn: ←
     new:
-      new_match_title: Nouveau score
+      new_match_title: Nouveau score (Box %{box})
       p01: Soumettre un nouveau score
       match_played: "Court nº:"
       date_time: "Match joué le:"
