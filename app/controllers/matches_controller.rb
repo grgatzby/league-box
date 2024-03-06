@@ -351,7 +351,7 @@ class MatchesController < ApplicationController
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
       false
-    elsif (match_scores[0][:score_tiebreak] < 10 && match_scores[1][:score_tiebreak] < 10) &&
+    elsif (match_scores[0][:score_tiebreak] < 8 && match_scores[1][:score_tiebreak] < 8) &&
           (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
       flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
       false

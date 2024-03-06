@@ -49,10 +49,10 @@ class BoxesController < ApplicationController
     @current_player = current_user
     if params[:id].to_i.zero?
       # previously, passing 0 to my_scores_path, forced user to choose a round
-      # now the last round is automatically selected in Applications #set_club_round
-      set_club_round # define variables @club and @round
-      # @box = current_user.user_box_scores.map { |ubs| ubs.box }.select { |box| box.round == @round }[0]
-      @box = my_own_box(@round, @current_player) # gets my box from chosen round
+      # now the last round is automatically selected in applications#set_club_round
+      set_club_round
+      @my_box = my_own_box(@round)
+      @box = @my_box
       @user_not_in_round = true unless @box
     else
       @box = Box.find(params[:id])
@@ -61,6 +61,7 @@ class BoxesController < ApplicationController
     end
     if @box
       @round = @box.round
+      @my_box = my_own_box(@round)
       init_stats
       @my_matches = []
       @box.user_box_scores.each do |user_box_score|

@@ -12,7 +12,7 @@ nl:
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
       select_league: League table van het
-      league_dropdown: toernooi van
+      league_dropdown: toernooi start op
     top_line:
       top_line_html: >
         Klik op <span class="color-orange-light"><b>de lijn van de speler</b></span> om toegang te krijgen tot zijn box,

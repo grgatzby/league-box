@@ -11,12 +11,13 @@ nl:
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
       my_current_box: mijn huidige box
       my_box: mijn box
-      all_boxes_link: naar boxen
+      all_boxes_link: de boxen
     index:
       all_box_title: De boxen van de ronde
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
-      message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking,<br />aantal gespeelde wedstrijden, verzamelde punten<br /><br />Klik op een box voor wedstrijddetails.
+      message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking, gespeelde wedstrijden, punten<br /><br />Klik op een box voor wedstrijddetails.
       my_current_box: (mijn huidige box)
+      my_box: (mijn box)
       create_round_btn: ⎷ maak de volgende ronde
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.

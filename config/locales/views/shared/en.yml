@@ -24,6 +24,8 @@ en:
       days_left: "%{days} days left,"
       expired: round expired
       players: "%{nb_players} players"
+    select_club:
+      select_club: "Choose another club: "
     select_round:
       select_round: "Choose another round: "
       select_round_label: round name (round start date)
