@@ -24,6 +24,8 @@ nl:
       days_left: "%{days} dagen over,"
       expired: ronde verlopen
       players: "%{nb_players} spellers"
+    select_club:
+      select_club: "Andere club: "
     select_round:
       select_round: "Andere ronde: "
       select_round_label: ronde naam (ronde startdatum)

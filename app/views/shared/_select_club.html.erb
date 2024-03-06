@@ -3,7 +3,7 @@
   <% if !params[:round_id] || params[:club_id] %>
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
-      <%# form.label :club_id, "Club:" %>
+      <%= form.label :club_id, t('.select_club') %>
       <%= form.select(:club_id, @club_names, {selected: @club.name}, {onchange: "this.form.submit();"}) %>
     <% end %>
   <% end %>

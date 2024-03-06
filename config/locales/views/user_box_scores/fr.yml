@@ -14,7 +14,7 @@ fr:
       valid_league_flash: "League table: choisir un début de tournoi valide"
     select_league:
       select_league: League table du
-      league_dropdown: tournoi du
+      league_dropdown: tournoi commençant
     top_line:
       top_line_html: >
         Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,

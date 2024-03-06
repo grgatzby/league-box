@@ -24,6 +24,8 @@ fr:
       days_left: "%{days} jours restants,"
       expired: round terminé
       players: "%{nb_players} joueurs"
+    select_club:
+      select_club: "Changer de club: "
     select_round:
       select_round: "Changer de round: "
       select_round_label: nom du round (départ du round)
