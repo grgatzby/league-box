@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
                             "box_number", "score_winner", "score_winner2"]
   REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
+  SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
 
   def show
     @page_from = local_path(params[:page_from])
@@ -351,7 +352,7 @@ class MatchesController < ApplicationController
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
       false
-    elsif (match_scores[0][:score_tiebreak] < 8 && match_scores[1][:score_tiebreak] < 8) &&
+    elsif (match_scores[0][:score_tiebreak] < SHORT_TIEBREAK_EDIT && match_scores[1][:score_tiebreak] < SHORT_TIEBREAK_EDIT) &&
           (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
       flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
       false
@@ -359,11 +360,9 @@ class MatchesController < ApplicationController
           (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
       flash[:alert] = t('.test_scores03_flash') # 4-4: enter a correct score for set 1 and set 2
       false
-    elsif (((match_scores[0][:score_tiebreak] > 10 && match_scores[1][:score_tiebreak] < 9) ||
-          (match_scores[0][:score_tiebreak] < 9 && match_scores[1][:score_tiebreak] > 10)) ||
-          ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2)) &&
+    elsif ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2) &&
           (results[0] == 1 || results[1] == 1)
-      flash[:alert] = t('.test_scores04_flash') # Tiebreak: first to 10 with 2 points clear.
+      flash[:alert] = t('.test_scores04_flash') # Tiebreak: need 2 points clear.
       false
     elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
           (results[0] == 0 || results[1] == 0)

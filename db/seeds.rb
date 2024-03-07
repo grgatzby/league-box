@@ -239,68 +239,69 @@
 # 4/ Following migration 20240208214333_add_league_start_to_rounds, populate field league_start with the
 # start_date of the first round of the year; going forward, this field allows creating tournaments starting
 # any time in the year
-sample_club = Club.find_by(name: "your tennis club")
-clubs = Club.all.reject { |club| club == sample_club }
-clubs.each do |club|
-  puts "Club: #{club.name}"
-  start_dates = club.rounds.map(&:start_date).sort.reverse
-  start_dates = start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
-  round_years = start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
-  round_years.each do |round_year|
-    rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
-    .where(club_id: club)
-    .order('start_date ASC')
-    .map(&:id)
-    rounds_ordered.each do |round_id|
-      round = Round.find(round_id)
-      puts "Round: #{round_id}: #{round.start_date}"
-      league_start = Date.new(round.start_date.year, 1, 1)
-      round.update(league_start:)
-      puts ">>>>>: #{round.league_start}"
-    end
-  end
-end
+# sample_club = Club.find_by(name: "your tennis club")
+# clubs = Club.all.reject { |club| club == sample_club }
+# clubs.each do |club|
+#   puts "Club: #{club.name}"
+#   start_dates = club.rounds.map(&:start_date).sort.reverse
+#   start_dates = start_dates.map { |round_start_date| round_start_date.strftime('%d/%m/%Y') }
+#   round_years = start_dates.map { |round_start_date| round_start_date.to_date.year }.uniq
+#   round_years.each do |round_year|
+#     rounds_ordered = Round.where('extract(year  from start_date) = ?', round_year)
+#     .where(club_id: club)
+#     .order('start_date ASC')
+#     .map(&:id)
+#     rounds_ordered.each do |round_id|
+#       round = Round.find(round_id)
+#       puts "Round: #{round_id}: #{round.start_date}"
+#       league_start = Date.new(round.start_date.year, 1, 1)
+#       round.update(league_start:)
+#       puts ">>>>>: #{round.league_start}"
+#     end
+#   end
+# end
 
 # 5/ destroy matches and user_match_scores for a club
 # Court.where(club_id: 65).each{ |court| court.matches.each {|match| match.destroy }}
 # or:
-Box.where(round_id: 22).each do |box|
-  box.matches.each do |match|
-    match.destroy
-  end
-end
+# Box.where(round_id: 22).each do |box|
+#   box.matches.each do |match|
+#     match.destroy
+#   end
+# end
 # 6/ clean user box scores
 # # User.where(club_id:65).each{|user| user.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
-                                     sets_won: 0, sets_played: 0,
-                                     matches_won: 0, matches_played: 0,
-                                     games_won: 0, games_played: 0)}}
+                                    #  sets_won: 0, sets_played: 0,
+                                    #  matches_won: 0, matches_played: 0,
+                                    #  games_won: 0, games_played: 0)}}
 # or:
 # Box.where(round_id:180).each{|box| box.user_box_scores.each{|ubs| ubs.update(points: 0, rank: 1,
-                                        sets_won: 0, sets_played: 0,
-                                        matches_won: 0, matches_played: 0,
-                                        games_won: 0, games_played: 0)}}
+                                        # sets_won: 0, sets_played: 0,
+                                        # matches_won: 0, matches_played: 0,
+                                        # games_won: 0, games_played: 0)}}
 
 
-def destroy(match)
-  # for admin and referees only
-  # @match = Match.find(params[:id])
-  user_match_scores = UserMatchScore.where(match_id: match.id)
-  results = compute_results(user_match_scores)
-  # update user_box_score for each player
-  [0, 1].each do |index|
-    user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+# def destroy(match)
+#   # for admin and referees only
+#   # @match = Match.find(params[:id])
+#   user_match_scores = UserMatchScore.where(match_id: match.id)
+#   results = compute_results(user_match_scores)
+#   # update user_box_score for each player
+#   [0, 1].each do |index|
+#     user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
 
-    user_box_score.points -= user_match_scores[index].points
-    user_box_score.sets_won -= results[index]
-    user_box_score.sets_played -= results.sum
-    user_box_score.games_won -= won_games(user_match_scores[index])
-    user_box_score.games_played -= won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
-    user_box_score.matches_won -= results[index] > results[1 - index] ? 1 : 0
-    user_box_score.matches_played -= 1
-    user_box_score.save
-  end
-  match.destroy
+#     user_box_score.points -= user_match_scores[index].points
+#     user_box_score.sets_won -= results[index]
+#     user_box_score.sets_played -= results.sum
+#     user_box_score.games_won -= won_games(user_match_scores[index])
+#     user_box_score.games_played -= won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+#     user_box_score.matches_won -= results[index] > results[1 - index] ? 1 : 0
+#     user_box_score.matches_played -= 1
+#     user_box_score.save
+#   end
+#   match.destroy
 
-  # update the league table
-  rank_players(match.box.round.user_box_scores)
-end
+#   # update the league table
+#   rank_players(match.box.round.user_box_scores)
+# end
+
