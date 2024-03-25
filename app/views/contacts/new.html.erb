@@ -20,8 +20,8 @@
           <%# t('.error_invite') %>
           <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
               <div class="bold-font text-rose-700 text-sm pb-4">
-                <!---<%= pluralize(@contact.errors.count, "error") %> prohibited this page from being saved: --->
-                <%= "#{t('.error', count: @contact.errors.count)} #{t('.error_message')}" %><br>
+                <!---<%= pluralize(@contact.errors.size, "error") %> prohibited this page from being saved: --->
+                <%= "#{t('.error', count: @contact.errors.size)} #{t('.error_message')}" %><br>
               </div>
 
               <ul class="pb-0 mb-0">

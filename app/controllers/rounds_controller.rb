@@ -54,7 +54,7 @@ class RoundsController < ApplicationController
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
         # estimate the nb of players of the current box as current box 1's nb of players
-        players_per_box = club.rounds.last.boxes.find_by(box_number: 1).user_box_scores.count
+        players_per_box = club.rounds.last.boxes.find_by(box_number: 1).user_box_scores.size
         # create new round
         round = Round.create(club_id: params[:club_id],
                              start_date: params[:round][:start_date].to_date,
@@ -109,7 +109,7 @@ class RoundsController < ApplicationController
         # create boxes and user_box_scores
         if headers.include?("box_number")
           box_numbers = box_numbers.uniq.sort
-          nb_boxes = box_numbers.count
+          nb_boxes = box_numbers.size
           nb_boxes.times do |box_index|
             boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
                                 chatroom_id: @general_chatroom.id)
@@ -122,12 +122,12 @@ class RoundsController < ApplicationController
                                   games_won: 0, games_played: 0)
             end
           end
-          players_per_box = box_players[1].count
+          players_per_box = box_players[1].size
         else
           players_per_box = params[:players_per_box].to_i
           # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-          players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
-          nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+          players_per_box -= 1 while (players.size % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+          nb_boxes = (players.size / players_per_box) + ((players.size % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
           nb_boxes.times do |box_index|
             # TO DO: create a new chatroom for the box
             boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
@@ -142,10 +142,10 @@ class RoundsController < ApplicationController
           end
         end
         # # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-        # if (players.count % players_per_box).positive?
-        #   players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+        # if (players.size % players_per_box).positive?
+        #   players_per_box -= 1 while (players.size % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
         # end
-        # nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+        # nb_boxes = (players.size / players_per_box) + ((players.size % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
         # box_players = []
         # boxes = []
         # nb_boxes.times do |box_index|
@@ -160,8 +160,8 @@ class RoundsController < ApplicationController
         #                         games_won: 0, games_played: 0)
         #   end
         # end
-        flash[:notice] = t('.round_created', count: players.count % players_per_box, players: players_per_box)
-        if (players.count % players_per_box).positive? && box_numbers.empty?
+        flash[:notice] = t('.round_created', count: players.size % players_per_box, players: players_per_box)
+        if (players.size % players_per_box).positive? && box_numbers.empty?
           players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
         end
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
@@ -179,7 +179,7 @@ class RoundsController < ApplicationController
                                 league_start: params[:round][:league_start].to_date)
 
       current_boxes = current_round.boxes.sort_by(&:box_number)
-      temp_boxes = new_temp_boxes(current_boxes.count) # array of temporary boxes; as many as current_boxes'
+      temp_boxes = new_temp_boxes(current_boxes.size) # array of temporary boxes; as many as current_boxes'
       apply_shifts(current_boxes, temp_boxes) # shift current_boxes' players within temp_boxes using the form shifts
 
       nb_players_per_box = current_boxes[0].user_box_score_ids.length
@@ -234,8 +234,8 @@ class RoundsController < ApplicationController
   def apply_shifts(current_boxes, new_boxes)
     # assign players to temporary boxes according to requested box shift
     # players are not spread evenly accross boxes yet
-    current_boxes.count.times do |box_index|
-      nb_players = current_boxes[box_index].user_box_score_ids.count
+    current_boxes.size.times do |box_index|
+      nb_players = current_boxes[box_index].user_box_score_ids.size
       nb_players.times do |player_index|
         player_shift = params[:round][:boxes_attributes][box_index.to_s][:user_box_scores_attributes][player_index.to_s][:box_id].to_i
         user_box_scores = current_boxes[box_index].user_box_scores.sort { |a, b| a.rank <=> b.rank }
@@ -256,12 +256,12 @@ class RoundsController < ApplicationController
     # deal players (user_box_scores) evenly across temporary boxes and delete remaining empty boxes
     all_user_box_scores = temp_boxes.map(&:user_box_scores).flatten
     # create groups of user_box_scores items (nb_player_per_box items per group)
-    nb_new_boxes = all_user_box_scores.count / nb_player_per_box
+    nb_new_boxes = all_user_box_scores.size / nb_player_per_box
     new_user_box_score_groups = []
     # shift(n) is an Array method: removes first n element from array and returns the array of these n elements
     nb_new_boxes.times { new_user_box_score_groups << all_user_box_scores.shift(nb_player_per_box) }
-    new_user_box_score_groups << all_user_box_scores unless all_user_box_scores.empty? # || all_user_box_scores.count < min_player_per_box
-    nb_new_boxes = new_user_box_score_groups.count
+    new_user_box_score_groups << all_user_box_scores unless all_user_box_scores.empty? # || all_user_box_scores.size < min_player_per_box
+    nb_new_boxes = new_user_box_score_groups.size
 
     # for each new group of user_box_scores, update field box_id
     new_user_box_score_groups.each_with_index do |user_box_scores, index|

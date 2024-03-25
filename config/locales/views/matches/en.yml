@@ -15,7 +15,10 @@ en:
       back_btn: ←
     new:
       new_match_title: New match score (Box %{box})
-      p01: Enter a new match score
+      enter_new_score_html: >
+        Enter a new match score<br><br>
+        Championship tiebreaker to be entered as the first to 10 points with 2 clear.<br>
+        <i>If you played a first to 7 pts, enter 10 instead of 7 (eg 10-5 for 7-5) and ask the referee to correct the score</i>
       match_played: "Court number:"
       date_time: "Match played on:"
       score: "Match score:"

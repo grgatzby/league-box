@@ -195,7 +195,7 @@ class UserBoxScoresController < ApplicationController
         # create boxes and user_box_scores
         if headers.include?("box_number")
           box_numbers = box_numbers.uniq.sort
-          nb_boxes = box_numbers.count
+          nb_boxes = box_numbers.size
           nb_boxes.times do |box_index|
             boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
                                 chatroom_id: @general_chatroom.id)
@@ -208,12 +208,12 @@ class UserBoxScoresController < ApplicationController
                                   games_won: 0, games_played: 0)
             end
           end
-          players_per_box = box_players[1].count
+          players_per_box = box_players[1].size
         else
           players_per_box = params[:players_per_box].to_i
           # if players_per_box > MIN_PLAYERS_PER_BOX, adjust down players_per_box so there are no less than 4 players per box
-          players_per_box -= 1 while (players.count % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
-          nb_boxes = (players.count / players_per_box) + ((players.count % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
+          players_per_box -= 1 while (players.size % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
+          nb_boxes = (players.size / players_per_box) + ((players.size % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
           nb_boxes.times do |box_index|
             boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
             box_players << players.shift(players_per_box) # adds one array of box players
@@ -225,11 +225,11 @@ class UserBoxScoresController < ApplicationController
                                   games_won: 0, games_played: 0)
             end
           end
-          if (players.count % players_per_box).positive?
+          if (players.size % players_per_box).positive?
             players.each(&:destroy) # destroy all remaining players (when less than MIN_PLAYERS_PER_BOX are left)
           end
         end
-        flash[:notice] = t('.club_created', count: players.count % players_per_box, players: players_per_box)
+        flash[:notice] = t('.club_created', count: players.size % players_per_box, players: players_per_box)
         redirect_to boxes_path(round_id: round.id, club_id: club.id)
       else
         flash[:notice] = t('.header_flash')

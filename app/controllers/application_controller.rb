@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
         @round = current_round(@club.id)
       end
       @round_nb = round_label(@round)
-      @boxes = @round.boxes.sort
+      @boxes = @round.boxes.includes([user_box_scores: :user]).sort
     end
   end
 
@@ -111,11 +111,6 @@ class ApplicationController < ActionController::Base
   def last_round(player = current_user)
     # given a player, returns its last played round
     player.user_box_scores.map(&:box).map(&:round).max { |a, b| a.start_date <=> b.start_date }
-  end
-
-  def my_own_box(round, player = current_user)
-    # given a round, returns player's box for that round
-    player.user_box_scores.map(&:box).select { |box| box.round == round }[0]
   end
 
   def match_score(match, player)
@@ -274,22 +269,29 @@ class ApplicationController < ActionController::Base
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
 
+  def my_own_box(round, player = current_user)
+    # given a round, returns player's box for that round
+    # player.user_box_scores.map(&:box).select { |box| box.round == round }[0]
+    player.user_box_scores.includes([box: :round]).map(&:box).select { |box| box.round == round }[0]
+  end
+
   def init_stats
     # set the global statistic variables for the stats to be displayed in the view pages
-    @nb_matches = @round.boxes.map { |box| box.user_box_scores.count * (box.user_box_scores.count - 1) / 2 }.sum
-    @nb_matches_played = @round.boxes.map { |box| box.matches.count }.sum
+    # @nb_matches = @round.boxes.map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
+    @nb_matches = @round.boxes.includes([:user_box_scores, :matches]).map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
+    @nb_matches_played = @round.boxes.map { |box| box.matches.size }.sum
     @days_left = @round.end_date - Date.today
     @round_days = @round.end_date - @round.start_date
     @last_round_match_date = last_round_match_date(@round)
-    @nb_boxes = @round.boxes.count
-    @nb_players = @round.boxes.map { |box| box.user_box_scores.count }.sum
+    @nb_boxes = @round.boxes.size
+    @nb_players = @round.boxes.map { |box| box.user_box_scores.size }.sum
     if @box
-      @nb_box_matches = @box.user_box_scores.count * (@box.user_box_scores.count - 1) / 2
-      @nb_box_matches_played = @box.matches.count
+      @nb_box_matches = @box.user_box_scores.size * (@box.user_box_scores.size - 1) / 2
+      @nb_box_matches_played = @box.matches.size
       @last_box_match_date = last_box_match_date(@box)
       if @box == @my_box
-        @my_nb_matches = @my_box.user_box_scores.count - 1
-        @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_box }.map(&:match).count
+        @my_nb_matches = @my_box.user_box_scores.size - 1
+        @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_box }.map(&:match).size
       end
     end
   end
@@ -300,10 +302,10 @@ class ApplicationController < ActionController::Base
   end
 
   def last_round_match_date(round)
-    round.boxes.map { |box| box.matches if box.matches.count.positive? }.flatten.compact.map(&:time).max
+    round.boxes.map { |box| box.matches if box.matches.size.positive? }.flatten.compact.map(&:time).max
   end
 
   def last_box_match_date(box)
-    box.matches.map(&:time).max if box.matches.count.positive?
+    box.matches.map(&:time).max if box.matches.size.positive?
   end
 end

@@ -18,9 +18,9 @@ nl:
       delimiter: "Scheidingsteken:"
       create_round_btn: ⎷ Maak de ronde
       new_round: Volgende ronde
-      header_flash: Upload een CSV-bestand.<br />De headers moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [<i>optioneel</i>], 'telefoonnummer' en 'rol' bevatten.
+      header_flash: Upload een CSV-bestand.<br />De headers moeten 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [<i>optioneel</i>], 'telefoonnummer' en 'rol' bevatten.
     create:
-      header_flash: De headers van de CSV-bestand moeten 'id', 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' bevatten.
+      header_flash: De headers van de CSV-bestand moeten 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' bevatten.
       round_created:
         zero: Round gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
         one: Round gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.
