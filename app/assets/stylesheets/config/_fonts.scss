@@ -6,14 +6,15 @@
 // $headers-font: "Nunito", "Helvetica", "sans-serif";
 
 /* Import Google fonts */
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lora&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Lato&family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
 /* Define fonts for body and headers */
-// $body-font: "Lato", "sans-serif";
-$body-font: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+$body-font: "Lato", "sans-serif";
+//$body-font: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
 
-// $headers-font: "Lato", "sans-serif";
-$headers-font: sohne, "Hevetica, Neue", Helvetica, Arial, sans-serif;
+$headers-font: "Lato", "sans-serif";
+//$headers-font: sohne, "Hevetica, Neue", Helvetica, Arial, sans-serif;
 // $headers-font: "Lora", serif;
 
 // To use a font file (.woff) uncomment following lines

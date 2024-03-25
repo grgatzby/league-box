@@ -31,6 +31,7 @@ en:
     action_buttons:
       to_text_btn: 📄 text file
       to_csv_btn: 📄 CSV file
+      all_boxes_link: all boxes
     table_data:
       matches:
         zero: 0 matches

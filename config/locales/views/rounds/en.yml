@@ -18,9 +18,9 @@ en:
       delimiter: "Delimiter:"
       create_round_btn: ⎷ Create round
       new_round: New round
-      header_flash: Upload a CSV file.<br />Headers must include "id", "email", "first_name", "last_name", "nickname"[<i>optional</i>], "phone_number", and "role".
+      header_flash: Upload a CSV file.<br />Headers must include "email", "first_name", "last_name", "nickname"[<i>optional</i>], "phone_number", and "role".
     create:
-      header_flash: CSV file headers must include "id", "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      header_flash: CSV file headers must include "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
       round_created:
         zero: Round created with %{players} players per box. All players were included.
         one: Round created with %{players} players per box. Last player could not be accomodated.

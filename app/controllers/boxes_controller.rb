@@ -117,7 +117,8 @@ class BoxesController < ApplicationController
 
   def user_matches(user, box)
     # for a given user, select match scores in box, and returns array of matches
-    user.user_match_scores.select { |user_match_score| user_match_score.match.box == box }.map(&:match)
+    # user.user_match_scores.select { |user_match_score| user_match_score.match.box == box }.map(&:match)
+    user.user_match_scores.includes([match: :box]).select { |user_match_score| user_match_score.match.box == box }.map(&:match)
   end
 
   def opponent(match, player)
@@ -129,7 +130,9 @@ class BoxesController < ApplicationController
     # return array of [user_box_score, matches_details, user] sorted by player's total points
     # where matches_details is an array of [match, opponent, user_score, opponent_score]
     box_matches = []
-    box.user_box_scores.each do |user_box_score|
+    # box.user_box_scores.each do |user_box_score|
+    # box.user_box_scores.includes([user: {user_match_scores: :match}]).each do |user_box_score|
+    box.user_box_scores.includes([:user]).each do |user_box_score|
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
     end
     box_matches.sort { |a, b| b[0].points <=> a[0].points } # sorts by descending points scores

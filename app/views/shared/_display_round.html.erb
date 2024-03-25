@@ -9,4 +9,4 @@
   <% else %>
   <span class="color-tennis-red"><%= t(".expired") %></span>
 <% end %>
-<%= t(".players", nb_players: round.boxes.map {|box| box.user_box_scores.count}.sum) %>&nbsp;
+<%= t(".players", nb_players: round.boxes.map {|box| box.user_box_scores.size}.sum) %>&nbsp;
