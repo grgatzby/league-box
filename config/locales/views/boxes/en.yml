@@ -15,6 +15,7 @@ en:
     index_expanded:
       all_box_title: All boxes in the round (expanded)
       all_boxes_btn: compact view
+      message_box_pop: Click here to switch to single box view
       to_csv_btn: 📄 CSV file
     index:
       all_box_title: All boxes in the round (compact)
