@@ -1,6 +1,6 @@
 class BoxesController < ApplicationController
   require "csv"
-  helper_method :box_matches  # allows the #box_matches method to be called from views
+  helper_method :box_matches, :my_box?  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
 

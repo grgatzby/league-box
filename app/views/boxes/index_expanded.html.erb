@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="boxes2 print-all-content print-boxes-league box-scroller">
+    <div class="print-all-content print-boxes-league box-scroller">
       <% @boxes.each do |box| %>
         <% box_matches = box_matches(box) # sorted by descending points scores %>
 
@@ -30,10 +30,12 @@
             <%# the first column of the table uses 1/12th of the total width (bootstrap grid) %>
             <div class="col-1 print-all-content">
               <%# top left corner %>
-              <div class="row mb-3">
-                <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @is_this_my_box, "color-tennis-blue": !@is_this_my_box) %>">
+              <div class="row mb-3" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+                      data-bs-trigger="hover" data-bs-placement="right" data-bs-content="<%= t '.message_box_pop' %>">
+                <div class="col-12 bold-font">
                   <%# "Box #{box.box_number}".upcase %>
-                  <%= link_to "Box #{box.box_number}".upcase, box_list_path(box), page_from: index_expanded_path, class: "click-cell" %>
+                  <% classe = class_names("click-cell", "color-tennis-red": my_box?(box), "color-tennis-blue": !my_box?(box)) %>
+                  <%= link_to "Box #{box.box_number}".upcase, box_list_path(box), page_from: index_expanded_path, class: classe %>
                 </div>
               </div>
               <%# 1st column: labels %>

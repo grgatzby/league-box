@@ -15,6 +15,7 @@ nl:
     index_expanded:
       all_box_title: De boxen van de ronde (uitgebreide)
       all_boxes_btn: compacte weergave
+      message_box_pop: Klik hier om over te schakelen naar de weergave met één box
       to_csv_btn: 📄 naar CSV-bestand
     index:
       all_box_title: De boxen van de ronde (compacte)

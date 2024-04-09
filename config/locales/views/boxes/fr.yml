@@ -15,6 +15,7 @@ fr:
     index_expanded:
       all_box_title: Les box du round (vue déployée)
       all_boxes_btn: vue compacte
+      message_box_pop: Cliquez ici pour basculer vers la vue de la box
       to_csv_btn: 📄 fichier CSV
     index:
       all_box_title: Les box du round (vue compacte)
