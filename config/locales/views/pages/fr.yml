@@ -167,8 +167,8 @@ fr:
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
-      p09: Un clic sur une box présente la Vue en grille de la box.
-      p10a_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
+      p09_html: Un clic sur une box présente la Vue en grille de la box. <br>Le bouton <b>vue déployée</b> permet de voir toutes les box en vue Grille.<br>
+      p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
       p10b_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (referee).
       p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Demander la création du prochain round</span>.
       league_table: Classement d'un round et league table du Tournoi

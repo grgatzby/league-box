@@ -167,7 +167,7 @@ en:
       li03: number of matches played
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
-      p09: Clicking on a box leads to its Table view.
+      p09_html: Clicking on a box leads to its Table view.<br>A click on <b>expanded view</b> displays all the boxes in Grid view.<br>
       p10a_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Create the next round</span> (admin),
       p10b_html: or to <span class='color-tennis-aqua'>Request the next round</span> (referee).
       p11_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Request the next round</span>.

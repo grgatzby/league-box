@@ -1,10 +1,27 @@
 class BoxesController < ApplicationController
   require "csv"
+  helper_method :box_matches  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
 
   def index
+    # display all boxes and the shared select_round form
+    @page_from = params[:page_from]
+    set_club_round # set variables @club, @round and @boxes (ApplicationController)
+    # @my_box = 0
+    # @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
+    @my_box = my_own_box(@round)
+    if @round
+      init_stats
+      days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
+      # admin : create button appears in last days or after if round is the most recent
+      @new_round_required = (days_left <= DAYS_BEFORE_NEW_ROUND_CREATION) && (round_dropdown_to_start_date(@rounds_dropdown.first) == @round.start_date)
+      # referee : request button appears only before end of the last round
+      @new_round_request = days_left.positive? && @new_round_required
+    end
+  end
 
+  def index_expanded
     # display all boxes and the shared select_round form
     @page_from = params[:page_from]
     set_club_round # set variables @club, @round and @boxes (ApplicationController)

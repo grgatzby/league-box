@@ -12,12 +12,17 @@ fr:
       my_current_box: ma box en cours
       my_box: ma box
       all_boxes_link: les box
+    index_expanded:
+      all_box_title: Les box du round (vue déployée)
+      all_boxes_btn: vue compacte
+      to_csv_btn: 📄 fichier CSV
     index:
-      all_box_title: Les box du round
+      all_box_title: Les box du round (vue compacte)
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom, rang, matchs joués, points<br /><br />Cliquer sur une box pour voir les détails des matchs.
       my_current_box: (ma box en cours)
       my_box: (ma box)
+      open_view_btn: vue déployée
       create_round_btn: ⎷ créer le prochain round
       request_round_btn: faire créer le prochain round
       valid_round_flash: "League table annuel: choisir un round valide"

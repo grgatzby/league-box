@@ -125,7 +125,7 @@
 
 .click-cell {
   color: $gray;
-
+  text-decoration: none;
   &:hover {
     transform: scale(1.1);
     color: $orange;

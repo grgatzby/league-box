@@ -167,7 +167,7 @@ nl:
       li03: het aantal gespeelde wedstrijden
       li04: accumulatie van punten
       p08_html: De <span class='color-tennis-red'>huidige speler</span> en de <span class='color-tennis-red'>boxtitel</span> worden in rood weergegeven.
-      p09: Als u op een vakje klikt, gaat u naar de rasterweergave.
+      p09_html: Als u op een vakje klikt, gaat u naar de rasterweergave.<br>Een klik op de <b>uitgebreide weergave</b> toont alle boxen in de rasterweergave.<br>
       p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (admin),
       p10b_html: of <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span> (referee).
       p11_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span>.

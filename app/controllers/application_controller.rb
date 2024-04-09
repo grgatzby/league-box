@@ -57,7 +57,8 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    user_box_scores_path
+    # user_box_scores_path
+    boxes_path
   end
 
   def set_club_round
