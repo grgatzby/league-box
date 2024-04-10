@@ -15,7 +15,6 @@ en:
     index_expanded:
       all_box_title: All boxes in the round (expanded)
       all_boxes_btn: compact view
-      message_box_pop: Click here to switch to single box view
       to_csv_btn: 📄 CSV file
     index:
       all_box_title: All boxes in the round (compact)
@@ -82,6 +81,8 @@ en:
     no_match_cell:
       not_played: Not played
       enter_score: Enter match score
+    grid_view:
+      message_box_pop: Click here to switch to single box list view
     show:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>Table view</span> page displays all matches in a table, and give players access to the match cards.<br>
