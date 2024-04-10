@@ -15,7 +15,6 @@ nl:
     index_expanded:
       all_box_title: De boxen van de ronde (uitgebreide)
       all_boxes_btn: compacte weergave
-      message_box_pop: Klik hier om over te schakelen naar de weergave met één box
       to_csv_btn: 📄 naar CSV-bestand
     index:
       all_box_title: De boxen van de ronde (compacte)
@@ -82,6 +81,8 @@ nl:
     no_match_cell:
       not_played: Nog niet gespeeld
       enter_score: Voer uw score in
+    grid_view:
+      message_box_pop: Klik hier om naar dit box in de resultaten lijst te gaan
     show:
       intro_html: >
         Voor een box, geeft de <span class='bold-font color-tennis-blue'>Resultatenraster</span> pagina alle wedstrijden in een tabel weer en geeft spelers toegang tot de wedstrijdkaarten.<br>
