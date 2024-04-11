@@ -13,11 +13,11 @@ en:
       my_box: my box
       all_boxes_link: all boxes
     index_expanded:
-      all_box_title: All boxes in the round (expanded)
+      all_box_title: All boxes in the round (expanded view)
       all_boxes_btn: compact view
       to_csv_btn: 📄 CSV file
     index:
-      all_box_title: All boxes in the round (compact)
+      all_box_title: All boxes in the round (compact view)
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Name, rank, games played, points.<br /><br />Click on a box to view match details
       my_current_box: (my current box)

@@ -43,7 +43,8 @@
   .print-all-content, .chatroom .messages {
     justify-content: space-between;
     // max-height: auto !important;
-    width: auto;
+    // width: auto;
+    // width: 81rem;
     // height: auto;
     position: relative;
     overflow: visible !important;
@@ -52,7 +53,7 @@
   @page {
     margin: 0px;
   }
-  
+
   body {
     padding-top: 72px;
     padding-bottom: 72px ;
