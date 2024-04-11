@@ -40,11 +40,15 @@
     display: flex;
   }
 
-  .print-all-content, .chatroom .messages {
+  .chatroom .messages {
     justify-content: space-between;
-    // max-height: auto !important;
     width: auto;
-    // height: auto;
+    position: relative;
+    overflow: visible !important;
+  }
+
+  .print-all-content {
+    justify-content: space-between;
     position: relative;
     overflow: visible !important;
   }
@@ -52,7 +56,7 @@
   @page {
     margin: 0px;
   }
-  
+
   body {
     padding-top: 72px;
     padding-bottom: 72px ;

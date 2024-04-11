@@ -15,11 +15,12 @@
           <%# link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
         <% end %>
         <%= link_to t('.all_boxes_btn'), boxes_path, class: "btn buttons-shape btn-green dont-print mb-3" %>
-        <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
+        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
       </div>
     </div>
 
-    <div class="print-all-content print-boxes-league box-scroller">
+    <div class="print-all-content box-scroller">
+
       <% @boxes.each do |box| %>
         <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path %>
         <br>
