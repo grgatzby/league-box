@@ -40,12 +40,15 @@
     display: flex;
   }
 
-  .print-all-content, .chatroom .messages {
+  .chatroom .messages {
     justify-content: space-between;
-    // max-height: auto !important;
-    // width: auto;
-    // width: 81rem;
-    // height: auto;
+    width: auto;
+    position: relative;
+    overflow: visible !important;
+  }
+
+  .print-all-content {
+    justify-content: space-between;
     position: relative;
     overflow: visible !important;
   }
