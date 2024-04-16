@@ -2,7 +2,7 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if @box %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
-    <%= render "grid_view", box: @box, is_this_my_box: @is_this_my_box, box_matches: @box_matches, page_from: box_path(@box) %>
+    <%= render "grid_view", box: @box, is_this_my_box: @is_this_my_box, box_matches: @box_matches, page_from: box_path(@box), clear_fromat: false %>
     <br>
   <% else %>
     <h3><%= t("boxes.table_view").capitalize %></h3><br>

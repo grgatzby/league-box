@@ -16,6 +16,7 @@ en:
       all_box_title: All boxes in the round (expanded view)
       all_boxes_btn: compact view
       to_csv_btn: 📄 CSV file
+      clear_format: Clear format
     index:
       all_box_title: All boxes in the round (compact view)
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
