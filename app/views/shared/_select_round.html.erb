@@ -1,7 +1,7 @@
 <div class="dont-print">
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= hidden_field_tag(:club_id, @club.id) %>
-    <%= hidden_field_tag(:clear_format, clear_format) %>
+    <%= hidden_field_tag(:clear_format, clear_format) if local_assigns[:clear_format] %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
       data-bs-content="<%= t '.select_round_label' %>">

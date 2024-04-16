@@ -1,7 +1,7 @@
 <%# no match played (table view) %>
 <% if (box == @my_current_box && (current_user == column_player || current_user == line_player)) \
-      || (["admin", "referee", "player referee"].include?(current_user.role) && @round == @current_round) \
-      && (page_from != index_expanded_path) %>
+      || current_user.role == "admin" \
+      || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) %>
   <div class="click-cell">
     <br><%= t '.enter_score' %>
     <%# click on opponent no-match line to enter a new match score %>
