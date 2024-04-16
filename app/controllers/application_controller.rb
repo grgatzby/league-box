@@ -91,6 +91,7 @@ class ApplicationController < ActionController::Base
       end
       @round_nb = round_label(@round)
       @boxes = @round.boxes.includes([user_box_scores: :user]).sort
+      # @boxes = @round.boxes.sort
     end
   end
 

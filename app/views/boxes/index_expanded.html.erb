@@ -9,6 +9,10 @@
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <%= render "shared/select_club", fallback_path: index_expanded_path %>
       <%= render "shared/select_round", fallback_path: index_expanded_path %>
+      <%= form_with method: :get do |form| %>
+        <%= check_box_tag(:clear_fromat,"1", params[:clear_fromat].eql?("1"), {onchange: "this.form.submit();"}) %>
+        <%= form.label :clear_fromat, t(".clear_format") %>
+      <% end %>
       <div>
         <%= render 'shared/stats' %>
         <% if current_user && current_user.role != "player" %>
@@ -20,9 +24,8 @@
     </div>
 
     <div class="print-all-content box-scroller">
-
       <% @boxes.each do |box| %>
-        <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path %>
+        <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_fromat: params[:clear_fromat] == "1" %>
         <br>
       <% end %>
     </div>

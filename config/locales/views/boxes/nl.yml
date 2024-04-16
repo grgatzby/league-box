@@ -16,6 +16,7 @@ nl:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
       all_boxes_btn: compacte weergave
       to_csv_btn: 📄 naar CSV-bestand
+      clear_format: Zijn format
     index:
       all_box_title: De boxen van de ronde (compacte weergave)
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />

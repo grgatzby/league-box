@@ -7,7 +7,7 @@ if match %>
   <div class="click-cell">
     <%# match played display %>
     <%= render "match_score", user_score: user_score, opponent_score: opponent_score %>
-    <%= "#{l(match.time, format: :wwwddmmm_date)}" %>
+    <%= "#{l(match.time, format: :wwwddmmm_date)}" if page_from != index_expanded_path %>
     <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
     <span class=" color-tennis-blue">
       <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>

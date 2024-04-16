@@ -27,25 +27,28 @@
 }
 
 .grid-container {
-
   padding: 5px;
 
-  #grid-lines>.row>.grid-columns {
+
+  #grid-lines>.row {
     height: 5.5rem;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    border: 1px solid rgba(39,41,43,0.1);
-    position: relative;
+    .grid-columns {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      border: 1px solid rgba(39,41,43,0.1);
+      position: relative;
+    }
   }
 
-  .first-col-lines>.col-12 {
+  .first-col-lines {
     height: 5.5rem;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    // border: 1px solid rgba(39,41,43,0.1);
+    .col-12 {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      // border: 1px solid rgba(39,41,43,0.1);
+    }
   }
 }
-
 .mobile-grid-container {
   padding: 5px;
 
