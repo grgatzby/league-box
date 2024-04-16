@@ -10,8 +10,10 @@
       <%= render "shared/select_club", fallback_path: index_expanded_path %>
       <%= render "shared/select_round", fallback_path: index_expanded_path %>
       <%= form_with method: :get do |form| %>
-        <%= check_box_tag(:clear_fromat,"1", params[:clear_fromat].eql?("1"), {onchange: "this.form.submit();"}) %>
-        <%= form.label :clear_fromat, t(".clear_format") %>
+        <%= hidden_field_tag(:round_id, @round.id) %>
+        <%= hidden_field_tag(:club_id, @round.club_id) %>
+        <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), {onchange: "this.form.submit();"}) %>
+        <%= form.label :clear_format, t(".clear_format") %>
       <% end %>
       <div>
         <%= render 'shared/stats' %>
@@ -25,7 +27,7 @@
 
     <div class="print-all-content box-scroller">
       <% @boxes.each do |box| %>
-        <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_fromat: params[:clear_fromat] == "1" %>
+        <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_format: params[:clear_format] == "1" %>
         <br>
       <% end %>
     </div>
