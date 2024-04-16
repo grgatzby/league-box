@@ -1,10 +1,11 @@
 <div class="dont-print">
   <%= form_with url: fallback_path, method: :get do |form| %>
-    <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round') %>
     <%= hidden_field_tag(:club_id, @club.id) %>
+    <%= hidden_field_tag(:clear_format, clear_format) %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
       data-bs-content="<%= t '.select_round_label' %>">
+      <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round') %>
       <% if @round%>
         <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
       <% else %>

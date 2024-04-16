@@ -7,8 +7,8 @@
   </div>
   <% if @round %>
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
-      <%= render "shared/select_club", fallback_path: index_expanded_path %>
-      <%= render "shared/select_round", fallback_path: index_expanded_path %>
+      <%= render "shared/select_club", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
+      <%= render "shared/select_round", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
       <%= form_with method: :get do |form| %>
         <%= hidden_field_tag(:round_id, @round.id) %>
         <%= hidden_field_tag(:club_id, @round.club_id) %>
