@@ -3,10 +3,12 @@ class BoxesController < ApplicationController
   helper_method :box_matches, :my_box?  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
-  SCORES_HEADERS = ["first_name_player", "last_name_player",
+  SCORE_HEADERS = ["first_name_player", "last_name_player",
                     "first_name_opponent", "last_name_opponent",
                     "points_player", "points_opponent",
                     "box_number", "score_winner", "score_winner2"]
+  SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
+                    "email_opponent", "phone_number_opponent", "role_opponent"]
 
   def index
     # display all boxes and the shared select_round form
@@ -141,7 +143,7 @@ class BoxesController < ApplicationController
       #                   "box_number", "score_winner", "score_winner2"]
       # REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
       #                    "email_opponent", "phone_number_opponent", "role_opponent"]
-writer << SCORES_HEADERS
+      writer << SCORES_HEADERS + SCORE_HEADERS_PLUS
       matches.each_with_index do |match, index|
         match_scores = match.user_match_scores
         writer << [match_scores[0].user.first_name, match_scores[0].user.last_name,
