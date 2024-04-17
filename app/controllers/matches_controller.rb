@@ -1,9 +1,9 @@
 class MatchesController < ApplicationController
-  REQUIRED_SCORE_HEADERS = ["first_name_player", "last_name_player",
+  REQUIRED_SCORES_HEADERS = ["first_name_player", "last_name_player",
                             "first_name_opponent", "last_name_opponent",
                             "points_player", "points_opponent",
                             "box_number", "score_winner", "score_winner2"]
-  REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
+  REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
   SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
 
@@ -251,7 +251,7 @@ class MatchesController < ApplicationController
       # user_box_scores are already created with users loading the round create CSV file
       # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
       headers = CSV.foreach(csv_file, col_sep: delimiter).first
-      if headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORE_HEADERS + REQUIRED_SCORE_HEADERS_PLUS).sort
+      if headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS).sort
         # create and fill user_match_scores and matches
         input_date = Time.now
         user_match_scores = []
