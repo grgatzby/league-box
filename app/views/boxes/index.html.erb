@@ -13,7 +13,11 @@
       <div>
         <%= render 'shared/stats' %>
         <% if current_user && current_user.role != "player" %>
-          <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
+          <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+              data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+              data-bs-content="<%= t '.message_csv_pop' %>">
+            <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
+          </span>
         <% end %>
         <%= link_to t('.open_view_btn'), index_expanded_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-green dont-print mb-3" %>
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>

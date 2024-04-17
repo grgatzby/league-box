@@ -29,6 +29,13 @@ nl:
       to_text_btn: 📄 tekstbestand
       to_csv_btn: 📄 CSV-bestand
       all_boxes_link: de boxen
+      message_csv_text_pop: <b>league table exporteren</b> naar tekstbestand
+      message_csv_round_pop: >
+        <b>round league table exporteren</b> naar CSV-bestand<br />player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won, box_number
+      message_csv_pop: >
+        <b>toernooi league table exporteren</b> naar CSV-bestand<br />player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won
     table_data:
       matches:
         zero: 0 wed.

@@ -32,6 +32,13 @@ en:
       to_text_btn: 📄 text file
       to_csv_btn: 📄 CSV file
       all_boxes_link: all boxes
+      message_csv_text_pop: <b>export league table</b> to text file
+      message_csv_round_pop: >
+        <b>export round league table</b> to CSV file<br />player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won, box_number
+      message_csv_pop: >
+        <b>export tournament league table</b> to CSV file<br />player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won
     table_data:
       matches:
         zero: 0 matches
