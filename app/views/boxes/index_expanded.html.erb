@@ -1,4 +1,4 @@
-<!-- list of all boxes -->
+<!-- list of all boxes in expanded view -->
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
@@ -9,20 +9,25 @@
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <%= render "shared/select_club", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
       <%= render "shared/select_round", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
-      <%= form_with method: :get do |form| %>
-        <%= hidden_field_tag(:round_id, @round.id) %>
-        <%= hidden_field_tag(:club_id, @round.club_id) %>
-        <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), {onchange: "this.form.submit();"}) %>
-        <%= form.label :clear_format, t(".clear_format") %>
-      <% end %>
       <div>
         <%= render 'shared/stats' %>
         <% if current_user && current_user.role != "player" %>
-          <%# link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
+          <%= link_to t('.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
         <% end %>
         <%= link_to t('.all_boxes_btn'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-green dont-print mb-3" %>
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
       </div>
+    </div>
+    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+        data-bs-content="<%= t '.message_box_pop' %>" style="width: 15%">
+      <%= form_with method: :get do |form| %>
+        <%# checkbox to remove formatting if page does not display well on screen %>
+        <%= hidden_field_tag(:round_id, @round.id) %>
+        <%= hidden_field_tag(:club_id, @round.club_id) %>
+        <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
+        <%= form.label :clear_format, t(".clear_format") %>
+      <% end %>
     </div>
 
     <div class="print-all-content box-scroller">
@@ -32,18 +37,6 @@
       <% end %>
     </div>
 
-    <div class="buttons-wrap dont-print">
-      <% if current_user == @admin %>
-        <%= link_to t(".load_scores"), load_scores_path(round_id: @round.id), class: "btn buttons-shape btn-aqua me-3" %>
-      <% end %>
-      <% if current_user && current_user.role == "admin" && @new_round_required %>
-          <%# allow referee/admin to create next round up to 15 days before or 300 days after end of last round
-          time related condition embedded in @new_round_required %>
-          <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn buttons-shape btn-aqua" %>
-      <% elsif current_user && (["referee", "player referee"].include?(current_user.role)) && @new_round_request%>
-          <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn buttons-shape btn-aqua" %>
-      <% end %>
-    </div>
   <% else %>
     <div class="dont-print">
       <%# if no round selected, invoke forms to select a club (admin only) and a round %>

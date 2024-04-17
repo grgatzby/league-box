@@ -1,13 +1,14 @@
 <%# no match played (table view) %>
 <% if (box == @my_current_box && (current_user == column_player || current_user == line_player)) \
-      || current_user.role == "admin" \
-      || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) %>
-  <div class="click-cell">
+   || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) \
+   || current_user.role == "admin" %>
+  <div class="click-cell dont-print">
     <br><%= t '.enter_score' %>
     <%# click on opponent no-match line to enter a new match score %>
     <%= link_to '', new_match_path(player: line_player.id, opponent: column_player.id, round_id: @round.id, \
                                     page_from: page_from), class: "box-link" %>
   </div>
+  <div class="will-print"><br><%= t '.not_played' %></div>
 <% else %>
   <span style="color:grey">
     <br><%= t '.not_played' %>

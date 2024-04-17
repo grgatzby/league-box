@@ -8,7 +8,7 @@
        message += "#{t(".pop02_html")}"
      end
      my_box_text = @is_this_my_box ? "#{render "shared/fullname", user: current_user} \
-                (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
+                   (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">

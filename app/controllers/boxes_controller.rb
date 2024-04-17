@@ -3,6 +3,10 @@ class BoxesController < ApplicationController
   helper_method :box_matches, :my_box?  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+  SCORES_HEADERS = ["first_name_player", "last_name_player",
+                    "first_name_opponent", "last_name_opponent",
+                    "points_player", "points_opponent",
+                    "box_number", "score_winner", "score_winner2"]
 
   def index
     # display all boxes and the shared select_round form
@@ -22,20 +26,7 @@ class BoxesController < ApplicationController
   end
 
   def index_expanded
-    # display all boxes and the shared select_round form
-    @page_from = params[:page_from]
-    set_club_round # set variables @club, @round and @boxes (ApplicationController)
-    # @my_box = 0
-    # @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
-    @my_box = my_own_box(@round)
-    if @round
-      init_stats
-      days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
-      # admin : create button appears in last days or after if round is the most recent
-      @new_round_required = (days_left <= DAYS_BEFORE_NEW_ROUND_CREATION) && (round_dropdown_to_start_date(@rounds_dropdown.first) == @round.start_date)
-      # referee : request button appears only before end of the last round
-      @new_round_request = days_left.positive? && @new_round_required
-    end
+    index
   end
 
   def show
@@ -111,16 +102,17 @@ class BoxesController < ApplicationController
     referee = User.find_by("club_id = ? AND role like ?", round.club_id, "%referee%")
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
-    boxes = round.boxes
-    table = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
+    boxes = round.boxes.includes([user_box_scores:])
+    user_box_scores = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
     CSV.open(file, 'w') do |writer|
       # table headers
+      # PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
       writer << PLAYERS_HEADERS
-      table.each_with_index do |user_bs, index|
-        writer << [user_bs.user.id, round.club_id,
-                   user_bs.user.email,
-                   user_bs.user.first_name, user_bs.user.last_name, user_bs.user.nickname,
-                   user_bs.user.phone_number, user_bs.user.role]
+      user_box_scores.each_with_index do |ubs, index|
+        writer << [ubs.user_id, round.club_id,
+                   ubs.user.email,
+                   ubs.user.first_name, ubs.user.last_name, ubs.user.nickname,
+                   ubs.user.phone_number, ubs.user.role]
       end
       writer << [referee.id, round.club_id,
                  referee.email,
@@ -130,7 +122,45 @@ class BoxesController < ApplicationController
     download_csv(file.pathmap, "Boxes-R#{round_label(round)}", round.club.name)
   end
 
+  def round_scores_to_csv
+    # export for the selected round the scores to a csv file
+    # complying with the expected format for matches#create_scores
+    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
+    round = Round.find(params[:round_id])
+    referee = User.find_by("club_id = ? AND role like ?", round.club_id, "%referee%")
+    # file = Rails.root.join('public', 'data.csv')
+    file = "#{Rails.root}/public/data.csv"
+    boxes = round.boxes.includes([user_box_scores: :user, matches: :user_match_scores])
+    user_box_scores = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
+    matches = boxes.map(&:matches).flatten;0 # ";0" stops output.
+    CSV.open(file, 'w') do |writer|
+      # table headers
+      # SCORES_HEADERS = ["first_name_player", "last_name_player",
+      #                   "first_name_opponent", "last_name_opponent",
+      #                   "points_player", "points_opponent",
+      #                   "box_number", "score_winner", "score_winner2"]
+      writer << SCORES_HEADERS
+      matches.each_with_index do |match, index|
+        match_scores = match.user_match_scores
+        writer << [match_scores[0].user.first_name, match_scores[0].user.last_name,
+                   match_scores[1].user.first_name, match_scores[1].user.last_name,
+                   match_scores[0].points, match_scores[1].points,
+                   match.box.box_number, score_winner_board(match), score_winner_board(match) ]
+      end
+    end
+    download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name)
+  end
+
   private
+
+  def score_winner_board(match)
+    board0 = match.user_match_scores[0].is_winner ? match.user_match_scores[0] : match.user_match_scores[1]
+    board1 = match.user_match_scores[1].is_winner ? match.user_match_scores[0] : match.user_match_scores[1]
+
+    board = "#{board0.score_set1}-#{board1.score_set1} #{board0.score_set2}-#{board1.score_set2}"
+    board += " #{board0.score_tiebreak}-#{board1.score_tiebreak}" if board0.score_tiebreak + board1.score_tiebreak > 0
+    board
+  end
 
   def user_matches(user, box)
     # for a given user, select match scores in box, and returns array of matches

@@ -1,83 +1,86 @@
-id,club_id,email,first_name,last_name,nickname,phone_number,role
-2986,73,gareth.isaac2@gmail.com,Gareth,Isaac,GarethI,07990 507 277,player
-3015,73,burdyhk@gmail.com,George,Burdon,GeorgeB,07721 693 399,player
-2992,73,mchulme2015@gmail.com,Michael,Hulme,MichaelH,07366 308 996,player
-2994,73,sam.3897@hotmail.com,Sam,Behrens,SamB,07908 817 425,player
-3007,73,miguelnavarro26@hotmail.com,Miguel,Navarro,MiguelN,07717 884 405,player
-3000,73,oliviercollart@outlook.com,Olivier,Collart,OlivierC,07788 133 259,player
-3006,73,daniele.chiarella@icloud.com,Daniele,Chiarella,DanieleC,07583 685 503,player
-2993,73,roger.ridsdillsmith@googlemail.com,Roger,Ridsdill Smith,RogerR,07768 386 241,player
-2987,73,daspickavance@aol.com,Dom,Pickavance,DomP,07939 724 601,player
-3010,73,jamesmccrossen@hotmail.co.uk,James,McCrossen,JamesM,07828 998 077,player
-3002,73,henryforsyth@hotmail.com,Henry,Forsyth,HenryF,07710 380 902,player
-3069,73,juliengurcel@hotmail.co.uk,Julien,Gurcel,JulienG,07533 440 442,player
-3001,73,karimbazzi@homes-one.com,Karim,Bazzi,KarimB,07958 485 611,player
-2990,73,matteo.moro1@googlemail.com,Matteo,Moro,MatteoM,07552 219 448,player
-3088,73,edward.roussel@gmail.com,Edward,Roussel,EdwardR,07765 025 561,player
-3022,73,eyres.harry@gmail.com,Harry,Eyres,HarryE,07854 419 476,player
-3029,73,orecchiae@gmail.com,Emilio,Orecchia,EmilioO,07773 909 848,player
-3009,73,mark@markmather.co.uk,Mark,Mather,MarkM,07973 750 793,player
-3020,73,i.gladman@yahoo.com,Ian,Gladman,IanG,07785 596 936,player
-3044,73,mike@hla.net,Mike,Wells,MikeW,07831 358 456,player
-3023,73,saeed@cat-ltd.co.uk,Saeed,Ferdos,SaeedF,07958 740 581,player
-3038,73,laurent@fplhomes.com,Laurent,Lakatos,LaurentL,07899 996 962,player
-3024,73,sam@whittakers.net,Sam,Whittaker,SamW,07979 706 569,player
-3017,73,lf@cyruscapital.com,Lucien,Farrell,LucienF,07867 535 510,player
-3093,73,agunn@btinternet.com,Aneta,Gunn,AnetaG,07801 568 000,player
-3012,73,varouts@gmail.com,George,Varoutsis,GeorgeV,07786 704 074,player
-3025,73,ajameyer@yahoo.com,James,Meyer,JamesM,07470 001 653,player
-3037,73,sevauxj@gmail.com,Julien,Sevaux,JulienS,07802 961 186,player
-3056,73,virginiabrix@aol.com,Virginia,Brix,VirginiaB,07788 414 344,player
-3079,73,b00629659@essec.edu,Marie,Jolly,MarieJ,33 06421 76739,player
-3026,73,dom.moro@gmail.com,Dom,Moro,DomM,07392 871 605,player
-3041,73,fausto.zanetton@gmail.com,Fausto,Zanetton,FaustoZ,07899 985 840,player
-3027,73,deburetel@because.tv,Emmanuel,DeBuretel,EmmanuelD,0207 371 2274,player
-3051,73,jbperrin@ymail.com,Jean-Baptiste,Perrin,Jean-BaptisteP,07514 819 853,player
-3042,73,aldomareuse1@gmail.com,Aldo,Mareuse,AldoM,07710 349 275,player
-3045,73,charlesgouilliard@outlook.com,Charles,Gouilliard,CharlesG,07775 186 790,player
-3039,73,kmeducation27@gmail.com,Riki,Mian,RikiM,07784 392 324,player
-3030,73,elisa.kerr@btinternet.com,Elisa,Kerr,ElisaK,07767 885 780,player
-3050,73,mattfriend05@gmail.com,Matt,Friend,MattF,07796 511 977,player
-3047,73,mpalencia@btinternet.com,Mario,Palencia,MarioP,07778 595 959,player
-3036,73,catherine-whittle@outlook.com,Catherine,Whittle,CatherineW,07949 053 231,player
-3060,73,grcwatson@hotmail.con,Georgie,Watson,GeorgieW,07900 018 239,player
-3048,73,stephenedwardbehrens@hotmail.com,Stephen,Behrens,StephenB,0,player
-3028,73,yaoyiyi@hotmail.com,Yi,Buckley,YiB,07968 702 730,player
-3040,73,sophie.s.muir@gmail.com,Sophie,Muir,SophieM,‭07793 744 459‬,player
-3077,73,gkingfriend@gmail.com,Gina,King,GinaK,07551 883 680,player
-3092,73,andreea_petreanu@yahoo.co.uk,Andrea,Petreanu,AndreaP,07887 607 295,player
-3049,73,joe.cerrell@gatesfoundation.org,Joe,Cerrell,JoeC,07943 175 032,player
-3061,73,dorothee.de.la.chevardiere@gmail.com,Dorothée,de La Chevardiere,Dorothéed,07500 774 791,player
-3032,73,elisaknebel@msn.com,Elisa,Knebel,ElisaK,07397 171 664,player
-3052,73,chrisogden@compuserve.com,Christopher,Ogden,ChristopherO,07786 932 999,player
-3043,73,robertbeton@hotmail.co.uk,Robert,Beton,RobertB,07501 989 312,player
-3090,73,p_bukaty@hotmail.com,Paulina,Bukaty,PaulinaB,07808 506 195,player
-3087,73,margauxmmeyer@yahoo.com,Margaux,Meyer,MargauxM,07305 096669,player
-3057,73,peterjkarlsen@gmail.com,Peter,Karlsen,PeterK,07785 528 190,player
-3068,73,candidauren@icloud.com,Candida,Uren,CandidaU,07981 552 112,player
-3071,73,larkbruce@gmail.com,Linda,Bruce,LindaB,07480 295 323,player
-3072,73,nicholaslambardescott@gmail.com,Nick,Lambarde-Scott,NickL,07774 659 947,player
-3033,73,th@idler.co.uk,Tom,Hodgkinson,TomH,07970 720 352,player
-3059,73,reza.f@mac.com,Reza,Farhat,RezaF,07795 430 094,player
-3058,73,romaphul@gmail.com,Roma,Phulwani,RomaP,07909 988 787,player
-3008,73,dnikolako@gmail.com,Dimitrios,Nikolakopoulos,DimitriosN,07956 365 038,player
-2998,73,d.frollani@gmail.com,Daniele,Frollani,DanieleF,07427 442 985,player
-3014,73,michael.omara@brcm.co.uk,Michael,Omara,MichaelO,07748 622 314,player
-3013,73,d_f_sharp@hotmail.com,Dan,Sharp,DanS,07900 901 369,player
-2981,73,natashamardinian@hotmail.com,Natasha,Mardinian,NatashaM,07927 271 665,player
-2982,73,spyros_varoutsis@hotmail.com,Spyridon,Varoutsis,SpyridonV,07901 710 916,player
-2984,73,matteogabba@gmail.com,Matteo,Gabba,MatteoG,07808 317 305,player
-2995,73,clarkconrad@gmail.com,Conrad,Clark,ConradC,07949 833 587,player
-2988,73,willsarne@icloud.com,Will,Sarne,WillS,07837 615 370,player
-3003,73,adam.balon@innocentdrinks.co.uk,Adam,Balon,AdamB,07802 851 461,player
-2996,73,samhkeat@hotmail.com,Sam,Keat,SamK,07933 621 094,player
-3011,73,paolo.zampiga@icloud.com,Paolo,Zampiga,PaoloZ,07776 192 869,player
-3016,73,charles.hawes@simmons-simmons.com,Charles `,Hawes,Charles `H,07921 584 449,player
-3031,73,nicholas.mellor@lsngroup.org,Nicholas,Mellor,NicholasM,07971 809 262,player
-3021,73,jamie.younger@saffery.com,Jamie,Younger,JamieY,07827 278 797,player
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee
-3067,73,andrew.melrose@hotmail.co.uk,Andrew,Melrose,AndrewM,07795 528 375,player
-3053,73,martinlangleyjones@gmail.com,Martin,Jones,MartinJ,07798 811 784,player
-3091,73,rbirnbaum@tcv.com,Rafael,Birnbaum,RafaelB,07599 479 929,player
-3055,73,vdang93@gmail.com,Vinh,Dang,VinhD,07454 819 671,player
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,points_player,points_opponent,box_number,score_winner,score_winner2
+Gareth,Isaac,Michael,Hulme,20,4,2,4-1 4-3,4-1 4-3
+George,Burdon,Gareth,Isaac,5,20,2,4-3 4-2,4-3 4-2
+George,Burdon,Michael,Hulme,20,13,2,2-4 4-3 10-2,2-4 4-3 10-2
+Sam,Behrens,Gareth,Isaac,20,2,2,4-1 4-1,4-1 4-1
+Sam,Behrens,George,Burdon,20,4,2,4-2 4-2,4-2 4-2
+Sam,Behrens,Michael,Hulme,20,12,2,3-4 4-2 10-2,3-4 4-2 10-2
+Miguel,Navarro,Daniele,Chiarella,20,3,4,4-0 4-3,4-0 4-3
+Miguel,Navarro,Roger,Ridsdill Smith,20,11,4,2-4 4-1 10-7,2-4 4-1 10-7
+Julien,Gurcel,James,McCrossen,4,20,5,4-2 4-2,4-2 4-2
+Henry,Forsyth,Julien,Gurcel,20,12,5,4-2 3-4 11-9,4-2 3-4 11-9
+Dom,Pickavance,James,McCrossen,20,13,5,1-4 4-3 10-7,1-4 4-3 10-7
+Henry,Forsyth,James,McCrossen,20,1,5,4-1 4-0,4-1 4-0
+Harry,Eyres,Karim,Bazzi,20,4,6,4-2 4-2,4-2 4-2
+Karim,Bazzi,Matteo,Moro,20,4,6,4-2 4-2,4-2 4-2
+Ian,Gladman,Mark,Mather,20,2,8,4-0 4-2,4-0 4-2
+Ian,Gladman,Mike,Wells,20,3,8,4-2 4-1,4-2 4-1
+Emilio,Orecchia,Mark,Mather,20,13,8,1-4 4-3 10-3,1-4 4-3 10-3
+Mike,Wells,Emilio,Orecchia,20,13,8,2-4 4-3 10-5,2-4 4-3 10-5
+Mark,Mather,Mike,Wells,20,13,8,3-4 4-3 10-6,3-4 4-3 10-6
+Sam,Whittaker,Laurent,Lakatos,20,3,9,4-1 4-2,4-1 4-2
+Sam,Whittaker,Lucien,Farrell,20,6,9,4-3 4-3,4-3 4-3
+Lucien,Farrell,Saeed,Ferdos,20,2,9,4-1 4-1,4-1 4-1
+Lucien,Farrell,Laurent,Lakatos,20,3,9,4-1 4-2,4-1 4-2
+Saeed,Ferdos,Laurent,Lakatos,20,10,9,3-4 4-0 10-8,3-4 4-0 10-8
+George,Varoutsis,Julien,Sevaux,20,4,11,4-2 4-2,4-2 4-2
+James,Meyer,George,Varoutsis,20,11,11,1-4 4-1 12-10,1-4 4-1 12-10
+James,Meyer,Julien,Sevaux,20,12,11,4-2 1-4 10-8,4-2 1-4 10-8
+Virginia,Brix,Fausto,Zanetton,20,13,12,0-4 4-3 10-4,0-4 4-3 10-4
+Virginia,Brix,Marie,Jolly,20,1,12,4-1 4-0,4-1 4-0
+Dom,Moro,Virginia,Brix,20,0,12,4-0 4-0,4-0 4-0
+Dom,Moro,Marie,Jolly,20,2,12,4-1 4-1,4-1 4-1
+Dom,Moro,Fausto,Zanetton,20,3,12,4-1 4-2,4-1 4-2
+Emmanuel,DeBuretel,Jean-Baptiste,Perrin,20,4,13,4-1 4-3,4-1 4-3
+Emmanuel,DeBuretel,Aldo,Mareuse,20,3,13,4-2 4-1,4-2 4-1
+Charles,Gouilliard,Jean-Baptiste,Perrin,20,12,13,4-2 0-4 7-0,4-2 0-4 7-0
+Jean-Baptiste,Perrin,Aldo,Mareuse,20,5,13,4-3 4-2,4-3 4-2
+Aldo,Mareuse,Charles,Gouilliard,20,4,13,4-1 4-3,4-1 4-3
+Riki,Mian,Mario,Palencia,20,2,14,4-2 4-0,4-2 4-0
+Riki,Mian,Elisa,Kerr,20,13,14,4-3 2-4 7-5,4-3 2-4 7-5
+Elisa,Kerr,Matt,Friend,20,10,14,4-0 2-4 8-6,4-0 2-4 8-6
+Elisa,Kerr,Mario,Palencia,20,5,14,4-3 4-2,4-3 4-2
+Matt,Friend,Mario,Palencia,20,2,14,4-1 4-1,4-1 4-1
+Catherine,Whittle,Yi,Buckley,20,5,15,4-2 4-3,4-2 4-3
+Catherine,Whittle,Georgie,Watson,20,2,15,4-0 4-2,4-0 4-2
+Yi,Buckley,Georgie,Watson,20,4,15,4-2 4-2,4-2 4-2
+Catherine,Whittle,Stephen,Behrens,20,2,15,4-0 4-2,4-0 4-2
+Stephen,Behrens,Georgie,Watson,20,11,15,4-1 3-4 7-2,4-1 3-4 7-2
+Stephen,Behrens,Yi,Buckley,20,13,15,0-4 4-3 7-5,0-4 4-3 7-5
+Joe,Cerrell,Andreea,Petreanu,20,2,17,4-2 4-0,4-2 4-0
+Sophie,Muir,Gina,King,20,1,17,4-1 4-0,4-1 4-0
+Joe,Cerrell,Gina,King,20,0,17,4-0 4-0,4-0 4-0
+Sophie,Muir,Andreea,Petreanu,20,1,17,4-0 4-1,4-0 4-1
+Joe,Cerrell,Sophie,Muir,20,12,17,4-2 1-4 11-9,4-2 1-4 11-9
+Gina,King,Andreea,Petreanu,20,10,17,1-4 4-0 7-4,1-4 4-0 7-4
+Elisa,Knebel,Dorothée,de La Chevardiere,20,13,18,1-4 4-3 10-3,1-4 4-3 10-3
+Elisa,Knebel,Robert,Beton,20,12,18,3-4 4-2 10-7,3-4 4-2 10-7
+Paulina,Bukaty,Candida,Uren,20,12,19,4-2 3-4 10-4,4-2 3-4 10-4
+Candida,Uren,Margaux,Meyer,20,3,19,4-2 4-1,4-2 4-1
+Paulina,Bukaty,Margaux,Meyer,20,11,19,4-1 1-4 10-5,4-1 1-4 10-5
+Linda,Bruce,Nick,Lambarde-Scott,20,11,20,4-1 3-4 7-5,4-1 3-4 7-5
+Tom,Hodgkinson,Linda,Bruce,20,12,20,2-4 4-2 7-3,2-4 4-2 7-3
+Reza,Farhat,Roma,Phulwani,20,3,21,4-0 4-3,4-0 4-3
+Daniele,Frollani,Dimitrios,Nikolakopoulos,20,4,7,4-3 4-1,4-3 4-1
+Daniele,Frollani,Michael,Omara,20,4,7,4-1 4-3,4-1 4-3
+Matteo,Gabba,Natasha,Mardinian,20,3,1,4-1 4-2,4-1 4-2
+Natasha,Mardinian,Conrad,Clark,1,20,1,4-1 4-0,4-1 4-0
+Conrad,Clark,Matteo,Gabba,20,12,1,3-4 4-2 8-6,3-4 4-2 8-6
+Spyridon,Varoutsis,Natasha,Mardinian,20,2,1,4-1 4-1,4-1 4-1
+Adam,Balon,Will,Sarne,20,3,3,4-0 4-3,4-0 4-3
+Adam,Balon,Paolo,Zampiga,20,3,3,4-2 4-1,4-2 4-1
+Will,Sarne,Paolo,Zampiga,20,4,3,4-3 4-1,4-3 4-1
+Adam,Balon,Sam,Keat,20,11,3,3-4 4-1 10-8,3-4 4-1 10-8
+Paolo,Zampiga,Sam,Keat,3,20,3,4-2 4-1,4-2 4-1
+Nicholas,Mellor,Paul,Mardinian,20,1,10,4-1 4-0,4-1 4-0
+Nicholas,Mellor,Jamie,Younger,20,10,10,4-0 3-4 10-7,4-0 3-4 10-7
+Nicholas,Mellor,Charles `,Hawes,20,1,10,4-1 4-0,4-1 4-0
+Jamie,Younger,Charles `,Hawes,20,12,10,3-4 4-2 10-6,3-4 4-2 10-6
+Jamie,Younger,Paul,Mardinian,20,10,10,2-4 4-0 11-9,2-4 4-0 11-9
+Paul,Mardinian,Charles `,Hawes,20,12,10,4-2 0-4 10-3,4-2 0-4 10-3
+Vinh,Dang,Martin,Jones,1,20,16,4-1 4-0,4-1 4-0
+Rafael,Birnbaum,Martin,Jones,3,20,16,4-1 4-2,4-1 4-2
+Andrew,Melrose,Vinh,Dang,20,2,16,4-1 4-1,4-1 4-1
+Vinh,Dang,Rafael,Birnbaum,20,12,16,1-4 4-2 10-6,1-4 4-2 10-6
+Andrew,Melrose,Martin,Jones,20,11,16,4-1 1-4 10-7,4-1 1-4 10-7
+Andrew,Melrose,Rafael,Birnbaum,20,11,16,4-1 2-4 10-4,4-1 2-4 10-4

@@ -2,7 +2,7 @@
   <!-- boxes show list data (list view) -->
   <ul>
     <%#  @box_matches = [user_box_score , player_matches, player]
-          and player_matches = [match, opponent, user_score, opponent_score] %>
+          with player_matches = [match, opponent, user_score, opponent_score] %>
     <% sorted_players = @box_matches.map { |bm| bm[2]} %>
     <% @box_matches.each do |user_box_matches| %>
       <li class="top-bottom-padding">

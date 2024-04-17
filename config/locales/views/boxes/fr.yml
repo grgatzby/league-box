@@ -15,8 +15,9 @@ fr:
     index_expanded:
       all_box_title: Les box du round (vue complète)
       all_boxes_btn: vue résumée
+      message_box_pop: Si la page ne s'affiche pas correctement, cocher la case pour suppprimer la couleur de fond
       to_csv_btn: 📄 fichier CSV
-      clear_format: Sans format
+      clear_format: Sans couleur de fond
     index:
       all_box_title: Les box du round (vue résumée)
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
@@ -83,7 +84,7 @@ fr:
       not_played: Pas encore joué
       enter_score: Entrer le score
     grid_view:
-      message_box_pop: Cliquez ici pour basculer vers la vue en liste de la box
+      message_box_pop: Cliquez sur le titre de la box pour basculer vers sa vue en liste
     show:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Vue en grille</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>

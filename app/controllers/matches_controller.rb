@@ -256,7 +256,7 @@ class MatchesController < ApplicationController
         input_date = Time.now
         user_match_scores = []
         CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
-          match_players = player_opponent(row)
+          match_players = winner_loser(row)
           player = match_players[0]
           opponent = match_players[1]
           box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
@@ -503,7 +503,7 @@ class MatchesController < ApplicationController
   end
 
   def score_to_a(score)
-    # converts set score "4-3" into array [4, 3]
+    # convert set score "4-3" into array [4, 3]
     score.split("-").map(&:to_i)
   end
 
@@ -532,30 +532,31 @@ class MatchesController < ApplicationController
     user_match_score.score_set1 + user_match_score.score_set2 + user_match_score.score_tiebreak
   end
 
-  def player_opponent(row)
+  def winner_loser(row)
     # in PM Holland Park spreadsheet the score is input as the winner's score and the points_opponent columns
-    # provides info as to whether its the payer's score or the opponent's score
+    # provides the info as to whether its the payer's score or the opponent's score.
+    # return array of [winner, loser]
     if row[:role_player] && row[:role_opponent]
       if row[:points_opponent].to_i != 20
-        player = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
-        player ||= User.create(email: row[:email_player],
+        winner = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
+        winner ||= User.create(email: row[:email_player],
           first_name: row[:first_name_player], last_name: row[:last_name_player],
           phone_number: row[:phone_number_player], role: row[:role_player].downcase)
-        opponent = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
-        opponent ||= User.create(email: row[:email_opponent],
+        loser = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
+        loser ||= User.create(email: row[:email_opponent],
           first_name: row[:first_name_opponent], last_name: row[:last_name_opponent],
           phone_number: row[:phone_number_opponent], role: row[:role_opponent].downcase)
       else
-        opponent = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
-        opponent ||= User.create(email: row[:email_player],
+        loser = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])
+        loser ||= User.create(email: row[:email_player],
           first_name: row[:first_name_player], last_name: row[:last_name_player],
           phone_number: row[:phone_number_player], role: row[:role_player].downcase)
-        player = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
-        player ||= User.create(email: row[:email_opponent],
+        winner = User.find_by(first_name: row[:first_name_opponent], last_name: row[:last_name_opponent])
+        winner ||= User.create(email: row[:email_opponent],
           first_name: row[:first_name_opponent], last_name: row[:last_name_opponent],
           phone_number: row[:phone_number_opponent], role: row[:role_opponent].downcase)
       end
     end
-    [player, opponent]
+    [winner, loser]
   end
 end
