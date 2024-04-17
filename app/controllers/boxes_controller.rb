@@ -139,13 +139,17 @@ class BoxesController < ApplicationController
       #                   "first_name_opponent", "last_name_opponent",
       #                   "points_player", "points_opponent",
       #                   "box_number", "score_winner", "score_winner2"]
-      writer << SCORES_HEADERS
+      # REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
+      #                    "email_opponent", "phone_number_opponent", "role_opponent"]
+writer << SCORES_HEADERS
       matches.each_with_index do |match, index|
         match_scores = match.user_match_scores
         writer << [match_scores[0].user.first_name, match_scores[0].user.last_name,
                    match_scores[1].user.first_name, match_scores[1].user.last_name,
                    match_scores[0].points, match_scores[1].points,
-                   match.box.box_number, score_winner_board(match), score_winner_board(match) ]
+                   match.box.box_number, score_winner_board(match), score_winner_board(match),
+                   match_scores[0].user.email, match_scores[0].user.phone_number, match_scores[0].user.role,
+                   match_scores[1].user.email, match_scores[1].user.phone_number, match_scores[1].user.role]
       end
     end
     download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name)
