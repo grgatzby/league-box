@@ -16,12 +16,17 @@ nl:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
       all_boxes_btn: compacte weergave
       message_box_pop: Als de pagina niet correct wordt weergegeven, vinkt u dit vakje aan om de achtergrondkleur te wissen
+      message_csv_pop: >
+        <b>scores exporteren</b> naar CSV-bestand<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
+        points_player, points_opponent, box_number, score_winner, score_winner2, email_player, phone_number_player, role_player,
+        email_opponent, phone_number_opponent, role_opponent
       to_csv_btn: 📄 naar CSV-bestand
       clear_format: Zijn achtergrond kleur
     index:
       all_box_title: De boxen van de ronde (compacte weergave)
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking, gespeelde wedstrijden, punten<br /><br />Klik op een box voor wedstrijddetails.
+      message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand<br /> id, club_id, email, first_name, last_name, nickname, phone_number, role
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
       open_view_btn: uitgebreide weergave

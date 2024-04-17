@@ -16,12 +16,17 @@ fr:
       all_box_title: Les box du round (vue complète)
       all_boxes_btn: vue résumée
       message_box_pop: Si la page ne s'affiche pas correctement, cocher la case pour suppprimer la couleur de fond
+      message_csv_pop: >
+        <b>exporter les scores du round</b> vers un fichier CSV<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
+        points_player, points_opponent, box_number, score_winner, score_winner2, email_player, phone_number_player, role_player,
+        email_opponent, phone_number_opponent, role_opponent
       to_csv_btn: 📄 fichier CSV
       clear_format: Sans couleur de fond
     index:
       all_box_title: Les box du round (vue résumée)
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
       message_box_pop: <b>Colonnes</b><br />Nom, rang, matchs joués, points<br /><br />Cliquer sur une box pour voir les détails des matchs.
+      message_csv_pop: <b>exporter les joueurs et le referee du round</b> vers un fichier CSV <br /> id, club_id, email, first_name, last_name, nickname, phone_number, role
       my_current_box: (ma box en cours)
       my_box: (ma box)
       open_view_btn: vue complète
