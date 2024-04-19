@@ -26,13 +26,24 @@
       </div>
 
       <div class="row">
-        <div class="col-4"><%= "✉️ #{t(".e_mail")} :" %></div>
-        <div class="col-3"><%= "#{current_user.email}" %></div>
+        <div class="col-4"><%= f.label :e_mail, "📞 #{t(".e_mail")} :" %></div>
+        <div class="col-2"><%= f.text_field :e_mail,
+                                placeholder: current_user.email,
+                                value: current_user.email,
+                                input_html: {class: "contact-field", style: "width: 20em"} %>
+        </div>
       </div>
 
       <div class="row">
         <div class="col-4"><%= "🧩 Role:" %></div>
         <div class="col-3"><%= "#{current_user.role}" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
+        <div class="col-4">
+          <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
+        </div>
       </div>
 
       <% if (["player", "player referee"].include?(current_user.role)) %>
