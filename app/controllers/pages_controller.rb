@@ -24,4 +24,8 @@ class PagesController < ApplicationController
       @referees = User.where("role like ?", "%referee%")
     end
   end
+
+  def my_details
+    @preference = current_user.preference || Preference.new(user_id: current_user.id)
+  end
 end

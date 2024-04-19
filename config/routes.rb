@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     get "rules", to: "pages#rules", as: "rules"
     get "staff", to: "pages#staff", as: "staff"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
+    get "my_details", to: "pages#my_details", as: "my_details"
+
+    resources :preferences, only: %i[create update]
 
     resources :boxes, only: %i[index show]
     get 'index2', to: "boxes#index_expanded", as: "index_expanded"

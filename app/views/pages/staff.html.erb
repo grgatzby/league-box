@@ -6,5 +6,8 @@
 <div class="<%= class_names("container": !@is_mobile) %>">
   <div class="frame-color-shape frame-padding">
     <%= render "shared/staff", from:"pages" %>
+  </div><br>
+  <div class = "buttons-wrap">
+    <%= link_to "OK", boxes_path, class: "btn buttons-shape btn-aqua" %>
   </div>
 </div>

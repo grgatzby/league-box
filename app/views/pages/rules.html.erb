@@ -19,6 +19,7 @@
       <button data-action="click->toggle#toggleRules" data-toggle-target="toggler"
         class="btn buttons-shape btn-yellow text-size"><%= t '.btn_display_rules' %>
       </button>
+      <%= link_to "OK", boxes_path, class: "btn buttons-shape btn-aqua text-size ms-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green text-size ms-2"%>
       </span>

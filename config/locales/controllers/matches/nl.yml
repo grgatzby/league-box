@@ -5,3 +5,5 @@ nl:
     test_scores03_flash: "4-4: voer een correcte score in voor set 1 en set 2"
     test_scores04_flash: "Tiebreak: eerste naar 10 met 2 punten verschil."
     test_scores05_flash: Geen tiebreak nodig als 2 sets op 0 staan.
+  preferences:
+    details_stored_flash: gegevens opgeslagen

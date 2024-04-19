@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :user_match_scores
   has_many :user_box_scores
   has_many :messages
+  has_one :preference
 end

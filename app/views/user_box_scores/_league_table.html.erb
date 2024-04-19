@@ -4,10 +4,12 @@
   "mobile-text-size": @is_mobile) %>">
   <div class="<%= class_names("row", "mobile-table-width": @is_mobile, "table-width": !@is_mobile) %>">
     <div class="one-liner bold-font">
+      <%# headers %>
       <%= render "table_headers", from: from %>
     </div>
 
     <div class="print-scroller box-scroller" data-toggle-target="togglableElement" >
+      <%# player lines %>
       <%= render "table_data", user_box_scores: @user_box_scores, from: from %>
       <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn buttons-shape btn-beige top-button d-none">
