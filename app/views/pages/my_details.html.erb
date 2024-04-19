@@ -2,53 +2,62 @@
 
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
-    <b><%= render "shared/fullname", user: current_user %></b><br><br>
-    <%# "Nick name: #{current_user.nickname}" %><br>
-    <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
+  <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
-    <div class="row">
-      <div class="col-3"><%= f.label :nickname, "Nick name:" %></div>
-      <div class="col-2"><%= f.text_field :nickname,
-                              placeholder: current_user.nickname,
-                              value: current_user.nickname,
-                              input_html: {class: "contact-field", style: "width: 20em"} %>
+    <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
+      <b><%= render "shared/fullname", user: current_user %></b><br><br>
+      <br>
+      <div class="row">
+        <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
+        <div class="col-2"><%= f.text_field :nickname,
+                                placeholder: current_user.nickname,
+                                value: current_user.nickname,
+                                input_html: {class: "contact-field", style: "width: 20em"} %>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-3"><%= f.label :phone_number, "📞 Phone number :" %></div>
-      <div class="col-2"><%= f.text_field :phone_number,
-                              placeholder: current_user.phone_number,
-                              value: current_user.phone_number,
-                              input_html: {class: "contact-field", style: "width: 20em"} %>
+      <div class="row">
+        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
+        <div class="col-2"><%= f.text_field :phone_number,
+                                placeholder: current_user.phone_number,
+                                value: current_user.phone_number,
+                                input_html: {class: "contact-field", style: "width: 20em"} %>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-3"><%= "✉️ Email :" %></div>
-      <div class="col-3"><%= "#{current_user.email}" %></div>
-    </div>
-    <div class="row">
-      <div class="col-3"><%= "🧩 Role:" %></div>
-      <div class="col-3"><%= "#{current_user.role}" %></div>
-    </div>
-    <% if (["player", "player referee"].include?(current_user.role)) %>
+      <div class="row">
+        <div class="col-4"><%= "✉️ #{t(".e_mail")} :" %></div>
+        <div class="col-3"><%= "#{current_user.email}" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= "🧩 Role:" %></div>
+        <div class="col-3"><%= "#{current_user.role}" %></div>
+      </div>
+
+      <% if (["player", "player referee"].include?(current_user.role)) %>
+        <hr>
+        <b><%= "League_Round - Box, #rank" %></b><br>
+        <% name = "#{render "shared/fullname", user: current_user}"
+          boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
+        <%= sanitize "#{boxes}" %>
+      <% end %>
       <hr>
-      <b><%= "League_Round - Box, #rank" %></b><br>
-      <% name = "#{render "shared/fullname", user: current_user}"
-        boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
-      <%= sanitize "#{boxes}" %>
-    <% end %>
-    <hr>
-    <b><%= "Preferences" %></b><br>
-      <%# checkbox to remove formatting if page does not display well on screen %>
-      <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
-      <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
-      <%= f.label :clear_format, t(".clear_format") %>
-      <div class = "buttons-wrap">
-        <%= f.submit "OK", class: "btn buttons-shape btn-aqua" %>
+
+      <b><%= t(".preferences") %></b><br>
+        <%# checkbox to remove formatting if page does not display well on screen %>
+        <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
+      <div class="row">
+        <div class="col-4"><%= t(".expanded_view") %></div>
+        <div class="col-4">
+          <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
+          <%= f.label :clear_format, t(".clear_format") %>
+        </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+    <br>
+    <div class = "buttons-wrap">
+      <%= f.submit "OK", class: "btn buttons-shape btn-aqua" %>
+    </div>
+  <% end %>
 </div>

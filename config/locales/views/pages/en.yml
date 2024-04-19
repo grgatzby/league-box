@@ -227,3 +227,10 @@ en:
       li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
+    my_details:
+      preferences: Preferences
+      nick_name: Nick name
+      phone_number: Phone number
+      e_mail: E-mail
+      expanded_view: Expanded view
+      clear_format: Clear background color
