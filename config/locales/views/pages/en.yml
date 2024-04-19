@@ -232,5 +232,6 @@ en:
       nick_name: Nick name
       phone_number: Phone number
       e_mail: E-mail
+      password: Modify password
       expanded_view: Expanded view
       clear_format: Clear background color
