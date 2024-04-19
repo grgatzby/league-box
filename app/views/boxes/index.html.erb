@@ -19,7 +19,8 @@
             <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print mb-3" %>
           </span>
         <% end %>
-        <%= link_to t('.open_view_btn'), index_expanded_path(round_id: @round.id, club_id: @round.club_id, clear_format: current_user.preference.clear_format.eql?(true) ? "1" : "0"), class: "btn buttons-shape btn-green dont-print mb-3" %>
+        <% clear_format = current_user.preference ? (current_user.preference.clear_format.eql?(true) ? "1" : "0") : "0" %>
+        <%= link_to t('.open_view_btn'), index_expanded_path(round_id: @round.id, club_id: @round.club_id, clear_format: clear_format), class: "btn buttons-shape btn-green dont-print mb-3" %>
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print mb-3"%>
       </div>
     </div>

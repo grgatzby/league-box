@@ -24,7 +24,7 @@
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{"show": 1000}'
-        data-bs-content="<%= t '.message_box_pop' %>" style="width: 25%">
+        data-bs-content="<%= t '.message_box_pop' %>" style="width: 35%">
       <%= form_with method: :get do |form| %>
         <%# checkbox to remove formatting if page does not display well on screen %>
         <%= hidden_field_tag(:round_id, @round.id) %>
