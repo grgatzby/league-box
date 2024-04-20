@@ -13,7 +13,7 @@ en:
       league_table_title: Yearly ranking
       valid_league_flash: "League table: choose a valid league start date"
     select_league:
-      select_league: yearly ranking for the
+      select_league: yearly ranking for
       league_dropdown: tournament starting
     top_line:
       top_line_html: >
