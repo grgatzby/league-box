@@ -15,6 +15,7 @@ en:
     index_expanded:
       all_box_title: All boxes in the round (expanded view)
       all_boxes_btn: compact view
+      round_ranking_btn: ranking tables
       message_box_pop: If the page does not display correctly, tick this box to clear the background color
       message_csv_pop: >
         <b>export round scores</b> to CSV file<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -31,6 +32,7 @@ en:
       create_round_btn: create the next round
       my_box: (my box)
       open_view_btn: expanded view
+      round_ranking_btn: ranking tables
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
       to_csv_btn: 📄 CSV file

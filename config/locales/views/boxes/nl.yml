@@ -15,6 +15,7 @@ nl:
     index_expanded:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
       all_boxes_btn: compacte weergave
+      round_ranking_btn: rangschikkingen
       message_box_pop: Als de pagina niet correct wordt weergegeven, vinkt u dit vakje aan om de achtergrondkleur te wissen
       message_csv_pop: >
         <b>scores exporteren</b> naar CSV-bestand<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -30,6 +31,7 @@ nl:
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
       open_view_btn: uitgebreide weergave
+      round_ranking_btn: rangschikkingen
       create_round_btn: ⎷ maak de volgende ronde
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.

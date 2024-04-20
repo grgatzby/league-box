@@ -10,11 +10,11 @@ fr:
         La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi.<br>
         Elle agrège l'ensemble des rounds du même tournoi
       rounds: Rounds
-      league_table_title: League table du tournoi
+      league_table_title: League table de l'année
       valid_league_flash: "League table: choisir un début de tournoi valide"
     select_league:
-      select_league: League table du
-      league_dropdown: tournoi commençant
+      select_league: league table de
+      league_dropdown: l'année commençant
     top_line:
       top_line_html: >
         Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,

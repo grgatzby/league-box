@@ -1,5 +1,5 @@
 <!-- partial: form to select a tournament (league) by its start date -->
-<div class="dont-print">
+<div class="dont-print btn buttons-shape btn-yellow mb-3">
   <%= form_with url: index_league_path, method: :get do |form| %>
     <%= hidden_field_tag(:club_id, @club.id) %>
     <% if from == "index" %>
