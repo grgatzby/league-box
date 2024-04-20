@@ -17,7 +17,7 @@ fr:
       my_scores_link: Mes scores
       general_chat_link: "Chatroom #general"
       chatrooms_link: Les chatrooms
-      round_end_link: Fin du round
+      round_end_link: Reporter fin du round
       log_out_link: Déconnexion
     display_round:
       round_period: Round %{round} (%{start} au %{end}),
@@ -26,9 +26,9 @@ fr:
       expired: round terminé
       players: "%{nb_players} joueurs"
     select_club:
-      select_club: "Changer de club: "
+      select_club: "Autre club: "
     select_round:
-      select_round: "Changer de round: "
+      select_round: "Autre round: "
       select_round_label: nom du round (départ du round)
       confirm_btn: ⎷ Confirmer
     select_club_round:
