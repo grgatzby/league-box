@@ -16,7 +16,7 @@
       <!-- <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path %></h4> -->
       <%= render "shared/select_club", fallback_path: user_box_scores_path %>
       <%= render "shared/select_round", fallback_path: user_box_scores_path %>
-      <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
+      <%# render "select_league", fallback_path: user_box_scores_path, from: "index" %>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>

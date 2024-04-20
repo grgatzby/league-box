@@ -15,6 +15,7 @@ fr:
     index_expanded:
       all_box_title: Les box du round (vue complète)
       all_boxes_btn: vue résumée
+      round_ranking_btn: classements
       message_box_pop: Si la page ne s'affiche pas correctement, cocher la case pour suppprimer la couleur de fond
       message_csv_pop: >
         <b>exporter les scores du round</b> vers un fichier CSV<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -30,6 +31,7 @@ fr:
       my_current_box: (ma box en cours)
       my_box: (ma box)
       open_view_btn: vue complète
+      round_ranking_btn: classements
       create_round_btn: ⎷ créer le prochain round
       request_round_btn: faire créer le prochain round
       valid_round_flash: "League table annuel: choisir un round valide"

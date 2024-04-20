@@ -9,17 +9,17 @@ else
   message += t('.round_expired')
 end
 message += t('.nb_matches', count: @nb_matches) + \
-           t('.nb_matches_played', count: @nb_matches_played, \
-                                   ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))
+           "<b>#{t('.nb_matches_played', count: @nb_matches_played, \
+                                   ratio: format("%.1f", 100*@nb_matches_played.to_f/@nb_matches))}</b>"
 message += t('.last_match', last_match_date: l(@last_round_match_date, format: :wwwddmmm_date)) if @last_round_match_date
 if @box
-  message += t('.box') + t('.nb_matches', count: @nb_box_matches) \
-                       + t('.nb_matches_played', count: @nb_box_matches_played, \
-                                                 ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))
+  message += "<hr>"+t('.box') + t('.nb_matches', count: @nb_box_matches) \
+                       + "<b>#{t('.nb_matches_played', count: @nb_box_matches_played, \
+                                                 ratio: format("%.1f", 100*@nb_box_matches_played.to_f/@nb_box_matches))}</b>"
   if @box == @my_box
     message += t('.player_matches') + t('.nb_matches', count: @my_nb_matches) \
-             + t('.nb_matches_played', count: @my_nb_matches_played, \
-                                       ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))
+             + "<b>#{t('.nb_matches_played', count: @my_nb_matches_played, \
+                                       ratio: format("%.1f", 100*@my_nb_matches_played.to_f/@my_nb_matches))}</b>"
   end
   message += t('.last_match', last_match_date: l(@last_box_match_date, format: :wwwddmmm_date)) if @last_box_match_date
 end %>
