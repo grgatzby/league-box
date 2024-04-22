@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
                             "box_number", "score_winner", "score_winner2"]
   REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
-  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "match_court", "input_user_id", "input_date"]
+  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_id", "input_user_id", "input_date"]
   SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
 
   def show
@@ -236,7 +236,6 @@ class MatchesController < ApplicationController
   def create_scores
     # populate match_scores for a chosen club and round from a CSV file
     # if players don't exist in the database, create them
-
     csv_file = params[:csv_file]
     delimiter = params[:delimiter]
     round = Round.find(params[:round_id])
@@ -247,7 +246,7 @@ class MatchesController < ApplicationController
       end
     end
     # 2/ read CSV scores file
-    court_id = Court.find_by(club_id: round.club_id, name: "1").id
+    # court_id = Court.find_by(club_id: round.club_id, name: "1").id
     if csv_file.content_type == "text/csv"
       # user_box_scores are already created with users loading the round create CSV file
       # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
@@ -263,16 +262,12 @@ class MatchesController < ApplicationController
           opponent = match_players[1]
           box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
 
-          # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
+          # match_scores_to_a: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
           match_scores = match_scores_to_a(row[:score_winner])
-          # create matches
-          # if (row[:last_name_player] == "Clark" && row[:last_name_opponent] == "Whittle") ||
-          #   (row[:last_name_player] == "Mardinian" && row[:last_name_opponent] == "Sevaux")
-          #   raise
-          # end
           test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
           if test_score
-            @match = Match.create(box_id:, court_id:, time: round.start_date)
+            # @match = Match.create(box_id:, court_id: row[:match_court], time: row[:match_date] || round.start_date)
+            @match = Match.create(box_id:, court_id: row[:court_id].to_i, time: round.start_date)
             results = compute_points(match_scores)
 
             # create and fill a user_match_score instance for each player of the match
