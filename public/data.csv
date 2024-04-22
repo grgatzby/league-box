@@ -1,80 +1,84 @@
-id,club_id,email,first_name,last_name,nickname,phone_number,role,box_number
-2994,73,sam.3897@hotmail.com,Sam,Behrens,SamB,07908 817 425,player,1
-2984,73,matteogabba@gmail.com,Matteo,Gabba,MatteoG,07808 317 305,player,1
-3003,73,adam.balon@innocentdrinks.co.uk,Adam,Balon,AdamB,07802 851 461,player,1
-2995,73,clarkconrad@gmail.com,Conrad,Clark,ConradC,07949 833 587,player,1
-2996,73,samhkeat@hotmail.com,Sam,Keat,SamK,07933 621 094,player,2
-2986,73,gareth.isaac2@gmail.com,Gareth,Isaac,GarethI,07990 507 277,player,2
-2982,73,spyros_varoutsis@hotmail.com,Spyridon,Varoutsis,SpyridonV,07901 710 916,player,2
-3007,73,miguelnavarro26@hotmail.com,Miguel,Navarro,MiguelN,07717 884 405,player,2
-2993,73,roger.ridsdillsmith@googlemail.com,Roger,Ridsdill Smith,RogerR,07768 386 241,player,3
-3015,73,burdyhk@gmail.com,George,Burdon,GeorgeB,07721 693 399,player,3
-2981,73,natashamardinian@hotmail.com,Natasha,Mardinian,NatashaM,07927 271 665,player,3
-3002,73,henryforsyth@hotmail.com,Henry,Forsyth,HenryF,07710 380 902,player,3
-3010,73,jamesmccrossen@hotmail.co.uk,James,McCrossen,JamesM,07828 998 077,player,4
-2988,73,willsarne@icloud.com,Will,Sarne,WillS,07837 615 370,player,4
-2992,73,mchulme2015@gmail.com,Michael,Hulme,MichaelH,07366 308 996,player,4
-3022,73,eyres.harry@gmail.com,Harry,Eyres,HarryE,07854 419 476,player,5
-3011,73,paolo.zampiga@icloud.com,Paolo,Zampiga,PaoloZ,07776 192 869,player,5
-3006,73,daniele.chiarella@icloud.com,Daniele,Chiarella,DanieleC,07583 685 503,player,5
-2998,73,d.frollani@gmail.com,Daniele,Frollani,DanieleF,07427 442 985,player,5
-2987,73,daspickavance@aol.com,Dom,Pickavance,DomP,07939 724 601,player,6
-3017,73,lf@cyruscapital.com,Lucien,Farrell,LucienF,07867 535 510,player,6
-3020,73,i.gladman@yahoo.com,Ian,Gladman,IanG,07785 596 936,player,6
-3008,73,dnikolako@gmail.com,Dimitrios,Nikolakopoulos,DimitriosN,07956 365 038,player,6
-3025,73,ajameyer@yahoo.com,James,Meyer,JamesM,07470 001 653,player,7
-2990,73,matteo.moro1@googlemail.com,Matteo,Moro,MatteoM,07552 219 448,player,7
-3044,73,mike@hla.net,Mike,Wells,MikeW,07831 358 456,player,7
-3069,73,juliengurcel@hotmail.co.uk,Julien,Gurcel,JulienG,07533 440 442,player,7
-3014,73,michael.omara@brcm.co.uk,Michael,Omara,MichaelO,07748 622 314,player,8
-3024,73,sam@whittakers.net,Sam,Whittaker,SamW,07979 706 569,player,8
-3027,73,deburetel@because.tv,Emmanuel,DeBuretel,EmmanuelD,0207 371 2274,player,8
-3031,73,nicholas.mellor@lsngroup.org,Nicholas,Mellor,NicholasM,07971 809 262,player,8
-3036,73,catherine-whittle@outlook.com,Catherine,Whittle,CatherineW,07949 053 231,player,9
-3009,73,mark@markmather.co.uk,Mark,Mather,MarkM,07973 750 793,player,9
-3021,73,jamie.younger@saffery.com,Jamie,Younger,JamieY,07827 278 797,player,9
-3026,73,dom.moro@gmail.com,Dom,Moro,DomM,07392 871 605,player,9
-3029,73,orecchiae@gmail.com,Emilio,Orecchia,EmilioO,07773 909 848,player,10
-3012,73,varouts@gmail.com,George,Varoutsis,GeorgeV,07786 704 074,player,10
-3013,73,d_f_sharp@hotmail.com,Dan,Sharp,DanS,07900 901 369,player,10
-3023,73,saeed@cat-ltd.co.uk,Saeed,Ferdos,SaeedF,07958 740 581,player,10
-3056,73,virginiabrix@aol.com,Virginia,Brix,VirginiaB,07788 414 344,player,11
-3038,73,laurent@fplhomes.com,Laurent,Lakatos,LaurentL,07899 996 962,player,11
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee,11
-3067,73,andrew.melrose@hotmail.co.uk,Andrew,Melrose,AndrewM,07795 528 375,player,11
-3051,73,jbperrin@ymail.com,Jean-Baptiste,Perrin,Jean-BaptisteP,07514 819 853,player,12
-3039,73,kmeducation27@gmail.com,Riki,Mian,RikiM,07784 392 324,player,12
-3016,73,charles.hawes@simmons-simmons.com,Charles `,Hawes,Charles `H,07921 584 449,player,12
-3037,73,sevauxj@gmail.com,Julien,Sevaux,JulienS,07802 961 186,player,12
-3090,73,p_bukaty@hotmail.com,Paulina,Bukaty,PaulinaB,07808 506 195,player,13
-3030,73,elisa.kerr@btinternet.com,Elisa,Kerr,ElisaK,07767 885 780,player,13
-3041,73,fausto.zanetton@gmail.com,Fausto,Zanetton,FaustoZ,07899 985 840,player,13
-3049,73,joe.cerrell@gatesfoundation.org,Joe,Cerrell,JoeC,07943 175 032,player,13
-3048,73,stephenedwardbehrens@hotmail.com,Stephen,Behrens,StephenB,0,player,14
-3071,73,larkbruce@gmail.com,Linda,Bruce,LindaB,07480 295 323,player,14
-3042,73,aldomareuse1@gmail.com,Aldo,Mareuse,AldoM,07710 349 275,player,14
-3079,73,b00629659@essec.edu,Marie,Jolly,MarieJ,33 06421 76739,player,14
-3053,73,martinlangleyjones@gmail.com,Martin,Jones,MartinJ,07798 811 784,player,15
-3032,73,elisaknebel@msn.com,Elisa,Knebel,ElisaK,07397 171 664,player,15
-3045,73,charlesgouilliard@outlook.com,Charles,Gouilliard,CharlesG,07775 186 790,player,15
-3050,73,mattfriend05@gmail.com,Matt,Friend,MattF,07796 511 977,player,15
-3028,73,yaoyiyi@hotmail.com,Yi,Buckley,YiB,07968 702 730,player,16
-3043,73,robertbeton@hotmail.co.uk,Robert,Beton,RobertB,07501 989 312,player,16
-3040,73,sophie.s.muir@gmail.com,Sophie,Muir,SophieM,‭07793 744 459‬,player,16
-3047,73,mpalencia@btinternet.com,Mario,Palencia,MarioP,07778 595 959,player,16
-3059,73,reza.f@mac.com,Reza,Farhat,RezaF,07795 430 094,player,17
-3033,73,th@idler.co.uk,Tom,Hodgkinson,TomH,07970 720 352,player,17
-3060,73,grcwatson@hotmail.con,Georgie,Watson,GeorgieW,07900 018 239,player,17
-3091,73,rbirnbaum@tcv.com,Rafael,Birnbaum,RafaelB,07599 479 929,player,17
-3077,73,gkingfriend@gmail.com,Gina,King,GinaK,07551 883 680,player,18
-3073,73,yasminelever@gmail.com,Yasmine,Lever,YasmineL,07546 359 624,player,18
-3087,73,margauxmmeyer@yahoo.com,Margaux,Meyer,MargauxM,07305 096669,player,18
-3055,73,vdang93@gmail.com,Vinh,Dang,VinhD,07454 819 671,player,18
-3092,73,andreea_petreanu@yahoo.co.uk,Andreea,Petreanu,AndreaP,07887 607 295,player,19
-3068,73,candidauren@icloud.com,Candida,Uren,CandidaU,07981 552 112,player,19
-3052,73,chrisogden@compuserve.com,Christopher,Ogden,ChristopherO,07786 932 999,player,19
-3061,73,dorothee.de.la.chevardiere@gmail.com,Dorothée,de La Chevardiere,Dorothéed,07500 774 791,player,19
-3058,73,romaphul@gmail.com,Roma,Phulwani,RomaP,07909 988 787,player,20
-3093,73,agunn@btinternet.com,Aneta,Gunn,AnetaG,07801 568 000,player,20
-3057,73,peterjkarlsen@gmail.com,Peter,Karlsen,PeterK,07785 528 190,player,20
-3072,73,nicholaslambardescott@gmail.com,Nick,Lambarde-Scott,NickL,07774 659 947,player,20
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,points_player,points_opponent,box_number,score_winner,score_winner2,email_player,phone_number_player,role_player,email_opponent,phone_number_opponent,role_opponent,match_date,match_court,input_user_id,input_date
+Matteo,Gabba,Sam,Behrens,20,3,1,4-3 4-0,4-3 4-0,matteogabba@gmail.com,07808 317 305,player,sam.3897@hotmail.com,07908 817 425,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Conrad,Clark,Sam,Behrens,20,11,1,4-1 1-4 7-2,4-1 1-4 7-2,clarkconrad@gmail.com,07949 833 587,player,sam.3897@hotmail.com,07908 817 425,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Matteo,Gabba,Adam,Balon,20,11,1,4-1 1-4 10-7,4-1 1-4 10-7,matteogabba@gmail.com,07808 317 305,player,adam.balon@innocentdrinks.co.uk,07802 851 461,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Sam,Behrens,Adam,Balon,20,5,1,4-2 4-3,4-2 4-3,sam.3897@hotmail.com,07908 817 425,player,adam.balon@innocentdrinks.co.uk,07802 851 461,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Conrad,Clark,Matteo,Gabba,20,11,1,4-1 3-4 7-5,4-1 3-4 7-5,clarkconrad@gmail.com,07949 833 587,player,matteogabba@gmail.com,07808 317 305,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Gareth,Isaac,Miguel,Navarro,20,12,2,4-2 1-4 10-8,4-2 1-4 10-8,gareth.isaac2@gmail.com,07990 507 277,player,miguelnavarro26@hotmail.com,07717 884 405,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Henry,Forsyth,Natasha,Mardinian,20,12,3,2-4 4-2 10-7,2-4 4-2 10-7,henryforsyth@hotmail.com,07710 380 902,player,natashamardinian@hotmail.com,07927 271 665,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Henry,Forsyth,Roger,Ridsdill Smith,20,4,3,4-2 4-2,4-2 4-2,henryforsyth@hotmail.com,07710 380 902,player,roger.ridsdillsmith@googlemail.com,07768 386 241,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Henry,Forsyth,George,Burdon,20,4,3,4-2 4-2,4-2 4-2,henryforsyth@hotmail.com,07710 380 902,player,burdyhk@gmail.com,07721 693 399,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Natasha,Mardinian,George,Burdon,20,12,3,1-4 4-2 10-0,1-4 4-2 10-0,natashamardinian@hotmail.com,07927 271 665,player,burdyhk@gmail.com,07721 693 399,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Natasha,Mardinian,Roger,Ridsdill Smith,1,20,3,4-0 4-1,4-0 4-1,natashamardinian@hotmail.com,07927 271 665,player,roger.ridsdillsmith@googlemail.com,07768 386 241,player,2024-03-14 11:00:00 UTC,2,3034,2024-04-22 09:41:13 UTC
+James,McCrossen,Will,Sarne,20,13,4,0-4 4-3 10-7,0-4 4-3 10-7,jamesmccrossen@hotmail.co.uk,07828 998 077,player,willsarne@icloud.com,07837 615 370,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Will,Sarne,Michael,Hulme,20,13,4,4-3 3-4 10-4,4-3 3-4 10-4,willsarne@icloud.com,07837 615 370,player,mchulme2015@gmail.com,07366 308 996,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+James,McCrossen,Michael,Hulme,20,4,4,4-1 4-3,4-1 4-3,jamesmccrossen@hotmail.co.uk,07828 998 077,player,mchulme2015@gmail.com,07366 308 996,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Daniele,Frollani,Harry,Eyres,20,4,5,4-1 4-3,4-1 4-3,d.frollani@gmail.com,07427 442 985,player,eyres.harry@gmail.com,07854 419 476,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Daniele,Chiarella,Harry,Eyres,20,13,5,2-4 4-3 10-8,2-4 4-3 10-8,daniele.chiarella@icloud.com,07583 685 503,player,eyres.harry@gmail.com,07854 419 476,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Daniele,Frollani,Daniele,Chiarella,20,2,5,4-2 4-0,4-2 4-0,d.frollani@gmail.com,07427 442 985,player,daniele.chiarella@icloud.com,07583 685 503,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Daniele,Frollani,Paolo,Zampiga,20,3,5,4-2 4-1,4-2 4-1,d.frollani@gmail.com,07427 442 985,player,paolo.zampiga@icloud.com,07776 192 869,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Paolo,Zampiga,Daniele,Chiarella,20,11,5,3-4 4-1 10-5,3-4 4-1 10-5,paolo.zampiga@icloud.com,07776 192 869,player,daniele.chiarella@icloud.com,07583 685 503,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Paolo,Zampiga,Harry,Eyres,20,4,5,4-3 4-1,4-3 4-1,paolo.zampiga@icloud.com,07776 192 869,player,eyres.harry@gmail.com,07854 419 476,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Ian,Gladman,Lucien,Farrell,20,4,6,4-1 4-3,4-1 4-3,i.gladman@yahoo.com,07785 596 936,player,lf@cyruscapital.com,07867 535 510,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Ian,Gladman,Dimitrios,Nikolakopoulos,20,11,6,4-1 0-4 10-6,4-1 0-4 10-6,i.gladman@yahoo.com,07785 596 936,player,dnikolako@gmail.com,07956 365 038,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dom,Pickavance,Ian,Gladman,20,12,6,2-4 4-2 10-5,2-4 4-2 10-5,daspickavance@aol.com,07939 724 601,player,i.gladman@yahoo.com,07785 596 936,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dimitrios,Nikolakopoulos,Lucien,Farrell,20,10,6,2-4 4-0 10-5,2-4 4-0 10-5,dnikolako@gmail.com,07956 365 038,player,lf@cyruscapital.com,07867 535 510,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dom,Pickavance,Dimitrios,Nikolakopoulos,20,10,6,4-0 0-4 10-7,4-0 0-4 10-7,daspickavance@aol.com,07939 724 601,player,dnikolako@gmail.com,07956 365 038,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+James,Meyer,Julien,Gurcel,20,2,7,4-1 4-1,4-1 4-1,ajameyer@yahoo.com,07470 001 653,player,juliengurcel@hotmail.co.uk,07533 440 442,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Julien,Gurcel,Mike,Wells,20,0,7,4-0 4-0,4-0 4-0,juliengurcel@hotmail.co.uk,07533 440 442,player,mike@hla.net,07831 358 456,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Nicholas,Mellor,Emmanuel,DeBuretel,20,3,8,4-1 4-2,4-1 4-2,nicholas.mellor@lsngroup.org,07971 809 262,player,deburetel@because.tv,0207 371 2274,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Nicholas,Mellor,Michael,Omara,20,2,8,4-0 4-2,4-0 4-2,nicholas.mellor@lsngroup.org,07971 809 262,player,michael.omara@brcm.co.uk,07748 622 314,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Nicholas,Mellor,Sam,Whittaker,20,1,8,4-0 4-1,4-0 4-1,nicholas.mellor@lsngroup.org,07971 809 262,player,sam@whittakers.net,07979 706 569,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Michael,Omara,Sam,Whittaker,20,3,8,4-3 4-0,4-3 4-0,michael.omara@brcm.co.uk,07748 622 314,player,sam@whittakers.net,07979 706 569,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Catherine,Whittle,Mark,Mather,20,5,9,4-3 4-2,4-3 4-2,catherine-whittle@outlook.com,07949 053 231,player,mark@markmather.co.uk,07973 750 793,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Mark,Mather,Jamie,Younger,20,12,9,3-4 4-2 11-9,3-4 4-2 11-9,mark@markmather.co.uk,07973 750 793,player,jamie.younger@saffery.com,07827 278 797,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dom,Moro,Mark,Mather,20,5,9,4-3 4-2,4-3 4-2,dom.moro@gmail.com,07392 871 605,player,mark@markmather.co.uk,07973 750 793,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Jamie,Younger,Catherine,Whittle,20,2,9,4-1 4-1,4-1 4-1,jamie.younger@saffery.com,07827 278 797,player,catherine-whittle@outlook.com,07949 053 231,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Emilio,Orecchia,Dan,Sharp,20,6,10,4-3 4-3,4-3 4-3,orecchiae@gmail.com,07773 909 848,player,d_f_sharp@hotmail.com,07900 901 369,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Emilio,Orecchia,Saeed,Ferdos,20,2,10,4-1 4-1,4-1 4-1,orecchiae@gmail.com,07773 909 848,player,saeed@cat-ltd.co.uk,07958 740 581,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Emilio,Orecchia,George,Varoutsis,20,1,10,4-0 4-1,4-0 4-1,orecchiae@gmail.com,07773 909 848,player,varouts@gmail.com,07786 704 074,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dan,Sharp,George,Varoutsis,20,3,10,4-1 4-2,4-1 4-2,d_f_sharp@hotmail.com,07900 901 369,player,varouts@gmail.com,07786 704 074,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dan,Sharp,Saeed,Ferdos,20,13,10,4-3 0-4 11-9,4-3 0-4 11-9,d_f_sharp@hotmail.com,07900 901 369,player,saeed@cat-ltd.co.uk,07958 740 581,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+George,Varoutsis,Saeed,Ferdos,20,4,10,4-3 4-1,4-3 4-1,varouts@gmail.com,07786 704 074,player,saeed@cat-ltd.co.uk,07958 740 581,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Julien,Sevaux,Riki,Mian,20,6,12,4-3 4-3,4-3 4-3,sevauxj@gmail.com,07802 961 186,player,kmeducation27@gmail.com,07784 392 324,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Riki,Mian,Jean-Baptiste,Perrin,20,13,12,4-3 1-4 10-5,4-3 1-4 10-5,kmeducation27@gmail.com,07784 392 324,player,jbperrin@ymail.com,07514 819 853,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Jean-Baptiste,Perrin,Julien,Sevaux,20,2,12,4-2 4-0,4-2 4-0,jbperrin@ymail.com,07514 819 853,player,sevauxj@gmail.com,07802 961 186,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Riki,Mian,Charles `,Hawes,20,5,12,4-2 4-3,4-2 4-3,kmeducation27@gmail.com,07784 392 324,player,charles.hawes@simmons-simmons.com,07921 584 449,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Charles `,Hawes,Jean-Baptiste,Perrin,20,5,12,4-2 4-3,4-2 4-3,charles.hawes@simmons-simmons.com,07921 584 449,player,jbperrin@ymail.com,07514 819 853,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Julien,Sevaux,Charles `,Hawes,20,10,12,3-4 4-0 10-5,3-4 4-0 10-5,sevauxj@gmail.com,07802 961 186,player,charles.hawes@simmons-simmons.com,07921 584 449,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Elisa,Kerr,Joe,Cerrell,20,2,13,4-2 4-0,4-2 4-0,elisa.kerr@btinternet.com,07767 885 780,player,joe.cerrell@gatesfoundation.org,07943 175 032,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Joe,Cerrell,Fausto,Zanetton,20,13,13,3-4 4-3 11-9,3-4 4-3 11-9,joe.cerrell@gatesfoundation.org,07943 175 032,player,fausto.zanetton@gmail.com,07899 985 840,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Fausto,Zanetton,Elisa,Kerr,20,4,13,4-3 4-1,4-3 4-1,fausto.zanetton@gmail.com,07899 985 840,player,elisa.kerr@btinternet.com,07767 885 780,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Paulina,Bukaty,Elisa,Kerr,20,2,13,4-1 4-1,4-1 4-1,p_bukaty@hotmail.com,07808 506 195,player,elisa.kerr@btinternet.com,07767 885 780,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Stephen,Behrens,Linda,Bruce,20,2,14,4-2 4-0,4-2 4-0,stephenedwardbehrens@hotmail.com,0,player,larkbruce@gmail.com,07480 295 323,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Stephen,Behrens,Marie,Jolly,20,10,14,4-0 2-4 7-5,4-0 2-4 7-5,stephenedwardbehrens@hotmail.com,0,player,b00629659@essec.edu,33 06421 76739,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Aldo,Mareuse,Linda,Bruce,20,2,14,4-0 4-2,4-0 4-2,aldomareuse1@gmail.com,07710 349 275,player,larkbruce@gmail.com,07480 295 323,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Aldo,Mareuse,Stephen,Behrens,20,13,14,4-3 1-4 7-5,4-3 1-4 7-5,aldomareuse1@gmail.com,07710 349 275,player,stephenedwardbehrens@hotmail.com,0,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Marie,Jolly,Aldo,Mareuse,20,4,14,4-3 4-1,4-3 4-1,b00629659@essec.edu,33 06421 76739,player,aldomareuse1@gmail.com,07710 349 275,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Marie,Jolly,Linda,Bruce,20,0,14,4-0 4-0,4-0 4-0,b00629659@essec.edu,33 06421 76739,player,larkbruce@gmail.com,07480 295 323,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Charles,Gouilliard,Matt,Friend,20,13,15,3-4 4-3 10-8,3-4 4-3 10-8,charlesgouilliard@outlook.com,07775 186 790,player,mattfriend05@gmail.com,07796 511 977,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Charles,Gouilliard,Elisa,Knebel,20,10,15,4-0 1-4 10-7,4-0 1-4 10-7,charlesgouilliard@outlook.com,07775 186 790,player,elisaknebel@msn.com,07397 171 664,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Matt,Friend,Elisa,Knebel,20,3,15,4-2 4-1,4-2 4-1,mattfriend05@gmail.com,07796 511 977,player,elisaknebel@msn.com,07397 171 664,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Martin,Jones,Elisa,Knebel,20,4,15,4-1 4-3,4-1 4-3,martinlangleyjones@gmail.com,07798 811 784,player,elisaknebel@msn.com,07397 171 664,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Matt,Friend,Martin,Jones,20,2,15,4-1 4-1,4-1 4-1,mattfriend05@gmail.com,07796 511 977,player,martinlangleyjones@gmail.com,07798 811 784,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Yi,Buckley,Sophie,Muir,20,10,16,4-0 2-4 10-4,4-0 2-4 10-4,yaoyiyi@hotmail.com,07968 702 730,player,sophie.s.muir@gmail.com,‭07793 744 459‬,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Yi,Buckley,Robert,Beton,20,6,16,4-3 4-3,4-3 4-3,yaoyiyi@hotmail.com,07968 702 730,player,robertbeton@hotmail.co.uk,07501 989 312,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Mario,Palencia,Sophie,Muir,20,12,16,2-4 4-2 10-0,2-4 4-2 10-0,mpalencia@btinternet.com,07778 595 959,player,sophie.s.muir@gmail.com,‭07793 744 459‬,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Robert,Beton,Sophie,Muir,20,5,16,4-3 4-2,4-3 4-2,robertbeton@hotmail.co.uk,07501 989 312,player,sophie.s.muir@gmail.com,‭07793 744 459‬,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Mario,Palencia,Yi,Buckley,20,4,16,4-1 4-3,4-1 4-3,mpalencia@btinternet.com,07778 595 959,player,yaoyiyi@hotmail.com,07968 702 730,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Mario,Palencia,Robert,Beton,20,2,16,4-2 4-0,4-2 4-0,mpalencia@btinternet.com,07778 595 959,player,robertbeton@hotmail.co.uk,07501 989 312,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Rafael,Birnbaum,Tom,Hodgkinson,20,12,17,2-4 4-2 10-5,2-4 4-2 10-5,rbirnbaum@tcv.com,07599 479 929,player,th@idler.co.uk,07970 720 352,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Georgie,Watson,Tom,Hodgkinson,20,5,17,4-3 4-2,4-3 4-2,grcwatson@hotmail.con,07900 018 239,player,th@idler.co.uk,07970 720 352,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Georgie,Watson,Rafael,Birnbaum,20,13,17,4-3 2-4 10-7,4-3 2-4 10-7,grcwatson@hotmail.con,07900 018 239,player,rbirnbaum@tcv.com,07599 479 929,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Vinh,Dang,Gina,King,20,1,18,4-0 4-1,4-0 4-1,vdang93@gmail.com,07454 819 671,player,gkingfriend@gmail.com,07551 883 680,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Vinh,Dang,Margaux,Meyer,20,2,18,4-2 4-0,4-2 4-0,vdang93@gmail.com,07454 819 671,player,margauxmmeyer@yahoo.com,07305 096669,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Dorothée,de La Chevardiere,Candida,Uren,20,12,19,4-2 3-4 7-4,4-2 3-4 7-4,dorothee.de.la.chevardiere@gmail.com,07500 774 791,player,candidauren@icloud.com,07981 552 112,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Christopher,Ogden,Candida,Uren,20,3,19,4-1 4-2,4-1 4-2,chrisogden@compuserve.com,07786 932 999,player,candidauren@icloud.com,07981 552 112,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Nick,Lambarde-Scott,Roma,Phulwani,20,4,20,4-2 4-2,4-2 4-2,nicholaslambardescott@gmail.com,07774 659 947,player,romaphul@gmail.com,07909 988 787,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Peter,Karlsen,Nick,Lambarde-Scott,20,3,20,4-2 4-1,4-2 4-1,peterjkarlsen@gmail.com,07785 528 190,player,nicholaslambardescott@gmail.com,07774 659 947,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Andrew,Melrose,Paul,Mardinian,20,12,11,1-4 4-2 11-9,1-4 4-2 11-9,andrew.melrose@hotmail.co.uk,07795 528 375,player,pmardinian@me.com,07746 060 832,player referee,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Paul,Mardinian,Laurent,Lakatos,20,13,11,0-4 4-3 10-6,0-4 4-3 10-6,pmardinian@me.com,07746 060 832,player referee,laurent@fplhomes.com,07899 996 962,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Virginia,Brix,Paul,Mardinian,20,12,11,4-2 3-4 10-7,4-2 3-4 10-7,virginiabrix@aol.com,07788 414 344,player,pmardinian@me.com,07746 060 832,player referee,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Laurent,Lakatos,Virginia,Brix,20,12,11,3-4 4-2 10-7,3-4 4-2 10-7,laurent@fplhomes.com,07899 996 962,player,virginiabrix@aol.com,07788 414 344,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Virginia,Brix,Andrew,Melrose,20,3,11,4-1 4-2,4-1 4-2,virginiabrix@aol.com,07788 414 344,player,andrew.melrose@hotmail.co.uk,07795 528 375,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC
+Laurent,Lakatos,Andrew,Melrose,20,3,11,4-2 4-1,4-2 4-1,laurent@fplhomes.com,07899 996 962,player,andrew.melrose@hotmail.co.uk,07795 528 375,player,2024-03-14 00:00:00 UTC,1,172,2024-04-22 08:40:45 UTC

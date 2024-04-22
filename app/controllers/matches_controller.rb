@@ -5,6 +5,7 @@ class MatchesController < ApplicationController
                             "box_number", "score_winner", "score_winner2"]
   REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
+  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "match_court", "input_user_id", "input_date"]
   SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
 
   def show
@@ -251,7 +252,8 @@ class MatchesController < ApplicationController
       # user_box_scores are already created with users loading the round create CSV file
       # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
       headers = CSV.foreach(csv_file, col_sep: delimiter).first
-      if headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS).sort
+      if (headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS).sort) ||
+        (headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS + REQUIRED_SCORES_HEADERS_OPT).sort)
         # create and fill user_match_scores and matches
         input_date = Time.now
         user_match_scores = []
@@ -286,8 +288,8 @@ class MatchesController < ApplicationController
               user_match_scores[index].score_tiebreak = match_scores[index][:score_tiebreak]
               user_match_scores[index].points = match_scores[index][:points]
               user_match_scores[index].is_winner = (results[index] > results[1 - index])
-              user_match_scores[index].input_user_id = current_user.id
-              user_match_scores[index].input_date = input_date
+              user_match_scores[index].input_user_id = match_scores[index][:input_user_id] || current_user.id
+              user_match_scores[index].input_date = match_scores[index][:input_date] || input_date
               user_match_scores[index].save
             end
 
