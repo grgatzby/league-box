@@ -9,7 +9,7 @@ class BoxesController < ApplicationController
                     "box_number", "score_winner", "score_winner2"]
   SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                     "email_opponent", "phone_number_opponent", "role_opponent",
-                    "match_date", "court_id", "input_user_id", "input_date"]
+                    "match_date", "court_nb", "input_user_id", "input_date"]
 
   def index
     # display all boxes and the shared select_round form
@@ -146,7 +146,7 @@ class BoxesController < ApplicationController
       #                   "box_number", "score_winner", "score_winner2"]
       # REQUIRED_SCORE_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
       #                    "email_opponent", "phone_number_opponent", "role_opponent",
-      #                    "match_date", "court_id", "input_user_id", "input_date"]
+      #                    "match_date", "court_nb", "input_user_id", "input_date"]
       writer << SCORES_HEADERS + SCORES_HEADERS_PLUS
       matches.each_with_index do |match, index|
         match_scores = match.user_match_scores
@@ -156,7 +156,7 @@ class BoxesController < ApplicationController
                    match.box.box_number, score_winner_board(match), score_winner_board(match),
                    match_scores[0].user.email, match_scores[0].user.phone_number, match_scores[0].user.role,
                    match_scores[1].user.email, match_scores[1].user.phone_number, match_scores[1].user.role,
-                   match.time, match.court_id, match_scores[0].input_user_id, match_scores[0].input_date]
+                   match.time, match.court.name, match_scores[0].input_user_id, match_scores[0].input_date]
       end
     end
     download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name)

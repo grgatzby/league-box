@@ -5,7 +5,7 @@ class MatchesController < ApplicationController
                             "box_number", "score_winner", "score_winner2"]
   REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
-  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_id", "input_user_id", "input_date"]
+  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_nb", "input_user_id", "input_date"]
   SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
 
   def show
@@ -266,8 +266,10 @@ class MatchesController < ApplicationController
           match_scores = match_scores_to_a(row[:score_winner])
           test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
           if test_score
-            # @match = Match.create(box_id:, court_id: row[:match_court], time: row[:match_date] || round.start_date)
-            @match = Match.create(box_id:, court_id: row[:court_id].to_i, time: round.start_date)
+            # @match = Match.create(box_id:, court_id: row[:court_id], time: row[:match_date] || round.start_date)
+            court_id = Court.find_by(club_id: round.club_id, name: row[:court_nb]).id
+            @match = Match.create(box_id:, court_id:, time: round.start_date)
+            raise
             results = compute_points(match_scores)
 
             # create and fill a user_match_score instance for each player of the match
