@@ -28,7 +28,9 @@ fr:
       li09_html: Pendant la durée du round, <b>jouez tous les matchs</b> de votre box.
       li10_html: Après chaque match, vous ou votre adversaire <b>entrez le score</b> du match.
       li11_html: Le <b>classement du round</b> et la <b>league table</b> sont mis à jour automatiquement.
-      li12_html: À la fin du round, les deux meilleurs joueurs sont <b>promus</b> d'une box. Les deux derniers sont <b>relégués</b> d'une box.
+      li12_html: >
+        À la fin du round, les deux meilleurs joueurs de chaque box sont <b>promus</b> (premier joueur: 2 box, second: une box).
+        Les deux derniers sont <b>relégués</b> (dernier joueur: 2 box, avant-dernier: une box).
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
       club_join_title: "Manager de Club: rejoindre League Box?"
@@ -112,9 +114,9 @@ fr:
       li14: Le ratio de Sets Gagnés sur Sets Joués %
       li15: Le ratio de Jeux Gagnés sur Jeux Joués %
       promotion_relegation: Promotion / Relégation
-      p26: Dans les circonstances habituelles, au prochain round
-      li16: les deux meilleurs joueurs seront promus d'une 1 box.
-      li17: les deux derniers joueurs seront relégués d'une 1 box.
+      p26: Dans les circonstances habituelles, au prochain round dans chaque box
+      li16: "les deux meilleurs joueurs seront promus (premier joueur: 2 box, second: 1 box)."
+      li17: "les deux derniers joueurs seront relégués (dernier joueur: 2 box, avant-dernier: 1 box)."
       new_entrants: Nouveaux entrants
       p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
       disqualification: Disqualification

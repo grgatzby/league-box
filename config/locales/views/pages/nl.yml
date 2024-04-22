@@ -28,7 +28,9 @@ nl:
       li09_html: Gedurende de ronde speel <b>elke wedstrijd</b> in je box.
       li10_html: Na elke wedstrijd voert een van de twee spelers <b>de wedstrijdscore</b> in.
       li11_html: De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt.
-      li12_html: "<b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers één vak omhoog. De laatste twee degraderen één vakje."
+      li12_html: >
+        <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers van elk box omhoog (eerste speller: 2 boxen, tweede: 1 box).
+        De laatste twee degraderen (laatste speller: 2 boxen, voorlaatste: één box).
       li13: Toernooiregels
       p05_html: Bezoek onze pagina %{inset} voor meer informatie.
       club_join_title: "Clubmanager: zin om zich bij ons aan te sluiten?"
@@ -112,9 +114,9 @@ nl:
       li14: De verhouding tussen Gewonnen Sets en gespeelde sets %
       li15: De verhouding tussen Gewonnen games en gespeelde games %
       promotion_relegation: Promotie/degradatie
-      p26: Onder normale omstandigheden
-      li16: de twee beste spelers promoveren met 1 box.
-      li17: de laatste twee spelers degraderen één box.
+      p26: Onder normale omstandigheden, in elke box
+      li16: "de twee beste spelers promoveren (eerste: met 2 boxen, tweede: met één box)."
+      li17: "de laatste twee spelers degraderen (laatste: 2 boxen, voorlaatste: één box)."
       new_entrants: Nieuwkomers
       p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
       disqualification: Diskwalificatie
