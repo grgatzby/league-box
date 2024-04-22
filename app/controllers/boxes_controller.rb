@@ -2,7 +2,7 @@ class BoxesController < ApplicationController
   require "csv"
   helper_method :box_matches, :my_box?  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
-  PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+  PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role", "box_number"]
   SCORES_HEADERS = ["first_name_player", "last_name_player",
                     "first_name_opponent", "last_name_opponent",
                     "points_player", "points_opponent",
@@ -100,26 +100,28 @@ class BoxesController < ApplicationController
     # export for the selected round a list of players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
-    # referee = User.find_by(role: "referee", club_id: round.club_id) #TO DO : role includes 'player referee'
-    referee = User.find_by("club_id = ? AND role like ?", round.club_id, "%referee%")
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
-    boxes = round.boxes.includes([user_box_scores:])
+    boxes = round.boxes.includes([:user_box_scores]).sort { |a, b| a.box_number <=> b.box_number }
     user_box_scores = boxes.map(&:user_box_scores).flatten;0 # ";0" stops output.
+    # 'referee' or 'player referee' : User.find_by("club_id = ? AND role like ?", round.club_id, "%referee%")
+    referee = User.find_by(role: "referee", club_id: round.club_id) #only 'referee', not 'player referee'
     CSV.open(file, 'w') do |writer|
       # table headers
-      # PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role"]
+      # PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role", "box_number"]
       writer << PLAYERS_HEADERS
       user_box_scores.each_with_index do |ubs, index|
         writer << [ubs.user_id, round.club_id,
                    ubs.user.email,
                    ubs.user.first_name, ubs.user.last_name, ubs.user.nickname,
-                   ubs.user.phone_number, ubs.user.role]
+                   ubs.user.phone_number, ubs.user.role, ubs.box.box_number]
       end
-      writer << [referee.id, round.club_id,
-                 referee.email,
-                 referee.first_name, referee.last_name, referee.nickname,
-                 referee.phone_number, referee.role]
+      if referee
+        writer << [referee.id, round.club_id,
+                  referee.email,
+                  referee.first_name, referee.last_name, referee.nickname,
+                  referee.phone_number, referee.role]
+      end
     end
     download_csv(file.pathmap, "Boxes-R#{round_label(round)}", round.club.name)
   end

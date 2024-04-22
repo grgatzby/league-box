@@ -18,7 +18,10 @@ fr:
       delimiter: "Séparateur:"
       create_round_btn: ⎷ Créer round
       new_round: Nouveau round
-      header_flash: Téléverser un fichier CSV.<br />Les entêtes doivent inclure "email", "first_name", "last_name", "nickname"[<i>optionnel</i>], "phone_number", et "role".
+      header_flash: >
+        Téléverser un fichier CSV.<br />
+        Ordonner les joueurs par rang décroissant.<br />
+        Les entêtes doivent inclure "email", "first_name", "last_name", "nickname"[<i>optionnel</i>], "phone_number", et "role".
     create:
       header_flash: Les entêtes du fichier CSV doivent inclure "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
       round_created:
