@@ -27,7 +27,9 @@ en:
       li09_html: During the round period, <b>play every match</b> in your box.
       li10_html: After each match, either player enters the <b>match score</b> on League Box.
       li11_html: The <b>round ranking</b> and <b>league table</b> are updated automatically.
-      li12_html: At the end of the round, the top two players will be <b>promoted</b> 1 box. The last two players will be <b>relegated</b> 1 box.
+      li12_html: >
+        At the end of the round, the top two players of each box will be <b>promoted</b> (first player: 2 boxes, second: 1 box).
+        The last two players will be <b>relegated</b> (last player: 2 boxes, second last: 1 box).
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
       club_join_title: "Club manager: tempted to join us?"
@@ -113,8 +115,8 @@ en:
       li15: Ratio of Games Won to Games Played %
       promotion_relegation: Promotion / Relegation
       p26: In normal circumstances
-      li16: the top two players will be promoted 1 box.
-      li17: the last two players will be relegated 1 box.
+      li16: "the top two players will be promoted  (first player: 2 boxes, second: 1 box)."
+      li17: "the last two players will be relegated (last player: 2 boxes, second last: 1 box)."
       new_entrants: New Entrants
       p27: Every effort will be made to accommodate new league players into a box that is appropriate to the player’s ability.
       disqualification: Disqualification

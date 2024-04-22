@@ -21,11 +21,11 @@ class RoundsController < ApplicationController
       new_box = @new_round.boxes.build
       user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank }
       box_player_move = Hash.new(0)
-      # In normal circumstances:
-      # - the top two players will be promoted 1 box, unless in box 1 already
+      # In normal circumstances, for each box:
+      # - the top two players will be promoted (first player: 2 boxes, second: 1 box)
       box_player_move[0] = box.box_number == 1 ? 0 : (box.box_number == 2 ? 1 : 2)
       box_player_move[1] = box.box_number == 1 ? 0 : 1
-      # - the last two players will be relegated 1 box, unless in last box already
+      # - the last two players will be relegated (last player: 2 boxes, second last: 1 box)
       box_player_move[user_box_scores.length - 2] = box.box_number == @boxes.length ? 0 : -1
       box_player_move[user_box_scores.length - 1] = box.box_number == @boxes.length ? 0 : (box.box_number == @boxes.length - 1 ? -1 : -2)
       # - A player who has played less than two matches (MIN_QUALIFYING_MATCHES) will be removed from the league.
