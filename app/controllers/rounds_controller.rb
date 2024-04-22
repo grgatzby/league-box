@@ -1,5 +1,5 @@
 class RoundsController < ApplicationController
-  MIN_QUALIFYING_MATCHES = 2
+  MIN_QUALIFYING_MATCHES = 0 #2
   MIN_PLAYERS_PER_BOX = 4
   NEW_ROUND_HEADERS = ["email", "first_name", "last_name", "phone_number", "role"].sort
   REFEREE = ["referee", "player referee"]
@@ -23,11 +23,11 @@ class RoundsController < ApplicationController
       box_player_move = Hash.new(0)
       # In normal circumstances:
       # - the top two players will be promoted 1 box, unless in box 1 already
-      box_player_move[0] = box.box_number == 1 ? 0 : 1
+      box_player_move[0] = box.box_number == 1 ? 0 : (box.box_number == 2 ? 1 : 2)
       box_player_move[1] = box.box_number == 1 ? 0 : 1
       # - the last two players will be relegated 1 box, unless in last box already
       box_player_move[user_box_scores.length - 2] = box.box_number == @boxes.length ? 0 : -1
-      box_player_move[user_box_scores.length - 1] = box.box_number == @boxes.length ? 0 : -1
+      box_player_move[user_box_scores.length - 1] = box.box_number == @boxes.length ? 0 : (box.box_number == @boxes.length - 1 ? -1 : -2)
       # - A player who has played less than two matches (MIN_QUALIFYING_MATCHES) will be removed from the league.
       user_box_scores.each_with_index do |ubs, index|
         new_box.user_box_scores.build # one nested attribute per player for building the form

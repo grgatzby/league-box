@@ -29,8 +29,8 @@
 
     <div class="print-all-content box-scroller">
       <% @boxes.each do |box| %>
+        <% if box.box_number > 1 %><hr><% else %><br><% end %>
         <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_format: params[:clear_format] == "1" %>
-        <br>
       <% end %>
     </div>
     <div class="buttons-wrap dont-print">
