@@ -241,8 +241,10 @@ class MatchesController < ApplicationController
     round = Round.find(params[:round_id])
     # 1/ remove existing scores for the round and clean user_box_score values
     Box.where(round_id: round.id).each do |box|
-      box.matches.each do |match|
-        destroy_match(match)
+      if box.matches.size.positive?
+        box.matches.each do |match|
+          destroy_match(match)
+        end
       end
     end
     # 2/ read CSV scores file
@@ -261,15 +263,13 @@ class MatchesController < ApplicationController
           player = match_players[0]
           opponent = match_players[1]
           box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
+          court_id = Court.find_by(club_id: round.club_id, name: row[:court_nb]).id
 
           # match_scores_to_a: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
           match_scores = match_scores_to_a(row[:score_winner])
           test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
           if test_score
-            # @match = Match.create(box_id:, court_id: row[:court_id], time: row[:match_date] || round.start_date)
-            court_id = Court.find_by(club_id: round.club_id, name: row[:court_nb]).id
-            @match = Match.create(box_id:, court_id:, time: round.start_date)
-            raise
+            @match = Match.create(box_id:, court_id:, time: row[:match_date] || round.start_date)
             results = compute_points(match_scores)
 
             # create and fill a user_match_score instance for each player of the match
