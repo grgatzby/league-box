@@ -7,14 +7,14 @@ en:
       valid_round_flash: "Round ranking: choose a valid round"
     index_league:
       intro: >
-        The <b>league table</b> is updated upon each new score entry.<br>
-        It compiles all the round ranking for the same tournament.
+        The <b>general ranking</b> (League table) is updated upon each new score entry.<br>
+        It compiles all the round rankings pertaining to the same tournament.
       rounds: Rounds
-      league_table_title: Yearly ranking
-      valid_league_flash: "League table: choose a valid league start date"
+      league_table_title: General ranking
+      valid_league_flash: "General ranking: choose a valid league start date"
     select_league:
-      select_league: yearly ranking for
-      league_dropdown: tournament starting
+      select_league: general ranking for
+      league_dropdown: year starting
     top_line:
       top_line_html: >
         Click on <span class="color-tennis-blue"><b>any header</b></span> to change sorting order,

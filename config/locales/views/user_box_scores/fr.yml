@@ -7,14 +7,14 @@ fr:
       valid_round_flash: "Classement du round: choisir un round valide"
     index_league:
       intro: >
-        La <b>league table</b> est mise à jour dès qu'un nouveau score est saisi.<br>
-        Elle agrège l'ensemble des rounds du même tournoi
+        Le <b>classement général</b> (league table) est mis à jour dès qu'un nouveau score est saisi.<br>
+        Il agrège l'ensemble des rounds du même tournoi.
       rounds: Rounds
-      league_table_title: League table de l'année
-      valid_league_flash: "League table: choisir un début de tournoi valide"
+      league_table_title: Classement général
+      valid_league_flash: "Classement général: choisir un début de tournoi valide"
     select_league:
-      select_league: league table de
-      league_dropdown: l'année commençant
+      select_league: classement général du
+      league_dropdown: tournoi commençant
     top_line:
       top_line_html: >
         Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,
