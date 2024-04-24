@@ -18,16 +18,17 @@ nl:
       round_ranking_btn: rangschikkingen
       message_box_pop: Als de pagina niet correct wordt weergegeven, vinkt u dit vakje aan om de achtergrondkleur te wissen
       message_csv_pop: >
-        <b>scores exporteren</b> naar CSV-bestand<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
-        points_player, points_opponent, box_number, score_winner, score_winner2, email_player, phone_number_player, role_player,
-        email_opponent, phone_number_opponent, role_opponent
-      to_csv_btn: 📄 naar CSV-bestand
+        <b>scores exporteren</b> naar CSV-bestand met kolommen:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
+        points_player, points_opponent, box_number, score_winner, score_winner2<br>
+        email_player, phone_number_player, role_player,
+        email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
+      to_csv_btn: 📄 CSV
       clear_format: Zijn achtergrond kleur
     index:
       all_box_title: De boxen van de ronde (compacte weergave)
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: <b>Kolommen</b><br />Spelersnaam, ranking, gespeelde wedstrijden, punten<br /><br />Klik op een <b>box</b> voor wedstrijddetails.
-      message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand<br /> id, club_id, email, first_name, last_name, nickname, phone_number, role
+      message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand met kolommen:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
       open_view_btn: uitgebreide weergave
@@ -35,7 +36,7 @@ nl:
       create_round_btn: ⎷ maak de volgende ronde
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
-      to_csv_btn: 📄 naar CSV-bestand
+      to_csv_btn: 📄 CSV
       load_scores: upload scoren
     my_scores:
       my_scores: Mijn scores

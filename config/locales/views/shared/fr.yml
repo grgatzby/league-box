@@ -23,12 +23,12 @@ fr:
       round_period: Round %{round} (%{start} au %{end}),
       round_period_mobile: R%{round},
       days_left: "%{days} jours restants,"
-      expired: round terminé
+      expired: round expiré
       players: "%{nb_players} joueurs"
     select_club:
-      select_club: "Autre club: "
+      select_club: "Club: "
     select_round:
-      select_round: "Autre round: "
+      select_round: "Round: "
       select_round_label: nom du round (départ du round)
       confirm_btn: ⎷ Confirmer
     select_club_round:

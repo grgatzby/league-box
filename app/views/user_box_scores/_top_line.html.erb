@@ -4,13 +4,15 @@
   <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= link_to t(".top_line_html"),
         user_box_scores_path(round_id: round.id, club_id: round.club_id),
-        class: "btn buttons-shape btn-top-line no-padding-no-border" %>
+        class: "btn buttons-shape btn-top-line no-padding-no-border",
+        title: t(".hover_text") %>
   </p>
 <% else %>
+  <div class="photo-wrap frame-color-shape frame-padding color-black text-size dont-print">
+    <b><%= sanitize t('.rules') %></b>
+    <%= render 'shared/stats' %>
+  </div><br>
   <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= t '.top_line_html' %>
   </p>
-  <div class="photo-wrap frame-color-shape frame-padding text-size dont-print">
-    <%= sanitize t('.rules') %>
-  </div><br>
 <% end %>

@@ -26,9 +26,9 @@ en:
       expired: round expired
       players: "%{nb_players} players"
     select_club:
-      select_club: "Other club: "
+      select_club: "Club: "
     select_round:
-      select_round: "Other round: "
+      select_round: "Round: "
       select_round_label: round name (round start date)
       confirm_btn: ⎷ Confirm
     select_club_round:

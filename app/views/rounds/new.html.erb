@@ -50,7 +50,7 @@
                   </div>
                   <div class="one-liner">
                     <%= label_tag t '.delimiter' %>
-                    <%= text_field_tag :delimiter, params[:delimiter] || ";", size: 1 %>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <%= text_field_tag :delimiter, params[:delimiter] || ",", size: 1 %>&nbsp;&nbsp;&nbsp;&nbsp;
                     <%= f.file_field :csv_file, accept: 'text/csv' %>
                   </div>
                   <br><%= t '.league_start' %>

@@ -3,7 +3,7 @@
   margin: 0 auto; /* top and bottom | left and right */
   padding: 5px 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   width: 70%;
 }
 
@@ -99,6 +99,14 @@
   }
 }
 
+// in user_box_score/index (top_line partial) changes text displayed on hover
+span.text_hovered {display: none; }
+a span.text, a:hover span.text_hovered {display: inline; }
+a:hover span.text, a span.text_hovered {display: none; }
+
+a:hover {visibility:visible}
+//-----------
+
 .btn-top-line {
   margin: 0 auto 5px; /* top | left and right | bottom */
   // border: 1px solid #4A4A4A;
@@ -109,7 +117,7 @@
   &:hover {
     font-weight: bold;
     color: #7f7f7f;
-  }
+    }
 }
 
 .btn-inlayed {

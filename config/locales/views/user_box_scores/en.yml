@@ -7,38 +7,46 @@ en:
       valid_round_flash: "Round ranking: choose a valid round"
     index_league:
       intro: >
-        The <b>general ranking</b> (League table) is updated upon each new score entry.<br>
+        The <b>global ranking</b> (League table) is updated upon each new score entry.<br>
         It compiles all the round rankings pertaining to the same tournament.
       rounds: Rounds
-      league_table_title: General ranking
-      valid_league_flash: "General ranking: choose a valid league start date"
+      league_table_title: Global ranking
+      valid_league_flash: "Global ranking: choose a valid league start date"
     select_league:
-      select_league: general ranking for
-      league_dropdown: year starting
+      select_league: year
+      league_dropdown: year ranking
     top_line:
       top_line_html: >
-        Click on <span class="color-tennis-blue"><b>any header</b></span> to change sorting order,
-        or on <span class="color-orange-light"><b>a player's line</b></span> to access their box.
+        <span class="text">
+          <span class="color-tennis-blue"><b>Click a header</b></span> to change sorting order,
+          or <span class="color-orange-light"><b>click a player's line</b></span> to access their box.
+        </span>
+        <span class="text_hovered color-green">
+          Click here to display the image and the round stats button.
+        </span>
+      hover_text: Click me to display the image
       rules: >
         A player's league position is determined by the total number of points won in a round.<br />
         In the event that two or more players have the same number of points the league position will be
         determined by:<br /><br />
         <ol>
           <li>Most matches played</li>
-          <li>Ratio of sets won to sets played</li>
-          <li>Ratio of games won to games played</li>
+          <li>Highest Ratio of sets won to sets played</li>
+          <li>Highest Ratio of games won to games played</li>
         </ol>
     action_buttons:
-      to_text_btn: 📄 text file
-      to_csv_btn: 📄 CSV file
       all_boxes_link: all boxes
-      message_csv_text_pop: <b>export league table</b> to text file
+      round_ranking_btn: round ranking
+      to_text_btn: 📄 text
+      to_csv_btn: 📄 CSV
+      message_text_round_pop: <b>export round ranking</b> to text file
       message_csv_round_pop: >
-        <b>export round league table</b> to CSV file<br />player, rank, points,
-        matches played, matches won, sets played, sets won, games played, games won, box_number
+        <b>export round ranking</b> to CSV file with the following headers:<br /><i>player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won, box_number</i>
+      message_text_pop: <b>export global ranking</b> to text file
       message_csv_pop: >
-        <b>export tournament league table</b> to CSV file<br />player, rank, points,
-        matches played, matches won, sets played, sets won, games played, games won
+        <b>export global ranking</b> to CSV file with the following headers:<br /><i>player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won</i>
     table_data:
       matches:
         zero: 0 matches

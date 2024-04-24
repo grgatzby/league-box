@@ -18,16 +18,17 @@ en:
       round_ranking_btn: ranking tables
       message_box_pop: If the page does not display correctly, tick this box to clear the background color
       message_csv_pop: >
-        <b>export round scores</b> to CSV file<br /> first_name_player, last_name_player, first_name_opponent, last_name_opponent,
-        points_player, points_opponent, box_number, score_winner, score_winner2, email_player, phone_number_player, role_player,
-        email_opponent, phone_number_opponent, role_opponent
-      to_csv_btn: 📄 CSV file
+        <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
+        points_player, points_opponent, box_number, score_winner, score_winner2<br>
+        email_player, phone_number_player, role_player,
+        email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
+      to_csv_btn: 📄 CSV
       clear_format: Clear background color
     index:
       all_box_title: All boxes in the round (compact view)
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: <b>Box columns:</b><br />Name, rank, games played, points.<br /><br />Click on a <b>box</b> to view match details
-      message_csv_pop: <b>export round players and referee</b> to CSV file<br /> id, club_id, email, first_name, last_name, nickname, phone_number, role
+      message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (my current box)
       create_round_btn: create the next round
       my_box: (my box)
@@ -35,7 +36,7 @@ en:
       round_ranking_btn: ranking tables
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
-      to_csv_btn: 📄 CSV file
+      to_csv_btn: 📄 CSV
       load_scores: load scores
     my_scores:
       my_scores: My scores

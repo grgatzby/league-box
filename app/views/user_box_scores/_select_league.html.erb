@@ -3,10 +3,10 @@
   <%= form_with url: index_league_path, method: :get do |form| %>
     <%= hidden_field_tag(:club_id, @club.id) %>
     <% if from == "index" %>
-      <%= form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
+      <%# form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
       <%= form.select(:league_start, @league_starts.unshift(t('.league_dropdown')), {selected: params[:league_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% else %>
-      <%= form.label :league_start, local_assigns[:label] ? label : t('.select_league')+" "+t('.league_dropdown') %>
+      <%= form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
       <%= form.select(:league_start, @league_starts, {selected: params[:league_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
     <% end %>
   <% end %>

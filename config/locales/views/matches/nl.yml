@@ -59,6 +59,7 @@ nl:
              box_number, score_winner, score_winner2</i>.<br>
           en:<br>
           <i>email_player, phone_number_player, role_player,
-             email_opponent, phone_number_opponent, role_opponent</i>
+             email_opponent, phone_number_opponent, role_opponent,
+             match_date, court_nb, input_user_id, input_date</i>
       submit_btn: ⎷ Bevestigen
       back_btn: ←

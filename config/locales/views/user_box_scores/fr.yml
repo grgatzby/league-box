@@ -13,31 +13,39 @@ fr:
       league_table_title: Classement général
       valid_league_flash: "Classement général: choisir un début de tournoi valide"
     select_league:
-      select_league: classement général du
-      league_dropdown: tournoi commençant
+      select_league: année
+      league_dropdown: classement annuel
     top_line:
       top_line_html: >
-        Cliquer sur <span class="color-tennis-blue"><b>un entête</b></span> pour ordonner la table,
-        ou sur <span class="color-orange-light"><b>la ligne d'un joueur</b></span> pour accéder à sa box.
+        <span class="text">
+          <span class="color-tennis-blue"><b>Cliquer un entête</b></span>: ordonne la table,
+          <span class="color-orange-light"><b>cliquer la ligne d'un joueur</b></span>: accéder à sa box.
+        </span>
+        <span class="text_hovered color-green">
+          Cliquer ici pour faire apparaître l'image et le bouton des stats du round.
+        </span>
+      hover_text: Cliquer ici pour faire apparaître l'image
       rules: >
-        Le classement d'un joueur dans la league table est déterminé par le cumul de points gagnés pendant le round.<br />
+        Le classement d'un joueur dans la league est déterminé par le cumul de points gagnés pendant le round.<br />
         Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
         <ol>
           <li>Le plus de matchs joués</li>
-          <li>Ratio sets gagnés sur sets joués</li>
-          <li>Ratio jeux gagnés sur jeux joués</li>
+          <li>Le plus de sets gagnés / sets joués</li>
+          <li>Le plus de jeux gagnés / jeux joués</li>
         </ol>
     action_buttons:
-      to_text_btn: 📄 fichier texte
-      to_csv_btn: 📄 fichier CSV
       all_boxes_link: les box
-      message_csv_text_pop: <b>exporter la league table</b> en fichier texte
+      round_ranking_btn: classement du round
+      to_text_btn: 📄 texte
+      to_csv_btn: 📄 CSV
+      message_text_round_pop: <b>exporter le classement du round</b> en fichier texte
       message_csv_round_pop: >
-        <b>exporter la league table du round</b> vers un fichier CSV<br />player, rank, points,
-        matches played, matches won, sets played, sets won, games played, games won, box_number
+        <b>exporter le classement du round</b> vers un fichier CSV avec les colonnes suivantes:<br /><i>player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won, box_number</i>
+      message_text_pop: <b>exporter le classement général</b> en fichier texte
       message_csv_pop: >
-        <b>export la league table du tournoi</b> vers un fichier CSV<br />player, rank, points,
-        matches played, matches won, sets played, sets won, games played, games won
+        <b>exporter le classement général</b> vers un fichier CSV avec les colonnes suivantes:<br /><i>player, rank, points,
+        matches played, matches won, sets played, sets won, games played, games won</i>
     table_data:
       matches:
         zero: 0 match
