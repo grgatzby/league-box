@@ -21,8 +21,8 @@ en:
           <span class="color-tennis-blue"><b>Click a header</b></span> to change sorting order,
           or <span class="color-orange-light"><b>click a player's line</b></span> to access their box.
         </span>
-        <span class="text_hovered color-green">
-          Click here to display the image and the round stats button.
+        <span class="text_hovered">
+          <span class="color-green"><b>Click this line</b></span> to display the image and the <b>round stats</b> button.
         </span>
       hover_text: Click me to display the image
       rules: >

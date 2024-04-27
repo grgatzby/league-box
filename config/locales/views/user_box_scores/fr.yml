@@ -21,8 +21,8 @@ fr:
           <span class="color-tennis-blue"><b>Cliquer un entête</b></span>: ordonne la table,
           <span class="color-orange-light"><b>cliquer la ligne d'un joueur</b></span>: accéder à sa box.
         </span>
-        <span class="text_hovered color-green">
-          Cliquer ici pour faire apparaître l'image et le bouton des stats du round.
+        <span class="text_hovered">
+          <span class="color-green"><b>Cliquer cette ligne</b></span> pour faire apparaître l'image et le bouton des <b>stats du round</b>.
         </span>
       hover_text: Cliquer ici pour faire apparaître l'image
       rules: >

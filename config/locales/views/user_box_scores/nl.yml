@@ -21,8 +21,8 @@ nl:
           <span class="color-orange-light"><b>Klik op de lijn van de speler</b></span> om toegang te krijgen tot zijn box,
           of <span class="color-tennis-blue"><b>klik op header</b></span> om de ranglijst te sorteren.
         </span>
-        <span class="text_hovered color-green">
-          Klik hier om de foto en de ronde statistiekenknop weer te geven.
+        <span class="text_hovered">
+          <span class="color-green"><b>Klik op deze regel</b></span> om de foto en de <b>rondestats knop</b> weer te geven.
         </span>
       hover_text: Klik hier om de foto weer te geven
       rules: >
