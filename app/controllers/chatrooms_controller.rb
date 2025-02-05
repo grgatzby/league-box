@@ -3,20 +3,20 @@ class ChatroomsController < ApplicationController
   REFEREE = ["referee", "player referee"]
 
   def show
-    set_club_round # set variables @club and @round (ApplicationController)
-    # choose/display a chatroom
+    set_club_round # sets variables @club and @round (ApplicationController)
+    # chooses/displays a chatroom
     # this method is accessed from either [A, B] itself (form), [C] the navbar dropdown, or [D] My scores view
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
-      # [A] display a chatroom after selecting a chatroom name from the chatrooms/show dropdown
+      # [A] displays a chatroom after selecting a chatroom name from the chatrooms/show dropdown
       # [1..] removes the first character '#' of the name (same as [1..-1])
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..])
       @box_nb = @chatroom.box.box_number
       @round = @chatroom.box.round
       @round_nb = round_label(@round)
     elsif (params[:round] && current_user.role == "player") || params[:box]
-      # [B] display a chatroom after selecting a club, a round and a box number
-      # either select an open chatroom or create (open) a chatroom
+      # [B] displays a chatroom after selecting a club, a round and a box number
+      # either selects an open chatroom or create (open) a chatroom
       club = Club.find_by(name: params[:club])
       round = Round.find_by(club_id: club.id, start_date: params[:round].to_date)
       if current_user.role == "player"
@@ -39,7 +39,7 @@ class ChatroomsController < ApplicationController
       @round_nb = round_label(@round)
     elsif params[:id]
       if params[:id] == "0"
-        # [C] coming from the navbar dropdown: display the forms (a dropdown list of available chatrooms
+        # [C] coming from the navbar dropdown: displays the forms (a dropdown list of available chatrooms
         # and a nested form of club/round/box numbers)
         # [a] define list of available chatrooms in the first form
         if current_user == @admin

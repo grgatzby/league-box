@@ -12,16 +12,16 @@ class BoxesController < ApplicationController
                     "match_date", "court_nb", "input_user_id", "input_date"]
 
   def index
-    # display all boxes and the shared select_round form
+    # displays all boxes and the shared select_round form
     @page_from = params[:page_from]
-    set_club_round # set variables @club, @round and @boxes (ApplicationController)
+    set_club_round # sets variables @club, @round and @boxes (ApplicationController)
     # @my_box = 0
     # @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
     @my_box = my_own_box(@round)
     if @round
       init_stats
       days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
-      # admin : create button appears in last days or after if round is the most recent
+      # admin : creates button appears in last days or after if round is the most recent
       @new_round_required = (days_left <= DAYS_BEFORE_NEW_ROUND_CREATION) && (round_dropdown_to_start_date(@rounds_dropdown.first) == @round.start_date)
       # referee : request button appears only before end of the last round
       @new_round_request = days_left.positive? && @new_round_required
@@ -33,7 +33,7 @@ class BoxesController < ApplicationController
   end
 
   def show
-    # display one box in table view, links to view and edit match cards
+    # displays one box in table view, links to view and edit match cards
     unless params[:id].to_i.zero?
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
@@ -49,12 +49,12 @@ class BoxesController < ApplicationController
   end
 
   def show_list
-    # display one box in list view, links to view and edit match cards
+    # displays one box in list view, links to view and edit match cards
     show # inherit from #show
   end
 
   def my_scores
-    # player: view their box and select enter new score / view played match
+    # view player's box and select enter new score / view played match
     # open the box chatroom if necessary and link to access it
     @page_from = params[:page_from]
     @current_player = current_user
@@ -83,7 +83,7 @@ class BoxesController < ApplicationController
       end
       @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
-        # create here (open) a new chatroom if it does not exist yet or if it is still set to "general":
+        # creates (and opens) a new chatroom if it does not exist yet or if it is still set to "general":
         # rationale : the Chatroom class was migrated after the Box class (with: chatroom has one box)
         # and the migration script assigned the #general chatroom by default to existing boxes.
         # The name format: "[Club name] - R[Round id]:B[Box number]"
@@ -98,7 +98,7 @@ class BoxesController < ApplicationController
   end
 
   def round_boxes_to_csv
-    # export for the selected round a list of players and the referee to a csv file
+    # exports for the selected round a list of players and the referee to a csv file
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
     # file = Rails.root.join('public', 'data.csv')
@@ -128,7 +128,7 @@ class BoxesController < ApplicationController
   end
 
   def round_scores_to_csv
-    # export for the selected round the scores to a csv file
+    # exports the scores to a csv file for the selected round
     # complying with the expected format for matches#create_scores
     # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
@@ -174,18 +174,18 @@ class BoxesController < ApplicationController
   end
 
   def user_matches(user, box)
-    # for a given user, select match scores in box, and returns array of matches
+    # for a given user, selects match scores in box, and returns array of matches
     # user.user_match_scores.select { |user_match_score| user_match_score.match.box == box }.map(&:match)
     user.user_match_scores.includes([match: :box]).select { |user_match_score| user_match_score.match.box == box }.map(&:match)
   end
 
   def opponent(match, player)
-    # for a given match, select match score of other player, and returns other player
+    # for a given match, selects match score of other player, and returns other player
     match.user_match_scores.reject { |user_match_score| user_match_score.user == player }.map(&:user)[0]
   end
 
   def box_matches(box)
-    # return array of [user_box_score, matches_details, user] sorted by player's total points
+    # returns array of [user_box_score, matches_details, user] sorted by player's total points
     # where matches_details is an array of [match, opponent, user_score, opponent_score]
     box_matches = []
     # box.user_box_scores.each do |user_box_score|
@@ -197,7 +197,7 @@ class BoxesController < ApplicationController
   end
 
   def matches_details(user_box_score)
-    # return array of [match, opponent, user_score, opponent_score]
+    # returns array of [match, opponent, user_score, opponent_score]
     user = user_box_score.user
     matches = user_matches(user, user_box_score.box)
     matches.map! do |match|
