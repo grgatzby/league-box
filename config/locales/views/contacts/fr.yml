@@ -10,7 +10,7 @@ fr:
         other: "%{count} erreurs empêchent"
       error_message: "l'envoi de ce formulaire:"
       contact_p01_html: >
-        Cette demande sera envoyée à l'admin. Pour les demandes adressées à votre Referee
+        Cette demande sera envoyée à l'admin du site. Pour les demandes adressées à votre Referee
         vous trouverez ses coordonnées en consultant la page <b>Contact</b>
         ou contactez-le via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).
       contact_p02: Les différends sur les scores devront être traités depuis la chatroom de votre box.
@@ -29,9 +29,9 @@ fr:
         &#013;&#013;Cordialement
         &#013;%{sender}
         &#013;&#013;* Types acceptés: csv, pdf, microsoft (word, excel), apple (pages, numbers).
-      name_placeholder: Nom complet
-      email_placeholder: adresse e-mail user@domain.com
-      phone_placeholder: Téléphone
+      name_placeholder: Votre prénom et nom
+      email_placeholder: Votre adresse e-mail
+      phone_placeholder: Votre téléphone
       file_attached: Il n'y a pas de fichier attaché. Envoyer tout de même?
       send_btn: ⎷ Envoi
     sent:

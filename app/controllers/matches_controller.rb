@@ -449,7 +449,8 @@ class MatchesController < ApplicationController
       # test score entries for the tiebreak
       if match_scores[0][:score_tiebreak].zero? && match_scores[1][:score_tiebreak].zero? &&
          (results[:sets_won1] == 1 || results[:sets_won2] == 1) # no score entered for the tiebreak with 1 set each
-        flash[:alert] = t('.test_scores02_flash')
+        # TO DO : if unfinished match are permitted (create migration for new club attribute) separate 2 cases here
+         flash[:alert] = t('.test_scores02_flash')
         false
       elsif (match_scores[0][:score_tiebreak].positive? || match_scores[1][:score_tiebreak].positive?) &&
             (results[:sets_won1] == 2 || results[:sets_won2] == 2) # unnecessary tiebreak score entered

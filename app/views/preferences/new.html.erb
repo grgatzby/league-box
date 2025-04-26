@@ -1,15 +1,17 @@
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <% if @preference.photo.attached? %>
-    <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
-  <% end %>
-<!--
+
+
+
   <%= simple_form_for(@preference) do |f| %>
     <%= f.input :photo, as: :file  %>
+    <%= f.text_field :clear_format,
+    placeholder: @preference.clear_format,
+    value: @preference.clear_format  %>
     <%= f.button :submit %>
   <% end %>
--->
+
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >

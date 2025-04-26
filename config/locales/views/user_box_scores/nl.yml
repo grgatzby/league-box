@@ -7,19 +7,20 @@ nl:
       valid_round_flash: "Ronde rangschikking: kies een geldige ronde."
     index_league:
       intro: >
-        Het <b>algemene ranglijst</b> (league table) wordt bijgewerkt bij elke nieuwe score-invoer.<br>
+        Het <b>league table</b> (toernooi ranglijst) wordt bijgewerkt bij elke nieuwe score-invoer.<br>
         Het verzamelt alle ronderanglijsten die betrekking hebben op hetzelfde toernooi.
       rounds: Ronden
-      league_table_title: Algemene ranglijst van het jaar
-      valid_league_flash: "Algemene ranglijst: kies een geldig toernooi startdatum."
+      league_table_title: League table van het toernooi
+      valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
-      select_league: jaar
-      league_dropdown: jaar ranglijst
+      select_league: "toernooi:"
+      message_league_pop: "kies een toernooi startdatum."
+      league_dropdown: league table
     top_line:
       top_line_html: >
         <span class="text">
           <span class="color-orange-light"><b>Klik op de lijn van de speler</b></span> om toegang te krijgen tot zijn box,
-          of <span class="color-tennis-blue"><b>klik op header</b></span> om de ranglijst te sorteren.
+          <span class="color-tennis-blue"><b>klik op header</b></span> om de ranglijst te sorteren.
         </span>
         <span class="text_hovered">
           <span class="color-green"><b>Klik op deze regel</b></span> om de foto en de <b>rondestats knop</b> weer te geven.
@@ -34,18 +35,20 @@ nl:
           <li>Verhouding tussen gewonnen games en gespeelde games</li>
         </ol>
     action_buttons:
-      all_boxes_link: boxen
-      round_ranking_btn: ronde ranglijst
+      all_boxes_link: 📦 boxen
+      round_ranking_btn: 🏆 ronde ranglijst
       to_text_btn: 📄 tekst
       to_csv_btn: 📄 CSV
-      message_text_round_pop: <b>ronde ranglijst exporteren</b> naar tekstbestand
+      message_text_round_pop: ronde ranglijst <b>exporteren</b> naar tekstbestand
       message_csv_round_pop: >
-        <b>ronde ranglijst exporteren</b> naar CSV-bestand met de volgende kopteksten:<br /><i>player, rank, points,
+        ronde ranglijst <b>exporteren</b> naar CSV-bestand met de volgende kopteksten:<br /><i>player, rank, points,
         matches played, matches won, sets played, sets won, games played, games won, box_number</i>
-      message_text_pop: <b>algemene ranglijst exporteren</b> naar tekstbestand
+      message_text_pop: toernooi ranglijst <b>exporteren</b> naar tekstbestand
       message_csv_pop: >
-        <b>algemene ranglijst exporteren</b> naar CSV-bestand met de volgende kopteksten:<br /><i>player, rank, points,
+        toernooi ranglijst <b>exporteren</b> naar CSV-bestand met de volgende kopteksten:<br /><i>player, rank, points,
         matches played, matches won, sets played, sets won, games played, games won</i>
+      message_round_rank_pop: >
+        laatste round ranglijst
     table_data:
       matches:
         zero: 0 wed.

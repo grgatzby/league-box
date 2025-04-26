@@ -37,5 +37,7 @@ nl:
       select_round: Kies een ronde
       current_end_date: Huidige einddatum
       new_end_date: Nieuwe einddatum
+      next_round: Start van de volgende ronde
       round: Start van de ronde
+      message: Als de nieuwe einddatum later wordt vastgesteld dan de volgende ronde, wordt de laatste ook naar voren geschoven.
       confirm_btn: ⎷ Bevestigen

@@ -47,7 +47,11 @@
         <%= render "select_league", fallback_path: user_box_scores_path, from: "index_league" %>
       <% end %>
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn buttons-shape btn-yellow mb-3" %>
-    <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: round.id, club_id: round.club_id),
-                                  class: "btn buttons-shape btn-yellow mb-3 dont-print text-size" %>
+    <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+        data-bs-content="<%= t '.message_round_rank_pop' %>">
+      <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: round.id, club_id: round.club_id),
+                                    class: "btn buttons-shape btn-yellow mb-3 dont-print text-size" %>
+    </span>
   <% end %>
 </div>

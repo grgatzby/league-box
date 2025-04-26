@@ -26,6 +26,8 @@ class PagesController < ApplicationController
   end
 
   def my_details
+    #on 10/02/2025 replaced pages#my_details with preferences#new and preferences#edit
+    #this method should be deleted (as the corresponding route)
     @preference = current_user.preference || Preference.new(user_id: current_user.id)
   end
 end

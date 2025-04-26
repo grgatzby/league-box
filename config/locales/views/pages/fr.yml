@@ -1,53 +1,61 @@
 fr:
   pages:
     home:
-      main_title: Le tennis associatif de votre club
-      welcome_title: Votre tournoi sur LeagueBox
-      p01: >
-        Le Tournoi en Simples de votre club est organisé comme une Box League proposant un round chaque mois (ou plus dans certains clubs).
-        Les points gagnés au cours de chaque round s'additionnent en un total cumulé qui déterminera le vainqueur du Tournoi.
-      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
-      p03: >
-        Le vainqueur recevra le trophée du Tournoi Box League 🏆, son nom sur le tableau d'honneur et pourquoi pas
+      main_title: Le tournoi social de votre club
+      welcome_title: Mesurez-vous aux autres membres de votre club sur LeagueBox
+      p01_html: >
+        📅🏆 LeagueBox vous propose de participer au sein même de votre club à un Tournoi en Simples organisé comme une Box League :
+        <ul>
+          <li>un <b>tournoi interne</b> : seuls les membres de votre club peuvent participer,
+          <li>les joueurs inscrits sont répartis dans des <b>box</b> de même niveau (4 à 5 joueurs) par le referee du tournoi
+          <li>le tournoi se déroule en plusieurs <b>rounds</b> chacun durant un mois environ (ou plus),
+          <li>vos <b>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
+        </ul>
+      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> (classement du tournoi) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
+      p03_html: >
+        Le <b>vainqueur</b> recevra le trophée du Tournoi Box League 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
-      use_title: Votre LeagueBox en quelques clicks
+      use_title: LeagueBox en un coup d'œil
       li01: Mes scores
       li02: Les box du round
       li06_html: >
-        La page %{inset} montre toutes les box de la league:
-        accédez aux détails d'une box en cliquant dessus.<br/>
-        Vous avez également accès aux rounds précédents.
+        %{inset} : la vue globale des box du round.
+        <b>Cliquez sur une box</b> pour la voir en détail.<br/>
+        Vous pouvez également revoir les rounds précédents.
       li03a: Vue en liste
       li03b: Vue en grille
-      li07_html: Après chaque match, entrez votre score dans les %{inset_a}, les %{inset_b}, ou dans %{inset_c}.<br>Votre classement est mis à jour automatiquement.
+      li07_html: >
+        %{inset_a}, %{inset_b}, %{inset_c} : après chaque match, entrez votre score dans une de ces pages.
+        Votre classement se met à jour automatiquement.
       li04a: classement du round
       li04b: league table
-      li08_html: Le %{inset_a} et la %{inset_b} du round sont toujours à jour, vous pouvez vous comparer aux autres joueurs du tournoi.
-      how_title: "Les rounds: quatre étapes simples"
+      li08_html: Le %{inset_a} et la %{inset_b} du round sont toujours à jour!
+      how_title: Utiliser LeagueBox
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
-      li09_html: Pendant la durée du round, <b>jouez tous les matchs</b> de votre box.
+      li09_html: Pendant un round, <b> jouez tous les matchs</b> de votre box.
       li10_html: Après chaque match, vous ou votre adversaire <b>entrez le score</b> du match.
-      li11_html: Le <b>classement du round</b> et la <b>league table</b> sont mis à jour automatiquement.
+      li11_html: Le <b>classement du round</b> et la <b>league table</b> sont automatiquement recalculés.
       li12_html: >
-        À la fin du round, les deux meilleurs joueurs de chaque box sont <b>promus</b> (premier joueur: 2 box, second: une box).
-        Les deux derniers sont <b>relégués</b> (dernier joueur: 2 box, avant-dernier: une box).
+        <b>Promotion, déclassement</b> à la fin du round : dans chaque box
+        <br>- le meilleur joueur monte de 2 box, le second d'une box,
+        <br>- le dernier joueur baisse de 2 box, l'avant-dernier d'une box.
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
-      club_join_title: "Manager de Club: rejoindre League Box?"
+      club_join_title: "Manager de Club: adoptez LeagueBox pour votre club"
       li14: Nous contacter
       p06_html: >
         Offrez à vos adhérents l'opportunité de jouer ensemble un tennis compétitif au sein du club en vous affiliant à League Box.<br>
-        League Box s'occupe de tout pour vous!<br>
+        LeagueBox s'occupe de tout pour vous!<br>
         Consultez notre page %{inset} pour en savoir plus.
-      happy_tournament: Que les meilleurs gagnent!
+      happy_tournament: Que le meilleur gagne!
       add_club_btn: Ajouter un nouveau club
     rules:
       overview_title: Description du Tournoi
       p01_html: >
-        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif avec des joueurs du même niveau.
+        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif avec d'autres joueurs du club d'un niveau comparable.
         Elles sont aussi le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
       p02: >
-        Mais les Box Leagues ne marchent que si les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent
+        La clé du succès est que les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs,
         prévenez rapidement vos adversaires et votre Referee.
       p03: >
@@ -150,7 +158,7 @@ fr:
         sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
       disputes: Différends
-      mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email}"
+      mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email} ou via la Chatroom de votre box"
       mail_to_admin_html: "votre admin à %{admin_email}"
       p40_html: "Les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
@@ -228,6 +236,7 @@ fr:
       li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
+# à supprimer
     my_details:
       preferences: Préférences
       nick_name: Pseudo

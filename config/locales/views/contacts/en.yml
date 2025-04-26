@@ -10,7 +10,7 @@ en:
         other: "%{count} errors"
       error_message: "prohibited this form from being sent:"
       contact_p01_html: >
-        This request will be sent to the admin. For requests addressed to your Referee
+        This request will be sent to the website admin. For requests addressed to your Referee
         please find their details in the <b>About us</b> page
         or contact them through your box <b>chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).
       contact_p02: Score disputes should be dealt in your box chatroom.
@@ -29,9 +29,9 @@ en:
         &#013;&#013;Regards
         &#013;%{sender}
         &#013;&#013;*Accepted types : csv, pdf, microsoft (word, excel), apple (pages, numbers).
-      name_placeholder: Full name
-      email_placeholder: e-mail address user@domain.com
-      phone_placeholder: Phone number
+      name_placeholder: Your full name
+      email_placeholder: Your e-mail address
+      phone_placeholder: Your phone number
       file_attached: No file is attached. Send anyway?
       send_btn: ⎷ Send
     sent:

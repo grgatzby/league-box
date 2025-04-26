@@ -7,19 +7,20 @@ en:
       valid_round_flash: "Round ranking: choose a valid round"
     index_league:
       intro: >
-        The <b>global ranking</b> (League table) is updated upon each new score entry.<br>
+        The <b>League table</b> (tournament ranking) is updated upon each new score entry.<br>
         It compiles all the round rankings pertaining to the same tournament.
       rounds: Rounds
-      league_table_title: Global ranking
-      valid_league_flash: "Global ranking: choose a valid league start date"
+      league_table_title: League table for tournament
+      valid_league_flash: "League table: choose a valid tournament start date"
     select_league:
-      select_league: year
-      league_dropdown: year ranking
+      select_league: "tournament:"
+      message_league_pop: "select a tournament start date"
+      league_dropdown: league table
     top_line:
       top_line_html: >
         <span class="text">
           <span class="color-tennis-blue"><b>Click a header</b></span> to change sorting order,
-          or <span class="color-orange-light"><b>click a player's line</b></span> to access their box.
+          <span class="color-orange-light"><b>click a player's line</b></span> to access their box.
         </span>
         <span class="text_hovered">
           <span class="color-green"><b>Click this line</b></span> to display the image and the <b>round stats</b> button.
@@ -35,18 +36,20 @@ en:
           <li>Highest Ratio of games won to games played</li>
         </ol>
     action_buttons:
-      all_boxes_link: all boxes
-      round_ranking_btn: round ranking
+      all_boxes_link: 📦 all boxes
+      round_ranking_btn: 🏆 round ranking
       to_text_btn: 📄 text
       to_csv_btn: 📄 CSV
-      message_text_round_pop: <b>export round ranking</b> to text file
+      message_text_round_pop: <b>export</b> round ranking to text file
       message_csv_round_pop: >
-        <b>export round ranking</b> to CSV file with the following headers:<br /><i>player, rank, points,
+        <b>export</b> round ranking to CSV file with the following headers:<br /><i>player, rank, points,
         matches played, matches won, sets played, sets won, games played, games won, box_number</i>
-      message_text_pop: <b>export global ranking</b> to text file
+      message_text_pop: <b>export</b> league table to text file
       message_csv_pop: >
-        <b>export global ranking</b> to CSV file with the following headers:<br /><i>player, rank, points,
+        <b>export</b> league table to CSV file with the following headers:<br /><i>player, rank, points,
         matches played, matches won, sets played, sets won, games played, games won</i>
+      message_round_rank_pop: >
+        display the latest round ranking
     table_data:
       matches:
         zero: 0 matches

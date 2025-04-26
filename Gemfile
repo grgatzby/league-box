@@ -53,16 +53,18 @@ gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "dotenv-rails"
-
 end
 
 # Custom gems
 gem 'faker'
 gem 'mail_form'
+gem 'cloudinary', '~> 1.12.0'
+#gem "cloudinary"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

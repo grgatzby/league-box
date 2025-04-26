@@ -24,6 +24,7 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
 <div id="message-<%= message.id %>" class="cont-<%= message.user_id %>">
   <div class="message-box msg-<%= message.user_id %> ">
     <small>
+      <%# sender = popover text when hovering on a sendee name %>
       <% sender = message.user.club == current_user.club || message.user.role == "admin" ?
                       "" : "#{message.user.club.name}: " %>
       <% case message.user.role %>

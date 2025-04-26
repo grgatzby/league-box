@@ -1,21 +1,26 @@
 nl:
   pages:
     home:
-      main_title: Verenigingstennis in jouw club
-      welcome_title: Welkom op de LeagueBox-website
-      p01: >
-        Het Singles Tournament wordt georganiseerd als een Box League en biedt elke maand een ronde (of meer, in sommige club).
-        De tijdens elke ronde verdiende punten vormen een cumulatief totaal dat de winnaar van het toernooi bepaalt.
-      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
-      p03: >
+      main_title: Het Sociaal Toernooi in jouw club
+      welcome_title: Neem het op tegen je clubgenoten op LeagueBox
+      p01_html: >
+        📅🏆 Binnen je eigen club biedt LeagueBox je de mogelijkheid om deel te nemen aan een gemengd Singles Social Tournament,
+        georganiseerd als een Box League :
+        <ul>
+          <li> een <b>intern toernooi</b>: alleen leden van je club mogen deelnemen.
+          <li> deelnemers worden door de scheidsrechter verdeeld in <b>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
+          <li> het toernooi bestaat uit <b>meerdere rondes</b> die een maand duren (of langer, naar goeddunken van de scheidsrechter). <li> de <b>punten die in elke ronde worden verdiend</b>, worden bij elkaar opgeteld om een ​​algehele toernooiwinnaar te bepalen.
+        </ul>
+      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>league table</b> (toernooi rangschikking) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
+      p03_html: >
         De winnaar ontvangt de Singles Box League Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
-      use_title: Jouw LeagueBox in een paar klikken
+      use_title: Leaguebox in één oogopslag
       li01: Mijn scores
       li05_html:
-      li02: De boxen van de ronde
+      li02: Ronde boxen
       li06_html: >
-        Op %{inset} zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
+        Op de %{inset} pagina, zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
         klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
       li03a: Resultaten lijst
       li03b: Resultatenraster
@@ -23,23 +28,24 @@ nl:
       li04a: ronde rangschikking
       li04b: league table
       li08_html: De %{inset_a} en de %{inset_b} worden altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
-      how_title: "De rondes: 4 eenvoudige stappen"
+      how_title: Hoe werkt LeagueBox?
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
       li09_html: Gedurende de ronde speel <b>elke wedstrijd</b> in je box.
       li10_html: Na elke wedstrijd voert een van de twee spelers <b>de wedstrijdscore</b> in.
       li11_html: De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt.
       li12_html: >
-        <b>Promotie / degradatie</b>: Aan het einde van de ronde gaan de twee beste spelers van elk box omhoog (eerste speller: 2 boxen, tweede: 1 box).
-        De laatste twee degraderen (laatste speller: 2 boxen, voorlaatste: één box).
+        <b>Promotie, degradatie</b> aan het einde van de ronde : in elk box
+        <br>- de eerste speler gaat 2 boxen omhoog, de tweede 1 box;
+        <br>- de laatste speler gaat 2 boxen omlaag, de een na laatste 1 box.
       li13: Toernooiregels
       p05_html: Bezoek onze pagina %{inset} voor meer informatie.
-      club_join_title: "Clubmanager: zin om zich bij ons aan te sluiten?"
+      club_join_title: "Clubmanager: adopteer LeagueBox voor uw club"
       li14: Contact
       p06_html: >
         Bied uw leden de mogelijkheid om samen competitietennis te spelen binnen de club door zich aan te sluiten bij League Box.<br>
         League Box regelt alles voor u!<br>
         Bezoek onze pagina %{inset} voor meer informatie.
-      happy_tournament: Happy tournament!
+      happy_tournament: Gelukkig toernooi!
       add_club_btn: Een nieuwe club toevoegen
     rules:
       overview_title: Beschrijving van het toernooi
@@ -150,7 +156,7 @@ nl:
         zal worden beoordeeld naar goeddunken van de toernooiReferee, wiens beslissing definitief zal zijn.
       p39: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
       disputes: Geschillen
-      mail_to_referee_html: "uw Referee %{referee_name} aan %{referee_email}"
+      mail_to_referee_html: "uw Referee %{referee_name} aan %{referee_email} of via jouw Box chatroom"
       mail_to_admin_html: "uw admin aan %{admin_email}"
       p40_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
     sitemap:
@@ -228,6 +234,7 @@ nl:
       li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
+# à supprimer
     my_details:
       preferences: Voorkeuren
       nick_name: Pseudo

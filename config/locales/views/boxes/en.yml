@@ -14,8 +14,8 @@ en:
       all_boxes_link: all boxes
     index_expanded:
       all_box_title: All boxes in the round (expanded view)
-      all_boxes_btn: compact view
-      round_ranking_btn: ranking tables
+      all_boxes_btn: 🔁 compact view
+      round_ranking_btn: 🏆 ranking tables
       message_box_pop: If the page does not display correctly, tick this box to clear the background color
       message_csv_pop: >
         <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -32,8 +32,8 @@ en:
       my_current_box: (my current box)
       create_round_btn: create the next round
       my_box: (my box)
-      open_view_btn: expanded view
-      round_ranking_btn: ranking tables
+      open_view_btn: 🔁 expanded view
+      round_ranking_btn: 🏆 ranking tables
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
       to_csv_btn: 📄 CSV
@@ -43,7 +43,7 @@ en:
       intro_html: >
         The <b class='color-tennis-red'>My scores</b> page allows players to access the match cards, and enter new scores within their own box.<br />
         (nb: this can also be done from <b class='bold-font color-tennis-blue'>List view</b> and <b class='bold-font color-tennis-blue'>Grid view</b>).<br><br>
-        <b class='color-tennis-red'>My scores</b> also gives them access to the <b>Box chatroom</b> to easily organise their fixtures.<br>
+        <b class='color-tennis-red'>My scores</b> also gives them access to the <b>Box chatroom</b> to easily organise their fixtures, or get in touch with the Referee.<br>
       intro_stale: For a given round, view <b>your box</b><br />and view your match details or enter your new scores in your club
       my_current_box: my current box
       my_box: my box
@@ -56,7 +56,7 @@ en:
       see_match_card_btn: Match card
       enter_score_btn: Enter score
       match_not_played: Match not played
-      chat_in_my_box: Organise my matches
+      chat_in_my_box: Organise my matches, contact your Referee
       access_chatroom_btn: to the box chatroom
     show_list:
       intro_html: >
@@ -69,9 +69,14 @@ en:
       opponent_points_header: Opponent's points
       opponent_total_points_header: Opponent's total
       points_pop: >
-        Winner earns 20 points for the match.<br />
-        Looser earns 10 points per set won + number of games per lost set.<br />
-        The championship tie-break counts as one set (no points awarded for the looser).
+        - Winner earns 20 points for the match.<br />
+        - Looser earns 10 points per set won + number of games per lost set.<br />
+        - The championship tie-break counts as one set (no points awarded for the looser).<br /><br />
+        <i>Examples :</i><br />
+          4-2 4-3 : winner 20, looser 5<br />
+          4-1 2-4 10-6 : winner 20, looser 11<br />
+          4-3 3-4 12-10 : winner 20, looser 13<br />
+          4-2 2-4 10-1 : winner 20, looser 12
     show_list_data:
       won: Won
       lost: Lost
