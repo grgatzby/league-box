@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
+  # This app help organise intra club tennis championship where players are divides into boxes of 4 to 6 players
+  # Within a timeframe (a round) players will compete against other players in heir box; at the end of the round
+  # the best players in each box are upgrades one box, the worst are dwngraded one box.
   # Existing features:
   # - players can: view a box (in list or table view), enter a new match score in their own box, view all boxes,
   #                view the league table, access their box chatroom.

@@ -37,5 +37,7 @@ fr:
       select_round: Choisir un round
       current_end_date: Date de fin actuelle
       new_end_date: Nouvelle date de fin
+      next_round: Date de début du prochain round
       round: Date de début du round
+      message: Si la nouvelle daset de fin est au-delà de la date de départ du prochain round, celle-ci sera reculée aussi.
       confirm_btn: ⎷ Confirmer

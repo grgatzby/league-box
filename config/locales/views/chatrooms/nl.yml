@@ -3,11 +3,12 @@ nl:
     show:
       message: >
         Berichtkleuren:<br />
-          - Spelers van mijn club verschijnen in het blauw<br />
-          - De Referee van mijn club verschijnt in aqua<br />
-          <span class= 'color-grey'>- Spelers van andere clubs verschijnen in lichtgrijs<br />
-          - De Referee van een andere club verschijnt in donkergrijs</span><br />
-          - De beheerder wordt in het rood weergegeven<br /><br />
+          <span class='color-tennis-blue'>- Spelers van mijn club verschijnen in het blauw</span><br />
+          <span class='color-tennis-aqua'>- De Referee van mijn club verschijnt in aqua</span><br />
+          <span class= 'color-grey'>- Spelers van andere clubs verschijnen in lichtgrijs</span><br />
+          <span class= 'color-black'>- De Referee van een andere club verschijnt in donkergrijs</span><br />
+          <span class= 'color-tennis-red'>- De beheerder wordt in het rood weergegeven</span><br /><br />
+        Bericht positie:<br />
         Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chatroom %{chatroom}"
       message_invite: "> Bericht naar"

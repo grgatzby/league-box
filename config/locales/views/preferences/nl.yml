@@ -1,0 +1,18 @@
+nl:
+  preferences:
+    new:
+      preferences: Voorkeuren
+      nick_name: Pseudo
+      phone_number: Telefoonnummer
+      e_mail: E-mailadres
+      password: Wachtwoord wijzigen
+      expanded_view: Uitgebreide weergave
+      clear_format: Zijn achtergrond kleur
+    edit:
+      preferences: Voorkeuren
+      nick_name: Pseudo
+      phone_number: Telefoonnummer
+      e_mail: E-mailadres
+      password: Wachtwoord wijzigen
+      expanded_view: Uitgebreide weergave
+      clear_format: Zijn achtergrond kleur

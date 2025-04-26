@@ -14,8 +14,8 @@ fr:
       all_boxes_link: les box
     index_expanded:
       all_box_title: Les box du round (vue complète)
-      all_boxes_btn: vue résumée
-      round_ranking_btn: classements
+      all_boxes_btn: 🔁 vue résumée
+      round_ranking_btn: 🏆 classements
       message_box_pop: Si la page ne s'affiche pas correctement, cocher la case pour suppprimer la couleur de fond
       message_csv_pop: >
         <b>exporter les scores du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -31,8 +31,8 @@ fr:
       message_csv_pop: <b>exporter les joueurs et le referee du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (ma box en cours)
       my_box: (ma box)
-      open_view_btn: vue complète
-      round_ranking_btn: classements
+      open_view_btn: 🔁 vue complète
+      round_ranking_btn: 🏆 classements
       create_round_btn: ⎷ créer le prochain round
       request_round_btn: faire créer le prochain round
       valid_round_flash: "League table annuel: choisir un round valide"
@@ -43,7 +43,7 @@ fr:
       intro_html: >
         La page <b class='color-tennis-red'>Mes scores</b> donne aux joueurs accès à une vue de leur propre Box, d'où ils accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores,<br />
         ce qu'ils peuvent faire également dans les <b class='bold-font color-tennis-blue'>Vue en liste</b> et <b class='bold-font color-tennis-blue'>Vue en table</b>.<br><br>
-        <b class='color-tennis-red'>Mes scores</b> donne aussi accès à la <b>Chatroom de la box</b> pour organiser les matchs entre joueurs.<br>
+        <b class='color-tennis-red'>Mes scores</b> donne aussi accès à la <b>Chatroom de la box</b> pour organiser les matchs entre joueurs, ou contacter le Referee.<br>
       intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       my_current_box: ma box en cours
       my_box: ma box
@@ -56,7 +56,7 @@ fr:
       see_match_card_btn: Carte du match
       enter_score_btn: Entrer le score
       match_not_played: Match non joué
-      chat_in_my_box: Organiser mes matchs
+      chat_in_my_box: Organiser mes matchs, contacter le Referee
       access_chatroom_btn: chatroom de ma box
     show_list:
       intro_html: >
@@ -69,9 +69,14 @@ fr:
       opponent_points_header: Points adversaire
       opponent_total_points_header: Cumul adversaire
       points_pop: >
-        Le vainqueur gagne 20 points pour le match.<br />
-        Le perdant gagne 10 points par set gagné + nombre de jeux par set perdu.<br />
-        Le championship tie-break compte comme un set (pas de points attribué au perdant).
+        - Le vainqueur gagne 20 points pour le match.<br />
+        - Le perdant gagne 10 points par set gagné + nombre de jeux par set perdu.<br />
+        - Le championship tie-break compte comme un set (pas de points attribué au perdant).<br /><br />
+        <i>Exemples :</i><br />
+        4-2 4-3 : gagnant 20, perdant 5<br />
+        4-1 2-4 10-6 : gagnant 20, perdant 11<br />
+        4-3 3-4 12-10 : gagnant 20, perdant 13<br />
+        4-2 2-4 10-1 : gagnant 20, perdant 12
     show_list_data:
       won: Gagné
       lost: Perdu

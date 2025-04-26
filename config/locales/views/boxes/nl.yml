@@ -14,8 +14,8 @@ nl:
       all_boxes_link: de boxen
     index_expanded:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
-      all_boxes_btn: compacte weergave
-      round_ranking_btn: rangschikkingen
+      all_boxes_btn: 🔁 compacte weergave
+      round_ranking_btn: 🏆 rangschikkingen
       message_box_pop: Als de pagina niet correct wordt weergegeven, vinkt u dit vakje aan om de achtergrondkleur te wissen
       message_csv_pop: >
         <b>scores exporteren</b> naar CSV-bestand met kolommen:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
@@ -31,8 +31,8 @@ nl:
       message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand met kolommen:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
-      open_view_btn: uitgebreide weergave
-      round_ranking_btn: rangschikkingen
+      open_view_btn: 🔁 uitgebreide weergave
+      round_ranking_btn: 🏆 rangschikkingen
       create_round_btn: ⎷ maak de volgende ronde
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
@@ -43,7 +43,7 @@ nl:
       intro_html: >
         Op de pagina <b class='color-tennis-red'>Mijn scores</b> hebben spelers toegang tot hun eigen box-matchkaarten en kunnen ze nieuwe scores invoeren.<br />
         Dit kan ook worden gedaan vanuit <b class='bold-font color-tennis-blue'>resultaten lijst</b> en <b class='bold-font color-tennis-blue'>resultatenraster</b>.<br><br>
-        <b class='color-tennis-red'>Mijn scores</b> geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren.<br>
+        <b class='color-tennis-red'>Mijn scores</b> geeft ze ook toegang tot de <b>Box-chatroom</b> om hun wedstrijden eenvoudig te organiseren of om contact op te nemen met uw scheidsrechter.<br>
       intro_stale: Ga voor de gekozen ronde naar <b>uw box</b><br /> om de details van uw wedstrijden te bekijken en nieuwe scores in te voeren
       my_current_box: mijn huidige box
       my_box: mijn box
@@ -56,7 +56,7 @@ nl:
       see_match_card_btn: Wedstrijdkaart
       enter_score_btn: Voer uw score in
       match_not_played: Match niet gespeeld
-      chat_in_my_box: Organiseer mijn wedstrijden
+      chat_in_my_box: Organiseer mijn wedstrijden, neem contact op met uw scheidsrechter
       access_chatroom_btn: chatroom van uw box
     show_list:
       intro_html: >
@@ -69,9 +69,14 @@ nl:
       opponent_points_header: Tegenstander punten
       opponent_total_points_header: Tegenstander accumulatiepunten
       points_pop: >
-        De winnaar verdient 20 punten voor de wedstrijd.<br />
-        De verliezer verdient 10 punten per gewonnen set + aantal games per verloren set.<br />
-        De tiebreak voor het kampioenschap telt als een set (er worden geen punten toegekend aan de verliezer).
+        - De winnaar verdient 20 punten voor de wedstrijd.<br />
+        - De verliezer verdient 10 punten per gewonnen set + aantal games per verloren set.<br />
+        - De tiebreak voor het kampioenschap telt als een set (er worden geen punten toegekend aan de verliezer).<br /><br />
+        <i>Voorbeelden :</i><br />
+        4-2 4-3 : winnaar 20, verliezer 5<br />
+        4-1 2-4 10-6 : winnaar 20, verliezer 11<br />
+        4-3 3-4 12-10 : winnaar 20, verliezer 13<br />
+        4-2 2-4 10-1 : winnaar 20, verliezer 12
     show_list_data:
       won: Won
       lost: Verloren

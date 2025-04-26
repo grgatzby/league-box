@@ -1,76 +1,67 @@
 id,club_id,email,first_name,last_name,nickname,phone_number,role,box_number
-2984,73,matteogabba@gmail.com,Matteo,Gabba,MatteoG,07808 317 305,player,1
-2995,73,clarkconrad@gmail.com,Conrad,Clark,ConradC,07949 833 587,player,1
-2986,73,gareth.isaac2@gmail.com,Gareth,Isaac,GarethI,07990 507 277,player,1
-2996,73,samhkeat@hotmail.com,Sam,Keat,SamK,07933 621 094,player,1
-2994,73,sam.3897@hotmail.com,Sam,Behrens,SamB,07908 817 425,player,2
-2981,73,natashamardinian@hotmail.com,Natasha,Mardinian,NatashaM,07927 271 665,player,2
-3010,73,jamesmccrossen@hotmail.co.uk,James,McCrossen,JamesM,07828 998 077,player,2
-3002,73,henryforsyth@hotmail.com,Henry,Forsyth,HenryF,07710 380 902,player,2
-3003,73,adam.balon@innocentdrinks.co.uk,Adam,Balon,AdamB,07802 851 461,player,3
-3007,73,miguelnavarro26@hotmail.com,Miguel,Navarro,MiguelN,07717 884 405,player,3
-2993,73,roger.ridsdillsmith@googlemail.com,Roger,Ridsdill Smith,RogerR,07768 386 241,player,3
-2998,73,d.frollani@gmail.com,Daniele,Frollani,DanieleF,07427 442 985,player,3
-3015,73,burdyhk@gmail.com,George,Burdon,GeorgeB,07721 693 399,player,4
-3011,73,paolo.zampiga@icloud.com,Paolo,Zampiga,PaoloZ,07776 192 869,player,4
-3020,73,i.gladman@yahoo.com,Ian,Gladman,IanG,07785 596 936,player,4
-3069,73,juliengurcel@hotmail.co.uk,Julien,Gurcel,JulienG,07533 440 442,player,4
-2988,73,willsarne@icloud.com,Will,Sarne,WillS,07837 615 370,player,5
-3008,73,dnikolako@gmail.com,Dimitrios,Nikolakopoulos,DimitriosN,07956 365 038,player,5
-2992,73,mchulme2015@gmail.com,Michael,Hulme,MichaelH,07366 308 996,player,5
-3006,73,daniele.chiarella@icloud.com,Daniele,Chiarella,DanieleC,07583 685 503,player,5
-3025,73,ajameyer@yahoo.com,James,Meyer,JamesM,07470 001 653,player,6
-3031,73,nicholas.mellor@lsngroup.org,Nicholas,Mellor,NicholasM,07971 809 262,player,6
-3022,73,eyres.harry@gmail.com,Harry,Eyres,HarryE,07854 419 476,player,6
-2987,73,daspickavance@aol.com,Dom,Pickavance,DomP,07939 724 601,player,6
-3014,73,michael.omara@brcm.co.uk,Michael,Omara,MichaelO,07748 622 314,player,7
-3021,73,jamie.younger@saffery.com,Jamie,Younger,JamieY,07827 278 797,player,7
-3017,73,lf@cyruscapital.com,Lucien,Farrell,LucienF,07867 535 510,player,7
-3044,73,mike@hla.net,Mike,Wells,MikeW,07831 358 456,player,7
-3009,73,mark@markmather.co.uk,Mark,Mather,MarkM,07973 750 793,player,8
-3029,73,orecchiae@gmail.com,Emilio,Orecchia,EmilioO,07773 909 848,player,8
-2990,73,matteo.moro1@googlemail.com,Matteo,Moro,MatteoM,07552 219 448,player,8
-3024,73,sam@whittakers.net,Sam,Whittaker,SamW,07979 706 569,player,8
-3027,73,deburetel@because.tv,Emmanuel,DeBuretel,EmmanuelD,0207 371 2274,player,9
-3036,73,catherine-whittle@outlook.com,Catherine,Whittle,CatherineW,07949 053 231,player,9
-3013,73,d_f_sharp@hotmail.com,Dan,Sharp,DanS,07900 901 369,player,9
-3038,73,laurent@fplhomes.com,Laurent,Lakatos,LaurentL,07899 996 962,player,9
-3026,73,dom.moro@gmail.com,Dom,Moro,DomM,07392 871 605,player,10
-3056,73,virginiabrix@aol.com,Virginia,Brix,VirginiaB,07788 414 344,player,10
-3039,73,kmeducation27@gmail.com,Riki,Mian,RikiM,07784 392 324,player,10
-3012,73,varouts@gmail.com,George,Varoutsis,GeorgeV,07786 704 074,player,10
-3037,73,sevauxj@gmail.com,Julien,Sevaux,JulienS,07802 961 186,player,11
-3041,73,fausto.zanetton@gmail.com,Fausto,Zanetton,FaustoZ,07899 985 840,player,11
-3023,73,saeed@cat-ltd.co.uk,Saeed,Ferdos,SaeedF,07958 740 581,player,11
-3034,73,pmardinian@me.com,Paul,Mardinian,PaulM,07746 060 832,player referee,11
-3067,73,andrew.melrose@hotmail.co.uk,Andrew,Melrose,AndrewM,07795 528 375,player,12
-3051,73,jbperrin@ymail.com,Jean-Baptiste,Perrin,Jean-BaptisteP,07514 819 853,player,12
-3030,73,elisa.kerr@btinternet.com,Elisa,Kerr,ElisaK,07767 885 780,player,12
-3048,73,stephenedwardbehrens@hotmail.com,Stephen,Behrens,StephenB,0,player,12
-3016,73,charles.hawes@simmons-simmons.com,Charles `,Hawes,Charles `H,07921 584 449,player,13
-3079,73,b00629659@essec.edu,Marie,Jolly,MarieJ,33 06421 76739,player,13
-3049,73,joe.cerrell@gatesfoundation.org,Joe,Cerrell,JoeC,07943 175 032,player,13
-3045,73,charlesgouilliard@outlook.com,Charles,Gouilliard,CharlesG,07775 186 790,player,13
-3047,73,mpalencia@btinternet.com,Mario,Palencia,MarioP,07778 595 959,player,14
-3090,73,p_bukaty@hotmail.com,Paulina,Bukaty,PaulinaB,07808 506 195,player,14
-3042,73,aldomareuse1@gmail.com,Aldo,Mareuse,AldoM,07710 349 275,player,14
-3028,73,yaoyiyi@hotmail.com,Yi,Buckley,YiB,07968 702 730,player,14
-3060,73,grcwatson@hotmail.con,Georgie,Watson,GeorgieW,07900 018 239,player,15
-3071,73,larkbruce@gmail.com,Linda,Bruce,LindaB,07480 295 323,player,15
-3053,73,martinlangleyjones@gmail.com,Martin,Jones,MartinJ,07798 811 784,player,15
-3091,73,rbirnbaum@tcv.com,Rafael,Birnbaum,RafaelB,07599 479 929,player,15
-3055,73,vdang93@gmail.com,Vinh,Dang,VinhD,07454 819 671,player,16
-3032,73,elisaknebel@msn.com,Elisa,Knebel,ElisaK,07397 171 664,player,16
-3043,73,robertbeton@hotmail.co.uk,Robert,Beton,RobertB,07501 989 312,player,16
-3087,73,margauxmmeyer@yahoo.com,Margaux,Meyer,MargauxM,07305 096669,player,16
-3052,73,chrisogden@compuserve.com,Christopher,Ogden,ChristopherO,07786 932 999,player,17
-3040,73,sophie.s.muir@gmail.com,Sophie,Muir,SophieM,‭07793 744 459‬,player,17
-3033,73,th@idler.co.uk,Tom,Hodgkinson,TomH,07970 720 352,player,17
-3061,73,dorothee.de.la.chevardiere@gmail.com,Dorothée,de La Chevardiere,Dorothéed,07500 774 791,player,17
-3072,73,nicholaslambardescott@gmail.com,Nick,Lambarde-Scott,NickL,07774 659 947,player,18
-3077,73,gkingfriend@gmail.com,Gina,King,GinaK,07551 883 680,player,18
-3057,73,peterjkarlsen@gmail.com,Peter,Karlsen,PeterK,07785 528 190,player,18
-3073,73,yasminelever@gmail.com,Yasmine,Lever,YasmineL,07546 359 624,player,18
-3068,73,candidauren@icloud.com,Candida,Uren,CandidaU,07981 552 112,player,19
-3092,73,andreea_petreanu@yahoo.co.uk,Andreea,Petreanu,AndreaP,07887 607 295,player,19
-3058,73,romaphul@gmail.com,Roma,Phulwani,RomaP,07909 988 787,player,19
+186,5,dick.cartwright@club.be,Dick,Cartwright,DickC,984.155.2336,player,1
+174,5,frederic.brakus@club.be,Frederic,Brakus,FredericB,843-851-5544,player,1
+179,5,frederick.nicolas@club.be,Frederick,Nicolas,FrederickN,(839) 348-5521,player,1
+178,5,stanton.schmidt@club.be,Stanton,Schmidt,StantonS,175-672-6053,player,1
+175,5,brent.emard@club.be,Brent,Emard,BrentE,602.155.5616,player,1
+191,5,korey.hoeger@club.be,Korey,Hoeger,KoreyH,1-636-101-7747,player,1
+188,5,graig.cruickshank@club.be,Graig,Cruickshank,GraigC,156-767-0361,player,2
+198,5,lewis.luettgen@club.be,Lewis,Luettgen,LewisL,1-459-227-6481,player,2
+177,5,aurelio.boyle@club.be,Aurelio,Boyle,AurelioB,(565) 886-7164,player,2
+199,5,ramiro.dubuque@club.be,Ramiro,DuBuque,RamiroD,1-748-092-4490,player,2
+176,5,chuck.cartwright@club.be,Chuck,Cartwright,ChuckC,1-870-464-0847,player,2
+187,5,kristopher.cronin@club.be,Kristopher,Cronin,KristopherC,343.873.3324,player,2
+200,5,kory.wyman@club.be,Kory,Wyman,KoryW,134-830-5270,player,3
+202,5,rueben.effertz@club.be,Rueben,Effertz,RuebenE,197.873.5236,player,3
+190,5,johnathon.crooks@club.be,Johnathon,Crooks,JohnathonC,727.702.2774,player,3
+215,5,tobias.nicolas@club.be,Tobias,Nicolas,TobiasN,815.454.2407,player,3
+214,5,irvin.harvey@club.be,Irvin,Harvey,IrvinH,(215) 523-4931,player,3
+189,5,parker.wisozk@club.be,Parker,Wisozk,ParkerW,798-121-3883,player,3
+217,5,octavio.wisoky@club.be,Octavio,Wisoky,OctavioW,(252) 498-2201,player,4
+203,5,sanford.schroeder@club.be,Sanford,Schroeder,SanfordS,307.820.8720,player,4
+213,5,rueben.mckenzie@club.be,Rueben,McKenzie,RuebenM,485.929.8431,player,4
+211,5,reyes.willms@club.be,Reyes,Willms,ReyesW,246.308.1655,player,4
+201,5,abe.koepp@club.be,Abe,Koepp,AbeK,399-268-9229,player,4
+216,5,luther.cormier@club.be,Luther,Cormier,LutherC,1-846-247-9230,player,4
+212,5,hilario.d'amore@club.be,Hilario,D'Amore,HilarioD,(192) 705-6696,player,5
+210,5,lindsay.jakubowski@club.be,Lindsay,Jakubowski,LindsayJ,862-054-8991,player,5
+220,5,robt.haag@club.be,Robt,Haag,RobtH,1-910-338-2490,player,5
+223,5,royal.ondricka@club.be,Royal,Ondricka,RoyalO,(347) 477-4825,player,5
+218,5,bradly.bergstrom@club.be,Bradly,Bergstrom,BradlyB,(735) 382-4780,player,5
+222,5,carrol.o'conner@club.be,Carrol,O'Conner,CarrolO,(234) 690-6150,player,5
+219,5,dorian.osinski@club.be,Dorian,Osinski,DorianO,469.738.3506,player,6
+240,5,ron.pacocha@club.be,Ron,Pacocha,RonP,1-893-540-3542,player,6
+225,5,rey.mills@club.be,Rey,Mills,ReyM,628-759-1271,player,6
+244,5,lloyd.padberg@club.be,Lloyd,Padberg,LloydP,451-260-0736,player,6
+226,5,elmo.weimann@club.be,Elmo,Weimann,ElmoW,472-901-3571,player,6
+221,5,dong.metz@club.be,Dong,Metz,DongM,596-081-8298,player,6
+248,5,bryce.goodwin@club.be,Bryce,Goodwin,BryceG,1-434-167-4260,player,7
+241,5,miguel.sawayn@club.be,Miguel,Sawayn,MiguelS,514-435-5766,player,7
+227,5,lester.o'connell@club.be,Lester,O'Connell,LesterO,1-388-302-4503,player,7
+245,5,pat.johnson@club.be,Pat,Johnson,PatJ,564-187-9797,player,7
+224,5,jospeh.senger@club.be,Jospeh,Senger,JospehS,902-257-2953,player,7
+249,5,donald.denesik@club.be,Donald,Denesik,DonaldD,223-353-5022,player,7
+243,5,abel.kuvalis@club.be,Abel,Kuvalis,AbelK,521.533.5917,player,8
+246,5,wilmer.crist@club.be,Wilmer,Crist,WilmerC,185-870-5707,player,8
+251,5,raleigh.reynolds@club.be,Raleigh,Reynolds,RaleighR,(949) 245-4681,player,8
+242,5,allen.spencer@club.be,Allen,Spencer,AllenS,1-665-888-2270,player,8
+247,5,val.waelchi@club.be,Val,Waelchi,ValW,1-456-909-1058,player,8
+250,5,ted.nienow@club.be,Ted,Nienow,TedN,499-926-5445,player,8
+192,5,albert.rosenbaum@club.be,Albert,Rosenbaum,AlbertR,(789) 744-9615,player,9
+196,5,elvin.murazik@club.be,Elvin,Murazik,ElvinM,(970) 950-4938,player,9
+195,5,nathaniel.mohr@club.be,Nathaniel,Mohr,NathanielM,(369) 553-3975,player,9
+206,5,jeffry.gottlieb@club.be,Jeffry,Gottlieb,JeffryG,(668) 874-4472,player,9
+208,5,valentin.abbott@club.be,Valentin,Abbott,ValentinA,(116) 503-1292,player,9
+193,5,aurelio.auer@club.be,Aurelio,Auer,AurelioA,748.139.5371,player,9
+194,5,hobert.beier@club.be,Hobert,Beier,HobertB,391.824.3587,player,10
+182,5,alfonzo.o'kon@club.be,Alfonzo,O'Kon,AlfonzoO,1-322-123-1832,player,10
+209,5,ahmad.mante@club.be,Ahmad,Mante,AhmadM,395-218-5037,player,10
+204,5,warner.corwin@club.be,Warner,Corwin,WarnerC,764.182.9683,player,10
+207,5,rodrick.witting@club.be,Rodrick,Witting,RodrickW,1-818-264-0346,player,10
+197,5,russel.bechtelar@club.be,Russel,Bechtelar,RusselB,(394) 608-6881,player,10
+180,5,kendrick.bahringer@club.be,Kendrick,Bahringer,KendrickB,1-243-302-3856,player,11
+184,5,cedric.zemlak@club.be,Cedric,Zemlak,CedricZ,1-696-014-1741,player,11
+181,5,weldon.ernser@club.be,Weldon,Ernser,WeldonE,1-159-284-4191,player,11
+185,5,glenn.raynor@club.be,Glenn,Raynor,GlennR,197.487.2456,player,11
+183,5,moses.mccullough@club.be,Moses,McCullough,MosesM,847.700.9327,player,11
+173,5,philippe.dardenne@club.be,Philippe,Dardenne,PhilippeDe,(32) 477 940 591,referee

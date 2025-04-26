@@ -9,11 +9,11 @@ fr:
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: Tournoi & règles
-      club_staff_link: Contact
+      club_staff_link: Les contacts
       all_boxes_link: Les box du round
       my_details_link: Mes détails
       round_ranking_link: Classement round
-      league_table_link: Classement général
+      league_table_link: League table
       my_scores_link: Mes scores
       general_chat_link: "Chatroom #general"
       chatrooms_link: Les chatrooms
@@ -37,7 +37,7 @@ fr:
       back_btn: ←
       select_round: "Choisir un round: "
     staff:
-      our_staff_title: Qui sommes-nous?
+      our_staff_title: Les contacts
       staff_p01: >
         Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >
@@ -45,9 +45,9 @@ fr:
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contactez votre Referee via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'admin via
-      staff_p04a_html: le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> en bas de page.
+      staff_p04a_html: le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> dans la bannière de bas de page.
       staff_p04b_html: ce formulaire.
-      header_role: 🧩 Fonction
+      header_role: 🧩 Rôle
       header_name: Nom
       header_club: 🎾 Club
       header_email: ✉️ email
@@ -55,9 +55,9 @@ fr:
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
     stats:
-      stats: 📈 stats du round
+      stats: 📈 les stats du round
       round: Round
-      round_dates: <b>Le round</b><br><i>%{start} au %{end}</i><br>
+      round_dates: <b>Round %{start} au %{end}</b><br>
       round_players_boxes: "%{players} joueurs, %{boxes} box<br>"
       nb_matches:
         zero: 0 match
@@ -72,6 +72,6 @@ fr:
         one: "%{total_days} jours, 1 jour restant (%{ratio}%)<br>"
         other: "%{total_days} jours, %{count} jours restants (%{ratio}%)<br>"
       last_match: dernier match joué le %{last_match_date}<br>
-      box: <b>La box</b><br>
-      round_expired: round expiré<br>
+      box: <b>Stats de la box %{box}</b><br>
+      round_expired: <i>round expiré</i><br>
       player_matches: <b>Mes matchs</b><br>

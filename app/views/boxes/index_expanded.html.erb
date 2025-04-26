@@ -27,11 +27,15 @@
       <% end %>
     </div>
 
-    <div class="print-all-content box-scroller">
+    <div data-controller="toggle" class="print-all-content box-scroller" data-toggle-target="togglableElement">
       <% @boxes.each do |box| %>
         <% if box.box_number > 1 %><hr><% else %><br><% end %>
         <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_format: params[:clear_format] == "1" %>
       <% end %>
+      <%# bouton javascript pour scroller à la Box 1 %>
+      <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+        class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+      </button>
     </div>
     <div class="buttons-wrap dont-print">
       <% if current_user && current_user.role != "player" %>

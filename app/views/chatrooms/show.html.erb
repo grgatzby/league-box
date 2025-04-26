@@ -17,24 +17,24 @@ a chatroom is created in Box controller #my_scores.
     <h5  class="one-liner">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <div>
-        <%= link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow dont-print" %>
+        <%# link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow dont-print" %>
+        <%= link_to t('.back_btn'), my_scores_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
         <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
       </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
-        <!-- list of previous messages -->
+      <!-- list of all previous messages in the chatroom -->
       <div class="messages print-all-content" data-chatroom-subscription-target="messages">
-        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="click" data-bs-placement="center" data-bs-delay= '{ "show": 500 }'
-          data-bs-content="<%= t '.message' %>">
-          <% @chatroom.messages.sort.each do |message| %>
-            <%= render "messages/message", message: message %>
-          <% end %>
-        </div>
+        <% @chatroom.messages.sort.each do |message| %>
+          <%= render "messages/message", message: message %>
+        <% end %>
       </div>
 
       <!-- new message form -->
-      <div class="dont-print">
+      <%# click on the message text box for the legend to show %>
+      <div class="dont-print" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="click" data-bs-placement="top" data-bs-delay= '{ "show": 500 }'
+        data-bs-content="<%= t '.message' %>">
         <%= form_for [@chatroom, @message],
           html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
           <%= f.text_field :content,

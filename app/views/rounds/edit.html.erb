@@ -58,12 +58,12 @@
         <% if @next_round %>
           <div class="row">
             <div class="col-1"></div>
-            <div class="col-4">Next round start date</div>
+            <div class="col-4"><%= t '.next_round' %></div>
             <div class="col-5"><%= @next_round.start_date.strftime('%d/%m/%Y') %></div>
           </div>
           <div class="row">
             <div class="col-1"></div>
-            If new end date is set later than the next round, the latter will be moved forward too.
+            <%= t '.message' %>
           </div>
         <% end %>
         <br>

@@ -10,7 +10,7 @@ nl:
         other: "%{count} fouten zorgden"
       error_message: "heeft de verzending van dit formulier verboden:"
       contact_p01_html: >
-        Dit verzoek wordt naar de beheerder verzonden. Voor verzoeken gericht aan uw Referee
+        Dit verzoek wordt verzonden naar de beheerder van de site. Voor verzoeken gericht aan uw Referee
         Hun contactgegevens vindt u op de pagina <b>Contact</b>
         of neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).
       contact_p02: Los scoregeschillen op vanuit uw box-chatroom.
@@ -29,9 +29,9 @@ nl:
         &#013;&#013;Groetjes
         &#013;%{sender}
         &#013;&#013;*Geaccepteerde typen: csv, pdf, microsoft (word, excel), apple (pages, numbers).
-      name_placeholder: Voor-en achternaam
-      email_placeholder: e-mailadres user@domain.com
-      phone_placeholder: Telefoon
+      name_placeholder: Uw voor-en achternaam
+      email_placeholder: Uw e-mailadres
+      phone_placeholder: Uw telefoonnummer
       file_attached: Er is geen bestand bijgevoegd. Toch versturen?
       send_btn: ⎷ Verzenden
     sent:

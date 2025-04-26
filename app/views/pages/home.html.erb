@@ -4,12 +4,12 @@
      data-controller="toggle">
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
          data-toggle-target="togglableElement" >
-    <br><h4><div class="title"><b><%= t(".main_title").upcase %></b></div></h4>
+    <br><h3><div class="title"><b><%= t(".main_title").upcase %></b></div></h3>
     <br><br>
     <h5><b><%= t '.welcome_title' %></b></h5>
-    <p><%= t '.p01' %></p>
+    <p><%= t '.p01_html' %></p>
     <p><%= t '.p02_html' %></p>
-    <p><%= t '.p03' %></p>
+    <p><%= t '.p03_html' %></p>
     <br>
 
     <br><h5 class="top-bottom-padding"><b><%= t '.use_title' %></b></h5>
@@ -38,10 +38,10 @@
     <% end %></ol>
     <% class_prefix = "btn btn-inlayed bold-font color-" %>
     <p class="top-bottom-padding"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
-    <br><h5><b><%= t '.happy_tournament' %></b></h5>
+    <br><h5><div class="title"><b><%= t '.happy_tournament' %></b></div></h5>
     <br>
     <br><h5 class="top-bottom-padding color-tennis-blue"><b><%= t '.club_join_title' %></b></h5>
-    <p class="top-bottom-padding color-tennis-blue"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
+    <p class="top-bottom-padding"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
       class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>

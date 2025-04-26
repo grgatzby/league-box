@@ -3,11 +3,12 @@ fr:
     show:
       message: >
         Couleurs des messages:<br />
-          - Les joueurs de mon club apparaîssent en bleu<br />
-          - Le Referee de mon club apparaît en aqua<br />
-          <span class= 'color-grey'>- Les joueurs des autres clubs apparaîssent en gris clair<br />
-          - Le Referee d'un autre club apparaît en gris foncé</span><br />
-          - L'admin apparaît en rouge<br /><br />
+          <span class='color-tennis-blue'>- Les joueurs de mon club apparaîssent en bleu</span><br />
+          <span class='color-tennis-aqua'>- Le Referee de mon club apparaît en aqua</span><br />
+          <span class= 'color-grey'>- Les joueurs des autres clubs apparaîssent en gris clair</span><br />
+          <span class= 'color-black'>- Le Referee d'un autre club apparaît en gris foncé</span><br />
+          <span class= 'color-tennis-red'>- L'admin apparaît en rouge</span><br /><br />
+        Position des messages:<br />
         Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
       chatroom_title: "Chatroom %{chatroom}"
       message_invite: "> Message vers"

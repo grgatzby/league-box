@@ -7,12 +7,14 @@ Rails.application.routes.draw do
     get "rules", to: "pages#rules", as: "rules"
     get "staff", to: "pages#staff", as: "staff"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
-    get "my_details", to: "pages#my_details", as: "my_details"
+    # on 10/02/2025 replaced pages#my_details with preferences#new and preferences#edit
+    #    get "my_details", to: "pages#my_details", as: "my_details"
 
-    resources :preferences, only: %i[create update]
+    # resources :preferences, only: %i[create update]
+    resources :preferences, only: %i[new create edit update]
 
     resources :boxes, only: %i[index show]
-    get 'index2', to: "boxes#index_expanded", as: "index_expanded"
+    get 'boxese', to: "boxes#index_expanded", as: "index_expanded"
     get 'boxes_csv/boxes', to: "boxes#round_boxes_to_csv", as: "csv_boxes"
     get 'boxes_csv/scores', to: "boxes#round_scores_to_csv", as: "csv_scores"
     get "boxes_list/:id", to: "boxes#show_list", as: "box_list"
