@@ -18,7 +18,11 @@ a chatroom is created in Box controller #my_scores.
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <div>
         <%# link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow dont-print" %>
-        <%= link_to t('.back_btn'), my_scores_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
+        <% if ["admin", "referee", "player referee"].include?(current_user.role) %>
+          <%= link_to t('.back_btn'), chatroom_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
+        <% else %>
+          <%= link_to t('.back_btn'), my_scores_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
+        <% end %>
         <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
       </div>
     </h5>
@@ -51,7 +55,7 @@ a chatroom is created in Box controller #my_scores.
   <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
     <% unless (["admin", "referee", "player referee"].include?(current_user.role)) %>
-      <br><br><%= t 'not_authorised' %>
+      <br><br><h4>😐 <%= t 'not_authorised' %> 😐</h4>
     <% else %>
       <% suffix = current_user.role.split.map(&:capitalize).join.underscore %>
       <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name).strip.titleize %></h3>

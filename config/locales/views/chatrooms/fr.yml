@@ -29,10 +29,10 @@ fr:
       chatroom_created_flash: Création d'une nouvelle chatroom
       message1_box_pop: >
         Nom d'une chatroom:<br />
-        #[NomClub] - aaaa/mm_Rnn:Bbb<br /><br />
-        aaaa/mm : année et mois du tournoi,<br />
-        nn : index du round,<br />
-        bb : numéro de la box.
+        #[NomClub] - aaaa/mm_Rxx:Byy<br /><br />
+        <i>aaaa/mm : année et mois du tournoi,<br />
+        xx : index du round,<br />
+        yy : numéro de la box.</i>
       message2_box_pop: ouvrir une chatroom en choisissant
       message2_box_pop_admin: le club, le round et la box.
       message2_box_pop_referee: le round et la box.

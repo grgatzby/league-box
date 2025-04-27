@@ -8,15 +8,15 @@ en:
       club_staff_link: Club staff
       login_link: Log in
     navbar_dropdown:
-      tournament_rules_link: Overview & Rules
-      club_staff_link: Our staff
-      my_details_link: My details
-      all_boxes_link: Round's boxes
-      round_ranking_link: Round ranking
-      league_table_link: League table
+      tournament_rules_link: 📜 Overview & Rules
+      club_staff_link: 👤 Our staff
+      my_details_link: ✉️ My details
+      all_boxes_link: 📦 Round's boxes
+      round_ranking_link: 🏆 Round ranking
+      league_table_link: 🏆🏆 League table
       my_scores_link: My scores
       general_chat_link: "#general chatroom"
-      chatrooms_link: Chatrooms
+      chatrooms_link: 🧑‍💻 Chatrooms
       round_end_link: Postpone round end
       log_out_link: Log out
     display_round:
@@ -42,8 +42,8 @@ en:
       staff_p02_html: >
         They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contact your Referee through your <b>box chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
-        &emsp;&emsp;&emsp;→ contact the admin
+        &emsp;&emsp;&emsp;→ contact your <b>Referee</b> through your box chatroom (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
+        &emsp;&emsp;&emsp;→ contact the <b>admin</b>
       staff_p04a_html: through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link in the bottom banner.
       staff_p04b_html: through this form.
       header_role: 🧩 Role

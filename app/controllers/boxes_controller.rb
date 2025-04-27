@@ -37,6 +37,8 @@ class BoxesController < ApplicationController
     unless params[:id].to_i.zero?
       @page_from = params[:page_from]
       @box = Box.find(params[:id])
+      @box_next = Box.find_by(box_number: @box.box_number + 1, round_id: @box.round) || Box.find_by(box_number: 1, round_id: @box.round)
+      @box_previous = Box.find_by(box_number: @box.box_number - 1, round_id: @box.round) || Box.find_by(box_number: Box.where(round_id: @box.round).count, round_id: @box.round)
       @round = @box.round
       @my_box = my_own_box(@round)
       init_stats

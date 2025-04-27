@@ -29,10 +29,10 @@ nl:
       chatroom_created_flash: Newe chatroom gemaakt
       message1_box_pop: >
         Namen van de chatrooms:<br />
-        #[ClubNaam] - jjjj/mm_Rnn:Bbb<br /><br />
-        jjjj/mm : tornoei jaar en mand,<br />
-        nn : ronderang,<br />
-        bb : box getal.
+        #[ClubNaam] - jjjj/mm_Rxx:Byy<br /><br />
+        <i>jjjj/mm : tornoei jaar en mand,<br />
+        xx : ronderang,<br />
+        yy : box getal.</i>
       message2_box_pop: open een chatroom door
       message2_box_pop_admin: de club, ronde en box te selecteren.
       message2_box_pop_referee: de ronde en box te selecteren.

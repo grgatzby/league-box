@@ -31,8 +31,8 @@ nl:
         Als twee spelers hetzelfde aantal punten verzamelen, wordt de rangschikking bepaald op basis van de volgende criteria:<br /><br />
         <ol>
           <li>Meeste wedstrijden gespeeld</li>
-          <li>Verhouding tussen gewonnen sets en gespeelde sets</li>
-          <li>Verhouding tussen gewonnen games en gespeelde games</li>
+          <li>Meeste gewonnen sets over gespeelde sets</li>
+          <li>Meeste gewonnen games over <br>gespeelde games</li>
         </ol>
     action_buttons:
       all_boxes_link: 📦 boxen

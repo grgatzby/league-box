@@ -9,14 +9,14 @@ nl:
       login_link: Log in
     navbar_dropdown:
       tournament_rules_link: Toernooiregels
-      club_staff_link: Clubpersoneel
-      all_boxes_link: Ronde boxen
-      my_details_link: Mijn details
-      round_ranking_link: Ronde ranglijst
-      league_table_link: League table
+      club_staff_link: 👤 Clubpersoneel
+      all_boxes_link: 📦 Ronde boxen
+      my_details_link: ✉️ Mijn details
+      round_ranking_link: 🏆 Ronde ranglijst
+      league_table_link: 🏆🏆 League table
       my_scores_link: Mijn scores
       general_chat_link: "Chatroom #general"
-      chatrooms_link: Chatrooms
+      chatrooms_link: 🧑‍💻 Chatrooms
       round_end_link: Stel ronde einde uit
       log_out_link: Uitloggen
     display_round:
@@ -43,8 +43,8 @@ nl:
         Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd?<br>
         U kunt de wedstrijdscore niet invoeren?<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ Neem contact op met uw scheidsrechter (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
-        &emsp;&emsp;&emsp;→ Neem contact op met de beheerder (admin) via
+        &emsp;&emsp;&emsp;→ Neem contact op met uw <b>scheidsrechter</b> (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
+        &emsp;&emsp;&emsp;→ Neem contact op met de <b>beheerder</b> (admin) via
       staff_p04a_html: de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.
       staff_p04b_html: deze form.
       header_role: 🧩 Rol

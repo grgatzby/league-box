@@ -8,15 +8,15 @@ fr:
       club_staff_link: Personnel du Club
       login_link: Connexion
     navbar_dropdown:
-      tournament_rules_link: Tournoi & règles
-      club_staff_link: Les contacts
-      all_boxes_link: Les box du round
-      my_details_link: Mes détails
-      round_ranking_link: Classement round
-      league_table_link: League table
+      tournament_rules_link: 📜 Tournoi & règles
+      club_staff_link: 👤 Les contacts
+      all_boxes_link: 📦 Les box du round
+      my_details_link: ✉️ Mes détails
+      round_ranking_link: 🏆 Classement round
+      league_table_link: 🏆🏆 League table
       my_scores_link: Mes scores
       general_chat_link: "Chatroom #general"
-      chatrooms_link: Les chatrooms
+      chatrooms_link: 🧑‍💻 Les chatrooms
       round_end_link: Reporter fin du round
       log_out_link: Déconnexion
     display_round:
@@ -43,8 +43,8 @@ fr:
       staff_p02_html: >
         Il est également là pour résoudre les désaccords sur un score déjà entré, ou pour saisir un score à votre place.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contactez votre Referee via la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
-        &emsp;&emsp;&emsp;→ contactez l'admin via
+        &emsp;&emsp;&emsp;→ contactez votre <b>Referee</b> via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
+        &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> dans la bannière de bas de page.
       staff_p04b_html: ce formulaire.
       header_role: 🧩 Rôle
@@ -55,7 +55,7 @@ fr:
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
     stats:
-      stats: 📈 les stats du round
+      stats: 📈 stats du round
       round: Round
       round_dates: <b>Round %{start} au %{end}</b><br>
       round_players_boxes: "%{players} joueurs, %{boxes} box<br>"

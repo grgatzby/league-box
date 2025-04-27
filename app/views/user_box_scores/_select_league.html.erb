@@ -7,7 +7,7 @@
       <%= hidden_field_tag(:club_id, @club.id) %>
       <% if from == "index" %>
         <%# form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
-        <%= form.select(:league_start, @league_starts.unshift(t('.league_dropdown')), {selected: params[:league_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
+        🏆🏆<%= form.select(:league_start, @league_starts.unshift(t('.league_dropdown')), {selected: params[:league_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
       <% else %>
         <%= form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
         <%= form.select(:league_start, @league_starts, {selected: params[:league_start]}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
