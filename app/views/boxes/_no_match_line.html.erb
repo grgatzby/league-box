@@ -8,7 +8,7 @@
     <div class="col-8">
       <% if may_enter_score %>
         <%= t('.enter_score') %>
-        <% message = "#{t(".pop02_a")}#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}" %>
+        <% message = "#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}<br>#{t(".pop02_a")}" %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">

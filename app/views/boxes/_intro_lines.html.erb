@@ -12,7 +12,7 @@
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
-    <h3><%= "Box #{box.box_number} - #{view_type}" %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
+    <h3><%= "#{view_type.capitalize} - Box #{box.box_number}" %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
   </div>
 
   <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
@@ -28,11 +28,17 @@
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow mb-3" %>
     <% case view_type %>
       <% when t("boxes.table_view") %>
+        <%# previous and next boxes table view %>
+        <%= link_to "←", box_path(@box_previous), class: "btn buttons-shape btn-yellow mb-3" %>
+        <%= link_to "→", box_path(@box_next), class: "btn buttons-shape btn-yellow mb-3" %>
         <%# if in table view, link back to list view %>
         <%= link_to box_list_path, class: "btn buttons-shape btn-yellow mb-3" do %>
           <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.list_view")}" %>
         <% end %>
       <% else %>
+        <%# previous and next boxes list view %>
+        <%= link_to "←", box_list_path(@box_previous), class: "btn buttons-shape btn-yellow mb-3" %>
+        <%= link_to "→", box_list_path(@box_next), class: "btn buttons-shape btn-yellow mb-3" %>
         <%# if in list view, link back to table view %>
         <%= link_to box_path, class: "btn buttons-shape btn-yellow mb-3" do %>
           <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{t("boxes.table_view")}" %>

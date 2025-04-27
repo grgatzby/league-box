@@ -19,7 +19,7 @@ fr:
       - feedback: Commentaire sur le site
       - join_club: Rejoindre un de nos clubs
       - input_score: Saisir un score
-      - affiliate: Affilier mon club à League Box
+      - affiliate: Affilier mon club à LeagueBox
       - other_topic: Autre sujet
       new_round_subject: "LeagueBox - Création d'un nouveau round pour %{club}"
       new_round_message: >

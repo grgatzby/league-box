@@ -19,7 +19,7 @@ en:
       - feedback: Provide feedback
       - join_club: Join one of our clubs
       - input_score: Input a new score
-      - affiliate: Join League Box (new club)
+      - affiliate: Join LeagueBox (new club)
       - other_topic: Any other topic
       new_round_subject: "LeagueBox - New round request for %{club}"
       new_round_message: >

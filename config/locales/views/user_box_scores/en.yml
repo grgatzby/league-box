@@ -32,8 +32,8 @@ en:
         determined by:<br /><br />
         <ol>
           <li>Most matches played</li>
-          <li>Highest Ratio of sets won to sets played</li>
-          <li>Highest Ratio of games won to games played</li>
+          <li>Most sets won over sets played</li>
+          <li>Most games won over games played</li>
         </ol>
     action_buttons:
       all_boxes_link: 📦 all boxes

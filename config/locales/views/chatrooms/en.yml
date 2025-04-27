@@ -29,10 +29,10 @@ en:
       chatroom_created_flash: New chatroom created
       message1_box_pop: >
         Chatroom name format :<br />
-        #[ClubName] - yyyy/mm_Rnn:Bbb<br /><br />
-        yyyy/mm : tournament year/month,<br />
-        nn : round number,<br />
-        bb : box number.
+        #[ClubName] - yyyy/mm_Rrn:Bbn<br /><br />
+        <i>yyyy/mm : tournament year/month,<br />
+        rn : round number,<br />
+        bn : box number.</i>
       message2_box_pop: open a chatroom by selecting
       message2_box_pop_admin: the club, the round and the box.
       message2_box_pop_referee: the round and the box.
