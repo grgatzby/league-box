@@ -1,10 +1,10 @@
 en:
   pages:
     home:
-      main_title: The Social Tournament in your club
-      welcome_title: Compete against your fellow club members on LeagueBox
+      main_title: A Social Tournament in your club
+      welcome_title: Compete against your fellow club members
       p01_html: >
-        📅🏆 Within your own club, LeagueBox gives you the opportunity to enter a mixed Singles Social Tournament,
+        📅🏆 Within your own club, <b>LeagueBox</b> gives you the opportunity to enter a mixed Singles Social Tournament,
         organised as a Box League :
         <ul>
           <li> an <b>internal tournament</b> : only members of your club may participate
@@ -18,16 +18,17 @@ en:
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
       li01: My scores
-      li02: Round's boxes
+      li02: Round's boxes 📦
       li06_html: >
-        %{inset} : an overview of all boxes of the round. <b>Click on any box</b> for
-        its detailed view.<br/>You can also review the previous rounds.
+        %{inset} : an overview of all boxes of the round.<br/>
+        Click on any box to access its detailed view.<br/>
+        You can also review the previous rounds.
       li03a: List view
       li03b: Table view
       li07_html: >
         %{inset_a}, %{inset_b} or %{inset_c} : post your latest match score<br>Your ranking is automatically updated.
-      li04a: Round ranking
-      li04b: league table
+      li04a: Round ranking 🏆
+      li04b: league table 🏆🏆
       li08_html: >
         %{inset_a} and %{inset_b} show your ranking in the tournament.
         <br>The rankings are always up to date.
@@ -50,6 +51,8 @@ en:
         Visit our %{inset} page to learn more.
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
+      ok: to the boxes
+      login_link: log in
     rules:
       overview_title: Tournament overview
       p01_html: >
@@ -65,6 +68,7 @@ en:
         will make it easier to schedule your matches.
       btn_display_rules: Display Tournament rules
       btn_hide_rules: Hide the rules
+      ok: to the boxes
       rules: Leaguebox Tournament rules
       rounds: Rounds
       p04: There will be one round per month, unless local rules state otherwise.
@@ -239,7 +243,9 @@ en:
       li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
-# à supprimer
+    staff:
+      ok: to the boxes
+# to delete (now in preferences)
     my_details:
       preferences: Preferences
       nick_name: Nick name

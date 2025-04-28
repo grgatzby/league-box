@@ -1,10 +1,10 @@
 nl:
   pages:
     home:
-      main_title: Het Sociaal Toernooi in jouw club
-      welcome_title: Neem het op tegen je clubgenoten op LeagueBox
+      main_title: Een Sociaal Toernooi in jouw club
+      welcome_title: Neem het op tegen je clubgenoten
       p01_html: >
-        📅🏆 Binnen je eigen club biedt LeagueBox je de mogelijkheid om deel te nemen aan een gemengd Singles Social Tournament,
+        📅🏆 Binnen je eigen club biedt <b>LeagueBox</b> je de mogelijkheid om deel te nemen aan een gemengd Singles Social Tournament,
         georganiseerd als een Box League :
         <ul>
           <li> een <b>intern toernooi</b>: alleen leden van je club mogen deelnemen.
@@ -18,15 +18,15 @@ nl:
       use_title: Leaguebox in één oogopslag
       li01: Mijn scores
       li05_html:
-      li02: Ronde boxen
+      li02: Ronde boxen 📦
       li06_html: >
         Op de %{inset} pagina, zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
         klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
       li03a: Resultaten lijst
       li03b: Resultatenraster
       li07_html: Voer je laatste score in %{inset_a}, in %{inset_b} of in %{inset_c}.<br>Je ranking wordt automatisch bijgewerkt.
-      li04a: ronde rangschikking
-      li04b: league table
+      li04a: ronde rangschikking 🏆
+      li04b: league table 🏆🏆
       li08_html: De %{inset_a} en de %{inset_b} worden altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
       how_title: Hoe werkt LeagueBox?
       p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
@@ -47,6 +47,8 @@ nl:
         Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Gelukkig toernooi!
       add_club_btn: Een nieuwe club toevoegen
+      ok: naar de boxen
+      login_link: log in
     rules:
       overview_title: Beschrijving van het toernooi
       p01_html: >
@@ -61,6 +63,7 @@ nl:
         Deze discipline zal de goede organisatie van uw wedstrijden vergemakkelijken.
       btn_display_rules: Toernooiregels
       btn_hide_rules: Verberg de regels
+      ok: naar de boxen
       rules: Leaguebox toernooiregels
       rounds: Rondes
       p04: Er is één ronde per maand, tenzij anders aangegeven door jouw club.
@@ -234,7 +237,9 @@ nl:
       li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
-# à supprimer
+    staff:
+      ok: naar de boxen
+# to delete (now in preferences)
     my_details:
       preferences: Voorkeuren
       nick_name: Pseudo

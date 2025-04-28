@@ -19,7 +19,7 @@
       <button data-action="click->toggle#toggleRules" data-toggle-target="toggler"
         class="btn buttons-shape btn-yellow text-size"><%= t '.btn_display_rules' %>
       </button>
-      <%= link_to "OK", boxes_path, class: "btn buttons-shape btn-aqua text-size ms-2" %>
+      <%= link_to t(".ok"), boxes_path, class: "btn buttons-shape btn-aqua text-size ms-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green text-size ms-2"%>
       </span>
@@ -28,35 +28,35 @@
     <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
          data-toggle-target="togglableElement">
       <br><h4><div class="title"><b><%= t(".rules").upcase %></b></div></h4><br>
-      <h5><%= t '.rounds' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.rounds' %></h5>
         <p><%= t '.p04' %></p>
-      <h5><%= t '.availability' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.availability' %></h5>
         <p><%= t '.p05' %></p>
-      <h5><%= t '.qualifying_players' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.qualifying_players' %></h5>
         <p><%= t '.p06' %></p>
         <p><%= t('.p07_html', clubname: @club.name) %></p>
         <p><%= t '.p08' %></p>
 
-      <h5><%= t '.box_design' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.box_design' %></h5>
         <p><%= t '.p09' %></p>
-      <h5><%= t '.organizing_matches' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.organizing_matches' %></h5>
         <p><%= t '.p10' %></p>
-      <h5><%= t '.tennis_rules' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.tennis_rules' %></h5>
         <p><%= t '.p11' %></p>
-      <h5><%= t '.matches_not_umpired' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.matches_not_umpired' %></h5>
         <p><%= t '.p12' %></p>
       <ul>
         <% (1..5).each do |i| %>
           <li><%= t ".li0#{i}" %></li>
         <% end %>
       </ul>
-      <h5><%= t '.warm_up' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.warm_up' %></h5>
         <p><%= t '.p13' %></p>
-      <h5><%= t '.match_format' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.match_format' %></h5>
         <% (14..19).each do |i| %>
           <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
         <% end %>
-      <h5><%= t '.points' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.points' %></h5>
         <p><%= t '.p20' %></p>
       <ul>
         <% (6..8).each do |i| %>
@@ -69,56 +69,56 @@
           <li><%= t ".li#{format '%02d',i}" %></li>
         <% end %>
       </ul></i>
-      <h5><%= t '.posting_results' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.posting_results' %></h5>
         <p><%= t '.p22' %></p>
         <p><%= t '.p23' %></p>
         <p><%= t '.p24' %></p>
-      <h5><%= t '.box_league_ranking' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.box_league_ranking' %></h5>
         <p><%= t '.p25' %></p>
         <ol>
           <% (13..15).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
           <% end %>
         </ol>
-      <h5><%= t '.promotion_relegation' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.promotion_relegation' %></h5>
         <p><%= t '.p26' %></p>
         <ul>
           <li><%= t '.li16' %></li>
           <li><%= t '.li17' %></li>
         </ul>
-      <h5><%= t '.new_entrants' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.new_entrants' %></h5>
         <p><%= t '.p27' %></p>
-      <h5><%= t '.disqualification' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.disqualification' %></h5>
         <p><%= t '.p28' %></p>
-      <h5><%= t '.no_show' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.no_show' %></h5>
         <p><%= t '.p29' %></p>
         <ul>
           <% (18..20).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
           <% end %>
         </ul>
-      <h5><%= t '.retire_from_match' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.retire_from_match' %></h5>
         <p><%= t '.p30' %></p>
         <p><%= t '.p31' %></p>
         <i>
           <p><%= t '.p32' %></p>
           <p><%= t '.p33' %></p>
         </i>
-      <h5><%= t '.withdrawing' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.withdrawing' %></h5>
         <p><%= t '.p34' %></p>
         <p><%= t '.p35' %></p>
-      <h5><%= t '.walk_overs' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.walk_overs' %></h5>
         <p><%= t '.p36' %></p>
         <ul>
           <% (21..23).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
           <% end %>
         </ul>
-      <h5><%= t '.deadline_extensions' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.deadline_extensions' %></h5>
         <p><%= t '.p37' %></p>
         <p><%= t '.p38' %></p>
         <p><%= t '.p39' %></p>
-      <h5><%= t '.disputes' %></h5>
+      <h5 class="color-tennis-blue"><%= t '.disputes' %></h5>
       <% if @referee %>
         <% mailto = t(".mail_to_referee_html", referee_name: "#{@referee.first_name} #{@referee.last_name}", referee_email: @referee.email) %>
       <% else %>

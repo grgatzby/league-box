@@ -9,13 +9,13 @@
         <%# single box grid view %>
         <div class="row mb-3">
           <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": is_this_my_box, "color-tennis-blue": !is_this_my_box) %>">
-            <%= "Box #{box.box_number}".upcase %>
+            <h5><%= "Box #{box.box_number}".upcase %></h5>
           </div>
         </div>
       <% else %>
         <%# all boxes grid view %>
         <div class="row mb-3" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-                data-bs-trigger="hover" data-bs-placement="right" data-bs-content="<%= t '.message_box_pop' %>">
+                data-bs-trigger="hover" data-bs-placement="right" data-bs-content="Box <%= box.box_number %> : <%= t '.message_box_pop' %>">
           <div class="col-12 expanded bold-font">
             <% classe = class_names("click-cell", "color-tennis-red": is_this_my_box, "color-tennis-blue": !is_this_my_box) %>
             <%= link_to "Box #{box.box_number}".upcase, box_list_path(box), page_from: index_expanded_path, class: classe %>

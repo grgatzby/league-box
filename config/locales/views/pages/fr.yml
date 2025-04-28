@@ -1,10 +1,10 @@
 fr:
   pages:
     home:
-      main_title: Le tournoi social de votre club
-      welcome_title: Mesurez-vous aux autres membres de votre club sur LeagueBox
+      main_title: Un tournoi social dans votre club
+      welcome_title: Mesurez-vous aux autres membres de votre club
       p01_html: >
-        📅🏆 LeagueBox vous propose de participer au sein même de votre club à un Tournoi en Simples organisé comme une Box League :
+        📅🏆 <b>LeagueBox</b> vous propose de participer au sein même de votre club à un Tournoi en Simples organisé comme une Box League :
         <ul>
           <li>un <b>tournoi interne</b> : seuls les membres de votre club peuvent participer,
           <li>les joueurs inscrits sont répartis dans des <b>box</b> de même niveau (4 à 5 joueurs) par le referee du tournoi
@@ -17,18 +17,18 @@ fr:
         du champagne pour célébrer sa victoire à la fin du tournoi.
       use_title: LeagueBox en un coup d'œil
       li01: Mes scores
-      li02: Les box du round
+      li02: Les box du round 📦
       li06_html: >
-        %{inset} : la vue globale des box du round.
-        <b>Cliquez sur une box</b> pour la voir en détail.<br/>
-        Vous pouvez également revoir les rounds précédents.
+        %{inset} : la vue globale des box du round.<br/>
+        Cliquez sur une box pour la voir en détail.<br/>
+        Vous pouvez également consulter les rounds précédents.
       li03a: Vue en liste
       li03b: Vue en grille
       li07_html: >
         %{inset_a}, %{inset_b}, %{inset_c} : après chaque match, entrez votre score dans une de ces pages.
         Votre classement se met à jour automatiquement.
-      li04a: classement du round
-      li04b: league table
+      li04a: classement du round 🏆
+      li04b: league table 🏆🏆
       li08_html: Le %{inset_a} et la %{inset_b} du round sont toujours à jour!
       how_title: Utiliser LeagueBox
       p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
@@ -49,6 +49,8 @@ fr:
         Consultez notre page %{inset} pour en savoir plus.
       happy_tournament: Que le meilleur gagne!
       add_club_btn: Ajouter un nouveau club
+      ok: vers les box
+      login_link: se connecter
     rules:
       overview_title: Description du Tournoi
       p01_html: >
@@ -63,6 +65,7 @@ fr:
         Cette discipline facilitera la bonne organisation de vos matchs.
       btn_display_rules: Règles du Tournoi
       btn_hide_rules: Cacher les règles
+      ok: vers les box
       rules: Règles du Tournoi Leaguebox
       rounds: Rounds
       p04: Il y aura un round par mois, sauf contre indication de votre club.
@@ -152,7 +155,7 @@ fr:
       li22: il est impossible pour le Referee de vérifier les déclarations de walk-overs
       li23: attribution injuste de points non joués
       deadline_extensions: Dérogation de Deadline
-      p37: Les joueurs devront s'efforcer de jouer leurs matchs dans la durée de la box league.
+      p37: Les joueurs devront s'efforcer de jouer leurs matchs dans le délai imparti pour le round.
       p38: >
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
         sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
@@ -236,7 +239,9 @@ fr:
       li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
-# à supprimer
+    staff:
+      ok: vers les box
+# to delete (now in preferences)
     my_details:
       preferences: Préférences
       nick_name: Pseudo

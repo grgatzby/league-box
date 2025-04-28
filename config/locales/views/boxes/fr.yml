@@ -24,10 +24,11 @@ fr:
         email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
       to_csv_btn: 📄 CSV
       clear_format: Sans couleur de fond
+      with_format: Avec couleur de fond
     index:
       all_box_title: Les box du round (vue résumée)
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
-      message_box_pop: <b>Colonnes</b><br />Nom, rang, matchs joués, points<br /><br /><i>Cliquer sur une box pour voir ses matchs en détail.</i>
+      message_box_pop: "Colonnes : Nom, rang, matchs joués, points obtenus<br /><br />Box %{box} : <i>Cliquer pour voir les matchs en détail.</i>"
       message_csv_pop: <b>exporter les joueurs et le referee du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (ma box en cours)
       my_box: (ma box)
@@ -97,7 +98,7 @@ fr:
       not_played: Pas encore joué
       enter_score: Entrer le score
     grid_view:
-      message_box_pop: <i>Cliquez sur le <b>titre de la box</b> pour basculer vers sa vue en liste</i>
+      message_box_pop: <i>voir la box en liste</i>
     show:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Vue en grille</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
