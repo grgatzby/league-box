@@ -17,34 +17,36 @@
         <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow dont-print mb-3" %>
       </div>
     </div>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
-        data-bs-content="<%= t '.message_box_pop' %>">
-      <div class="boxes print-all-content print-boxes-league box-scroller">
+    <div class="boxes print-all-content print-boxes-league box-scroller">
         <% @boxes.each do |box| %>
-          <div class="<%=class_names( "box-frame small-font", "color-tennis-aqua": box == @my_current_box) %>">
-            <div class="<%=class_names( "box-title", "color-tennis-red": box == @my_box) %>"><strong>
-              <%= "Box #{box.box_number} #{box == @my_current_box ? t('.my_current_box') : t('.my_box') if box == @my_box }" %>
-            </strong></div>
-            <ol type="1">
-              <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
-              <% scores.each do |user_box_score| %>
-                <li class=<%=user_box_score.user == current_user ? "color-orange" : "" %>>
-                  <div class="row">
-                    <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
-                    <div class="col-2"><%= "##{user_box_score.rank}" %></div>
-                    <div class="<%= class_names("col-1", "color-tennis-red": user_box_score.matches_played.zero?) %>"><%= "#{user_box_score.matches_played}" %></div>
-                    <div class="col-3"><%= t("pts", count: user_box_score.points) %></div>
-                  </div>
-                </li>
-                <%# link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link' %>
-              <% end %>
-            </ol>
-            <%= link_to '', box_path(box, page_from: boxes_path), class: 'box-link' %>
+          <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+              data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+              data-bs-content="<%= t('.message_box_pop', box: box.box_number) %>">
+            <div class="<%=class_names( "box-frame small-font", "color-tennis-aqua": box == @my_current_box) %>">
+              <div class="<%=class_names( "box-title", "color-tennis-red": box == @my_box) %>">
+                <strong>
+                  <%= "Box #{box.box_number} #{box == @my_current_box ? t('.my_current_box') : t('.my_box') if box == @my_box }" %>
+                </strong>
+              </div>
+              <ol type="1">
+                <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
+                <% scores.each do |user_box_score| %>
+                  <li class=<%=user_box_score.user == current_user ? "color-orange" : "" %>>
+                    <div class="row">
+                      <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
+                      <div class="col-2"><%= "##{user_box_score.rank}" %></div>
+                      <div class="<%= class_names("col-1", "color-tennis-red": user_box_score.matches_played.zero?) %>"><%= "#{user_box_score.matches_played}" %></div>
+                      <div class="col-3"><%= t("pts", count: user_box_score.points) %></div>
+                    </div>
+                  </li>
+                  <%# link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link' %>
+                <% end %>
+              </ol>
+              <%= link_to '', box_path(box, page_from: boxes_path), class: 'box-link' %>
+            </div>
           </div>
         <% end %>
       </div>
-    </div>
 
     <div class="buttons-wrap dont-print">
       <% if current_user && current_user.role != "player" %>

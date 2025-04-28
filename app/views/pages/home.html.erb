@@ -37,10 +37,17 @@
         <li class="top-bottom-padding ms-3"><%= t ".li#{format('%02d', i)}_html" %></li>
     <% end %></ol>
     <% class_prefix = "btn btn-inlayed bold-font color-" %>
-    <p class="top-bottom-padding"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
-    <br><h5><div class="title"><b><%= t '.happy_tournament' %></b></div></h5>
+    <div class="title"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %></div>
     <br>
-    <br><h5 class="top-bottom-padding color-tennis-blue"><b><%= t '.club_join_title' %></b></h5>
+    <div class="title">
+      <p class="top-bottom-padding"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
+    </div>
+    <br>
+    <div class="title"><h5><b><%= t '.happy_tournament' %></b></h5></div>
+
+
+    <br>
+    <br><h5 class="top-bottom-padding color-tennis-blue"><b>👤<%= t '.club_join_title' %></b></h5>
     <p class="top-bottom-padding"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
@@ -49,6 +56,13 @@
   </div>
 
   <br><div class = "buttons-wrap">
+    <% if user_signed_in?%>
+      <%= link_to t(".ok"), boxes_path, class: "btn buttons-shape btn-aqua text-size" %>
+    <% else %>
+      <%= link_to t('.login_link'), new_user_session_path, class: "btn buttons-shape btn-aqua text-size ms-2" %>
+    <% end %>
+
+
     <% if current_user == @admin %>
       <%= link_to t('.add_club_btn'), new_user_box_score_path, class: "btn buttons-shape btn-aqua" %>
     <% end %>

@@ -23,7 +23,7 @@ nl:
       round_period: Ronde %{round} (%{start} tot %{end}),
       round_period_mobile: R%{round},
       days_left: "%{days} dagen over,"
-      expired: ronde verlopen
+      expired_html: <b><i>ronde verlopen</i></b>
       players: "%{nb_players} spellers"
     select_club:
       select_club: "Club: "
@@ -48,7 +48,7 @@ nl:
       staff_p04a_html: de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.
       staff_p04b_html: deze form.
       header_role: 🧩 Rol
-      header_name: Naam
+      header_name: 👤 Naam
       header_club: 🎾 Club
       header_email: ✉️ E-mail
       header_phone: 📞 Telefoon

@@ -28,21 +28,21 @@
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow mb-3" %>
     <% case view_type %>
       <% when t("boxes.table_view") %>
-        <%# previous and next boxes table view %>
-        <%= link_to "←", box_path(@box_previous), class: "btn buttons-shape btn-yellow mb-3" %>
-        <%= link_to "→", box_path(@box_next), class: "btn buttons-shape btn-yellow mb-3" %>
         <%# if in table view, link back to list view %>
         <%= link_to box_list_path, class: "btn buttons-shape btn-yellow mb-3" do %>
           <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.list_view")}" %>
         <% end %>
+        <%# previous and next boxes table view %>
+        <%= link_to "←", box_path(@id_previous_box), class: "btn buttons-shape btn-yellow mb-3" %>
+        <%= link_to "→", box_path(@id_next_box), class: "btn buttons-shape btn-yellow mb-3" %>
       <% else %>
-        <%# previous and next boxes list view %>
-        <%= link_to "←", box_list_path(@box_previous), class: "btn buttons-shape btn-yellow mb-3" %>
-        <%= link_to "→", box_list_path(@box_next), class: "btn buttons-shape btn-yellow mb-3" %>
         <%# if in list view, link back to table view %>
         <%= link_to box_path, class: "btn buttons-shape btn-yellow mb-3" do %>
           <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{t("boxes.table_view")}" %>
         <% end %>
+        <%# previous and next boxes list view %>
+        <%= link_to "←", box_list_path(@box_previous), class: "btn buttons-shape btn-yellow mb-3" %>
+        <%= link_to "→", box_list_path(@box_next), class: "btn buttons-shape btn-yellow mb-3" %>
     <% end %>
     <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green mb-3 dont-print"%>
     <% if @page_from %>

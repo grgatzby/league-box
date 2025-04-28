@@ -2,7 +2,7 @@
   <!-- boxes show list headers (list view) -->
   <div class="col-4">
     <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @is_this_my_box, "color-tennis-blue": !@is_this_my_box) %>">
-      <%= "Box #{@box.box_number}".upcase %>
+      <h5><b><%= "Box #{@box.box_number}".upcase %></b></h5>
     </div>
   </div>
   <div class="col-2"><%= t '.match_score_header' %></div>

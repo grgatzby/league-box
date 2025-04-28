@@ -23,7 +23,7 @@ en:
       round_period: Round %{round} (%{start} to %{end}),
       round_period_mobile: R%{round},
       days_left: "%{days} days left,"
-      expired: round expired
+      expired_html: <b><i>round expired</i></b>
       players: "%{nb_players} players"
     select_club:
       select_club: "Club: "
@@ -47,7 +47,7 @@ en:
       staff_p04a_html: through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link in the bottom banner.
       staff_p04b_html: through this form.
       header_role: 🧩 Role
-      header_name: Name
+      header_name: 👤 Name
       header_club: 🎾 Club
       header_email: ✉️ email
       header_phone: 📞 Telephone
