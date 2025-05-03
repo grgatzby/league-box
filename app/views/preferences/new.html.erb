@@ -1,3 +1,4 @@
+<%# together with preferences/edit, should replace pages/my_details when photo uploads issues are solved %>
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
@@ -13,11 +14,12 @@
               placeholder: @preference.clear_format,
               value: @preference.clear_format  %>
       </div>
-      <br>
-      <div class = "buttons-wrap">
-        <div class = "btn btn-shape btn-aqua">
-          <%= f.button :submit %>
-        </div>
+    </div>
+    <br>
+    <div class = "buttons-wrap">
+      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
+      <div class = "btn-shape btn-aqua">
+        <%= f.button :submit %>
       </div>
     </div>
   <% end %>

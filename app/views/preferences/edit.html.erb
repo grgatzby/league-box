@@ -1,10 +1,11 @@
+<%# together with preferences/new, should replace pages/my_details when photo uploads issues are solved %>
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
   <% if @preference.photo.attached? %>
     <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
   <% end %>
-  simple_form_for version to test photo upload on Preference model
+  simple_form_for EDIT version to test photo upload on Preference model
   <%= simple_form_for(@preference) do |f| %>
     <div class="row frame-color-shape frame-padding frame-margin-rl">
       <div class="col-4">
@@ -14,17 +15,18 @@
               placeholder: @preference.clear_format,
               value: @preference.clear_format  %>
       </div>
-      <br>
-      <div class = "buttons-wrap">
-        <div class = "btn btn-shape btn-aqua">
-          <%= f.button :submit %>
-        </div>
+    </div>
+    <br>
+    <div class = "buttons-wrap">
+      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
+      <div class = "btn btn-shape btn-aqua">
+        <%= f.button :submit %>
       </div>
     </div>
   <% end %>
 
   <hr>
-  expected form_with form to allow user data editing
+  expected EDIT form_with form to allow user data editing
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
