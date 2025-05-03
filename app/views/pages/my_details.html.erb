@@ -1,4 +1,4 @@
-<%# pages/my_details should be replaced with preferences/new and preferences/edit when photo uploads issues are solved %>
+<%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
@@ -6,6 +6,11 @@
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <b><%= render "shared/fullname", user: current_user %></b><br><br>
+      <div class="row">
+        <div class="col-4"><%= "🧩 Role:" %></div>
+        <div class="col-3"><%= "#{current_user.role}" %></div>
+      </div>
+
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
         <div class="col-2"><%= f.text_field :nickname,
@@ -34,11 +39,6 @@
       </div>
 
       <div class="row">
-        <div class="col-4"><%= "🧩 Role:" %></div>
-        <div class="col-3"><%= "#{current_user.role}" %></div>
-      </div>
-
-      <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-4">
           <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
@@ -54,7 +54,7 @@
       <% end %>
       <hr>
       <b><%= t(".preferences") %></b><br>
-        <%# checkbox to remove formatting if page does not display well on screen %>
+        <%# checkbox to remove formatting if all boxes in expanded view does not display well on screen %>
         <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>

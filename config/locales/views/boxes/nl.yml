@@ -16,15 +16,14 @@ nl:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
       all_boxes_btn: 🔁 compacte weergave
       round_ranking_btn: 🏆 rangschikkingen
-      message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleur te wissen</i>
+      message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleurverloop te wissen</i>
       message_csv_pop: >
         <b>scores exporteren</b> naar CSV-bestand met kolommen:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
         email_player, phone_number_player, role_player,
         email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
       to_csv_btn: 📄 CSV
-      clear_format: Zijn achtergrond kleur
-      with_format: Met achtergrond kleur
+      clear_format: Zijn achtergrondkleurverloop
     index:
       all_box_title: De boxen van de ronde (compacte weergave)
       all_box_explain_html: <i class='color-green'>Klik op een box voor wedstrijddetails.</i>

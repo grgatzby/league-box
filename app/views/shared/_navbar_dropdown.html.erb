@@ -2,8 +2,9 @@
 <li class="nav-item">
   <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i>&nbsp&nbsp<i class="fa-solid fa-arrow-down"></i>&nbsp&nbsp<%= "#{current_user.nickname}" %></a>
   <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black">
-    <%= link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
-    <%# link_to t(".my_details_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
+    <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
+    <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
+    <%= link_to t(".my_details_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
     <%= link_to t('.club_staff_link'), staff_path, class: "dropdown-item color-black" %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>

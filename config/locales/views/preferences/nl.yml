@@ -7,7 +7,7 @@ nl:
       e_mail: E-mailadres
       password: Wachtwoord wijzigen
       expanded_view: Uitgebreide weergave
-      clear_format: Zijn achtergrond kleur
+      clear_format: Zijn achtergrondkleurverloop
     edit:
       preferences: Voorkeuren
       nick_name: Pseudo
@@ -15,4 +15,4 @@ nl:
       e_mail: E-mailadres
       password: Wachtwoord wijzigen
       expanded_view: Uitgebreide weergave
-      clear_format: Zijn achtergrond kleur
+      clear_format: Zijn achtergrondkleurverloop
