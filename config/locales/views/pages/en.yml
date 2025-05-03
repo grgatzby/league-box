@@ -56,14 +56,14 @@ en:
     rules:
       overview_title: Tournament overview
       p01_html: >
-        Box Leagues are designed to enable members of %{clubname} to play competitive tennis against other members of their club on a regular basis.
+        Box Leagues are designed to enable members of %{clubname} to <i class='color-tennis-aqua'>play competitive tennis against other members of their club</i> on a regular basis.
         They are an ideal way to meet other members and build a broader network of players for social games.
-      p02: >
-        However, box leagues only work if players are committed to getting matches played. Members who enter the leagues must make
+      p02_html: >
+        However, box leagues only work if players are <i class='color-tennis-aqua'>committed to getting matches played</i>. Members who enter the leagues must make
         every effort to complete their fixture programme. If, for whatever reason, players are unable to fulfil fixtures they
         should notify opponents and Referee promptly.
-      p03: >
-        Players should notify their opponents to block out the dates / times they are not available to play matches as well as
+      p03_html: >
+        Players should <i class='color-tennis-aqua'>notify their opponents to block out the dates / times they are not available to play matches</i> as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
         will make it easier to schedule your matches.
       btn_display_rules: Display Tournament rules
@@ -235,7 +235,7 @@ en:
         Its vocation is general communication, and not for a specific club.
         A color is assigned to messages, according to their author:<br>
       p28_html: >
-        Each box includes a dedicated <b>chatroom</b> which players can access from the <span class='bold-font color-tennis-red'>My scores</span>.<br><br>
+        Each box includes a dedicated <b>chatroom</b> which players can access from the <span class='bold-font color-tennis-red'>My scores</span> page.<br><br>
         A color is assigned to messages, according to their author:<br>
       li08_html: <span class='color-tennis-blue'>Messages from players of your own club appear in blue</span>
       li09_html: <span class='color-tennis-aqua'>Messages from your Referee appear in aqua</span>
@@ -253,4 +253,4 @@ en:
       e_mail: E-mail
       password: Modify password
       expanded_view: Expanded view
-      clear_format: Clear background color
+      clear_format: Clear background color gradient

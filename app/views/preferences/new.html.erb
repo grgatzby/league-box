@@ -3,29 +3,6 @@
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
 
-
-  simple_form_for version to test photo upload on Preference model
-  <%= simple_form_for(@preference) do |f| %>
-    <div class="row frame-color-shape frame-padding frame-margin-rl">
-      <div class="col-4">
-        <%= f.input :photo, as: :file  %>
-        <%= f.label :clear_format, t(".clear_format") %>
-        <%= f.text_field :clear_format,
-              placeholder: @preference.clear_format,
-              value: @preference.clear_format  %>
-      </div>
-    </div>
-    <br>
-    <div class = "buttons-wrap">
-      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
-      <div class = "btn-shape btn-aqua">
-        <%= f.button :submit %>
-      </div>
-    </div>
-  <% end %>
-
-  <hr>
-  expected form_with form to allow user data editing
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
@@ -35,10 +12,10 @@
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
 
-      <div class="row">
+      <!--<div class="row">
         <div class="col-4"><%= f.label :photo, "🙍 Select picture:" %></div>
         <div class="col-2"><%= f.file_field :photo %></div>
-      </div>
+      </div>-->
 
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>

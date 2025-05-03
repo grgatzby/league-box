@@ -54,14 +54,14 @@ fr:
     rules:
       overview_title: Description du Tournoi
       p01_html: >
-        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de jouer régulièrement un tennis compétitif avec d'autres joueurs du club d'un niveau comparable.
-        Elles sont aussi le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
-      p02: >
-        La clé du succès est que les joueurs s'engagent à jouer leurs matchs. Les membres qui s'inscrivent
+        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de <i class='color-tennis-aqua'>jouer un tennis compétitif avec d'autres joueurs du club</i> d'un niveau comparable, régulièrement.
+        <br>C'est le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
+      p02_html: >
+        La clé du succès est que les joueurs <i class='color-tennis-aqua'>s'engagent à jouer leurs matchs</i>. Les membres qui s'inscrivent
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs,
         prévenez rapidement vos adversaires et votre Referee.
-      p03: >
-        Les joueurs devront notifier à leurs adversaires leurs périodes d'indisponibilité, ainsi que leurs disponibilités.
+      p03_html: >
+        Les joueurs devront <i class='color-tennis-aqua'>notifier à leurs adversaires leurs périodes d'indisponibilité</i>, ainsi que leurs disponibilités.
         Cette discipline facilitera la bonne organisation de vos matchs.
       btn_display_rules: Règles du Tournoi
       btn_hide_rules: Cacher les règles
@@ -249,4 +249,4 @@ fr:
       e_mail: Adresse email
       password: Modifier le mot de passe
       expanded_view: Vue complète des box
-      clear_format: Sans couleur de fond
+      clear_format: Sans dégradé de couleurs

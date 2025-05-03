@@ -7,7 +7,7 @@ en:
       e_mail: E-mail
       password: Modify password
       expanded_view: Expanded view
-      clear_format: Clear background color
+      clear_format: Clear background color gradient
     edit:
       preferences: Preferences
       nick_name: Nick name
@@ -15,4 +15,4 @@ en:
       e_mail: E-mail
       password: Modify password
       expanded_view: Expanded view
-      clear_format: Clear background color
+      clear_format: Clear background color gradient

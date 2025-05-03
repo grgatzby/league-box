@@ -32,8 +32,7 @@ class PreferencesController < ApplicationController
     # update preference record for current_user, coming form form my_details.html.erb
     preference = Preference.find(params[:id])
     preference.update(preference_params)
-    preference.update(clear_format: params[:preference][:clear_format]=="1")
-
+    preference.update(clear_format: params[:clear_format]=="1")
     #image = params[:preference][:photo]
     #preference.photo.attach(io: image,
     #        filename: image.original_filename,

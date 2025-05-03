@@ -16,15 +16,14 @@ en:
       all_box_title: All boxes in the round (expanded view)
       all_boxes_btn: 🔁 compact view
       round_ranking_btn: 🏆 ranking tables
-      message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color</i>
+      message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>
       message_csv_pop: >
         <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
         email_player, phone_number_player, role_player,
         email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
       to_csv_btn: 📄 CSV
-      clear_format: Clear background color
-      with_format: With background color
+      clear_format: Clear background color gradient
     index:
       all_box_title: All boxes in the round (compact view)
       all_box_explain_html: <i class='color-green'>Click on a box to view the details of the matches</i>

@@ -23,7 +23,7 @@
         <%= hidden_field_tag(:round_id, @round.id) %>
         <%= hidden_field_tag(:club_id, @round.club_id) %>
         <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
-        <%= form.label :clear_format, params[:clear_format].eql?("1") ? t(".with_format") : t(".clear_format") %>
+        <%= form.label :clear_format, t(".clear_format") %>
       <% end %>
     </div>
 

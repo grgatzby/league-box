@@ -2,31 +2,10 @@
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <% if @preference.photo.attached? %>
+  <!--<% if @preference.photo.attached? %>
     <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
-  <% end %>
-  simple_form_for EDIT version to test photo upload on Preference model
-  <%= simple_form_for(@preference) do |f| %>
-    <div class="row frame-color-shape frame-padding frame-margin-rl">
-      <div class="col-4">
-        <%= f.input :photo, as: :file  %>
-        <%= f.label :clear_format, t(".clear_format") %>
-        <%= f.text_field :clear_format,
-              placeholder: @preference.clear_format,
-              value: @preference.clear_format  %>
-      </div>
-    </div>
-    <br>
-    <div class = "buttons-wrap">
-      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
-      <div class = "btn btn-shape btn-aqua">
-        <%= f.button :submit %>
-      </div>
-    </div>
-  <% end %>
+  <% end %>-->
 
-  <hr>
-  expected EDIT form_with form to allow user data editing
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
@@ -37,10 +16,10 @@
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
 
-      <div class="row">
+      <!--<div class="row">
         <div class="col-4"><%= f.label :photo, "🙍 Select picture:" %></div>
         <div class="col-2"><%= f.file_field :photo %></div>
-      </div>
+      </div>-->
 
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
@@ -92,7 +71,7 @@
         <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
-        <div class="col-4">
+        <div class="col-5">
           <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
           <%= f.label :clear_format, t(".clear_format") %>
         </div>

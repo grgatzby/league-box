@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get "staff", to: "pages#staff", as: "staff"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
     # on 10/02/2025 replaced pages#my_details with preferences#new and preferences#edit
-    get "my_details", to: "pages#my_details", as: "my_details"
+    # get "my_details", to: "pages#my_details", as: "my_details"
 
     resources :preferences, only: %i[new create edit update]
 
