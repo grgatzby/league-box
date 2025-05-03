@@ -1,21 +1,11 @@
+<%# pages/my_details should be replaced with preferences/new and preferences/edit when photo uploads issues are solved %>
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <% if @preference.photo.attached? %>
-    <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
-  <% end %>
-<!--
-  <%= simple_form_for(@preference) do |f| %>
-    <%= f.input :photo, as: :file  %>
-    <%= f.button :submit %>
-  <% end %>
--->
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <b><%= render "shared/fullname", user: current_user %></b><br><br>
-      <br>
-        <%= f.file_field :photo %>
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
         <div class="col-2"><%= f.text_field :nickname,
