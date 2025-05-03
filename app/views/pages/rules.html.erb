@@ -17,11 +17,11 @@
        data-toggle-hide-rules-value="<%= t '.btn_hide_rules' %>">
     <div class = "buttons-wrap dont-print">
       <button data-action="click->toggle#toggleRules" data-toggle-target="toggler"
-        class="btn buttons-shape btn-yellow text-size"><%= t '.btn_display_rules' %>
+        class="btn btn-shape btn-yellow text-size"><%= t '.btn_display_rules' %>
       </button>
-      <%= link_to t(".ok"), boxes_path, class: "btn buttons-shape btn-aqua text-size ms-2" %>
+      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size ms-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
-        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green text-size ms-2"%>
+        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size ms-2"%>
       </span>
     </div>
 
@@ -127,7 +127,7 @@
       <p><%= t(".p40_html", mailto: mailto) %></p>
       <%# bouton javascript pour scroller au début des règles %>
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+        class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
   </div>

@@ -20,7 +20,7 @@
         <div>
           <%= render 'shared/stats' %>
           <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
-          <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn buttons-shape btn-yellow mb-3" %>
+          <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn btn-shape btn-yellow mb-3" %>
         </div>
       </div>
       <div class="<%=class_names( "frame-color-shape players frame-padding",
@@ -74,7 +74,7 @@
       <div class="frame-color-shape players frame-padding">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">
-          <% class_btns = class_names( "btn buttons-shape btn-yellow", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
+          <% class_btns = class_names( "btn btn-shape btn-yellow", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
           <%= link_to t(".access_chatroom_btn"), chatroom_path(@chatroom), class: class_btns %>
         </div>
       </div>

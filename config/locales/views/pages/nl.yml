@@ -1,15 +1,16 @@
 nl:
   pages:
     home:
-      main_title: Een Sociaal Toernooi in jouw club
+      main_title: Het Sociaal Toernooi van jouw club
       welcome_title: Neem het op tegen je clubgenoten
       p01_html: >
         📅🏆 Binnen je eigen club biedt <b>LeagueBox</b> je de mogelijkheid om deel te nemen aan een gemengd Singles Social Tournament,
         georganiseerd als een Box League :
         <ul>
-          <li> een <b>intern toernooi</b>: alleen leden van je club mogen deelnemen.
-          <li> deelnemers worden door de scheidsrechter verdeeld in <b>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
-          <li> het toernooi bestaat uit <b>meerdere rondes</b> die een maand duren (of langer, naar goeddunken van de scheidsrechter). <li> de <b>punten die in elke ronde worden verdiend</b>, worden bij elkaar opgeteld om een ​​algehele toernooiwinnaar te bepalen.
+          <li> een <b class='color-tennis-aqua'>intern toernooi</b>: alleen leden van je club mogen deelnemen.
+          <li> deelnemers worden door de scheidsrechter verdeeld in <b class='color-tennis-aqua'>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
+          <li> het toernooi bestaat uit <b class='color-tennis-aqua'>meerdere rondes</b> die een maand duren (of langer, naar goeddunken van de scheidsrechter).
+          <li> de <b class='color-tennis-aqua'>punten die in elke ronde worden verdiend</b>, worden bij elkaar opgeteld om een ​​algehele toernooiwinnaar te bepalen.
         </ul>
       p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>league table</b> (toernooi rangschikking) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
       p03_html: >
@@ -166,7 +167,7 @@ nl:
       sitemap_title: Sitemap
       home: Home
       p01: Algemene presentatie van het Box League Toernooi
-      p02_html: Voor de beheerder, knop <span class='color-tennis-aqua'>Een nieuwe club toevoegen</span>.
+      p02_html: Voor de beheerder, knop <i class='color-tennis-aqua'>Een nieuwe club toevoegen</i>.
       overview_rules: Toernooiregels
       p03: Toernooibeschrijving en Box League-regels uitgelegd.
       club_staff: Clubpersoneel
@@ -179,16 +180,16 @@ nl:
       li04: accumulatie van punten
       p08_html: De <span class='color-tennis-red'>huidige speler</span> en de <span class='color-tennis-red'>boxtitel</span> worden in rood weergegeven.
       p09_html: Als u op een vakje klikt, gaat u naar de rasterweergave.<br>Een klik op de <b>uitgebreide weergave</b> toont alle boxen in de rasterweergave.<br>
-      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Maak de volgende ronde</span> (admin),
-      p10b_html: of <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span> (referee).
-      p11_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <span class='color-tennis-aqua'>Vraag de volgende ronde aan</span>.
+      p10a_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <i class='color-tennis-aqua'>Maak de volgende ronde</i> (admin),
+      p10b_html: of <i class='color-tennis-aqua'>Vraag de volgende ronde aan</i> (referee).
+      p11_html: Naarmate het einde van de ronde nadert, verschijnt er een voettekstknop waarmee u <i class='color-tennis-aqua'>Vraag de volgende ronde aan</i>.
       league_table: Ronde rangschikking een league table
       p12_html: Elke speler verschijnt van beste naar minst gerangschikt onder de kopjes <b>Speler, Ranglijst, Punten, Box, Wedstrijden </b>(gespeelde wedstrijden)<b>, Gewonnen </b>(gewonnen wedstrijden)<b>, Sets </b>(sets gespeeld)<b>, gewonnen </b>(sets gewonnen).
-      p13_html: Door op een kop te klikken, rangschikken spelers zichzelf volgens die kop.<br>
+      p13_html: Door op een kop te klikken, rangschikken spelers zichzelf op basis daarvan.<br>
       referee_list_view: Box resultaten lijst (admin/Referee)
       p14_html: >
         De door elke speler gespeelde wedstrijden worden weergegeven als lijstitems. De kopteksten zijn <b>Wedstrijdscores, Spelerpunten, Tegenstander punten, Tegenstander accumulatiepunten</b>.<br>
-        Als u op een wedstrijdregel klikt, komt u terecht op de pagina <b>Wedstrijd bewerken/verwijderen</b>.<br><br>
+        Als u op een wedstrijdregel klikt, komt u terecht op de pagina <i>Wedstrijd bewerken/verwijderen</i>.<br><br>
         Als u op een ongespeelde wedstrijd klikt (alleen voor de beheerder), komt u terecht op de pagina <b>Nieuwe wedstrijdscore</b>.
       table_view: Box resultatenraster
       p16: De wedstrijden van elke speler worden weergegeven onder de bijbehorende tegenstander.

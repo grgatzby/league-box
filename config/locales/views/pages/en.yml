@@ -1,16 +1,16 @@
 en:
   pages:
     home:
-      main_title: A Social Tournament in your club
+      main_title: Your club's Social Tournament
       welcome_title: Compete against your fellow club members
       p01_html: >
-        📅🏆 Within your own club, <b>LeagueBox</b> gives you the opportunity to enter a mixed Singles Social Tournament,
+        📅🏆 <b>LeagueBox</b> gives you the opportunity to challenge players of your own club through mixed Singles Social Tournament,
         organised as a Box League :
         <ul>
-          <li> an <b>internal tournament</b> : only members of your club may participate
-          <li> participants are divided into <b>boxes</b> of 4/5 players by the Referee, according to their level
-          <li> the tournament includes <b>several rounds</b> that last one month (or more at the Referee's discretion).
-          <li> <b>points earned</b> during a round will accumulate to give an overall Tournament winner.
+          <li> an <b class='color-tennis-aqua'>internal tournament</b> : only members of the club may participate
+          <li> participants are divided into <b class='color-tennis-aqua'>boxes</b> of 4/5 players by the Referee, according to their level
+          <li> the tournament includes <b class='color-tennis-aqua'>several rounds</b> lasting one month or more (at the Referee's discretion).
+          <li> <b class='color-tennis-aqua'>points earned</b> during a round will accumulate to give an overall Tournament winner.
         </ul>
       p02_html: 🥇🥈🥉 The <b>round ranking</b> and <b>league table</b> (tournament ranking) will be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
@@ -20,7 +20,7 @@ en:
       li01: My scores
       li02: Round's boxes 📦
       li06_html: >
-        %{inset} : an overview of all boxes of the round.<br/>
+        %{inset} : an overview of all the boxes of the round.<br/>
         Click on any box to access its detailed view.<br/>
         You can also review the previous rounds.
       li03a: List view
@@ -183,19 +183,19 @@ en:
       li03: number of matches played
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
-      p09_html: Clicking on a box leads to its Table view.<br>A click on <b>expanded view</b> displays all the boxes in Grid view.<br>
-      p10a_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Create the next round</span> (admin),
-      p10b_html: or to <span class='color-tennis-aqua'>Request the next round</span> (referee).
-      p11_html: When reaching the end of the round, a button appears to <span class='color-tennis-aqua'>Request the next round</span>.
+      p09_html: Clicking on a box leads to its Table view.<br>A click on <i>Expanded view</i> displays all the boxes in Grid view.<br>
+      p10a_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Create the next round</i> (admin),
+      p10b_html: or to <i class='color-tennis-aqua'>Request the next round</i> (referee).
+      p11_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Request the next round</i>.
       league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p13_html: Clicking on a header sorts the player according to this header.<br>
+      p13_html: Change the players order by simply clicking on the corresponding header.<br>
       referee_list_view: Box List view (admin/Referee)
       p14_html: >
         Each player's matches which have been played are shown as list items.
         Headers are <b>Match scores</b>, <b>Player's points</b>, <b>Opponent's points</b>, <b>Opponent's total points</b>.<br>
         Unplayed matchs are listed as well.<br><br>
-        Click on a match line to <b>Edit/Delete</b> the Match score.<br> The admin can click on an unplayed match line to enter the <b>New match score</b>.
+        Click on a match line to <i>Edit/Delete</i> the Match score.<br> The admin can click on an unplayed match line to enter the <b>New match score</b>.
       table_view: Box Table view
       p16: Each player's matches are shown under their corresponding opponent.
       p17_html: >
@@ -203,7 +203,7 @@ en:
         button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
         Click on a match score to view the match card or, from your own box, enter a new score by clicking the relevant cell.
       p18_html: >
-        You can <b>Edit/Delete</b> a Match score, or click an unplayed match cell to enter the <b>New match score</b> on behalf of the players.<br>
+        You can <i>Edit/Delete</i> a Match score, or <i>click an unplayed match cell</i> to enter the new match score on behalf of the players.<br>
         A toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) is displayed.
       list_view: Box List view (player)
       p19_html: >

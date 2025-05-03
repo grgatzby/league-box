@@ -16,7 +16,7 @@ en:
       all_box_title: All boxes in the round (expanded view)
       all_boxes_btn: 🔁 compact view
       round_ranking_btn: 🏆 ranking tables
-      message_box_pop: If the page does not display correctly, tick this box to clear the background color
+      message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color</i>
       message_csv_pop: >
         <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
@@ -27,8 +27,9 @@ en:
       with_format: With background color
     index:
       all_box_title: All boxes in the round (compact view)
+      all_box_explain_html: <i class='color-green'>Click on a box to view the details of the matches</i>
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
-      message_box_pop: "Headers : Name, rank, games played, points earned.<br /><br />Box %{box} : <i>Click to view the matches details</i>"
+      message_box_pop: "Headers : Name, rank, games played, points earned.<br /><br />Box %{box} : <i class='color-green'>Click to view the matches details</i>"
       message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (my current box)
       create_round_btn: create the next round
@@ -87,10 +88,10 @@ en:
     no_match_line:
       not_played: Not played yet
       enter_score: Enter score
-      pop02_a: <i>Click to enter the new match score</i>
+      pop02_a: <i class='color-green'>Click to enter the new match score</i>
     match_line:
       pop01: "<b>Score entered</b><br />by %{user}<br />on %{date}"
-      pop02: <br /><i>Click to edit or delete this match score</i>
+      pop02: <br /><i class='color-green'>Click to edit or delete this match score</i>
       won: Won
       lost: Lost
       on_date: "on"
@@ -98,7 +99,7 @@ en:
       not_played: Not played
       enter_score: Enter match score
     grid_view:
-      message_box_pop: <i>see the box in list view</i>
+      message_box_pop: <i class='color-green'>see the box in list view</i>
     show:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>Table view</span> page displays all matches in a table, and give players access to the match cards.<br>

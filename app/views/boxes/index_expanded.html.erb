@@ -11,8 +11,8 @@
       <%= render "shared/select_round", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
       <div>
         <%= render 'shared/stats' %>
-        <%= link_to t('.all_boxes_btn'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow dont-print mb-3" %>
-        <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn buttons-shape btn-yellow dont-print mb-3" %>
+        <%= link_to t('.all_boxes_btn'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
+        <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
       </div>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
@@ -34,7 +34,7 @@
       <% end %>
       <%# bouton javascript pour scroller à la Box 1 %>
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+        class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
     <div class="buttons-wrap dont-print">
@@ -42,10 +42,10 @@
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
             data-bs-content="<%= t '.message_csv_pop' %>">
-          <%= link_to t('.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn buttons-shape btn-green dont-print me-3" %>
+          <%= link_to t('.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
     </div>
 
   <% else %>

@@ -1,6 +1,6 @@
 .navbar-sticky {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
   position: sticky;
   top: 0;
   opacity: 1;
@@ -46,12 +46,13 @@
 
   &:hover {
     opacity: 1;
+    background: $tennis-green;
   }
 }
 
 // to allow drop down menu on hover
 @media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu { display: none }
-	.navbar .nav-item:hover .dropdown-menu { display: block }
+  .navbar .nav-item .dropdown-menu { display: none ; background: $tennis-beige; border-radius: $frame-border-radius;}
+	.navbar .nav-item:hover .dropdown-menu { display: block ;}
 	.navbar .nav-item .dropdown-menu { margin-top:0; }
 }

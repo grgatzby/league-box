@@ -12,7 +12,7 @@
   <% players = [@current_player, @opponent] %>
   <div class="one-liner frame-margin-rl">
     <h5>
-      <%= render "shared/fullname", user: @user_match_scores[0].user %><i> versus </i>
+      <%= render "shared/fullname", user: @user_match_scores[0].user %><i><%= " versus " %></i>
       <%= render "shared/fullname", user: @user_match_scores[1].user %>
     </h5>
   </div>
@@ -61,13 +61,13 @@
     </div>
     <br>
     <div class="buttons-wrap">
-      <%= f.submit t(".update_score_btn"), class: "btn buttons-shape btn-green mb-3" %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.submit t(".update_score_btn"), class: "btn btn-shape btn-green mb-3" %>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <%= link_to t(".delete_score_btn"), match_path(@match, page_from: @page_from), class: "btn buttons-shape btn-green mb-3",
+      <%= link_to t(".delete_score_btn"), match_path(@match, page_from: @page_from), class: "btn btn-shape btn-green mb-3",
       data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>&nbsp;&nbsp;&nbsp;&nbsp;
 
-      <%# link_to t(".back_btn"), :back, class: "btn buttons-shape btn-yellow" %>
-      <%= link_to t(".back_btn"), @page_from, class: "btn buttons-shape btn-yellow mb-3" %>
+      <%# link_to t(".back_btn"), :back, class: "btn btn-shape btn-yellow" %>
+      <%= link_to t(".back_btn"), @page_from, class: "btn btn-shape btn-yellow mb-3" %>
     </div>
   <% end %>
   <br>

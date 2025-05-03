@@ -19,8 +19,8 @@ en:
     top_line:
       top_line_html: >
         <span class="text">
-          <span class="color-tennis-blue"><b>Click a header</b></span> to change sorting order,
-          <span class="color-orange-light"><b>click a player's line</b></span> to access their box.
+          <i class='color-green'>Click a header</i> to change sorting order,
+          <i class='color-green'>click a player's line</i> to access their box.
         </span>
         <span class="text_hovered">
           <span class="color-green"><b>Click this line</b></span> to display the image and the <b>round stats</b> button.

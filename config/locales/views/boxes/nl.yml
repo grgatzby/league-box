@@ -16,7 +16,7 @@ nl:
       all_box_title: De boxen van de ronde (uitgebreide weergave)
       all_boxes_btn: 🔁 compacte weergave
       round_ranking_btn: 🏆 rangschikkingen
-      message_box_pop: Als de pagina niet correct wordt weergegeven, vinkt u dit vakje aan om de achtergrondkleur te wissen
+      message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleur te wissen</i>
       message_csv_pop: >
         <b>scores exporteren</b> naar CSV-bestand met kolommen:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
@@ -27,8 +27,9 @@ nl:
       with_format: Met achtergrond kleur
     index:
       all_box_title: De boxen van de ronde (compacte weergave)
+      all_box_explain_html: <i class='color-green'>Klik op een box voor wedstrijddetails.</i>
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
-      message_box_pop: "Kolommen : Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br />Box %{box} : <i>Klik op een box voor wedstrijddetails.</i>"
+      message_box_pop: "Kolommen : Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br />Box %{box} : <i class='color-green'>Klik op voor wedstrijddetails.</i>"
       message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand met kolommen:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
@@ -87,10 +88,10 @@ nl:
     no_match_line:
       not_played: Nog niet gespeeld
       enter_score: Voer uw score in
-      pop02_a: <i>Klik om de score in te voeren</i>
+      pop02_a: <i class='color-green'>Klik om de score in te voeren</i>
     match_line:
       pop01: "<b>Score ingevoerd</b><br />door %{user}<br />op %{date}"
-      pop02: <br /><i>Klik om deze score te bewerken of te verwijderen</i>
+      pop02: <br /><i class='color-green'>Klik om deze score te bewerken of te verwijderen</i>
       won: Won
       lost: Verloren
       on_date: "op"
@@ -98,7 +99,7 @@ nl:
       not_played: Nog niet gespeeld
       enter_score: Voer uw score in
     grid_view:
-      message_box_pop: <i>naar de lijstweergave</i>
+      message_box_pop: <i class='color-green'>naar de lijstweergave</i>
     show:
       intro_html: >
         Voor een box, geeft de <span class='bold-font color-tennis-blue'>Resultatenraster</span> pagina alle wedstrijden in een tabel weer en geeft spelers toegang tot de wedstrijdkaarten.<br>

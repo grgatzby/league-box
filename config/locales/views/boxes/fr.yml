@@ -16,7 +16,7 @@ fr:
       all_box_title: Les box du round (vue complète)
       all_boxes_btn: 🔁 vue résumée
       round_ranking_btn: 🏆 classements
-      message_box_pop: Si la page ne s'affiche pas correctement, cocher la case pour suppprimer la couleur de fond
+      message_box_pop: Si la page ne s'affiche pas correctement, <i class='color-green'>cocher la case pour suppprimer la couleur de fond</i>
       message_csv_pop: >
         <b>exporter les scores du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
@@ -27,8 +27,9 @@ fr:
       with_format: Avec couleur de fond
     index:
       all_box_title: Les box du round (vue résumée)
+      all_box_explain_html: <i' class='color-green'>Cliquer sur une box pour voir les matchs en détail</i>
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
-      message_box_pop: "Colonnes : Nom, rang, matchs joués, points obtenus<br /><br />Box %{box} : <i>Cliquer pour voir les matchs en détail.</i>"
+      message_box_pop: "Colonnes : Nom, rang, matchs joués, points obtenus<br /><br />Box %{box} : <i class='color-green'>Cliquer pour voir les matchs en détail.</i>"
       message_csv_pop: <b>exporter les joueurs et le referee du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (ma box en cours)
       my_box: (ma box)
@@ -87,10 +88,10 @@ fr:
     no_match_line:
       not_played: Pas encore joué
       enter_score: Entrer le score
-      pop02_a: <i>Cliquer pour entrer le score du match</i>
+      pop02_a: <i class='color-green'>Cliquer pour entrer le score du match</i>
     match_line:
       pop01: "<b>Score entré</b><br />par %{user}<br />%{date}"
-      pop02: <br /><i>Cliquer pour modifier ou supprimer ce score</i>
+      pop02: <br /><i class='color-green'>Cliquer pour modifier ou supprimer ce score</i>
       won: Gagné
       lost: Perdu
       on_date: "le"
@@ -98,7 +99,7 @@ fr:
       not_played: Pas encore joué
       enter_score: Entrer le score
     grid_view:
-      message_box_pop: <i>voir la box en liste</i>
+      message_box_pop: <i class='color-green'>voir la box en liste</i>
     show:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Vue en grille</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>

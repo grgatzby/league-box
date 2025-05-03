@@ -70,8 +70,8 @@
                 </div><br>
                 <%= hidden_field_tag(:club_id, @current_round.club_id) %>
                 <div class="one-liner">
-                  <%= f.submit t(".create_round_btn"), class: "btn buttons-shape btn-green" %>
-                  <%= link_to "Back", boxes_path(round_id: @current_round.id, club_id: @current_round.club_id), class: "btn buttons-shape btn-yellow" %>
+                  <%= f.submit t(".create_round_btn"), class: "btn btn-shape btn-green" %>
+                  <%= link_to "Back", boxes_path(round_id: @current_round.id, club_id: @current_round.club_id), class: "btn btn-shape btn-yellow" %>
                 </div>
               </div>
             </div>

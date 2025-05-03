@@ -10,7 +10,7 @@ fr:
       tie_break: tiebreak
       submitted: "Score entré %{date} par %{user}."
       update_score_btn: ⎷ Valider
-      delete_score_btn: x Supprimer
+      delete_score_btn: x Supprimer le score
       sure: Confirmez-vous?
       back_btn: ←
     new:
@@ -18,7 +18,7 @@ fr:
       enter_new_score_html: >
         Soumettre un nouveau score<br><br>
         Le tie-break final doit être inscrit comme premier à 10 points avec 2 d'écart.<br>
-        <i>Si vous avez joué un premier à 7 pts, entrez 10 au lieu de 7 (par exemple 10-5 pour 7-5) et demandez à l'arbitre de corriger le score</i>
+        <i>Si vous avez joué le tie-break en 'premier à 7 pts', entrez 10 au lieu de 7 (par exemple 10-5 pour 7-5) et demandez au referee de corriger le score</i>
       match_played: "Court nº:"
       date_time: "Match joué le:"
       score: "Score du match:"

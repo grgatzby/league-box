@@ -6,18 +6,16 @@ class ApplicationController < ActionController::Base
   # before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
-  # This app help organise intra club tennis championship where players are divides into boxes of 4 to 6 players
-  # Within a timeframe (a round) players will compete against other players in heir box; at the end of the round
-  # the best players in each box are upgrades one box, the worst are dwngraded one box.
-  # Existing features:
-  # - players can: view a box (in list or table view), enter a new match score in their own box, view all boxes,
-  #                view the league table, access their box chatroom.
-  # - referees can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
-  #                 view the league table, access the #general chatroom and all of their club's chatrooms,
-  #                 request a new round creation.
-  # - admin can: view a box (in list or table view), enter / edit / delete a match score, view all boxes,
-  #              view the league table, access the #general chatroom and all other chatrooms,
-  #              create a new club and its boxes (from a CSV file), create a new round, from an existing one.
+  # This app helps organise intra club tennis championship where players are divided into boxes of 4 to 6 players
+  # Within a one month time frame (a round) players will compete against other players of their box; at the end of the round
+  # the best players in each box are upgraded one or two boxes, the worst are downgraded one or two boxes.
+  # Available features:
+  # - players can: view a box in list view or table view, enter their new match score, view all other boxes,
+  #              view the round rank list and overall league table (all rounds aggregate), access their box chatroom.
+  # - referees can additionnaly: enter / edit / delete a match score, access the #general chatroom (to chat with other clubs
+  #              referees) and all of the chatrooms of their club, request a new round creation from the admin.
+  # - admin can additionnaly: access any chatroom, create a new club and its boxes (from a formatted CSV file including the
+  #              players list), create the next round.
 
   rescue_from ActionController::InvalidAuthenticityToken, with: :bad_token
   def bad_token
