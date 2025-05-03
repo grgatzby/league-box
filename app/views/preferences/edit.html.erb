@@ -4,26 +4,49 @@
   <% if @preference.photo.attached? %>
     <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
   <% end %>
+  simple_form_for version to test photo upload on Preference model
   <%= simple_form_for(@preference) do |f| %>
-    <%= f.input :photo, as: :file  %>
-    <%= f.text_field :clear_format,
-    placeholder: @preference.clear_format,
-    value: @preference.clear_format  %>
-    <%= f.button :submit %>
+    <div class="row frame-color-shape frame-padding frame-margin-rl">
+      <div class="col-4">
+        <%= f.input :photo, as: :file  %>
+        <%= f.label :clear_format, t(".clear_format") %>
+        <%= f.text_field :clear_format,
+              placeholder: @preference.clear_format,
+              value: @preference.clear_format  %>
+      </div>
+      <br>
+      <div class = "buttons-wrap">
+        <div class = "btn btn-shape btn-aqua">
+          <%= f.button :submit %>
+        </div>
+      </div>
+    </div>
   <% end %>
 
+  <hr>
+  expected form_with form to allow user data editing
   <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <b><%= render "shared/fullname", user: current_user %></b><br><br>
       <br>
-        <%= f.file_field :photo %>
+      <div class="row">
+        <div class="col-4"><%= "🧩 Role:" %></div>
+        <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= f.label :photo, "🙍 Select picture:" %></div>
+        <div class="col-2"><%= f.file_field :photo %></div>
+      </div>
+
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
         <div class="col-2"><%= f.text_field :nickname,
                                 placeholder: current_user.nickname,
                                 value: current_user.nickname,
-                                input_html: {class: "contact-field", style: "width: 20em"} %>
+                                style: "width: 10em",
+                                input_html: {class: "contact-field"} %>
         </div>
       </div>
 
@@ -32,7 +55,8 @@
         <div class="col-2"><%= f.text_field :phone_number,
                                 placeholder: current_user.phone_number,
                                 value: current_user.phone_number,
-                                input_html: {class: "contact-field", style: "width: 20em"} %>
+                                style: "width: 10em",
+                                input_html: {class: "contact-field"} %>
         </div>
       </div>
 
@@ -41,13 +65,9 @@
         <div class="col-2"><%= f.text_field :e_mail,
                                 placeholder: current_user.email,
                                 value: current_user.email,
-                                input_html: {class: "contact-field", style: "width: 20em"} %>
+                                style: "width: 20em",
+                                input_html: {class: "contact-field"} %>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-4"><%= "🧩 Role:" %></div>
-        <div class="col-3"><%= "#{current_user.role}" %></div>
       </div>
 
       <div class="row">
@@ -78,7 +98,7 @@
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= f.submit "OK", class: "btn buttons-shape btn-aqua" %>
+      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
     </div>
   <% end %>
 

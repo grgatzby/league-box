@@ -12,9 +12,9 @@
 
       <% if !params[:club_id] || params[:round_id] %>
         <!-- adding 'name: ""' gets rid of the name attribute, so commit does not appear in the url -->
-        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+        &nbsp;&nbsp;&nbsp;&nbsp;<%= form.submit t('.confirm_btn'), class: "btn btn-shape btn-green", name: "" %>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow" %>
+        <%= link_to t('.back_btn'), :back, class: "btn btn-shape btn-yellow" %>
       <% end %>
     <% end %>
   <% end %>

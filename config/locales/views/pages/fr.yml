@@ -1,15 +1,15 @@
 fr:
   pages:
     home:
-      main_title: Un tournoi social dans votre club
+      main_title: Le tournoi social de votre club
       welcome_title: Mesurez-vous aux autres membres de votre club
       p01_html: >
-        📅🏆 <b>LeagueBox</b> vous propose de participer au sein même de votre club à un Tournoi en Simples organisé comme une Box League :
+        📅🏆 <b>LeagueBox</b> vous propose de participer avec les joueurs de votre propre club à un Tournoi en Simples organisé comme une Box League :
         <ul>
-          <li>un <b>tournoi interne</b> : seuls les membres de votre club peuvent participer,
-          <li>les joueurs inscrits sont répartis dans des <b>box</b> de même niveau (4 à 5 joueurs) par le referee du tournoi
-          <li>le tournoi se déroule en plusieurs <b>rounds</b> chacun durant un mois environ (ou plus),
-          <li>vos <b>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
+          <li>un <b class='color-tennis-aqua'>tournoi en interne</b> : seuls les membres du club peuvent participer,
+          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box</b> de même niveau (4 à 5 joueurs) par le referee du tournoi
+          <li>le tournoi se déroule en plusieurs <b class='color-tennis-aqua'>rounds</b> chacun durant un mois ou plus (au choix du Referee),
+          <li>vos <b class='color-tennis-aqua'>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
         </ul>
       p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> (classement du tournoi) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
@@ -19,7 +19,7 @@ fr:
       li01: Mes scores
       li02: Les box du round 📦
       li06_html: >
-        %{inset} : la vue globale des box du round.<br/>
+        %{inset} : la vue globale de toutes box du round.<br/>
         Cliquez sur une box pour la voir en détail.<br/>
         Vous pouvez également consulter les rounds précédents.
       li03a: Vue en liste
@@ -168,30 +168,30 @@ fr:
       sitemap_title: Plan du site
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League.
-      p02_html: Pour l'admin, bouton <span class='color-tennis-aqua'>Ajouter un nouveau club</span>.
+      p02_html: Pour l'admin, bouton <i class='color-tennis-aqua'>Ajouter un nouveau club</i>.
       overview_rules: Le Tournoi
       p03: Description du Tournoi et explication des règles de la Box League.
       club_staff: Qui sommes-nous?
       p05: Coordonnées de l'admin et du Referee du club.
       all_boxes: Les box du round
-      p07: "Vue de toutes les box en un coup d'œil avec pour chaque joueur:"
+      p07: "Vue de toutes les box du round avec pour chaque joueur:"
       li01: son nom
       li02: son classement dans le Tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
-      p09_html: Un clic sur une box présente la Vue en grille de la box. <br>Le bouton <b>vue déployée</b> permet de voir toutes les box en vue Grille.<br>
-      p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Créer le prochain round</span> (admin),
-      p10b_html: ou pour <span class='color-tennis-aqua'>Demander la création du prochain round</span> (referee).
-      p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <span class='color-tennis-aqua'>Demander la création du prochain round</span>.
+      p09_html: Un clic sur une box présente la Vue en grille de la box. <br>Le bouton <i>Vue déployée</i> permet de voir toutes les box en vue Grille.<br>
+      p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Créer le prochain round</i> (admin),
+      p10b_html: ou pour <i class='color-tennis-aqua'>Demander la création du prochain round</i> (referee).
+      p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Demander la création du prochain round</i>.
       league_table: Classement d'un round et league table du Tournoi
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
-      p13_html: En cliquant sur un entête, les joueurs se classent selon cet entête.<br>
+      p13_html: Modifiez l'ordre des joueurs en cliquant sur l'entête correspondant.<br>
       referee_list_view: Vue en Liste (admin/Referee)
       p14_html: >
         Les matchs joués par chaque joueur sont affichés sous forme de liste dont les entêtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
         Les matchs non encore joués sont également listés.<br><br>
-        En cliquant sur la ligne d'un match, vous accédez à la page <b>Modifier/Supprimer un score</b>, et l'admin peut cliquer sur une ligne de match non joué pour entrer un <b>Nouveau score</b>.
+        En cliquant sur la ligne d'un match, vous accédez à la page <i>Modifier/Supprimer</i> un score, et l'admin peut cliquer sur une ligne de match non joué pour entrer un <b>Nouveau score</b>.
       table_view: Vue en Grille
       p16: Les matchs de chaque joueur sont affichés sous la colonne de l'adversaire correspondant.
       p17_html: >
@@ -200,7 +200,7 @@ fr:
         Cliquez sur un score pour visionner la carte du match, ou entrez un nouveau score dans votre box.
       p18_html: >
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) est affiché.
-        Cliquez sur la case d'un match pour <b>Modifier/Supprimer un score</b>, et sur une case "Entrer score" pour entrer un <b>Nouveau score</b>.
+        Cliquez sur la case d'un match pour <i>Modifier/Supprimer</i> un score, et sur une <i>case "Entrer score"</i> pour entrer un <b>Nouveau score</b>.
       list_view: Vue en Liste (joueur)
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >

@@ -129,7 +129,7 @@
           <!--- NB: "required: true" with "validate: { presence: true }" in the Contact model
           would not work with "multiple : true" since no file attached yields "files"=>[""] in the params -->
           <%= f.file_field :files,
-            class: 'btn buttons-shape btn-beige mb-3',
+            class: 'btn btn-shape btn-beige mb-3',
             accept: 'text/csv,application/msword,application/vnd.ms-excel,application/pdf,application/x-iwork-numbers-sffnumbers,application/vnd.apple.pages',
             required: true
           %>
@@ -139,14 +139,14 @@
         <div>
           <%= f.file_field :files,
             multiple: true,
-            class: 'btn buttons-shape btn-beige mb-3',
+            class: 'btn btn-shape btn-beige mb-3',
             accept: 'image/png,image/gif,image/jpeg,application/pdf'
           %>
         </div>
       <% end %>
       <!--- form SUBMIT -->
       <%= f.submit t('.send_btn'),
-        class: "btn buttons-shape btn-beige mb-3"
+        class: "btn btn-shape btn-beige mb-3"
       %>
     <% end %>
   </div>

@@ -18,7 +18,7 @@ nl:
       enter_new_score_html: >
         Voer een nieuwe score in<br><br>
         Kampioenschapstiebreak moet worden ingevoerd als de eerste met 10 punten en 2 foutloos.<br>
-        <i>Als je eerst tot 7 ptn hebt gespeeld, voer dan 10 in in plaats van 7 (bijvoorbeeld 10-5 voor 7-5) en vraag de scheidsrechter om de score te corrigeren</i>
+        <i>Als je 'eerst tot 7 ptn' tiebreak hebt gespeeld, voer dan 10 in in plaats van 7 (bijvoorbeeld 10-5 voor 7-5) en vraag de scheidsrechter om de score te corrigeren</i>
       match_played: "Tennisbaan:"
       date_time: "Wedstrijd gespeeld:"
       score: "Wedstrijdscore:"

@@ -2,7 +2,7 @@
 <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
     data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
     data-bs-content="<%= t '.message_league_pop' %>">
-  <div class="dont-print btn buttons-shape btn-yellow mb-3">
+  <div class="dont-print btn btn-shape btn-yellow mb-3">
     <%= form_with url: index_league_path, method: :get do |form| %>
       <%= hidden_field_tag(:club_id, @club.id) %>
       <% if from == "index" %>

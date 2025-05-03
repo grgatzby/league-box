@@ -10,7 +10,7 @@
         <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
       <% else %>
         <%= form.select :round_id, @rounds_dropdown, selected: @selected_label %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= form.submit t('.confirm_btn'), class: "btn buttons-shape btn-green", name: "" %>
+        <%= form.submit t('.confirm_btn'), class: "btn btn-shape btn-green", name: "" %>
       <% end %>
     </span>
   <% end %>

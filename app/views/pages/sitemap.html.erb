@@ -96,23 +96,23 @@
     <br><br>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-      class="btn buttons-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+      class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
     </button>
   </div>
 
 <!--
   <div class = "buttons-wrap">
-    <%= link_to "Tournament rules", rules_path, class: "btn buttons-shape btn-green" %>
-    <%= link_to "Club staff", staff_path, class: "btn buttons-shape btn-green" %>
+    <%= link_to "Tournament rules", rules_path, class: "btn btn-shape btn-green" %>
+    <%= link_to "Club staff", staff_path, class: "btn btn-shape btn-green" %>
     <% if current_user && current_user.role == "admin" %>
-      <%= link_to "New round", new_user_box_score_path, class: "btn buttons-shape btn-green" %>
+      <%= link_to "New round", new_user_box_score_path, class: "btn btn-shape btn-green" %>
     <% end %>
     <% unless current_user %>
-      <%= link_to "Log in to enter new match results", new_user_session_path, class: "btn buttons-shape btn-green" %>
+      <%= link_to "Log in to enter new match results", new_user_session_path, class: "btn btn-shape btn-green" %>
     <% end %>
   </div>
   -->
   <div class = "buttons-wrap">
-    <%= link_to "OK", boxes_path, class: "btn buttons-shape btn-aqua" %>
+    <%= link_to "OK", boxes_path, class: "btn btn-shape btn-aqua" %>
   </div>
 </div>

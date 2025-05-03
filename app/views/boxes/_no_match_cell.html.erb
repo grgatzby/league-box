@@ -3,7 +3,7 @@
    || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) \
    || current_user.role == "admin" %>
   <div class="click-cell dont-print">
-    <br><%= t '.enter_score' %>
+    <br><i class='color-green'><%= t '.enter_score' %></i>
     <%# click on opponent no-match line to enter a new match score %>
     <%= link_to '', new_match_path(player: line_player.id, opponent: column_player.id, round_id: @round.id, \
                                     page_from: page_from), class: "box-link" %>

@@ -17,13 +17,13 @@ a chatroom is created in Box controller #my_scores.
     <h5  class="one-liner">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <div>
-        <%# link_to t('.back_btn'), :back, class: "btn buttons-shape btn-yellow dont-print" %>
+        <%# link_to t('.back_btn'), :back, class: "btn btn-shape btn-yellow dont-print" %>
         <% if ["admin", "referee", "player referee"].include?(current_user.role) %>
-          <%= link_to t('.back_btn'), chatroom_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
+          <%= link_to t('.back_btn'), chatroom_path(0), class: "btn btn-shape btn-yellow dont-print" %>
         <% else %>
-          <%= link_to t('.back_btn'), my_scores_path(0), class: "btn buttons-shape btn-yellow dont-print" %>
+          <%= link_to t('.back_btn'), my_scores_path(0), class: "btn btn-shape btn-yellow dont-print" %>
         <% end %>
-        <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn buttons-shape btn-green dont-print"%>
+        <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
       </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
@@ -46,7 +46,7 @@ a chatroom is created in Box controller #my_scores.
             placeholder: "#{t ".message_invite"} #{@chatroom.name[-10,200]}",
             class: "flex-grow-1 border-0 rounded-3"
           %>
-          <%= f.submit t(".send_btn"), class: "btn buttons-shape btn-beige ms-2" %>
+          <%= f.submit t(".send_btn"), class: "btn btn-shape btn-beige ms-2" %>
         <% end %>
       </div>
     </div>
@@ -71,7 +71,7 @@ a chatroom is created in Box controller #my_scores.
             <div class="row">
               <div class="col-1"></div>
               <div class="col-11"><%= form.select(:chatroom, @chatrooms.sort.unshift(t(".chatroom_name")), {selected: "chatroom"}, {onchange: "this.form.submit();"}) %></div>
-              <%# form.submit t(".confirm_btn"), class: "btn buttons-shape btn-green", name: "" %>
+              <%# form.submit t(".confirm_btn"), class: "btn btn-shape btn-green", name: "" %>
             </div>
           <% end %>
         </div>
@@ -144,7 +144,7 @@ a chatroom is created in Box controller #my_scores.
       <% if params[:club]
           club = Club.find_by(name: params[:club]) %>
         <div class="buttons-wrap">
-          <%= link_to t('.back_btn'), user_box_scores_path(club_id: club.id), class: "btn buttons-shape btn-yellow" %>
+          <%= link_to t('.back_btn'), user_box_scores_path(club_id: club.id), class: "btn btn-shape btn-yellow" %>
         </div>
       <% end %>
     <% end %>

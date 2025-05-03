@@ -24,7 +24,7 @@ if @box
   message += t('.last_match', last_match_date: l(@last_box_match_date, format: :wwwddmmm_date)) if @last_box_match_date
 end %>
 
-<a tabindex="0" class="btn buttons-shape btn-orange mb-3 dont-print text-size popover-dismiss"
+<a tabindex="0" class="btn btn-shape btn-orange mb-3 dont-print text-size popover-dismiss"
 role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom" data-bs-html="true"
 title="<%= title %>" data-bs-content="<%= message %>">
   <%= t('.stats') %>

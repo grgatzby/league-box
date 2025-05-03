@@ -7,11 +7,13 @@
   width: 70%;
 }
 
-.buttons-shape {
+.btn-shape {
   /* top | right | bottom | left */
 
   padding: 6px 24px; /* top and bottom | left and right */
   border-radius: 0.25rem;
+  border: none;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   // background: #4CAF50;
   // background: #339966;
   transition: background 0.3s ease;

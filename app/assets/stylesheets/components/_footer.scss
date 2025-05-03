@@ -5,23 +5,25 @@ body {
   display: flex;
   flex-direction: column;
 }
-.content {
-  flex: 1 0 auto;
-}
 
 // .footer-wrap {
 //   flex-shrink: 0;
 // }
 
 .footer {
-  background: #F4F4F4;
+  //background: #F4F4F4;
+  background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: $footer-height;
   padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.5);
 }
+
+//.popover {
+//  background: $yellow;
+// }
 
 .footer-links {
   display: flex;
@@ -30,7 +32,7 @@ body {
 
 .footer-links a {
   color: black;
-  opacity: 0.3;
+  opacity: 0.5;
   text-decoration: none;
   // font-size: 24px;
   padding: 0px 10px;

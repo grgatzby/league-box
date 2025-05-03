@@ -69,5 +69,5 @@ en:
         other: "%{total_days} days, %{count} days left (%{ratio}%)<br>"
       last_match: last match played on %{last_match_date}<br>
       box: <b>The box %{box} stats</b><br>
-      round_expired: <i>round expired</i><br>
+      round_expired: <i class='color-tennis-red'>round expired</i><br>
       player_matches: <b>My matches</b><br>

@@ -70,5 +70,5 @@ nl:
         other: "%{total_days} dagen, %{count} dagen resterend (%{ratio}%)<br>"
       last_match: laatste wedstrijd gespeeld op %{last_match_date}<br>
       box: <b>De box %{box} stat</b><br>
-      round_expired: <i>ronde verlopen</i><br>
+      round_expired: <i class='color-tennis-red'>ronde verlopen</i><br>
       player_matches: <b>Mijn wedstrijden</b><br>

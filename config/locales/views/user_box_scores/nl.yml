@@ -19,8 +19,8 @@ nl:
     top_line:
       top_line_html: >
         <span class="text">
-          <span class="color-orange-light"><b>Klik op de lijn van de speler</b></span> om toegang te krijgen tot zijn box,
-          <span class="color-tennis-blue"><b>klik op header</b></span> om de ranglijst te sorteren.
+          <i class='color-green'>Klik op de lijn van de speler</i> om toegang te krijgen tot zijn box,
+          <i class='color-green'>klik op header</i> om de ranglijst te sorteren.
         </span>
         <span class="text_hovered">
           <span class="color-green"><b>Klik op deze regel</b></span> om de foto en de <b>rondestats knop</b> weer te geven.

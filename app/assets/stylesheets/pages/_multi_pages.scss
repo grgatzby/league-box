@@ -16,15 +16,16 @@
 }
 
 .frame-color-shape {
-  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
-  border-radius: 0.25rem;
+  //background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
+  background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
+  border-radius: $frame-border-radius;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: justify;
   margin: 0 auto;
 }
 
 .frame-color-shape-contact {
-  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
+  background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
@@ -38,15 +39,29 @@
   // top: $navbar-height;
 }
 
-.image-front {
+.photo-home-text {
+  background-position: center;
+  //background-image: linear-gradient(rgba(0,0,0,0), rgba(255, 255, 255,0.4)), url("clay-court.webp");
+  background-size: cover;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.content {
+  flex: 1 0 auto;
+  background-color: $tennis-green;
+}
+
+.image-home {
   height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center;
+  //background-image: linear-gradient(rgba(0,0,0,0), rgba(0, 0, 0,0)), url("social_tennis.jpg");
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(255, 255, 255,0.4)), url("clay-court.webp");
 
-  .image-front-text {
+  .image-home-text {
     color: white;
     font-size: 2.6vw;
     font-weight: bolder;
@@ -84,16 +99,16 @@
 }
 
 @media only screen and (max-width: 1200px) {
-  .image-front {
-      .image-front-text {
+  .image-home {
+      .image-home-text {
         font-size: 3vw;
         }
       }
 }
 
 @media only screen and (max-width: 768px) {
-  .image-front {
-      .image-front-text {
+  .image-home {
+      .image-home-text {
         font-size: 4vw;
         }
       }
