@@ -8,13 +8,13 @@ nl:
       club_staff_link: Clubpersoneel
       login_link: Log in
     navbar_dropdown:
-      tournament_rules_link: Toernooiregels
+      tournament_rules_link: 📜 Regels
       club_staff_link: 👤 Clubpersoneel
       all_boxes_link: 📦 Ronde boxen
-      my_details_link: ✉️ Mijn details
       round_ranking_link: 🏆 Ronde ranglijst
       league_table_link: 🏆🏆 League table
-      my_scores_link: Mijn scores
+      my_scores_link: 🧮 Mijn scores
+      my_details_link: ✉️ Mijn details
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Chatrooms
       round_end_link: Stel ronde einde uit

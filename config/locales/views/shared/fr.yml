@@ -8,13 +8,13 @@ fr:
       club_staff_link: Personnel du Club
       login_link: Connexion
     navbar_dropdown:
-      tournament_rules_link: 📜 Tournoi & règles
+      tournament_rules_link: 📜 Règles
       club_staff_link: 👤 Les contacts
       all_boxes_link: 📦 Les box du round
-      my_details_link: ✉️ Mes détails
       round_ranking_link: 🏆 Classement round
       league_table_link: 🏆🏆 League table
-      my_scores_link: Mes scores
+      my_scores_link: 🧮 Mes scores
+      my_details_link: ✉️ Mes détails
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Les chatrooms
       round_end_link: Reporter fin du round

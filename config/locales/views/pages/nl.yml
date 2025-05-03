@@ -53,14 +53,14 @@ nl:
     rules:
       overview_title: Beschrijving van het toernooi
       p01_html: >
-        Box Leagues zijn ontworpen om %{clubname} spelers in staat te stellen regelmatig competitief tennis te spelen.
+        Box Leagues zijn bedoeld om leden van %{clubname} in staat te stellen om regelmatig <i class='color-tennis-aqua'>competitief tennis te spelen tegen andere leden van hun club</i>.
         Bovendien zijn ze de ideale manier om andere leden van uw club te ontmoeten en uw recreatieve tennisnetwerk uit te breiden.
-      p02: >
-        Maar boxcompetities werken alleen als de spelers zich ertoe verbinden de wedstrijden te spelen. Leden die zich inschrijven voor competities
+      p02_html: >
+        Maar boxcompetities werken alleen als de spelers zich ertoe <i class='color-tennis-aqua'>verbinden de wedstrijden te spelen</i>. Leden die zich inschrijven voor competities
         moeten er alles aan doen om de geplande wedstrijden te plannen en te spelen. Als u om welke reden dan ook de geplande wedstrijden niet kunt spelen
         waarschuw snel uw tegenstanders en uw Referee.
-      p03: >
-        Spelers moeten hun tegenstanders op de hoogte stellen van perioden van onbeschikbaarheid, evenals van beschikbare perioden.
+      p03_html: >
+        Spelers <i class='color-tennis-aqua'>moeten hun tegenstanders op de hoogte stellen van perioden van onbeschikbaarheid</i>, evenals van beschikbare perioden.
         Deze discipline zal de goede organisatie van uw wedstrijden vergemakkelijken.
       btn_display_rules: Toernooiregels
       btn_hide_rules: Verberg de regels

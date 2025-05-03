@@ -53,6 +53,6 @@
 // to allow drop down menu on hover
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu { display: none ; background: $tennis-beige; border-radius: $frame-border-radius;}
-	.navbar .nav-item:hover .dropdown-menu { display: block ;}
+	.navbar .nav-item:hover .dropdown-menu { display: block; max-width: 20px !important;}
 	.navbar .nav-item .dropdown-menu { margin-top:0; }
 }

@@ -8,13 +8,13 @@ en:
       club_staff_link: Club staff
       login_link: Log in
     navbar_dropdown:
-      tournament_rules_link: 📜 Overview & Rules
+      tournament_rules_link: 📜 Rules
       club_staff_link: 👤 Our staff
-      my_details_link: ✉️ My details
       all_boxes_link: 📦 Round's boxes
       round_ranking_link: 🏆 Round ranking
       league_table_link: 🏆🏆 League table
-      my_scores_link: My scores
+      my_scores_link: 🧮 My scores
+      my_details_link: ✉️ My details
       general_chat_link: "#general chatroom"
       chatrooms_link: 🧑‍💻 Chatrooms
       round_end_link: Postpone round end
