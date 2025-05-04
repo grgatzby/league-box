@@ -43,7 +43,7 @@ en:
         <br>- the last player goes down 2 boxes, the second last 1 box.
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
-      club_join_title: "Club manager: tempted to use LeagueBox for your club?"
+      club_join_title: You are a Club manager? adopt LeagueBox for your club!
       li14: Contact us
       p06_html: >
         Offer your members the opportunity to play competitive tennis together within the club by joining LeagueBox.<br>
@@ -66,9 +66,9 @@ en:
         Players should <i class='color-tennis-aqua'>notify their opponents to block out the dates / times they are not available to play matches</i> as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
         will make it easier to schedule your matches.
-      btn_display_rules: Display Tournament rules
+      btn_display_rules: Tournament rules
       btn_hide_rules: Hide the rules
-      ok: to the boxes
+      ok: To the boxes
       rules: Leaguebox Tournament rules
       rounds: Rounds
       p04: There will be one round per month, unless local rules state otherwise.

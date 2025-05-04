@@ -6,17 +6,15 @@ class PreferencesController < ApplicationController
 
   def create
     # create preference record for current_user
-    #preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
+    preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
 
-    preference = Preference.new
-    preference.user_id = current_user.id
-    preference.clear_format = params[:clear_format]=="1"
-    preference.update(photo: preference_params[:photo])
+    #preference.update(photo: preference_params[:photo])
     preference.save
+
     # update current_user details
-    current_user.update(nickname: params[:preference][:nickname],
-    phone_number: params[:preference][:phone_number],
-    email: params[:preference][:e_mail])
+    current_user.update(nickname:     params[:preference][:nickname],
+                        phone_number: params[:preference][:phone_number],
+                        email:        params[:preference][:e_mail])
 
     flash[:notice] = t(".details_stored_flash")
 
@@ -31,7 +29,6 @@ class PreferencesController < ApplicationController
   def update
     # update preference record for current_user, coming form form my_details.html.erb
     preference = Preference.find(params[:id])
-    preference.update(preference_params)
     preference.update(clear_format: params[:clear_format]=="1")
     #image = params[:preference][:photo]
     #preference.photo.attach(io: image,
@@ -39,19 +36,19 @@ class PreferencesController < ApplicationController
     #        content_type: image.content_type)
     #preference.clear_format = params[:clear_format]=="1"
     preference.save
+
     # update current_user details
-    current_user.update(nickname: params[:preference][:nickname],
+    current_user.update(nickname:     params[:preference][:nickname],
                         phone_number: params[:preference][:phone_number],
-                        email: params[:preference][:e_mail])
+                        email:        params[:preference][:e_mail])
 
     flash[:notice] = t(".details_stored_flash")
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 
-  private
+#  private
 
-  def preference_params
-    params.require(:preference).permit(:photo, :clear_format)
-    # params.permit!
-  end
+#  def preference_params
+#    params.require(:preference).permit(:photo, :clear_format)
+#  end
 end

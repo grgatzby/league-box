@@ -1,7 +1,8 @@
 <%# partial: dropdown menu from the navbar %>
 <li class="nav-item">
   <a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i>&nbsp&nbsp<i class="fa-solid fa-arrow-down"></i>&nbsp&nbsp<%= "#{current_user.nickname}" %></a>
-  <div class="dropdown-menu dropdown-menu-ended" aria-labelledby="navbarDropdown color-black">
+  <%#div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black"%>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black">
     <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
     <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
