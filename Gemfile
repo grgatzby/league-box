@@ -64,7 +64,6 @@ end
 gem 'faker'
 gem 'mail_form'
 #gem 'cloudinary', '~> 1.12.0'
-gem "cloudinary"
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

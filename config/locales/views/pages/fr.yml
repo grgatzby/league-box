@@ -41,7 +41,7 @@ fr:
         <br>- le dernier joueur baisse de 2 box, l'avant-dernier d'une box.
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
-      club_join_title: "Manager de Club: adoptez LeagueBox pour votre club"
+      club_join_title: Vous êtes Manager de Club? adoptez LeagueBox!
       li14: Nous contacter
       p06_html: >
         Offrez à vos adhérents l'opportunité de jouer ensemble un tennis compétitif au sein du club en vous affiliant à LeagueBox.<br>
@@ -65,7 +65,7 @@ fr:
         Cette discipline facilitera la bonne organisation de vos matchs.
       btn_display_rules: Règles du Tournoi
       btn_hide_rules: Cacher les règles
-      ok: vers les box
+      ok: Vers les box
       rules: Règles du Tournoi Leaguebox
       rounds: Rounds
       p04: Il y aura un round par mois, sauf contre indication de votre club.
