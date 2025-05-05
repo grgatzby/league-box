@@ -16,7 +16,7 @@
         <%# all boxes grid view %>
         <div class="row mb-3" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="right" data-bs-content="Box <%= box.box_number %> : <%= t '.message_box_pop' %>">
-          <div class="col-12 expanded bold-font">
+          <div class="col-12 bold-font">
             <% classe = class_names("click-cell", "color-tennis-red": is_this_my_box, "color-tennis-blue": !is_this_my_box) %>
             <%= link_to "Box #{box.box_number}".upcase, box_list_path(box), page_from: index_expanded_path, class: classe %>
           </div>
@@ -27,7 +27,7 @@
       <% sorted_players = box_matches.map { |x| x[2]} %>
       <% box_matches.each do |user_box_matches| %>
         <div class="row first-col-lines">
-          <div class="col-12 expanded">
+          <div class="col-12">
             <% user_box_score = user_box_matches[0] %>
             <% line_player = user_box_score.user %>
             <% name = "#{render "shared/fullname", user: line_player}" %>
@@ -69,7 +69,7 @@
           <div class="row">
             <% sorted_players.each do |column_player|
               player_match = player_matches.select { |x| x[1] == column_player }[0] %>
-              <div class="col-2 text-center grid-columns expanded">
+              <div class="col-2 text-center grid-columns">
                 <span class="align-middle">
                   <% if player_match %>
                     <%= render "match_cell", player_match: player_match, line_player: line_player, page_from: page_from %>
