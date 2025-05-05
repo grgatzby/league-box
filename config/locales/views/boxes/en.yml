@@ -13,7 +13,7 @@ en:
       my_box: my box
       all_boxes_link: 📦 all boxes
     index_expanded:
-      all_box_title: All boxes in the round (expanded view)
+      all_box_title: All boxes in the round (full view)
       all_boxes_btn: 🔁 compact view
       round_ranking_btn: 🏆 ranking tables
       message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>
@@ -33,7 +33,7 @@ en:
       my_current_box: (my current box)
       create_round_btn: create the next round
       my_box: (my box)
-      open_view_btn: 🔁 expanded view
+      open_view_btn: 🔁 full view
       round_ranking_btn: 🏆 ranking tables
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"

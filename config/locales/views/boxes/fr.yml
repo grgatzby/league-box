@@ -14,7 +14,7 @@ fr:
       all_boxes_link: 📦 les box
     index_expanded:
       all_box_title: Les box du round (vue complète)
-      all_boxes_btn: 🔁 vue résumée
+      all_boxes_btn: 🔁 vue compacte
       round_ranking_btn: 🏆 classements
       message_box_pop: Si la page ne s'affiche pas correctement, <i class='color-green'>cocher la case pour supprimer le dégradé de couleurs</i>
       message_csv_pop: >
@@ -25,7 +25,7 @@ fr:
       to_csv_btn: 📄 CSV
       clear_format: Sans dégradé de couleurs
     index:
-      all_box_title: Les box du round (vue résumée)
+      all_box_title: Les box du round (vue compacte)
       all_box_explain_html: <i' class='color-green'>Cliquer sur une box pour voir les matchs en détail</i>
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
       message_box_pop: "Colonnes : Nom, rang, matchs joués, points obtenus<br /><br />Box %{box} : <i class='color-green'>Cliquer pour voir les matchs en détail.</i>"

@@ -15,6 +15,11 @@
   align-items: center;
 }
 
+span img {
+  // meant for the home page image; nb also affects all span>img tags in the website
+  border-radius: $frame-border-radius;
+}
+
 .frame-color-shape {
   //background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
   background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);

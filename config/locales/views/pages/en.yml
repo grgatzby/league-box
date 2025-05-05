@@ -43,7 +43,7 @@ en:
         <br>- the last player goes down 2 boxes, the second last 1 box.
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
-      club_join_title: You are a Club manager? adopt LeagueBox for your club!
+      club_join_title: "Tennis Club manager: adopt LeagueBox for your club!"
       li14: Contact us
       p06_html: >
         Offer your members the opportunity to play competitive tennis together within the club by joining LeagueBox.<br>
@@ -183,7 +183,7 @@ en:
       li03: number of matches played
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
-      p09_html: Clicking on a box leads to its Table view.<br>A click on <i>Expanded view</i> displays all the boxes in Grid view.<br>
+      p09_html: Clicking on a box leads to its Table view.<br>A click on <i>Full view</i> displays all the boxes in Grid view.<br>
       p10a_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Create the next round</i> (admin),
       p10b_html: or to <i class='color-tennis-aqua'>Request the next round</i> (referee).
       p11_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Request the next round</i>.
@@ -252,5 +252,5 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Modify password
-      expanded_view: Expanded view
+      expanded_view: Full view
       clear_format: Clear background color gradient

@@ -48,9 +48,9 @@
     <br><br>
     <h5 class="top-bottom-padding color-tennis-blue"><b>👤<%= t '.club_join_title' %></b></h5>
     <p class="top-bottom-padding"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
-    <span data-toggle-target="image">
-      <br><%= image_tag "social_tennis.jpg", alt: "Social tennis", width: "100%" %>
-    </span>
+
+    <br>
+    <span data-toggle-target= "image"><%= image_tag "social_tennis.jpg", alt: "Social tennis", width: "100%" %></span>
 
     <br><br>
     <div class="buttons-wrap"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %></div>

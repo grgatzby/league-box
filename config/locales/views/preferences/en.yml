@@ -6,7 +6,7 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Modify password
-      expanded_view: Expanded view
+      expanded_view: Full view
       clear_format: Clear background color gradient
     edit:
       preferences: Preferences
@@ -14,5 +14,5 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Modify password
-      expanded_view: Expanded view
+      expanded_view: Full view
       clear_format: Clear background color gradient
