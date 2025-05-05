@@ -9,8 +9,8 @@ fr:
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: 📜 Règles
-      club_staff_link: 👤 Les contacts
-      all_boxes_link: 📦 Les box du round
+      club_staff_link: 👤 Vos contacts
+      all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement round
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 Mes scores
@@ -37,15 +37,17 @@ fr:
       back_btn: ←
       select_round: "Choisir un round: "
     staff:
-      our_staff_title: Les contacts
+      our_staff_title: Vos contacts
       staff_p01: >
-        Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
+        Le personnel de votre club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >
-        Il est également là pour résoudre les désaccords sur un score déjà entré, ou pour saisir un score à votre place.<br>
+        Il vous aidera à résoudre les désaccords sur un score déjà entré, ou pourra saisir un score à votre place.<br>
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contactez votre <b>Referee</b> via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
-      staff_p04a_html: le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> dans la bannière de bas de page.
+      staff_p04a_html: >
+        le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> dans la bannière de bas de page.<br>
+        Joignez les membres de votre box de préférence via la chatroom. Les coordonnées des membres du tournoi s'affichent en glissant la souris sur leur nom.
       staff_p04b_html: ce formulaire.
       header_role: 🧩 Rôle
       header_name: 👤 Nom

@@ -10,7 +10,7 @@ en:
     navbar_dropdown:
       tournament_rules_link: 📜 Rules
       club_staff_link: 👤 Our staff
-      all_boxes_link: 📦 Round's boxes
+      all_boxes_link: 📦 The boxes
       round_ranking_link: 🏆 Round ranking
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 My scores
@@ -44,7 +44,9 @@ en:
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contact your <b>Referee</b> through your box chatroom (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
         &emsp;&emsp;&emsp;→ contact the <b>admin</b>
-      staff_p04a_html: through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link in the bottom banner.
+      staff_p04a_html: >
+        through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link in the bottom banner.<br>
+        Contact your box members preferably via the chatroom. Tournament members' details are displayed by hovering over their names.
       staff_p04b_html: through this form.
       header_role: 🧩 Role
       header_name: 👤 Name

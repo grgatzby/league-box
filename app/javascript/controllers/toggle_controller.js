@@ -25,20 +25,26 @@ export default class extends Controller {
     oldScrollY = currentElement.scrollTop,
     screenType = this.screenTypeValue,
     topButton = this.topButtonTarget,
-    image = this.imageTarget,
-    imageH = image.firstElementChild.nextElementSibling.clientHeight
+    hasImage = this.hasImageTarget
+    if (hasImage) {
+      // console.log('image in the DOM');
+      var image = this.imageTarget,
+      imageH = image.firstElementChild.clientHeight;
+    }
 
     currentElement.onscroll = function(e) {
-      var hT = image.offsetTop,
-      wH = window.innerHeight,
+      var wH = window.innerHeight,
       wS = currentElement.scrollTop;
-      //console.log (hT, wH, wS, wS+imageH/2, hT-wH, (wS+imageH/2-(hT-wH))/imageH);
-      if (wS+imageH/2 > (hT-wH)){
-          // console.log('image on the view!');
-          // fade image in at the end of scroll down
-          image.style.opacity = (wS+imageH/2-(hT-wH))/imageH;
-      } else {
-        image.style.opacity = 0;
+      if (hasImage) {
+        var hT = image.offsetTop
+        // console.log (hT, wH, wS, wS+imageH/2, hT-wH, (wS+imageH/2-(hT-wH))/imageH);
+        if (wS+imageH/2 > (hT-wH)) {
+            // console.log('image on the view!');
+            // fade image in at the end of scroll down
+            image.style.opacity = ((wS+imageH/2-(hT-wH))/imageH)**2;
+        } else {
+          image.style.opacity = 0;
+        }
       }
 
       if (oldScrollY < wS && wS > 0 && screenType !== "mobile") {

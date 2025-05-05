@@ -7,8 +7,8 @@ fr:
         📅🏆 <b>LeagueBox</b> vous propose de participer avec les joueurs de votre propre club à un Tournoi en Simples organisé comme une Box League :
         <ul>
           <li>un <b class='color-tennis-aqua'>tournoi en interne</b> : seuls les membres du club peuvent participer,
-          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box</b> de même niveau (4 à 5 joueurs) par le referee du tournoi
-          <li>le tournoi se déroule en plusieurs <b class='color-tennis-aqua'>rounds</b> chacun durant un mois ou plus (au choix du Referee),
+          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box</b> de même niveau (de 4 à 5 joueurs) par le Referee du tournoi
+          <li>le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> chacun durant un mois ou plus (selon le choix du Referee),
           <li>vos <b class='color-tennis-aqua'>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
         </ul>
       p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> (classement du tournoi) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
@@ -41,7 +41,7 @@ fr:
         <br>- le dernier joueur baisse de 2 box, l'avant-dernier d'une box.
       li13: Tournoi & règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
-      club_join_title: Vous êtes Manager de Club? adoptez LeagueBox!
+      club_join_title: "Manager de Club: adoptez LeagueBox pour votre club!"
       li14: Nous contacter
       p06_html: >
         Offrez à vos adhérents l'opportunité de jouer ensemble un tennis compétitif au sein du club en vous affiliant à LeagueBox.<br>

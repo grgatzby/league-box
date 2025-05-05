@@ -10,7 +10,7 @@ nl:
     navbar_dropdown:
       tournament_rules_link: 📜 Regels
       club_staff_link: 👤 Clubpersoneel
-      all_boxes_link: 📦 Ronde boxen
+      all_boxes_link: 📦 Boxen
       round_ranking_link: 🏆 Ronde ranglijst
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 Mijn scores
@@ -45,7 +45,9 @@ nl:
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ Neem contact op met uw <b>scheidsrechter</b> (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
         &emsp;&emsp;&emsp;→ Neem contact op met de <b>beheerder</b> (admin) via
-      staff_p04a_html: de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.
+      staff_p04a_html: >
+        de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.<br>
+        Neem bij voorkeur contact op met uw boxleden via de chatroom. Contactgegevens van toernooileden worden weergegeven als u de muisaanwijzer op hun naam plaatst.
       staff_p04b_html: deze form.
       header_role: 🧩 Rol
       header_name: 👤 Naam

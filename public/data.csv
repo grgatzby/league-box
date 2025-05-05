@@ -1,67 +1,67 @@
 id,club_id,email,first_name,last_name,nickname,phone_number,role,box_number
-186,5,dick.cartwright@club.be,Dick,Cartwright,DickC,984.155.2336,player,1
 174,5,frederic.brakus@club.be,Frederic,Brakus,FredericB,843-851-5544,player,1
 179,5,frederick.nicolas@club.be,Frederick,Nicolas,FrederickN,(839) 348-5521,player,1
 178,5,stanton.schmidt@club.be,Stanton,Schmidt,StantonS,175-672-6053,player,1
 175,5,brent.emard@club.be,Brent,Emard,BrentE,602.155.5616,player,1
 191,5,korey.hoeger@club.be,Korey,Hoeger,KoreyH,1-636-101-7747,player,1
-188,5,graig.cruickshank@club.be,Graig,Cruickshank,GraigC,156-767-0361,player,2
-198,5,lewis.luettgen@club.be,Lewis,Luettgen,LewisL,1-459-227-6481,player,2
-177,5,aurelio.boyle@club.be,Aurelio,Boyle,AurelioB,(565) 886-7164,player,2
-199,5,ramiro.dubuque@club.be,Ramiro,DuBuque,RamiroD,1-748-092-4490,player,2
+186,5,dick.cartwright@club.be,Dick,Cartwright,DickC,984.155.2336,player,1
 176,5,chuck.cartwright@club.be,Chuck,Cartwright,ChuckC,1-870-464-0847,player,2
+199,5,ramiro.dubuque@club.be,Ramiro,DuBuque,RamiroD,1-748-092-4490,player,2
+177,5,aurelio.boyle@club.be,Aurelio,Boyle,AurelioB,(565) 886-7164,player,2
+188,5,graig.cruickshank@club.be,Graig,Cruickshank,GraigC,156-767-0361,player,2
 187,5,kristopher.cronin@club.be,Kristopher,Cronin,KristopherC,343.873.3324,player,2
+198,5,lewis.luettgen@club.be,Lewis,Luettgen,LewisL,1-459-227-6481,player,2
 200,5,kory.wyman@club.be,Kory,Wyman,KoryW,134-830-5270,player,3
-202,5,rueben.effertz@club.be,Rueben,Effertz,RuebenE,197.873.5236,player,3
+189,5,parker.wisozk@club.be,Parker,Wisozk,ParkerW,798-121-3883,player,3
+214,5,irvin.harvey@club.be,Irvin,Harvey,IrvinH,(215) 523-4931,player,3
 190,5,johnathon.crooks@club.be,Johnathon,Crooks,JohnathonC,727.702.2774,player,3
 215,5,tobias.nicolas@club.be,Tobias,Nicolas,TobiasN,815.454.2407,player,3
-214,5,irvin.harvey@club.be,Irvin,Harvey,IrvinH,(215) 523-4931,player,3
-189,5,parker.wisozk@club.be,Parker,Wisozk,ParkerW,798-121-3883,player,3
+202,5,rueben.effertz@club.be,Rueben,Effertz,RuebenE,197.873.5236,player,3
 217,5,octavio.wisoky@club.be,Octavio,Wisoky,OctavioW,(252) 498-2201,player,4
-203,5,sanford.schroeder@club.be,Sanford,Schroeder,SanfordS,307.820.8720,player,4
-213,5,rueben.mckenzie@club.be,Rueben,McKenzie,RuebenM,485.929.8431,player,4
 211,5,reyes.willms@club.be,Reyes,Willms,ReyesW,246.308.1655,player,4
-201,5,abe.koepp@club.be,Abe,Koepp,AbeK,399-268-9229,player,4
+213,5,rueben.mckenzie@club.be,Rueben,McKenzie,RuebenM,485.929.8431,player,4
+203,5,sanford.schroeder@club.be,Sanford,Schroeder,SanfordS,307.820.8720,player,4
 216,5,luther.cormier@club.be,Luther,Cormier,LutherC,1-846-247-9230,player,4
+201,5,abe.koepp@club.be,Abe,Koepp,AbeK,399-268-9229,player,4
+218,5,bradly.bergstrom@club.be,Bradly,Bergstrom,BradlyB,(735) 382-4780,player,5
 212,5,hilario.d'amore@club.be,Hilario,D'Amore,HilarioD,(192) 705-6696,player,5
+223,5,royal.ondricka@club.be,Royal,Ondricka,RoyalO,(347) 477-4825,player,5
 210,5,lindsay.jakubowski@club.be,Lindsay,Jakubowski,LindsayJ,862-054-8991,player,5
 220,5,robt.haag@club.be,Robt,Haag,RobtH,1-910-338-2490,player,5
-223,5,royal.ondricka@club.be,Royal,Ondricka,RoyalO,(347) 477-4825,player,5
-218,5,bradly.bergstrom@club.be,Bradly,Bergstrom,BradlyB,(735) 382-4780,player,5
 222,5,carrol.o'conner@club.be,Carrol,O'Conner,CarrolO,(234) 690-6150,player,5
-219,5,dorian.osinski@club.be,Dorian,Osinski,DorianO,469.738.3506,player,6
-240,5,ron.pacocha@club.be,Ron,Pacocha,RonP,1-893-540-3542,player,6
-225,5,rey.mills@club.be,Rey,Mills,ReyM,628-759-1271,player,6
-244,5,lloyd.padberg@club.be,Lloyd,Padberg,LloydP,451-260-0736,player,6
-226,5,elmo.weimann@club.be,Elmo,Weimann,ElmoW,472-901-3571,player,6
 221,5,dong.metz@club.be,Dong,Metz,DongM,596-081-8298,player,6
-248,5,bryce.goodwin@club.be,Bryce,Goodwin,BryceG,1-434-167-4260,player,7
-241,5,miguel.sawayn@club.be,Miguel,Sawayn,MiguelS,514-435-5766,player,7
+225,5,rey.mills@club.be,Rey,Mills,ReyM,628-759-1271,player,6
+240,5,ron.pacocha@club.be,Ron,Pacocha,RonP,1-893-540-3542,player,6
+219,5,dorian.osinski@club.be,Dorian,Osinski,DorianO,469.738.3506,player,6
+226,5,elmo.weimann@club.be,Elmo,Weimann,ElmoW,472-901-3571,player,6
+244,5,lloyd.padberg@club.be,Lloyd,Padberg,LloydP,451-260-0736,player,6
 227,5,lester.o'connell@club.be,Lester,O'Connell,LesterO,1-388-302-4503,player,7
 245,5,pat.johnson@club.be,Pat,Johnson,PatJ,564-187-9797,player,7
+241,5,miguel.sawayn@club.be,Miguel,Sawayn,MiguelS,514-435-5766,player,7
 224,5,jospeh.senger@club.be,Jospeh,Senger,JospehS,902-257-2953,player,7
+248,5,bryce.goodwin@club.be,Bryce,Goodwin,BryceG,1-434-167-4260,player,7
 249,5,donald.denesik@club.be,Donald,Denesik,DonaldD,223-353-5022,player,7
-243,5,abel.kuvalis@club.be,Abel,Kuvalis,AbelK,521.533.5917,player,8
-246,5,wilmer.crist@club.be,Wilmer,Crist,WilmerC,185-870-5707,player,8
 251,5,raleigh.reynolds@club.be,Raleigh,Reynolds,RaleighR,(949) 245-4681,player,8
 242,5,allen.spencer@club.be,Allen,Spencer,AllenS,1-665-888-2270,player,8
-247,5,val.waelchi@club.be,Val,Waelchi,ValW,1-456-909-1058,player,8
+246,5,wilmer.crist@club.be,Wilmer,Crist,WilmerC,185-870-5707,player,8
 250,5,ted.nienow@club.be,Ted,Nienow,TedN,499-926-5445,player,8
-192,5,albert.rosenbaum@club.be,Albert,Rosenbaum,AlbertR,(789) 744-9615,player,9
-196,5,elvin.murazik@club.be,Elvin,Murazik,ElvinM,(970) 950-4938,player,9
+247,5,val.waelchi@club.be,Val,Waelchi,ValW,1-456-909-1058,player,8
+243,5,abel.kuvalis@club.be,Abel,Kuvalis,AbelK,521.533.5917,player,8
 195,5,nathaniel.mohr@club.be,Nathaniel,Mohr,NathanielM,(369) 553-3975,player,9
 206,5,jeffry.gottlieb@club.be,Jeffry,Gottlieb,JeffryG,(668) 874-4472,player,9
 208,5,valentin.abbott@club.be,Valentin,Abbott,ValentinA,(116) 503-1292,player,9
 193,5,aurelio.auer@club.be,Aurelio,Auer,AurelioA,748.139.5371,player,9
-194,5,hobert.beier@club.be,Hobert,Beier,HobertB,391.824.3587,player,10
-182,5,alfonzo.o'kon@club.be,Alfonzo,O'Kon,AlfonzoO,1-322-123-1832,player,10
-209,5,ahmad.mante@club.be,Ahmad,Mante,AhmadM,395-218-5037,player,10
-204,5,warner.corwin@club.be,Warner,Corwin,WarnerC,764.182.9683,player,10
-207,5,rodrick.witting@club.be,Rodrick,Witting,RodrickW,1-818-264-0346,player,10
+196,5,elvin.murazik@club.be,Elvin,Murazik,ElvinM,(970) 950-4938,player,9
+192,5,albert.rosenbaum@club.be,Albert,Rosenbaum,AlbertR,(789) 744-9615,player,9
 197,5,russel.bechtelar@club.be,Russel,Bechtelar,RusselB,(394) 608-6881,player,10
+207,5,rodrick.witting@club.be,Rodrick,Witting,RodrickW,1-818-264-0346,player,10
+182,5,alfonzo.o'kon@club.be,Alfonzo,O'Kon,AlfonzoO,1-322-123-1832,player,10
+204,5,warner.corwin@club.be,Warner,Corwin,WarnerC,764.182.9683,player,10
+194,5,hobert.beier@club.be,Hobert,Beier,HobertB,391.824.3587,player,10
+209,5,ahmad.mante@club.be,Ahmad,Mante,AhmadM,395-218-5037,player,10
 180,5,kendrick.bahringer@club.be,Kendrick,Bahringer,KendrickB,1-243-302-3856,player,11
-184,5,cedric.zemlak@club.be,Cedric,Zemlak,CedricZ,1-696-014-1741,player,11
-181,5,weldon.ernser@club.be,Weldon,Ernser,WeldonE,1-159-284-4191,player,11
-185,5,glenn.raynor@club.be,Glenn,Raynor,GlennR,197.487.2456,player,11
 183,5,moses.mccullough@club.be,Moses,McCullough,MosesM,847.700.9327,player,11
-173,5,philippe.dardenne@club.be,Philippe,Dardenne,PhilippeDe,(32) 477 940 591,referee
+185,5,glenn.raynor@club.be,Glenn,Raynor,GlennR,197.487.2456,player,11
+181,5,weldon.ernser@club.be,Weldon,Ernser,WeldonE,1-159-284-4191,player,11
+184,5,cedric.zemlak@club.be,Cedric,Zemlak,CedricZ,1-696-014-1741,player,11
+173,5,philippe.dardenne@club.be,Philippe,Dardenne,PhilippeD,(32) 477 940 591,referee

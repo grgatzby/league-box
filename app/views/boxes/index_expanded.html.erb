@@ -1,4 +1,4 @@
-<!-- list of all boxes in expanded view -->
+<!-- list of all boxes in full view -->
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
@@ -33,7 +33,7 @@
         <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_format: params[:clear_format] == "1" %>
       <% end %>
       <%# bouton javascript pour scroller à la Box 1 %>
-      <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+      <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
