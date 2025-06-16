@@ -50,16 +50,30 @@ nl:
     #   loser: v
     #   winner: w
     load_scores:
-      p01: "Upload een lijst met scores vanuit een CSV-bestand met de volgende headers:"
+      load_scores_title: Scores uploaden voor ronde %{round}  (start %{round_start})
+      p01: "Upload een lijst met wedstrijdscores voor de ronde vanuit een standaard CSV-bestand met de volgende headers:"
       p02_html: >
           <br>&emsp;&emsp;&emsp;
           <i>first_name_player, last_name_player,
              first_name_opponent, last_name_opponent,
              points_player, points_opponent,
              box_number, score_winner, score_winner2</i>.<br>
-          en:<br>
+          en:<br>&emsp;&emsp;&emsp;
           <i>email_player, phone_number_player, role_player,
              email_opponent, phone_number_opponent, role_opponent,
-             match_date, court_nb, input_user_id, input_date</i>
+             match_date, court_nb, input_user_id, input_date</i><br><br>
+          De score moet identiek zijn in de kolommen <i>score_winner</i> en <i>score_winner2</i>, en moet worden ingevoerd als de score
+          van de winnaar (bijv. 4-2 1-3 10-7). De winnaar is de speler met 20 punten (<i>points_player</i> of <i>points_opponent</i>).
+          Een ronde met vier spelers per box bestaat uit 6 wedstrijden, dus 6 rijen per box:
+          <ul>
+          <li>speler 1 : speler 2</li>
+          <li>speler 1 : speler 3</li>
+          <li>speler 1 : speler 4</li>
+          <li>speler 2 : speler 3</li>
+          <li>speler 2 : speler 4</li>
+          <li>speler 3 : speler 4</li>
+          </ul>
+          Als een box minder spelers heeft, bevat het CSV-bestand lege rijen om ervoor te zorgen dat alle boxen hetzelfde aantal rijen hebben.
+      delimiter: CSV-scheidingsteken
       submit_btn: ⎷ Bevestigen
       back_btn: ←

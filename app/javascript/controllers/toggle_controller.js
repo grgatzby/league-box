@@ -22,36 +22,40 @@ export default class extends Controller {
 
   connect() {
     var currentElement = this.togglableElementTarget,
-    oldScrollY = currentElement.scrollTop,
+    wSinit = currentElement.scrollTop, // number of pixels by which content is scrolled from its top edge.
     screenType = this.screenTypeValue,
     topButton = this.topButtonTarget,
     hasImage = this.hasImageTarget
     if (hasImage) {
-      // console.log('image in the DOM');
+      // console.log('image target is in the DOM');
       var image = this.imageTarget,
-      imageH = image.firstElementChild.clientHeight;
+      iH = image.firstElementChild.clientHeight; // 325
     }
 
     currentElement.onscroll = function(e) {
-      var wH = window.innerHeight,
-      wS = currentElement.scrollTop;
+      var wH = window.innerHeight, // 988
+      woH = window.outerHeight, // 920
+      wS = currentElement.scrollTop; // 0 - 1083
       if (hasImage) {
-        var hT = image.offsetTop
-        // console.log (hT, wH, wS, wS+imageH/2, hT-wH, (wS+imageH/2-(hT-wH))/imageH);
-        if (wS+imageH/2 > (hT-wH)) {
-            // console.log('image on the view!');
+        var hT = image.offsetTop // 2011 (distance from the outer border of image to the top padding edge of the offsetParent.
+        console.log (wH, woH, wS, wS+iH, hT-wH, wS+iH-(hT-wH), ((wS+iH-(hT-wH))/iH));
+        if (wS+iH > (hT-wH)) {
+            console.log('image on the view!');
+        }
+        if (wS+iH/2 > (hT-wH)) {
+            console.log('center of image on the view!');
             // fade image in at the end of scroll down
-            image.style.opacity = ((wS+imageH/2-(hT-wH))/imageH)**2;
+            image.style.opacity = ((wS+iH/2-(hT-wH))/iH);
         } else {
           image.style.opacity = 0;
         }
       }
 
-      if (oldScrollY < wS && wS > 0 && screenType !== "mobile") {
+      if (wSinit < wS && wS > 0 && screenType !== "mobile") {
         // when scrolling UP in the scroll-box, scroll the entire window up if NOT on a mobile screen
         window.scrollTo(0, document.body.scrollHeight);
       }
-      oldScrollY = wS;
+      wSinit = wS;
       // console.log('top button', topButton.classList);
       if (wS > wH/3) {
         // when the scrolling through the scroll-box, show the Top button

@@ -38,7 +38,7 @@ en:
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
       to_csv_btn: 📄 CSV
-      load_scores: load scores
+      load_scores: 📄 load scores
     my_scores:
       my_scores: My scores
       intro_html: >

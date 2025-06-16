@@ -32,7 +32,7 @@
 en:
   title_pop: CSV file
   message_pop: CSV (comma separated values) is a text file where data are separated with commas. It can be easily generated from a spreadsheet.
-  load_csv_file: load CSV file
+  load_csv_file: Load CSV file
   print_btn: 🖨 print
   not_authorised: This page is not authorised.
   points:
@@ -70,7 +70,7 @@ en:
 fr:
   title_pop: fichier CSV
   message_pop: CSV (comma separated values) est un fichier texte dont les données sont separées par des virgules. Il peut être généré facilement à partir d'un tableur.
-  load_csv_file: charger le fichier CSV
+  load_csv_file: Charger le fichier CSV
   print_btn: 🖨 imprimer
   not_authorised: Cette page n'est pas autorisée.
   points:

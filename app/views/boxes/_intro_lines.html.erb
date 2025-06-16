@@ -44,7 +44,7 @@
         <%= link_to "←", box_list_path(@id_previous_box), class: "btn btn-shape btn-yellow mb-3" %>
         <%= link_to "→", box_list_path(@id_next_box), class: "btn btn-shape btn-yellow mb-3" %>
     <% end %>
-    <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green mb-3 dont-print"%>
+    <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green mb-3 dont-print"%>
     <% if @page_from %>
       <% parameters = "?club_id=#{@round.club_id}" %>
       <%# if params[:round_id] %>

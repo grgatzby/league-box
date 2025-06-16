@@ -38,7 +38,7 @@ nl:
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
       to_csv_btn: 📄 CSV
-      load_scores: upload scoren
+      load_scores: 📄 upload scoren
     my_scores:
       my_scores: Mijn scores
       intro_html: >

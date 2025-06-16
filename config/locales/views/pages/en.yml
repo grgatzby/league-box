@@ -1,13 +1,12 @@
 en:
   pages:
     home:
-      main_title: Your club's Social Tournament
-      welcome_title: Compete against your fellow club members
+      main_title: A Social Tournament in your Club
+      welcome_title: "🏆 Leaguebox: challenge players of your own club"
       p01_html: >
-        📅🏆 <b>LeagueBox</b> gives you the opportunity to challenge players of your own club through mixed Singles Social Tournament,
-        organised as a Box League :
         <ul>
-          <li> an <b class='color-tennis-aqua'>internal tournament</b> : only members of the club may participate
+          <li> through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League
+          <li> <b class='color-tennis-aqua'>Only members of the club</b> may participate
           <li> participants are divided into <b class='color-tennis-aqua'>boxes</b> of 4/5 players by the Referee, according to their level
           <li> the tournament includes <b class='color-tennis-aqua'>several rounds</b> lasting one month or more (at the Referee's discretion).
           <li> <b class='color-tennis-aqua'>points earned</b> during a round will accumulate to give an overall Tournament winner.
@@ -48,7 +47,7 @@ en:
       p06_html: >
         Offer your members the opportunity to play competitive tennis together within the club by joining LeagueBox.<br>
         LeagueBox takes care of everything for you!<br>
-        Visit our %{inset} page to learn more.
+        Fill the form in our %{inset} page to learn more.
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
       ok: to the boxes

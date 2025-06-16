@@ -1,7 +1,7 @@
 <!-- partial: print, export to text, and export to csv buttons -->
 <div>
   <% if from == "index" %>
-    <%= link_to t('print_btn'), '#',
+    <%# link_to t('print_btn'), '#',
         onclick: 'window.print();return false;',
         class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
 
@@ -24,7 +24,7 @@
     <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn btn-shape btn-yellow mb-3" %>
   <% else %>
-      <%= link_to t('print_btn'), '#',
+      <%# link_to t('print_btn'), '#',
           onclick: 'window.print();return false;',
           class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
 
