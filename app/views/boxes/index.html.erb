@@ -59,7 +59,7 @@
           <%= link_to t('.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print me-3"%>
+      <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print me-3"%>
       <% if current_user == @admin %>
         <%= link_to t(".load_scores"), load_scores_path(round_id: @round.id), class: "btn btn-shape btn-aqua me-3" %>
       <% end %>

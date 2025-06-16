@@ -34,7 +34,7 @@ class MatchesController < ApplicationController
       @max_end_date = [@round.end_date, Time.now].min
       @match = Match.new(time: @max_end_date)
       @match.user_match_scores.build
-      # the code below was adapted to the previous form where scores were input individually
+      # the code below was adapted to the previous form where scores of a set were input individually (eg 4 and 1 for 4-1)
       # if params[:score_set1]
       #   @match_entry = Match.new
       #   score_set1 = score_to_a(params[:score_set1])
@@ -231,6 +231,8 @@ class MatchesController < ApplicationController
   end
 
   def load_scores
+    @round = Round.find(params[:round_id])
+    @round_nb = round_label(@round)
   end
 
   def create_scores
@@ -239,7 +241,7 @@ class MatchesController < ApplicationController
     csv_file = params[:csv_file]
     delimiter = params[:delimiter]
     round = Round.find(params[:round_id])
-    # 1/ remove existing scores for the round and clean user_box_score values
+    # 1/ remove existing match scores for the round and clean user_box_score values
     Box.where(round_id: round.id).each do |box|
       if box.matches.size.positive?
         box.matches.each do |match|
@@ -260,8 +262,8 @@ class MatchesController < ApplicationController
         user_match_scores = []
         CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
           match_players = winner_loser(row)
-          player = match_players[0]
-          opponent = match_players[1]
+          player = match_players[0] # winner
+          opponent = match_players[1] # loser
           box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
           court_id = Court.find_by(club_id: round.club_id, name: row[:court_nb]).id
 
@@ -533,9 +535,9 @@ class MatchesController < ApplicationController
   end
 
   def winner_loser(row)
-    # in PM Holland Park spreadsheet the score is input as the winner's score and the points_opponent columns
-    # provides the info as to whether its the payer's score or the opponent's score.
-    # return array of [winner, loser]
+    # in PM Holland Park spreadsheet, the score is formatted as the winner's score and only the points_opponent columns
+    # reveals whether its the player's score or the opponent's score.
+    # this method returns the array [winner, loser]
     if row[:role_player] && row[:role_opponent]
       if row[:points_opponent].to_i != 20
         winner = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])

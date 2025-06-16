@@ -8,7 +8,7 @@ the csv file must contain fields
    "email_opponent", "phone_number_opponent", "role_opponent"]
   -->
 <div class="<%= class_names("container": !@is_mobile) %>">
-  <h3><%= "Load scores" %></h3><br>
+  <h3><%= t('.load_scores_title', round: round_label(@round), round_start: @round.start_date.strftime('%d/%m/%Y')) %></h3><br>
   <% unless current_user.role == "admin" %>
     <br><br><%= t 'not_authorised' %>
   <% else %>
@@ -20,7 +20,7 @@ the csv file must contain fields
         <br>
 
         <div class="row"><br>
-          <div class="col-2"><%= label_tag 'delimiter' %></div>
+          <div class="col-2"><%# label_tag t '.delimiter' %><%= label_tag('delimiter', t('.delimiter')) %></div>
           <div class="col-1"><%= text_field_tag :delimiter, params[:delimiter] || ";", size: 2 %></div>
         </div><br>
         <div class="row"><br>
@@ -28,7 +28,8 @@ the csv file must contain fields
             <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
                 data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
                 title="<%= t('title_pop') %>" data-bs-content="<%= t('message_pop') %>">
-              <%= label_tag t 'load_csv_file' %>
+              <%# label_tag t 'load_csv_file' %>
+              <%= label_tag('load_file', t('load_csv_file')) %>
             </div>
           </div>
               <%= hidden_field_tag(:round_id, params[:round_id]) %>
@@ -38,7 +39,8 @@ the csv file must contain fields
       <div class="buttons-wrap">
         <%= submit_tag t('.submit_btn'), class: "btn btn-shape btn-green" %>&nbsp;&nbsp;&nbsp;&nbsp;
         <%# link_to "Back", "javascript:history.back()", class: "btn btn-shape btn-yellow" %>
-        <%= link_to t('.back'), :back, class: "btn btn-shape btn-yellow" %>
+        <%# link_to t('.back'), :back, class: "btn btn-shape btn-yellow" %>
+        <%= link_to t('.back'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow" %>
       </div>
     <% end %>
   <% end %>

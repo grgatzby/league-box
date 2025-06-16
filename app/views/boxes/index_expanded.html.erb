@@ -45,7 +45,7 @@
           <%= link_to t('.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
-      <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
+      <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
     </div>
 
   <% else %>

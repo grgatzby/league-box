@@ -267,7 +267,7 @@ class ApplicationController < ActionController::Base
   end
 
   def my_box?(box, player = current_user)
-    # return true if player belongs to box, false if not
+    # returns true if player belongs to box, false if not
     # player.role == "player" && box == player.user_box_scores.first.box
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
@@ -279,7 +279,7 @@ class ApplicationController < ActionController::Base
   end
 
   def init_stats
-    # set the global statistic variables for the stats to be displayed in the view pages
+    # sets the global statistic variables for the stats to be displayed in the view pages
     # @nb_matches = @round.boxes.map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
     @nb_matches = @round.boxes.includes([:user_box_scores, :matches]).map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
     @nb_matches_played = @round.boxes.map { |box| box.matches.size }.sum
@@ -300,7 +300,7 @@ class ApplicationController < ActionController::Base
   end
 
   def chatroom_name(box)
-    # for a given box, return the chatroom name
+    # for a given box, returns the chatroom name
     "#{box.round.club.name} - #{round_label(box.round)}:B#{format('%02d', box.box_number)}"
   end
 
