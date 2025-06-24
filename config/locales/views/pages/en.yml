@@ -1,48 +1,47 @@
 en:
   pages:
     home:
-      main_title: A Social Tournament in your Club
-      welcome_title: "🏆 Leaguebox: challenge players of your own club"
+      main_title: LeagueBox
+      welcome_title: "🏆 A Social Tournament in your own Club"
       p01_html: >
         <ul>
           <li> through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League
-          <li> <b class='color-tennis-aqua'>Only members of the club</b> may participate
-          <li> participants are divided into <b class='color-tennis-aqua'>boxes</b> of 4/5 players by the Referee, according to their level
-          <li> the tournament includes <b class='color-tennis-aqua'>several rounds</b> lasting one month or more (at the Referee's discretion).
+          <li> <b class='color-tennis-aqua'>only members of the club</b> may participate
+          <li> participants are dealt into <b class='color-tennis-aqua'>boxes</b> of 4/5 players, according to their level
+          <li> the tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more.
           <li> <b class='color-tennis-aqua'>points earned</b> during a round will accumulate to give an overall Tournament winner.
         </ul>
-      p02_html: 🥇🥈🥉 The <b>round ranking</b> and <b>league table</b> (tournament ranking) will be updated after each score entry and displayed on the league board at the end of each round.
+      p02_html: 🥇🥈🥉 The <b>round ranking</b> and <b>tournament ranking</b> (league table) will be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
-        The winner will receive the Singles Box League Tournament trophy 🏆, listing on the club honors board and possibly some
+        The winner will receive the Singles Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
       li01: My scores
       li02: Round's boxes 📦
       li06_html: >
-        %{inset} : an overview of all the boxes of the round.<br/>
-        Click on any box to access its detailed view.<br/>
-        You can also review the previous rounds.
+        <b>View all the boxes</b> of the round in %{inset}.<br/>
+        Click on a box to access the match details.<br/>
+        Access the other rounds.
       li03a: List view
       li03b: Table view
       li07_html: >
-        %{inset_a}, %{inset_b} or %{inset_c} : post your latest match score<br>Your ranking is automatically updated.
+        <b>Post your latest match score</b> in %{inset_a}, %{inset_b} or %{inset_c}.<br>
       li04a: Round ranking 🏆
       li04b: league table 🏆🏆
       li08_html: >
-        %{inset_a} and %{inset_b} show your ranking in the tournament.
-        <br>The rankings are always up to date.
-      how_title: Using LeagueBox
-      p04: "Each round lasts one month (or more at the Referee's discretion), and players compete within their allocated box."
-      li09_html: During a round, go and <b>play every match</b> in your box.
-      li10_html: After each match, either player enters the <b>match score</b> on LeagueBox.
-      li11_html: The <b>round ranking</b> and <b>league table</b> are automatically updated.
+        <b>Your rankings are up to date</b> in %{inset_a} and %{inset_b}.<br>
+      ready_title: Ready? See you on the courts!
+      p04: During each one month round, compete against the other players in your box.
+      li09_html: <b>Play every match</b> in your allocated box.
+      li10_html: After each match, either you or your opponent enter the <b>match score</b> on LeagueBox.
+      li11_html: <b>See how you rank</b> in round ranking and league table.
       li12_html: >
         <b>Promotion, relegation</b> at the end of the round : in each box
         <br>- the first player goes up 2 boxes, the second 1 box;
         <br>- the last player goes down 2 boxes, the second last 1 box.
       li13: Overview & rules
       p05_html: Visit our %{inset} page for more details
-      club_join_title: "Tennis Club manager: adopt LeagueBox for your club!"
+      club_join_title: "Tennis Club manager: subscribe to LeagueBox for your club!"
       li14: Contact us
       p06_html: >
         Offer your members the opportunity to play competitive tennis together within the club by joining LeagueBox.<br>

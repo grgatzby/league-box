@@ -14,7 +14,7 @@ nl:
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
       select_league: "toernooi:"
-      message_league_pop: "kies een toernooi startdatum."
+      message_league_pop: "toernooi startdatum."
       league_dropdown: league table
     top_line:
       top_line_html: >
@@ -27,13 +27,14 @@ nl:
         </span>
       hover_text: Klik hier om de foto weer te geven
       rules: >
-        De rangschikking van een speler wordt bepaald door het totaal aantal punten dat tijdens de ronde is verdiend.<br />
-        Als twee spelers hetzelfde aantal punten verzamelen, wordt de rangschikking bepaald op basis van de volgende criteria:<br /><br />
+        De <b>rangschikking</b> van een speler wordt bepaald door het totaal aantal punten dat tijdens de ronde is verdiend.<br />
+        Als twee spelers hetzelfde <b>aantal punten</b> verzamelen, wordt de rangschikking bepaald op basis van de volgende criteria:
         <ol>
-          <li>Meeste wedstrijden gespeeld</li>
-          <li>Meeste gewonnen sets over gespeelde sets</li>
-          <li>Meeste gewonnen games over <br>gespeelde games</li>
+          <li>meeste wedstrijden gespeeld</li>
+          <li>meeste gewonnen sets over gespeelde sets</li>
+          <li>meeste gewonnen games over gespeelde games</li>
         </ol>
+        <br /><br />
     action_buttons:
       all_boxes_link: 📦 boxen
       round_ranking_btn: 🏆 ronde ranglijst

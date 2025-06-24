@@ -14,7 +14,7 @@ en:
       valid_league_flash: "League table: choose a valid tournament start date"
     select_league:
       select_league: "tournament:"
-      message_league_pop: "select a tournament start date"
+      message_league_pop: "tournament start date"
       league_dropdown: league table
     top_line:
       top_line_html: >
@@ -27,14 +27,15 @@ en:
         </span>
       hover_text: Click me to display the image
       rules: >
-        A player's league position is determined by the total number of points won in a round.<br />
-        In the event that two or more players have the same number of points the league position will be
-        determined by:<br /><br />
+        <b>League position</b> is determined by the total number of points won in a round.<br />
+        When <b>number of points are the same</b> the league position will be
+        determined by:
         <ol>
-          <li>Most matches played</li>
-          <li>Most sets won over sets played</li>
-          <li>Most games won over games played</li>
+          <li>most matches played</li>
+          <li>most sets won over sets played</li>
+          <li>most games won over games played</li>
         </ol>
+        <br /><br />
     action_buttons:
       all_boxes_link: 📦 all boxes
       round_ranking_btn: 🏆 round ranking

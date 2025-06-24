@@ -59,7 +59,7 @@ nl:
     stats:
       stats: 📈 ronde stat
       round: Ronde
-      round_dates: <b>Ronde %{start} tot %{end}</b><br>
+      round_dates: <b>%{start} tot %{end}</b><br>
       round_players_boxes: "%{players} spelers, %{boxes} boxen<br>"
       nb_matches:
         zero: 0 wedstrijd
@@ -70,7 +70,7 @@ nl:
         zero: "%{total_days} dagen, 0 dag resterend (%{ratio}%)<br>"
         one: "%{total_days} dagen, 1 dag resterend (%{ratio}%)<br>"
         other: "%{total_days} dagen, %{count} dagen resterend (%{ratio}%)<br>"
-      last_match: laatste wedstrijd gespeeld op %{last_match_date}<br>
-      box: <b>De box %{box} stat</b><br>
+      last_match: <i>Laatste wedstrijd gespeeld op %{last_match_date}</i><br>
+      box: <b>Box %{box}</b><br>
       round_expired: <i class='color-tennis-red'>ronde verlopen</i><br>
       player_matches: <b>Mijn wedstrijden</b><br>

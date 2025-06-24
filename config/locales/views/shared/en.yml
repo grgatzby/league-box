@@ -58,7 +58,7 @@ en:
     stats:
       stats: 📈 round stats
       round: Round
-      round_dates: <b>Round %{start} to %{end}</b><br>
+      round_dates: <b>%{start} to %{end}</b><br>
       round_players_boxes: "%{players} players, %{boxes} boxes<br>"
       nb_matches:
         zero: 0 matches
@@ -69,7 +69,7 @@ en:
         zero: "%{total_days} days, 0 days left (%{ratio}%)<br>"
         one: "%{total_days} days, 1 day left (%{ratio}%)<br>"
         other: "%{total_days} days, %{count} days left (%{ratio}%)<br>"
-      last_match: last match played on %{last_match_date}<br>
-      box: <b>The box %{box} stats</b><br>
+      last_match: <i>Last match played on %{last_match_date}</i><br>
+      box: <b>Box %{box}</b><br>
       round_expired: <i class='color-tennis-red'>round expired</i><br>
       player_matches: <b>My matches</b><br>
