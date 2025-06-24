@@ -28,7 +28,7 @@ en:
       all_box_title: All boxes in the round (compact view)
       all_box_explain_html: <i class='color-green'>Click on a box to view the details of the matches</i>
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
-      message_box_pop: "Headers : Name, rank, games played, points earned.<br /><br />Box %{box} : <i class='color-green'>Click to view the matches details</i>"
+      message_box_pop: "Name, rank, games played, points earned.<br /><br />Box %{box} : <i class='color-green'>Click for a detailed view</i>"
       message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (my current box)
       create_round_btn: create the next round

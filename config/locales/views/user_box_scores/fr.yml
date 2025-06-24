@@ -14,7 +14,7 @@ fr:
       valid_league_flash: "League table: choisir un début de tournoi valide"
     select_league:
       select_league: "tournoi:"
-      message_league_pop: "choisir une date de début de tournoi"
+      message_league_pop: "date de début de tournoi"
       league_dropdown: league table
     top_line:
       top_line_html: >
@@ -27,13 +27,14 @@ fr:
         </span>
       hover_text: Cliquer ici pour faire apparaître l'image
       rules: >
-        Le classement d'un joueur dans la league est déterminé par le cumul de points gagnés pendant le round.<br />
-        Si deux joueurs cumulent le même nombre de points, le classement sera déterminé selon les critères suivants:<br /><br />
+        Le <b>classement d'un joueur</b> est déterminé par le cumul de points gagnés pendant le round.<br />
+        <b>En cas d'égalité</b>, le classement sera déterminé selon :
         <ol>
-          <li>Le plus de matchs joués</li>
-          <li>Le plus de sets gagnés / sets joués</li>
-          <li>Le plus de jeux gagnés / jeux joués</li>
+          <li>le plus de matchs joués</li>
+          <li>le plus de sets gagnés / sets joués</li>
+          <li>le plus de jeux gagnés / jeux joués</li>
         </ol>
+        <br /><br />
     action_buttons:
       all_boxes_link: 📦 les box
       round_ranking_btn: 🏆 classement du round

@@ -1,40 +1,39 @@
 fr:
   pages:
     home:
-      main_title: Le tournoi social de votre club
-      welcome_title: "🏆 Leaguebox: affrontez les joueurs de votre club"
+      main_title: LeagueBox
+      welcome_title: "🏆 Du tennis compétitif au sein de votre club"
       p01_html: >
         <ul>
           <li>un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League
-          <li>un <b class='color-tennis-aqua'>seuls les membres du club</b> peuvent participer,
-          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> (de 4 à 5 joueurs) par le Referee du tournoi
-          <li>le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> chacun durant un mois ou plus (selon le choix du Referee),
+          <li><b class='color-tennis-aqua'>seuls les membres du club</b> peuvent participer,
+          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> (de 4 à 5 joueurs)
+          <li>le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> d'un mois ou plus,
           <li>vos <b class='color-tennis-aqua'>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
         </ul>
-      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>league table</b> (classement du tournoi) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
+      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et <b>du tournoi</b> (la league table) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
-        Le <b>vainqueur</b> recevra le trophée du Tournoi Box League 🏆, son nom sur le tableau d'honneur et pourquoi pas
+        Le vainqueur recevra le trophée du Tournoi 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
-      use_title: LeagueBox en un coup d'œil
+      use_title: Le site LeagueBox en pratique
       li01: Mes scores
       li02: Les box du round 📦
       li06_html: >
-        %{inset} : la vue globale de toutes box du round.<br/>
-        Cliquez sur une box pour la voir en détail.<br/>
-        Vous pouvez également consulter les rounds précédents.
+        <b>Toutes box du round</b> en un coup d'œil dans %{inset}.<br/>
+        Cliquez sur une box et consultez le détail des matchs.<br/>
+        Accédez aux autres rounds.
       li03a: Vue en liste
       li03b: Vue en grille
       li07_html: >
-        %{inset_a}, %{inset_b}, %{inset_c} : après chaque match, entrez votre score dans une de ces pages.
-        Votre classement se met à jour automatiquement.
-      li04a: classement du round 🏆
+        Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, %{inset_c}.
+      li04a: classement round 🏆
       li04b: league table 🏆🏆
-      li08_html: Le %{inset_a} et la %{inset_b} du round sont toujours à jour!
-      how_title: Utiliser LeagueBox
-      p04: Chaque round dure un mois (ou plus selon les clubs), et les joueurs s'affrontent au sein de leur box.
+      li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et dans %{inset_b}.
+      ready_title: Vous êtes prêt? Rendez-vous sur les courts!
+      p04: Chaque round dure environ un mois, et vous affronterez les joueurs de votre box.
       li09_html: Pendant un round, <b> jouez tous les matchs</b> de votre box.
       li10_html: Après chaque match, vous ou votre adversaire <b>entrez le score</b> du match.
-      li11_html: Le <b>classement du round</b> et la <b>league table</b> sont automatiquement recalculés.
+      li11_html: <b>Consultez votre nouveau classement</b> sur classement du round et la league table.
       li12_html: >
         <b>Promotion, déclassement</b> à la fin du round : dans chaque box
         <br>- le meilleur joueur monte de 2 box, le second d'une box,

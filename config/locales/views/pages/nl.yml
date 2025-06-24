@@ -1,39 +1,40 @@
 nl:
   pages:
     home:
-      main_title: Het Sociaal Toernooi van jouw club
-      welcome_title: Neem het op tegen je clubgenoten
+      main_title: LeagueBox
+      welcome_title: "🏆 Het Sociaal Toernooi van jouw club"
       p01_html: >
-        📅🏆 Binnen je eigen club biedt <b>LeagueBox</b> je de mogelijkheid om deel te nemen aan een gemengd Singles Social Tournament,
-        georganiseerd als een Box League :
         <ul>
-          <li> een <b class='color-tennis-aqua'>intern toernooi</b>: alleen leden van je club mogen deelnemen.
-          <li> deelnemers worden door de scheidsrechter verdeeld in <b class='color-tennis-aqua'>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
-          <li> het toernooi bestaat uit <b class='color-tennis-aqua'>meerdere rondes</b> die een maand duren (of langer, naar goeddunken van de scheidsrechter).
-          <li> de <b class='color-tennis-aqua'>punten die in elke ronde worden verdiend</b>, worden bij elkaar opgeteld om een ​​algehele toernooiwinnaar te bepalen.
+          <li> door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
+          <li> <b class='color-tennis-aqua'>Alleen leden van de club</b> mogen deelnemen.
+          <li> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
+          <li> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
         </ul>
-      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>league table</b> (toernooi rangschikking) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
+      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>toernooi rangschikking</b> (league table) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
       p03_html: >
-        De winnaar ontvangt de Singles Box League Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
+        De winnaar ontvangt de Singles Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       use_title: Leaguebox in één oogopslag
       li01: Mijn scores
       li05_html:
       li02: Ronde boxen 📦
       li06_html: >
-        Op de %{inset} pagina, zie je elke box in de competitie in één oogopslag en krijg je toegang tot de boxen in
-        klik erop om het in detail te volgen.<br/>Je hebt ook toegang tot eerdere rondes.
+        <b>Bekijk alle vakjes</b> van de ronde in %{inset}.<br/>
+        Klik op een vakje om de wedstrijddetails te bekijken.<br/>
+        Ga naar de andere rondes.
       li03a: Resultaten lijst
       li03b: Resultatenraster
-      li07_html: Voer je laatste score in %{inset_a}, in %{inset_b} of in %{inset_c}.<br>Je ranking wordt automatisch bijgewerkt.
+      li07_html: >
+        <b>Plaats je laatste wedstrijdscore</b> in %{inset_a}, %{inset_b} of %{inset_c}.<br>
       li04a: ronde rangschikking 🏆
       li04b: league table 🏆🏆
-      li08_html: De %{inset_a} en de %{inset_b} worden altijd bijgewerkt en je kunt de ranglijst van alle andere spelers in het toernooi volgen.
-      how_title: Hoe werkt LeagueBox?
-      p04: Elke ronde duurt een maand (of meer in sommige clubs) en spelers strijden in hun box.
-      li09_html: Gedurende de ronde speel <b>elke wedstrijd</b> in je box.
-      li10_html: Na elke wedstrijd voert een van de twee spelers <b>de wedstrijdscore</b> in.
-      li11_html: De <b>ronde rangschikking</b> en de <b>league table</b> worden automatisch bijgewerkt.
+      li08_html: >
+        <b>Uw rangschikkingen zijn altijd actueel</b> in %{inset_a} en %{inset_b}.<br>
+      ready_title: Klaar? Tot ziens op de tennisbaan!
+      p04: Elke ronde duurt een maand en spelers strijden in hun box.
+      li09_html: Gedurende de ronde <b>speel elke wedstrijd</b> in je box.
+      li10_html: Na elke wedstrijd <b>voert een van de twee spelers de wedstrijdscore in</b>.
+      li11_html: <b>Bekijk hoe je scoort</b> in de ronderangschikking en de league table.
       li12_html: >
         <b>Promotie, degradatie</b> aan het einde van de ronde : in elk box
         <br>- de eerste speler gaat 2 boxen omhoog, de tweede 1 box;
