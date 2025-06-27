@@ -5,9 +5,9 @@ nl:
       welcome_title: "🏆 Het Sociaal Toernooi van jouw club"
       p01_html: >
         <ul>
-          <li> door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
-          <li> <b class='color-tennis-aqua'>Alleen leden van de club</b> mogen deelnemen.
-          <li> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen</b> van 4/5 spelers, afhankelijk van hun niveau.
+          <li> Door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
+          <li> Alleen <b class='color-tennis-aqua'>leden van de club</b> mogen deelnemen.
+          <li> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen afhankelijk van hun niveau</b> van 4/5 spelers.
           <li> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
         </ul>
       p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>toernooi rangschikking</b> (league table) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
@@ -17,17 +17,17 @@ nl:
       use_title: Leaguebox in één oogopslag
       li01: Mijn scores
       li05_html:
-      li02: Ronde boxen 📦
+      li02: 📦 Boxen
       li06_html: >
         <b>Bekijk alle vakjes</b> van de ronde in %{inset}.<br/>
         Klik op een vakje om de wedstrijddetails te bekijken.<br/>
-        Ga naar de andere rondes.
+        Bekijk de voorgaande rondes en toernooien.
       li03a: Resultaten lijst
       li03b: Resultatenraster
       li07_html: >
         <b>Plaats je laatste wedstrijdscore</b> in %{inset_a}, %{inset_b} of %{inset_c}.<br>
-      li04a: ronde rangschikking 🏆
-      li04b: league table 🏆🏆
+      li04a: 🏆 Ronde rangschikking
+      li04b: 🏆🏆 League table
       li08_html: >
         <b>Uw rangschikkingen zijn altijd actueel</b> in %{inset_a} en %{inset_b}.<br>
       ready_title: Klaar? Tot ziens op de tennisbaan!
@@ -49,10 +49,11 @@ nl:
         Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Gelukkig toernooi!
       add_club_btn: Een nieuwe club toevoegen
-      ok: naar de boxen
+      ok: Naar de boxen
       login_link: log in
     rules:
       overview_title: Beschrijving van het toernooi
+      club: het club
       p01_html: >
         Box Leagues zijn bedoeld om leden van %{clubname} in staat te stellen om regelmatig <i class='color-tennis-aqua'>competitief tennis te spelen tegen andere leden van hun club</i>.
         Bovendien zijn ze de ideale manier om andere leden van uw club te ontmoeten en uw recreatieve tennisnetwerk uit te breiden.
@@ -126,8 +127,8 @@ nl:
       li15: De verhouding tussen Gewonnen games en gespeelde games %
       promotion_relegation: Promotie/degradatie
       p26: Onder normale omstandigheden, in elke box
-      li16: "de twee beste spelers promoveren (eerste: met 2 boxen, tweede: met één box)."
-      li17: "de laatste twee spelers degraderen (laatste: 2 boxen, voorlaatste: één box)."
+      li16_html: "de twee beste spelers promoveren (<i>eerste: met 2 boxen, tweede: met één box</i>)."
+      li17_html: "de laatste twee spelers degraderen (<i>voorlaatste: één box, laatste: 2 boxen</i>)."
       new_entrants: Nieuwkomers
       p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
       disqualification: Diskwalificatie
@@ -240,7 +241,7 @@ nl:
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
     staff:
-      ok: naar de boxen
+      ok: Naar de boxen
 # to delete (now in preferences)
     my_details:
       preferences: Voorkeuren

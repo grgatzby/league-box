@@ -20,7 +20,7 @@ the csv file must contain fields
         <br>
 
         <div class="row"><br>
-          <div class="col-2"><%# label_tag t '.delimiter' %><%= label_tag('delimiter', t('.delimiter')) %></div>
+          <div class="col-2"><%= label_tag('delimiter', t('.delimiter')) %></div>
           <div class="col-1"><%= text_field_tag :delimiter, params[:delimiter] || ";", size: 2 %></div>
         </div><br>
         <div class="row"><br>

@@ -10,7 +10,7 @@ en:
     navbar_dropdown:
       tournament_rules_link: 📜 The Rules
       club_staff_link: 👤 Our Staff
-      all_boxes_link: 📦 The Boxes
+      all_boxes_link: 📦 Boxes
       round_ranking_link: 🏆 Round Ranking
       league_table_link: 🏆🏆 League Table
       my_scores_link: 🧮 My Scores
@@ -69,7 +69,7 @@ en:
         zero: "%{total_days} days, 0 days left (%{ratio}%)<br>"
         one: "%{total_days} days, 1 day left (%{ratio}%)<br>"
         other: "%{total_days} days, %{count} days left (%{ratio}%)<br>"
-      last_match: <i>Last match played on %{last_match_date}</i><br>
+      last_match: <i class='color-tennis-blue'>Last match played on %{last_match_date}</i><br>
       box: <b>Box %{box}</b><br>
       round_expired: <i class='color-tennis-red'>round expired</i><br>
       player_matches: <b>My matches</b><br>

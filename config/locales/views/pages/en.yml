@@ -5,36 +5,36 @@ en:
       welcome_title: "🏆 A Social Tournament in your own Club"
       p01_html: >
         <ul>
-          <li> through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League
-          <li> <b class='color-tennis-aqua'>only members of the club</b> may participate
-          <li> participants are dealt into <b class='color-tennis-aqua'>boxes</b> of 4/5 players, according to their level
-          <li> the tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more.
-          <li> <b class='color-tennis-aqua'>points earned</b> during a round will accumulate to give an overall Tournament winner.
+          <li> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
+          <li> Only <b class='color-tennis-aqua'>members of the club</b> may participate,
+          <li> Participants are dealt into <b class='color-tennis-aqua'>boxes of comparable level</b>, of 4/5 players,
+          <li> The tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
+          <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Tournament winner.
         </ul>
-      p02_html: 🥇🥈🥉 The <b>round ranking</b> and <b>tournament ranking</b> (league table) will be updated after each score entry and displayed on the league board at the end of each round.
+      p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and <b>League Table</b> (tournament ranking) shall be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
         The winner will receive the Singles Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
       li01: My scores
-      li02: Round's boxes 📦
+      li02: 📦 Boxes
       li06_html: >
         <b>View all the boxes</b> of the round in %{inset}.<br/>
         Click on a box to access the match details.<br/>
-        Access the other rounds.
+        Access the previous rounds and tournaments.
       li03a: List view
       li03b: Table view
       li07_html: >
         <b>Post your latest match score</b> in %{inset_a}, %{inset_b} or %{inset_c}.<br>
-      li04a: Round ranking 🏆
-      li04b: league table 🏆🏆
+      li04a: 🏆 Round Ranking
+      li04b: 🏆🏆 League Table
       li08_html: >
         <b>Your rankings are up to date</b> in %{inset_a} and %{inset_b}.<br>
-      ready_title: Ready? See you on the courts!
+      ready_title: Ready? Meet you on the courts!
       p04: During each one month round, compete against the other players in your box.
       li09_html: <b>Play every match</b> in your allocated box.
       li10_html: After each match, either you or your opponent enter the <b>match score</b> on LeagueBox.
-      li11_html: <b>See how you rank</b> in round ranking and league table.
+      li11_html: <b>See how you rank</b> in Round Ranking and League Table.
       li12_html: >
         <b>Promotion, relegation</b> at the end of the round : in each box
         <br>- the first player goes up 2 boxes, the second 1 box;
@@ -49,10 +49,11 @@ en:
         Fill the form in our %{inset} page to learn more.
       happy_tournament: Happy tournament!
       add_club_btn: Add a new club
-      ok: to the boxes
+      ok: To the boxes
       login_link: log in
     rules:
       overview_title: Tournament overview
+      club: the club
       p01_html: >
         Box Leagues are designed to enable members of %{clubname} to <i class='color-tennis-aqua'>play competitive tennis against other members of their club</i> on a regular basis.
         They are an ideal way to meet other members and build a broader network of players for social games.
@@ -61,7 +62,7 @@ en:
         every effort to complete their fixture programme. If, for whatever reason, players are unable to fulfil fixtures they
         should notify opponents and Referee promptly.
       p03_html: >
-        Players should <i class='color-tennis-aqua'>notify their opponents to block out the dates / times they are not available to play matches</i> as well as
+        Players should <i class='color-tennis-aqua'>notify their opponents to block out the dates or times they are not available to play matches</i> as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
         will make it easier to schedule your matches.
       btn_display_rules: Tournament rules
@@ -77,21 +78,21 @@ en:
       p07_html: "All players must be fully subscribed members of %{clubname}."
       p08: Day time members will be exceptionally able to play their matches after their permissible hours by paying the Guest Fee before commencing play.
       box_design: Box Design
-      p09: Boxes will be designed to accommodate 4 to 6 players
+      p09: Boxes will be designed to accommodate 4 to 6 players.
       organizing_matches: Organizing Matches
       p10: It is the responsibility of both players to make every effort to organize matches.
       tennis_rules: General Tennis Rules
       p11: Matches will be played according to the ITF Tennis Rules which can be viewed at www.itftennis.com
       matches_not_umpired: Matches not Umpired
       p12: "The following principles will apply when playing a match without a Chair Umpire:"
-      li01: Each player is responsible for all line calls on their own side of the net
-      li02: All “out” and “fault” calls should be made promptly after the ball has bounced and loudly enough for the opponent to hear
-      li03: If in doubt, the player must give the benefit of the doubt to the opponent
+      li01: Each player is responsible for all line calls on their own side of the net.
+      li02: All “out” and “fault” calls should be made promptly after the ball has bounced and loudly enough for the opponent to hear.
+      li03: If in doubt, the player must give the benefit of the doubt to the opponent.
       li04: >
         If a player incorrectly calls a ball “out” and then realizes that the ball was good, the point should be replayed
         unless it was a point winning shot or unless that player made an incorrect “out” call earlier in the match.
-        In these circumstances the player who called “out” loses the point
-      li05: The server should call the score before each first serve, loudly enough for the opponent to hear
+        In these circumstances the player who called “out” loses the point.
+      li05: The server should call the score before each first serve, loudly enough for the opponent to hear.
       warm_up: Warm-up
       p13: To ensure that matches are completed within 1 hour warm-ups should be restricted to 5 minutes.
       match_format: Match Format
@@ -127,8 +128,8 @@ en:
       li15: Ratio of Games Won to Games Played %
       promotion_relegation: Promotion / Relegation
       p26: In normal circumstances
-      li16: "the top two players will be promoted  (first player: 2 boxes, second: 1 box)."
-      li17: "the last two players will be relegated (last player: 2 boxes, second last: 1 box)."
+      li16_html: "the top two players will be promoted  (<i>first player: 2 boxes, second: 1 box</i>)."
+      li17_html: "the last two players will be relegated (<i>second last player: 1 box, last player: 2 boxes</i>)."
       new_entrants: New Entrants
       p27: Every effort will be made to accommodate new league players into a box that is appropriate to the player’s ability.
       disqualification: Disqualification
@@ -140,7 +141,7 @@ en:
       li18: 5 minutes late on court the opponent has the right to claim 1 game.
       li19: 10 minutes late on court the opponent has the right to claim 2 games.
       li20: 15 minutes late on court the opponent has the right to claim a set.
-      retire_from_match: Retire from Match
+      retire_from_match: Retire from a match
       p30: If a player retires from a match, for example because of injury, all completed games will stand. Any unplayed games will be conceded.
       p31: "For example:"
       p32: "Player A is leading 2/1 and 30:15 in set 1 when player A has to retire."
@@ -242,7 +243,7 @@ en:
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
     staff:
-      ok: to the boxes
+      ok: To the boxes
 # to delete (now in preferences)
     my_details:
       preferences: Preferences

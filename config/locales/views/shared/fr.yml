@@ -73,7 +73,7 @@ fr:
         zero: "%{total_days} jours, 0 jour restant (%{ratio}%)<br>"
         one: "%{total_days} jours, 1 jour restant (%{ratio}%)<br>"
         other: "%{total_days} jours, %{count} jours restants (%{ratio}%)<br>"
-      last_match: <i>Dernier match joué le %{last_match_date}</i><br>
+      last_match: <i class='color-tennis-blue'>Dernier match joué le %{last_match_date}</i><br>
       box: <b>Box %{box}</b><br>
       round_expired: <i class='color-tennis-red'>round expiré</i><br>
       player_matches: <b>Mes matchs</b><br>
