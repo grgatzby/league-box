@@ -9,7 +9,7 @@
     input_date = @tz.to_local(user_score.input_date)
     message = "#{t(".pop01",
                   user: "#{render "shared/fullname", user: score_input_by} (#{score_input_by.role})",
-                  date: l(input_date, format: :wwwddmmmyy_at_hhmm))}"
+                  date: l(input_date, format: :wwwwddmmmyyyy_at_hhmm))}"
     if current_user.role != "player"
       message += "#{t(".pop02")}"
     end %>

@@ -21,13 +21,13 @@
     </div>
     <% match_time = @tz.to_local(@match.time) %>
     <%# t(".match_played", date: match_time.strftime("%a %-d %h %y"), time: match_time.strftime("%H:%M"), court: @match.court.name) %>
-    <%# t(".match_played", date: l(match_time, format: :wwwddmmmyy_at_hhmm), court: @match.court.name) %>
+    <%# t(".match_played", date: l(match_time, format: :wwwwddmmmyyyy_at_hhmm), court: @match.court.name) %>
     <%= t(".match_played", date: l(match_time, format: :wwwddmmmyy_date), court: @match.court.name) %>
     <br>
     <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: @player.id)
      log_time = @tz.to_local(ums.input_date)
      score_input_by = User.find(ums.input_user_id) %>
-    <%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_at_hhmm),
+    <%= t(".submitted", date: l(log_time, format: :wwwwddmmmyyyy_at_hhmm),
                             user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
     <br><br>
     <% name = "#{render "shared/fullname", user: @referee}" %>

@@ -7,7 +7,7 @@
 <div class="<%= class_names("container": !@is_mobile) %>">
     <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
     <br><h4><div class="title"><b><%= t(".overview_title").upcase %></b></div></h4><br>
-    <p><%= t('.p01_html', clubname: current_user == @admin ? "club" : @club.name) %></p>
+    <p><%= t('.p01_html', clubname: current_user == @admin ? t(".club") : @club.name) %></p>
     <p><%= t '.p02_html' %></p>
     <p><%= t '.p03_html' %></p>
   </div>
@@ -34,7 +34,7 @@
         <p><%= t '.p05' %></p>
       <h5 class="color-tennis-blue"><%= t '.qualifying_players' %></h5>
         <p><%= t '.p06' %></p>
-        <p><%= t('.p07_html', clubname: @club.name) %></p>
+        <p><%= t('.p07_html', clubname: current_user == @admin ? t(".club") : @club.name) %></p>
         <p><%= t '.p08' %></p>
 
       <h5 class="color-tennis-blue"><%= t '.box_design' %></h5>
@@ -44,12 +44,12 @@
       <h5 class="color-tennis-blue"><%= t '.tennis_rules' %></h5>
         <p><%= t '.p11' %></p>
       <h5 class="color-tennis-blue"><%= t '.matches_not_umpired' %></h5>
-        <p><%= t '.p12' %></p>
-      <ul>
-        <% (1..5).each do |i| %>
-          <li><%= t ".li0#{i}" %></li>
-        <% end %>
-      </ul>
+        <%= t '.p12' %>
+        <ul>
+          <% (1..5).each do |i| %>
+            <li><%= t ".li0#{i}" %></li>
+          <% end %>
+        </ul>
       <h5 class="color-tennis-blue"><%= t '.warm_up' %></h5>
         <p><%= t '.p13' %></p>
       <h5 class="color-tennis-blue"><%= t '.match_format' %></h5>
@@ -57,13 +57,13 @@
           <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
         <% end %>
       <h5 class="color-tennis-blue"><%= t '.points' %></h5>
-        <p><%= t '.p20' %></p>
-      <ul>
-        <% (6..8).each do |i| %>
-          <li><%= t ".li#{format '%02d',i}" %></li>
-        <% end %>
-      </ul>
-      <p><%= t '.p21' %></p>
+        <%= t '.p20' %>
+        <ul>
+          <% (6..8).each do |i| %>
+            <li><%= t ".li#{format '%02d',i}" %></li>
+          <% end %>
+        </ul>
+      <p></p><%= t '.p21' %>
       <i><ul>
         <% (9..12).each do |i| %>
           <li><%= t ".li#{format '%02d',i}" %></li>
@@ -74,24 +74,24 @@
         <p><%= t '.p23' %></p>
         <p><%= t '.p24' %></p>
       <h5 class="color-tennis-blue"><%= t '.box_league_ranking' %></h5>
-        <p><%= t '.p25' %></p>
+        <%= t '.p25' %>
         <ol>
           <% (13..15).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
           <% end %>
         </ol>
       <h5 class="color-tennis-blue"><%= t '.promotion_relegation' %></h5>
-        <p><%= t '.p26' %></p>
+        <%= t '.p26' %>
         <ul>
-          <li><%= t '.li16' %></li>
-          <li><%= t '.li17' %></li>
+          <li><%= t '.li16_html' %></li>
+          <li><%= t '.li17_html' %></li>
         </ul>
       <h5 class="color-tennis-blue"><%= t '.new_entrants' %></h5>
         <p><%= t '.p27' %></p>
       <h5 class="color-tennis-blue"><%= t '.disqualification' %></h5>
         <p><%= t '.p28' %></p>
       <h5 class="color-tennis-blue"><%= t '.no_show' %></h5>
-        <p><%= t '.p29' %></p>
+        <%= t '.p29' %>
         <ul>
           <% (18..20).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>
@@ -99,16 +99,16 @@
         </ul>
       <h5 class="color-tennis-blue"><%= t '.retire_from_match' %></h5>
         <p><%= t '.p30' %></p>
-        <p><%= t '.p31' %></p>
-        <i>
-          <p><%= t '.p32' %></p>
-          <p><%= t '.p33' %></p>
-        </i>
+        <p></p><%= t '.p31' %>
+        <i><ul>
+          <li><%= t '.p32' %></li>
+          <li><%= t '.p33' %></li>
+        </ul></i>
       <h5 class="color-tennis-blue"><%= t '.withdrawing' %></h5>
         <p><%= t '.p34' %></p>
         <p><%= t '.p35' %></p>
       <h5 class="color-tennis-blue"><%= t '.walk_overs' %></h5>
-        <p><%= t '.p36' %></p>
+        <%= t '.p36' %>
         <ul>
           <% (21..23).each do |i| %>
             <li><%= t ".li#{format '%02d',i}" %></li>

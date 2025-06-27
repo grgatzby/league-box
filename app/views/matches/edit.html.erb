@@ -50,7 +50,7 @@
       <br>
       <% score_input_by = User.find(@match.user_match_scores[0].input_user_id) %>
       <% log_time = @tz.to_local(@match.user_match_scores[0].input_date) %>
-      <%= t(".submitted", date: l(log_time, format: :wwwddmmmyy_at_hhmm),
+      <%= t(".submitted", date: l(log_time, format: :wwwwddmmmyyyy_at_hhmm),
                           user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
       <br><br>
       <%= hidden_field_tag(:player_id, @current_player.id) %>

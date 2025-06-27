@@ -5,11 +5,11 @@ fr:
       welcome_title: "🏆 Du tennis compétitif au sein de votre club"
       p01_html: >
         <ul>
-          <li>un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League
-          <li><b class='color-tennis-aqua'>seuls les membres du club</b> peuvent participer,
-          <li>les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> (de 4 à 5 joueurs)
-          <li>le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> d'un mois ou plus,
-          <li>vos <b class='color-tennis-aqua'>points gagnés</b> à chaque round s'ajoutent à votre total cumulé qui départagera le vainqueur du Tournoi.
+          <li> Un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League,
+          <li> Seuls <b class='color-tennis-aqua'>les membres du club</b> peuvent participer,
+          <li> Les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> de 4 à 5 joueurs,
+          <li> Le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> d'un mois ou plus,
+          <li> À chaque round les <b class='color-tennis-aqua'>points gagnés s'ajoutent</b> au total cumulé qui départagera le vainqueur du Tournoi.
         </ul>
       p02_html: 🥇🥈🥉 Le <b>classement du round</b> et <b>du tournoi</b> (la league table) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
@@ -17,23 +17,23 @@ fr:
         du champagne pour célébrer sa victoire à la fin du tournoi.
       use_title: Le site LeagueBox en pratique
       li01: Mes scores
-      li02: Les box du round 📦
+      li02: 📦 Les box
       li06_html: >
-        <b>Toutes box du round</b> en un coup d'œil dans %{inset}.<br/>
-        Cliquez sur une box et consultez le détail des matchs.<br/>
-        Accédez aux autres rounds.
+        <b>Consultez les box du round</b> en un coup d'œil dans %{inset}.<br/>
+        Cliquez sur une box pour détailler les matchs.<br/>
+        Accédez aux rounds et aux tournois précédents.
       li03a: Vue en liste
       li03b: Vue en grille
       li07_html: >
         Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, %{inset_c}.
-      li04a: classement round 🏆
-      li04b: league table 🏆🏆
+      li04a: 🏆 Classement round
+      li04b: 🏆🏆 League table
       li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et dans %{inset_b}.
       ready_title: Vous êtes prêt? Rendez-vous sur les courts!
       p04: Chaque round dure environ un mois, et vous affronterez les joueurs de votre box.
-      li09_html: Pendant un round, <b> jouez tous les matchs</b> de votre box.
-      li10_html: Après chaque match, vous ou votre adversaire <b>entrez le score</b> du match.
-      li11_html: <b>Consultez votre nouveau classement</b> sur classement du round et la league table.
+      li09_html: Pendant un round, <b> jouez tous vos matchs</b> dans votre box.
+      li10_html: Après chaque match, <b>entrez le score</b> du match (vous-même ou votre adversaire).
+      li11_html: <b>Consultez votre nouveau classement</b> sur Classement round et League table.
       li12_html: >
         <b>Promotion, déclassement</b> à la fin du round : dans chaque box
         <br>- le meilleur joueur monte de 2 box, le second d'une box,
@@ -48,20 +48,21 @@ fr:
         Écrivez-nous via le formulaire %{inset} pour en savoir plus.
       happy_tournament: Que le meilleur gagne!
       add_club_btn: Ajouter un nouveau club
-      ok: vers les box
+      ok: Vers les box
       login_link: se connecter
     rules:
       overview_title: Description du Tournoi
+      club: club
       p01_html: >
-        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de <i class='color-tennis-aqua'>jouer un tennis compétitif avec d'autres joueurs du club</i> d'un niveau comparable, régulièrement.
-        <br>C'est le moyen idéal pour rencontrer les autres membres de votre club et élargir votre réseau de tennis d'agrément.
+        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de <i class='color-tennis-aqua'>jouer un tennis compétitif avec d'autres joueurs de leur club</i> d'un niveau comparable, régulièrement.
+        <br>C'est le moyen idéal pour rencontrer les autres membres du club et d'élargir votre réseau de tennis d'agrément.
       p02_html: >
-        La clé du succès est que les joueurs <i class='color-tennis-aqua'>s'engagent à jouer leurs matchs</i>. Les membres qui s'inscrivent
+        La clé du succès est que les joueurs <i class='color-tennis-aqua'>s'engagent à jouer leurs matchs de box</i>. Les membres qui s'inscrivent
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs,
         prévenez rapidement vos adversaires et votre Referee.
       p03_html: >
         Les joueurs devront <i class='color-tennis-aqua'>notifier à leurs adversaires leurs périodes d'indisponibilité</i>, ainsi que leurs disponibilités.
-        Cette discipline facilitera la bonne organisation de vos matchs.
+        Cette discipline facilitera la bonne organisation des matchs.
       btn_display_rules: Règles du Tournoi
       btn_hide_rules: Cacher les règles
       ok: Vers les box
@@ -82,14 +83,14 @@ fr:
       p11: Les matchs seront joués selon les règles de l'ITF Tennis qui peuvent être consultées sur www.itftennis.com
       matches_not_umpired: Matchs non arbitrés
       p12: "Les principes suivants s'appliqueront pour les matchs joués sans arbitre:"
-      li01: Chaque joueur est responsable d'arbitrer les lignes de son côté du filet
-      li02: Les arbitrages “out” et “faute” doivent être faits juste après le rebond et suffisamment fort pour être entendus par l'adversaire
-      li03: En cas de doute, le joueur donnera le bénéfice du doute à son adversaire
+      li01: Chaque joueur est responsable d'arbitrer les lignes de son côté du filet.
+      li02: Les arbitrages “out” et “faute” doivent être faits juste après le rebond et suffisamment fort pour être entendus par l'adversaire.
+      li03: En cas de doute, le joueur donnera le bénéfice du doute à son adversaire.
       li04: >
         Si un joueur déclare par erreur une balle "out" puis se rend compte qu'elle était bonne, le point devrait être rejoué
         sauf s'il s'agissait d'un coup gagnant ou si ce joueur avait déjà déclaré une balle "out" par erreur plus tôt dans le match.
-        Dans un tel cas le joueur qui aura déclaré la balle "out" perdra le point
-      li05: Le serveur devra annoncer le score avant chaque premier service, assez fort pour être entendu par l'adversaire
+        Dans un tel cas le joueur qui aura déclaré la balle "out" perdra le point.
+      li05: Le serveur devra annoncer le score avant chaque premier service, assez fort pour être entendu par l'adversaire.
       warm_up: Échauffement
       p13: Pour garantir que les matchs soient terminés dans l'heure impartie, l'échauffement sera limité à 5 minutes.
       match_format: Format du match
@@ -121,12 +122,12 @@ fr:
         Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
         de points, le classement sera déterminé selon:
       li13: Le plus de matchs joués
-      li14: Le ratio de Sets Gagnés sur Sets Joués %
-      li15: Le ratio de Jeux Gagnés sur Jeux Joués %
+      li14: Le ratio de sets gagnés sur sets joués en %
+      li15: Le ratio de jeux gagnés sur jeux joués en %
       promotion_relegation: Promotion / Relégation
       p26: Dans les circonstances habituelles, au prochain round dans chaque box
-      li16: "les deux meilleurs joueurs seront promus (premier joueur: 2 box, second: 1 box)."
-      li17: "les deux derniers joueurs seront relégués (dernier joueur: 2 box, avant-dernier: 1 box)."
+      li16_html: "les deux meilleurs joueurs seront promus (<i>premier joueur: 2 box, second: 1 box</i>)."
+      li17_html: "les deux derniers joueurs seront relégués (<i>avant-dernier joueur: 1 box, dernier: 2 box</i>)."
       new_entrants: Nouveaux entrants
       p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
       disqualification: Disqualification
@@ -135,14 +136,14 @@ fr:
         à la seule discrétion du Referee du Tournoi.
       no_show: No show
       p29: Si un joueur a plus de
-      li18: 5 minutes de retard sur le court son adversaire peut exiger 1 jeu.
-      li19: 10 minutes de retard sur le court son adversaire peut exiger 2 jeux.
-      li20: 15 minutes de retard sur le court son adversaire peut exiger a set.
-      retire_from_match: Forfait d'un Match
+      li18: 5 minutes de retard sur le court son adversaire peut exiger un jeu.
+      li19: 10 minutes de retard sur le court son adversaire peut exiger deux jeux.
+      li20: 15 minutes de retard sur le court son adversaire peut exiger un set.
+      retire_from_match: Forfait d'un match
       p30: Si un joueur déclare forfait, pour blessure par exemple, tous les jeux joués compteront. Les jeux non joués seront déclarés perdus.
       p31: "Par exemple:"
-      p32: "Le Joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
-      p33: Le score du match à saisir sera 2/4 0/4 à l'avantage du Joueur B.
+      p32: "Le joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
+      p33: Le score du match à saisir sera 2/4 0/4 à l'avantage du joueur B.
       withdrawing: Retrait avant le début d'un round
       p34: Les joueurs informeront le Referee s'ils souhaitent se retirer de la box league.
       p35: >
@@ -239,7 +240,7 @@ fr:
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
     staff:
-      ok: vers les box
+      ok: Vers les box
 # to delete (now in preferences)
     my_details:
       preferences: Préférences
