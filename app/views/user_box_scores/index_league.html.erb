@@ -10,7 +10,7 @@
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= message %>">
-      <h3><%= t '.league_table_title' %><%= " #{l(@league_start, format: :yyymm_date)}" %></h3>
+      <h3><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
     </div>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">

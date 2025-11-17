@@ -2,7 +2,7 @@ fr:
   user_box_scores:
     index:
       intro: Le <b>classement du round</b> est mis à jour dès qu'un nouveau score est saisi.<br>
-      round_league_table_title: Classement du round
+      round_league_table_title: Classement du round %{round_nb}
       file_csv_flash: fichier data.csv créé
       valid_round_flash: "Classement du round: choisir un round valide"
     index_league:
@@ -10,7 +10,7 @@ fr:
         La <b>league table</b> (classement du tournoi) est mise à jour dès qu'un nouveau score est saisi.<br>
         Elle agrège l'ensemble des rounds du même tournoi.
       rounds: Rounds
-      league_table_title: League table du tournoi
+      league_table_title: League table du tournoi %{league_start}
       valid_league_flash: "League table: choisir un début de tournoi valide"
     select_league:
       select_league: "tournoi:"
@@ -18,10 +18,10 @@ fr:
       league_dropdown: league table
     top_line:
       top_line_html: >
-        <span class="text">
-          <i class='color-green'>Cliquer un entête</i> pour ordonner la table,
-          <i class='color-green'>cliquer la ligne d'un joueur</i> pour accéder à sa box.
-        </span>
+        <span class="text"><i>
+          <b class='color-green'>Cliquer sur un entête</b> pour ordonner la table,
+          <b class='color-green'>cliquer sur la ligne d'un joueur</b> pour accéder à sa box.
+        </i></span>
         <span class="text_hovered">
           <span class="color-green"><b>Cliquer cette ligne</b></span> pour faire apparaître l'image et le bouton des <b>stats du round</b>.
         </span>

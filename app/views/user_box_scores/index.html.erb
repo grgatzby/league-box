@@ -3,7 +3,7 @@
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner text-size">
-    <h3><%= t '.round_league_table_title' %><%= " #{@round_nb}" if @round_nb %></h3>
+    <h3><%= t('.round_league_table_title', round_nb:  @round_nb ) %></h3>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>

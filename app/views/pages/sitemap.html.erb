@@ -21,7 +21,7 @@
     <p><%= t '.p05' %></p>
 
     <br><h5><%= t '.all_boxes' %></h5>
-    <p><%= t '.p07' %></p>
+    <%= t '.p07' %>
     <ul>
       <li><%= t '.li01' %></li>
       <li><%= t '.li02' %></li>
@@ -64,12 +64,12 @@
     <% end %>
 
     <br><h5><%= t '.match_results' %></h5>
-    <p><%= t '.p24' %>
+    <%= t '.p24' %>
     <ul>
       <li><%= t '.li05' %></li>
       <li><%= t '.li06' %></li>
       <li><%= t '.li07' %></li>
-    </ul></p>
+    </ul>
 
     <br><h5><%= t '.new_match_score' %></h5>
     <p><%= t '.p25' %></p>
@@ -81,9 +81,9 @@
 
     <br><h5><%= t '.chatrooms' %></h5>
     <% if current_user && current_user.role != "player" %>
-      <p><%= t '.p27_html' %></p>
+      <%= t '.p27_html' %>
     <% else %>
-      <p><%= t '.p28_html' %></p>
+      <%= t '.p28_html' %>
     <% end %>
     <ul>
       <li><%= t '.li08_html' %></li>

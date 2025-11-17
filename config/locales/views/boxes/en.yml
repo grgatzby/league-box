@@ -5,6 +5,7 @@ en:
     list_view: list view
     table_view: table view
     intro_lines:
+      one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
       my_scores_btn: my scores
       pop01_a: select a match to edit or delete the score
       pop01_b: ", or enter a new score"
@@ -13,7 +14,7 @@ en:
       my_box: my box
       all_boxes_link: 📦 all boxes
     index_expanded:
-      all_box_title: All boxes in the round (full view)
+      all_box_title_html: All boxes <i style="font-weight:normal">(expanded view)</i>
       all_boxes_btn: 🔁 compact view
       round_ranking_btn: 🏆 ranking tables
       message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>
@@ -25,15 +26,15 @@ en:
       to_csv_btn: 📄 CSV
       clear_format: Clear background color gradient
     index:
-      all_box_title: All boxes in the round (compact view)
-      all_box_explain_html: <i class='color-green'>Click on a box to view the details of the matches</i>
+      all_box_title_html: All boxes <i style="font-weight:normal">(compact view)</i>
+      all_box_explain_html: <i><b class='color-green'>Click on a box</b> to view the details of the matches</i>
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: "Name, rank, games played, points earned.<br /><br />Box %{box} : <i class='color-green'>Click for match details</i>"
       message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (my current box)
       create_round_btn: create the next round
       my_box: (my box)
-      open_view_btn: 🔁 full view
+      open_view_btn: 🔁 expanded view
       round_ranking_btn: 🏆 ranking tables
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
@@ -57,7 +58,7 @@ en:
       see_match_card_btn: Match card
       enter_score_btn: Enter score
       match_not_played: Match not played
-      chat_in_my_box: Organise my matches, contact your Referee
+      chat_in_my_box: Organise my matches, contact the Club Referee
       access_chatroom_btn: to the box chatroom
     show_list:
       intro_html: >

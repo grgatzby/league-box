@@ -11,16 +11,16 @@ fr:
           <li> Le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> d'un mois ou plus,
           <li> À chaque round les <b class='color-tennis-aqua'>points gagnés s'ajoutent</b> au total cumulé qui départagera le vainqueur du Tournoi.
         </ul>
-      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et <b>du tournoi</b> (la league table) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
+      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et le <b>classement du tournoi</b> (la "League table") sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
-        Le vainqueur recevra le trophée du Tournoi 🏆, son nom sur le tableau d'honneur et pourquoi pas
+        Le vainqueur recevra le 🏆 trophée du Tournoi, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
       use_title: Le site LeagueBox en pratique
       li01: Mes scores
       li02: 📦 Les box
       li06_html: >
         <b>Consultez les box du round</b> en un coup d'œil dans %{inset}.<br/>
-        Cliquez sur une box pour détailler les matchs.<br/>
+        Cliquez sur une des box pour en détailler les matchs.<br/>
         Accédez aux rounds et aux tournois précédents.
       li03a: Vue en liste
       li03b: Vue en grille
@@ -28,17 +28,17 @@ fr:
         Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, %{inset_c}.
       li04a: 🏆 Classement round
       li04b: 🏆🏆 League table
-      li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et dans %{inset_b}.
+      li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et %{inset_b}.
       ready_title: Vous êtes prêt? Rendez-vous sur les courts!
       p04: Chaque round dure environ un mois, et vous affronterez les joueurs de votre box.
-      li09_html: Pendant un round, <b> jouez tous vos matchs</b> dans votre box.
-      li10_html: Après chaque match, <b>entrez le score</b> du match (vous-même ou votre adversaire).
+      li09_html: Pendant la durée d'un round, <b> jouez tous vos matchs</b> dans votre box.
+      li10_html: Après chaque match, <b>entrez le score du match</b> sur LeagueBox.
       li11_html: <b>Consultez votre nouveau classement</b> sur Classement round et League table.
       li12_html: >
         <b>Promotion, déclassement</b> à la fin du round : dans chaque box
         <br>- le meilleur joueur monte de 2 box, le second d'une box,
         <br>- le dernier joueur baisse de 2 box, l'avant-dernier d'une box.
-      li13: Tournoi & règles
+      li13: 📜 Règles
       p05_html: Consultez notre page %{inset} pour en savoir plus
       club_join_title: "Manager de Club: adoptez LeagueBox pour votre club!"
       li14: Nous contacter
@@ -46,9 +46,9 @@ fr:
         Offrez à vos adhérents l'opportunité de jouer un tennis compétitif au sein du club en vous affiliant à LeagueBox.<br>
         LeagueBox s'occupe de tout pour vous!<br>
         Écrivez-nous via le formulaire %{inset} pour en savoir plus.
-      happy_tournament: Que le meilleur gagne!
+      happy_tournament: Bon tournoi sur LeagueBox!
       add_club_btn: Ajouter un nouveau club
-      ok: Vers les box
+      ok: 📦 Les box
       login_link: se connecter
     rules:
       overview_title: Description du Tournoi
@@ -65,8 +65,8 @@ fr:
         Cette discipline facilitera la bonne organisation des matchs.
       btn_display_rules: Règles du Tournoi
       btn_hide_rules: Cacher les règles
-      ok: Vers les box
-      rules: Règles du Tournoi Leaguebox
+      ok: 📦 Les box
+      rules: Règles du Tournoi LeagueBox
       rounds: Rounds
       p04: Il y aura un round par mois, sauf contre indication de votre club.
       availability: Disponibilité
@@ -186,7 +186,7 @@ fr:
       p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Demander la création du prochain round</i>.
       league_table: Classement d'un round et league table du Tournoi
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
-      p13_html: Modifiez l'ordre des joueurs en cliquant sur l'entête correspondant.<br>
+      p13_html: Modifiez l'ordre de la liste en cliquant sur l'entête correspondant.<br>
       referee_list_view: Vue en Liste (admin/Referee)
       p14_html: >
         Les matchs joués par chaque joueur sont affichés sous forme de liste dont les entêtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
@@ -240,7 +240,7 @@ fr:
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
     staff:
-      ok: Vers les box
+      ok: 📦 Les box
 # to delete (now in preferences)
     my_details:
       preferences: Préférences

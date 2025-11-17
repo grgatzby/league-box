@@ -5,6 +5,7 @@ nl:
     list_view: resultaten lijst
     table_view: resultatenraster
     intro_lines:
+      one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
       my_scores_btn: mijn scores
       pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
       pop01_b: ", of voer een nieuwe score in"
@@ -13,7 +14,7 @@ nl:
       my_box: mijn box
       all_boxes_link: 📦 de boxen
     index_expanded:
-      all_box_title: De boxen van de ronde (uitgebreide weergave)
+      all_box_title_html: De boxen van de ronde <i style="font-weight:normal">(uitgebreide weergave)</i>
       all_boxes_btn: 🔁 compacte weergave
       round_ranking_btn: 🏆 rangschikkingen
       message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleurverloop te wissen</i>
@@ -25,8 +26,8 @@ nl:
       to_csv_btn: 📄 CSV
       clear_format: Zijn achtergrondkleurverloop
     index:
-      all_box_title: De boxen van de ronde (compacte weergave)
-      all_box_explain_html: <i class='color-green'>Klik op een box voor wedstrijddetails.</i>
+      all_box_title_html: De boxen van de ronde <i style="font-weight:normal">(compacte weergave)</i>
+      all_box_explain_html: <i><b class='color-green'>Klik op een box</b> voor wedstrijddetails.</i>
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: "Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br />Box %{box} : <i class='color-green'>Klik op voor wedstrijddetails.</i>"
       message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand met kolommen:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
@@ -57,7 +58,7 @@ nl:
       see_match_card_btn: Wedstrijdkaart
       enter_score_btn: Voer uw score in
       match_not_played: Match niet gespeeld
-      chat_in_my_box: Organiseer mijn wedstrijden, neem contact op met uw scheidsrechter
+      chat_in_my_box: Organiseer mijn wedstrijden, neem contact op met de scheidsrechter
       access_chatroom_btn: chatroom van uw box
     show_list:
       intro_html: >
