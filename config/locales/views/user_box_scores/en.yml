@@ -2,7 +2,7 @@ en:
   user_box_scores:
     index:
       intro: The <b>round ranking</b> is updated upon each new score entry.<br>
-      round_league_table_title: Round ranking
+      round_league_table_title: Round %{round_nb}'s ranking
       file_csv_flash: file data.csv created
       valid_round_flash: "Round ranking: choose a valid round"
     index_league:
@@ -10,7 +10,7 @@ en:
         The <b>League table</b> (tournament ranking) is updated upon each new score entry.<br>
         It compiles all the round rankings pertaining to the same tournament.
       rounds: Rounds
-      league_table_title: League table for tournament
+      league_table_title: "%{league_start} Tournament's League table"
       valid_league_flash: "League table: choose a valid tournament start date"
     select_league:
       select_league: "tournament:"
@@ -18,10 +18,10 @@ en:
       league_dropdown: league table
     top_line:
       top_line_html: >
-        <span class="text">
-          <i class='color-green'>Click a header</i> to change sorting order,
-          <i class='color-green'>click a player's line</i> to access their box.
-        </span>
+        <span class="text"><i>
+          <b class='color-green'>Click on a header</b> to change sorting order,
+          <b class='color-green'>click on a player's line</b> to access their box.
+        </i></span>
         <span class="text_hovered">
           <span class="color-green"><b>Click this line</b></span> to display the image and the <b>round stats</b> button.
         </span>

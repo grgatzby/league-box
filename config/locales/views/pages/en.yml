@@ -11,9 +11,9 @@ en:
           <li> The tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
           <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Tournament winner.
         </ul>
-      p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and <b>League Table</b> (tournament ranking) shall be updated after each score entry and displayed on the league board at the end of each round.
+      p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and the <b>tournament ranking</b> (the "League Table") shall be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
-        The winner will receive the Singles Tournament trophy 🏆, listing on the club honors board and possibly some
+        The winner will receive 🏆 the Singles Tournament trophy, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
       li01: My scores
@@ -33,13 +33,13 @@ en:
       ready_title: Ready? Meet you on the courts!
       p04: During each one month round, compete against the other players in your box.
       li09_html: <b>Play every match</b> in your allocated box.
-      li10_html: After each match, either you or your opponent enter the <b>match score</b> on LeagueBox.
+      li10_html: After each match, <b>enter the match score</b> on LeagueBox.
       li11_html: <b>See how you rank</b> in Round Ranking and League Table.
       li12_html: >
         <b>Promotion, relegation</b> at the end of the round : in each box
-        <br>- the first player goes up 2 boxes, the second 1 box;
+        <br>- the best player goes up 2 boxes, the second best 1 box;
         <br>- the last player goes down 2 boxes, the second last 1 box.
-      li13: Overview & rules
+      li13: 📜 The Rules
       p05_html: Visit our %{inset} page for more details
       club_join_title: "Tennis Club manager: subscribe to LeagueBox for your club!"
       li14: Contact us
@@ -47,9 +47,9 @@ en:
         Offer your members the opportunity to play competitive tennis together within the club by joining LeagueBox.<br>
         LeagueBox takes care of everything for you!<br>
         Fill the form in our %{inset} page to learn more.
-      happy_tournament: Happy tournament!
+      happy_tournament: Happy LeagueBox tournament!
       add_club_btn: Add a new club
-      ok: To the boxes
+      ok: 📦 Boxes
       login_link: log in
     rules:
       overview_title: Tournament overview
@@ -67,8 +67,8 @@ en:
         will make it easier to schedule your matches.
       btn_display_rules: Tournament rules
       btn_hide_rules: Hide the rules
-      ok: To the boxes
-      rules: Leaguebox Tournament rules
+      ok: 📦 Boxes
+      rules: LeagueBox Tournament rules
       rounds: Rounds
       p04: There will be one round per month, unless local rules state otherwise.
       availability: Availability
@@ -182,13 +182,13 @@ en:
       li03: number of matches played
       li04: number of total points
       p08_html: The <span class='color-tennis-red'>current player</span> and its <span class='color-tennis-red'>box title</span> appear in red.
-      p09_html: Clicking on a box leads to its Table view.<br>A click on <i>Full view</i> displays all the boxes in Grid view.<br>
+      p09_html: Clicking on a box leads to its Table view.<br>A click on <i>Expanded view</i> displays all the boxes in Grid view.<br>
       p10a_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Create the next round</i> (admin),
       p10b_html: or to <i class='color-tennis-aqua'>Request the next round</i> (referee).
       p11_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Request the next round</i>.
       league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p13_html: Change the players order by simply clicking on the corresponding header.<br>
+      p13_html: Change the list order by simply clicking on the corresponding header.<br>
       referee_list_view: Box List view (admin/Referee)
       p14_html: >
         Each player's matches which have been played are shown as list items.
@@ -196,7 +196,7 @@ en:
         Unplayed matchs are listed as well.<br><br>
         Click on a match line to <i>Edit/Delete</i> the Match score.<br> The admin can click on an unplayed match line to enter the <b>New match score</b>.
       table_view: Box Table view
-      p16: Each player's matches are shown under their corresponding opponent.
+      p16: Each player's matches are shown under the header of their corresponding opponent.
       p17_html: >
         If you are viewing your box, your name appears in red, and a <span class='color-tennis-red'>My scores</span>
         button is displayed next to the toggle link to <span class='color-tennis-blue'>List view</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ).<br>
@@ -243,7 +243,7 @@ en:
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
     staff:
-      ok: To the boxes
+      ok: 📦 Boxes
 # to delete (now in preferences)
     my_details:
       preferences: Preferences
@@ -251,5 +251,5 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Modify password
-      expanded_view: Full view
+      expanded_view: Expanded view
       clear_format: Clear background color gradient

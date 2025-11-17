@@ -12,7 +12,8 @@
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
-    <h3><%= "#{view_type.capitalize} - Box #{box.box_number}" %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
+    <h3><%= t('.one_box_title_html', box: box.box_number, view: view_type) %></h3>
+    <span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
   </div>
 
   <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>

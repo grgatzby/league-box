@@ -18,14 +18,13 @@ class UserBoxScoresController < ApplicationController
     if params[:order] && (params[:exsort] == params[:sort])
       @order = params[:order].to_i
     else
-      @order = -1
+      @order = - 1
     end
     if @round
       # by default: sort player by rank
       @user_box_scores = rank_players(@round.user_box_scores)
       @user_box_scores.reverse! if @order == 1
-
-      @sort = params[:sort]
+      @sort = params[:sort] || 3 # "Ranking: default sorting order"
       init_stats
       case params[:sort].to_i
       when 1 # "Player first name"
@@ -87,7 +86,7 @@ class UserBoxScoresController < ApplicationController
         @user_box_scores = rank_players(@user_box_scores, "index_league")
         @user_box_scores.sort_by! { |user_bs| -@order * user_bs[1][:rank] }
         @user_box_scores.each_with_index { |user_bs, index| user_bs[1][:index] = index }
-        @sort = params[:sort]
+        @sort = params[:sort] || 3 # "Ranking: default sorting order"
         case params[:sort].to_i
         when 1 # "Player first name"
           @user_box_scores.sort_by! { |user_bs| [user_bs[0].first_name.upcase, -@order * user_bs[1][:rank]] }

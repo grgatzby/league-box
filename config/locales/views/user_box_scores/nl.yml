@@ -2,7 +2,7 @@ nl:
   user_box_scores:
     index:
       intro: De <b>ronde rangschikking</b> wordt bij elke score-invoer bijgewerkt.<br>
-      round_league_table_title: Ronde rangschikking
+      round_league_table_title: Ronde %{round_nb} rangschikking
       file_csv_flash: bestand data.csv gemaakt
       valid_round_flash: "Ronde rangschikking: kies een geldige ronde."
     index_league:
@@ -10,7 +10,7 @@ nl:
         Het <b>league table</b> (toernooi ranglijst) wordt bijgewerkt bij elke nieuwe score-invoer.<br>
         Het verzamelt alle ronderanglijsten die betrekking hebben op hetzelfde toernooi.
       rounds: Ronden
-      league_table_title: League table van het toernooi
+      league_table_title: League table van het toernooi %{league_start}
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
       select_league: "toernooi:"
@@ -18,10 +18,10 @@ nl:
       league_dropdown: league table
     top_line:
       top_line_html: >
-        <span class="text">
-          <i class='color-green'>Klik op de lijn van de speler</i> om toegang te krijgen tot zijn box,
-          <i class='color-green'>klik op header</i> om de ranglijst te sorteren.
-        </span>
+        <span class="text"><i>
+          <b class='color-green'>Klik op de lijn van de speler</b> om toegang te krijgen tot zijn box,
+          <b class='color-green'>klik op header</b> om de ranglijst te sorteren.
+        </i></span>
         <span class="text_hovered">
           <span class="color-green"><b>Klik op deze regel</b></span> om de foto en de <b>rondestats knop</b> weer te geven.
         </span>
