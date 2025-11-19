@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
   helper_method :round_label  # allows the #round_label method to be called from views
-  # before_action :set_locale
+  before_action :set_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
   # This app helps organise intra club tennis championship where players are divided into boxes of 4 to 6 players
@@ -16,6 +16,18 @@ class ApplicationController < ActionController::Base
   #              referees) and all of the chatrooms of their club, request a new round creation from the admin.
   # - admin can additionnaly: access any chatroom, create a new club and its boxes (from a formatted CSV file including the
   #              players list), create the next round.
+
+# Source - https://stackoverflow.com/a
+# Posted by MrYoshiji, modified by community. See post 'Timeline' for change history
+# Retrieved 2025-11-19, License - CC BY-SA 4.0
+
+  ALLOWED_LOCALES = %w( fr en es ).freeze
+  DEFAULT_LOCALE = 'en'.freeze
+
+  def set_locale
+    I18n.locale = extract_locale_from_headers
+  end
+
 
   rescue_from ActionController::InvalidAuthenticityToken, with: :bad_token
   def bad_token
@@ -311,4 +323,16 @@ class ApplicationController < ActionController::Base
   def last_box_match_date(box)
     box.matches.map(&:time).max if box.matches.size.positive?
   end
+
+  private
+
+  def extract_locale_from_headers
+    browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    if ALLOWED_LOCALES.include?(browser_locale)
+      browser_locale
+    else
+      DEFAULT_LOCALE
+    end
+  end
+
 end
