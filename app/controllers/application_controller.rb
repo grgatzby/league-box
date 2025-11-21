@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :global_variables
   helper_method :round_label  # allows the #round_label method to be called from views
   before_action :set_locale
+  around_action :switch_locale
 
   # application schema in https://kitt.lewagon.com/db/95868
   # This app helps organise intra club tennis championship where players are divided into boxes of 4 to 6 players
@@ -21,8 +22,8 @@ class ApplicationController < ActionController::Base
 # Posted by MrYoshiji, modified by community. See post 'Timeline' for change history
 # Retrieved 2025-11-19, License - CC BY-SA 4.0
 
-  ALLOWED_LOCALES = %w( fr en es ).freeze
-  DEFAULT_LOCALE = 'en'.freeze
+  ALLOWED_LOCALES = %w( fr en nl ).freeze
+  DEFAULT_LOCALE = 'fr'.freeze
 
   def set_locale
     I18n.locale = extract_locale_from_headers
@@ -38,8 +39,6 @@ class ApplicationController < ActionController::Base
   def default_url_options
     { locale: I18n.locale }
   end
-
-  around_action :switch_locale
 
   def switch_locale(&action)
     locale = params[:locale] || I18n.default_locale
