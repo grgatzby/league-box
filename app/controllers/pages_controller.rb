@@ -16,8 +16,6 @@ class PagesController < ApplicationController
     @path["05"] = rules_path
     @path["06"] = new_contact_path
 
-    #@langue = request.env['HTTP_ACCEPT_LANGUAGE'].to_s.scan(/^[a-z]{2}/).first
-    @langue = locale
   end
 
   def rules

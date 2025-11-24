@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   DEFAULT_LOCALE = 'fr'.freeze
 
   def set_locale
-    I18n.locale = extract_locale_from_headers
+#    I18n.locale = extract_locale_from_headers
+    I18n.default_locale = extract_locale_from_headers
   end
 
 
