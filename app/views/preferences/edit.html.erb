@@ -2,9 +2,7 @@
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <!--<% if @preference.photo.attached? %>
-    <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
-  <% end %>-->
+  <%# Removed Active Storage photo code - now using CarrierWave on User model for profile pictures %>
 
   <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
 
