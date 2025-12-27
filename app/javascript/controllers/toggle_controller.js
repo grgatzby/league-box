@@ -86,6 +86,7 @@ export default class extends Controller {
   }
 
   toggleSection(event) {
+    // toggle the section that is clicked and collapse all other sections
     const sectionNumber = parseInt(event.currentTarget.dataset.section, 10);
     this.collapseSections(sectionNumber);
     // when the user clicks on the section
@@ -96,15 +97,12 @@ export default class extends Controller {
   }
 
   collapseSections(number) {
-    console.log("section");
-//    if (number == 1 || !this.hasSection1Target) {} else {this.section1Target.classList.add("d-none")};
-    if (number !== 1 && this.hasSection1Target) {this.section1Target.classList.add("d-none")};
-    if (number !== 2 && this.hasSection2Target) {this.section2Target.classList.add("d-none")};
-    if (number !== 3 && this.hasSection3Target) {this.section3Target.classList.add("d-none")};
-    if (number !== 4 && this.hasSection4Target) {this.section4Target.classList.add("d-none")};
-    if (number !== 5 && this.hasSection5Target) {this.section5Target.classList.add("d-none")};
-    if (number !== 6 && this.hasSection6Target) {this.section6Target.classList.add("d-none")};
-    if (number !== 7 && this.hasSection7Target) {this.section7Target.classList.add("d-none")};
+    // collapse all sections except the one that is clicked
+    for (let i = 1; i <= 7; i++) {
+      if (number !== i && this[`hasSection${i}Target`]) {
+        this[`section${i}Target`].classList.add("d-none");
+      }
+    }
   }
 
 }
