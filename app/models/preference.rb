@@ -1,4 +1,4 @@
 class Preference < ApplicationRecord
   belongs_to :user
-  has_one_attached :photo
+  # Removed has_one_attached :photo - using CarrierWave on User model for profile pictures instead
 end
