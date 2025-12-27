@@ -1,0 +1,18 @@
+<!-- partial : rules section 4 (Scoring and points)-->
+<h5 class="color-tennis-blue">1.11 <%= t '.points' %></h5>
+  <%= t '.p20' %>
+  <ul>
+    <% (6..8).each do |i| %>
+      <li><%= t ".li#{format '%02d',i}" %></li>
+    <% end %>
+  </ul>
+<p></p><%= t '.p21' %>
+<i><ul>
+  <% (9..12).each do |i| %>
+    <li><%= t ".li#{format '%02d',i}" %></li>
+  <% end %>
+</ul></i>
+<h5 class="color-tennis-blue">1.12 <%= t '.posting_results' %></h5>
+  <p><%= t '.p22' %></p>
+  <p><%= t '.p23' %></p>
+  <p><%= t '.p24' %></p>

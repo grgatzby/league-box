@@ -2,7 +2,7 @@ en:
   pages:
     home:
       main_title: LeagueBox
-      welcome_title: "🏆 A Social Tournament in your own Club"
+      welcome_title: A Social Tournament in your own Club
       p01_html: >
         <ul>
           <li> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
@@ -11,9 +11,9 @@ en:
           <li> The tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
           <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Tournament winner.
         </ul>
-      p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and the <b>tournament ranking</b> (the "League Table") shall be updated after each score entry and displayed on the league board at the end of each round.
+      p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and the <b>League Table</b> (tournament ranking) shall be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
-        The winner will receive 🏆 the Singles Tournament trophy, listing on the club honors board and possibly some
+        The winner will receive the Singles Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
       li01: My scores
@@ -39,8 +39,8 @@ en:
         <b>Promotion, relegation</b> at the end of the round : in each box
         <br>- the best player goes up 2 boxes, the second best 1 box;
         <br>- the last player goes down 2 boxes, the second last 1 box.
-      li13: 📜 The Rules
-      p05_html: Visit our %{inset} page for more details
+      li13: 📜 Rules page
+      p05_html: Visit our %{inset}
       club_join_title: "Tennis Club manager: subscribe to LeagueBox for your club!"
       li14: Contact us
       p06_html: >
@@ -49,10 +49,23 @@ en:
         Fill the form in our %{inset} page to learn more.
       happy_tournament: Happy LeagueBox tournament!
       add_club_btn: Add a new club
-      ok: 📦 Boxes
+      ok: 📦 See boxes
       login_link: log in
     rules:
-      overview_title: Tournament overview
+      rules_title: LeagueBox Format and Rules
+      general_rules_section: General Rules
+      round_dates_section: Season & Round Dates
+      match_rules_section: Match Rules
+      scoring_and_points_section: Scoring & Points
+      ranking_and_promotions_section: Rankings & Promotions
+      special_circumstances_section: Special Circumstances
+      disputes_section: Disputes
+      btn_display_rounds: Round Dates
+      btn_hide_rounds: Hide Round Dates
+      ok: 📦 Boxes
+      round_dates: LeagueBox Round Dates
+    1_general_rules:
+      overview: Tournament overview
       club: the club
       p01_html: >
         Box Leagues are designed to enable members of %{clubname} to <i class='color-tennis-aqua'>play competitive tennis against other members of their club</i> on a regular basis.
@@ -65,12 +78,8 @@ en:
         Players should <i class='color-tennis-aqua'>notify their opponents to block out the dates or times they are not available to play matches</i> as well as
         advertise the dates and times they would like to play matches. This simple application of good time management principles
         will make it easier to schedule your matches.
-      btn_display_rules: Tournament rules
-      btn_hide_rules: Hide the rules
-      ok: 📦 Boxes
-      rules: LeagueBox Tournament rules
       rounds: Rounds
-      p04: There will be one round per month, unless local rules state otherwise.
+      p04: There will be one round per month, unless local rules state otherwise. Dates for each box league round will be announced towards the end of the current round.
       availability: Availability
       p05: Players must be able to play matches in the evenings and / or weekends.
       qualifying_players: Qualifying Players
@@ -81,6 +90,7 @@ en:
       p09: Boxes will be designed to accommodate 4 to 6 players.
       organizing_matches: Organizing Matches
       p10: It is the responsibility of both players to make every effort to organize matches.
+    3_match_rules:
       tennis_rules: General Tennis Rules
       p11: Matches will be played according to the ITF Tennis Rules which can be viewed at www.itftennis.com
       matches_not_umpired: Matches not Umpired
@@ -103,6 +113,7 @@ en:
         OPTIONAL: <i>to be decided amongst players before the start of a match</i>
       p18: "So that games do not become protracted, a sudden death deuce can be played to decide a game should the game score be 40:40."
       p19: The Receiver then would determine which side to receive the serve on a Sudden Death Deuce.
+    4_scoring_and_points:
       points: Points
       p20: "Points earned are calculated to provide incentive to win as many games as possible and are calculated as follows:"
       li06: "Winner: 20 points"
@@ -119,6 +130,7 @@ en:
         Each Box player will log in to their account and enter the score on line, otherwise they can be marked on the club board
         where a sheet is provided for your convenience. If a result has been entered incorrectly contact the Tournament Referee.
       p24: Please note that all results must be posted by the end date of the round, except where an extension has been granted by the Referee.
+    5_ranking_and_promotions:
       box_league_ranking: Box League Ranking
       p25: >
         A player's league position is determined by the total number of points won in a Round. In the event that two or more players
@@ -132,6 +144,7 @@ en:
       li17_html: "the last two players will be relegated (<i>second last player: 1 box, last player: 2 boxes</i>)."
       new_entrants: New Entrants
       p27: Every effort will be made to accommodate new league players into a box that is appropriate to the player’s ability.
+    6_special_circumstances:
       disqualification: Disqualification
       p28: >
         Players who do not play any matches in a round without good reason or advance notice may be withdrawn from the tournament,
@@ -162,6 +175,7 @@ en:
         Players can request an extension to the deadline providing the match has been arranged and the court booked. Such requests
         will be considered at the discretion of the Tournament Referee whose decision is final.
       p39: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
+    7_disputes:
       disputes: Disputes
       mail_to_referee_html: "your Referee %{referee_name} to %{referee_email} or through your box chatroom"
       mail_to_admin_html: "your admin at %{admin_email}"

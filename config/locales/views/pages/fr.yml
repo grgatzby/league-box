@@ -2,18 +2,18 @@ fr:
   pages:
     home:
       main_title: LeagueBox
-      welcome_title: "🏆 Du tennis compétitif au sein de votre club"
+      welcome_title: Le tournoi interne de votre club
       p01_html: >
         <ul>
           <li> Un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League,
           <li> Seuls <b class='color-tennis-aqua'>les membres du club</b> peuvent participer,
           <li> Les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> de 4 à 5 joueurs,
-          <li> Le tournoi se déroule en <b class='color-tennis-aqua'>plusieurs rounds</b> d'un mois ou plus,
-          <li> À chaque round les <b class='color-tennis-aqua'>points gagnés s'ajoutent</b> au total cumulé qui départagera le vainqueur du Tournoi.
+          <li> Le tournoi se déroule en <b class='color-tennis-aqua'>rounds successifs</b> d'un mois ou plus,
+          <li> À chaque round les <b class='color-tennis-aqua'>points gagnés se cumulent</b> pour départager le vainqueur du Tournoi.
         </ul>
-      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et le <b>classement du tournoi</b> (la "League table") sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
+      p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>League table</b> (classement du tournoi) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
-        Le vainqueur recevra le 🏆 trophée du Tournoi, son nom sur le tableau d'honneur et pourquoi pas
+        Le vainqueur recevra le trophée du Tournoi 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin du tournoi.
       use_title: Le site LeagueBox en pratique
       li01: Mes scores
@@ -38,8 +38,8 @@ fr:
         <b>Promotion, déclassement</b> à la fin du round : dans chaque box
         <br>- le meilleur joueur monte de 2 box, le second d'une box,
         <br>- le dernier joueur baisse de 2 box, l'avant-dernier d'une box.
-      li13: 📜 Règles
-      p05_html: Consultez notre page %{inset} pour en savoir plus
+      li13: 📜 Règles du tournoi
+      p05_html: Consultez les %{inset}
       club_join_title: "Manager de Club: adoptez LeagueBox pour votre club!"
       li14: Nous contacter
       p06_html: >
@@ -48,13 +48,26 @@ fr:
         Écrivez-nous via le formulaire %{inset} pour en savoir plus.
       happy_tournament: Bon tournoi sur LeagueBox!
       add_club_btn: Ajouter un nouveau club
-      ok: 📦 Les box
+      ok: 📦 Voir les box
       login_link: se connecter
     rules:
-      overview_title: Description du Tournoi
+      rules_title: Format et règles
+      general_rules_section: Règles générales de LeagueBox
+      round_dates_section: Saison & Dates des Rounds
+      match_rules_section: Règles des matchs
+      scoring_and_points_section: Points & scores
+      ranking_and_promotions_section: Classement & promotions
+      special_circumstances_section: Cas particuliers
+      disputes_section: Différends
+      btn_display_rounds: Dates du Tournoi
+      btn_hide_rounds: Cacher les dates
+      ok: 📦 Les box
+      round_dates: Dates du Tournoi LeagueBox
+    1_general_rules:
+      overview: Description du Tournoi
       club: club
       p01_html: >
-        Les Box Leagues sont conçues pour permettre aux joueurs du %{clubname} de <i class='color-tennis-aqua'>jouer un tennis compétitif avec d'autres joueurs de leur club</i> d'un niveau comparable, régulièrement.
+        Les Box Leagues sont conçues pour permettre aux joueurs de tennis du %{clubname} de <i class='color-tennis-aqua'>se mesurer régulièrement à d'autres joueurs de leur club</i>.
         <br>C'est le moyen idéal pour rencontrer les autres membres du club et d'élargir votre réseau de tennis d'agrément.
       p02_html: >
         La clé du succès est que les joueurs <i class='color-tennis-aqua'>s'engagent à jouer leurs matchs de box</i>. Les membres qui s'inscrivent
@@ -63,12 +76,8 @@ fr:
       p03_html: >
         Les joueurs devront <i class='color-tennis-aqua'>notifier à leurs adversaires leurs périodes d'indisponibilité</i>, ainsi que leurs disponibilités.
         Cette discipline facilitera la bonne organisation des matchs.
-      btn_display_rules: Règles du Tournoi
-      btn_hide_rules: Cacher les règles
-      ok: 📦 Les box
-      rules: Règles du Tournoi LeagueBox
       rounds: Rounds
-      p04: Il y aura un round par mois, sauf contre indication de votre club.
+      p04: Il y aura un round par mois, sauf contre indication de votre club. Les dates de chaque round du championnat seront annoncées vers la fin du round en cours.
       availability: Disponibilité
       p05: Les joueurs doivent pouvoir disputer leurs matchs le soir et / ou le week-end.
       qualifying_players: Joueurs concernés
@@ -79,6 +88,7 @@ fr:
       p09: Les Box pourront accueillir de 4 à 6 joueurs
       organizing_matches: Organisation des matchs
       p10: Il est de la responsabilité des deux joueurs d'organiser leur match.
+    3_match_rules:
       tennis_rules: Règles Générales du Tennis
       p11: Les matchs seront joués selon les règles de l'ITF Tennis qui peuvent être consultées sur www.itftennis.com
       matches_not_umpired: Matchs non arbitrés
@@ -95,12 +105,13 @@ fr:
       p13: Pour garantir que les matchs soient terminés dans l'heure impartie, l'échauffement sera limité à 5 minutes.
       match_format: Format du match
       p14: Les matchs seront joués en deux mini-sets avec un tie-break décisif si nécessaire.
-      p15: "Chaque set sera joué comme le premier à 4 jeux avec un tie-break standard de 7 points à 3:3."
+      p15: "Chaque set sera joué en 4 jeux gagnants avec un jeu décisif (ou tie-break) de 7 points à 3:3."
       p16: Le tie-break décisif sera joué comme le premier à 10 points avec 2 points d'écart minimum.
       p17_html: >
         OPTIONNEL: <i>à décider entre les joueurs avant le début du match</i>
       p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40."
       p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité.
+    4_scoring_and_points:
       points: Points
       p20: "Les points gagnés sont calculés de façon à encourager les joueurs à gagner autant de jeux que possible et sont déterminés ainsi:"
       li06: "Gagnant du match: 20 points"
@@ -117,6 +128,7 @@ fr:
         Chaque joueur de la Box pourra se connecter à son compte et saisir les scores en ligne, ou ils pourront être marqués au tableau
         où une feuille de scores sera mise à votre disposition. Si un résultat a été incorrectement saisi, contacter le Referee du Tournoi.
       p24: Veuillez noter que tous les résultats devront être entrés avant la fin du round, à moins qu'un délai ait été accordé par le Referee.
+    5_ranking_and_promotions:
       box_league_ranking: Classement de la Box League
       p25: >
         Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
@@ -130,6 +142,7 @@ fr:
       li17_html: "les deux derniers joueurs seront relégués (<i>avant-dernier joueur: 1 box, dernier: 2 box</i>)."
       new_entrants: Nouveaux entrants
       p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
+    6_special_circumstances:
       disqualification: Disqualification
       p28: >
         Les joueurs qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiés du tournoi,
@@ -160,6 +173,7 @@ fr:
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
         sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
+    7_disputes:
       disputes: Différends
       mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email} ou via la Chatroom de votre box"
       mail_to_admin_html: "votre admin à %{admin_email}"

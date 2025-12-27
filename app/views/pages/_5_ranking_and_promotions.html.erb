@@ -1,0 +1,17 @@
+<!-- partial : rules section 5 (Ranking_and_promotions
+)-->
+<h5 class="color-tennis-blue">1.13 <%= t '.box_league_ranking' %></h5>
+  <%= t '.p25' %>
+  <ol>
+    <% (13..15).each do |i| %>
+      <li><%= t ".li#{format '%02d',i}" %></li>
+    <% end %>
+  </ol>
+<h5 class="color-tennis-blue">1.14 <%= t '.promotion_relegation' %></h5>
+  <%= t '.p26' %>
+  <ul>
+    <li><%= t '.li16_html' %></li>
+    <li><%= t '.li17_html' %></li>
+  </ul>
+<h5 class="color-tennis-blue">1.15 <%= t '.new_entrants' %></h5>
+  <p><%= t '.p27' %></p>

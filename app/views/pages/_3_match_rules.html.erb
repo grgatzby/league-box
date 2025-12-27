@@ -1,0 +1,16 @@
+<!-- partial : rules section 3 (Match rules)-->
+<h5 class="color-tennis-blue">1.7 <%= t '.tennis_rules' %></h5>
+  <p><%= t '.p11' %></p>
+<h5 class="color-tennis-blue">1.8 <%= t '.matches_not_umpired' %></h5>
+  <%= t '.p12' %>
+  <ul>
+    <% (1..5).each do |i| %>
+      <li><%= t ".li0#{i}" %></li>
+    <% end %>
+  </ul>
+<h5 class="color-tennis-blue">1.9 <%= t '.warm_up' %></h5>
+  <p><%= t '.p13' %></p>
+<h5 class="color-tennis-blue">1.10 <%= t '.match_format' %></h5>
+  <% (14..19).each do |i| %>
+    <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
+  <% end %>

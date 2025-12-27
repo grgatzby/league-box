@@ -2,7 +2,7 @@ nl:
   pages:
     home:
       main_title: LeagueBox
-      welcome_title: "🏆 Het Sociaal Toernooi van jouw club"
+      welcome_title: Het Sociaal Toernooi van jouw club
       p01_html: >
         <ul>
           <li> Door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
@@ -10,9 +10,9 @@ nl:
           <li> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen afhankelijk van hun niveau</b> van 4/5 spelers.
           <li> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
         </ul>
-      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>toernooi rangschikking</b> (de "League Table") worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
+      p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>League Table</b> (toernooi rangschikking) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
       p03_html: >
-        De winnaar ontvangt 🏆 de Singles Tournament-trofee, zijn of haar naam op de erelijst en waarom niet
+        De winnaar ontvangt de Singles Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       use_title: LeagueBox in één oogopslag
       li01: Mijn scores
@@ -40,7 +40,7 @@ nl:
         <br>- de eerste speler gaat 2 boxen omhoog, de tweede 1 box;
         <br>- de laatste speler gaat 2 boxen omlaag, de een na laatste 1 box.
       li13: 📜 Regels
-      p05_html: Bezoek onze pagina %{inset} voor meer informatie.
+      p05_html: Bezoek onze pagina %{inset}.
       club_join_title: "Tennisclubmanager: implementeer LeagueBox voor uw club!"
       li14: Contact
       p06_html: >
@@ -49,9 +49,22 @@ nl:
         Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Gelukkig toernooi met LeagueBox!
       add_club_btn: Een nieuwe club toevoegen
-      ok: 📦 Boxen
+      ok: 📦 Naar boxen
       login_link: log in
     rules:
+      rules_title: LeagueBox-format en -regels
+      general_rules_section: Algemene regels
+      round_dates_section: Seizoen & Rondedata
+      match_rules_section: Wedstrijdregels
+      scoring_and_points_section: Puntentelling
+      ranking_and_promotions_section: Ranglijsten en promoties
+      special_circumstances_section: Bijzondere omstandigheden
+      disputes_section: Geschillen
+      btn_display_rounds: Toernooi Datums
+      btn_hide_rounds: Verberg de datums
+      ok: 📦 Boxen
+      round_dates: LeagueBox Toernooi datums
+    1_general_rules:
       overview_title: Beschrijving van het toernooi
       club: het club
       p01_html: >
@@ -64,12 +77,8 @@ nl:
       p03_html: >
         Spelers <i class='color-tennis-aqua'>moeten hun tegenstanders op de hoogte stellen van perioden van onbeschikbaarheid</i>, evenals van beschikbare perioden.
         Deze discipline zal de goede organisatie van uw wedstrijden vergemakkelijken.
-      btn_display_rules: Toernooiregels
-      btn_hide_rules: Verberg de regels
-      ok: 📦 Boxen
-      rules: LeagueBox toernooiregels
       rounds: Rondes
-      p04: Er is één ronde per maand, tenzij anders aangegeven door jouw club.
+      p04: Er is één ronde per maand, tenzij anders aangegeven door jouw club. De data voor elke speelronde van de box league worden tegen het einde van de huidige ronde bekendgemaakt.
       availability: Beschikbaarheid
       p05: Spelers moeten hun wedstrijden 's avonds en/of in het weekend kunnen spelen.
       qualifying_players: Spelers getroffen
@@ -80,6 +89,7 @@ nl:
       p09: De Boxen bieden plaats aan 4 tot 6 spelers
       organizing_matches: Organisatie van wedstrijden
       p10: Het is de verantwoordelijkheid van beide spelers om hun wedstrijd te organiseren.
+    3_match_rules:
       tennis_rules: Algemene tennisregels
       p11: De wedstrijden zijn volgens de ITF-tennisregels die kunnen worden bekeken op www.itftennis.com
       matches_not_umpired: Wedstrijden zonder Referee
@@ -102,6 +112,7 @@ nl:
         OPTIONEEL: <i>nader te bepalen tussen de spelers vóór aanvang van de wedstrijd</i>
       p18: "Om te voorkomen dat games zich voortslepen, kan een gelijkspel Sudden Death worden gespeeld om de wedstrijd om 40:40 te beslissen."
       p19: De ontvanger zal dan beslissen van welke kant hij service zal krijgen bij een gelijkspel met plotselinge dood.
+    4_scoring_and_points:
       points: Punten
       p20: "Verdiende punten worden berekend om spelers aan te moedigen zoveel mogelijk games te winnen en worden als volgt bepaald:"
       li06: "Wedstrijdwinnaar: 20 punten"
@@ -118,6 +129,7 @@ nl:
         Elke speler in de Box kan inloggen op zijn account en scores online invoeren, of deze kunnen op het bord worden gemarkeerd
         waar u een scoreblad ter beschikking wordt gesteld. Indien een uitslag verkeerd is ingevoerd, neem dan contact op met de ToernooiReferee.
       p24: Houd er rekening mee dat alle resultaten vóór het einde van de ronde moeten worden ingevoerd, tenzij de Referee uitstel heeft verleend.
+    5_ranking_and_promotions:
       box_league_ranking: Stand van de Box League
       p25: >
         De rangschikking van een speler wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer spelers
@@ -131,6 +143,7 @@ nl:
       li17_html: "de laatste twee spelers degraderen (<i>voorlaatste: één box, laatste: 2 boxen</i>)."
       new_entrants: Nieuwkomers
       p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
+    6_special_circumstances:
       disqualification: Diskwalificatie
       p28: >
         Spelers die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
@@ -161,6 +174,7 @@ nl:
         Spelers kunnen om uitstel verzoeken, op voorwaarde dat de wedstrijd is geregeld en de baan is gereserveerd. Zo'n verzoek
         zal worden beoordeeld naar goeddunken van de toernooiReferee, wiens beslissing definitief zal zijn.
       p39: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
+    7_disputes:
       disputes: Geschillen
       mail_to_referee_html: "uw Referee %{referee_name} aan %{referee_email} of via jouw Box chatroom"
       mail_to_admin_html: "uw admin aan %{admin_email}"

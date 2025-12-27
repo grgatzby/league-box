@@ -1,0 +1,8 @@
+<!-- partial : rules section 7 (Disputes)-->
+<h5 class="color-tennis-blue">1.22 <%= t '.disputes' %></h5>
+<% if @referee %>
+  <% mailto = t(".mail_to_referee_html", referee_name: "#{@referee.first_name} #{@referee.last_name}", referee_email: @referee.email) %>
+<% else %>
+  <% mailto = t(".mail_to_admin_html", admin_email: @admin.email) %>
+<% end %>
+<p><%= t(".p40_html", mailto: mailto) %></p>
