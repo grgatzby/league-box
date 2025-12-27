@@ -85,46 +85,14 @@ export default class extends Controller {
     window.scrollTo({top: window.innerHeight-66-24, behaviour: "smooth"});
   }
 
-  toggleSection1() {
-    this.collapseSections(1);
+  toggleSection(event) {
+    const sectionNumber = parseInt(event.currentTarget.dataset.section, 10);
+    this.collapseSections(sectionNumber);
     // when the user clicks on the section
-    this.section1Target.classList.toggle("d-none");
-  }
-
-  toggleSection2() {
-    this.collapseSections(2);
-    // when the user clicks on the section
-    this.section2Target.classList.toggle("d-none");
-  }
-
-  toggleSection3() {
-    this.collapseSections(3);
-    // when the user clicks on the section
-    this.section3Target.classList.toggle("d-none");
-  }
-
-  toggleSection4() {
-    this.collapseSections(4);
-    // when the user clicks on the section
-    this.section4Target.classList.toggle("d-none");
-  }
-
-  toggleSection5() {
-    this.collapseSections(5);
-    // when the user clicks on the section
-    this.section5Target.classList.toggle("d-none");
-  }
-
-  toggleSection6() {
-    this.collapseSections(6);
-    // when the user clicks on the section
-    this.section6Target.classList.toggle("d-none");
-  }
-
-  toggleSection7() {
-    this.collapseSections(7);
-    // when the user clicks on the section
-    this.section7Target.classList.toggle("d-none");
+    const sectionTarget = this[`section${sectionNumber}Target`];
+    if (sectionTarget) {
+      sectionTarget.classList.toggle("d-none");
+    }
   }
 
   collapseSections(number) {
