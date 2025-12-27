@@ -1,0 +1,31 @@
+<!-- partial : rules section 6 (Special circumstances)-->
+<h5 class="color-tennis-blue">1.16 <%= t '.disqualification' %></h5>
+  <p><%= t '.p28' %></p>
+<h5 class="color-tennis-blue">1.17 <%= t '.no_show' %></h5>
+  <%= t '.p29' %>
+  <ul>
+    <% (18..20).each do |i| %>
+      <li><%= t ".li#{format '%02d',i}" %></li>
+    <% end %>
+  </ul>
+<h5 class="color-tennis-blue">1.18 <%= t '.retire_from_match' %></h5>
+  <p><%= t '.p30' %></p>
+  <p></p><%= t '.p31' %>
+  <i><ul>
+    <li><%= t '.p32' %></li>
+    <li><%= t '.p33' %></li>
+  </ul></i>
+<h5 class="color-tennis-blue">1.19 <%= t '.withdrawing' %></h5>
+  <p><%= t '.p34' %></p>
+  <p><%= t '.p35' %></p>
+<h5 class="color-tennis-blue">1.20 <%= t '.walk_overs' %></h5>
+  <%= t '.p36' %>
+  <ul>
+    <% (21..23).each do |i| %>
+      <li><%= t ".li#{format '%02d',i}" %></li>
+    <% end %>
+  </ul>
+<h5 class="color-tennis-blue">1.21 <%= t '.deadline_extensions' %></h5>
+  <p><%= t '.p37' %></p>
+  <p><%= t '.p38' %></p>
+  <p><%= t '.p39' %></p>

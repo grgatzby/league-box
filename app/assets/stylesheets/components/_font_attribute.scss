@@ -39,6 +39,14 @@
   color: green;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .text-size {
   font-size: calc(0.9rem + 0.1vw);
   // font-size: 1.1vw;

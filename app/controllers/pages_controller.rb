@@ -19,6 +19,8 @@ class PagesController < ApplicationController
   end
 
   def rules
+      @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
+      @rounds = @club.rounds
   end
 
   def staff

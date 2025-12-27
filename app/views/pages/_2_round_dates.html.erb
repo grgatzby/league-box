@@ -1,0 +1,14 @@
+<!-- partial : rules section 2 (Round dates)-->
+<%= @club.name %><br>
+<%= @rounds_dropdown.reverse %><br>
+<% @rounds_dropdown.reverse.each do |round_date|%>
+  <% round = round_date[9, 2].to_i %>
+  <% date = round_date[13, 10].to_date %>
+  <%= "Round #{round} #{date}" %>
+<% end %>
+
+<% @rounds.each do |round|%>
+<ul>
+  <li><%= render "shared/display_round", round: round %></li>
+</ul>
+<% end %>
