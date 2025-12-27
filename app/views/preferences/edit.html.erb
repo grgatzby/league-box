@@ -6,20 +6,32 @@
     <%= cl_image_tag(@preference.photo.key, alt: 'profile picture', width: 400, height: 300, crop: :fill) %>
   <% end %>-->
 
-  <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
+  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
-      <b><%= render "shared/fullname", user: current_user %></b><br><br>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <b><%= render "shared/fullname", user: current_user %></b>
+        <% if current_user.profile_picture.present? %>
+          <%= image_tag(profile_picture_circular_url(current_user, 40), alt: 'Profile picture', style: "width: 40px; height: 40px; border-radius: 50%; object-fit: cover;") %>
+        <% end %>
+      </div>
+      <br><br>
       <br>
       <div class="row">
         <div class="col-4"><%= "🧩 Role:" %></div>
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
 
-      <!--<div class="row">
-        <div class="col-4"><%# f.label :photo, "🙍 Select picture:" %></div>
-        <div class="col-2"><%# f.file_field :photo %></div>
-      </div>-->
+      <div class="row">
+        <div class="col-4"><%= label_tag "user[profile_picture]", "🖼️ Profile Picture:" %></div>
+        <div class="col-4">
+          <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+          <% if current_user.profile_picture.present? %>
+            <br>
+            <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;") %>
+          <% end %>
+        </div>
+      </div>
 
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>

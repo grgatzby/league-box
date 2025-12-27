@@ -9,9 +9,13 @@
           <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
               data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-              data-bs-content="<%= message %>">
-            <div class="one-liner hovered-player">
-              <div class="col-3"><%= render "shared/fullname", user: player %></div>
+              data-bs-content="<%= message %>"
+              style="width: 100%;">
+            <div class="one-liner hovered-player" style="width: 100%;">
+              <div class="col-3" >
+                <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                <%= render "shared/fullname", user: player %>
+              </div>
               <div class="col-1 top-bottom-padding"><%= "# #{user_bs.rank}" %></div>
               <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs.points) %></div>
               <div class="col-1 top-bottom-padding"><%= "#{user_bs.box.box_number}" %></div>
@@ -37,9 +41,13 @@
             message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}" %>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
               data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-              data-bs-content="<%= message %>">
-            <div class="one-liner hovered-player">
-              <div class="col-3"><%= render "shared/fullname", user: player %></div>
+              data-bs-content="<%= message %>"
+              style="width: 100%;">
+            <div class="one-liner hovered-player" style="width: 100%;">
+              <div class="col-3">
+                <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                <%= render "shared/fullname", user: player %>
+              </div>
               <div class="col-1 top-bottom-padding"><%= "# #{user_bs[1][:rank]}" %></div>
               <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs[1][:points]) %></div>
               <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:matches_played]) %></div>

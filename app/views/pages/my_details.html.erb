@@ -2,13 +2,24 @@
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
-  <%= form_with model: @preference, method: @preference.id ? :patch : :post do |f| %>
+  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <b><%= render "shared/fullname", user: current_user %></b><br><br>
       <div class="row">
         <div class="col-4"><%= "🧩 Role:" %></div>
         <div class="col-3"><%= "#{current_user.role}" %></div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= label_tag "user[profile_picture]", "🖼️ Profile Picture:" %></div>
+        <div class="col-4">
+          <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+          <% if current_user.profile_picture.present? %>
+            <br>
+            <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;") %>
+          <% end %>
+        </div>
       </div>
 
       <div class="row">

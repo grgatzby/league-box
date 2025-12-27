@@ -7,7 +7,17 @@
   <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black"  style="right: 0; left: auto;">
     <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
     <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
-    <%= "#{current_user.nickname}" %>
+    <% if current_user.profile_picture.present? %>
+      <% picture_url = profile_picture_circular_url(current_user, 400) %>
+      <%= link_to picture_url || current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; gap: 10px; text-decoration: none;" do %>
+        <span><%= "#{current_user.nickname}" %></span>
+        <%= image_tag(profile_picture_circular_url(current_user, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover;") %>
+      <% end %>
+    <% else %>
+      <div class="dropdown-item" style="display: flex; align-items: center; gap: 10px;">
+        <span><%= "#{current_user.nickname}" %></span>
+      </div>
+    <% end %>
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
     <%= link_to t('.club_staff_link'), staff_path, class: "dropdown-item color-black" %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>

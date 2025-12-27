@@ -69,7 +69,27 @@
   }
 }
 
-ol {padding-inline-start: $league-table-left-padding;} // default value 40px
+ol {
+  padding-inline-start: $league-table-left-padding; // default value 30px
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+ol li {
+  list-style-type: decimal;
+  display: list-item;
+  padding-left: 0;
+  margin-left: 0;
+  text-indent: 0;
+  position: relative;
+}
+
+// Ensure the list marker aligns properly - content should start after the marker
+ol li > div[data-controller="popover"] {
+  margin-left: 0;
+  padding-left: 0;
+  display: block;
+}
 
 
 .league-header-left-padding {

@@ -7,14 +7,21 @@ class PreferencesController < ApplicationController
   def create
     # create preference record for current_user
     preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
-
-    #preference.update(photo: preference_params[:photo])
     preference.save
 
     # update current_user details
-    current_user.update(nickname:     params[:preference][:nickname],
-                        phone_number: params[:preference][:phone_number],
-                        email:        params[:preference][:e_mail])
+    user_params = {
+      nickname: params[:preference][:nickname],
+      phone_number: params[:preference][:phone_number],
+      email: params[:preference][:e_mail]
+    }
+
+    # Handle profile picture upload if present
+    if params[:user] && params[:user][:profile_picture].present?
+      user_params[:profile_picture] = params[:user][:profile_picture]
+    end
+
+    current_user.update(user_params)
 
     flash[:notice] = t(".details_stored_flash")
 
@@ -30,17 +37,21 @@ class PreferencesController < ApplicationController
     # update preference record for current_user, coming form form my_details.html.erb
     preference = Preference.find(params[:id])
     preference.update(clear_format: params[:clear_format]=="1")
-    #image = params[:preference][:photo]
-    #preference.photo.attach(io: image,
-    #        filename: image.original_filename,
-    #        content_type: image.content_type)
-    #preference.clear_format = params[:clear_format]=="1"
     preference.save
 
     # update current_user details
-    current_user.update(nickname:     params[:preference][:nickname],
-                        phone_number: params[:preference][:phone_number],
-                        email:        params[:preference][:e_mail])
+    user_params = {
+      nickname: params[:preference][:nickname],
+      phone_number: params[:preference][:phone_number],
+      email: params[:preference][:e_mail]
+    }
+
+    # Handle profile picture upload if present
+    if params[:user] && params[:user][:profile_picture].present?
+      user_params[:profile_picture] = params[:user][:profile_picture]
+    end
+
+    current_user.update(user_params)
 
     flash[:notice] = t(".details_stored_flash")
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path

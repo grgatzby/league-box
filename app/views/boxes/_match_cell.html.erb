@@ -22,5 +22,12 @@ if match %>
     <% end %>
   </div>
 <% elsif opponent == line_player %>
-  <%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
+  <% if line_player.profile_picture.present? %>
+    <% picture_url = profile_picture_circular_url(line_player, 400) %>
+    <%= link_to picture_url || line_player.profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
+      <%= image_tag(profile_picture_circular_url(line_player, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover;") %>
+    <% end %>
+  <% else %>
+    <%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
+  <% end %>
 <% end %>
