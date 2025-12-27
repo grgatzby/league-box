@@ -63,7 +63,8 @@ end
 # Custom gems
 gem 'faker'
 gem 'mail_form'
-#gem 'cloudinary', '~> 1.12.0'
+gem 'cloudinary', '~> 1.12.0'
+gem 'carrierwave', '~> 2.2'
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

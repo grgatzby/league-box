@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :user_box_scores
   has_many :messages
   has_one :preference
+  mount_uploader :profile_picture, ProfilePictureUploader
 end
