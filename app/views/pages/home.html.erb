@@ -13,7 +13,7 @@
     <br><br>
     <span data-action="click->toggle#toggleSection1">
       <h5>✓🏆
-        <b class="cursor-pointer"><%= t '.welcome_title' %></b>
+        <b class="cursor-pointer"><%= t '.welcome_title' %><i class="fa-solid fa-chevron-down" style="width: 25px"></i></b>
       </h5>
       <span data-toggle-target="section1" class="d-none">
         <p><%= t '.p01_html' %></p>
@@ -21,16 +21,12 @@
         <p><%= t '.p03_html' %></p>
         <br>
       </span>
-      <h5>✓🏆
-        <b class="cursor-pointer"><%= t '.welcome_title' %><i class="fa-solid fa-chevron-down"></i></b>
-      </h5>
     </span>
-
     <br>
 
     <span data-action="click->toggle#toggleSection2">
       <h5 class="top-bottom-padding">✓🧑‍💻
-        <b class="cursor-pointer"><%= t '.use_title' %></b>
+        <b class="cursor-pointer"><%= t '.use_title' %><i class="fa-solid fa-chevron-down" style="width: 25px"></i></b>
       </h5>
       <span data-toggle-target="section2" class="d-none">
         <ol>
@@ -59,7 +55,7 @@
 
     <span data-action="click->toggle#toggleSection3">
       <h5 class="top-bottom-padding">✓<%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 20 : 30 %>
-        <b class="cursor-pointer"><%= t '.ready_title' %></b>
+        <b class="cursor-pointer"><%= t '.ready_title' %><i class="fa-solid fa-chevron-down" style="width: 25px"></i></b>
       </h5>
       <span data-toggle-target="section3" class="d-none">
         <p><%= t '.p04' %></p>
