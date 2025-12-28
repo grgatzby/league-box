@@ -4,25 +4,25 @@
   <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>-->
   <a href="#" class="nav-link dropdown-toggle"><i class="fa-solid fa-bars"></i></a>
   <!--<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black">-->
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black"  style="right: 0; left: auto;">
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black"  style="right: 0; left: auto; text-align: left;">
     <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
     <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
     <% if current_user.profile_picture.present? %>
       <% picture_url = profile_picture_circular_url(current_user, 400) %>
-      <%= link_to picture_url || current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; gap: 10px; text-decoration: none;" do %>
+      <%= link_to picture_url || current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none;" do %>
         <span><%= "#{current_user.nickname}" %></span>
         <%= image_tag(profile_picture_circular_url(current_user, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover;") %>
       <% end %>
     <% else %>
-      <div class="dropdown-item" style="display: flex; align-items: center; gap: 10px;">
+      <div class="dropdown-item" style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
         <span><%= "#{current_user.nickname}" %></span>
       </div>
     <% end %>
-    <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
-    <%= link_to t('.club_staff_link'), staff_path, class: "dropdown-item color-black" %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>
     <%= link_to t('.round_ranking_link'), user_box_scores_path, class: "dropdown-item color-green" %>
     <%= link_to t('.league_table_link'), index_league_path, class: "dropdown-item color-green" %>
+    <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
+    <%= link_to t('.club_staff_link'), staff_path, class: "dropdown-item color-black" %>
     <% if current_user && current_user.role == "player" %>
       <%# my_scores_path(0) forces the _select_club_round form %>
       <%= link_to t('.my_scores_link'), my_scores_path(0), class: "dropdown-item color-tennis-red" %>
