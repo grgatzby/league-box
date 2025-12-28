@@ -12,8 +12,19 @@
   <% players = [@current_player, @opponent] %>
   <div class="one-liner frame-margin-rl">
     <h5>
-      <%= render "shared/fullname", user: @current_player %><i><%= " versus " %></i>
-      <%= render "shared/fullname", user: @opponent %>
+      <span style="display: inline-flex; align-items: center; gap: 8px;">
+        <%= render "shared/fullname", user: @current_player %>
+        <% if @current_player.profile_picture.present? %>
+          <%= image_tag(profile_picture_circular_url(@current_player, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+        <% end %>
+      </span>
+      <i><%= " versus " %></i>
+      <span style="display: inline-flex; align-items: center; gap: 8px;">
+        <%= render "shared/fullname", user: @opponent %>
+        <% if @opponent.profile_picture.present? %>
+          <%= image_tag(profile_picture_circular_url(@opponent, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+        <% end %>
+      </span>
     </h5>
   </div>
   <%= "#{@match.user_match_scores[0][:score_set1]} #{@match.user_match_scores[0][:score_set2]} #{@match.user_match_scores[0][:score_tiebreak]}" %>
