@@ -14,7 +14,7 @@ en:
       valid_league_flash: "League table: choose a valid tournament start date"
     select_league:
       select_league: "tournament:"
-      message_league_pop: "tournament start date"
+      message_league_pop: "select a season"
       league_dropdown: league table
     top_line:
       top_line_html: >

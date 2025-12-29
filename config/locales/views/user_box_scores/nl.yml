@@ -14,7 +14,7 @@ nl:
       valid_league_flash: "League table: kies een geldig toernooi startdatum."
     select_league:
       select_league: "toernooi:"
-      message_league_pop: "toernooi startdatum."
+      message_league_pop: "kies een seizoen."
       league_dropdown: league table
     top_line:
       top_line_html: >
