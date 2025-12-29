@@ -1,0 +1,32 @@
+<%# Partial: Display rounds grouped by league_start %>
+<%# Local variables: rounds (collection of Round objects) %>
+<% rounds_by_league = rounds.group_by(&:league_start).sort_by { |league_start, _| league_start || Date.new(1900, 1, 1) }.reverse %>
+
+<% rounds_by_league.each do |league_start, rounds_in_league| %>
+  <%# Header: league_start formatted as mmm_yyyy %>
+  <% if league_start.present? %>
+    <br><h5>
+      <%= league_start.strftime("%b_%Y") %>
+    </h5>
+  <% end %>
+
+  <%# Order rounds within this league by start_date %>
+  <% ordered_rounds = rounds_in_league.sort_by(&:start_date) %>
+
+  <%# Display rounds in 2 columns %>
+  <div class="row">
+    <% ordered_rounds.each_with_index do |round, index| %>
+      <%# Calculate round order within this league (1, 2, 3, etc.) %>
+      <% round_order = index + 1 %>
+
+      <div class="col-6" style="margin-bottom: 15px;">
+        <%# Bold header with clock symbol and round order %>
+        <b>🕐 Round <%= round_order %></b>
+        <%# Grayed font: start_date - end_date formatted as dd_mmmm_yyyy %>
+        <div style="color: #888; ">
+          <%= round.start_date.strftime("%d %B %Y") %> - <%= round.end_date.strftime("%d %B %Y") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
