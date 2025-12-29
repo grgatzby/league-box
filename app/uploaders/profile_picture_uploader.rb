@@ -4,7 +4,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   # Store images in the league-box folder on Cloudinary
   # Path structure: Home/{environment}/league-box/{model_type}/{model_id}/{field_name}
   def public_id
-    "Home/#{Rails.env}/league-box/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
+    "#{Rails.env}/league-box/#{model.class.to_s.underscore}/#{model.id}/#{mounted_as}"
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

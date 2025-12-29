@@ -8,8 +8,7 @@
     <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
     <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
     <% if current_user.profile_picture.present? %>
-      <% picture_url = profile_picture_circular_url(current_user, 400) %>
-      <%= link_to picture_url || current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none;" do %>
+      <%= link_to current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none;" do %>
         <span><%= "#{current_user.nickname}" %></span>
         <%= image_tag(profile_picture_circular_url(current_user, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover;") %>
       <% end %>
