@@ -118,6 +118,42 @@ span img {
         font-size: 4vw;
         }
       }
+
+  // Responsive adjustments for mobile screens
+  .frame-padding {
+    padding: 10px 15px;
+  }
+
+  .frame-margin-rl {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .box-scroller {
+    max-height: calc(100vh - 150px);
+  }
+
+  .top-button {
+    right: 15px;
+    bottom: 80px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  // Extra small screens
+  .frame-padding {
+    padding: 8px 12px;
+  }
+
+  .frame-margin-rl {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .buttons-wrap {
+    width: 90%;
+    padding: 5px 10px;
+  }
 }
 
 // ----------- UserBoxScores/index and Boxes/show -----------

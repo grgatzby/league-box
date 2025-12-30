@@ -1,6 +1,6 @@
-<%= render "shared/image_front" %>
+<div class="d-none d-md-block"><%= render "shared/image_front" %></div>
 
-<div class="<%= class_names("container": !@is_mobile) %>"
+<div class="container-fluid px-2 px-md-3 px-lg-4"
      data-controller="toggle" >
   <div class="photo-home-text frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
         data-toggle-target="togglableElement">
@@ -10,7 +10,7 @@
         <b><%= t(".main_title").upcase %></b>
       </div>
     </h3>
-    <br><br>
+    <br class="d-none d-md-block"><br class="d-none d-md-block">
     <span data-action="click->toggle#toggleSection" data-section="1">
       <h5>🏆
         <b class="cursor-pointer"><%= t '.welcome_title' %></b>
@@ -54,24 +54,26 @@
     <br>
 
     <span data-action="click->toggle#toggleSection" data-section="3">
-      <h5 class="top-bottom-padding"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 20 : 30 %>
+      <h5 class="top-bottom-padding">
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 20 %>
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 30 %>
         <b class="cursor-pointer"><%= t '.ready_title' %></b>
       ⬇️</h5>
       <span data-toggle-target="section3" class="d-none">
         <p><%= t '.p04' %></p>
         <ol id="steps"><% (9..12).each do |i| %>
-            <li class="top-bottom-padding ms-3"><%= t ".li#{format('%02d', i)}_html" %></li>
+            <li class="top-bottom-padding ms-2 ms-md-3"><%= t ".li#{format('%02d', i)}_html" %></li>
         <% end %>
         </ol>
       </span>
     </span>
 
     <br>
-    <div class = "buttons-wrap">
+    <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
       <% if user_signed_in?%>
-        <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size" %>
+        <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
       <% else %>
-        <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
+        <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
       <% end %>
     </div>
     <br>
@@ -83,7 +85,8 @@
     <br><br>
       <% class_prefix = "btn btn-inlayed bold-font color-" %>
     <div class="title">
-      <%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %>
+      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
+      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
     </div>
     <br>
     <div class="title">
@@ -96,7 +99,10 @@
     <h5 class="top-bottom-padding color-tennis-blue"><b>👤<%= t '.club_join_title' %></b></h5>
     <p class="top-bottom-padding"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
 
-    <div class="buttons-wrap"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: @is_mobile ? 25 : 50 %></div>
+    <div class="buttons-wrap">
+      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
+      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
+    </div>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
       class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
@@ -104,16 +110,17 @@
   </div>
 
   <br>
-  <div class = "buttons-wrap">
+  <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
     <% if user_signed_in?%>
-      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size" %>
+      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
     <% else %>
-      <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size ms-2" %>
+      <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
     <% end %>
 
 
     <% if current_user == @admin %>
-      <%= link_to t('.add_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua" %>
+      <br><br>
+      <%= link_to t('.add_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua w-100 w-sm-auto" %>
     <% end %>
   </div>
 </div>
