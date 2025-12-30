@@ -59,10 +59,12 @@ fr:
       ranking_and_promotions_section: Classement & promotions
       special_circumstances_section: Cas particuliers
       disputes_section: Différends
-      btn_display_rounds: Dates du Tournoi
-      btn_hide_rounds: Cacher les dates
+      btn_display_gallery: Galerie photos
+      btn_hide_gallery: Cacher la galerie photos
       ok: 📦 Les box
-      round_dates: Dates du Tournoi LeagueBox
+      photo_gallery: Galerie photos
+      upload_image: Télécharger une image
+      no_images: Aucune image dans la galerie pour le moment.
     1_general_rules:
       overview: Description du Tournoi
       club: club
@@ -198,7 +200,7 @@ fr:
       p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Créer le prochain round</i> (admin),
       p10b_html: ou pour <i class='color-tennis-aqua'>Demander la création du prochain round</i> (referee).
       p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Demander la création du prochain round</i>.
-      league_table: Classement d'un round et league table du Tournoi
+      league_table: Classement d'un round et league table de la Saison
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13_html: Modifiez l'ordre de la liste en cliquant sur l'entête correspondant.<br>
       referee_list_view: Vue en Liste (admin/Referee)

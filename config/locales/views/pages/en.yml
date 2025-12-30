@@ -60,10 +60,12 @@ en:
       ranking_and_promotions_section: Rankings & Promotions
       special_circumstances_section: Special Circumstances
       disputes_section: Disputes
-      btn_display_rounds: Round Dates
-      btn_hide_rounds: Hide Round Dates
+      btn_display_gallery: Photo Gallery
+      btn_hide_gallery: Hide Photo Gallery
       ok: 📦 Boxes
-      round_dates: LeagueBox Round Dates
+      photo_gallery: Photo gallery
+      upload_image: Upload Image
+      no_images: No images in the gallery yet.
     1_general_rules:
       overview: Tournament overview
       club: the club

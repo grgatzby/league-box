@@ -1,0 +1,12 @@
+<%= render "shared/image_front" %>
+
+<div class="container-fluid px-2 px-md-3 px-lg-4">
+  <div class="frame-color-shape frame-padding frame-margin-rl text-size">
+    <br><h4><div class="title"><b><%= t(".new_image_title").upcase %></b></div></h4><br>
+
+    <%= render "form", gallery_image: @gallery_image %>
+
+    <br>
+    <%= link_to t(".back"), gallery_images_path, class: "btn btn-shape btn-aqua text-size" %>
+  </div>
+</div>

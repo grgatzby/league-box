@@ -35,5 +35,7 @@ Rails.application.routes.draw do
     end
     resources :contacts, only: %i[new create]
     get "contacts/sent"
+
+    resources :gallery_images
   end
 end

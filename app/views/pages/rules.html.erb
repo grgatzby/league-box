@@ -2,80 +2,95 @@
 <div class="d-block d-md-none"><br></div>
 
 <div data-controller="toggle" class="container-fluid px-2 px-md-3 px-lg-4"
-     data-toggle-display-rounds-value="<%= t '.btn_display_rounds' %>"
-     data-toggle-hide-rounds-value="<%= t '.btn_hide_rounds' %>">
+     data-toggle-display-rounds-value="<%= t '.btn_display_gallery' %>"
+     data-toggle-hide-rounds-value="<%= t '.btn_hide_gallery' %>">
   <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
     <br><h4><div class="title"><b><%= t(".rules_title").upcase %></b></div></h4><br>
 
-    <span data-action="click->toggle#toggleSection" data-section="1">
-      <h5><i class="fa-regular fa-circle-check" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.general_rules_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section1" class="d-none">
-        <%= render "1_general_rules" %>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="1" class="w-100">
+        <h5 class="mb-0"><i class="fa-regular fa-circle-check" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.general_rules_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section1" class="d-none">
+          <%= render "1_general_rules" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="2">
-      <h5><i class="fa-solid fa-calendar" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.round_dates_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section2" class="d-none">
-        <%= render "2_round_dates" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="2" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-calendar" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.round_dates_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section2" class="d-none">
+          <%= render "2_round_dates" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="3">
-      <h5><i class="fa-solid fa-trophy" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.match_rules_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section3" class="d-none">
-        <%= render "3_match_rules" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="3" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-trophy" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.match_rules_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section3" class="d-none">
+          <%= render "3_match_rules" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="4">
-      <h5><i class="fa-solid fa-award" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.scoring_and_points_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section4" class="d-none">
-        <%= render "4_scoring_and_points" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="4" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-award" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.scoring_and_points_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section4" class="d-none">
+          <%= render "4_scoring_and_points" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="5">
-      <h5><i class="fa-solid fa-user-group" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.ranking_and_promotions_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section5" class="d-none">
-        <%= render "5_ranking_and_promotions" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="5" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-user-group" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.ranking_and_promotions_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section5" class="d-none">
+          <%= render "5_ranking_and_promotions" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="6">
-      <h5><i class="fa-solid fa-circle-exclamation" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.special_circumstances_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section6" class="d-none">
-        <%= render "6_special_circumstances" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="6" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-circle-exclamation" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.special_circumstances_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section6" class="d-none">
+          <%= render "6_special_circumstances" %>
+        </span>
       </span>
-    </span>
-    <br>
-    <span data-action="click->toggle#toggleSection" data-section="7">
-      <h5><i class="fa-solid fa-scale-balanced" style="width: 25px"></i>
-        <b class="cursor-pointer"><%= t '.disputes_section' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section7" class="d-none">
-        <%= render "7_disputes" %>
+    </div>
+    <hr>
+    <div class="d-flex align-items-center" style="min-height: 40px;">
+      <span data-action="click->toggle#toggleSection" data-section="7" class="w-100">
+        <h5 class="mb-0"><i class="fa-solid fa-scale-balanced" style="width: 25px"></i>
+          <b class="cursor-pointer"><%= t '.disputes_section' %></b>
+        ⬇️</h5>
+        <span data-toggle-target="section7" class="d-none">
+          <%= render "7_disputes" %>
+        </span>
       </span>
-    </span>
+    </div>
   </div>
 
   <div class="top-bottom-padding">
     <div class="buttons-wrap dont-print d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
       <button data-action="click->toggle#toggleRules" data-toggle-target="tournamentRules"
-        class="btn btn-shape btn-yellow text-size w-100 w-sm-auto"><%= t '.btn_display_rounds' %>
+        class="btn btn-shape btn-yellow text-size w-100 w-sm-auto ms-sm-2"><%= t '.btn_display_gallery' %>
       </button>
+      <br>
       <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size w-100 w-sm-auto ms-sm-2"%>
@@ -84,7 +99,19 @@
 
     <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
          data-toggle-target="togglableElement">
-      <br><h4><div class="title"><b><%= t(".round_dates").upcase %></b></div></h4><br>
+      <br><h4><div class="title"><b><%= t(".photo_gallery").upcase %></b></div></h4><br>
+
+      <% if current_user %>
+        <div class="mb-3">
+          <%= link_to t(".upload_image"), new_gallery_image_path, class: "btn btn-shape btn-yellow text-size" %>
+        </div>
+      <% end %>
+
+      <% if @gallery_images&.any? %>
+        <%= render "gallery_images/gallery", gallery_images: @gallery_images %>
+      <% else %>
+        <p><%= t(".no_images") %></p>
+      <% end %>
 
       <%# bouton javascript pour scroller au début des règles %>
       <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"

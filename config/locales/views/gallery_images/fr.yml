@@ -1,0 +1,21 @@
+fr:
+  gallery_images:
+    index:
+      gallery_title: Galerie photos
+      new_image: Télécharger une nouvelle image
+      confirm_delete: Êtes-vous sûr de vouloir supprimer cette image?
+      no_images: Aucune image dans la galerie pour le moment.
+    new:
+      new_image_title: Télécharger une nouvelle image
+      back: Retour à la galerie
+    _form:
+      image_label: Image
+      caption_label: Légende
+      caption_placeholder: Entrez une légende pour cette image...
+      submit: Télécharger l'image
+    create:
+      success: Image téléchargée avec succès!
+    update:
+      success: Image mise à jour avec succès!
+    destroy:
+      success: Image supprimée avec succès!
