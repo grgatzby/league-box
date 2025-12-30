@@ -14,9 +14,10 @@
 
   <div class="mb-3">
     <%= f.label :image, t("gallery_images._form.image_label"), class: "form-label" %>
-    <%= f.file_field :image, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control", required: true %>
+    <%= f.file_field :image, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control", required: gallery_image.image.blank? %>
     <% if gallery_image.image.present? %>
       <br>
+      <small class="form-text text-muted"><%= t("gallery_images._form.current_image") %></small><br>
       <%= image_tag gallery_image.image.url, class: "rounded", style: "max-width: 300px; max-height: 300px;" %>
     <% end %>
   </div>
@@ -26,7 +27,34 @@
     <%= f.text_area :caption, class: "form-control", rows: 3, required: true, placeholder: t("gallery_images._form.caption_placeholder") %>
   </div>
 
+  <% if current_user == @admin %>
+    <div class="mb-3">
+      <%= f.label :club_id, t("gallery_images._form.club_label"), class: "form-label" %>
+      <%= f.select :club_id, options_from_collection_for_select(@clubs, :id, :name, gallery_image.club_id),
+          { prompt: t("gallery_images._form.select_club") },
+          { class: "form-control", required: true } %>
+      <small class="form-text text-muted"><%= t("gallery_images._form.club_help") %></small>
+    </div>
+  <% else %>
+    <%= f.hidden_field :club_id, value: current_user&.club_id %>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :accessible_club_ids, t("gallery_images._form.accessible_clubs_label"), class: "form-label" %>
+    <% if @clubs.any? %>
+      <%= f.collection_check_boxes :accessible_club_ids, @clubs, :id, :name do |b| %>
+        <div class="form-check">
+          <%= b.check_box class: "form-check-input" %>
+          <%= b.label class: "form-check-label" %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text-muted"><%= t("gallery_images._form.no_clubs_available") %></p>
+    <% end %>
+    <small class="form-text text-muted"><%= t("gallery_images._form.accessible_clubs_help") %></small>
+  </div>
+
   <div class="buttons-wrap">
-    <%= f.submit t("gallery_images._form.submit"), class: "btn btn-shape btn-aqua text-size" %>
+    <%= f.submit gallery_image.persisted? ? t("gallery_images._form.update") : t("gallery_images._form.submit"), class: "btn btn-shape btn-aqua text-size" %>
   </div>
 <% end %>

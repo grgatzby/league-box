@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_12_30_154250) do
+ActiveRecord::Schema[7.0].define(version: 2025_12_30_165515) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,6 +77,10 @@ ActiveRecord::Schema[7.0].define(version: 2025_12_30_154250) do
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "club_id", null: false
+    t.integer "accessible_club_ids", default: [], array: true
+    t.index ["accessible_club_ids"], name: "index_gallery_images_on_accessible_club_ids", using: :gin
+    t.index ["club_id"], name: "index_gallery_images_on_club_id"
   end
 
   create_table "matches", force: :cascade do |t|
@@ -175,6 +179,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_12_30_154250) do
   add_foreign_key "boxes", "chatrooms"
   add_foreign_key "boxes", "rounds"
   add_foreign_key "courts", "clubs"
+  add_foreign_key "gallery_images", "clubs"
   add_foreign_key "matches", "boxes"
   add_foreign_key "matches", "courts"
   add_foreign_key "messages", "chatrooms"

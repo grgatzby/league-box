@@ -5,14 +5,25 @@ nl:
       new_image: Nieuwe afbeelding uploaden
       confirm_delete: Weet u zeker dat u deze afbeelding wilt verwijderen?
       no_images: Nog geen afbeeldingen in de galerij.
+      images_count:
+        one: afbeelding
+        other: afbeeldingen
     new:
       new_image_title: Nieuwe afbeelding uploaden
       back: Terug naar galerij
     _form:
       image_label: Afbeelding
+      current_image: Huidige afbeelding (leeg laten om bestaande te behouden)
       caption_label: Bijschrift
       caption_placeholder: Voer een bijschrift in voor deze afbeelding...
+      club_label: Club (Eigenaar)
+      select_club: Selecteer een club...
+      club_help: Selecteer welke club eigenaar is van deze afbeelding (alleen admin)
+      accessible_clubs_label: Toegankelijke clubs
+      accessible_clubs_help: Selecteer welke clubs deze afbeelding kunnen bekijken. Standaard kan alleen uw club deze bekijken.
+      no_clubs_available: Geen clubs beschikbaar voor selectie.
       submit: Afbeelding uploaden
+      update: Afbeelding bijwerken
     create:
       success: Afbeelding succesvol geüpload!
     update:

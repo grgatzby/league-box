@@ -5,14 +5,25 @@ en:
       new_image: Upload New Image
       confirm_delete: Are you sure you want to delete this image?
       no_images: No images in the gallery yet.
+      images_count:
+        one: image
+        other: images
     new:
       new_image_title: Upload New Image
       back: Back to Gallery
     _form:
       image_label: Image
+      current_image: Current image (leave blank to keep existing)
       caption_label: Caption
       caption_placeholder: Enter a caption for this image...
+      club_label: Club (Owner)
+      select_club: Select a club...
+      club_help: Select which club owns this image (admin only)
+      accessible_clubs_label: Accessible Clubs
+      accessible_clubs_help: Select which clubs can view this image. By default, only your club can view it.
+      no_clubs_available: No clubs available for selection.
       submit: Upload Image
+      update: Update Image
     create:
       success: Image uploaded successfully!
     update:

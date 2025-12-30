@@ -1,13 +1,15 @@
 <%# Gallery display partial for use in rules page %>
 <div class="row g-3">
   <% gallery_images.each do |gallery_image| %>
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 8px; cursor: pointer;">
-        <%= image_tag gallery_image.image.url,
-            class: "img-fluid",
-            style: "width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s;" %>
-        <div class="gallery-caption-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3), transparent); color: white; padding: 20px 15px 15px; transform: translateY(100%); transition: transform 0.3s;">
-          <p class="mb-0" style="font-size: 0.95rem;"><%= gallery_image.caption %></p>
+    <div class="col-12 col-md-6 col-lg-4 mb-3">
+      <div class="gallery-item-wrapper" style="position: relative; overflow: hidden; border-radius: 8px; background: #000;">
+        <div class="gallery-item" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
+          <%= image_tag gallery_image.image.url,
+              class: "img-fluid",
+              style: "width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; display: block;" %>
+          <div class="gallery-caption-overlay" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.8) 40%, rgba(0,0,0,0.4) 70%, transparent 100%); color: white; padding: 25px 20px 20px; transform: translateY(100%); transition: transform 0.4s ease-in-out; z-index: 2;">
+            <p class="mb-0" style="font-size: 1rem; font-weight: 500; line-height: 1.4;"><%= gallery_image.caption %></p>
+          </div>
         </div>
       </div>
     </div>
@@ -15,10 +17,13 @@
 </div>
 
 <style>
-  .gallery-item:hover .gallery-caption-overlay {
-    transform: translateY(0);
+  .gallery-item-wrapper {
+    cursor: pointer;
   }
-  .gallery-item:hover img {
-    transform: scale(1.05);
+  .gallery-item-wrapper:hover .gallery-caption-overlay {
+    transform: translateY(0) !important;
+  }
+  .gallery-item-wrapper:hover img {
+    transform: scale(1.08);
   }
 </style>
