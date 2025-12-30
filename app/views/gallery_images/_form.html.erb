@@ -1,0 +1,32 @@
+<%= form_with model: gallery_image, multipart: true, local: true do |f| %>
+  <% if gallery_image.errors.any? %>
+    <div id="error_explanation" class="bg-rose-200 pt-3 pb-1 mb-4 px-4 rounded-md">
+      <div class="bold-font text-rose-700 text-sm pb-4">
+        <%= pluralize(gallery_image.errors.size, "error") %> prohibited this image from being saved:
+      </div>
+      <ul class="pb-0 mb-0">
+        <% gallery_image.errors.each do |error| %>
+          <li class="text-rose-600 pl-4 text-sm"><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= f.label :image, t("gallery_images._form.image_label"), class: "form-label" %>
+    <%= f.file_field :image, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control", required: true %>
+    <% if gallery_image.image.present? %>
+      <br>
+      <%= image_tag gallery_image.image.url, class: "rounded", style: "max-width: 300px; max-height: 300px;" %>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :caption, t("gallery_images._form.caption_label"), class: "form-label" %>
+    <%= f.text_area :caption, class: "form-control", rows: 3, required: true, placeholder: t("gallery_images._form.caption_placeholder") %>
+  </div>
+
+  <div class="buttons-wrap">
+    <%= f.submit t("gallery_images._form.submit"), class: "btn btn-shape btn-aqua text-size" %>
+  </div>
+<% end %>

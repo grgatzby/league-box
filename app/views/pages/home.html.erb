@@ -12,7 +12,7 @@
     </h3>
     <br class="d-none d-md-block"><br class="d-none d-md-block">
     <span data-action="click->toggle#toggleSection" data-section="1">
-      <h5>🏆
+      <h5 class="mb-0">🏆
         <b class="cursor-pointer"><%= t '.welcome_title' %></b>
       ⬇️</h5>
       <span data-toggle-target="section1" class="d-none">
@@ -22,10 +22,10 @@
         <br>
       </span>
     </span>
-    <br>
 
+    <hr>
     <span data-action="click->toggle#toggleSection" data-section="2">
-      <h5 class="top-bottom-padding">🧑‍💻
+      <h5 class="top-bottom-padding mb-0">🧑‍💻
         <b class="cursor-pointer"><%= t '.use_title' %></b>
       ⬇️</h5>
       <span data-toggle-target="section2" class="d-none">
@@ -50,11 +50,11 @@
         </ol>
       </span>
     </span>
+    <hr>
 
-    <br>
 
     <span data-action="click->toggle#toggleSection" data-section="3">
-      <h5 class="top-bottom-padding">
+      <h5 class="top-bottom-padding mb-0">
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 20 %>
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 30 %>
         <b class="cursor-pointer"><%= t '.ready_title' %></b>

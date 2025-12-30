@@ -1,0 +1,21 @@
+en:
+  gallery_images:
+    index:
+      gallery_title: Photo Gallery
+      new_image: Upload New Image
+      confirm_delete: Are you sure you want to delete this image?
+      no_images: No images in the gallery yet.
+    new:
+      new_image_title: Upload New Image
+      back: Back to Gallery
+    _form:
+      image_label: Image
+      caption_label: Caption
+      caption_placeholder: Enter a caption for this image...
+      submit: Upload Image
+    create:
+      success: Image uploaded successfully!
+    update:
+      success: Image updated successfully!
+    destroy:
+      success: Image deleted successfully!

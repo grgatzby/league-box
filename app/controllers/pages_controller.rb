@@ -21,6 +21,7 @@ class PagesController < ApplicationController
   def rules
       @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
       @rounds = @club.rounds
+      @gallery_images = GalleryImage.order(created_at: :desc)
   end
 
   def staff

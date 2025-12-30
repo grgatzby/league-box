@@ -60,10 +60,12 @@ nl:
       ranking_and_promotions_section: Ranglijsten en promoties
       special_circumstances_section: Bijzondere omstandigheden
       disputes_section: Geschillen
-      btn_display_rounds: Toernooi Datums
-      btn_hide_rounds: Verberg de datums
+      btn_display_gallery: Fotogalerij
+      btn_hide_gallery: Verberg de fotogalerij
       ok: 📦 Boxen
-      round_dates: LeagueBox Toernooi datums
+      photo_gallery: Fotogalerij
+      upload_image: Afbeelding uploaden
+      no_images: Nog geen afbeeldingen in de galerij.
     1_general_rules:
       overview_title: Beschrijving van het toernooi
       club: het club

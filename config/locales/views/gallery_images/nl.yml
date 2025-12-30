@@ -1,0 +1,21 @@
+nl:
+  gallery_images:
+    index:
+      gallery_title: Fotogalerij
+      new_image: Nieuwe afbeelding uploaden
+      confirm_delete: Weet u zeker dat u deze afbeelding wilt verwijderen?
+      no_images: Nog geen afbeeldingen in de galerij.
+    new:
+      new_image_title: Nieuwe afbeelding uploaden
+      back: Terug naar galerij
+    _form:
+      image_label: Afbeelding
+      caption_label: Bijschrift
+      caption_placeholder: Voer een bijschrift in voor deze afbeelding...
+      submit: Afbeelding uploaden
+    create:
+      success: Afbeelding succesvol geüpload!
+    update:
+      success: Afbeelding succesvol bijgewerkt!
+    destroy:
+      success: Afbeelding succesvol verwijderd!
