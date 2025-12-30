@@ -1,6 +1,6 @@
 .navbar-sticky {
   justify-content: space-between;
-  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-orange 100%);
   position: sticky;
   top: 0;
   opacity: 1;
@@ -46,7 +46,7 @@
 
   &:hover {
     opacity: 1;
-    background: $tennis-green;
+    background: $tennis-orange;
   }
 }
 
