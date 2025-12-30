@@ -112,7 +112,7 @@
   <br>
   <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
     <% if user_signed_in?%>
-      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+      <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
     <% else %>
       <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
     <% end %>
