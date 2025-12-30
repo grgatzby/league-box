@@ -11,7 +11,12 @@ a chatroom is created in Box controller #my_scores.
   >
     <% if !@is_mobile %><br><% end %>
     <div class="one-liner" style="width: 100%">
-      <h3><%= "Chatroom - Box #{@box_nb}" %></h3>
+      <h3><% if @chatroom.name == "general" %>
+        <%= "General Chatroom" %>
+      <% else %>
+        <%= "Chatroom - Box #{@box_nb}" %>
+      <% end %>
+      </h3>
       <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">
@@ -62,7 +67,7 @@ a chatroom is created in Box controller #my_scores.
       <h5><%= t(".chatroom_choice") %> <%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{suffix}")}" %></h5>
       <div class="frame-color-shape frame-padding frame-margin-rl text-size">
         <br>
-        <%# form 1: choose an existing chatroom from a list of chatroom names %>
+        <%# form 1: choose an open chatroom from a list of chatroom names %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= t '.message1_box_pop' %>">
@@ -145,6 +150,10 @@ a chatroom is created in Box controller #my_scores.
           club = Club.find_by(name: params[:club]) %>
         <div class="buttons-wrap">
           <%= link_to t('.back_btn'), user_box_scores_path(club_id: club.id), class: "btn btn-shape btn-yellow" %>
+        </div>
+      <% else %>
+        <div class="buttons-wrap">
+          <%= link_to t('.back_btn'), root_path, class: "btn btn-shape btn-yellow" %>
         </div>
       <% end %>
     <% end %>
