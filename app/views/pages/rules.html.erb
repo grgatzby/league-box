@@ -1,12 +1,9 @@
-<% if !@is_mobile %>
-  <div class="dont-print"><%= render "shared/image_front" %></div>
-<% else %>
-  <br>
-<% end %>
+<div class="d-none d-md-block dont-print"><%= render "shared/image_front" %></div>
+<div class="d-block d-md-none"><br></div>
 
-<div data-controller="toggle" class="<%= class_names("container": !@is_mobile) %>"
-       data-toggle-display-rounds-value="<%= t '.btn_display_rounds' %>"
-       data-toggle-hide-rounds-value="<%= t '.btn_hide_rounds' %>">
+<div data-controller="toggle" class="container-fluid px-2 px-md-3 px-lg-4"
+     data-toggle-display-rounds-value="<%= t '.btn_display_rounds' %>"
+     data-toggle-hide-rounds-value="<%= t '.btn_hide_rounds' %>">
   <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
     <br><h4><div class="title"><b><%= t(".rules_title").upcase %></b></div></h4><br>
 
@@ -75,13 +72,13 @@
   </div>
 
   <div class="top-bottom-padding">
-    <div class = "buttons-wrap dont-print">
+    <div class="buttons-wrap dont-print d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
       <button data-action="click->toggle#toggleRules" data-toggle-target="tournamentRules"
-        class="btn btn-shape btn-yellow text-size"><%= t '.btn_display_rounds' %>
+        class="btn btn-shape btn-yellow text-size w-100 w-sm-auto"><%= t '.btn_display_rounds' %>
       </button>
-      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size ms-2" %>
+      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
-        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size ms-2"%>
+        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size w-100 w-sm-auto ms-sm-2"%>
       </span>
     </div>
 
