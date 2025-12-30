@@ -64,6 +64,7 @@ fr:
       ok: 📦 Les box
       photo_gallery: Galerie photos
       upload_image: Télécharger une image
+      edit_gallery: Éditer la galerie
       no_images: Aucune image dans la galerie pour le moment.
     1_general_rules:
       overview: Description du Tournoi

@@ -21,7 +21,19 @@ class PagesController < ApplicationController
   def rules
       @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
       @rounds = @club.rounds
-      @gallery_images = GalleryImage.order(created_at: :desc)
+      # Show images grouped by club - admin sees all, others see only accessible to their club
+      if current_user&.role == "admin"
+        all_images = GalleryImage.joins(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+        @gallery_images_by_club = all_images.group_by(&:club)
+        @is_admin = true
+      elsif current_user
+        @gallery_images = GalleryImage.accessible_to_club(current_user.club_id).includes(:club).order(created_at: :desc)
+        @is_admin = false
+      else
+        # For non-authenticated users, show images from sample club
+        @gallery_images = GalleryImage.accessible_to_club(@club.id).includes(:club).order(created_at: :desc)
+        @is_admin = false
+      end
   end
 
   def staff

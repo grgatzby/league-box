@@ -1,0 +1,10 @@
+<%# Club gallery header partial %>
+<div class="mb-4">
+  <h5 class="mb-3" style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+    <b><%= club.name %></b>
+    <span class="badge bg-secondary ms-2">
+      <%= image_count %> <%= t("gallery_images.index.images_count", count: image_count) %>
+    </span>
+  </h5>
+  <%= render "gallery_images/gallery", gallery_images: gallery_images %>
+</div>

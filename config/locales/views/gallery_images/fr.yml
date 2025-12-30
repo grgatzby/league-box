@@ -5,14 +5,25 @@ fr:
       new_image: Télécharger une nouvelle image
       confirm_delete: Êtes-vous sûr de vouloir supprimer cette image?
       no_images: Aucune image dans la galerie pour le moment.
+      images_count:
+        one: image
+        other: images
     new:
       new_image_title: Télécharger une nouvelle image
       back: Retour à la galerie
     _form:
       image_label: Image
+      current_image: Image actuelle (laisser vide pour conserver l'existante)
       caption_label: Légende
       caption_placeholder: Entrez une légende pour cette image...
+      club_label: Club (Propriétaire)
+      select_club: Sélectionnez un club...
+      club_help: Sélectionnez le club propriétaire de cette image (admin uniquement)
+      accessible_clubs_label: Clubs accessibles
+      accessible_clubs_help: Sélectionnez les clubs qui peuvent voir cette image. Par défaut, seul votre club peut la voir.
+      no_clubs_available: Aucun club disponible pour la sélection.
       submit: Télécharger l'image
+      update: Mettre à jour l'image
     create:
       success: Image téléchargée avec succès!
     update:
