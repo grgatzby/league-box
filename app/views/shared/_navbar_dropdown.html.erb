@@ -1,8 +1,8 @@
 <%# partial: dropdown menu from the navbar %>
-<li class="nav-item">
+<li class="nav-item dropdown">
   <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i>&nbsp&nbsp<i class="fa-solid fa-arrow-down"></i>&nbsp&nbsp<%= "#{current_user.nickname}" %></a>-->
   <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>-->
-  <a href="#" class="nav-link dropdown-toggle"><i class="fa-solid fa-bars"></i></a>
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
   <!--<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black">-->
   <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black"  style="right: 0; left: auto; text-align: left;">
     <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>

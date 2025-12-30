@@ -7,7 +7,7 @@
 .box-scroller {
   overflow: scroll;
   max-height: calc(100vh - 200px);
-  //background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
+  //background: linear-gradient(180deg, $tennis-orange 0%, $tennis-beige 100%);
 }
 
 .one-liner {
@@ -22,8 +22,8 @@ span img {
 }
 
 .frame-color-shape {
-  //background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
-  background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
+  //background: linear-gradient(180deg, $tennis-beige 0%, $tennis-orange 100%);
+  background: linear-gradient(180deg, $tennis-orange 0%, $tennis-beige 100%);
   border-radius: $frame-border-radius;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: justify;
@@ -31,7 +31,7 @@ span img {
 }
 
 .frame-color-shape-contact {
-  background: linear-gradient(180deg, $tennis-green 0%, $tennis-beige 100%);
+  background: linear-gradient(180deg, $tennis-orange 0%, $tennis-beige 100%);
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
@@ -54,7 +54,7 @@ span img {
 
 .content {
   flex: 1 0 auto;
-  background-color: $tennis-green;
+  background-color: $tennis-orange;
 }
 
 .image-home {

@@ -27,15 +27,15 @@
 }
 
 .btn-green {
-  // background: $tennis-green;
-  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-green 100%);
+  // background: $tennis-orange;
+  background: linear-gradient(180deg, $tennis-beige 0%, $tennis-orange 100%);
   color: $tennis-blue;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     // background: #3e8e41;
     // background: #7f7f7f;
-    background: linear-gradient(180deg, #7f7f7f 0%, $tennis-green 100%);
+    background: linear-gradient(180deg, #7f7f7f 0%, $tennis-orange 100%);
     color: $tennis-blue;
   }
 }
@@ -67,7 +67,7 @@
 
 .btn-aqua {
   background: $tennis-aqua;
-  color: $tennis-green;
+  color: $tennis-orange;
 
   &:hover {
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
