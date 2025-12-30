@@ -50,9 +50,63 @@
   }
 }
 
+// Display navbar icons horizontally on narrow screens and hide toggle
+@media all and (max-width: 991.98px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+
+  .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+  .navbar-collapse .navbar-nav {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .navbar-collapse .navbar-nav li {
+    display: flex;
+    align-items: center;
+  }
+
+  // Ensure dropdown menus are positioned correctly on narrow screens
+  .navbar .nav-item.dropdown {
+    position: relative;
+  }
+
+  .navbar .dropdown-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    z-index: 1000;
+    background: $tennis-beige;
+    border-radius: $frame-border-radius;
+  }
+
+  // Ensure Bootstrap's show class works on narrow screens
+  .navbar .dropdown-menu.show {
+    display: block !important;
+  }
+}
+
 // to allow drop down menu on hover
 @media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu { display: none ; background: $tennis-beige; border-radius: $frame-border-radius;}
-	.navbar .nav-item:hover .dropdown-menu { display: block;}
-	.navbar .nav-item .dropdown-menu { margin-top:0;}
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+    background: $tennis-beige;
+    border-radius: $frame-border-radius;
+  }
+  .navbar .nav-item:hover .dropdown-menu,
+  .navbar .nav-item.dropdown:hover .dropdown-menu,
+  .navbar .nav-item .dropdown-menu:hover {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
 }
