@@ -4,11 +4,13 @@
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
       <%= hidden_field_tag(:clear_format, clear_format) if local_assigns[:clear_format] %>
-      <%= form.label :club_id, t('.select_club') %>
-      <%= form.select(:club_id, @club_names, {selected: @club.name}, {onchange: "this.form.submit();"}) %>
+      <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2": @is_mobile) %>">
+        <%= form.label :club_id, t('.select_club'), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
+        <%= form.select(:club_id, @club_names, {selected: @club.name}, {onchange: "this.form.submit();", class: (@is_mobile ? "form-select w-100" : "")}) %>
+      </div>
     <% end %>
   <% end %>
 <% else %>
-  <h4><%= @club.name %></h4>
-  <br><br>
+  <h4 class="<%= class_names("": !@is_mobile, "text-center mb-2": @is_mobile) %>"><%= @club.name %></h4>
+  <% unless @is_mobile %><br><br><% end %>
 <% end %>

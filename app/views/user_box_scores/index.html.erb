@@ -1,9 +1,9 @@
 <!-- index page: league table -->
-<div class="<%= class_names("container": !@is_mobile) %>" data-controller="toggle"
+<div class="<%= class_names("container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
-  <div class="one-liner text-size">
-    <h3><%= t('.round_league_table_title', round_nb:  @round_nb ) %></h3>
+  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column": @is_mobile) %> text-size">
+    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2 text-center": @is_mobile) %>"><%= t('.round_league_table_title', round_nb:  @round_nb ) %></h3>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>
@@ -12,12 +12,16 @@
     </span>
   </div>
   <% if @round %>
-    <div class="<%= class_names("one-liner": !@is_mobile) %>">
+    <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column gap-2": @is_mobile) %>">
       <!-- <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path %></h4> -->
-      <%= render "shared/select_club", fallback_path: user_box_scores_path %>
-      <%= render "shared/select_round", fallback_path: user_box_scores_path %>
+      <div class="<%= class_names("d-flex flex-column flex-sm-row gap-2 gap-sm-3 align-items-start": @is_mobile) %>">
+        <%= render "shared/select_club", fallback_path: user_box_scores_path %>
+        <%= render "shared/select_round", fallback_path: user_box_scores_path %>
+      </div>
       <%# render "select_league", fallback_path: user_box_scores_path, from: "index" %>
-      <br><%= render 'action_buttons', round: @round, from: "index" %>
+      <div class="<%= class_names("": !@is_mobile, "mt-2": @is_mobile) %>">
+        <%= render 'action_buttons', round: @round, from: "index" %>
+      </div>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>

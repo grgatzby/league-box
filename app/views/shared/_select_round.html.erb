@@ -2,16 +2,22 @@
   <%= form_with url: fallback_path, method: :get do |form| %>
     <%= hidden_field_tag(:club_id, @club.id) %>
     <%= hidden_field_tag(:clear_format, clear_format) if local_assigns[:clear_format] %>
-    <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-      data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
-      data-bs-content="<%= t '.select_round_label' %>">
-      <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round') %>
-      <% if @round%>
-        <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();"}) %>&nbsp;&nbsp;&nbsp;&nbsp;
-      <% else %>
-        <%= form.select :round_id, @rounds_dropdown, selected: @selected_label %>&nbsp;&nbsp;&nbsp;&nbsp;
-        <%= form.submit t('.confirm_btn'), class: "btn btn-shape btn-green", name: "" %>
-      <% end %>
-    </span>
+    <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2": @is_mobile) %>">
+      <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="top" data-bs-delay= '{"show": 1000}'
+        data-bs-content="<%= t '.select_round_label' %>">
+        <%= form.label :round_id, local_assigns[:label] ? label : t('.select_round'), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
+        <% if @round%>
+          <%= form.select(:round_id, @rounds_dropdown, {selected: @selected_label}, {onchange: "this.form.submit();", class: (@is_mobile ? "form-select w-100" : "")}) %>
+          <% unless @is_mobile %>&nbsp;&nbsp;&nbsp;&nbsp;<% end %>
+        <% else %>
+          <div class="<%= class_names("d-flex flex-column flex-sm-row gap-2": @is_mobile, "d-inline": !@is_mobile) %>">
+            <%= form.select :round_id, @rounds_dropdown, {selected: @selected_label}, {class: (@is_mobile ? "form-select w-100" : "")} %>
+            <% unless @is_mobile %>&nbsp;&nbsp;&nbsp;&nbsp;<% end %>
+            <%= form.submit t('.confirm_btn'), class: class_names("btn btn-shape btn-green", "w-100": @is_mobile), name: "" %>
+          </div>
+        <% end %>
+      </span>
+    </div>
   <% end %>
 </div>
