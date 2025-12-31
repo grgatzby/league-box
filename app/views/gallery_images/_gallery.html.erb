@@ -1,7 +1,9 @@
 <%# Gallery display partial for use in rules page %>
 <div class="row g-3">
   <% gallery_images.each do |gallery_image| %>
-    <div class="col-12 col-md-6 col-lg-4 mb-3">
+    <div class="col-12 col-md-6 col-lg-4 mb-3 gallery-filter-item"
+         data-gallery-filter-target="item"
+         data-caption="<%= gallery_image.caption %>">
       <div class="gallery-item-wrapper" style="position: relative; overflow: hidden; border-radius: 8px; background: #000;">
         <div class="gallery-item" style="position: relative; width: 100%; height: 250px; overflow: hidden;">
           <%= image_tag gallery_image.image.url,

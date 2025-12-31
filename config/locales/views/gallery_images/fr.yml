@@ -5,6 +5,8 @@ fr:
       new_image: Télécharger une nouvelle image
       confirm_delete: Êtes-vous sûr de vouloir supprimer cette image?
       no_images: Aucune image dans la galerie pour le moment.
+      filter_by_caption: Filtrer par légende...
+      no_results: Aucune image ne correspond à votre recherche.
       images_count:
         one: image
         other: images

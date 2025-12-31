@@ -3,7 +3,7 @@
   <span data-action="click->toggle#toggleSection" data-section="<%= section_number %>" class="w-100">
     <h5 class="mb-0">
       <i class="<%= icon_class %>" style="width: 25px"></i>
-      <b class="cursor-pointer"><%= t translation_key %></b>
+      <b class="cursor-pointer"><%= t("pages.rules#{translation_key}") %></b>
       ⬇️
     </h5>
     <span data-toggle-target="section<%= section_number %>" class="d-none">
