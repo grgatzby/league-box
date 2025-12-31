@@ -1,16 +1,16 @@
 <!-- index league page: league table for the tournament -->
-<div class="<%= class_names("container": !@is_mobile) %>" data-controller="toggle"
+<div class="<%= class_names("container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <% if @rounds %>
 
-  <div class="one-liner text-size">
+  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
     <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= message %>">
-      <h3><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
+      <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
     </div>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
@@ -21,12 +21,14 @@
   </div>
   <% end %>
   <% if @league_start && @round %>
-    <div class=<%=@is_mobile ? "" : "one-liner"%>>
-      <h4><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path %></h4>
+    <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center mb-2": @is_mobile) %>">
+      <h4 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path %></h4>
     </div>
     <% if !@render_to_text %>
       <%# don't export to text buttons and top line (in user_box_score index) %>
-      <br><%= render 'action_buttons', round: @round, from: "index_league" %>
+      <div class="<%= class_names("": !@is_mobile, "mb-2": @is_mobile) %>">
+        <%= render 'action_buttons', round: @round, from: "index_league" %>
+      </div>
     <% end %>
     <%= render 'league_table', from: "index_league" %>
   <% else %>
