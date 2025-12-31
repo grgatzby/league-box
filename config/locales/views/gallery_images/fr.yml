@@ -32,3 +32,4 @@ fr:
       success: Image mise à jour avec succès!
     destroy:
       success: Image supprimée avec succès!
+      unauthorized: Vous n'êtes pas autorisé à supprimer des images.

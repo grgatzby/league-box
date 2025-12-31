@@ -110,11 +110,12 @@
   </div>
 
   <br>
-  <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
+  <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center">
+      <%= link_to t("gallery_images.index.gallery_title"), gallery_images_path, class: "btn btn-shape btn-aqua text-size" %>
     <% if user_signed_in?%>
-      <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+      <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
     <% else %>
-      <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
+      <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
     <% end %>
 
 

@@ -32,3 +32,4 @@ en:
       success: Image updated successfully!
     destroy:
       success: Image deleted successfully!
+      unauthorized: You are not authorized to delete images.

@@ -32,3 +32,4 @@ nl:
       success: Afbeelding succesvol bijgewerkt!
     destroy:
       success: Afbeelding succesvol verwijderd!
+      unauthorized: U bent niet gemachtigd om afbeeldingen te verwijderen.
