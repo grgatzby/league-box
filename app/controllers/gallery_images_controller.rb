@@ -1,4 +1,5 @@
 class GalleryImagesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_gallery_image, only: %i[show edit update destroy]
   before_action :set_clubs_for_selection, only: %i[new edit]
 
@@ -69,6 +70,14 @@ class GalleryImagesController < ApplicationController
   end
 
   def destroy
+    # Allow admin to delete any image, or referee to delete images from their own club
+    can_delete = current_user&.role == "admin" ||
+                 (current_user&.role&.include?("referee") && @gallery_image.club_id == current_user.club_id)
+
+    unless can_delete
+      redirect_to gallery_images_path, alert: t('.unauthorized'), status: :forbidden
+      return
+    end
     @gallery_image.destroy
     redirect_to gallery_images_path, notice: t('.success')
   end

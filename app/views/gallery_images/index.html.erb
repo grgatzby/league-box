@@ -75,7 +75,8 @@
                 <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">
                   <p class="card-text mb-0"><%= gallery_image.caption %></p>
                 </div>
-                <% if current_user %>
+                <% can_delete = current_user&.role == "admin" || (current_user&.role&.include?("referee") && gallery_image.club_id == current_user.club_id) %>
+                <% if can_delete %>
                   <div class="position-absolute top-0 end-0 p-2">
                     <%= link_to gallery_image_path(gallery_image),
                         data: { turbo_method: :delete, turbo_confirm: t(".confirm_delete") },
