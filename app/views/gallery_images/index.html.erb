@@ -1,13 +1,26 @@
 <%= render "shared/image_front" %>
 
 <div class="container-fluid px-2 px-md-3 px-lg-4">
-  <div class="frame-color-shape frame-padding frame-margin-rl text-size">
+  <div class="frame-color-shape frame-padding frame-margin-rl text-size" data-controller="gallery-filter">
     <br><h4><div class="title"><b><%= t(".gallery_title").upcase %></b></div></h4><br>
 
     <% if current_user %>
       <div class="d-flex justify-content-end mb-3">
         <%= link_to t(".new_image"), new_gallery_image_path, class: "btn btn-shape btn-yellow text-size" %>
       </div>
+    <% end %>
+
+    <% if (@is_admin && @gallery_images_by_club && @gallery_images_by_club.any?) || (@gallery_images && @gallery_images.any?) %>
+      <div class="mb-3">
+        <input type="text"
+               class="form-control"
+               placeholder="<%= t(".filter_by_caption") %>"
+               data-action="input->gallery-filter#filter"
+               data-gallery-filter-target="search">
+      </div>
+      <p class="d-none text-muted" data-gallery-filter-target="noResults">
+        <%= t(".no_results") %>
+      </p>
     <% end %>
 
     <% if @is_admin %>
@@ -22,7 +35,9 @@
             </h5>
             <div class="row g-3">
               <% gallery_images.each do |gallery_image| %>
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col-12 col-md-6 col-lg-4"
+                     data-gallery-filter-target="item"
+                     data-caption="<%= gallery_image.caption %>">
                   <div class="card" style="position: relative; overflow: hidden;">
                     <%= image_tag gallery_image.image.url, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;" %>
                     <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">
@@ -52,7 +67,9 @@
       <% if @gallery_images.any? %>
         <div class="row g-3">
           <% @gallery_images.each do |gallery_image| %>
-            <div class="col-12 col-md-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4"
+                 data-gallery-filter-target="item"
+                 data-caption="<%= gallery_image.caption %>">
               <div class="card" style="position: relative; overflow: hidden;">
                 <%= image_tag gallery_image.image.url, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;" %>
                 <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">

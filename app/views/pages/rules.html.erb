@@ -39,7 +39,8 @@
     </div>
 
     <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
-         data-toggle-target="togglableElement">
+         data-toggle-target="togglableElement"
+         data-controller="gallery-filter">
       <br><h4><div class="title"><b><%= t(".photo_gallery").upcase %></b></div></h4><br>
 
       <% if current_user %>
@@ -49,6 +50,19 @@
             <%= link_to t(".edit_gallery"), gallery_images_path, class: "btn btn-shape btn-yellow text-size" %>
           <% end %>
         </div>
+      <% end %>
+
+      <% if (@is_admin && @gallery_images_by_club && @gallery_images_by_club.any?) || (@gallery_images&.any?) %>
+        <div class="mb-3">
+          <input type="text"
+                 class="form-control"
+                 placeholder="<%= t(".filter_by_caption") %>"
+                 data-action="input->gallery-filter#filter"
+                 data-gallery-filter-target="search">
+        </div>
+        <p class="d-none text-muted" data-gallery-filter-target="noResults">
+          <%= t(".no_results") %>
+        </p>
       <% end %>
 
       <% if @is_admin && @gallery_images_by_club %>

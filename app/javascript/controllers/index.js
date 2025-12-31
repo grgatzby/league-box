@@ -4,6 +4,12 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
+import GalleryFilterController from "./gallery_filter_controller"
+application.register("gallery-filter", GalleryFilterController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -12,6 +18,3 @@ application.register("popover", PopoverController)
 
 import ToggleController from "./toggle_controller"
 application.register("toggle", ToggleController)
-
-import ChatroomSubscriptionController from "./chatroom_subscription_controller"
-application.register("chatroom-subscription", ChatroomSubscriptionController)

@@ -5,6 +5,8 @@ en:
       new_image: Upload New Image
       confirm_delete: Are you sure you want to delete this image?
       no_images: No images in the gallery yet.
+      filter_by_caption: Filter by caption...
+      no_results: No images match your search.
       images_count:
         one: image
         other: images

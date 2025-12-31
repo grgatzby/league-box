@@ -67,6 +67,8 @@ nl:
       upload_image: Afbeelding uploaden
       edit_gallery: Afbeelding bewerken
       no_images: Nog geen afbeeldingen in de galerij.
+      filter_by_caption: Filteren op bijschrift...
+      no_results: Geen afbeeldingen komen overeen met uw zoekopdracht.
     1_general_rules:
       overview_title: Beschrijving van het toernooi
       club: het club

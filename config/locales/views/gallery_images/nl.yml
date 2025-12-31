@@ -5,6 +5,8 @@ nl:
       new_image: Nieuwe afbeelding uploaden
       confirm_delete: Weet u zeker dat u deze afbeelding wilt verwijderen?
       no_images: Nog geen afbeeldingen in de galerij.
+      filter_by_caption: Filteren op bijschrift...
+      no_results: Geen afbeeldingen komen overeen met uw zoekopdracht.
       images_count:
         one: afbeelding
         other: afbeeldingen

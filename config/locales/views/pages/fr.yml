@@ -66,6 +66,8 @@ fr:
       upload_image: Télécharger une image
       edit_gallery: Éditer la galerie
       no_images: Aucune image dans la galerie pour le moment.
+      filter_by_caption: Filtrer par légende...
+      no_results: Aucune image ne correspond à votre recherche.
     1_general_rules:
       overview: Description du Tournoi
       club: club
