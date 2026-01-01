@@ -77,12 +77,29 @@ export default class extends Controller {
   toggleRules() {
     // when the user clicks on the "hide/display round dates" button
     this.togglableElementTarget.scrollTop = 0 // instantaneous scrollTop
+    const isCurrentlyHidden = this.togglableElementTarget.classList.contains("d-none");
     this.togglableElementTarget.classList.toggle("d-none");
     this.togglableButtonTarget.classList.toggle("d-none");
     const btn = this.tournamentRulesTarget
     let txt = btn.innerText
     btn.textContent = txt == this.displayRoundsValue ? this.hideRoundsValue : this.displayRoundsValue
-    window.scrollTo({top: window.innerHeight-66-24, behaviour: "smooth"});
+
+    // Scroll to appropriate section based on whether we're showing or hiding
+    setTimeout(() => {
+      if (isCurrentlyHidden) {
+        // Gallery is being shown - scroll to gallery header
+        const galleryHeader = document.getElementById("gallery-header");
+        if (galleryHeader) {
+          galleryHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      } else {
+        // Gallery is being hidden - scroll to rules header
+        const rulesHeader = document.getElementById("rules-header");
+        if (rulesHeader) {
+          rulesHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+    }, 100); // Small delay to ensure DOM has updated
   }
 
   toggleSection(event) {
