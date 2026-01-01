@@ -4,38 +4,47 @@
   <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>-->
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
   <!--<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black">-->
-  <div class="dropdown-menu" aria-labelledby="navbarDropdown color-black"  style="right: 0; left: auto; text-align: left;">
-    <%# pages/my_details should be deleted; now replaced with preferences/new and preferences/edit %>
-    <%# link_to t(".my_details_link"), my_details_path, class: "dropdown-item color-black" %>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <%# Profile section %>
     <% if current_user.profile_picture.present? %>
-      <%= link_to current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item", style: "display: flex; align-items: center; justify-content: flex-end; gap: 10px; text-decoration: none;" do %>
+      <%= link_to current_user.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "dropdown-item dropdown-item-profile" do %>
         <span><%= "#{current_user.nickname}" %></span>
-        <%= image_tag(profile_picture_circular_url(current_user, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover;") %>
+        <%= image_tag(profile_picture_circular_url(current_user, 30), alt: 'Profile picture', class: "dropdown-profile-picture") %>
       <% end %>
     <% else %>
-      <div class="dropdown-item" style="display: flex; align-items: center; justify-content: flex-end; gap: 10px;">
+      <div class="dropdown-item dropdown-item-profile">
         <span><%= "#{current_user.nickname}" %></span>
       </div>
     <% end %>
+
+    <div class="dropdown-divider"></div>
+
+    <%# Navigation links %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>
     <%= link_to t('.round_ranking_link'), user_box_scores_path, class: "dropdown-item color-green" %>
     <%= link_to t('.league_table_link'), index_league_path, class: "dropdown-item color-green" %>
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
     <%= link_to t('.club_staff_link'), staff_path, class: "dropdown-item color-black" %>
+
+    <%# Player-specific links %>
     <% if current_user && current_user.role == "player" %>
       <%# my_scores_path(0) forces the _select_club_round form %>
       <%= link_to t('.my_scores_link'), my_scores_path(0), class: "dropdown-item color-tennis-red" %>
     <% end %>
+
     <%= link_to t(".my_details_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
-    <%# if current_user.role == "player" %>
-      <!-- <%= link_to t('.general_chat_link'), chatroom_path(@general_chatroom), class: "dropdown-item" %> -->
-    <%# else %>
+
+    <%# Admin links %>
     <% if current_user.role != "player" %>
+      <div class="dropdown-divider"></div>
       <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item color-orange" %>
       <%= link_to t('.round_end_link'), edit_round_path(0), class: "dropdown-item color-black" %>
     <% end %>
-    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
-      <i class="fa-solid fa-arrow-right-from-bracket" style="color: #383838;"></i>
+
+    <%# Logout %>
+    <div class="dropdown-divider"></div>
+    <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item dropdown-item-logout" do %>
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
     <% end %>
   </div>
 </li>
