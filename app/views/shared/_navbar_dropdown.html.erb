@@ -32,10 +32,10 @@
     <%# else %>
     <% if current_user.role != "player" %>
       <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item color-orange" %>
-      <%= link_to t('.round_end_link'), edit_round_path(0), class: "dropdown-item color-tennis-blue" %>
+      <%= link_to t('.round_end_link'), edit_round_path(0), class: "dropdown-item color-black" %>
     <% end %>
     <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" do %>
-      <i class="fa-solid fa-arrow-right-from-bracket" style="color: #c60407;"></i>
+      <i class="fa-solid fa-arrow-right-from-bracket" style="color: #383838;"></i>
     <% end %>
   </div>
 </li>
