@@ -15,3 +15,9 @@ $tennis-blue: #336699;
 $tennis-aqua: #03897c;
 $tennis-beige: #e5c898;
 $tennis-red: #c60407;
+
+// Color variants for better contrast
+$tennis-blue-dark: darken($tennis-blue, 10%);
+$tennis-blue-light: lighten($tennis-blue, 15%);
+$tennis-aqua-dark: darken($tennis-aqua, 10%);
+$tennis-aqua-light: lighten($tennis-aqua, 10%);

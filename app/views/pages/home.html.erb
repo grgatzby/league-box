@@ -4,124 +4,148 @@
      data-controller="toggle" >
   <div class="photo-home-text frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
         data-toggle-target="togglableElement">
-    <br>
-    <h3>
-      <div class="title">
+    <!-- Main Title Section -->
+    <header class="home-header mb-4 mb-md-5">
+      <h1 class="title mb-0">
         <b><%= t(".main_title").upcase %></b>
+      </h1>
+    </header>
+
+    <!-- Welcome Section -->
+    <section class="home-section mb-4">
+      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="1">
+        <h2 class="mb-0 d-flex align-items-center gap-2">
+          <span class="section-icon">🏆</span>
+          <b class="cursor-pointer flex-grow-1"><%= t '.welcome_title' %></b>
+          <span class="section-arrow">⬇️</span>
+        </h2>
       </div>
-    </h3>
-    <br class="d-none d-md-block"><br class="d-none d-md-block">
-    <span data-action="click->toggle#toggleSection" data-section="1">
-      <h5 class="mb-0">🏆
-        <b class="cursor-pointer"><%= t '.welcome_title' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section1" class="d-none">
-        <p><%= t '.p01_html' %></p>
-        <p><%= t '.p02_html' %></p>
-        <p><%= t '.p03_html' %></p>
-        <br>
-      </span>
-    </span>
+      <div class="home-section-content d-none" data-toggle-target="section1">
+        <div class="mt-3">
+          <p><%= t '.p01_html' %></p>
+          <p><%= t '.p02_html' %></p>
+          <p><%= t '.p03_html' %></p>
+        </div>
+      </div>
+    </section>
 
-    <hr>
-    <span data-action="click->toggle#toggleSection" data-section="2">
-      <h5 class="top-bottom-padding mb-0">🧑‍💻
-        <b class="cursor-pointer"><%= t '.use_title' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section2" class="d-none">
-        <ol>
-          <% if !current_user
-            class_prefix = "bold-font color-" %>
-            <li class="top-bottom-padding"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li02"}</span>".html_safe) %></li>
-            <li class="top-bottom-padding"><%= t(".li07_html", inset_a: "<span class='#{class_prefix}tennis-blue'>#{t ".li03a"}</span>".html_safe,
-                                                               inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li03b"}</span>".html_safe,
-                                                               inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li01"}</span>".html_safe) %></li>
-            <li class="top-bottom-padding"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li04a"}</span>".html_safe,
-                                                               inset_b: "<span class='#{class_prefix}green'>#{t ".li04b"}</span>".html_safe) %></li>
-          <% else
-            class_prefix = "btn btn-inlayed bold-font color-" %>
-            <li class="top-bottom-padding"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li02"}</a>".html_safe) %></li>
-            <li class="top-bottom-padding"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li03a"}</a>".html_safe,
-                                                               inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe,
-                                                               inset_c: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li01"}</a>".html_safe) %></li>
-            <li class="top-bottom-padding"><%= t(".li08_html", inset_a: "<a class='#{class_prefix}green' href='#{@path["04a"]}'>#{t ".li04a"}</a>".html_safe,
-                                                               inset_b: "<a class='#{class_prefix}green' href='#{@path["04b"]}'>#{t ".li04b"}</a>".html_safe) %></li>
-          <% end %>
-        </ol>
-      </span>
-    </span>
-    <hr>
+    <!-- LeagueBox at a Glance Section -->
+    <section class="home-section mb-4">
+      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="2">
+        <h2 class="mb-0 d-flex align-items-center gap-2">
+          <span class="section-icon">🧑‍💻</span>
+          <b class="cursor-pointer flex-grow-1"><%= t '.use_title' %></b>
+          <span class="section-arrow">⬇️</span>
+        </h2>
+      </div>
+      <div class="home-section-content d-none" data-toggle-target="section2">
+        <div class="mt-3">
+          <ol class="home-features-list">
+            <% if !current_user
+              class_prefix = "bold-font color-" %>
+              <li class="home-feature-item"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li02"}</span>".html_safe) %></li>
+              <li class="home-feature-item"><%= t(".li07_html", inset_a: "<span class='#{class_prefix}tennis-blue'>#{t ".li03a"}</span>".html_safe,
+                                                 inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li03b"}</span>".html_safe,
+                                                 inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li01"}</span>".html_safe) %></li>
+              <li class="home-feature-item"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li04a"}</span>".html_safe,
+                                                 inset_b: "<span class='#{class_prefix}green'>#{t ".li04b"}</span>".html_safe) %></li>
+            <% else
+              class_prefix = "btn btn-inlayed bold-font color-" %>
+              <li class="home-feature-item"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li02"}</a>".html_safe) %></li>
+              <li class="home-feature-item"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li03a"}</a>".html_safe,
+                                                 inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li03b"}</a>".html_safe,
+                                                 inset_c: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li01"}</a>".html_safe) %></li>
+              <li class="home-feature-item"><%= t(".li08_html", inset_a: "<a class='#{class_prefix}green' href='#{@path["04a"]}'>#{t ".li04a"}</a>".html_safe,
+                                                 inset_b: "<a class='#{class_prefix}green' href='#{@path["04b"]}'>#{t ".li04b"}</a>".html_safe) %></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </section>
 
 
-    <span data-action="click->toggle#toggleSection" data-section="3">
-      <h5 class="top-bottom-padding mb-0">
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 20 %>
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 30 %>
-        <b class="cursor-pointer"><%= t '.ready_title' %></b>
-      ⬇️</h5>
-      <span data-toggle-target="section3" class="d-none">
-        <p><%= t '.p04' %></p>
-        <ol id="steps"><% (9..12).each do |i| %>
-            <li class="top-bottom-padding ms-2 ms-md-3"><%= t ".li#{format('%02d', i)}_html" %></li>
+    <!-- Ready Section -->
+    <section class="home-section mb-4">
+      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="3">
+        <h2 class="mb-0 d-flex align-items-center gap-2">
+          <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-inline d-md-none", width: 20 %>
+          <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-none d-md-inline", width: 30 %>
+          <b class="cursor-pointer flex-grow-1"><%= t '.ready_title' %></b>
+          <span class="section-arrow">⬇️</span>
+        </h2>
+      </div>
+      <div class="home-section-content d-none" data-toggle-target="section3">
+        <div class="mt-3">
+          <p><%= t '.p04' %></p>
+          <ol id="steps" class="home-steps-list">
+            <% (9..12).each do |i| %>
+              <li class="home-step-item"><%= t ".li#{format('%02d', i)}_html" %></li>
+            <% end %>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <div class="home-cta-section my-4 my-md-5">
+      <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
+        <% if user_signed_in?%>
+          <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+        <% else %>
+          <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
         <% end %>
-        </ol>
-      </span>
-    </span>
-
-    <br>
-    <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
-      <% if user_signed_in?%>
-        <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
-      <% else %>
-        <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
-      <% end %>
+      </div>
     </div>
-    <br>
 
-    <span data-toggle-target= "image">
-      <%= image_tag "social_tennis.jpg", alt: "Social tennis", width: "100%" %>
-    </span>
+    <!-- Social Tennis Image -->
+    <div class="home-image-section mb-4" data-toggle-target="image">
+      <%= image_tag "social_tennis.jpg", alt: "Social tennis", class: "img-fluid rounded", width: "100%" %>
+    </div>
 
-    <br><br>
+    <!-- Rules Section -->
+    <section class="home-rules-section text-center my-4 my-md-5">
       <% class_prefix = "btn btn-inlayed bold-font color-" %>
-    <div class="title">
-      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
-      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
-    </div>
-    <br>
-    <div class="title">
-      <p class="top-bottom-padding"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
-    </div>
-    <br>
-    <div class="title"><h5><b><%= t '.happy_tournament' %></b></h5></div>
+      <div class="title mb-3">
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
+      </div>
+      <div class="title">
+        <p class="mb-3"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
+      </div>
+      <div class="title">
+        <h5 class="mb-0"><b><%= t '.happy_tournament' %></b></h5>
+      </div>
+    </section>
 
-    <br><br>
-    <h5 class="top-bottom-padding color-tennis-blue"><b>👤<%= t '.club_join_title' %></b></h5>
-    <p class="top-bottom-padding"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
+    <!-- Club Join Section -->
+    <section class="home-join-section my-4 my-md-5">
+      <h5 class="color-tennis-blue mb-3"><b>👤 <%= t '.club_join_title' %></b></h5>
+      <p class="mb-4"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
+      <div class="buttons-wrap text-center">
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
+        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
+      </div>
+    </section>
 
-    <div class="buttons-wrap">
-      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
-      <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
-    </div>
-
-    <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-      class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+    <!-- Scroll to Top Button -->
+    <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+      class="btn btn-shape btn-beige top-button d-none">
+      <i class="fa-solid fa-up-long"></i>
     </button>
   </div>
 
-  <br>
-  <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center">
+  <!-- Bottom Navigation -->
+  <div class="home-bottom-nav mt-4">
+    <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
       <%= link_to t("gallery_images.index.gallery_title"), gallery_images_path, class: "btn btn-shape btn-aqua text-size" %>
-    <% if user_signed_in?%>
-      <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
-    <% else %>
-      <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
-    <% end %>
-
-
-    <% if current_user == @admin %>
-      <br><br>
-      <%= link_to t('.add_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua w-100 w-sm-auto" %>
-    <% end %>
+      <% if user_signed_in?%>
+        <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
+      <% else %>
+        <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
+      <% end %>
+      <% if current_user == @admin %>
+        <%= link_to t('.add_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua text-size" %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,14 +1,16 @@
 <%# Rules section partial %>
-<div class="d-flex align-items-center" style="min-height: 40px;">
-  <span data-action="click->toggle#toggleSection" data-section="<%= section_number %>" class="w-100">
-    <h5 class="mb-0">
-      <i class="<%= icon_class %>" style="width: 25px"></i>
-      <b class="cursor-pointer"><%= t("pages.rules#{translation_key}") %></b>
-      ⬇️
-    </h5>
-    <span data-toggle-target="section<%= section_number %>" class="d-none">
+<div class="rules-section-item mb-3">
+  <div class="rules-section-header-modern" data-action="click->toggle#toggleSection" data-section="<%= section_number %>">
+    <h3 class="mb-0 d-flex align-items-center gap-3">
+      <i class="<%= icon_class %> rules-section-icon"></i>
+      <b class="cursor-pointer flex-grow-1"><%= t("pages.rules#{translation_key}") %></b>
+      <span class="rules-section-arrow">⬇️</span>
+    </h3>
+  </div>
+  <div class="rules-section-content-modern d-none" data-toggle-target="section<%= section_number %>">
+    <div class="rules-section-body-modern mt-3">
       <%= render partial_name %>
-    </span>
-  </span>
+    </div>
+  </div>
 </div>
-<hr>
+<hr class="rules-section-divider">
