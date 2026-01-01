@@ -37,7 +37,7 @@
       <% unless player.role == "spare" %>
         <li class=<%=player == current_user ? "color-tennis-red" : (index % 2 == 0 ? "color-tennis-blue" : "color-tennis-aqua") %>>
           <% name = "#{render "shared/fullname", user: player}"
-            boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.reverse.join[0...-7]
+            boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
             message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}" %>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
               data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'

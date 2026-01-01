@@ -29,7 +29,7 @@ nl:
       all_box_title_html: De boxen van de ronde <i style="font-weight:normal">(compacte weergave)</i>
       all_box_explain_html: <i><b class='color-green'>Klik op een box</b> voor wedstrijddetails.</i>
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
-      message_box_pop: "Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br />Box %{box} : <i class='color-green'>Klik op voor wedstrijddetails.</i>"
+      message_box_pop: "Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br /><i class='color-green'>Klik op voor wedstrijddetails van box %{box}</i>"
       message_csv_pop: <b>spelers en referee exporteren</b> naar CSV-bestand met kolommen:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (mijn huidige box)
       my_box: (mijn box)
