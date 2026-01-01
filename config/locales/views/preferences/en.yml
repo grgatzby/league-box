@@ -16,3 +16,7 @@ en:
       password: Modify password
       expanded_view: Expanded view
       clear_format: Clear background color gradient
+      profile_picture: "🖼️ Profile Picture:"
+      submit_button: OK
+      choose_file: Choose File
+      no_file_selected: No file selected

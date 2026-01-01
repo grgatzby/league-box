@@ -1,0 +1,30 @@
+// Custom file input styling
+.custom-file-input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.custom-file-input {
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.custom-file-label {
+  display: inline-block;
+  cursor: pointer;
+  margin: 0;
+  width: auto;
+}
+
+.custom-file-name {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-style: italic;
+  margin-left: 0.5rem;
+}
