@@ -28,8 +28,8 @@ nl:
     select_club:
       select_club: "Club: "
     select_round:
-      select_round: "Ronde: "
-      select_round_label: ronde naam (ronde startdatum)
+      select_round: "Vorige rondes: "
+      select_round_label: <i>ronde naam (ronde startdatum)</i>
       confirm_btn: ⎷ Bevestigen
     select_club_round:
       select_club: "Kies een club: "
