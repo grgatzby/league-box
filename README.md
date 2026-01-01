@@ -410,4 +410,18 @@ This project was generated using [lewagon/rails-templates](https://github.com/le
 
 ## License
 
-[Add license information here if applicable]
+[Created by Guillaume Cazals]
+
+
+# application schema in https://kitt.lewagon.com/db/95868
+
+This app helps organise intra club tennis championship where players are divided into boxes of 4 to 6 players
+Within a one month time frame (a round) players will compete against other players of their box; at the end of the round
+the best players in each box are upgraded one or two boxes, the worst are downgraded one or two boxes.
+Available features:
+- players can: view a box in list view or table view, enter their new match score, view all other boxes,
+             view the round rank list and overall league table (all rounds aggregate), access their box chatroom.
+- referees can additionnaly: enter / edit / delete a match score, access the #general chatroom (to chat with other clubs
+             referees) and all of the chatrooms of their club, request a new round creation from the admin.
+- admin can additionnaly: access any chatroom, create a new club and its boxes (from a formatted CSV file including the
+             players list), create the next round.
