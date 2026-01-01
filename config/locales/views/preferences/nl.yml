@@ -16,3 +16,7 @@ nl:
       password: Wachtwoord wijzigen
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
+      profile_picture: "🖼️ Profielfoto:"
+      submit_button: OK
+      choose_file: Bestand kiezen
+      no_file_selected: Geen bestand geselecteerd

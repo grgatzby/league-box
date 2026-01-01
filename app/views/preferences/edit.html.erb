@@ -21,15 +21,39 @@
       </div>
 
       <div class="row">
-        <div class="col-4"><%= label_tag "user[profile_picture]", "🖼️ Profile Picture:" %></div>
+        <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
         <div class="col-4">
-          <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+          <div class="custom-file-input-wrapper">
+            <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
+            <label for="profile_picture_input" class="custom-file-label btn btn-shape btn-beige">
+              <%= t(".choose_file") %>
+            </label>
+            <span class="custom-file-name" id="profile_picture_name" data-no-file-text="<%= t(".no_file_selected") %>"><%= t(".no_file_selected") %></span>
+          </div>
           <% if current_user.profile_picture.present? %>
             <br>
             <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;") %>
           <% end %>
         </div>
       </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const fileInput = document.getElementById('profile_picture_input');
+          const fileNameSpan = document.getElementById('profile_picture_name');
+
+          if (fileInput && fileNameSpan) {
+            const noFileSelectedText = fileNameSpan.getAttribute('data-no-file-text');
+
+            fileInput.addEventListener('change', function(e) {
+              if (e.target.files && e.target.files.length > 0) {
+                fileNameSpan.textContent = e.target.files[0].name;
+              } else {
+                fileNameSpan.textContent = noFileSelectedText;
+              }
+            });
+          }
+        });
+      </script>
 
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
@@ -89,7 +113,7 @@
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= f.submit "OK", class: "btn btn-shape btn-aqua" %>
+      <%= f.submit t(".submit_button"), class: "btn btn-shape btn-aqua" %>
     </div>
   <% end %>
 
