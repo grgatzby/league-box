@@ -28,8 +28,8 @@ en:
     select_club:
       select_club: "Club: "
     select_round:
-      select_round: "Round: "
-      select_round_label: round name (round start date)
+      select_round: "Previous rounds: "
+      select_round_label: <i>round name (round start date)</i>
       confirm_btn: ⎷ Confirm
     select_club_round:
       select_club: "Select a club: "
