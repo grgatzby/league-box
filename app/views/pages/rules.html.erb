@@ -5,43 +5,60 @@
      data-toggle-display-rounds-value="<%= t '.btn_display_gallery' %>"
      data-toggle-hide-rounds-value="<%= t '.btn_hide_gallery' %>">
   <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
-    <br><h4><div class="title"><b><%= t(".rules_title").upcase %></b></div></h4><br>
 
-    <% rules_sections = [
-      { number: 1, icon: "fa-regular fa-circle-check", key: ".general_rules_section", partial: "1_general_rules" },
-      { number: 2, icon: "fa-solid fa-calendar", key: ".round_dates_section", partial: "2_round_dates" },
-      { number: 3, icon: "fa-solid fa-trophy", key: ".match_rules_section", partial: "3_match_rules" },
-      { number: 4, icon: "fa-solid fa-award", key: ".scoring_and_points_section", partial: "4_scoring_and_points" },
-      { number: 5, icon: "fa-solid fa-user-group", key: ".ranking_and_promotions_section", partial: "5_ranking_and_promotions" },
-      { number: 6, icon: "fa-solid fa-circle-exclamation", key: ".special_circumstances_section", partial: "6_special_circumstances" },
-      { number: 7, icon: "fa-solid fa-scale-balanced", key: ".disputes_section", partial: "7_disputes" }
-    ] %>
+    <!-- Rules Header -->
+    <header class="rules-header mb-4 mb-md-5">
+      <h1 class="title mb-0">
+        <b><%= t(".rules_title").upcase %></b>
+      </h1>
+    </header>
 
-    <% rules_sections.each do |section| %>
-      <%= render "rules_section",
-          section_number: section[:number],
-          icon_class: section[:icon],
-          translation_key: section[:key],
-          partial_name: section[:partial] %>
-    <% end %>
+    <!-- Rules Sections -->
+    <div class="rules-sections-container">
+      <% rules_sections = [
+        { number: 1, icon: "fa-regular fa-circle-check", key: ".general_rules_section", partial: "1_general_rules" },
+        { number: 2, icon: "fa-solid fa-calendar", key: ".round_dates_section", partial: "2_round_dates" },
+        { number: 3, icon: "fa-solid fa-trophy", key: ".match_rules_section", partial: "3_match_rules" },
+        { number: 4, icon: "fa-solid fa-award", key: ".scoring_and_points_section", partial: "4_scoring_and_points" },
+        { number: 5, icon: "fa-solid fa-user-group", key: ".ranking_and_promotions_section", partial: "5_ranking_and_promotions" },
+        { number: 6, icon: "fa-solid fa-circle-exclamation", key: ".special_circumstances_section", partial: "6_special_circumstances" },
+        { number: 7, icon: "fa-solid fa-scale-balanced", key: ".disputes_section", partial: "7_disputes" }
+      ] %>
+
+      <% rules_sections.each do |section| %>
+        <%= render "rules_section",
+            section_number: section[:number],
+            icon_class: section[:icon],
+            translation_key: section[:key],
+            partial_name: section[:partial] %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="top-bottom-padding">
+  <!-- Rules Actions -->
+  <div class="rules-actions-section my-4 my-md-5">
     <div class="buttons-wrap dont-print d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
       <button data-action="click->toggle#toggleRules" data-toggle-target="tournamentRules"
-        class="btn btn-shape btn-yellow text-size w-100 w-sm-auto ms-sm-2"><%= t '.btn_display_gallery' %>
+        class="btn btn-shape btn-yellow text-size w-100 w-sm-auto ms-sm-2">
+        <%= t '.btn_display_gallery' %>
       </button>
-      <br>
       <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto ms-sm-2" %>
       <span class="d-none" data-toggle-target="togglableButton">
         <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size w-100 w-sm-auto ms-sm-2"%>
       </span>
     </div>
+  </div>
 
     <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
          data-toggle-target="togglableElement"
          data-controller="gallery-filter">
-      <br><h4><div class="title"><b><%= t(".photo_gallery").upcase %></b></div></h4><br>
+
+      <!-- Gallery Header -->
+      <header class="gallery-header mb-4 mb-md-5">
+        <h2 class="title mb-0">
+          <b><%= t(".photo_gallery").upcase %></b>
+        </h2>
+      </header>
 
       <% if current_user %>
         <div class="mb-3 d-flex gap-2 justify-content-end">
