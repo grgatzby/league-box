@@ -9,11 +9,13 @@ nl:
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
     edit:
+      role: Rol
       preferences: Voorkeuren
       nick_name: Pseudo
       phone_number: Telefoonnummer
       e_mail: E-mailadres
-      password: Wachtwoord wijzigen
+      password: Wachtwoord
+      modify_password: Wachtwoord wijzigen
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
       profile_picture: "🖼️ Profielfoto:"
