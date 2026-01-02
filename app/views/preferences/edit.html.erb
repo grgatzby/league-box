@@ -8,52 +8,19 @@
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <div style="display: flex; align-items: center; gap: 10px;">
-        <b><%= render "shared/fullname", user: current_user %></b>
         <% if current_user.profile_picture.present? %>
-          <%= image_tag(profile_picture_circular_url(current_user, 40), alt: 'Profile picture', style: "width: 40px; height: 40px; border-radius: 50%; object-fit: cover;") %>
+          <%= image_tag(profile_picture_circular_url(current_user, 40), alt: 'Profile picture', id: "top_profile_picture", style: "width: 40px; height: 40px; border-radius: 50%; object-fit: cover;") %>
+        <% else %>
+          <img id="top_profile_picture" alt="Profile picture" style="display: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" />
         <% end %>
+        <b><%= render "shared/fullname", user: current_user %></b>
       </div>
       <br><br>
-      <br>
+
       <div class="row">
-        <div class="col-4"><%= "🧩 Role:" %></div>
+        <div class="col-4"><%= "🧩 #{t(".role")}:" %></div>
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
-
-      <div class="row">
-        <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
-        <div class="col-4">
-          <div class="custom-file-input-wrapper">
-            <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
-            <label for="profile_picture_input" class="custom-file-label btn btn-shape btn-beige">
-              <%= t(".choose_file") %>
-            </label>
-            <span class="custom-file-name" id="profile_picture_name" data-no-file-text="<%= t(".no_file_selected") %>"><%= t(".no_file_selected") %></span>
-          </div>
-          <% if current_user.profile_picture.present? %>
-            <br>
-            <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;") %>
-          <% end %>
-        </div>
-      </div>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          const fileInput = document.getElementById('profile_picture_input');
-          const fileNameSpan = document.getElementById('profile_picture_name');
-
-          if (fileInput && fileNameSpan) {
-            const noFileSelectedText = fileNameSpan.getAttribute('data-no-file-text');
-
-            fileInput.addEventListener('change', function(e) {
-              if (e.target.files && e.target.files.length > 0) {
-                fileNameSpan.textContent = e.target.files[0].name;
-              } else {
-                fileNameSpan.textContent = noFileSelectedText;
-              }
-            });
-          }
-        });
-      </script>
 
       <div class="row">
         <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
@@ -64,6 +31,98 @@
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
+        <div class="col-4">
+          <div class="custom-file-input-wrapper">
+            <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
+            <label for="profile_picture_input" class="custom-file-label btn btn-shape btn-beige">
+              <%= t(".choose_file") %>
+            </label>
+          </div>
+          <div id="profile_picture_preview" style="margin-top: 10px;">
+            <% if current_user.profile_picture.present? %>
+              <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;", id: "preview_image") %>
+              <br><br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <script>
+        (function() {
+          function initProfilePicturePreview() {
+            const fileInput = document.getElementById('profile_picture_input');
+            const previewContainer = document.getElementById('profile_picture_preview');
+            const topProfilePicture = document.getElementById('top_profile_picture');
+
+            if (!fileInput || !previewContainer) {
+              console.warn('Profile picture preview elements not found');
+              return;
+            }
+
+            fileInput.addEventListener('change', function(e) {
+              if (e.target.files && e.target.files.length > 0) {
+                const file = e.target.files[0];
+
+                // Validate file type
+                if (!file.type.match('image.*')) {
+                  console.warn('Selected file is not an image');
+                  return;
+                }
+
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                  const imageUrl = event.target.result;
+
+                  // Update top circular profile picture
+                  if (topProfilePicture) {
+                    topProfilePicture.src = imageUrl;
+                    topProfilePicture.style.display = 'block';
+                  }
+
+                  // Update or create preview image
+                  let previewImg = previewContainer.querySelector('img');
+                  if (previewImg) {
+                    previewImg.src = imageUrl;
+                  } else {
+                    previewImg = document.createElement('img');
+                    previewImg.src = imageUrl;
+                    previewImg.alt = 'Profile picture preview';
+                    previewImg.className = 'rounded';
+                    previewImg.style.cssText = 'max-width: 100px; max-height: 100px;';
+                    previewContainer.insertBefore(previewImg, previewContainer.firstChild);
+
+                    // Add line breaks for spacing if they don't exist
+                    if (!previewContainer.querySelector('br')) {
+                      const br1 = document.createElement('br');
+                      const br2 = document.createElement('br');
+                      previewContainer.appendChild(br1);
+                      previewContainer.appendChild(br2);
+                    }
+                  }
+                };
+
+                reader.onerror = function() {
+                  console.error('Error reading file');
+                };
+
+                reader.readAsDataURL(file);
+              }
+            });
+          }
+
+          // Run immediately if DOM is ready, otherwise wait for DOMContentLoaded
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initProfilePicturePreview);
+          } else {
+            // DOM is already loaded, run immediately
+            initProfilePicturePreview();
+          }
+        })();
+      </script>
 
       <div class="row">
         <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
@@ -88,6 +147,7 @@
       <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-4">
+          <%= f.label :password, t(".modify_password") %>
           <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
       </div>
@@ -106,8 +166,8 @@
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
         <div class="col-5">
-          <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
           <%= f.label :clear_format, t(".clear_format") %>
+          <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
         </div>
     </div>
     </div>
