@@ -18,6 +18,10 @@
       <br><br>
 
       <div class="row">
+        <div class="col-4"><%= "🏟️ Club:" %></div>
+        <div class="col-3"><%= "#{current_user.club.name}" %></div>
+      </div>
+      <div class="row">
         <div class="col-4"><%= "🧩 #{t(".role")}:" %></div>
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
@@ -31,7 +35,25 @@
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
-      <hr>
+      <div class="row">
+        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
+        <div class="col-2"><%= f.text_field :phone_number,
+                                placeholder: current_user.phone_number,
+                                value: current_user.phone_number,
+                                style: "width: 10em",
+                                input_html: {class: "contact-field"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4"><%= f.label :e_mail, "📩 #{t(".e_mail")} :" %></div>
+        <div class="col-2"><%= f.text_field :e_mail,
+                                placeholder: current_user.email,
+                                value: current_user.email,
+                                style: "width: 20em",
+                                input_html: {class: "contact-field"} %>
+        </div>
+      </div>
+     <hr>
 
       <div class="row">
         <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
@@ -124,25 +146,6 @@
         })();
       </script>
 
-      <div class="row">
-        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
-        <div class="col-2"><%= f.text_field :phone_number,
-                                placeholder: current_user.phone_number,
-                                value: current_user.phone_number,
-                                style: "width: 10em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-4"><%= f.label :e_mail, "📩 #{t(".e_mail")} :" %></div>
-        <div class="col-2"><%= f.text_field :e_mail,
-                                placeholder: current_user.email,
-                                value: current_user.email,
-                                style: "width: 20em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
 
       <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>

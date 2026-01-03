@@ -30,7 +30,7 @@ nl:
       li04b: 🏆🏆 League table
       li08_html: >
         <b>Uw rangschikkingen zijn altijd actueel</b> in %{inset_a} en %{inset_b}.<br>
-      ready_title: Klaar? Tot ziens op de tennisbaan!
+      ready_title: Klaar? Allemaal tot ziens op de tennisbaan! 🎾
       p04: Elke ronde duurt een maand en spelers strijden in hun box.
       li09_html: Gedurende de ronde <b>speel elke wedstrijd</b> in je box.
       li10_html: Na elke wedstrijd <b>voert de wedstrijdscore in</b> op LeagueBox.
@@ -48,7 +48,7 @@ nl:
         LeagueBox regelt alles voor u!<br>
         Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Gelukkig toernooi met LeagueBox!
-      add_club_btn: Een nieuwe club toevoegen
+      create_club_btn: Maak een nieuwe club
       ok: 📦 Naar boxen
       login_link: log in
     rules:

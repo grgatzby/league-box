@@ -7,8 +7,8 @@ en:
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
       my_scores_btn: my scores
-      pop01_a: select a match to edit or delete the score
-      pop01_b: ", or enter a new score"
+      pop01_a: select a match to <i>edit</i> or <i>delete</i> the score
+      pop01_b: ", or <i>enter</i> a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
       my_current_box: my current box
       my_box: my box

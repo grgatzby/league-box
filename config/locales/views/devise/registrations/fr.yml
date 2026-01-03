@@ -1,0 +1,14 @@
+fr:
+  devise:
+    registrations:
+      edit:
+        title: "Modifier l'utilisateur"
+        email_label: "Email"
+        password_label: "Mot de passe"
+        password_confirmation_label: "Confirmation du mot de passe"
+        current_password_label: "Mot de passe actuel"
+        waiting_confirmation: "En attente de confirmation pour :"
+        password_hint: "laissez vide si vous ne souhaitez pas le modifier"
+        current_password_hint: "saisir votre mot de passe actuel pour confirmer vos modifications"
+        update_button: "Mettre à jour"
+        back_button: "Retour"
