@@ -261,12 +261,3 @@ nl:
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
     staff:
       ok: 📦 Boxen
-# to delete (now in preferences)
-    my_details:
-      preferences: Voorkeuren
-      nick_name: Pseudo
-      phone_number: Telefoonnummer
-      e_mail: E-mailadres
-      password: Wachtwoord wijzigen
-      expanded_view: Uitgebreide weergave
-      clear_format: Zijn achtergrondkleurverloop

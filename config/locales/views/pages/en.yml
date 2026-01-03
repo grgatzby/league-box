@@ -263,12 +263,3 @@ en:
       p29: Received messages appear on the left, and sent messages on the right.
     staff:
       ok: 📦 Boxes
-# to delete (now in preferences)
-    my_details:
-      preferences: Preferences
-      nick_name: Nick name
-      phone_number: Phone number
-      e_mail: E-mail
-      password: Modify password
-      expanded_view: Expanded view
-      clear_format: Clear background color gradient

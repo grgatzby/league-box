@@ -9,12 +9,12 @@ fr:
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: 📜 Règles
-      club_staff_link: 👤 Vos contacts
+      club_staff_link: 👤 Mes contacts
       all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement round
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 Mes scores
-      my_details_link: ✉️ Mes détails
+      my_profile_link: ✉️ Mon profil
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Les chatrooms
       round_end_link: Reporter fin du round
@@ -37,7 +37,7 @@ fr:
       back_btn: ←
       select_round: "Choisir un round: "
     staff:
-      our_staff_title: Vos contacts
+      our_staff_title: Mes contacts
       staff_p01: >
         Le personnel de votre club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >

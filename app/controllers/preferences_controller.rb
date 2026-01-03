@@ -1,7 +1,12 @@
 class PreferencesController < ApplicationController
   def new
-    #on 10/02/2025 replaced pages#my_details with preferences#new and preferences#edit
+    #My details form for new user
     @preference = Preference.new(user_id: current_user.id)
+  end
+
+  def edit
+    #My details form for existing user
+    @preference = current_user.preference
   end
 
   def create
@@ -28,13 +33,8 @@ class PreferencesController < ApplicationController
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 
-  def edit
-    #on 10/02/2025 replaced pages#my_details with preferences#new and preferences#edit
-    @preference = current_user.preference
-  end
-
   def update
-    # update preference record for current_user, coming form form my_details.html.erb
+    # update preference record for current_user, coming form form preferences/edit.html.erb
     preference = Preference.find(params[:id])
     preference.update(clear_format: params[:clear_format]=="1")
     preference.save

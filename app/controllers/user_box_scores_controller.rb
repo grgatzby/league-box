@@ -1,7 +1,7 @@
 class UserBoxScoresController < ApplicationController
   require "csv"
   MIN_PLAYERS_PER_BOX = 4
-  NEW_CLUB_HEADERS = ["email", "first_name", "last_name", "phone_number", "role"]
+  NEW_CLUB_HEADERS = ["id", "email", "first_name", "last_name", "phone_number", "role"]
   CSV_LEAGUE_TABLE_HEADERS = ["player", "rank", "points",
     "matches played", "matches won", "sets played", "sets won", "games played", "games won"]
   ROUND_CSV_LEAGUE_TABLE_HEADERS = CSV_LEAGUE_TABLE_HEADERS + ["box_number"]
@@ -136,8 +136,10 @@ class UserBoxScoresController < ApplicationController
 
     csv_file = params[:csv_file]
     delimiter = params[:delimiter]
+
     if csv_file.content_type == "text/csv"
       headers = CSV.foreach(csv_file, col_sep: delimiter).first
+      raise
       if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_CLUB_HEADERS.sort
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
@@ -190,7 +192,6 @@ class UserBoxScoresController < ApplicationController
         referees = users.select { |user| REFEREE.include?(user.role) }
         referees.each { |referee| referee.update(password: "654321") }
         players = users.select { |user| PLAYERS.include?(user.role) }
-
         # create boxes and user_box_scores
         if headers.include?("box_number")
           box_numbers = box_numbers.uniq.sort
