@@ -4,12 +4,10 @@ en:
       sitemap_lnk: Sitemap
       contact_us_lnk: ✉️
     navbar:
-      tournament_rules_link: Tournament rules
-      club_staff_link: Club staff
       login_link: Log in
     navbar_dropdown:
       tournament_rules_link: 📜 Club Rules
-      club_staff_link: 👤 Our Staff
+      my_club_link: 👤 My Club
       all_boxes_link: 📦 Boxes
       round_ranking_link: 🏆 Round Ranking
       league_table_link: 🏆🏆 League Table
@@ -37,17 +35,18 @@ en:
       back_btn: ←
       select_round: "Select a round: "
     staff:
-      our_staff_title: Our staff
-      staff_p01: Your club staff is commited to facilitate your experience both on the tennis courts and this website.
+      your_club_staff_title: Your Club Staff
+      staff_p01: Your Club Staff is commited to facilitate your experience both on the tennis courts and this website.
       staff_p02_html: >
         They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contact your <b>Referee</b> through your box chatroom (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
         &emsp;&emsp;&emsp;→ contact the <b>admin</b>
       staff_p04a_html: >
-        through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact us</a> link in the bottom banner.<br>
+        through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> link in the bottom banner.<br>
         Contact your box members preferably via the chatroom. Tournament members' details are displayed by hovering over their names.
       staff_p04b_html: through this form.
+    my_club:
       header_role: 🧩 Role
       header_name: 👤 Name
       header_club: 🎾 Club
@@ -55,6 +54,10 @@ en:
       header_phone: 📞 Telephone
       website_admin: Website admin
       club_referee_html: "%{club_name} Referee"
+      player_directory_title: Player Directory
+      header_contact_details: Contact details
+      search_placeholder: Search by name, email, or phone...
+      no_results: No players match your search.
     stats:
       stats: 📈 round stats
       round: Round

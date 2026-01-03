@@ -1,7 +1,7 @@
 en:
   contacts:
     new:
-      contact_title: Contact us
+      contact_title: Contact the admin
       new_round_title: Request a new round creation
       error_invite: Please review the following error message
       error:
@@ -10,10 +10,9 @@ en:
         other: "%{count} errors"
       error_message: "prohibited this form from being sent:"
       contact_p01_html: >
-        This request will be sent to the website admin. For requests addressed to your Referee
-        please find their details in the <b>About us</b> page
-        or contact them through your box <b>chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).
-      contact_p02: Score disputes should be dealt in your box chatroom.
+        This request will be <span class='color-tennis-aqua'>sent to the website admin</span>. <br>For requests addressed to your Referee
+        please find their details below, or contact them through your box <b>chatroom</b> (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).
+      contact_p02_html: <u>Score disputes</u> should be dealt in your box chatroom.
       prompt: Select a topic →
       topics:
       - feedback: Provide feedback

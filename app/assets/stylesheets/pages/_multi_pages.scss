@@ -281,6 +281,21 @@ span img {
   }
 }
 
+// Player profile picture hover and click styles
+.player-profile-picture-link {
+  display: inline-block;
+  border-radius: 50%;
+  transition: all 0.2s ease-out;
+
+  &:hover {
+    box-shadow: 0 0 0 3px $tennis-blue;
+  }
+
+  .player-profile-picture {
+    display: block;
+  }
+}
+
 .home-cta-section,
 .home-image-section,
 .home-rules-section,

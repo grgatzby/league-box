@@ -1,7 +1,7 @@
 nl:
   contacts:
     new:
-      contact_title: Contact
+      contact_title: Contact de admin
       new_round_title: Request a new round creation
       error_invite: Bekijk het volgende foutbericht
       error:
@@ -10,10 +10,9 @@ nl:
         other: "%{count} fouten zorgden"
       error_message: "heeft de verzending van dit formulier verboden:"
       contact_p01_html: >
-        Dit verzoek wordt verzonden naar de beheerder van de site. Voor verzoeken gericht aan uw Referee
-        Hun contactgegevens vindt u op de pagina <b>Contact</b>
-        of neem contact op met uw scheidsrechter via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).
-      contact_p02: Los scoregeschillen op vanuit uw box-chatroom.
+        Dit verzoek wordt <span class='color-tennis-aqua'>verzonden naar de beheerder van de site</span>. <br>Voor verzoeken gericht aan uw Referee
+        Hun contactgegevens vindt u hieronder, of neem contact op met hem via jouw <b>Box-chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).
+      contact_p02_html: <u>Scoregeschillen</u> moeten worden opgelost vanuit uw box-chatroom.
       prompt: Kies een onderwerp →
       topics:
       - feedback: Reacties op deze website

@@ -13,6 +13,9 @@ application.register("gallery-filter", GalleryFilterController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import PlayerFilterController from "./player_filter_controller"
+application.register("player-filter", PlayerFilterController)
+
 import PopoverController from "./popover_controller"
 application.register("popover", PopoverController)
 

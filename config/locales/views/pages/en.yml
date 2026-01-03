@@ -261,5 +261,6 @@ en:
       li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
+      ok: 📦 To boxes
     staff:
-      ok: 📦 Boxes
+      ok: 📦 To boxes

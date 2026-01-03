@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[home rules sitemap staff]
+  skip_before_action :authenticate_user!, only: %i[home rules sitemap my_club]
 
   def home
     @box = my_own_box(current_round(current_user.club_id)) if current_user
@@ -36,11 +36,15 @@ class PagesController < ApplicationController
       end
   end
 
-  def staff
+  def my_club
     # similar to ContactsController # new
     if current_user == @admin
       # @referees = User.where(role: "referee") #TO DO : role includes 'referee' or 'player referee'
       @referees = User.where("role like ?", "%referee%")
     end
+    # Load all players for the Player Directory section (filtered client-side)
+    @players = User.where(club_id: @club.id)
+                   .where("role IN (?)", ["player", "player referee"])
+                   .order(:last_name, :first_name)
   end
 end

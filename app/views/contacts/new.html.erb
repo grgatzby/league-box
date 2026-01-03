@@ -13,7 +13,7 @@
     <% end %>
     <% if !processing_new_round %>
       <p><%= t('.contact_p01_html', path: my_scores_path(0)) %></p>
-      <p><%= t '.contact_p02' %></p>
+      <p><%= t '.contact_p02_html' %></p>
     <% end %>
     <%= simple_form_for @contact do |f| %>
       <% if @contact.errors.any? %>
