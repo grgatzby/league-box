@@ -38,3 +38,5 @@ fr:
       message2_box_pop_referee: le round et la box.
       message2_box_pop_player_referee: le round et la box.
       message2_box_pop_player: le round.
+      delete_message: Supprimer le message
+      confirm_delete: Êtes-vous sûr de vouloir supprimer ce message?

@@ -38,3 +38,5 @@ nl:
       message2_box_pop_referee: de ronde en box te selecteren.
       message2_box_pop_player_referee: de ronde en box te selecteren.
       message2_box_pop_player: de round te selecteren.
+      delete_message: Bericht verwijderen
+      confirm_delete: Weet u zeker dat u dit bericht wilt verwijderen?
