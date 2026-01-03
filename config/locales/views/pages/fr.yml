@@ -260,12 +260,3 @@ fr:
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
     staff:
       ok: 📦 Les box
-# to delete (now in preferences)
-    my_details:
-      preferences: Préférences
-      nick_name: Pseudo
-      phone_number: Téléphone
-      e_mail: Adresse email
-      password: Modifier le mot de passe
-      expanded_view: Vue complète des box
-      clear_format: Sans dégradé de couleurs

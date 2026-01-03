@@ -32,7 +32,7 @@
       <%= link_to t('.my_scores_link'), my_scores_path(0), class: "dropdown-item color-tennis-red" %>
     <% end %>
 
-    <%= link_to t(".my_details_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
+    <%= link_to t(".my_profile_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
 
     <%# Admin links %>
     <% if current_user.role != "player" %>
