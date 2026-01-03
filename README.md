@@ -50,7 +50,7 @@ All referee features, plus:
 
 ### Backend
 
-- **Ruby** 3.1.2
+- **Ruby** 3.3.10
 - **Rails** 7.0.4
 - **PostgreSQL** - Database
 - **Redis** - Action Cable adapter for real-time features
@@ -82,7 +82,7 @@ All referee features, plus:
 
 Before you begin, ensure you have the following installed:
 
-- **Ruby** 3.1.2 (use [rbenv](https://github.com/rbenv/rbenv) or [rvm](https://rvm.io/))
+- **Ruby** 3.3.10 (use [rbenv](https://github.com/rbenv/rbenv) or [rvm](https://rvm.io/))
 - **PostgreSQL** 9.3 or higher
 - **Redis** (for Action Cable)
 - **Node.js** and **npm** or **yarn**
