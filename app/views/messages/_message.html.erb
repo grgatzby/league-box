@@ -42,10 +42,25 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
         <% color_name = "color-tennis-red" %>
       <% end %>
       <% sender += " #{message.user.role}"  %>
-      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-delay= '{ "show": 500 }'
-          data-bs-content="<%= sender %>">
-        <strong class=<%=color_name%>><%= message.user.nickname %></strong>
+      <div class="d-flex justify-content-between align-items-start">
+        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+            data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-delay= '{ "show": 500 }'
+            data-bs-content="<%= sender %>">
+          <strong class=<%=color_name%>><%= message.user.nickname %></strong>
+        </div>
+        <% if current_user == @admin %>
+          <%= link_to chatroom_message_path(message.chatroom, message),
+                      data: {
+                        turbo_method: :delete,
+                        turbo_confirm: t('chatrooms.show.confirm_delete'),
+                        action: "click->chatroom-subscription#deleteMessage",
+                        message_id: message.id
+                      },
+                      class: "btn btn-sm btn-outline-secondary ms-2",
+                      title: t('chatrooms.show.delete_message') do %>
+            ×
+          <% end %>
+        <% end %>
       </div>
       <!--<i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>-->
       <small class=<%=color_name%>><i><%= l(@tz.to_local(message.created_at), format: :wwwwddmmmyyyy_at_hhmm) %></i></small>
