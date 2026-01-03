@@ -8,8 +8,8 @@ en:
           <li> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
           <li> Only <b class='color-tennis-aqua'>members of the club</b> may participate,
           <li> Participants are dealt into <b class='color-tennis-aqua'>boxes of comparable level</b>, of 4/5 players,
-          <li> The tournament includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
-          <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Tournament winner.
+          <li> The season includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
+          <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Season winner.
         </ul>
       p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and the <b>League Table</b> (tournament ranking) shall be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >
@@ -30,7 +30,7 @@ en:
       li04b: 🏆🏆 League Table
       li08_html: >
         <b>Your rankings are up to date</b> in %{inset_a} and %{inset_b}.<br>
-      ready_title: Ready? Meet you on the courts!
+      ready_title: Are you ready? Then meet you on the courts! 🎾
       p04: During each one month round, compete against the other players in your box.
       li09_html: <b>Play every match</b> in your allocated box.
       li10_html: After each match, <b>enter the match score</b> on LeagueBox.
@@ -48,7 +48,7 @@ en:
         LeagueBox takes care of everything for you!<br>
         Fill the form in our %{inset} page to learn more.
       happy_tournament: Happy LeagueBox tournament!
-      add_club_btn: Add a new club
+      create_club_btn: Create a new club
       ok: 📦 View boxes
       login_link: log in
     rules:

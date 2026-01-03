@@ -1,0 +1,14 @@
+en:
+  devise:
+    registrations:
+      edit:
+        title: "Edit User"
+        email_label: "Email"
+        password_label: "Password"
+        password_confirmation_label: "Password confirmation"
+        current_password_label: "Current password"
+        waiting_confirmation: "Currently waiting confirmation for:"
+        password_hint: "leave it blank if you don't want to change it"
+        current_password_hint: "type your current password to confirm your changes"
+        update_button: "Update"
+        back_button: "Back"

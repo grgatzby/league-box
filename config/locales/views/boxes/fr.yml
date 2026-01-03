@@ -7,8 +7,8 @@ fr:
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
       my_scores_btn: mes scores
-      pop01_a: cliquer sur un match pour éditer ou supprimer son score
-      pop01_b: ", ou saisir un nouveau score"
+      pop01_a: cliquer sur un match pour <i>éditer</i> ou <i>supprimer</i> son score
+      pop01_b: ", ou <i>saisir</i> un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
       my_current_box: ma box en cours
       my_box: ma box

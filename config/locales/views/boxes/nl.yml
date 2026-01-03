@@ -7,8 +7,8 @@ nl:
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
       my_scores_btn: mijn scores
-      pop01_a: kies een wedstrijd om de score te bewerken of te verwijderen
-      pop01_b: ", of voer een nieuwe score in"
+      pop01_a: kies een wedstrijd om de score <i>te bewerken</i> of <i>te verwijderen</i>
+      pop01_b: ", of <i>voer</i> een nieuwe score in"
       pop02_html: Als u zich in dit box bevindt, wordt uw naam weergegeven in <span class='color-orange'>oranje</span>
       my_current_box: mijn huidige box
       my_box: mijn box

@@ -1,0 +1,14 @@
+nl:
+  devise:
+    registrations:
+      edit:
+        title: "Gebruiker bewerken"
+        email_label: "E-mail"
+        password_label: "Wachtwoord"
+        password_confirmation_label: "Wachtwoordbevestiging"
+        current_password_label: "Huidig wachtwoord"
+        waiting_confirmation: "Bevestiging in afwachting voor:"
+        password_hint: "laat leeg als u het niet wilt wijzigen"
+        current_password_hint: "typ uw huidige wachtwoord om uw wijzigingen te bevestigen"
+        update_button: "Bijwerken"
+        back_button: "Terug"
