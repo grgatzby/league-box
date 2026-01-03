@@ -259,5 +259,6 @@ nl:
       li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
+      ok: 📦 Naar boxen
     staff:
-      ok: 📦 Boxen
+      ok: 📦 Naar boxen

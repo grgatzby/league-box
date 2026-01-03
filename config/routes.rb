@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /en|fr|nl/ do
     root to: "pages#home"
     get "rules", to: "pages#rules", as: "rules"
-    get "staff", to: "pages#staff", as: "staff"
+    get "my_club", to: "pages#my_club", as: "my_club"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
     resources :preferences, only: %i[new create edit update]

@@ -61,6 +61,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  // Language dropdown - narrower width
+  &.dropdown-menu-language {
+    min-width: 120px;
+  }
 }
 
 // Dropdown item base styles

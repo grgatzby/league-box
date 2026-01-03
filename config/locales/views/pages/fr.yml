@@ -258,5 +258,6 @@ fr:
       li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
+      ok: 📦 Vers les box
     staff:
-      ok: 📦 Les box
+      ok: 📦 Vers les box

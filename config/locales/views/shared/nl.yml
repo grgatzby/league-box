@@ -4,12 +4,10 @@ nl:
       sitemap_lnk: Sitemap
       contact_us_lnk: ✉️
     navbar:
-      tournament_rules_link: Toernooiregels
-      club_staff_link: Clubpersoneel
       login_link: Log in
     navbar_dropdown:
       tournament_rules_link: 📜 Regels
-      club_staff_link: 👤 Clubpersoneel
+      my_club_link: 👤 Mijn club
       all_boxes_link: 📦 Boxen
       round_ranking_link: 🏆 Ronde ranglijst
       league_table_link: 🏆🏆 League table
@@ -37,7 +35,7 @@ nl:
       back_btn: ←
       select_round: "Kies een ronde: "
     staff:
-      our_staff_title: Clubpersoneel
+      your_club_staff_title: Clubpersoneel
       staff_p01: Clubpersoneel doen er alles aan om uw ervaring op de banen en op deze site te vergemakkelijken.
       staff_p02_html: >
         Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd?<br>
@@ -46,9 +44,10 @@ nl:
         &emsp;&emsp;&emsp;→ Neem contact op met uw <b>scheidsrechter</b> (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
         &emsp;&emsp;&emsp;→ Neem contact op met de <b>beheerder</b> (admin) via
       staff_p04a_html: >
-        de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Contact</a>.<br>
+        de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a>.<br>
         Neem bij voorkeur contact op met uw boxleden via de chatroom. Contactgegevens van toernooileden worden weergegeven als u de muisaanwijzer op hun naam plaatst.
       staff_p04b_html: deze form.
+    my_club:
       header_role: 🧩 Rol
       header_name: 👤 Naam
       header_club: 🎾 Club
@@ -56,6 +55,10 @@ nl:
       header_phone: 📞 Telefoon
       website_admin: Sitebeheerder (admin)
       club_referee_html: "Referee van %{club_name}"
+      player_directory_title: Spelersgids
+      header_contact_details: Contactgegevens
+      search_placeholder: Zoeken op naam, e-mail of telefoon...
+      no_results: Geen spelers komen overeen met uw zoekopdracht.
     stats:
       stats: 📈 ronde stat
       round: Ronde

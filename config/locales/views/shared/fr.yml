@@ -4,12 +4,10 @@ fr:
       sitemap_lnk: Sitemap
       contact_us_lnk: ✉️
     navbar:
-      tournament_rules_link: Le Tournoi
-      club_staff_link: Personnel du Club
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: 📜 Règles
-      club_staff_link: 👤 Mes contacts
+      my_club_link: 👤 Mon club
       all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement round
       league_table_link: 🏆🏆 League table
@@ -37,18 +35,19 @@ fr:
       back_btn: ←
       select_round: "Choisir un round: "
     staff:
-      our_staff_title: Mes contacts
+      your_club_staff_title: Le personnel du club
       staff_p01: >
-        Le personnel de votre club s'engage à faciliter votre expérience sur les courts et sur ce site.
+        Le personnel du club s'engage à faciliter votre expérience sur les courts et sur ce site.
       staff_p02_html: >
         Il vous aidera à résoudre les désaccords sur un score déjà entré, ou pourra saisir un score à votre place.<br>
       staff_p03_html: >
         &emsp;&emsp;&emsp;→ contactez votre <b>Referee</b> via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: >
-        le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>Nous contacter</a> dans la bannière de bas de page.<br>
+        le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>
         Joignez les membres de votre box de préférence via la chatroom. Les coordonnées des membres du tournoi s'affichent en glissant la souris sur leur nom.
       staff_p04b_html: ce formulaire.
+    my_club:
       header_role: 🧩 Rôle
       header_name: 👤 Nom
       header_club: 🎾 Club
@@ -56,6 +55,10 @@ fr:
       header_phone: 📞 Téléphone
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
+      player_directory_title: Annuaire des joueurs
+      header_contact_details: Coordonnées
+      search_placeholder: Rechercher par nom, email ou téléphone...
+      no_results: Aucun joueur ne correspond à votre recherche.
     stats:
       stats: 📈 stats du round
       round: Round
