@@ -52,7 +52,7 @@ nl:
       ok: 📦 Naar boxen
       login_link: log in
     rules:
-      rules_title: LeagueBox-format en -regels
+      rules_title: Format en regels
       general_rules_section: Algemene regels
       round_dates_section: Seizoen & Rondedata
       match_rules_section: Wedstrijdregels

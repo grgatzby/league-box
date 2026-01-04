@@ -52,9 +52,10 @@ en:
       default: "%Y-%m-%d"
       mmmyy_date: "%b %y"
       yyymm_date: "%Y/%m"
-      ddmmm_date: "%d %b"
-      ddmmmyy_date: "%d %b %y"
-      ddmmmyyy_date: "%d %b %Y"
+      ddmmm_date: "%d %b"             # 30 Apr.
+      ddmmmyy_date: "%d %b %y"        # 30 Apr. 23
+      ddmmmyyy_date: "%d %b %Y"       # 30 Apr. 2023
+      ddmmmyyyy_date: "%d %B %Y"      # 30 April 2023
   time:
     formats:
       default: "%a %-d %b"
@@ -96,6 +97,7 @@ fr:
       ddmmm_date: "%d %b"             # 30 avr.
       ddmmmyy_date: "%d %b %y"        # 30 avr. 23
       ddmmmyyy_date: "%d %b %Y"       # 30 avr. 2023
+      ddmmmyyyy_date: "%d %B %Y"      # 30 avril 2023
     day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi]
     abbr_day_names: [dim, lun, mar, mer, jeu, ven, sam]
     month_names: [~, janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
@@ -149,6 +151,7 @@ nl:
       ddmmm_date: "%d %b"
       ddmmmyy_date: "%d %b %y"
       ddmmmyyy_date: "%d %b %Y"
+      ddmmmyyyy_date: "%d %B %Y"
     day_names: [zondag, maandag, dinsdag, woensdag, donderdag, vrijdag, zaterdag]
     abbr_day_names: [zon, maa, din, woe, don, vri, zat]
     month_names: [~, januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]

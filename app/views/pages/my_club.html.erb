@@ -9,55 +9,17 @@
   </div><br>
 
   <%# Player Directory Section %>
-  <div class="frame-color-shape frame-padding" data-controller="player-filter">
-    <div class="text-size contact-wrap">
-      <br><h4><div class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
-    </div>
-    <%# Search Form %>
-    <div class="mb-3">
-      <input type="text"
-             class="form-control"
-             placeholder="<%= t("shared.my_club.search_placeholder") %>"
-             data-action="input->player-filter#filter"
-             data-player-filter-target="search"
-             style="max-width: 400px;">
-    </div>
-    <p class="d-none text-muted" data-player-filter-target="noResults">
-      <%= t("shared.my_club.no_results") %>
-    </p>
-    <div class="frame-no-margin-rl">
-      <div class="box-table-wrap text-size frame-color-shape">
-        <div class="<%=class_names( "mobile-grid-container mobile-box-width mobile-text-size": @is_mobile,
-                                    "grid-container box-width": !@is_mobile) %>">
-          <div class="row" style="font-weight: bold">
-            <div class="col-3"><%= t "shared.my_club.header_name" %></div>
-            <div class="col-7"><%= t "shared.my_club.header_contact_details" %></div>
-          </div>
-          <% @players.each do |player| %>
-            <% player_name = "#{player.first_name} #{player.last_name}" %>
-            <div class="row"
-                 data-player-filter-target="item"
-                 data-searchable="<%= "#{player_name} #{player.email} #{player.phone_number}" %>">
-              <div class="col-3 top-bottom-padding" style="display: flex; align-items: center; gap: 10px;">
-                <% if player.profile_picture.present? %>
-                  <%= link_to player.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
-                    <%= image_tag(profile_picture_circular_url(player, @is_mobile ? 30 : 40), alt: 'Profile picture', class: "player-profile-picture", style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-                  <% end %>
-                <% else %>
-                  <%= image_tag(player_profile_picture_or_favicon(player, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-                <% end %>
-                <%= render "shared/fullname", user: player %>
-              </div>
-              <div class="col-7 top-bottom-padding">
-                <div><%= "#{t 'shared.my_club.header_email'} #{player.email}" %></div>
-                <div><%= "#{t 'shared.my_club.header_phone'} #{player.phone_number}" %></div>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div><br>
+  <br><h4><div class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
+  <% if @is_admin && @players_by_club %>
+    <%# Admin view: Grouped by club %>
+    <% @players_by_club.each do |club, players| %>
+      <% next if club.nil? %>
+      <%= render "shared/player_directory", players: players, club_name: club.name, is_mobile: @is_mobile %>
+    <% end %>
+  <% elsif @players %>
+    <%# Regular user view: Single club %>
+    <%= render "shared/player_directory", players: @players, club_name: @club.name, is_mobile: @is_mobile %>
+  <% end %>
 
   <div class = "buttons-wrap">
     <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua" %>

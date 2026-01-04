@@ -77,7 +77,7 @@ fr:
       p02_html: >
         La clé du succès est que les joueurs <i class='color-tennis-aqua'>s'engagent à jouer leurs matchs de box</i>. Les membres qui s'inscrivent
         devront s'efforcer de programmer et jouer les matchs prévus. Si, pour quelque raison, vous ne pouvez pas jouer vos matchs,
-        prévenez rapidement vos adversaires et votre Referee.
+        prévenez rapidement vos adversaires et votre Arbitre (Referee).
       p03_html: >
         Les joueurs devront <i class='color-tennis-aqua'>notifier à leurs adversaires leurs périodes d'indisponibilité</i>, ainsi que leurs disponibilités.
         Cette discipline facilitera la bonne organisation des matchs.
@@ -131,8 +131,8 @@ fr:
       p22: L'un ou l'autre des joueurs peut saisir le résultat du match sur le site.
       p23: >
         Chaque joueur de la Box pourra se connecter à son compte et saisir les scores en ligne, ou ils pourront être marqués au tableau
-        où une feuille de scores sera mise à votre disposition. Si un résultat a été incorrectement saisi, contacter le Referee du Tournoi.
-      p24: Veuillez noter que tous les résultats devront être entrés avant la fin du round, à moins qu'un délai ait été accordé par le Referee.
+        où une feuille de scores sera mise à votre disposition. Si un résultat a été incorrectement saisi, contacter l'Arbitre (Referee) du Tournoi.
+      p24: Veuillez noter que tous les résultats devront être entrés avant la fin du round, à moins qu'un délai ait été accordé par l'Arbitre (Referee).
     5_ranking_and_promotions:
       box_league_ranking: Classement de la Box League
       p25: >
@@ -146,12 +146,12 @@ fr:
       li16_html: "les deux meilleurs joueurs seront promus (<i>premier joueur: 2 box, second: 1 box</i>)."
       li17_html: "les deux derniers joueurs seront relégués (<i>avant-dernier joueur: 1 box, dernier: 2 box</i>)."
       new_entrants: Nouveaux entrants
-      p27: Le Referee essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
+      p27: L'Arbitre (Referee) essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
     6_special_circumstances:
       disqualification: Disqualification
       p28: >
         Les joueurs qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiés du tournoi,
-        à la seule discrétion du Referee du Tournoi.
+        à la seule discrétion de l'Arbitre (Referee) du Tournoi.
       no_show: No show
       p29: Si un joueur a plus de
       li18: 5 minutes de retard sur le court son adversaire peut exiger un jeu.
@@ -163,26 +163,26 @@ fr:
       p32: "Le joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
       p33: Le score du match à saisir sera 2/4 0/4 à l'avantage du joueur B.
       withdrawing: Retrait avant le début d'un round
-      p34: Les joueurs informeront le Referee s'ils souhaitent se retirer de la box league.
+      p34: Les joueurs informeront l'Arbitre (Referee) s'ils souhaitent se retirer de la box league.
       p35: >
         Si le joueur se retire avant le début du round, le Referee s'efforcera pour maintenir sa position dans la league
         s'il souhaitait participer au round suivant.
       walk_overs: Victoire par forfait ou absence (walk-over)
       p36: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
       li21: compliqués à gérer
-      li22: il est impossible pour le Referee de vérifier les déclarations de walk-overs
+      li22: il est impossible pour l'Arbitre (Referee) de vérifier les déclarations de walk-overs
       li23: attribution injuste de points non joués
       deadline_extensions: Dérogation de Deadline
       p37: Les joueurs devront s'efforcer de jouer leurs matchs dans le délai imparti pour le round.
       p38: >
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
-        sera jugée à la discrétion du Referee du Tournoi dont la décision sera définitive.
+        sera jugée à la discrétion de l'Arbitre (Referee) du Tournoi dont la décision sera définitive.
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
     7_disputes:
       disputes: Différends
-      mail_to_referee_html: "votre Referee %{referee_name} à %{referee_email} ou via la Chatroom de votre box"
-      mail_to_admin_html: "votre admin à %{admin_email}"
-      p40_html: "Les décisions du Referee du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
+      mail_to_referee_html: "votre Arbitre (Referee) %{referee_name} à %{referee_email} ou via la Chatroom de votre box"
+      mail_to_admin_html: "votre admin (e-mail: <i>%{admin_email}</i>)"
+      p40_html: "Les décisions de l'Arbitre (Referee) du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
       sitemap_title: Plan du site
       home: Page d'accueil
@@ -192,7 +192,7 @@ fr:
       p03: Description du Tournoi et explication des règles de la Box League.
       my_club: Mon Club
       p05_html: >
-        Coordonnées de l'admin et du Referee du club.<br>
+        Coordonnées de l'admin et de l'Arbitre (Referee) du club.<br>
         Annuaire des joueurs.
       all_boxes: Les box
       p07: "Vue de toutes les box du round avec pour chaque joueur:"

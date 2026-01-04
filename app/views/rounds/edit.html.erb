@@ -22,17 +22,17 @@
       <%# current user is a referee or the club is provided by the form: display the club name %>
       <div class="row">
         <div class="col-1"></div>
-        <div class="col-3"><%= t '.club' %></div>
-        <div class="col-5">
+
+        <h4 class="col-7">
           <%= params[:club] %>
-        </div>
+        </h4>
       </div>
       <% params[:club] = current_user.club.name %>
     <% end %>
 
     <% if params[:club] %>
-      <br>
       <div class="row">
+      <br><br>
       <%# a round is selected by its start date: display current end date and enter a new end date for the round %>
       <div class="row" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'

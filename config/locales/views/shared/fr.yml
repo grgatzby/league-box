@@ -15,7 +15,7 @@ fr:
       my_profile_link: ✉️ Mon profil
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Les chatrooms
-      round_end_link: Reporter fin du round
+      round_end_link: Repousser la fin du round
       log_out_link: Déconnexion
     display_round:
       round_period: Round %{round} (%{start} au %{end}),
@@ -41,7 +41,7 @@ fr:
       staff_p02_html: >
         Il vous aidera à résoudre les désaccords sur un score déjà entré, ou pourra saisir un score à votre place.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contactez votre <b>Referee</b> via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
+        &emsp;&emsp;&emsp;→ contactez votre <b>Arbitre</b> (Referee) via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: >
         le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>
@@ -53,11 +53,12 @@ fr:
       header_email: ✉️ email
       header_phone: 📞 Téléphone
       website_admin: Administrateur du site
-      club_referee_html: "Referee du %{club_name}"
+      club_referee: Arbitre
     my_club:
+      player_directory_title: Annuaire des joueurs
       header_email: ✉️ email
       header_phone: 📞 Téléphone
-      player_directory_title: Annuaire des joueurs
+      header_name: Nom
       header_contact_details: Coordonnées
       search_placeholder: Rechercher par nom, email ou téléphone...
       no_results: Aucun joueur ne correspond à votre recherche.

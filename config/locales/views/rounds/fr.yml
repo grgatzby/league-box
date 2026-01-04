@@ -30,13 +30,13 @@ fr:
         other: Round créé avec %{players} joueurs par box. Les %{count} derniers joueurs n'ont pu être inclus.
     edit:
       round_end_title: Fin du round en cours
-      change_end_date: Changer la date de fin du round en cours
+      change_end_date: Pour la bonne fin du tournoi, l'admin ou le referee peut décaler la date de fin du round en cours
       select_club: Choisir un club
       club: Club
       last_round_match_date: Le dernier match du round a été joué le %{date}
       select_round: Choisir un round
-      current_end_date: Date de fin actuelle
-      new_end_date: Nouvelle date de fin
+      current_end_date: Fin du round en cours
+      new_end_date: Nouvelle fin du round
       next_round: Date de début du prochain round
       round: Date de début du round
       message: Si la nouvelle daset de fin est au-delà de la date de départ du prochain round, celle-ci sera reculée aussi.
