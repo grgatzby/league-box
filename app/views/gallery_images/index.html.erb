@@ -10,7 +10,7 @@
       </div>
     <% end %>
 
-    <% if (@is_admin && @gallery_images_by_club && @gallery_images_by_club.any?) || (@gallery_images && @gallery_images.any?) %>
+    <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
       <div class="mb-3">
         <input type="text"
                class="form-control"
@@ -21,76 +21,11 @@
       <p class="d-none text-muted" data-gallery-filter-target="noResults">
         <%= t(".no_results") %>
       </p>
-    <% end %>
 
-    <% if @is_admin %>
-      <%# Admin view: Grouped by club %>
-      <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
-        <% @gallery_images_by_club.each do |club, gallery_images| %>
-          <% next if club.nil? %>
-          <div class="mb-4">
-            <h5 class="mb-3" style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-              <b><%= club.name %></b>
-              <span class="badge bg-secondary ms-2"><%= gallery_images.count %> <%= t(".images_count", count: gallery_images.count) %></span>
-            </h5>
-            <div class="row g-3">
-              <% gallery_images.each do |gallery_image| %>
-                <div class="col-12 col-md-6 col-lg-4"
-                     data-gallery-filter-target="item"
-                     data-caption="<%= gallery_image.caption %>">
-                  <div class="card" style="position: relative; overflow: hidden;">
-                    <%= image_tag gallery_image.image.url, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;" %>
-                    <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">
-                      <p class="card-text mb-0"><%= gallery_image.caption %></p>
-                    </div>
-                    <div class="position-absolute top-0 end-0 p-2 d-flex gap-1">
-                      <%= link_to edit_gallery_image_path(gallery_image), class: "btn btn-sm btn-warning" do %>
-                        <i class="fa-solid fa-pencil"></i>
-                      <% end %>
-                      <%= link_to gallery_image_path(gallery_image),
-                          data: { turbo_method: :delete, turbo_confirm: t(".confirm_delete") },
-                          class: "btn btn-sm btn-danger" do %>
-                        <i class="fa-solid fa-trash"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p><%= t(".no_images") %></p>
-      <% end %>
-    <% elsif @gallery_images %>
-      <%# Regular user view: All images in one list %>
-      <% if @gallery_images.any? %>
-        <div class="row g-3">
-          <% @gallery_images.each do |gallery_image| %>
-            <div class="col-12 col-md-6 col-lg-4"
-                 data-gallery-filter-target="item"
-                 data-caption="<%= gallery_image.caption %>">
-              <div class="card" style="position: relative; overflow: hidden;">
-                <%= image_tag gallery_image.image.url, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;" %>
-                <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">
-                  <p class="card-text mb-0"><%= gallery_image.caption %></p>
-                </div>
-                <% can_delete = current_user&.role == "admin" || (current_user&.role&.include?("referee") && gallery_image.club_id == current_user.club_id) %>
-                <% if can_delete %>
-                  <div class="position-absolute top-0 end-0 p-2">
-                    <%= link_to gallery_image_path(gallery_image),
-                        data: { turbo_method: :delete, turbo_confirm: t(".confirm_delete") },
-                        class: "btn btn-sm btn-danger" do %>
-                      <i class="fa-solid fa-trash"></i>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <p><%= t(".no_images") %></p>
+      <%# Display images grouped by club for all users %>
+      <% @gallery_images_by_club.each do |club, gallery_images| %>
+        <% next if club.nil? %>
+        <%= render "club_section", club: club, gallery_images: gallery_images %>
       <% end %>
     <% else %>
       <p><%= t(".no_images") %></p>

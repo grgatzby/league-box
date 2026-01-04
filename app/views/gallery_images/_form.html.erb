@@ -30,7 +30,8 @@
   <% if current_user == @admin %>
     <div class="mb-3">
       <%= f.label :club_id, t("gallery_images._form.club_label"), class: "form-label" %>
-      <%= f.select :club_id, options_from_collection_for_select(@clubs, :id, :name, gallery_image.club_id),
+      <%= f.select :club_id,
+          options_for_select(@clubs.map { |club| [club == @sample_club ? t("gallery_images.index.admin_album") : club.name, club.id] }, gallery_image.club_id),
           { prompt: t("gallery_images._form.select_club") },
           { class: "form-control", required: true } %>
       <small class="form-text text-muted"><%= t("gallery_images._form.club_help") %></small>
@@ -42,12 +43,13 @@
   <div class="mb-3">
     <%= f.label :accessible_club_ids, t("gallery_images._form.accessible_clubs_label"), class: "form-label" %>
     <% if @clubs.any? %>
-      <%= f.collection_check_boxes :accessible_club_ids, @clubs, :id, :name do |b| %>
+      <% @clubs.each do |club| %>
         <div class="form-check">
-          <%= b.check_box class: "form-check-input" %>
-          <%= b.label class: "form-check-label" %>
+          <%= check_box_tag "gallery_image[accessible_club_ids][]", club.id, gallery_image.accessible_club_ids.include?(club.id), class: "form-check-input", id: "gallery_image_accessible_club_ids_#{club.id}" %>
+          <%= label_tag "gallery_image_accessible_club_ids_#{club.id}", club == @sample_club ? t("gallery_images.index.admin_album") : club.name, class: "form-check-label" %>
         </div>
       <% end %>
+      <%= hidden_field_tag "gallery_image[accessible_club_ids][]", "" %>
     <% else %>
       <p class="text-muted"><%= t("gallery_images._form.no_clubs_available") %></p>
     <% end %>

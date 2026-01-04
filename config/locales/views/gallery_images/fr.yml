@@ -2,16 +2,17 @@ fr:
   gallery_images:
     index:
       gallery_title: Galerie photos
-      new_image: Télécharger une nouvelle image
+      new_image: Téléverser une nouvelle image
       confirm_delete: Êtes-vous sûr de vouloir supprimer cette image?
       no_images: Aucune image dans la galerie pour le moment.
       filter_by_caption: Filtrer par légende...
       no_results: Aucune image ne correspond à votre recherche.
+      admin_album: Album de l'admin
       images_count:
         one: image
         other: images
     new:
-      new_image_title: Télécharger une nouvelle image
+      new_image_title: Téléverser une nouvelle image
       back: Retour à la galerie
     _form:
       image_label: Image
@@ -24,10 +25,10 @@ fr:
       accessible_clubs_label: Clubs accessibles
       accessible_clubs_help: Sélectionnez les clubs qui peuvent voir cette image. Par défaut, seul votre club peut la voir.
       no_clubs_available: Aucun club disponible pour la sélection.
-      submit: Télécharger l'image
+      submit: Téléverser l'image
       update: Mettre à jour l'image
     create:
-      success: Image téléchargée avec succès!
+      success: Image téléversée avec succès!
     update:
       success: Image mise à jour avec succès!
     destroy:

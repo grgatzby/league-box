@@ -47,7 +47,6 @@ fr:
         le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>
         Joignez les membres de votre box de préférence via la chatroom. Les coordonnées des membres du tournoi s'affichent en glissant la souris sur leur nom.
       staff_p04b_html: ce formulaire.
-    my_club:
       header_role: 🧩 Rôle
       header_name: 👤 Nom
       header_club: 🎾 Club
@@ -55,6 +54,9 @@ fr:
       header_phone: 📞 Téléphone
       website_admin: Administrateur du site
       club_referee_html: "Referee du %{club_name}"
+    my_club:
+      header_email: ✉️ email
+      header_phone: 📞 Téléphone
       player_directory_title: Annuaire des joueurs
       header_contact_details: Coordonnées
       search_placeholder: Rechercher par nom, email ou téléphone...

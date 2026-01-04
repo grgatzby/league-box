@@ -4,19 +4,26 @@ class GalleryImagesController < ApplicationController
   before_action :set_clubs_for_selection, only: %i[new edit]
 
   def index
-    # Admin can see all images grouped by club
+    # Group images by club for all users
     if current_user&.role == "admin"
+      # Admin can see all images grouped by club
       all_images = GalleryImage.joins(:club).order('clubs.name ASC, gallery_images.created_at DESC')
       @gallery_images_by_club = all_images.group_by(&:club)
       @is_admin = true
     elsif current_user
-      # Regular users see images accessible to their club
-      @gallery_images = GalleryImage.accessible_to_club(current_user.club_id).order(created_at: :desc)
+      # Regular users see images accessible to their club, grouped by club
+      accessible_images = GalleryImage.accessible_to_club(current_user.club_id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+      @gallery_images_by_club = accessible_images.group_by(&:club)
       @is_admin = false
     else
-      # For non-authenticated users, show images from sample club
-      sample_club = Club.find_by(name: "your tennis club")
-      @gallery_images = sample_club ? GalleryImage.accessible_to_club(sample_club.id).order(created_at: :desc) : GalleryImage.none
+      # For non-authenticated users, show images from sample club, grouped by club
+      #sample_club = Club.find_by(name: "your tennis club")
+      if @sample_club
+        accessible_images = GalleryImage.accessible_to_club(sample_club.id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+        @gallery_images_by_club = accessible_images.group_by(&:club)
+      else
+        @gallery_images_by_club = {}
+      end
       @is_admin = false
     end
   end

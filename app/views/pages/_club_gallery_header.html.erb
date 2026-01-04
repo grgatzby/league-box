@@ -1,7 +1,7 @@
 <%# Club gallery header partial %>
 <div class="mb-4">
   <h5 class="mb-3" style="border-bottom: 2px solid #007bff; padding-bottom: 10px;">
-    <b><%= club.name %></b>
+    <b><%= club == @sample_club ? t("gallery_images.index.admin_album") : club.name %></b>
     <span class="badge bg-secondary ms-2">
       <%= image_count %> <%= t("gallery_images.index.images_count", count: image_count) %>
     </span>

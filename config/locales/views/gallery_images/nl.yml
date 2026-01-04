@@ -7,6 +7,7 @@ nl:
       no_images: Nog geen afbeeldingen in de galerij.
       filter_by_caption: Filteren op bijschrift...
       no_results: Geen afbeeldingen komen overeen met uw zoekopdracht.
+      admin_album: Album van de beheerder
       images_count:
         one: afbeelding
         other: afbeeldingen

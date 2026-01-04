@@ -1,0 +1,29 @@
+<%# Gallery image card partial %>
+<div class="col-12 col-md-6 col-lg-4"
+     data-gallery-filter-target="item"
+     data-caption="<%= gallery_image.caption %>">
+  <div class="card" style="position: relative; overflow: hidden;">
+    <%= image_tag gallery_image.image.url, class: "card-img-top", style: "width: 100%; height: 300px; object-fit: cover;" %>
+    <div class="card-body" style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 20px;">
+      <p class="card-text mb-0"><%= gallery_image.caption %></p>
+    </div>
+    <% can_edit = current_user&.role == "admin" || (current_user&.role&.include?("referee") && gallery_image.club_id == current_user.club_id) %>
+    <% can_delete = current_user&.role == "admin" || (current_user&.role&.include?("referee") && gallery_image.club_id == current_user.club_id) %>
+    <% if can_edit || can_delete %>
+      <div class="position-absolute top-0 end-0 p-2 d-flex gap-1">
+        <% if can_edit %>
+          <%= link_to edit_gallery_image_path(gallery_image), class: "btn btn-sm btn-outline-warning" do %>
+            <i class="fa-solid fa-pencil"></i>
+          <% end %>
+        <% end %>
+        <% if can_delete %>
+          <%= link_to gallery_image_path(gallery_image),
+              data: { turbo_method: :delete, turbo_confirm: t("gallery_images.index.confirm_delete") },
+              class: "btn btn-sm btn-outline-info" do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
