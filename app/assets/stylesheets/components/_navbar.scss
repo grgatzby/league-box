@@ -28,6 +28,14 @@
   }
 }
 
+.nav-link-footer {
+  transition: all 0.2s ease-out;
+  &:hover {
+    transform: scale(1.1);
+    color: $tennis-blue;
+  }
+}
+
 // horizontal display of navbar icons in collapsed mode
 .navbar-out-of-collapse {
   display: flex;
