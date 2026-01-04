@@ -19,7 +19,7 @@ class GalleryImagesController < ApplicationController
       # For non-authenticated users, show images from sample club, grouped by club
       #sample_club = Club.find_by(name: "your tennis club")
       if @sample_club
-        accessible_images = GalleryImage.accessible_to_club(sample_club.id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+        accessible_images = GalleryImage.accessible_to_club(@sample_club.id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
         @gallery_images_by_club = accessible_images.group_by(&:club)
       else
         @gallery_images_by_club = {}

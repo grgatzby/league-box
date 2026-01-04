@@ -30,14 +30,14 @@ en:
         other: Round created with %{players} players per box. Last %{count} players could not be accommodated.
     edit:
       round_end_title: Round end date
-      change_end_date: Change the current round end date
+      change_end_date: For the good end of the tournament, the admin or referee can shift the current round end date
       select_club: Select a club
       club: Club
       last_round_match_date: Last match of the round was played on %{date}
       select_round: Select a round
-      current_end_date: Current end date
-      new_end_date: New end date
+      current_end_date: Current round end date
+      new_end_date: New round end date
       next_round: Next round start date
       round: Round start date
-      message: If new end date is set later than the next round, the latter will be moved forward too.
+      message: If new round end date is set later than the next round start date, the latter will be moved forward too.
       confirm_btn: ⎷ Confirm

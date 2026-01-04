@@ -52,11 +52,12 @@ en:
       header_email: ✉️ email
       header_phone: 📞 Telephone
       website_admin: Website admin
-      club_referee_html: "%{club_name} Referee"
+      club_referee: Referee
     my_club:
+      player_directory_title: Player Directory
       header_email: ✉️ email
       header_phone: 📞 Telephone
-      player_directory_title: Player Directory
+      header_name: Name
       header_contact_details: Contact details
       search_placeholder: Search by name, email, or phone...
       no_results: No players match your search.

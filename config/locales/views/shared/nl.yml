@@ -53,11 +53,12 @@ nl:
       header_email: ✉️ E-mail
       header_phone: 📞 Telefoon
       website_admin: Sitebeheerder (admin)
-      club_referee_html: "Referee van %{club_name}"
+      club_referee: Scheidsrechter
     my_club:
+      player_directory_title: Spelersgids
       header_email: ✉️ E-mail
       header_phone: 📞 Telefoon
-      player_directory_title: Spelersgids
+      header_name: Naam
       header_contact_details: Contactgegevens
       search_placeholder: Zoeken op naam, e-mail of telefoon...
       no_results: Geen spelers komen overeen met uw zoekopdracht.

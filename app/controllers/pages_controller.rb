@@ -41,10 +41,18 @@ class PagesController < ApplicationController
     if current_user == @admin
       # @referees = User.where(role: "referee") #TO DO : role includes 'referee' or 'player referee'
       @referees = User.where("role like ?", "%referee%")
+      # Load all players grouped by club for admin view
+      all_players = User.joins(:club)
+                        .where("role IN (?)", ["player", "player referee"])
+                        .order('clubs.name ASC, users.last_name ASC, users.first_name ASC')
+      @players_by_club = all_players.group_by(&:club)
+      @is_admin = true
+    else
+      # Load players for a single club (filtered client-side)
+      @players = User.where(club_id: @club.id)
+                     .where("role IN (?)", ["player", "player referee"])
+                     .order(:last_name, :first_name)
+      @is_admin = false
     end
-    # Load all players for the Player Directory section (filtered client-side)
-    @players = User.where(club_id: @club.id)
-                   .where("role IN (?)", ["player", "player referee"])
-                   .order(:last_name, :first_name)
   end
 end

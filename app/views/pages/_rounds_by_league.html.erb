@@ -24,7 +24,7 @@
         <b>🕐 Round <%= round_order %></b>
         <%# Grayed font: start_date - end_date formatted as dd_mmmm_yyyy %>
         <div style="color: #888; ">
-          <%= round.start_date.strftime("%d %B %Y") %> - <%= round.end_date.strftime("%d %B %Y") %>
+          <%= l(round.start_date, format: :ddmmmyyyy_date) %> - <%= l(round.end_date, format: :ddmmmyyyy_date) %>
         </div>
       </div>
     <% end %>

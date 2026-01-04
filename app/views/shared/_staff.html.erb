@@ -58,7 +58,7 @@
                 <%= image_tag(player_profile_picture_or_favicon(referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
               <% end %>
             </div>
-            <div class="col-2"><%= t(".club_referee_html", club_name: referee.club.name) %></div>
+            <div class="col-2"><%= t ".club_referee" %></div>
             <div class="col-2"><%= render "shared/fullname", user: referee%></div>
             <div class="col-2"><%= "#{referee.club.name}" %></div>
             <div class="col-3"><%= "#{referee.email}" %></div>
