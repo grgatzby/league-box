@@ -14,12 +14,6 @@
       <p><%= t '.p02_html' %></p>
     <% end %>
 
-    <br><h5><%= t '.overview_rules' %></h5>
-    <p><%= t '.p03' %></p>
-
-    <br><h5><%= t '.club_staff' %></h5>
-    <p><%= t '.p05' %></p>
-
     <br><h5><%= t '.all_boxes' %></h5>
     <%= t '.p07' %>
     <ul>
@@ -39,9 +33,16 @@
         <%= t '.p11_html' %>
       <% end %>
     </p>
+
     <br><h5><%= t '.league_table' %></h5>
     <p><%= t '.p12_html' %></p>
     <p><%= t '.p13_html' %></p>
+
+    <br><h5><%= t '.overview_rules' %></h5>
+    <p><%= t '.p03' %></p>
+
+    <br><h5><%= t '.my_club' %></h5>
+    <p><%= t '.p05_html' %></p>
 
     <br><h5><%= t '.table_view' %></h5>
     <p><%= t '.p16' %></p>
@@ -100,18 +101,6 @@
     </button>
   </div>
 
-<!--
-  <div class = "buttons-wrap">
-    <%= link_to "Tournament rules", rules_path, class: "btn btn-shape btn-green" %>
-    <%= link_to "Club staff", staff_path, class: "btn btn-shape btn-green" %>
-    <% if current_user && current_user.role == "admin" %>
-      <%= link_to "New round", new_user_box_score_path, class: "btn btn-shape btn-green" %>
-    <% end %>
-    <% unless current_user %>
-      <%= link_to "Log in to enter new match results", new_user_session_path, class: "btn btn-shape btn-green" %>
-    <% end %>
-  </div>
-  -->
   <div class = "buttons-wrap">
     <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua" %>
   </div>
