@@ -191,9 +191,12 @@ nl:
       p02_html: Voor de beheerder, knop <i class='color-tennis-aqua'>Een nieuwe club toevoegen</i>.
       overview_rules: Toernooiregels
       p03: Toernooibeschrijving en Box League-regels uitgelegd.
-      club_staff: Clubpersoneel
+      my_club: Mijn Club
+      p05_html: >
+        Gegevens van de beheerder (admin) en de club Referee.<br>
+        Spelersgids.
       p05: Gegevens van de beheerder (admin) en de club Referee.
-      all_boxes: De boxen van de ronde
+      all_boxes: De boxen
       p07: "Presenteert alle boxen in één oogopslag voor elke speler:"
       li01: zijn naam
       li02: zijn ranking binnen het toernooi

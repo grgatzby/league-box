@@ -190,9 +190,11 @@ fr:
       p02_html: Pour l'admin, bouton <i class='color-tennis-aqua'>Ajouter un nouveau club</i>.
       overview_rules: Le Tournoi
       p03: Description du Tournoi et explication des règles de la Box League.
-      club_staff: Qui sommes-nous?
-      p05: Coordonnées de l'admin et du Referee du club.
-      all_boxes: Les box du round
+      my_club: Mon Club
+      p05_html: >
+        Coordonnées de l'admin et du Referee du club.<br>
+        Annuaire des joueurs.
+      all_boxes: Les box
       p07: "Vue de toutes les box du round avec pour chaque joueur:"
       li01: son nom
       li02: son classement dans le Tournoi
@@ -203,7 +205,7 @@ fr:
       p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Créer le prochain round</i> (admin),
       p10b_html: ou pour <i class='color-tennis-aqua'>Demander la création du prochain round</i> (referee).
       p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Demander la création du prochain round</i>.
-      league_table: Classement d'un round et league table de la Saison
+      league_table: Classement d'un round et league table de la saison
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13_html: Modifiez l'ordre de la liste en cliquant sur l'entête correspondant.<br>
       referee_list_view: Vue en Liste (admin/Referee)

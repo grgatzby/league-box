@@ -190,11 +190,13 @@ en:
       home: Home
       p01: General presentation of the Box League Tournament
       p02_html: For the admin, <span class='color-tennis-aqua'>Add a new club</span> button.
-      overview_rules: Tournament rules
+      overview_rules: Club rules
       p03: Tournament overview and explanation of the Box League rules.
-      club_staff: Club staff
-      p05: Details of the admin and the club Referee.
-      all_boxes: The boxes in the round
+      my_club: My Club
+      p05_html: >
+        Details of the admin and the club Referee.<br>
+        Players' directory.
+      all_boxes: Boxes
       p07: "Display all the boxes in one glance showing for each player their:"
       li01: name
       li02: ranking in the league
