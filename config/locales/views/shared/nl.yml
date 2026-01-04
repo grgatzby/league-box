@@ -47,7 +47,6 @@ nl:
         de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a>.<br>
         Neem bij voorkeur contact op met uw boxleden via de chatroom. Contactgegevens van toernooileden worden weergegeven als u de muisaanwijzer op hun naam plaatst.
       staff_p04b_html: deze form.
-    my_club:
       header_role: 🧩 Rol
       header_name: 👤 Naam
       header_club: 🎾 Club
@@ -55,6 +54,9 @@ nl:
       header_phone: 📞 Telefoon
       website_admin: Sitebeheerder (admin)
       club_referee_html: "Referee van %{club_name}"
+    my_club:
+      header_email: ✉️ E-mail
+      header_phone: 📞 Telefoon
       player_directory_title: Spelersgids
       header_contact_details: Contactgegevens
       search_placeholder: Zoeken op naam, e-mail of telefoon...

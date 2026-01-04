@@ -7,6 +7,7 @@ en:
       no_images: No images in the gallery yet.
       filter_by_caption: Filter by caption...
       no_results: No images match your search.
+      admin_album: Admin's Album
       images_count:
         one: image
         other: images

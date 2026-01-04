@@ -105,6 +105,12 @@
       transform: none;
       background: rgba($tennis-orange, 0.3);
     }
+
+    // Blue circle hover effect on profile picture
+    &:hover .dropdown-profile-picture {
+      box-shadow: 0 0 0 3px $tennis-blue;
+      transition: box-shadow 0.2s ease-out;
+    }
   }
 
   // Logout item styling
@@ -139,6 +145,7 @@
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
+  transition: box-shadow 0.2s ease-out;
 }
 
 // Display navbar icons horizontally on narrow screens and hide toggle

@@ -139,8 +139,7 @@ class UserBoxScoresController < ApplicationController
 
     if csv_file.content_type == "text/csv"
       headers = CSV.foreach(csv_file, col_sep: delimiter).first
-      raise
-      if headers.compact.map(&:downcase).sort - ["box_number"] == NEW_CLUB_HEADERS.sort
+      if headers.compact.map(&:downcase).sort - ["box_number", "nickname"] == NEW_CLUB_HEADERS.sort
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
         # create club

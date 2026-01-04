@@ -46,7 +46,6 @@ en:
         through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> link in the bottom banner.<br>
         Contact your box members preferably via the chatroom. Tournament members' details are displayed by hovering over their names.
       staff_p04b_html: through this form.
-    my_club:
       header_role: 🧩 Role
       header_name: 👤 Name
       header_club: 🎾 Club
@@ -54,6 +53,9 @@ en:
       header_phone: 📞 Telephone
       website_admin: Website admin
       club_referee_html: "%{club_name} Referee"
+    my_club:
+      header_email: ✉️ email
+      header_phone: 📞 Telephone
       player_directory_title: Player Directory
       header_contact_details: Contact details
       search_placeholder: Search by name, email, or phone...
