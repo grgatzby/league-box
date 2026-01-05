@@ -2,7 +2,9 @@ nl:
   preferences:
     new:
       preferences: Voorkeuren
-      nick_name: Pseudo
+      nickname: Pseudo
+      first_name: Voornaam
+      last_name: Achternaam
       phone_number: Telefoonnummer
       e_mail: E-mailadres
       password: Wachtwoord wijzigen
@@ -11,7 +13,9 @@ nl:
     edit:
       role: Rol
       preferences: Voorkeuren
-      nick_name: Pseudo
+      nickname: Pseudo
+      first_name: Voornaam
+      last_name: Achternaam
       phone_number: Telefoonnummer
       e_mail: E-mailadres
       password: Wachtwoord

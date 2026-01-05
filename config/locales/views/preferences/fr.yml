@@ -2,7 +2,9 @@ fr:
   preferences:
     new:
       preferences: Préférences
-      nick_name: Pseudo
+      nickname: Pseudo
+      first_name: Prénom
+      last_name: Nom
       phone_number: Téléphone
       e_mail: Adresse email
       password: Modifier le mot de passe
@@ -11,7 +13,9 @@ fr:
     edit:
       role: Rôle
       preferences: Préférences
-      nick_name: Pseudo
+      nickname: Pseudo
+      first_name: Prénom
+      last_name: Nom
       phone_number: Téléphone
       e_mail: Adresse email
       password: Mot de passe
