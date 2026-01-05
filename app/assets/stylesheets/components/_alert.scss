@@ -31,10 +31,48 @@
   gap: 12px;
   animation: slideInRight 0.3s ease-out;
   min-width: 300px;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+
+  &:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+
+  &:has(.notification-link:hover) {
+    transform: translateX(-4px);
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
 }
 
 .notification-toast.fade-out {
   animation: slideOutRight 0.3s ease-in forwards;
+}
+
+.notification-link {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  min-width: 0;
+
+  &:hover {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    color: inherit;
+  }
+
+  &:visited {
+    color: inherit;
+  }
 }
 
 .notification-content {

@@ -47,17 +47,41 @@ export default class extends Controller {
       ? `New message in #${notification.chatroom_name}`
       : `New chatroom opened: #${notification.chatroom_name}`
 
+    // Get the current locale from the URL or default to empty
+    const locale = window.location.pathname.match(/^\/(en|fr|nl)/)?.[1] || ""
+    const localePrefix = locale ? `/${locale}` : ""
+    //const chatroomUrl = `${localePrefix}/chatrooms/${notification.chatroom_id}`
+    // corrected the chatroom url as chatrooms/0?chatroom=#{chatroom_name}
+    //TO DO : change the links to enable url chatrooms/${chatroom_id}`
+    const chatroomUrl = `${localePrefix}/chatrooms/0?chatroom=%23${notification.chatroom_name}`
+
     toast.innerHTML = `
-      <div class="notification-content">${message}</div>
+      <a href="${chatroomUrl}" class="notification-link" data-turbo-frame="_top">
+        <div class="notification-content">${message}</div>
+      </a>
       <button type="button" class="notification-close" data-action="click->notification#dismissToast">&times;</button>
     `
 
+    // Prevent navigation when clicking the close button
+    const closeButton = toast.querySelector(".notification-close")
+    closeButton.addEventListener("click", (e) => {
+      e.stopPropagation()
+      e.preventDefault()
+    })
+//console.log("toast", chatroomUrl)
+    // Ensure the link is clickable - add click handler as fallback
+    const link = toast.querySelector(".notification-link")
+    link.addEventListener("click", (e) => {
+      // Let the default link behavior handle navigation
+      // Turbo will intercept it automatically
+    })
+
     container.appendChild(toast)
 
-    // Auto-dismiss after 5 seconds
+    // Auto-dismiss after 8 seconds
     setTimeout(() => {
       this.#dismissToast({ currentTarget: toast.querySelector(".notification-close") })
-    }, 5000)
+    }, 8000)
   }
 
   dismissToast(event) {
