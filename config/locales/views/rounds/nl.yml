@@ -41,3 +41,4 @@ nl:
       round: Start van de ronde
       message: Als de nieuwe ronde einddatum later wordt vastgesteld dan de volgende ronde startdatum, wordt de laatste ook naar voren geschoven.
       confirm_btn: ⎷ Bevestigen
+      back_btn: ←
