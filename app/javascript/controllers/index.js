@@ -7,6 +7,9 @@ import { application } from "./application"
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
+
 import GalleryFilterController from "./gallery_filter_controller"
 application.register("gallery-filter", GalleryFilterController)
 

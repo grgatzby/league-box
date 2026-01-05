@@ -46,7 +46,7 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
+  <body data-controller="notification">
     <div class="content">
       <%# exclude navbar and flash messages from exporting to text (in user_box_score index) %>
       <% if !@render_to_text %>
@@ -60,6 +60,7 @@
       <footer class="footer-wrap">
         <%= render "shared/footer" %>
       </footer>
+      <%= render "shared/notifications" %>
     <% end %>
   </body>
 

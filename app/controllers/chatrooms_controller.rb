@@ -33,6 +33,20 @@ class ChatroomsController < ApplicationController
         flash[:notice] = t('.chatroom_created_flash')
         @chatroom = Chatroom.create(name: chatroom_name)
         @box.update(chatroom_id: @chatroom.id)
+
+        # Broadcast notification to all users with access
+        @chatroom.users_with_access.each do |user|
+          notification_data = {
+            type: "new_chatroom",
+            chatroom_id: @chatroom.id,
+            chatroom_name: @chatroom.name
+          }
+
+          ActionCable.server.broadcast(
+            "notifications_#{user.id}",
+            notification_data.to_json
+          )
+        end
       end
       @box_nb = @chatroom.box.box_number
       @round = @chatroom.box.round
@@ -86,6 +100,17 @@ class ChatroomsController < ApplicationController
     end
     # instantiate @message for the new message form
     @message = Message.new
+
+    # Mark chatroom as read for current user (when displaying a chatroom, not when id == "0" which shows the selection form)
+    if @chatroom && params[:id] != "0"
+      mark_chatroom_as_read(@chatroom)
+    end
+  end
+
+  private
+
+  def mark_chatroom_as_read(chatroom)
+    ChatroomRead.find_or_create_by(user: current_user, chatroom: chatroom).update(last_read_at: Time.current)
   end
 
   def new
