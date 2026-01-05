@@ -41,3 +41,4 @@ fr:
       round: Date de début du round
       message: Si la nouvelle daset de fin est au-delà de la date de départ du prochain round, celle-ci sera reculée aussi.
       confirm_btn: ⎷ Confirmer
+      back_btn: ←
