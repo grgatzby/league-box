@@ -25,10 +25,28 @@
       </div>
 
       <div class="row">
-        <div class="col-4"><%= f.label :nickname, "😎 #{t(".nick_name")}:" %></div>
+        <div class="col-4"><%= f.label :nickname, "😎 #{t(".nickname")}:" %></div>
         <div class="col-2"><%= f.text_field :nickname,
                                 placeholder: current_user.nickname,
                                 value: current_user.nickname,
+                                input_html: {class: "contact-field", style: "width: 20em"} %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= f.label :first_name, "😎 #{t(".first_name")}:" %></div>
+        <div class="col-2"><%= f.text_field :first_name,
+                                placeholder: current_user.first_name,
+                                value: current_user.first_name,
+                                input_html: {class: "contact-field", style: "width: 20em"} %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-4"><%= f.label :last_name, "😎 #{t(".last_name")}:" %></div>
+        <div class="col-2"><%= f.text_field :last_name,
+                                placeholder: current_user.last_name,
+                                value: current_user.last_name,
                                 input_html: {class: "contact-field", style: "width: 20em"} %>
         </div>
       </div>

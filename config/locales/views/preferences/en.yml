@@ -2,7 +2,9 @@ en:
   preferences:
     new:
       preferences: Preferences
-      nick_name: Nick name
+      nickname: Nick name
+      first_name: First name
+      last_name: Last name
       phone_number: Phone number
       e_mail: E-mail
       password: Modify password
@@ -11,7 +13,9 @@ en:
     edit:
       role: Role
       preferences: Preferences
-      nick_name: Nick name
+      nickname: Nick name
+      first_name: First name
+      last_name: Last name
       phone_number: Phone number
       e_mail: E-mail
       password: Password
