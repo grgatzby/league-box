@@ -93,10 +93,35 @@ class BoxesController < ApplicationController
         # players can access it when visiting My Scores or from the navbar menu Chatrooms
         @chatroom = Chatroom.create(name: chatroom_name(@box))
         @box.update(chatroom_id: @chatroom.id)
+
+        # Broadcast notification to all users with access
+        @chatroom.users_with_access.each do |user|
+          notification_data = {
+            type: "new_chatroom",
+            chatroom_id: @chatroom.id,
+            chatroom_name: @chatroom.name
+          }
+
+          ActionCable.server.broadcast(
+            "notifications_#{user.id}",
+            notification_data.to_json
+          )
+        end
       else
         @chatroom = @box.chatroom
       end
+
+      # Mark chatroom as read for current user when displayed via my_scores
+      if @chatroom
+        ChatroomRead.find_or_create_by(user: current_user, chatroom: @chatroom).update(last_read_at: Time.current)
+      end
     end
+  end
+
+  private
+
+  def mark_chatroom_as_read(chatroom)
+    ChatroomRead.find_or_create_by(user: current_user, chatroom: chatroom).update(last_read_at: Time.current)
   end
 
   def round_boxes_to_csv

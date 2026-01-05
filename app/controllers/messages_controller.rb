@@ -13,6 +13,28 @@ class MessagesController < ApplicationController
         @chatroom,
         render_to_string(partial: "message", locals: { message: @message })
       )
+
+      # Broadcast notifications to all users with access
+      @chatroom.users_with_access.each do |user|
+        if user == current_user
+          # Mark this message as read since they sent it
+          ChatroomRead.find_or_create_by(user: current_user, chatroom: @chatroom).update(last_read_at: Time.current)
+        else
+          # Notify other users
+          notification_data = {
+            type: "new_message",
+            chatroom_id: @chatroom.id,
+            chatroom_name: @chatroom.name,
+            message_id: @message.id
+          }
+
+          ActionCable.server.broadcast(
+            "notifications_#{user.id}",
+            notification_data.to_json
+          )
+        end
+      end
+
       head :ok
     else
       render "chatrooms/show", status: :unprocessable_entity

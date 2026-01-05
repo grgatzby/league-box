@@ -37,7 +37,9 @@
     <%# Admin links %>
     <% if current_user.role != "player" %>
       <div class="dropdown-divider"></div>
-      <%= link_to t('.chatrooms_link'), chatroom_path(0), class: "dropdown-item color-orange" %>
+      <%= link_to chatroom_path(0), class: "dropdown-item color-orange" do %>
+        <%= t('.chatrooms_link') %>
+      <% end %>
       <%= link_to t('.round_end_link'), edit_round_path(0), class: "dropdown-item color-black" %>
     <% end %>
 
