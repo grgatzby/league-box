@@ -17,6 +17,8 @@ class PreferencesController < ApplicationController
     # update current_user details
     user_params = {
       nickname: params[:preference][:nickname],
+      first_name: params[:preference][:first_name],
+      last_name: params[:preference][:last_name],
       phone_number: params[:preference][:phone_number],
       email: params[:preference][:e_mail]
     }
@@ -42,6 +44,8 @@ class PreferencesController < ApplicationController
     # update current_user details
     user_params = {
       nickname: params[:preference][:nickname],
+      first_name: params[:preference][:first_name],
+      last_name: params[:preference][:last_name],
       phone_number: params[:preference][:phone_number],
       email: params[:preference][:e_mail]
     }
