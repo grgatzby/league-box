@@ -11,7 +11,7 @@ class GalleryImageUploader < CarrierWave::Uploader::Base
     # Limit caption length to avoid very long filenames (max 50 chars)
     caption_camel = caption_camel[0..49] if caption_camel.length > 50
 
-    "#{Rails.env}/gallery/club/#{club_id}/#{timestamp}_#{caption_camel}"
+    "#{Rails.env}/league-box/gallery/club/#{club_id}/#{timestamp}_#{caption_camel}"
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
