@@ -23,7 +23,6 @@
     <div class="<%=class_names( "mobile-grid-container mobile-box-width mobile-text-size": @is_mobile,
                                 "grid-container box-width": !@is_mobile) %>">
       <div class="row" style="font-weight: bold">
-        <div class="col-1"></div>
         <div class="col-2"><%= t '.header_role' %></div>
         <div class="col-2"><%= t '.header_name' %></div>
         <div class="col-2"><%= t '.header_club' %></div>
@@ -31,7 +30,13 @@
         <div class="col-2"><%= t '.header_phone' %></div>
       </div>
       <div class="row">
-        <div class="col-1" style="display: flex; align-items: center; justify-content: center;">
+        <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+          <% if @sample_club&.logo.present? %>
+            <%= image_tag @sample_club.logo.url, alt: "#{@sample_club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
+          <% end %>
+          <span><%= t '.website_admin' %></span>
+        </div>
+        <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
           <% if @admin.profile_picture.present? %>
             <%= link_to @admin.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
               <%= image_tag(profile_picture_circular_url(@admin, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -39,9 +44,8 @@
           <% else %>
             <%= image_tag(player_profile_picture_or_favicon(@admin, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
           <% end %>
+          <span><%= render "shared/fullname", user: @admin%></span>
         </div>
-        <div class="col-2"><%= t '.website_admin' %></div>
-        <div class="col-2"><%= render "shared/fullname", user: @admin%></div>
         <div class="col-2"></div>
         <div class="col-3"><%= "#{@admin.email}" %></div>
         <div class="col-2"><%= "#{@admin.phone_number}" %></div>
@@ -49,7 +53,13 @@
       <% if current_user == @admin %>
         <% @referees.each do |referee| %>
           <div class="row">
-            <div class="col-1" style="display: flex; align-items: center; justify-content: center;">
+            <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+              <% if referee.club&.logo.present? %>
+                <%= image_tag referee.club.logo.url, alt: "#{referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
+              <% end %>
+              <span><%= t ".club_referee" %></span>
+            </div>
+            <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
               <% if referee.profile_picture.present? %>
                 <%= link_to referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
                   <%= image_tag(profile_picture_circular_url(referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -57,9 +67,8 @@
               <% else %>
                 <%= image_tag(player_profile_picture_or_favicon(referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
               <% end %>
+              <span><%= render "shared/fullname", user: referee%></span>
             </div>
-            <div class="col-2"><%= t ".club_referee" %></div>
-            <div class="col-2"><%= render "shared/fullname", user: referee%></div>
             <div class="col-2"><%= "#{referee.club.name}" %></div>
             <div class="col-3"><%= "#{referee.email}" %></div>
             <div class="col-2"><%= "#{referee.phone_number}" %></div>
@@ -70,7 +79,13 @@
       <% if @referee %>
         <!-- defined in application_controller#global_variables : current user's club referee-->
         <div class="row">
-          <div class="col-1" style="display: flex; align-items: center; justify-content: center;">
+          <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+            <% if @referee.club&.logo.present? %>
+              <%= image_tag @referee.club.logo.url, alt: "#{@referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
+            <% end %>
+            <span><%= "#{@referee.role.capitalize}" %></span>
+          </div>
+          <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
             <% if @referee.profile_picture.present? %>
               <%= link_to @referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
                 <%= image_tag(profile_picture_circular_url(@referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -78,9 +93,8 @@
             <% else %>
               <%= image_tag(player_profile_picture_or_favicon(@referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
             <% end %>
+            <span><%= render "shared/fullname", user: @referee%></span>
           </div>
-          <div class="col-2"><%= "#{@referee.role.capitalize}" %></div>
-          <div class="col-2"><%= render "shared/fullname", user: @referee%></div>
           <div class="col-2"><%= "#{@referee.club.name}" %></div>
           <div class="col-3"><%= "#{@referee.email}" %></div>
           <div class="col-2"><%= "#{@referee.phone_number}" %></div>
