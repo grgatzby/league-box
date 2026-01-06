@@ -263,5 +263,19 @@ nl:
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
       ok: 📦 Naar boxen
+    my_club:
+      club_branding_title: Club Identiteit
+      select_club: Selecteer Club
+      logo_label: Club Logo
+      current_logo: Huidig logo
+      banner_label: Club Banner
+      current_banner: Huidige banner
+      update_branding: Identiteit Bijwerken
+      ok: 📦 Naar boxen
+    update_club:
+      unauthorized: U bent niet gemachtigd om de club identiteit bij te werken.
+      success: Club identiteit succesvol bijgewerkt.
+      error: Fout bij het bijwerken van de club identiteit.
+      club_not_found: Club niet gevonden.
     staff:
       ok: 📦 Naar boxen

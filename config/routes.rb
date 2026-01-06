@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     root to: "pages#home"
     get "rules", to: "pages#rules", as: "rules"
     get "my_club", to: "pages#my_club", as: "my_club"
+    patch "my_club", to: "pages#update_club", as: "update_club"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
     resources :preferences, only: %i[new create edit update]

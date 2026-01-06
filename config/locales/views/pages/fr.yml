@@ -261,5 +261,19 @@ fr:
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
       ok: 📦 Vers les box
+    my_club:
+      club_branding_title: Identité visuelle du club
+      select_club: Sélectionner un club
+      logo_label: Logo du club
+      current_logo: Logo actuel
+      banner_label: Bannière du club
+      current_banner: Bannière actuelle
+      update_branding: Mettre à jour l'identité visuelle
+      ok: 📦 Vers les box
+    update_club:
+      unauthorized: Vous n'êtes pas autorisé à mettre à jour l'identité visuelle du club.
+      success: L'identité visuelle du club a été mise à jour avec succès.
+      error: Erreur lors de la mise à jour de l'identité visuelle du club.
+      club_not_found: Club introuvable.
     staff:
       ok: 📦 Vers les box

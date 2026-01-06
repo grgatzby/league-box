@@ -1,4 +1,9 @@
 <!-- inlay image from the presentation view pages (home, rules, my_club and sitemap) and contact (sent) -->
-<div class="image-home">
+<div class="image-home"<% if @club.banner.present? %> style="background-image: linear-gradient(rgba(0,0,0,0), rgba(255, 255, 255,0.4)), url('<%= @club.banner.url %>');"<% end %>>
+  <% if @club.logo.present? %>
+    <div class="club-logo-overlay">
+      <%= image_tag @club.logo.url, alt: "#{@club.name} logo", class: "club-logo" %>
+    </div>
+  <% end %>
   <div class="font-black image-home-text"><h1><b><%= @club == @sample_club ? "" : @club.name.capitalize %> LeagueBox</b></h1></div>
 </div><br>

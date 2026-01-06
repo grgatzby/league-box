@@ -264,5 +264,19 @@ en:
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
       ok: 📦 To boxes
+    my_club:
+      club_branding_title: Club Branding
+      select_club: Select Club
+      logo_label: Club Logo
+      current_logo: Current logo
+      banner_label: Club Banner
+      current_banner: Current banner
+      update_branding: Update Branding
+      ok: 📦 To boxes
+    update_club:
+      unauthorized: You are not authorized to update club branding.
+      success: Club branding updated successfully.
+      error: Error updating club branding.
+      club_not_found: Club not found.
     staff:
       ok: 📦 To boxes
