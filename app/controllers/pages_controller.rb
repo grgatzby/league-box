@@ -55,4 +55,37 @@ class PagesController < ApplicationController
       @is_admin = false
     end
   end
+
+  def update_club
+    # Only allow referees to update their club's logo and banner
+    unless current_user && (current_user.role&.include?("referee") || current_user == @admin)
+      flash[:alert] = t("pages.update_club.unauthorized")
+      redirect_to my_club_path
+      return
+    end
+
+    begin
+      club = if current_user == @admin && params[:club_id].present?
+               Club.find(params[:club_id])
+             else
+               current_user.club
+             end
+
+      if club.update(club_params)
+        flash[:notice] = t("pages.update_club.success")
+      else
+        flash[:alert] = t("pages.update_club.error")
+      end
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = t("pages.update_club.club_not_found")
+    end
+
+    redirect_to my_club_path
+  end
+
+  private
+
+  def club_params
+    params.require(:club).permit(:logo, :banner)
+  end
 end

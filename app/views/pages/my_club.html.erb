@@ -8,6 +8,49 @@
     <%= render "shared/staff", from:"pages" %>
   </div><br>
 
+  <%# Club Logo and Banner Upload Section (for referees) %>
+  <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
+    <div class="frame-color-shape frame-padding">
+      <br><h4><div class="title"><b><%= t(".club_branding_title").upcase %></b></div></h4><br>
+
+      <%= form_with url: update_club_path, method: :patch, multipart: true, local: true do |f| %>
+        <% if current_user == @admin && @is_admin %>
+          <div class="mb-3">
+            <%= f.label :club_id, t(".select_club"), class: "form-label" %>
+            <%= f.select :club_id,
+                options_for_select(Club.all.reject { |c| c == @sample_club }.map { |club| [club.name, club.id] }, @club.id),
+                {},
+                { class: "form-control", id: "club_select" } %>
+          </div>
+        <% else %>
+          <%= f.hidden_field :club_id, value: @club.id %>
+        <% end %>
+
+        <%= f.fields_for :club, @club do |club_form| %>
+          <div class="mb-3">
+            <%= club_form.label :logo, t(".logo_label"), class: "form-label" %>
+            <%= club_form.file_field :logo, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+            <% if @club.logo.present? %>
+              <small class="form-text text-muted"><%= t(".current_logo") %></small><br>
+              <%= image_tag @club.logo.url, class: "rounded", style: "max-width: 200px; max-height: 200px; margin-top: 10px;" %>
+            <% end %>
+          </div>
+
+          <div class="mb-3">
+            <%= club_form.label :banner, t(".banner_label"), class: "form-label" %>
+            <%= club_form.file_field :banner, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+            <% if @club.banner.present? %>
+              <small class="form-text text-muted"><%= t(".current_banner") %></small><br>
+              <%= image_tag @club.banner.url, class: "rounded", style: "max-width: 400px; max-height: 200px; margin-top: 10px;" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= f.submit t(".update_branding"), class: "btn btn-shape btn-aqua mb-3" %>
+      <% end %>
+    </div><br>
+  <% end %>
+
   <%# Player Directory Section %>
   <br><h4><div class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
   <% if @is_admin && @players_by_club %>
