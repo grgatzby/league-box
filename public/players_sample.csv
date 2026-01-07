@@ -58,4 +58,5 @@ id;email;first_name;last_name;nickname;phone_number;role
 57;gaetan.thomas@example.com;Gaetan;Thomas;GT;+33 6 39 40 41 42;player
 58;manon.joly@example.com;Manon;Joly;MJ;+33 6 40 41 42 43;player
 59;brice.bouchet@example.com;Brice;Bouchet;BB;+33 6 41 42 43 44;player
-60;raphael.chevalier@example.com;Raphael;Chevalier;RC;+33 6 42 43 44 45;player referee
+60;raphael.chevalier@example.com;Raphael;Chevalier;RC;+33 6 42 43 44 45;player
+61;yann.latimier@labauletennisclub.fr;Yann;Latimier;YannL;+33 6 84 95 85 15;referee

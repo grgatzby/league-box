@@ -25,6 +25,9 @@ module ApplicationHelper
   def player_profile_picture_or_favicon(user, size = 30)
     if user.profile_picture.present?
       profile_picture_circular_url(user, size)
+    elsif user.club&.logo.present?
+      # Use club logo as fallback if available
+      user.club.logo.url
     else
       image_path('favicon.png')
     end
