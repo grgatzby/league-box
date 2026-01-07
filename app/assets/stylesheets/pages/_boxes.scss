@@ -23,12 +23,39 @@
 }
 
 .mobile-box-table-width {
-  width: calc(min(1250px,220vw));
+  width: calc(min(1250px, 220vw, max(100%, 50rem)));
+}
+
+// Wider columns for mobile to prevent overlap
+@media only screen and (max-width: 768px) {
+  .mobile-box-table-width {
+    .col-2 {
+      min-width: 7rem;
+      flex: 0 0 auto;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    .col-10 {
+      min-width: 35rem;
+      flex: 0 0 auto;
+    }
+  }
 }
 
 .grid-container {
   padding: 5px;
 
+  // Column headers (opponent names)
+  .col-10 > .row.bold-font {
+    display: flex;
+    align-items: center;
+    > .col-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  }
 
   #grid-lines>.row {
     height: 5.5rem;
@@ -37,6 +64,16 @@
       padding-bottom: .75rem;
       border: 1px solid rgba(39,41,43,0.1);
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 
@@ -45,6 +82,8 @@
     .col-12 {
       padding-top: .75rem;
       padding-bottom: .75rem;
+      display: flex;
+      align-items: center;
       // border: 1px solid rgba(39,41,43,0.1);
     }
   }
@@ -52,18 +91,42 @@
 .mobile-grid-container {
   padding: 5px;
 
+  // Column headers (opponent names) - mobile
+  .col-10 > .row.bold-font {
+    display: flex;
+    align-items: center;
+    > .col-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+
   #grid-lines>.row>.grid-columns {
     height: calc(max(6vw,4rem));
     padding-top: .75rem;
     padding-bottom: .75rem;
     border: 1px solid rgba(39,41,43,0.1);
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .first-col-lines>.col-12 {
     height: calc(max(6vw,4rem));
     padding-top: .75rem;
     padding-bottom: .75rem;
+    display: flex;
+    align-items: center;
     // border: 1px solid rgba(39,41,43,0.1);
 
   }

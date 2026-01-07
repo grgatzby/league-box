@@ -1,6 +1,7 @@
 <div class = "<%=class_names( "box-table-wrap", "frame-color-shape frame-padding": !clear_format ) %>">
-  <div class="<%=class_names( "row small-font",
-                              "mobile-box-table-width mobile-grid-container mobile-text-size": @is_mobile,
+  <div class="<%=class_names( "row",
+                              "small-font": !@is_mobile,
+                              "mobile-box-table-width mobile-grid-container text-size": @is_mobile,
                               "box-width grid-container": !@is_mobile) %>">
     <%# the first column of the table uses 2/12th of the total width (bootstrap grid) %>
     <div class="col-2 print-all-content">
