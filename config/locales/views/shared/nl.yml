@@ -7,12 +7,12 @@ nl:
       login_link: Log in
     navbar_dropdown:
       tournament_rules_link: 📜 Regels
-      my_club_link: 👤 Mijn club
+      my_club_link: 🎾 Mijn club
       all_boxes_link: 📦 Boxen
       round_ranking_link: 🏆 Ronde ranglijst
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 Mijn scores
-      my_profile_link: ✉️ Mijn profiel
+      my_profile_link: 👤 Mijn profiel
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Chatrooms
       round_end_link: Stel ronde einde uit

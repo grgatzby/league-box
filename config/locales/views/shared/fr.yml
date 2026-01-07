@@ -7,12 +7,12 @@ fr:
       login_link: Connexion
     navbar_dropdown:
       tournament_rules_link: 📜 Règles
-      my_club_link: 👤 Mon club
+      my_club_link: 🎾 Mon club
       all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement round
       league_table_link: 🏆🏆 League table
       my_scores_link: 🧮 Mes scores
-      my_profile_link: ✉️ Mon profil
+      my_profile_link: 👤 Mon profil
       general_chat_link: "Chatroom #general"
       chatrooms_link: 🧑‍💻 Les chatrooms
       round_end_link: Repousser la fin du round
