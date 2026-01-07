@@ -1,7 +1,7 @@
 <!-- partial: league table wrap -->
 
 <div class="<%= class_names("print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap",
-  "mobile-text-size": @is_mobile) %>">
+  "mobile-text-size": !@is_mobile, "text-size": @is_mobile) %>">
   <div class="<%= class_names("row", "mobile-table-width": @is_mobile, "table-width": !@is_mobile) %>">
     <div class="one-liner bold-font">
       <%# headers %>

@@ -19,7 +19,7 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Password
-      modify_password: Modify password
+      modify_password: Open modify password form
       expanded_view: Expanded view
       clear_format: Clear background color gradient
       profile_picture: "🖼️ Profile Picture:"

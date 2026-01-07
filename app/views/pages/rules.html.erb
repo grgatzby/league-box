@@ -23,7 +23,9 @@
         { number: 5, icon: "fa-solid fa-user-group", key: ".ranking_and_promotions_section", partial: "5_ranking_and_promotions" },
         { number: 6, icon: "fa-solid fa-circle-exclamation", key: ".special_circumstances_section", partial: "6_special_circumstances" },
         { number: 7, icon: "fa-solid fa-scale-balanced", key: ".disputes_section", partial: "7_disputes" }
-      ] %>
+      ]
+      rules_sections.reject! { |section| section[:number] == 2 } unless user_signed_in?
+      %>
 
       <% rules_sections.each do |section| %>
         <%= render "rules_section",

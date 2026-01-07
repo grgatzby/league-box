@@ -167,7 +167,7 @@
 
       <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
-        <div class="col-4">
+        <div class="col-8">
           <%= f.label :password, t(".modify_password") %>
           <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
@@ -182,7 +182,7 @@
       <% end %>
       <hr>
       <b><%= t(".preferences") %></b><br>
-        <%# checkbox to remove formatting if page does not display well on screen %>
+        <%# checkbox to remove color gradient formatting if page does not display well on screen %>
         <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>

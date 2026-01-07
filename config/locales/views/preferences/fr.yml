@@ -19,7 +19,7 @@ fr:
       phone_number: Téléphone
       e_mail: Adresse email
       password: Mot de passe
-      modify_password: Modifier le mot de passe
+      modify_password: Ouvrir le formulaire de modification
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
       profile_picture: "🖼️ Photo de profil :"
