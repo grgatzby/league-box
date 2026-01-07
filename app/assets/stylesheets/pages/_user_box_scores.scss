@@ -43,7 +43,23 @@
 }
 
 .mobile-table-width {
-  width: calc(max(100%,30rem));
+  width: calc(max(100%, 50rem));
+}
+
+// Wider columns for mobile to prevent overlap
+@media only screen and (max-width: 768px) {
+  .mobile-table-width {
+    .col-1 {
+      min-width: 3.5rem;
+      flex: 0 0 auto;
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+    }
+    .col-3 {
+      min-width: 10rem;
+      flex: 0 0 auto;
+    }
+  }
 }
 
 .photo-wrap {
