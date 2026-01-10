@@ -83,9 +83,36 @@ class PagesController < ApplicationController
     redirect_to my_club_path
   end
 
+  def update_user_profile_picture
+    # Only allow admin to update user profile pictures
+    unless current_user == @admin
+      flash[:alert] = t("pages.update_user_profile_picture.unauthorized", default: "You are not authorized to update profile pictures.")
+      redirect_to my_club_path
+      return
+    end
+
+    begin
+      user = User.find(params[:id])
+
+      if user.update(user_profile_picture_params)
+        flash[:notice] = t("pages.update_user_profile_picture.success", default: "Profile picture updated successfully.")
+      else
+        flash[:alert] = t("pages.update_user_profile_picture.error", default: "Error updating profile picture.")
+      end
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = t("pages.update_user_profile_picture.user_not_found", default: "User not found.")
+    end
+
+    redirect_to my_club_path
+  end
+
   private
 
   def club_params
     params.require(:club).permit(:logo, :banner)
+  end
+
+  def user_profile_picture_params
+    params.require(:user).permit(:profile_picture)
   end
 end

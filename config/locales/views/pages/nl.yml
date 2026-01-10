@@ -277,5 +277,15 @@ nl:
       success: Club identiteit succesvol bijgewerkt.
       error: Fout bij het bijwerken van de club identiteit.
       club_not_found: Club niet gevonden.
+    update_user_profile_picture:
+      edit_title: Profielfoto Bewerken
+      profile_picture_label: Profielfoto
+      current_picture: Huidige foto
+      cancel: Annuleren
+      update: Bijwerken
+      unauthorized: U bent niet gemachtigd om profielfoto's bij te werken.
+      success: Profielfoto succesvol bijgewerkt.
+      error: Fout bij het bijwerken van de profielfoto.
+      user_not_found: Gebruiker niet gevonden.
     staff:
       ok: 📦 Naar boxen

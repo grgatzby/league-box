@@ -39,12 +39,27 @@
                data-player-filter-target="item"
                data-searchable="<%= "#{player_name} #{player.email} #{player.phone_number}" %>">
             <div class="col-3 top-bottom-padding" style="display: flex; align-items: center; gap: 10px;">
-              <% if player.profile_picture.present? %>
-                <%= link_to player.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
-                  <%= image_tag(profile_picture_circular_url(player, is_mobile ? 30 : 40), alt: 'Profile picture', class: "player-profile-picture", style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+              <% if current_user == @admin %>
+                <%# Admin can click to edit profile picture %>
+                <% if player.profile_picture.present? %>
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#editProfilePictureModal<%= player.id %>" class="player-profile-picture-link" style="cursor: pointer;">
+                    <%= image_tag(profile_picture_circular_url(player, is_mobile ? 30 : 40), alt: 'Profile picture', class: "player-profile-picture", style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                  </a>
+                <% else %>
+                  <%# Show club logo or favicon (handled by helper), make it clickable for admin %>
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#editProfilePictureModal<%= player.id %>" style="cursor: pointer;">
+                    <%= image_tag(player_profile_picture_or_favicon(player, is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                  </a>
                 <% end %>
               <% else %>
-                <%= image_tag(player_profile_picture_or_favicon(player, is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                <%# Regular users see profile picture as link to full image %>
+                <% if player.profile_picture.present? %>
+                  <%= link_to player.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
+                    <%= image_tag(profile_picture_circular_url(player, is_mobile ? 30 : 40), alt: 'Profile picture', class: "player-profile-picture", style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                  <% end %>
+                <% else %>
+                  <%= image_tag(player_profile_picture_or_favicon(player, is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{is_mobile ? 30 : 40}px; height: #{is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+                <% end %>
               <% end %>
               <%= render "shared/fullname", user: player %>
             </div>
@@ -57,4 +72,61 @@
       </div>
     </div>
   </div>
+
+  <%# Modal for editing profile picture (admin only) %>
+  <% if current_user == @admin %>
+    <% players.each do |player| %>
+      <div class="modal fade" id="editProfilePictureModal<%= player.id %>" tabindex="-1" aria-labelledby="editProfilePictureModalLabel<%= player.id %>" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editProfilePictureModalLabel<%= player.id %>">
+                <%= t("pages.update_user_profile_picture.edit_title", default: "Edit Profile Picture") %> - <%= render "shared/fullname", user: player %>
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <%= form_with url: update_user_profile_picture_path(player), method: :patch, multipart: true, local: true do |f| %>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <%= label_tag "user[profile_picture]", t("pages.update_user_profile_picture.profile_picture_label"), class: "form-label" %>
+                  <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control", id: "profile_picture_input_#{player.id}" %>
+                  <% if player.profile_picture.present? %>
+                    <small class="form-text text-muted"><%= t("pages.update_user_profile_picture.current_picture") %></small><br>
+                    <%= image_tag player.profile_picture.url, class: "rounded", style: "max-width: 200px; max-height: 200px; margin-top: 10px;", id: "preview_image_#{player.id}" %>
+                  <% else %>
+                    <img id="preview_image_<%= player.id %>" src="" alt="Preview" class="rounded d-none" style="max-width: 200px; max-height: 200px; margin-top: 10px;">
+                  <% end %>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><%= t("pages.update_user_profile_picture.cancel") %></button>
+                <%= f.submit t("pages.update_user_profile_picture.update"), class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function() {
+          const input = document.getElementById('profile_picture_input_<%= player.id %>');
+          const preview = document.getElementById('preview_image_<%= player.id %>');
+
+          if (input && preview) {
+            input.addEventListener('change', function(e) {
+              const file = e.target.files[0];
+              if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                  preview.src = e.target.result;
+                  preview.classList.remove('d-none');
+                };
+                reader.readAsDataURL(file);
+              }
+            });
+          }
+        })();
+      </script>
+    <% end %>
+  <% end %>
 </div><br>

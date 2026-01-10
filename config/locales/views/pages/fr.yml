@@ -275,5 +275,15 @@ fr:
       success: L'identité visuelle du club a été mise à jour avec succès.
       error: Erreur lors de la mise à jour de l'identité visuelle du club.
       club_not_found: Club introuvable.
+    update_user_profile_picture:
+      edit_title: Modifier la photo de profil
+      profile_picture_label: Photo de profil
+      current_picture: Photo actuelle
+      cancel: Annuler
+      update: Mettre à jour
+      unauthorized: Vous n'êtes pas autorisé à mettre à jour les photos de profil.
+      success: Photo de profil mise à jour avec succès.
+      error: Erreur lors de la mise à jour de la photo de profil.
+      user_not_found: Utilisateur introuvable.
     staff:
       ok: 📦 Vers les box
