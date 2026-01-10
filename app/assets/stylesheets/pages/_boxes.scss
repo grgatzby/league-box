@@ -19,7 +19,7 @@
 .mobile-box-width {
   // width: calc(70vw+40px);
   // width: calc(min(1250px,220vw));
-  width: calc(max(100%,30rem))
+  width: calc(max(100%, 70rem));
 }
 
 .mobile-box-table-width {
@@ -54,6 +54,17 @@
       align-items: center;
       justify-content: center;
       height: 100%;
+    }
+  }
+
+  // Player directory - alternate row shading (desktop)
+  .player-directory-row {
+    &.player-row-odd {
+      background-color: rgba(229, 200, 152, 0.2); // light tennis-beige tint
+    }
+
+    &.player-row-even {
+      background-color: transparent;
     }
   }
 
@@ -129,6 +140,79 @@
     align-items: center;
     // border: 1px solid rgba(39,41,43,0.1);
 
+  }
+
+  // Player directory - alternate row shading
+  .player-directory-row {
+    &.player-row-odd {
+      background-color: rgba(229, 200, 152, 0.2); // light tennis-beige tint
+    }
+
+    &.player-row-even {
+      background-color: transparent;
+    }
+  }
+
+  // Staff table and Player directory - prevent overlap and ensure single line
+  .row {
+    white-space: nowrap;
+    min-width: fit-content;
+
+    // Staff table columns (col-2, col-3)
+    .col-2 {
+      min-width: 10rem;
+      flex: 0 0 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+
+      // Second column (name) typically needs more space
+      &:nth-of-type(2) {
+        min-width: 16rem;
+      }
+
+      // Role column can be narrower
+      &:first-of-type {
+        min-width: 9rem;
+      }
+
+      // Phone column (last col-2)
+      &:last-of-type {
+        min-width: 9rem;
+      }
+    }
+
+    .col-3 {
+      min-width: 20rem;
+      flex: 0 0 auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    // Player directory - name column with picture
+    .col-3.top-bottom-padding {
+      min-width: 18rem;
+      flex-shrink: 0;
+    }
+
+    // Player directory - email and phone columns
+    .col-4.top-bottom-padding,
+    .col-5.top-bottom-padding {
+      min-width: 16rem;
+      flex: 0 0 auto;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    .col-5.top-bottom-padding {
+      min-width: 14rem;
+    }
   }
 }
 
