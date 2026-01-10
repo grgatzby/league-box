@@ -31,11 +31,12 @@
                                   "grid-container box-width": !is_mobile) %>">
         <div class="row" style="font-weight: bold">
           <div class="col-3"><%= t "shared.my_club.header_name" %></div>
-          <div class="col-7"><%= t "shared.my_club.header_contact_details" %></div>
+          <div class="col-4"><%= t "shared.my_club.header_email" %></div>
+          <div class="col-5"><%= t "shared.my_club.header_phone" %></div>
         </div>
-        <% players.each do |player| %>
+        <% players.each_with_index do |player, index| %>
           <% player_name = "#{player.first_name} #{player.last_name}" %>
-          <div class="row"
+          <div class="row player-directory-row <%= index.even? ? 'player-row-even' : 'player-row-odd' %>"
                data-player-filter-target="item"
                data-searchable="<%= "#{player_name} #{player.email} #{player.phone_number}" %>">
             <div class="col-3 top-bottom-padding" style="display: flex; align-items: center; gap: 10px;">
@@ -63,9 +64,11 @@
               <% end %>
               <%= render "shared/fullname", user: player %>
             </div>
-            <div class="col-7 top-bottom-padding">
-              <div><%= "#{t 'shared.my_club.header_email'}: #{player.email}" %></div>
-              <div><%= "#{t 'shared.my_club.header_phone'}: #{player.phone_number}" %></div>
+            <div class="col-4 top-bottom-padding" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              ✉️ <%= player.email %>
+            </div>
+            <div class="col-5 top-bottom-padding" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+              📞 <%= player.phone_number %>
             </div>
           </div>
         <% end %>
