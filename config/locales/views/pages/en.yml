@@ -278,5 +278,15 @@ en:
       success: Club branding updated successfully.
       error: Error updating club branding.
       club_not_found: Club not found.
+    update_user_profile_picture:
+      edit_title: Edit Profile Picture
+      profile_picture_label: Profile Picture
+      current_picture: Current picture
+      cancel: Cancel
+      update: Update
+      unauthorized: You are not authorized to update profile pictures.
+      success: Profile picture updated successfully.
+      error: Error updating profile picture.
+      user_not_found: User not found.
     staff:
       ok: 📦 To boxes
