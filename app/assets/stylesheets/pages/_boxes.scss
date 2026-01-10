@@ -19,7 +19,7 @@
 .mobile-box-width {
   // width: calc(70vw+40px);
   // width: calc(min(1250px,220vw));
-  width: calc(max(100%, 70rem));
+  width: calc(max(100%, 85rem));
 }
 
 .mobile-box-table-width {
@@ -60,7 +60,7 @@
   // Player directory - alternate row shading (desktop)
   .player-directory-row {
     &.player-row-odd {
-      background-color: rgba(229, 200, 152, 0.2); // light tennis-beige tint
+      background-color: rgba(229, 200, 152, 0.5); // light tennis-beige tint with higher contrast
     }
 
     &.player-row-even {
@@ -142,10 +142,10 @@
 
   }
 
-  // Player directory - alternate row shading
+  // Player directory - alternate row shading (mobile)
   .player-directory-row {
     &.player-row-odd {
-      background-color: rgba(229, 200, 152, 0.2); // light tennis-beige tint
+      background-color: rgba(229, 200, 152, 0.5); // light tennis-beige tint with higher contrast
     }
 
     &.player-row-even {
