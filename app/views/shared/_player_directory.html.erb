@@ -27,7 +27,7 @@
   </p>
   <div class="frame-no-margin-rl">
     <div class="box-table-wrap text-size frame-color-shape">
-      <div class="<%=class_names( "mobile-grid-container mobile-box-width mobile-text-size": is_mobile,
+      <div class="<%=class_names( "mobile-grid-container mobile-box-width text-size": is_mobile,
                                   "grid-container box-width": !is_mobile) %>">
         <div class="row" style="font-weight: bold">
           <div class="col-3"><%= t "shared.my_club.header_name" %></div>
@@ -64,8 +64,8 @@
               <%= render "shared/fullname", user: player %>
             </div>
             <div class="col-7 top-bottom-padding">
-              <div><%= "#{t 'shared.my_club.header_email'} #{player.email}" %></div>
-              <div><%= "#{t 'shared.my_club.header_phone'} #{player.phone_number}" %></div>
+              <div><%= "#{t 'shared.my_club.header_email'}: #{player.email}" %></div>
+              <div><%= "#{t 'shared.my_club.header_phone'}: #{player.phone_number}" %></div>
             </div>
           </div>
         <% end %>
