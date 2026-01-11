@@ -21,7 +21,12 @@
 <!-- improved the styling thanks to https://www.honeybadger.io/blog/chat-app-rails-actioncable-turbo/
 the styling is now sender specific:
 style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.html.erb -->
-<div id="message-<%= message.id %>" class="cont-<%= message.user_id %>">
+<div id="message-<%= message.id %>" class="cont-<%= message.user_id %> <%= 'has-checkbox' if current_user == @admin %>">
+  <% if current_user == @admin %>
+    <div class="message-checkbox">
+      <%= check_box_tag "message_ids[]", message.id, false, { class: "message-checkbox-input", data: { message_id: message.id } } %>
+    </div>
+  <% end %>
   <div class="message-box msg-<%= message.user_id %> ">
     <small>
       <%# sender = popover text when hovering on a sendee name %>

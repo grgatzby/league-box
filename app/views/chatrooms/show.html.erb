@@ -27,6 +27,24 @@
       </div>
     </h5>
     <div class="frame-color-shape chatroom-frame">
+      <%# Bulk delete form for admin %>
+      <% if current_user == @admin %>
+        <div class="dont-print mb-3">
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <button type="button" class="btn btn-shape btn-yellow" onclick="selectAllMessages()">
+              <%= t(".select_all", default: "Select All") %>
+            </button>
+            <button type="button" class="btn btn-shape btn-yellow" onclick="deselectAllMessages()">
+              <%= t(".deselect_all", default: "Deselect All") %>
+            </button>
+            <button type="button" class="btn btn-shape btn-orange" id="bulk-delete-btn" disabled onclick="submitBulkDelete()">
+              <%= t(".bulk_delete", default: "Delete Selected") %>
+            </button>
+            <span id="selected-count" class="text-size"></span>
+          </div>
+        </div>
+      <% end %>
+
       <!-- list of all previous messages in the chatroom -->
       <div class="messages print-all-content" data-chatroom-subscription-target="messages">
         <% @chatroom.messages.sort.each do |message| %>
@@ -51,6 +69,126 @@
       </div>
     </div>
   </div>
+
+  <%# JavaScript for bulk message selection (admin only) %>
+  <% if current_user == @admin %>
+    <div id="bulk-delete-data"
+         data-bulk-delete-url="<%= bulk_delete_chatroom_messages_path(@chatroom) %>"
+         data-selected-text="<%= t(".selected", default: "selected") %>"
+         data-no-messages-text="<%= t(".no_messages_selected", default: "No messages selected") %>"
+         data-confirm-text="<%= t(".confirm_bulk_delete", default: "Are you sure you want to delete the selected messages?") %>"
+         style="display: none;"></div>
+    <script>
+      (function() {
+        const dataEl = document.getElementById('bulk-delete-data');
+        if (!dataEl) return;
+
+        const bulkDeleteUrl = dataEl.dataset.bulkDeleteUrl;
+        const selectedText = dataEl.dataset.selectedText;
+        const noMessagesText = dataEl.dataset.noMessagesText;
+        const confirmText = dataEl.dataset.confirmText;
+
+        function updateSelectedCount() {
+          const checkboxes = document.querySelectorAll('.message-checkbox-input:checked');
+          const countElement = document.getElementById('selected-count');
+          const deleteBtn = document.getElementById('bulk-delete-btn');
+          const count = checkboxes.length;
+
+          if (countElement) {
+            countElement.textContent = count > 0 ? `(${count} ${selectedText})` : '';
+          }
+
+          if (deleteBtn) {
+            deleteBtn.disabled = count === 0;
+          }
+        }
+
+        window.selectAllMessages = function() {
+          document.querySelectorAll('.message-checkbox-input').forEach(checkbox => {
+            checkbox.checked = true;
+          });
+          updateSelectedCount();
+        };
+
+        window.deselectAllMessages = function() {
+          document.querySelectorAll('.message-checkbox-input').forEach(checkbox => {
+            checkbox.checked = false;
+          });
+          updateSelectedCount();
+        };
+
+        window.submitBulkDelete = function() {
+          const checkboxes = document.querySelectorAll('.message-checkbox-input:checked');
+          const messageIds = Array.from(checkboxes).map(cb => cb.value);
+
+          if (messageIds.length === 0) {
+            alert(noMessagesText);
+            return;
+          }
+
+          if (!confirm(confirmText)) {
+            return;
+          }
+
+          // Create a form and submit it
+          const form = document.createElement('form');
+          form.method = 'POST';
+          form.action = bulkDeleteUrl;
+
+          // Add CSRF token
+          const csrfToken = document.querySelector('meta[name="csrf-token"]');
+          if (csrfToken) {
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'authenticity_token';
+            csrfInput.value = csrfToken.content;
+            form.appendChild(csrfInput);
+          }
+
+          // Add method override for DELETE
+          const methodInput = document.createElement('input');
+          methodInput.type = 'hidden';
+          methodInput.name = '_method';
+          methodInput.value = 'delete';
+          form.appendChild(methodInput);
+
+          // Add message IDs
+          messageIds.forEach(id => {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'message_ids[]';
+            input.value = id;
+            form.appendChild(input);
+          });
+
+          document.body.appendChild(form);
+          form.submit();
+        };
+
+        // Add event listeners to all checkboxes
+        document.addEventListener('DOMContentLoaded', function() {
+          document.querySelectorAll('.message-checkbox-input').forEach(checkbox => {
+            checkbox.addEventListener('change', updateSelectedCount);
+          });
+          updateSelectedCount();
+        });
+
+        // Also handle dynamically added messages (from ActionCable)
+        const messagesContainer = document.querySelector('[data-chatroom-subscription-target="messages"]');
+        if (messagesContainer) {
+          const observer = new MutationObserver(function(mutations) {
+            document.querySelectorAll('.message-checkbox-input').forEach(checkbox => {
+              if (!checkbox.hasAttribute('data-listener-added')) {
+                checkbox.addEventListener('change', updateSelectedCount);
+                checkbox.setAttribute('data-listener-added', 'true');
+              }
+            });
+          });
+          observer.observe(messagesContainer, { childList: true, subtree: true });
+        }
+      })();
+    </script>
+  <% end %>
 <% else %>
   <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
