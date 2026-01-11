@@ -1,3 +1,9 @@
+.select-club-round:hover {
+  transform: scale(1.03);
+}
+
+
+
 .top-bottom-padding {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -16,7 +22,7 @@
   // margin: 0 auto;
 }
 
-.mobile-box-width {
+  .mobile-box-width {
   // width: calc(70vw+40px);
   // width: calc(min(1250px,220vw));
   width: calc(max(100%, 85rem));
