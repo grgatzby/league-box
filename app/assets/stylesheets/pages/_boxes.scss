@@ -239,6 +239,36 @@
       min-width: 16rem;
     }
   }
+
+  // Grid headers - ensure proper Bootstrap grid behavior (override general .row styles)
+  .col-10 > .row.bold-font {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    min-width: auto !important;
+    > .col-2 {
+      min-width: auto !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
+
+  // Grid lines - ensure proper Bootstrap grid behavior (override general .row styles)
+  #grid-lines > .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    white-space: normal !important;
+    min-width: auto !important;
+    > .col-2 {
+      min-width: auto !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+  }
 }
 
 
