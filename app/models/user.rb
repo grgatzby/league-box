@@ -28,4 +28,27 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def unread_chatrooms
+    Chatroom.all.select do |chatroom|
+      next unless chatroom.users_with_access.include?(self)
+
+      # Get the last message in the chatroom
+      last_message = chatroom.messages.order(created_at: :desc).first
+
+      # Exclude if user sent the last message
+      next if last_message&.user == self
+
+      chatroom_read = chatroom_reads.find_by(chatroom: chatroom)
+      last_read_at = chatroom_read&.last_read_at
+
+      # If never read, check if there are any messages
+      if last_read_at.nil?
+        chatroom.messages.exists?
+      else
+        # Check if there are messages created after last_read_at
+        chatroom.messages.where("created_at > ?", last_read_at).exists?
+      end
+    end
+  end
 end

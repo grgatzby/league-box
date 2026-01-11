@@ -182,9 +182,9 @@ en:
       p39: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
     7_disputes:
       disputes: Disputes
-      mail_to_referee_html: "your Referee %{referee_name} to %{referee_email} or through your box chatroom"
-      mail_to_admin_html: "your admin at %{admin_email}"
-      p40_html: "The Tournament Referee's decision is final. All dispute inquiries to be emailed to %{mailto}."
+      mail_to_referee_html: "emailed to %{referee_name} (<i>%{referee_email}</i>) or through your box chatroom"
+      mail_to_admin_html: "emailed to your admin at %{admin_email}"
+      p40_html: "The Tournament Referee's decision is final. All dispute inquiries to be %{mailto}."
     sitemap:
       sitemap_title: Sitemap
       home: Home

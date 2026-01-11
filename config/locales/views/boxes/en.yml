@@ -58,8 +58,8 @@ en:
       see_match_card_btn: Match card
       enter_score_btn: Enter score
       match_not_played: Match not played
-      chat_in_my_box: Organise my matches, contact the Club Referee
-      access_chatroom_btn: to the box chatroom
+      chat_in_my_box: Get in touch with other box members, or the Tournament Referee
+      access_chatroom_btn: access the box chatroom
     show_list:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>List view</span> page displays all played matches in list view, and give players access to the match cards.<br>

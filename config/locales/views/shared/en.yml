@@ -11,10 +11,10 @@ en:
       all_boxes_link: 📦 Boxes
       round_ranking_link: 🏆 Round Ranking
       league_table_link: 🏆🏆 League Table
-      my_scores_link: 🧮 My Scores
+      my_scores_link: ✉️ My scores & chatroom
       my_profile_link: 👤 My Profile
       general_chat_link: "#general chatroom"
-      chatrooms_link: 🧑‍💻 Chatrooms
+      chatrooms_link: ✉️ Chatrooms
       round_end_link: Postpone round end
       log_out_link: Log out
     display_round:

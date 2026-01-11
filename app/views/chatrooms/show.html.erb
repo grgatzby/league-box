@@ -1,7 +1,11 @@
-<!-- display (players), or chose and display (admin/referee) a chatroom.
-For each box, if not already created in Round/new (TO DO?), or in UserBoxScore/new (TO DO?),
-a chatroom is created in Box controller #my_scores.
--->
+<%#
+  display (players), or chose and display (admin/referee) a chatroom.
+  For each box, if not already created in Round/new (TO DO?), or in UserBoxScore/new (TO DO?),
+  a chatroom is created in Box controller #my_scores.
+-%>
+<%
+  is_admin_or_referee = ["admin", "referee", "player referee"].include?(current_user.role)
+%>
 <% if @chatroom %>
   <!-- coming from Box/my_scores or if chatroom chosen from the form -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>"
@@ -11,23 +15,14 @@ a chatroom is created in Box controller #my_scores.
   >
     <% if !@is_mobile %><br><% end %>
     <div class="one-liner" style="width: 100%">
-      <h3><% if @chatroom.name == "general" %>
-        <%= "General Chatroom" %>
-      <% else %>
-        <%= "Chatroom - Box #{@box_nb}" %>
-      <% end %>
-      </h3>
+      <h3><%= @chatroom.name == "general" ? "General Chatroom" : "Chatroom - Box #{@box_nb}" %></h3>
       <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">
       #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
       <div>
         <%# link_to t('.back_btn'), :back, class: "btn btn-shape btn-yellow dont-print" %>
-        <% if ["admin", "referee", "player referee"].include?(current_user.role) %>
-          <%= link_to t('.back_btn'), chatroom_path(0), class: "btn btn-shape btn-yellow dont-print" %>
-        <% else %>
-          <%= link_to t('.back_btn'), my_scores_path(0), class: "btn btn-shape btn-yellow dont-print" %>
-        <% end %>
+        <%= link_to t('.back_btn'), is_admin_or_referee ? chatroom_path(0) : my_scores_path(0), class: "btn btn-shape btn-yellow dont-print" %>
         <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
       </div>
     </h5>
@@ -59,11 +54,54 @@ a chatroom is created in Box controller #my_scores.
 <% else %>
   <!-- select a chatroom from the forms -->
   <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
-    <% unless (["admin", "referee", "player referee"].include?(current_user.role)) %>
+    <% unless is_admin_or_referee %>
       <br><br><h4>😐 <%= t 'not_authorised' %> 😐</h4>
     <% else %>
       <% suffix = current_user.role.split.map(&:capitalize).join.underscore %>
       <br><h3><%= t(".chatrooms_title", club: current_user == @admin ? "" : current_user.club.name).strip.titleize %></h3>
+
+      <%# Display unread chatrooms list %>
+      <% if @unread_chatrooms&.any? %>
+        <%
+          # Filter and prepare chatrooms
+          filtered_chatrooms = @unread_chatrooms.select { |c| c.users_with_access.include?(current_user) && (c.name == "general" || c.box) }
+
+          # Group by club for admin, flat list for referees
+          if current_user == @admin
+            unread_by_club = filtered_chatrooms.group_by do |chatroom|
+              chatroom.name == "general" ? "General" : chatroom.box.round.club.name
+            end.sort_by { |club_name, _| club_name == "General" ? "0" : club_name }
+          end
+        %>
+        <div class="frame-color-shape frame-padding frame-margin-rl text-size mb-3">
+          <h5><%= t(".unread_chatrooms_title") %></h5>
+          <% if current_user == @admin %>
+            <%# Group by club for admin %>
+            <% unread_by_club.each do |club_name, chatrooms| %>
+              <div class="mb-3">
+                <h6 class="mb-2"><strong><%= club_name %></strong></h6>
+                <ul class="list-unstyled d-flex flex-wrap gap-2">
+                  <% chatrooms.each do |chatroom| %>
+                    <li>
+                      <%= link_to chatroom.name, chatroom_path(chatroom), class: "btn btn-shape btn-beige" %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          <% else %>
+            <%# Display for referees %>
+            <ul class="list-unstyled d-flex flex-wrap gap-2">
+              <% filtered_chatrooms.each do |chatroom| %>
+                <li>
+                  <%= link_to chatroom.name, chatroom_path(chatroom), class: "btn btn-shape btn-beige" %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+
       <h5><%= t(".chatroom_choice") %> <%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{suffix}")}" %></h5>
       <div class="frame-color-shape frame-padding frame-margin-rl text-size">
         <br>

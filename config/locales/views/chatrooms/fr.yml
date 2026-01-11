@@ -19,6 +19,7 @@ fr:
       chatroom_name: Nom de la chatroom
       confirm_btn: ⎷ Confirmer
       chatrooms_title: "Chatrooms %{club}"
+      unread_chatrooms_title: "Chatrooms avec messages non lus"
       no_access_flash: Vous n'avez pas accès à cette chatroom
       no_chatroom_flash: Cette chatroom n'existe pas
       or: ou

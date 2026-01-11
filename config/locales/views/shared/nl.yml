@@ -11,10 +11,10 @@ nl:
       all_boxes_link: 📦 Boxen
       round_ranking_link: 🏆 Ronde ranglijst
       league_table_link: 🏆🏆 League table
-      my_scores_link: 🧮 Mijn scores
+      my_scores_link: ✉️ Mijn scores & chatroom
       my_profile_link: 👤 Mijn profiel
       general_chat_link: "Chatroom #general"
-      chatrooms_link: 🧑‍💻 Chatrooms
+      chatrooms_link: ✉️ Chatrooms
       round_end_link: Stel ronde einde uit
       log_out_link: Uitloggen
     display_round:

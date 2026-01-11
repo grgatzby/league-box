@@ -55,6 +55,10 @@ class ChatroomsController < ApplicationController
       if params[:id] == "0"
         # [C] coming from the navbar dropdown: displays the forms (a dropdown list of available chatrooms
         # and a nested form of club/round/box numbers)
+        # Get unread chatrooms for admin/referee (only those they have access to)
+        if ["admin", "referee", "player referee"].include?(current_user.role)
+          @unread_chatrooms = current_user.unread_chatrooms
+        end
         # [a] define list of available chatrooms in the first form
         if current_user == @admin
           # admin can access all existing chatrooms (including the #general chatroom)
@@ -84,14 +88,14 @@ class ChatroomsController < ApplicationController
         @data.each { |field| field.deep_symbolize_keys! }.reject! { |a| a[:id] == @sample_club.id }
         @clubs = @data.map { |club| club[:name] }
       elsif Chatroom.exists?(params[:id])
-        # [D] coming from my_scores view (players): display the box chatroom
+        # [D] coming from my_scores view (players) or unread chatroom links (admin/referee): display the box chatroom
         @chatroom = Chatroom.find(params[:id])
-        @box_nb = @chatroom.box.box_number
-        if @chatroom.box.user_box_scores.select { |user_box_score| user_box_score.user_id == current_user.id }.empty?
+        unless @chatroom.users_with_access.include?(current_user)
           # chatroom not available to current user
           flash[:notice] = t('.no_access_flash')
           redirect_back(fallback_location: current_user.role == "player" ? my_scores_path(0) : root_path)
         end
+        @box_nb = @chatroom.box.box_number if @chatroom.box
       end
     else
       # chatroom Id does not exist (bad url)

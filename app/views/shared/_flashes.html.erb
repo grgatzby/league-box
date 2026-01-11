@@ -1,6 +1,6 @@
 <% if notice %>
   <%# <div class="alert alert-info alert-dismissible fade show m-1" role="alert"> %>
-  <div class="btn btn-shape btn-yellow alert" role="alert">
+  <div class="btn btn-shape btn-yellow alert flash-message" role="alert" data-flash-timeout="8000">
     <%= notice %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
@@ -8,9 +8,37 @@
 <% end %>
 <% if alert %>
   <%# <div class="alert alert-warning alert-dismissible fade show m-1" role="alert"> %>
-  <div class="btn btn-shape btn-orange alert" role="alert">
+  <div class="btn btn-shape btn-orange alert flash-message" role="alert" data-flash-timeout="8000">
     <%= alert %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
     </button>
   </div>
 <% end %>
+
+<script>
+  function autoDismissFlashMessages() {
+    const flashMessages = document.querySelectorAll('.flash-message');
+    flashMessages.forEach(function(message) {
+      // Skip if already has a timeout set
+      if (message.dataset.timeoutSet) return;
+      message.dataset.timeoutSet = 'true';
+
+      const timeout = parseInt(message.getAttribute('data-flash-timeout')) || 8000;
+      setTimeout(function() {
+        message.style.opacity = '0';
+        setTimeout(function() {
+          if (message.parentNode) {
+            message.remove();
+          }
+        }, 500);
+      }, timeout);
+    });
+  }
+
+  // Run on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', autoDismissFlashMessages);
+
+  // Also run on Turbo events (for Turbo Drive/Turbo Frame navigation)
+  document.addEventListener('turbo:load', autoDismissFlashMessages);
+  document.addEventListener('turbo:frame-load', autoDismissFlashMessages);
+</script>
