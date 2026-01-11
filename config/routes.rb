@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
     resources :rounds, only: %i[new create edit update]
 
-    resources :chatrooms, only: :show do
+    resources :chatrooms, only: [:show, :destroy] do
       resources :messages, only: [:create, :destroy] do
         collection do
           delete :bulk_delete

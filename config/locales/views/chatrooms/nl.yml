@@ -48,3 +48,13 @@ nl:
       confirm_bulk_delete: Weet u zeker dat u de geselecteerde berichten wilt verwijderen?
       bulk_delete_success: "%{count} bericht(en) succesvol verwijderd"
       no_messages_selected: Geen berichten geselecteerd
+      delete_chatroom_title: Verwijder een chatroom
+      delete_chatroom_popover: Selecteer een chatroom om te verwijderen. Dit zal de chatroom en alle berichten permanent verwijderen.
+      select_chatroom_to_delete: "Selecteer een chatroom om te verwijderen:"
+      chatroom_to_delete: "Chatroom om te verwijderen:"
+      messages_count: "Berichten in deze chatroom:"
+      confirm_delete_chatroom: Verwijder Chatroom en Alle Berichten
+      confirm_delete_chatroom_message: Weet u zeker dat u deze chatroom en alle berichten wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.
+      chatroom_deleted: Chatroom "%{chatroom}" en %{count} bericht(en) succesvol verwijderd
+      unauthorized: U bent niet gemachtigd om deze actie uit te voeren
+      cannot_delete_general: De algemene chatroom kan niet worden verwijderd

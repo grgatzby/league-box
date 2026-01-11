@@ -44,7 +44,8 @@ en:
         &emsp;&emsp;&emsp;→ contact the <b>admin</b>
       staff_p04a_html: >
         through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> link in the bottom banner.<br>
-        Contact your box members preferably via the chatroom. Tournament members' details are displayed by hovering over their names.
+        Contact your box members preferably via the chatroom.<br>
+        Tournament members' details are displayed in the <a class='btn btn-inlayed bold-font color-grey' href='#player_directory'>player directory</a> below.
       staff_p04b_html: through this form.
       header_role: 🧩 Role
       header_name: 👤 Name

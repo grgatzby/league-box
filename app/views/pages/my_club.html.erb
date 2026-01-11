@@ -52,7 +52,7 @@
   <% end %>
 
   <%# Player Directory Section %>
-  <br><h4><div class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
+  <br><h4><div id="player_directory" class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
   <% if @is_admin && @players_by_club %>
     <%# Admin view: Grouped by club %>
     <% @players_by_club.each do |club, players| %>
