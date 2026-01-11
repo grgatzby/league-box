@@ -19,6 +19,7 @@ nl:
       chatroom_name: Chatroom naam
       confirm_btn: ⎷ Bevestigen
       chatrooms_title: "Chatrooms %{club}"
+      unread_chatrooms_title: "Chatrooms met ongelezen berichten"
       no_access_flash: U heeft geen toegang tot deze chatroom
       no_chatroom_flash: Deze chatroom bestaat niet
       or: of

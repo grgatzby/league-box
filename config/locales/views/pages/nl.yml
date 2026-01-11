@@ -181,8 +181,8 @@ nl:
       p39: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
     7_disputes:
       disputes: Geschillen
-      mail_to_referee_html: "uw Referee %{referee_name} aan %{referee_email} of via jouw Box chatroom"
-      mail_to_admin_html: "uw admin aan %{admin_email}"
+      mail_to_referee_html: "%{referee_name} per e-mail (<i>%{referee_email}</i>) of via jouw Box chatroom"
+      mail_to_admin_html: "uw admin per e-mail (<i>%{admin_email}</i>)"
       p40_html: "De beslissingen van de Referee zijn definitief. Elk geschilverzoek moet worden verzonden naar %{mailto}."
     sitemap:
       sitemap_title: Sitemap

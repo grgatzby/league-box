@@ -58,8 +58,8 @@ nl:
       see_match_card_btn: Wedstrijdkaart
       enter_score_btn: Voer uw score in
       match_not_played: Match niet gespeeld
-      chat_in_my_box: Organiseer mijn wedstrijden, neem contact op met de scheidsrechter
-      access_chatroom_btn: chatroom van uw box
+      chat_in_my_box: Neem contact op met andere boxleden, of met uw scheidsrechter (Referee)
+      access_chatroom_btn: toegang tot de box chatroom
     show_list:
       intro_html: >
         Voor een box, geeft de pagina <span class='bold-font color-tennis-blue'>Resultaten lijst</span> alle gespeelde wedstrijden in lijstweergave weer en geeft spelers toegang tot de wedstrijdkaarten.<br>

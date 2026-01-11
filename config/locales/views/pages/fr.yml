@@ -180,7 +180,7 @@ fr:
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
     7_disputes:
       disputes: Différends
-      mail_to_referee_html: "votre Arbitre (Referee) %{referee_name} à %{referee_email} ou via la Chatroom de votre box"
+      mail_to_referee_html: "%{referee_name} par e-mail (<i>%{referee_email}</i>) ou via la Chatroom de votre box"
       mail_to_admin_html: "votre admin (e-mail: <i>%{admin_email}</i>)"
       p40_html: "Les décisions de l'Arbitre (Referee) du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
