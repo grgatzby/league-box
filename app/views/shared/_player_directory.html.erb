@@ -29,17 +29,17 @@
     <div class="box-table-wrap text-size frame-color-shape">
       <div class="<%=class_names( "mobile-grid-container mobile-box-width text-size": is_mobile,
                                   "grid-container box-width": !is_mobile) %>">
-        <div class="row" style="font-weight: bold">
-          <div class="col-3"><%= t "shared.my_club.header_name" %></div>
+        <div class="row player-directory-row" style="font-weight: bold">
+          <div class="col-3 <%= 'sticky-name-column' if is_mobile %>"><%= t "shared.my_club.header_name" %></div>
           <div class="col-4"><%= t "shared.my_club.header_email" %></div>
           <div class="col-5"><%= t "shared.my_club.header_phone" %></div>
         </div>
-        <% players.each_with_index do |player, index| %>
+        <% players.each do |player| %>
           <% player_name = "#{player.first_name} #{player.last_name}" %>
-          <div class="row player-directory-row <%= index.even? ? 'player-row-even' : 'player-row-odd' %>"
+          <div class="row player-directory-row"
                data-player-filter-target="item"
                data-searchable="<%= "#{player_name} #{player.email} #{player.phone_number}" %>">
-            <div class="col-3 top-bottom-padding" style="display: flex; align-items: center; gap: 10px;">
+            <div class="col-3 top-bottom-padding <%= 'sticky-name-column' if is_mobile %>">
               <% if current_user == @admin %>
                 <%# Admin can click to edit profile picture %>
                 <% if player.profile_picture.present? %>
