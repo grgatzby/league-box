@@ -1,67 +1,66 @@
-<!-- partial: league table data -->
+<%#
+  partial: league table data
+  locals:
+    from: "index" or "index_league"
+    user_box_scores: Array of user_box_score objects (index) or array of [user, stats_hash] (index_league)
+-%>
+<% is_index = from == "index" %>
 <ol type="1" class="text-size">
-  <% if from == "index" %>
-    <% user_box_scores.each do |user_bs| %>
-      <% player = user_bs.user %>
-      <% unless player.role == "spare" %>
-        <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
-          <% name = "#{render "shared/fullname", user: player}" %>
-          <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
-          <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-              data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-              data-bs-content="<%= message %>"
-              style="width: 100%;">
-            <div class="one-liner hovered-player" style="width: 100%;">
-              <div class="col-3" >
-                <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-                <%= render "shared/fullname", user: player %>
-              </div>
-              <div class="col-1 top-bottom-padding"><%= "# #{user_bs.rank}" %></div>
-              <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs.points) %></div>
-              <div class="col-1 top-bottom-padding"><%= "#{user_bs.box.box_number}" %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.matches_played) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs.matches_won) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs.sets_played) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs.sets_won) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs.games_played) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs.games_won) %></div>
-              <%= link_to '', box_path(user_bs.box, page_from: user_box_scores_path, round_id: @round.id, club_id: @club.id), class: 'line-link'%>
-            </div>
+  <% user_box_scores.each do |user_bs| %>
+    <% player = is_index ? user_bs.user : user_bs[0] %>
+    <% next if player.role == "spare" %>
+    <%
+      # Extract stats based on source
+      rank = is_index ? user_bs.rank : user_bs[1][:rank]
+      points = is_index ? user_bs.points : user_bs[1][:points]
+      matches_played = is_index ? user_bs.matches_played : user_bs[1][:matches_played]
+      matches_won = is_index ? user_bs.matches_won : user_bs[1][:matches_won]
+      sets_played = is_index ? user_bs.sets_played : user_bs[1][:sets_played]
+      sets_won = is_index ? user_bs.sets_won : user_bs[1][:sets_won]
+      games_played = is_index ? user_bs.games_played : user_bs[1][:games_played]
+      games_won = is_index ? user_bs.games_won : user_bs[1][:games_won]
+
+      # Build popover message
+      name = "#{render "shared/fullname", user: player}"
+      if is_index
+        message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}"
+      else
+        boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
+        message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}"
+      end
+
+      # Build link path
+      if is_index
+        link_path = box_path(user_bs.box, page_from: user_box_scores_path, round_id: @round.id, club_id: @club.id)
+      else
+        box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0]
+        link_path = box_path(box, page_from: index_league_path, league_start: @league_start, club_id: @club.id)
+      end
+    %>
+    <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= message %>"
+          style="width: 100%;">
+        <div class="one-liner hovered-player" style="width: 100%;">
+          <div class="col-3">
+            <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+            <%= render "shared/fullname", user: player %>
           </div>
-        </li>
-      <% end %>
-    <% end %>
-  <% else %>  <%# from == "index_league" : user_box_scores is a hash %>
-    <% user_box_scores.each_with_index do |user_bs, index| %>
-      <% player = user_bs[0] %>
-      <% unless player.role == "spare" %>
-        <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
-          <% name = "#{render "shared/fullname", user: player}"
-            boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
-            message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}" %>
-          <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-              data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-              data-bs-content="<%= message %>"
-              style="width: 100%;">
-            <div class="one-liner hovered-player" style="width: 100%;">
-              <div class="col-3">
-                <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-                <%= render "shared/fullname", user: player %>
-              </div>
-              <div class="col-1 top-bottom-padding"><%= "# #{user_bs[1][:rank]}" %></div>
-              <div class="col-1 top-bottom-padding"><%= t("pts", count: user_bs[1][:points]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:matches_played]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".matches", count: user_bs[1][:matches_won]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs[1][:sets_played]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".sets", count: user_bs[1][:sets_won]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_played]) %></div>
-              <div class="col-1 top-bottom-padding"><%= t(".games", count: user_bs[1][:games_won]) %></div>
-              <% box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0] %>
-              <%= link_to '', box_path(box, page_from: index_league_path, league_start: @league_start, club_id: @club.id), class: 'line-link'%>
-            </div>
-          </div>
-        </li>
-      <% end %>
-    <% end %>
+          <div class="col-1 top-bottom-padding"><%= "# #{rank}" %></div>
+          <div class="col-1 top-bottom-padding"><%= t("pts", count: points) %></div>
+          <% if is_index %>
+            <div class="col-1 top-bottom-padding"><%= "#{user_bs.box.box_number}" %></div>
+          <% end %>
+          <div class="col-1 top-bottom-padding"><%= t(".matches", count: matches_played) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".matches", count: matches_won) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".sets", count: sets_played) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".sets", count: sets_won) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".games", count: games_played) %></div>
+          <div class="col-1 top-bottom-padding"><%= t(".games", count: games_won) %></div>
+          <%= link_to '', link_path, class: 'line-link'%>
+        </div>
+      </div>
+    </li>
   <% end %>
 </ol>
