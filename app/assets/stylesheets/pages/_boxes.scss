@@ -98,36 +98,6 @@
 .mobile-grid-container {
   padding: 5px;
 
-  // Column headers (opponent names) - mobile
-  .col-10 > .row.bold-font {
-    display: flex;
-    align-items: center;
-    > .col-2 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-  }
-
-  #grid-lines>.row>.grid-columns {
-    height: calc(max(6vw,4rem));
-    padding-top: .75rem;
-    padding-bottom: .75rem;
-    border: 1px solid rgba(39,41,43,0.1);
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    > span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
   .first-col-lines>.col-12 {
     height: calc(max(6vw,4rem));
     padding-top: .75rem;
@@ -246,7 +216,11 @@
     flex-wrap: wrap !important;
     white-space: normal !important;
     min-width: auto !important;
+    align-items: center;
     > .col-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-width: auto !important;
       overflow: visible !important;
       text-overflow: clip !important;
@@ -267,6 +241,23 @@
       text-overflow: clip !important;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
+    }
+    > .grid-columns {
+      height: calc(max(6vw,4rem));
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      border: 1px solid rgba(39,41,43,0.1);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      > span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }
