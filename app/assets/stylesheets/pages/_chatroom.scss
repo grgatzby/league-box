@@ -1,5 +1,11 @@
 // The specific styling of the messages for current_user is performed in #app/views/layouts/application.html.erb
 
+// Container for messages with checkbox positioning (when admin is viewing)
+div[id^="message-"].has-checkbox {
+  position: relative;
+  padding-left: 30px; // Space for checkbox
+}
+
 .message-box {
   width: fit-content;
   max-width: 80%;
@@ -9,4 +15,17 @@
   margin-bottom: 10px;
   // background-color: #555555 ;
   // padding: 10px
+}
+
+.message-checkbox {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  z-index: 10;
+
+  .message-checkbox-input {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
 }

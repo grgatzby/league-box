@@ -31,7 +31,11 @@ Rails.application.routes.draw do
     resources :rounds, only: %i[new create edit update]
 
     resources :chatrooms, only: :show do
-      resources :messages, only: [:create, :destroy]
+      resources :messages, only: [:create, :destroy] do
+        collection do
+          delete :bulk_delete
+        end
+      end
     end
     resources :contacts, only: %i[new create]
     get "contacts/sent"

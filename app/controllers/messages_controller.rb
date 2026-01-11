@@ -52,6 +52,30 @@ class MessagesController < ApplicationController
     head :ok
   end
 
+  def bulk_delete
+    authorize_admin
+    @chatroom = Chatroom.find(params[:chatroom_id])
+    message_ids = params[:message_ids] || []
+
+    if message_ids.any?
+      messages = @chatroom.messages.where(id: message_ids)
+      deleted_ids = messages.pluck(:id)
+      messages.destroy_all
+
+      # Broadcast deletion for each message
+      deleted_ids.each do |message_id|
+        ChatroomChannel.broadcast_to(
+          @chatroom,
+          { action: "delete", message_id: message_id }.to_json
+        )
+      end
+
+      redirect_to chatroom_path(@chatroom), notice: t('chatrooms.show.bulk_delete_success', count: deleted_ids.count)
+    else
+      redirect_to chatroom_path(@chatroom), alert: t('chatrooms.show.no_messages_selected')
+    end
+  end
+
   private
 
   def set_message

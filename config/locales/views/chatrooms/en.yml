@@ -41,3 +41,10 @@ en:
       message2_box_pop_player: the round.
       delete_message: Delete message
       confirm_delete: Are you sure you want to delete this message?
+      select_all: Select All
+      deselect_all: Deselect All
+      bulk_delete: Delete Selected
+      selected: selected
+      confirm_bulk_delete: Are you sure you want to delete the selected messages?
+      bulk_delete_success: "%{count} message(s) deleted successfully"
+      no_messages_selected: No messages selected
