@@ -1,10 +1,10 @@
 <!-- partial: league table data -->
-<ol type="1">
+<ol type="1" class="text-size">
   <% if from == "index" %>
-    <% user_box_scores.each_with_index do |user_bs, index| %>
+    <% user_box_scores.each do |user_bs| %>
       <% player = user_bs.user %>
       <% unless player.role == "spare" %>
-        <li class=<%=player == current_user ? "color-tennis-red" : (index % 2 == 0 ? "color-tennis-blue" : "color-tennis-aqua") %>>
+        <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
           <% name = "#{render "shared/fullname", user: player}" %>
           <% message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}" %>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
@@ -35,7 +35,7 @@
     <% user_box_scores.each_with_index do |user_bs, index| %>
       <% player = user_bs[0] %>
       <% unless player.role == "spare" %>
-        <li class=<%=player == current_user ? "color-tennis-red" : (index % 2 == 0 ? "color-tennis-blue" : "color-tennis-aqua") %>>
+        <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
           <% name = "#{render "shared/fullname", user: player}"
             boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
             message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}" %>

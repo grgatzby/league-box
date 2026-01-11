@@ -100,6 +100,12 @@ ol li {
   position: relative;
 }
 
+// League table rows with gradient background
+.league-table-row {
+  background: linear-gradient(180deg, rgba(255, 198, 90, 0.6) 0%, rgba(229, 200, 152, 0.6) 100%);
+  background-color: transparent; // Ensure gradient shows
+}
+
 // Ensure the list marker aligns properly - content should start after the marker
 ol li > div[data-controller="popover"] {
   margin-left: 0;
