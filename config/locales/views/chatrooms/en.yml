@@ -48,3 +48,13 @@ en:
       confirm_bulk_delete: Are you sure you want to delete the selected messages?
       bulk_delete_success: "%{count} message(s) deleted successfully"
       no_messages_selected: No messages selected
+      delete_chatroom_title: Delete a chatroom
+      delete_chatroom_popover: Select a chatroom to delete. This will permanently delete the chatroom and all its messages.
+      select_chatroom_to_delete: "Select a chatroom to delete:"
+      chatroom_to_delete: "Chatroom to delete:"
+      messages_count: "Messages in this chatroom:"
+      confirm_delete_chatroom: Delete Chatroom and All Messages
+      confirm_delete_chatroom_message: Are you sure you want to delete this chatroom and all its messages? This action cannot be undone.
+      chatroom_deleted: Chatroom "%{chatroom}" and %{count} message(s) deleted successfully
+      unauthorized: You are not authorized to perform this action
+      cannot_delete_general: The general chatroom cannot be deleted

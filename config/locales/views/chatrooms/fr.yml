@@ -48,3 +48,13 @@ fr:
       confirm_bulk_delete: Êtes-vous sûr de vouloir supprimer les messages sélectionnés?
       bulk_delete_success: "%{count} message(s) supprimé(s) avec succès"
       no_messages_selected: Aucun message sélectionné
+      delete_chatroom_title: Supprimer une chatroom
+      delete_chatroom_popover: Sélectionnez une chatroom à supprimer. Cela supprimera définitivement la chatroom et tous ses messages.
+      select_chatroom_to_delete: "Sélectionner une chatroom à supprimer:"
+      chatroom_to_delete: "Chatroom à supprimer:"
+      messages_count: "Messages dans cette chatroom:"
+      confirm_delete_chatroom: Supprimer la Chatroom et Tous les Messages
+      confirm_delete_chatroom_message: Êtes-vous sûr de vouloir supprimer cette chatroom et tous ses messages? Cette action ne peut pas être annulée.
+      chatroom_deleted: Chatroom "%{chatroom}" et %{count} message(s) supprimé(s) avec succès
+      unauthorized: Vous n'êtes pas autorisé à effectuer cette action
+      cannot_delete_general: La chatroom générale ne peut pas être supprimée

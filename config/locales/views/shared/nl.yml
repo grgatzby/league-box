@@ -45,7 +45,8 @@ nl:
         &emsp;&emsp;&emsp;→ Neem contact op met de <b>beheerder</b> (admin) via
       staff_p04a_html: >
         de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a>.<br>
-        Neem bij voorkeur contact op met uw boxleden via de chatroom. Contactgegevens van toernooileden worden weergegeven als u de muisaanwijzer op hun naam plaatst.
+        Neem bij voorkeur contact op met uw boxleden via de chatroom.<br>
+        Contactgegevens van toernooileden worden weergegeven in het <a class='btn btn-inlayed bold-font color-grey' href='#player_directory'>speleranuari</a> hieronder.
       staff_p04b_html: deze form.
       header_role: 🧩 Rol
       header_name: 👤 Naam

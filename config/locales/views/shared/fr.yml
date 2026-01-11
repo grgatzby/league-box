@@ -45,7 +45,8 @@ fr:
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: >
         le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>
-        Joignez les membres de votre box de préférence via la chatroom. Les coordonnées des membres du tournoi s'affichent en glissant la souris sur leur nom.
+        Joignez les membres de votre box de préférence via la chatroom.<br>
+        Vous trouverez leurs coordonnées et celles des membres du tournoi dans l'<a class='btn btn-inlayed bold-font color-grey' href='#player_directory'>annuaire des joueurs</a> ci-dessous.
       staff_p04b_html: ce formulaire.
       header_role: 🧩 Rôle
       header_name: 👤 Nom

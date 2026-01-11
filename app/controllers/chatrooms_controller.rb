@@ -111,6 +111,38 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  def destroy
+    unless current_user == @admin
+      flash[:alert] = t('chatrooms.show.unauthorized')
+      redirect_back(fallback_location: root_path)
+      return
+    end
+
+    @chatroom = Chatroom.find(params[:id])
+    chatroom_name = @chatroom.name
+    messages_count = @chatroom.messages.count
+
+    # Prevent deletion of the general chatroom
+    if @chatroom.name == "general"
+      flash[:alert] = t('chatrooms.show.cannot_delete_general')
+      redirect_to chatroom_path(0)
+      return
+    end
+
+    # If there's an associated box, reassign it to the general chatroom
+    if @chatroom.box
+      general_chatroom = Chatroom.find_or_create_by(name: "general")
+      @chatroom.box.update(chatroom_id: general_chatroom.id)
+    end
+
+    # Delete all messages first (they will be deleted automatically via dependent: :destroy)
+    # Then delete the chatroom
+    @chatroom.destroy
+
+    flash[:notice] = t('chatrooms.show.chatroom_deleted', chatroom: chatroom_name, count: messages_count)
+    redirect_to chatroom_path(0)
+  end
+
   private
 
   def mark_chatroom_as_read(chatroom)
