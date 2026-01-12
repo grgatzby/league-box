@@ -3,7 +3,10 @@
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
   <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column": @is_mobile) %> text-size">
-    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2 text-center": @is_mobile) %>"><%= t('.round_league_table_title', round_nb:  @round_nb ) %></h3>
+    <!-- display the title with the round number -->
+    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2 text-center": @is_mobile) %>">
+      <%= t('.round_league_table_title', round_nb:  @round_nb ) %>
+    </h3>
     <!-- the following lines will display when printing the page -->
     <span class="will-print one-liner">
       <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>
@@ -27,6 +30,7 @@
       <%# don't export to text buttons and top line (in user_box_score index) %>
       <%= render 'top_line', round: @round, is_mobile: @is_mobile %>
     <% end %>
+    <!-- display the round ranking table -->
     <%= render 'league_table', from: "index" %>
   </div>
 

@@ -71,38 +71,17 @@
         </div>
       <% end %>
 
-      <% if (@is_admin && @gallery_images_by_club && @gallery_images_by_club.any?) || (@gallery_images&.any?) %>
-        <div class="mb-3">
-          <input type="text"
-                 class="form-control"
-                 placeholder="<%= t(".filter_by_caption") %>"
-                 data-action="input->gallery-filter#filter"
-                 data-gallery-filter-target="search">
-        </div>
-        <p class="d-none text-muted" data-gallery-filter-target="noResults">
-          <%= t(".no_results") %>
-        </p>
-      <% end %>
+      <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
+        <%= render "shared/gallery_filter" %>
 
-      <% if @is_admin && @gallery_images_by_club %>
-        <%# Admin view: Grouped by club %>
-        <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
-          <% @gallery_images_by_club.each do |club, gallery_images| %>
-            <% next if club.nil? %>
-            <%= render "club_gallery_header",
-                club: club,
-                gallery_images: gallery_images,
-                image_count: gallery_images.count %>
-          <% end %>
-        <% else %>
-          <p><%= t(".no_images") %></p>
+        <%# Display images grouped by club for all users %>
+        <% @gallery_images_by_club.each do |club, gallery_images| %>
+          <% next if club.nil? %>
+          <%= render "club_gallery_header",
+              club: club,
+              gallery_images: gallery_images,
+              image_count: gallery_images.count %>
         <% end %>
-      <% elsif @gallery_images&.any? %>
-        <%# Regular user view: Single club %>
-        <%= render "club_gallery_header",
-            club: @club,
-            gallery_images: @gallery_images,
-            image_count: @gallery_images.count %>
       <% else %>
         <p><%= t(".no_images") %></p>
       <% end %>

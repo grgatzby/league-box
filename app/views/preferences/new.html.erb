@@ -2,6 +2,9 @@
 <%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
+  <div class="one-liner">
+    <h3><%= t '.title' %></h3>
+  </div>
 
   <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
 
@@ -98,7 +101,7 @@
         <b><%= t(".history") %></b><br>
         <div class="row">
           <div class="col-4">
-            <i><%= t(".previous_rounds") %></i>
+            <%= t(".previous_rounds") %>
           </div>
           <div class="col-8">
             <i><%= "League_Round - Box, #rank" %></i><br>

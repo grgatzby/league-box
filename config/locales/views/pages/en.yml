@@ -263,7 +263,7 @@ en:
       li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
-      ok: 📦 To boxes
+      ok: 📦 boxes
     my_club:
       club_branding_title: Club Branding
       select_club: Select Club
@@ -272,7 +272,7 @@ en:
       banner_label: Club Banner
       current_banner: Current banner
       update_branding: Update Branding
-      ok: 📦 To boxes
+      ok: 📦 boxes
     update_club:
       unauthorized: You are not authorized to update club branding.
       success: Club branding updated successfully.
@@ -289,4 +289,4 @@ en:
       error: Error updating profile picture.
       user_not_found: User not found.
     staff:
-      ok: 📦 To boxes
+      ok: 📦 boxes

@@ -26,14 +26,14 @@ fr:
       li03b: Vue en grille
       li07_html: >
         Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, %{inset_c}.
-      li04a: 🏆 Classement round
+      li04a: 🏆 Classement du round
       li04b: 🏆🏆 League table
       li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et %{inset_b}.
       ready_title: Vous êtes prêt? Alors rendez-vous sur les courts! 🎾
       p04: Chaque round dure un mois environ, et vous affronterez les joueurs de votre box.
       li09_html: Pendant la durée d'un round, <b> jouez tous vos matchs</b> dans votre box.
       li10_html: Après chaque match, <b>entrez le score</b> sur LeagueBox.
-      li11_html: <b>Consultez votre nouveau classement</b> sur Classement round et League table.
+      li11_html: <b>Consultez votre nouveau classement</b> sur Classement du round et League table.
       li12_html: >
         <b>Promotion, déclassement</b> à la fin du round : dans chaque box
         <br>- le meilleur joueur est promu de 2 box, le second d'une box,
@@ -260,7 +260,7 @@ fr:
       li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
-      ok: 📦 Vers les box
+      ok: 📦 les box
     my_club:
       club_branding_title: Identité visuelle du club
       select_club: Sélectionner un club
@@ -269,7 +269,7 @@ fr:
       banner_label: Bannière du club
       current_banner: Bannière actuelle
       update_branding: Mettre à jour l'identité visuelle
-      ok: 📦 Vers les box
+      ok: 📦 les box
     update_club:
       unauthorized: Vous n'êtes pas autorisé à mettre à jour l'identité visuelle du club.
       success: L'identité visuelle du club a été mise à jour avec succès.
@@ -286,4 +286,4 @@ fr:
       error: Erreur lors de la mise à jour de la photo de profil.
       user_not_found: Utilisateur introuvable.
     staff:
-      ok: 📦 Vers les box
+      ok: 📦 les box
