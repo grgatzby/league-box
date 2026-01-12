@@ -3,7 +3,17 @@
 <% else %>
   <br>
 <% end %>
-<div class="<%= class_names("container": !@is_mobile) %>">
+<div class="<%= class_names("container": !@is_mobile) %>"
+     data-controller="toggle"
+     data-toggle-display-rounds-value="<%= t 'pages.rules.btn_display_gallery' %>"
+     data-toggle-hide-rounds-value="<%= t 'pages.rules.btn_hide_gallery' %>">
+  <!-- My Club Header -->
+  <header id="my-club-header" class="mb-4 mb-md-5 dont-print">
+    <h1 class="title mb-0">
+      <b><%= t(".my_club_title", default: "My Club").upcase %></b>
+    </h1>
+  </header>
+
   <div class="frame-color-shape frame-padding">
     <%= render "shared/staff", from:"pages" %>
   </div><br>
@@ -64,8 +74,10 @@
     <%= render "shared/player_directory", players: @players, club_name: @club.name, is_mobile: @is_mobile %>
   <% end %>
 
-  <div class = "buttons-wrap">
-    <%= link_to t("gallery_images.index.gallery_title"), gallery_images_path, class: "btn btn-shape btn-aqua text-size" %>
-    <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua" %>
-  </div>
+  <%= render "gallery_toggle_buttons",
+      toggle_button_class: "btn btn-shape btn-aqua text-size",
+      translation_namespace: "pages.rules",
+      ok_translation_key: "pages.my_club.ok" %>
+
+  <%= render "embedded_gallery", translation_namespace: "pages.rules" %>
 </div>

@@ -93,10 +93,12 @@ export default class extends Controller {
           galleryHeader.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       } else {
-        // Gallery is being hidden - scroll to rules header
+        // Gallery is being hidden - scroll to page header (rules or my-club)
+        const myClubHeader = document.getElementById("my-club-header");
         const rulesHeader = document.getElementById("rules-header");
-        if (rulesHeader) {
-          rulesHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+        const headerToScroll = myClubHeader || rulesHeader;
+        if (headerToScroll) {
+          headerToScroll.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     }, 100); // Small delay to ensure DOM has updated

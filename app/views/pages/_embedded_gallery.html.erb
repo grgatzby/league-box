@@ -1,0 +1,45 @@
+<%# Embedded gallery section partial - used in rules and my_club pages %>
+<%# Accepts optional translation_namespace parameter (defaults to "pages.rules") %>
+<%
+  translation_namespace ||= "pages.rules"
+%>
+<div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
+     data-toggle-target="togglableElement"
+     data-controller="gallery-filter">
+
+  <!-- Gallery Header -->
+  <header id="gallery-header" class="gallery-header mb-4 mb-md-5">
+    <h2 class="title mb-0">
+      <b><%= t("#{translation_namespace}.photo_gallery").upcase %></b>
+    </h2>
+  </header>
+
+  <% if current_user %>
+    <div class="mb-3 d-flex gap-2 justify-content-end">
+      <%= link_to t("#{translation_namespace}.upload_image"), new_gallery_image_path, class: "btn btn-shape btn-yellow text-size" %>
+      <% if @is_admin && @gallery_images_by_club %>
+        <%= link_to t("#{translation_namespace}.edit_gallery"), gallery_images_path, class: "btn btn-shape btn-yellow text-size" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
+    <%= render "shared/gallery_filter" %>
+
+    <%# Display images grouped by club for all users %>
+    <% @gallery_images_by_club.each do |club, gallery_images| %>
+      <% next if club.nil? %>
+      <%= render "club_gallery_header",
+          club: club,
+          gallery_images: gallery_images,
+          image_count: gallery_images.count %>
+    <% end %>
+  <% else %>
+    <p><%= t("#{translation_namespace}.no_images") %></p>
+  <% end %>
+
+  <%# bouton javascript pour scroller au début de la page %>
+  <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
+    class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
+  </button>
+</div>
