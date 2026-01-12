@@ -1,16 +1,21 @@
 nl:
   preferences:
     new:
+      title: Nieuwe gebruiker
+      role: Rol
       preferences: Voorkeuren
       nickname: Pseudo
       first_name: Voornaam
       last_name: Achternaam
       phone_number: Telefoonnummer
       e_mail: E-mailadres
-      password: Wachtwoord wijzigen
+      password: Wijzig mijn wachtwoord
+      history: Mijn geschiedenis
+      previous_rounds: Vorige rondes
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
     edit:
+      title: Mijn profiel
       role: Rol
       preferences: Voorkeuren
       nickname: Pseudo
@@ -19,7 +24,9 @@ nl:
       phone_number: Telefoonnummer
       e_mail: E-mailadres
       password: Wachtwoord
-      modify_password: Open wachtwoord wijzigen formulier
+      modify_password: Wijzig mijn wachtwoord
+      history: Mijn geschiedenis
+      previous_rounds: Vorige rondes
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
       profile_picture: "🖼️ Profielfoto:"

@@ -1,16 +1,21 @@
 en:
   preferences:
     new:
+      title: New user
+      role: Role
       preferences: Preferences
       nickname: Nick name
       first_name: First name
       last_name: Last name
       phone_number: Phone number
       e_mail: E-mail
-      password: Modify password
+      password: Change my password
+      history: My history
+      previous_rounds: Previous rounds
       expanded_view: Expanded view
       clear_format: Clear background color gradient
     edit:
+      title: My profile
       role: Role
       preferences: Preferences
       nickname: Nick name
@@ -19,7 +24,9 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Password
-      modify_password: Open modify password form
+      modify_password: Change my password
+      history: My history
+      previous_rounds: Previous rounds
       expanded_view: Expanded view
       clear_format: Clear background color gradient
       profile_picture: "🖼️ Profile Picture:"

@@ -41,7 +41,7 @@ en:
       p04_html: >
         Thank you for requesting a new round creation for %{club_name}.<br>
         Your <b>admin</b> will get back to you soon.
-      back_btn: ←
+      back_btn: ⇤
       home_btn: Home page
     create:
       error_flash: Could not send message

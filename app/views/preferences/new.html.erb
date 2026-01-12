@@ -8,7 +8,11 @@
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <b><%= render "shared/fullname", user: current_user %></b><br><br>
       <div class="row">
-        <div class="col-4"><%= "🧩 Role:" %></div>
+        <div class="col-4"><%= "🎾 Club:" %></div>
+        <div class="col-3"><%= "#{current_user.club.name}" %></div>
+      </div>
+      <div class="row">
+        <div class="col-4"><%= "🧩 #{t(".role")}:" %></div>
         <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
       </div>
 
@@ -73,17 +77,10 @@
       <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-4">
-          <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
+          &nbsp;&nbsp;<%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
       </div>
 
-      <% if (["player", "player referee"].include?(current_user.role)) %>
-        <hr>
-        <b><%= "League_Round - Box, #rank" %></b><br>
-        <% name = "#{render "shared/fullname", user: current_user}"
-          boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
-        <%= sanitize "#{boxes}" %>
-      <% end %>
       <hr>
       <b><%= t(".preferences") %></b><br>
         <%# checkbox to remove formatting if page does not display well on screen %>
@@ -91,10 +88,26 @@
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
         <div class="col-4">
-          <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
-          <%= f.label :clear_format, t(".clear_format") %>
+          <i><%= f.label :clear_format, t(".clear_format") %></i>
+          &nbsp;&nbsp;<%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
         </div>
-    </div>
+      </div>
+
+      <% if (["player", "player referee"].include?(current_user.role)) %>
+        <hr>
+        <b><%= t(".history") %></b><br>
+        <div class="row">
+          <div class="col-4">
+            <i><%= t(".previous_rounds") %></i>
+          </div>
+          <div class="col-8">
+            <i><%= "League_Round - Box, #rank" %></i><br>
+            <% name = "#{render "shared/fullname", user: current_user}"
+              boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
+            <%= sanitize "#{boxes}" %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <br>
     <div class = "buttons-wrap">

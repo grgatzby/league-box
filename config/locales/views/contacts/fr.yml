@@ -41,7 +41,7 @@ fr:
       p04_html: >
         Merci de votre demande de création d'un nouveau round pour le %{club_name}.<br>
         Votre <b>admin</b> vous contactera bientôt.
-      back_btn: ←
+      back_btn: ⇤
       home_btn: Page d'accueil
     create:
       error_flash: Erreur d'envoi du message

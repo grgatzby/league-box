@@ -16,7 +16,7 @@ fr:
         Le vainqueur recevra le trophée de la saison 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin de la saison.
       use_title: Le site LeagueBox en pratique
-      li01: Mes scores
+      li01: ✉️ Mes scores & chatroom
       li02: 📦 Les box
       li06_html: >
         <b>Consultez les box du round</b> en un coup d'œil dans %{inset}.<br/>

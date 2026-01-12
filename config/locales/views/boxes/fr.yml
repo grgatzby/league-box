@@ -1,12 +1,12 @@
 fr:
-  back_btn: ←
+  back_btn: ⇤
   boxes:
     switch: ""
     list_view: vue en liste
     table_view: vue en grille
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
-      my_scores_btn: mes scores
+      my_scores_btn: Mes scores & chatroom
       pop01_a: cliquer sur un match pour <i>éditer</i> ou <i>supprimer</i> son score
       pop01_b: ", ou <i>saisir</i> un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
@@ -41,7 +41,7 @@ fr:
       to_csv_btn: 📄 CSV
       load_scores: 📄 charger les scores
     my_scores:
-      my_scores: Mes scores
+      my_scores: Mes scores & chatroom
       intro_html: >
         La page <b class='color-tennis-red'>Mes scores</b> donne aux joueurs accès à une vue de leur propre Box, d'où ils accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores,<br />
         ce qu'ils peuvent faire également dans les <b class='bold-font color-tennis-blue'>Vue en liste</b> et <b class='bold-font color-tennis-blue'>Vue en table</b>.<br><br>

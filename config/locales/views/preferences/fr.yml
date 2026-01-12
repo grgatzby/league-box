@@ -1,16 +1,21 @@
 fr:
   preferences:
     new:
+      title: Nouvel utilisateur
+      role: Rôle
       preferences: Préférences
       nickname: Pseudo
       first_name: Prénom
       last_name: Nom
       phone_number: Téléphone
       e_mail: Adresse email
-      password: Modifier le mot de passe
+      password: Changer mon mot de passe
+      history: Mon historique
+      previous_rounds: Rounds précédents
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
     edit:
+      title: Mon profil
       role: Rôle
       preferences: Préférences
       nickname: Pseudo
@@ -19,7 +24,9 @@ fr:
       phone_number: Téléphone
       e_mail: Adresse email
       password: Mot de passe
-      modify_password: Ouvrir le formulaire de modification
+      modify_password: Changer mon mot de passe
+      history: Mon historique
+      previous_rounds: Rounds précédents
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
       profile_picture: "🖼️ Photo de profil :"
