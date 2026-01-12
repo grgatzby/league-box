@@ -248,12 +248,12 @@ nl:
       p26: Formulier om wedstrijddetails te wijzigen of score te verwijderen.
       chatrooms: Chatrooms
       p27_html: >
-        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='bold-font color-tennis-red'>Mijn scores</span> voor spelers.<br>
+        De chatrooms zijn toegankelijk via het hoofdmenu voor de beheerder en scheidsrechters en via de pagina <span class='bold-font color-tennis-red'>Mijn scores & chatroom</span> voor spelers.<br>
         De <b>#algemene chatroom</b> is gereserveerd voor de beheerder en scheidsrechters, ongeacht hun club.
         Zijn roeping is algemene communicatie, en niet voor een specifieke club, maar om te communiceren met de beheerder.<br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       p28_html: >
-        Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='bold-font color-tennis-red'>Mijn scores</span>-pagina die beschikbaar is voor spelers.<br><br>
+        Elke <b>box-chatroom</b> die aan een box in het toernooi is gewijd, is toegankelijk via de <span class='bold-font color-tennis-red'>Mijn scores & chatroom</span>-pagina die beschikbaar is voor spelers.<br><br>
         Aan berichten wordt een kleur toegekend, volgens hun auteur:<br>
       li08_html: <span class='color-tennis-blue'>Berichten van spelers van mijn club verschijnen in het blauw</span>
       li09_html: <span class='color-tennis-aqua'>Berichten van mijn Referee verschijnen in aqua</span>
@@ -263,6 +263,7 @@ nl:
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
       ok: 📦 boxen
     my_club:
+      my_club_title: Mijn Club
       club_branding_title: Club Identiteit
       select_club: Selecteer Club
       logo_label: Club Logo

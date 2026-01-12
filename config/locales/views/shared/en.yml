@@ -41,7 +41,7 @@ en:
       staff_p02_html: >
         They are also here to help resolve any dispute on a score, or enter a score on your behalf.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contact your <b>Referee</b> through your box chatroom (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores</a> page).<br>
+        &emsp;&emsp;&emsp;→ contact your <b>Referee</b> through your box chatroom (from the <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}''>My scores & chatroom</a> page).<br>
         &emsp;&emsp;&emsp;→ contact the <b>admin</b>
       staff_p04a_html: >
         through the <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> link in the bottom banner.<br>

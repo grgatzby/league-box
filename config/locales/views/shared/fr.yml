@@ -42,7 +42,7 @@ fr:
       staff_p02_html: >
         Il vous aidera à résoudre les désaccords sur un score déjà entré, ou pourra saisir un score à votre place.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contactez votre <b>Arbitre</b> (Referee) via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).<br>
+        &emsp;&emsp;&emsp;→ contactez votre <b>Arbitre</b> (Referee) via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores & chatroom</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: >
         le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>

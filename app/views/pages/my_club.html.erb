@@ -4,9 +4,7 @@
   <br>
 <% end %>
 <div class="<%= class_names("container": !@is_mobile) %>"
-     data-controller="toggle"
-     data-toggle-display-rounds-value="<%= t 'pages.rules.btn_display_gallery' %>"
-     data-toggle-hide-rounds-value="<%= t 'pages.rules.btn_hide_gallery' %>">
+     data-controller="toggle">
   <!-- My Club Header -->
   <header id="my-club-header" class="mb-4 mb-md-5 dont-print">
     <h1 class="title mb-0">
@@ -14,70 +12,146 @@
     </h1>
   </header>
 
-  <div class="frame-color-shape frame-padding">
-    <%= render "shared/staff", from:"pages" %>
-  </div><br>
+  <%# Your Club Staff Section - Collapsible %>
+  <div class="rules-section-item mb-2">
+    <div class="rules-section-header-modern" data-action="click->toggle#toggleSection" data-section="1">
+      <h3 class="mb-0 d-flex align-items-center gap-3">
+        <i class="fa-solid fa-users rules-section-icon"></i>
+        <b class="cursor-pointer flex-grow-1"><%= t("shared.staff.your_club_staff_title") %></b>
+        <span class="rules-section-arrow">⬇️</span>
+      </h3>
+    </div>
+    <div class="rules-section-content-modern d-none" data-toggle-target="section1">
+      <div class="rules-section-body-modern mt-3">
+        <div class="frame-color-shape frame-padding">
+          <%= render "shared/staff", from:"pages" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="rules-section-divider">
 
-  <%# Club Logo and Banner Upload Section (for referees) %>
+  <%# Club Logo and Banner Upload Section - Collapsible (for referees) %>
   <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
-    <div class="frame-color-shape frame-padding">
-      <br><h4><div class="title"><b><%= t(".club_branding_title").upcase %></b></div></h4><br>
+    <div class="rules-section-item mb-2">
+      <div class="rules-section-header-modern" data-action="click->toggle#toggleSection" data-section="2">
+        <h3 class="mb-0 d-flex align-items-center gap-3">
+          <i class="fa-solid fa-palette rules-section-icon"></i>
+          <b class="cursor-pointer flex-grow-1"><%= t(".club_branding_title") %></b>
+          <span class="rules-section-arrow">⬇️</span>
+        </h3>
+      </div>
+      <div class="rules-section-content-modern d-none" data-toggle-target="section2">
+        <div class="rules-section-body-modern mt-3">
+          <div class="frame-color-shape frame-padding">
+            <%= form_with url: update_club_path, method: :patch, multipart: true, local: true do |f| %>
+              <% if current_user == @admin && @is_admin %>
+                <div class="mb-3">
+                  <%= f.label :club_id, t(".select_club"), class: "form-label" %>
+                  <%= f.select :club_id,
+                      options_for_select(Club.all.reject { |c| c == @sample_club }.map { |club| [club.name, club.id] }, @club.id),
+                      {},
+                      { class: "form-control", id: "club_select" } %>
+                </div>
+              <% else %>
+                <%= f.hidden_field :club_id, value: @club.id %>
+              <% end %>
 
-      <%= form_with url: update_club_path, method: :patch, multipart: true, local: true do |f| %>
-        <% if current_user == @admin && @is_admin %>
-          <div class="mb-3">
-            <%= f.label :club_id, t(".select_club"), class: "form-label" %>
-            <%= f.select :club_id,
-                options_for_select(Club.all.reject { |c| c == @sample_club }.map { |club| [club.name, club.id] }, @club.id),
-                {},
-                { class: "form-control", id: "club_select" } %>
+              <%= f.fields_for :club, @club do |club_form| %>
+                <div class="mb-3">
+                  <%= club_form.label :logo, t(".logo_label"), class: "form-label" %>
+                  <%= club_form.file_field :logo, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+                  <% if @club.logo.present? %>
+                    <small class="form-text text-muted"><%= t(".current_logo") %></small><br>
+                    <%= image_tag @club.logo.url, class: "rounded", style: "max-width: 200px; max-height: 200px; margin-top: 10px;" %>
+                  <% end %>
+                </div>
+
+                <div class="mb-3">
+                  <%= club_form.label :banner, t(".banner_label"), class: "form-label" %>
+                  <%= club_form.file_field :banner, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
+                  <% if @club.banner.present? %>
+                    <small class="form-text text-muted"><%= t(".current_banner") %></small><br>
+                    <%= image_tag @club.banner.url, class: "rounded", style: "max-width: 400px; max-height: 200px; margin-top: 10px;" %>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= f.submit t(".update_branding"), class: "btn btn-shape btn-aqua mb-3" %>
+            <% end %>
           </div>
+        </div>
+      </div>
+    </div>
+    <hr class="rules-section-divider">
+  <% end %>
+
+  <%# Player Directory Section - Collapsible %>
+  <div class="rules-section-item mb-2">
+    <div class="rules-section-header-modern" data-action="click->toggle#toggleSection" data-section="3">
+      <h3 class="mb-0 d-flex align-items-center gap-3">
+        <i class="fa-solid fa-user-group rules-section-icon"></i>
+        <b class="cursor-pointer flex-grow-1"><%= t("shared.my_club.player_directory_title") %></b>
+        <span class="rules-section-arrow">⬇️</span>
+      </h3>
+    </div>
+    <div class="rules-section-content-modern d-none" data-toggle-target="section3">
+      <div class="rules-section-body-modern mt-3">
+        <% if @is_admin && @players_by_club %>
+          <%# Admin view: Grouped by club %>
+          <% @players_by_club.each do |club, players| %>
+            <% next if club.nil? %>
+            <%= render "shared/player_directory", players: players, club_name: club.name, is_mobile: @is_mobile %>
+          <% end %>
+        <% elsif @players %>
+          <%# Regular user view: Single club %>
+          <%= render "shared/player_directory", players: @players, club_name: @club.name, is_mobile: @is_mobile %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <hr class="rules-section-divider">
+
+  <%# Photo Gallery Section - Collapsible %>
+  <div class="rules-section-item mb-2">
+    <div class="rules-section-header-modern" data-action="click->toggle#toggleSection" data-section="4">
+      <h3 class="mb-0 d-flex align-items-center gap-3">
+        <i class="fa-solid fa-images rules-section-icon"></i>
+        <b class="cursor-pointer flex-grow-1"><%= t("pages.rules.photo_gallery") %></b>
+        <span class="rules-section-arrow">⬇️</span>
+      </h3>
+    </div>
+    <div class="rules-section-content-modern d-none" data-toggle-target="section4">
+      <div class="rules-section-body-modern mt-3">
+        <% if current_user %>
+          <div class="mb-3 d-flex gap-2 justify-content-end">
+            <%= link_to t("pages.rules.upload_image"), new_gallery_image_path, class: "btn btn-shape btn-yellow text-size" %>
+            <% if @is_admin && @gallery_images_by_club %>
+              <%= link_to t("pages.rules.edit_gallery"), gallery_images_path, class: "btn btn-shape btn-yellow text-size" %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
+          <%= render "shared/gallery_filter" %>
+
+          <%# Display images grouped by club for all users %>
+          <% @gallery_images_by_club.each do |club, gallery_images| %>
+            <% next if club.nil? %>
+            <%= render "club_gallery_header",
+                club: club,
+                gallery_images: gallery_images,
+                image_count: gallery_images.count %>
+          <% end %>
         <% else %>
-          <%= f.hidden_field :club_id, value: @club.id %>
+          <p><%= t("pages.rules.no_images") %></p>
         <% end %>
+      </div>
+    </div>
+  </div>
+  <hr class="rules-section-divider">
 
-        <%= f.fields_for :club, @club do |club_form| %>
-          <div class="mb-3">
-            <%= club_form.label :logo, t(".logo_label"), class: "form-label" %>
-            <%= club_form.file_field :logo, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
-            <% if @club.logo.present? %>
-              <small class="form-text text-muted"><%= t(".current_logo") %></small><br>
-              <%= image_tag @club.logo.url, class: "rounded", style: "max-width: 200px; max-height: 200px; margin-top: 10px;" %>
-            <% end %>
-          </div>
-
-          <div class="mb-3">
-            <%= club_form.label :banner, t(".banner_label"), class: "form-label" %>
-            <%= club_form.file_field :banner, accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control" %>
-            <% if @club.banner.present? %>
-              <small class="form-text text-muted"><%= t(".current_banner") %></small><br>
-              <%= image_tag @club.banner.url, class: "rounded", style: "max-width: 400px; max-height: 200px; margin-top: 10px;" %>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%= f.submit t(".update_branding"), class: "btn btn-shape btn-aqua mb-3" %>
-      <% end %>
-    </div><br>
-  <% end %>
-
-  <%# Player Directory Section %>
-  <br><h4><div id="player_directory" class="title"><b><%= t("shared.my_club.player_directory_title").upcase %></b></div></h4><br>
-  <% if @is_admin && @players_by_club %>
-    <%# Admin view: Grouped by club %>
-    <% @players_by_club.each do |club, players| %>
-      <% next if club.nil? %>
-      <%= render "shared/player_directory", players: players, club_name: club.name, is_mobile: @is_mobile %>
-    <% end %>
-  <% elsif @players %>
-    <%# Regular user view: Single club %>
-    <%= render "shared/player_directory", players: @players, club_name: @club.name, is_mobile: @is_mobile %>
-  <% end %>
-
-  <%= render "gallery_toggle_buttons",
-      toggle_button_class: "btn btn-shape btn-aqua text-size",
-      translation_namespace: "pages.rules",
-      ok_translation_key: "pages.my_club.ok" %>
-
-  <%= render "embedded_gallery", translation_namespace: "pages.rules" %>
+  <div class="buttons-wrap">
+    <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua" %>
+  </div>
 </div>
