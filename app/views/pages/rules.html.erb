@@ -39,57 +39,13 @@
 
   <!-- Rules Actions -->
   <div class="rules-actions-section my-4 my-md-5 dont-print">
-    <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center" style="flex-wrap: nowrap;">
-      <button data-action="click->toggle#toggleRules" data-toggle-target="tournamentRules"
-        class="btn btn-shape btn-yellow text-size">
-        <%= t '.btn_display_gallery' %>
-      </button>
-      <%= link_to t(".ok"), boxes_path, class: "btn btn-shape btn-aqua text-size" %>
-      <span class="d-none" data-toggle-target="togglableButton">
-        <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size"%>
-      </span>
-    </div>
+    <%= render "gallery_toggle_buttons",
+        toggle_button_class: "btn btn-shape btn-yellow text-size",
+        translation_namespace: "pages.rules",
+        ok_translation_key: "pages.rules.ok",
+        buttons_wrap_class: "buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center",
+        buttons_wrap_style: "flex-wrap: nowrap;" %>
   </div>
 
-    <div class="d-none frame-color-shape frame-padding frame-margin-rl text-size print-all-content box-scroller"
-         data-toggle-target="togglableElement"
-         data-controller="gallery-filter">
-
-      <!-- Gallery Header -->
-      <header id="gallery-header" class="gallery-header mb-4 mb-md-5">
-        <h2 class="title mb-0">
-          <b><%= t(".photo_gallery").upcase %></b>
-        </h2>
-      </header>
-
-      <% if current_user %>
-        <div class="mb-3 d-flex gap-2 justify-content-end">
-          <%= link_to t(".upload_image"), new_gallery_image_path, class: "btn btn-shape btn-yellow text-size" %>
-          <% if @is_admin && @gallery_images_by_club %>
-            <%= link_to t(".edit_gallery"), gallery_images_path, class: "btn btn-shape btn-yellow text-size" %>
-          <% end %>
-        </div>
-      <% end %>
-
-      <% if @gallery_images_by_club.present? && @gallery_images_by_club.any? %>
-        <%= render "shared/gallery_filter" %>
-
-        <%# Display images grouped by club for all users %>
-        <% @gallery_images_by_club.each do |club, gallery_images| %>
-          <% next if club.nil? %>
-          <%= render "club_gallery_header",
-              club: club,
-              gallery_images: gallery_images,
-              image_count: gallery_images.count %>
-        <% end %>
-      <% else %>
-        <p><%= t(".no_images") %></p>
-      <% end %>
-
-      <%# bouton javascript pour scroller au début des règles %>
-      <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
-        class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
-      </button>
-    </div>
-  </div>
+  <%= render "embedded_gallery", translation_namespace: "pages.rules" %>
 </div>

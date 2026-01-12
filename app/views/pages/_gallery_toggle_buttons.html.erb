@@ -1,0 +1,19 @@
+<%# Gallery toggle buttons partial - used in rules and my_club pages %>
+<%# Accepts optional parameters for button styling and translation namespace %>
+<%
+  toggle_button_class ||= "btn btn-shape btn-yellow text-size"
+  translation_namespace ||= "pages.rules"
+  ok_translation_key ||= "#{translation_namespace}.ok"
+  buttons_wrap_class ||= "buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center"
+  buttons_wrap_style ||= "flex-wrap: nowrap;"
+%>
+<div class="<%= buttons_wrap_class %>" style="<%= buttons_wrap_style %>">
+  <button data-action="click->toggle#toggleRules" data-toggle-target="tournamentRules"
+    class="<%= toggle_button_class %>">
+    <%= t "#{translation_namespace}.btn_display_gallery" %>
+  </button>
+  <%= link_to t(ok_translation_key), boxes_path, class: "btn btn-shape btn-aqua text-size" %>
+  <span class="d-none" data-toggle-target="togglableButton">
+    <%= link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green text-size"%>
+  </span>
+</div>

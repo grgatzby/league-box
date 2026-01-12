@@ -57,6 +57,20 @@ class PagesController < ApplicationController
                      .order(:last_name, :first_name)
       @is_admin = false
     end
+
+    # Load gallery images grouped by club (similar to rules method)
+    if current_user&.role == "admin"
+      all_images = GalleryImage.joins(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+      @gallery_images_by_club = all_images.group_by(&:club)
+    elsif current_user
+      # Regular users see images accessible to their club, grouped by club
+      accessible_images = GalleryImage.accessible_to_club(current_user.club_id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+      @gallery_images_by_club = accessible_images.group_by(&:club)
+    else
+      # For non-authenticated users, show images from sample club, grouped by club
+      accessible_images = GalleryImage.accessible_to_club(@club.id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+      @gallery_images_by_club = accessible_images.group_by(&:club)
+    end
   end
 
   def update_club
