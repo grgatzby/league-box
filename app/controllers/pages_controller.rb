@@ -27,11 +27,14 @@ class PagesController < ApplicationController
         @gallery_images_by_club = all_images.group_by(&:club)
         @is_admin = true
       elsif current_user
-        @gallery_images = GalleryImage.accessible_to_club(current_user.club_id).includes(:club).order(created_at: :desc)
+        # Regular users see images accessible to their club, grouped by club
+        accessible_images = GalleryImage.accessible_to_club(current_user.club_id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+        @gallery_images_by_club = accessible_images.group_by(&:club)
         @is_admin = false
       else
-        # For non-authenticated users, show images from sample club
-        @gallery_images = GalleryImage.accessible_to_club(@club.id).includes(:club).order(created_at: :desc)
+        # For non-authenticated users, show images from sample club, grouped by club
+        accessible_images = GalleryImage.accessible_to_club(@club.id).includes(:club).order('clubs.name ASC, gallery_images.created_at DESC')
+        @gallery_images_by_club = accessible_images.group_by(&:club)
         @is_admin = false
       end
   end

@@ -27,8 +27,8 @@
 
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
     <%= link_to t('.my_club_link'), my_club_path, class: "dropdown-item color-black" %>
-
     <%= link_to t(".my_profile_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
+    <%= link_to t(".gallery_link"), gallery_images_path, class: "dropdown-item color-black" %>
 
     <div class="dropdown-divider"></div>
     <%# Player-specific links %>

@@ -14,7 +14,7 @@ nl:
       my_box: mijn box
       all_boxes_link: 📦 de boxen
     index_expanded:
-      all_box_title_html: De boxen van de ronde <i style="font-weight:normal">(uitgebreide weergave)</i>
+      all_box_title_html: De boxen van de ronde (round %{round_label}) <i style="font-weight:normal">(uitgebreide weergave)</i>
       all_boxes_btn: 🔁 compacte weergave
       round_ranking_btn: 🏆 rangschikkingen
       message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleurverloop te wissen</i>
@@ -26,7 +26,7 @@ nl:
       to_csv_btn: 📄 CSV
       clear_format: Zijn achtergrondkleurverloop
     index:
-      all_box_title_html: De boxen van de ronde <i style="font-weight:normal">(compacte weergave)</i>
+      all_box_title_html: De boxen van de ronde (round %{round_label}) <i style="font-weight:normal">(compacte weergave)</i>
       all_box_explain_html: <i><b class='color-green'>Klik op een box</b> voor wedstrijddetails.</i>
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
       message_box_pop: "Spelersnaam, ranking, gespeelde wedstrijden, punten verdiend<br /><br /><i class='color-green'>Klik op voor wedstrijddetails van box %{box}</i>"

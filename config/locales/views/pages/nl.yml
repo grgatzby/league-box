@@ -261,7 +261,7 @@ nl:
       li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
-      ok: 📦 Naar boxen
+      ok: 📦 boxen
     my_club:
       club_branding_title: Club Identiteit
       select_club: Selecteer Club
@@ -270,7 +270,7 @@ nl:
       banner_label: Club Banner
       current_banner: Huidige banner
       update_branding: Identiteit Bijwerken
-      ok: 📦 Naar boxen
+      ok: 📦 boxen
     update_club:
       unauthorized: U bent niet gemachtigd om de club identiteit bij te werken.
       success: Club identiteit succesvol bijgewerkt.
@@ -287,4 +287,4 @@ nl:
       error: Fout bij het bijwerken van de profielfoto.
       user_not_found: Gebruiker niet gevonden.
     staff:
-      ok: 📦 Naar boxen
+      ok: 📦 boxen

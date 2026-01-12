@@ -1,0 +1,12 @@
+<%# Shared gallery filter partial %>
+<%# Note: Translation keys should be from gallery_images.index namespace %>
+<div class="mb-3">
+  <input type="text"
+         class="form-control"
+         placeholder="<%= t("gallery_images.index.filter_by_caption") %>"
+         data-action="input->gallery-filter#filter"
+         data-gallery-filter-target="search">
+</div>
+<p class="d-none text-muted" data-gallery-filter-target="noResults">
+  <%= t("gallery_images.index.no_results") %>
+</p>

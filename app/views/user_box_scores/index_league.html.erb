@@ -7,6 +7,7 @@
   <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
     <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
+    <!-- display the title with a popover to display the rounds -->
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= message %>">
@@ -30,6 +31,7 @@
         <%= render 'action_buttons', round: @round, from: "index_league" %>
       </div>
     <% end %>
+    <!-- display the league table -->
     <%= render 'league_table', from: "index_league" %>
   <% else %>
     <!-- if no round selected, display the forms to select a club (admin only) and a round -->

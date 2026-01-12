@@ -1,10 +1,10 @@
 <%# My details form for existing user %>
 <%= render "shared/image_front" %>
+<div class="<%= class_names("container": !@is_mobile) %>"
+     data-controller="toggle">
   <div class="one-liner">
     <h3><%= t '.title' %></h3>
   </div>
-<div class="<%= class_names("container": !@is_mobile) %>"
-     data-controller="toggle">
   <%# Removed Active Storage photo code - now using CarrierWave on User model for profile pictures %>
 
   <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
@@ -194,7 +194,7 @@
         <b><%= t(".history") %></b><br>
         <div class="row">
           <div class="col-4">
-            <i><%= t(".previous_rounds") %></i>
+            <%= t(".previous_rounds") %>
           </div>
           <div class="col-8">
             <i><%= "League_Round - Box, #rank" %></i><br>
