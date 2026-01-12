@@ -1,12 +1,12 @@
 en:
-  back_btn: ←
+  back_btn: ⇤
   boxes:
     switch: ""
     list_view: list view
     table_view: table view
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
-      my_scores_btn: my scores
+      my_scores_btn: my scores & chatroom
       pop01_a: select a match to <i>edit</i> or <i>delete</i> the score
       pop01_b: ", or <i>enter</i> a new score"
       pop02_html: if you are in this box, your name appears in <span class='color-orange'>orange</span>
@@ -41,7 +41,7 @@ en:
       to_csv_btn: 📄 CSV
       load_scores: 📄 load scores
     my_scores:
-      my_scores: My scores
+      my_scores: My scores & chatroom
       intro_html: >
         The <b class='color-tennis-red'>My scores</b> page allows players to access the match cards, and enter new scores within their own box.<br />
         (nb: this can also be done from <b class='bold-font color-tennis-blue'>List view</b> and <b class='bold-font color-tennis-blue'>Grid view</b>).<br><br>
@@ -50,7 +50,7 @@ en:
       my_current_box: my current box
       my_box: my box
       not_in_round: " you are not in this round!"
-      view_enter_scores: View or enter match scores
+      view_enter_scores: View or enter my match scores
       player_header: Player
       total_points_header: Total points
       played_on_header: Match played on

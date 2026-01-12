@@ -1,5 +1,8 @@
 <%# My details form for existing user %>
 <%= render "shared/image_front" %>
+  <div class="one-liner">
+    <h3><%= t '.title' %></h3>
+  </div>
 <div class="<%= class_names("container": !@is_mobile) %>"
      data-controller="toggle">
   <%# Removed Active Storage photo code - now using CarrierWave on User model for profile pictures %>
@@ -7,7 +10,7 @@
   <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
-      <div style="display: flex; align-items: center; gap: 10px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
         <% if current_user.profile_picture.present? %>
           <%= image_tag(profile_picture_circular_url(current_user, 40), alt: 'Profile picture', id: "top_profile_picture", style: "width: 40px; height: 40px; border-radius: 50%; object-fit: cover;") %>
         <% else %>
@@ -18,7 +21,7 @@
       <br><br>
 
       <div class="row">
-        <div class="col-4"><%= "🏟️ Club:" %></div>
+        <div class="col-4"><%= "🎾 Club:" %></div>
         <div class="col-3"><%= "#{current_user.club.name}" %></div>
       </div>
       <div class="row">
@@ -31,7 +34,7 @@
         <div class="col-2"><%= f.text_field :nickname,
                                 placeholder: current_user.nickname,
                                 value: current_user.nickname,
-                                style: "width: 10em",
+                                style: "width: 15em",
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
@@ -40,7 +43,7 @@
         <div class="col-2"><%= f.text_field :first_name,
                                 placeholder: current_user.first_name,
                                 value: current_user.first_name,
-                                style: "width: 10em",
+                                style: "width: 15em",
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
@@ -49,16 +52,7 @@
         <div class="col-2"><%= f.text_field :last_name,
                                 placeholder: current_user.last_name,
                                 value: current_user.last_name,
-                                style: "width: 10em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
-        <div class="col-2"><%= f.text_field :phone_number,
-                                placeholder: current_user.phone_number,
-                                value: current_user.phone_number,
-                                style: "width: 10em",
+                                style: "width: 15em",
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
@@ -71,22 +65,32 @@
                                 input_html: {class: "contact-field"} %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
+        <div class="col-2"><%= f.text_field :phone_number,
+                                placeholder: current_user.phone_number,
+                                value: current_user.phone_number,
+                                style: "width: 10em",
+                                input_html: {class: "contact-field"} %>
+        </div>
+      </div>
      <hr>
 
       <div class="row">
         <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
         <div class="col-4">
-          <div class="custom-file-input-wrapper">
-            <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
-            <label for="profile_picture_input" class="custom-file-label btn btn-shape btn-beige">
-              <%= t(".choose_file") %>
-            </label>
-          </div>
-          <div id="profile_picture_preview" style="margin-top: 10px;">
-            <% if current_user.profile_picture.present? %>
-              <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;", id: "preview_image") %>
-              <br><br>
-            <% end %>
+          <div style="display: flex; align-items: center; gap: 15px;">
+            <div class="custom-file-input-wrapper">
+              <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
+              <label for="profile_picture_input" class="custom-file-label btn btn-shape btn-beige">
+                <%= t(".choose_file") %>
+              </label>
+            </div>
+            <div id="profile_picture_preview">
+              <% if current_user.profile_picture.present? %>
+                <%= image_tag(current_user.profile_picture.url.to_s, alt: 'Profile picture', class: "rounded", style: "max-width: 100px; max-height: 100px;", id: "preview_image") %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
@@ -168,18 +172,11 @@
       <div class="row">
         <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-8">
-          <%= f.label :password, t(".modify_password") %>
-          <%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
+          <i><%= f.label :password, t(".modify_password") %></i>
+          &nbsp;&nbsp;<%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
       </div>
 
-      <% if (["player", "player referee"].include?(current_user.role)) %>
-        <hr>
-        <b><%= "League_Round - Box, #rank" %></b><br>
-        <% name = "#{render "shared/fullname", user: current_user}"
-          boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
-        <%= sanitize "#{boxes}" %>
-      <% end %>
       <hr>
       <b><%= t(".preferences") %></b><br>
         <%# checkbox to remove color gradient formatting if page does not display well on screen %>
@@ -187,10 +184,26 @@
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
         <div class="col-5">
-          <%= f.label :clear_format, t(".clear_format") %>
-          <%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
+          <i><%= f.label :clear_format, t(".clear_format") %></i>
+          &nbsp;&nbsp;<%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
         </div>
-    </div>
+      </div>
+
+      <% if (["player", "player referee"].include?(current_user.role)) %>
+        <hr>
+        <b><%= t(".history") %></b><br>
+        <div class="row">
+          <div class="col-4">
+            <i><%= t(".previous_rounds") %></i>
+          </div>
+          <div class="col-8">
+            <i><%= "League_Round - Box, #rank" %></i><br>
+            <% name = "#{render "shared/fullname", user: current_user}"
+              boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
+            <%= sanitize "#{boxes}" %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <br>
     <div class = "buttons-wrap">

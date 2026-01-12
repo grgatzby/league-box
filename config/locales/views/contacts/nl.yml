@@ -41,7 +41,7 @@ nl:
       p04_html: >
         Bedankt voor het aanvragen van een nieuwe rondecreatie voor %{club_name}.<br>
         Uw <b>admin</b> neemt binnenkort contact met u op.
-      back_btn: ←
+      back_btn: ⇤
       home_btn: Home-pagina
     create:
       error_flash: Fout bij verzenden van bericht

@@ -13,7 +13,7 @@ nl:
       chatroom_title: "Chatroom %{chatroom}"
       message_invite: "> Bericht naar"
       send_btn: ⎷ Versturen
-      back_btn: ←
+      back_btn: ⇤
       chatroom_choice: Toegang tot een open chatroom of
       chose_chatroom: "Kies een open chatroom: "
       chatroom_name: Chatroom naam

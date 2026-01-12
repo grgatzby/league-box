@@ -13,7 +13,7 @@ fr:
       chatroom_title: "Chatroom %{chatroom}"
       message_invite: "> Message vers"
       send_btn: ⎷ Envoi
-      back_btn: ←
+      back_btn: ⇤
       chatroom_choice: Accéder à une chatroom ouverte, ou
       chose_chatroom: "Choisir une chatroom ouverte: "
       chatroom_name: Nom de la chatroom

@@ -15,8 +15,7 @@ nl:
         De winnaar ontvangt de Singles Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       use_title: LeagueBox in één oogopslag
-      li01: Mijn scores
-      li05_html:
+      li01: ✉️ Mijn scores & chatroom
       li02: 📦 Boxen
       li06_html: >
         <b>Bekijk alle vakjes</b> van de ronde in %{inset}.<br/>
