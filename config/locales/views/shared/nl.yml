@@ -42,7 +42,7 @@ nl:
         Een geschil over een wedstrijdscore of je hebt een slechte score ingevoerd?<br>
         U kunt de wedstrijdscore niet invoeren?<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ Neem contact op met uw <b>scheidsrechter</b> (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores</a>).<br>
+        &emsp;&emsp;&emsp;→ Neem contact op met uw <b>scheidsrechter</b> (Referee) via jouw <b>Box chatroom</b> (uit pagina <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mijn scores & chatroom</a>).<br>
         &emsp;&emsp;&emsp;→ Neem contact op met de <b>beheerder</b> (admin) via
       staff_p04a_html: >
         de link <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a>.<br>

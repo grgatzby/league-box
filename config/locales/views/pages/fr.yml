@@ -247,12 +247,12 @@ fr:
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
       chatrooms: Chatrooms
       p27_html: >
-        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='bold-font color-tennis-red'>Mes scores</span> pour les joueurs.<br>
+        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='bold-font color-tennis-red'>Mes scores & chatroom</span> pour les joueurs.<br>
         La <b>chatroom #general</b> est réservée à l'admin et aux referees quel que soit leur club.
         Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.<br>
         Dans les chatrooms, une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
-        Chaque box dispose d'une <b>chatroom</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Mes scores</span>.<br><br>
+        Chaque box dispose d'une <b>chatroom</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Mes scores & chatroom</span>.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaissent en bleu</span>
       li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaissent en aqua</span>
@@ -262,6 +262,7 @@ fr:
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
       ok: 📦 les box
     my_club:
+      my_club_title: Mon Club
       club_branding_title: Identité visuelle du club
       select_club: Sélectionner un club
       logo_label: Logo du club
