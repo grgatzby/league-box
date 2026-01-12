@@ -19,18 +19,18 @@
 
 
 
+    <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
+    <%= link_to t('.my_club_link'), my_club_path, class: "dropdown-item color-black" %>
+    <%= link_to t(".my_profile_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
+    <%= link_to t(".gallery_link"), gallery_images_path, class: "dropdown-item color-black" %>
+    <div class="dropdown-divider"></div>
+
     <%# Navigation links %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>
     <%= link_to t('.round_ranking_link'), user_box_scores_path, class: "dropdown-item color-green" %>
     <%= link_to t('.league_table_link'), index_league_path, class: "dropdown-item color-green" %>
     <div class="dropdown-divider"></div>
 
-    <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
-    <%= link_to t('.my_club_link'), my_club_path, class: "dropdown-item color-black" %>
-    <%= link_to t(".my_profile_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
-    <%= link_to t(".gallery_link"), gallery_images_path, class: "dropdown-item color-black" %>
-
-    <div class="dropdown-divider"></div>
     <%# Player-specific links %>
     <% if current_user && current_user.role == "player" %>
       <%# my_scores_path(0) forces the _select_club_round form %>

@@ -137,9 +137,10 @@
   <!-- Bottom Navigation -->
   <div class="home-bottom-nav mt-4">
     <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
-      <%= link_to t("gallery_images.index.gallery_title"), gallery_images_path, class: "btn btn-shape btn-aqua text-size" %>
-      <% if user_signed_in?%>
-        <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
+      <% if user_signed_in? %>
+        <% if current_user.role&.include?("referee") || current_user == @admin %>
+          <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
+        <% end %>
       <% else %>
         <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
       <% end %>
