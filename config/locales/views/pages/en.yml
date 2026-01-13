@@ -1,5 +1,8 @@
 en:
   pages:
+    common:
+      ok_boxes: 📦 Boxes
+      ok_view_boxes: 📦 View boxes
     home:
       main_title: LeagueBox
       welcome_title: A Social Tournament in your own Club
@@ -16,20 +19,20 @@ en:
         The winner will receive the Singles Tournament trophy 🏆, listing on the club honors board and possibly some
         champagne to celebrate at the end of the run.
       use_title: LeagueBox at a glance
-      li01: ✉️ My scores & chatroom
-      li02: 📦 Boxes
       li06_html: >
         <b>View all the boxes</b> of the round in %{inset}.<br/>
         Click on a box to access the match details.<br/>
         Access the previous rounds and tournaments.
-      li03a: List view
-      li03b: Table view
+      li06_boxes: 📦 Boxes
       li07_html: >
         <b>Post your latest match score</b> in %{inset_a}, %{inset_b} or %{inset_c}.<br>
-      li04a: 🏆 Round Ranking
-      li04b: 🏆🏆 League Table
+      li07_list_view: List view
+      li07_grid_view: Table view
+      li07_my_scores: My scores & chatroom
       li08_html: >
         <b>Your rankings are up to date</b> in %{inset_a} and %{inset_b}.<br>
+      li08_round_ranking: 🏆 Round Ranking
+      li08_league_table: 🏆🏆 League Table
       ready_title: Are you ready? Then meet you on the courts! 🎾
       p04: During each one month round, compete against the other players in your box.
       li09_html: <b>Play every match</b> in your allocated box.
@@ -49,7 +52,6 @@ en:
         Fill the form in our %{inset} page to learn more.
       happy_tournament: Happy LeagueBox tournament!
       create_club_btn: Create a new club
-      ok: 📦 View boxes
       login_link: log in
     rules:
       rules_title: Format and Rules
@@ -62,7 +64,6 @@ en:
       disputes_section: Disputes
       btn_display_gallery: Photo Gallery
       btn_hide_gallery: Hide Photo Gallery
-      ok: 📦 Boxes
       photo_gallery: Photo gallery
       upload_image: Upload Image
       edit_gallery: Edit Gallery
@@ -263,7 +264,6 @@ en:
       li11_html: <span class= 'color-black'>Messages from Referees of other clubs appear in dark gray</span>
       li12_html: <span class= 'color-tennis-red'>Messages from the admin appear in red</span>
       p29: Received messages appear on the left, and sent messages on the right.
-      ok: 📦 boxes
     my_club:
       my_club_title: My Club
       club_branding_title: Club Branding
@@ -273,7 +273,6 @@ en:
       banner_label: Club Banner
       current_banner: Current banner
       update_branding: Update Branding
-      ok: 📦 boxes
     update_club:
       unauthorized: You are not authorized to update club branding.
       success: Club branding updated successfully.
@@ -290,4 +289,3 @@ en:
       error: Error updating profile picture.
       user_not_found: User not found.
     staff:
-      ok: 📦 boxes

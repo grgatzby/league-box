@@ -1,5 +1,8 @@
 fr:
   pages:
+    common:
+      ok_boxes: 📦 Les box
+      ok_view_boxes: 📦 Consulter les box
     home:
       main_title: LeagueBox
       welcome_title: Le tournoi interne de votre club
@@ -16,19 +19,19 @@ fr:
         Le vainqueur recevra le trophée de la saison 🏆, son nom sur le tableau d'honneur et pourquoi pas
         du champagne pour célébrer sa victoire à la fin de la saison.
       use_title: Le site LeagueBox en pratique
-      li01: ✉️ Mes scores & chatroom
-      li02: 📦 Les box
       li06_html: >
-        <b>Consultez les box du round</b> en un coup d'œil dans %{inset}.<br/>
-        Cliquez sur une des box pour en détailler les matchs.<br/>
-        Accédez aux rounds et aux saisons précédentes.
-      li03a: Vue en liste
-      li03b: Vue en grille
+        Dans %{inset}, <b>consultez les box du round</b> en un coup d'œil.<br/>
+        Cliquez sur une des box pour en détailler les matchs et accédez à la vue en liste ou en grille.<br/>
+        Vous avez accès aux rounds et aux saisons précédents.
+      li06_boxes: 📦 Les box
       li07_html: >
-        Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, %{inset_c}.
-      li04a: 🏆 Classement du round
-      li04b: 🏆🏆 League table
+        Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, ou %{inset_c}.
+      li07_list_view: Vue en liste
+      li07_grid_view: Vue en grille
+      li07_my_scores: Mes scores & chatroom
       li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et %{inset_b}.
+      li08_round_ranking: 🏆 Classement du round
+      li08_league_table: 🏆🏆 League table
       ready_title: Vous êtes prêt? Alors rendez-vous sur les courts! 🎾
       p04: Chaque round dure un mois environ, et vous affronterez les joueurs de votre box.
       li09_html: Pendant la durée d'un round, <b> jouez tous vos matchs</b> dans votre box.
@@ -48,7 +51,6 @@ fr:
         Écrivez-nous via le formulaire %{inset} pour en savoir plus.
       happy_tournament: Bon tournoi sur LeagueBox!
       create_club_btn: Créer un nouveau club
-      ok: 📦 Consulter les box
       login_link: se connecter
     rules:
       rules_title: Format et règles
@@ -61,7 +63,6 @@ fr:
       disputes_section: Différends
       btn_display_gallery: Galerie photos
       btn_hide_gallery: Cacher la galerie photos
-      ok: 📦 Les box
       photo_gallery: Galerie photos
       upload_image: Téléverser une image
       edit_gallery: Éditer la galerie
@@ -260,7 +261,6 @@ fr:
       li11_html: <span class= 'color-black'>Les messages de Referee d'autres clubs apparaissent en gris foncé</span>
       li12_html: <span class= 'color-tennis-red'>Les messages de l'admin apparaissent en rouge</span>
       p29: Les messages reçus apparaissent à gauche de l'écran, et les messages envoyés à droite.
-      ok: 📦 les box
     my_club:
       my_club_title: Mon Club
       club_branding_title: Identité visuelle du club
@@ -270,7 +270,6 @@ fr:
       banner_label: Bannière du club
       current_banner: Bannière actuelle
       update_branding: Mettre à jour l'identité visuelle
-      ok: 📦 les box
     update_club:
       unauthorized: Vous n'êtes pas autorisé à mettre à jour l'identité visuelle du club.
       success: L'identité visuelle du club a été mise à jour avec succès.
@@ -287,4 +286,3 @@ fr:
       error: Erreur lors de la mise à jour de la photo de profil.
       user_not_found: Utilisateur introuvable.
     staff:
-      ok: 📦 les box

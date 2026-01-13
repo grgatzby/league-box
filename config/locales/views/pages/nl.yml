@@ -1,5 +1,8 @@
 nl:
   pages:
+    common:
+      ok_boxes: 📦 Boxen
+      ok_view_boxes: 📦 Naar boxen
     home:
       main_title: LeagueBox
       welcome_title: Het Sociaal Toernooi van jouw club
@@ -15,20 +18,20 @@ nl:
         De winnaar ontvangt de Singles Tournament-trofee 🏆, zijn of haar naam op de erelijst en waarom niet
         champagne om zijn overwinning aan het einde van de ronde te vieren.
       use_title: LeagueBox in één oogopslag
-      li01: ✉️ Mijn scores & chatroom
-      li02: 📦 Boxen
       li06_html: >
         <b>Bekijk alle vakjes</b> van de ronde in %{inset}.<br/>
         Klik op een vakje om de wedstrijddetails te bekijken.<br/>
         Bekijk de voorgaande rondes en toernooien.
-      li03a: Resultaten lijst
-      li03b: Resultatenraster
+      li06_boxes: 📦 Boxen
       li07_html: >
         <b>Plaats je laatste wedstrijdscore</b> in %{inset_a}, %{inset_b} of %{inset_c}.<br>
-      li04a: 🏆 Ronde rangschikking
-      li04b: 🏆🏆 League table
+      li07_list_view: Resultaten lijst
+      li07_grid_view: Resultatenraster
+      li07_my_scores: Mijn scores & chatroom
       li08_html: >
         <b>Uw rangschikkingen zijn altijd actueel</b> in %{inset_a} en %{inset_b}.<br>
+      li08_round_ranking: 🏆 Ronde rangschikking
+      li08_league_table: 🏆🏆 League table
       ready_title: Klaar? Allemaal tot ziens op de tennisbaan! 🎾
       p04: Elke ronde duurt een maand en spelers strijden in hun box.
       li09_html: Gedurende de ronde <b>speel elke wedstrijd</b> in je box.
@@ -48,7 +51,6 @@ nl:
         Bezoek onze pagina %{inset} voor meer informatie.
       happy_tournament: Gelukkig toernooi met LeagueBox!
       create_club_btn: Maak een nieuwe club
-      ok: 📦 Naar boxen
       login_link: log in
     rules:
       rules_title: Format en regels
@@ -61,7 +63,6 @@ nl:
       disputes_section: Geschillen
       btn_display_gallery: Fotogalerij
       btn_hide_gallery: Verberg de fotogalerij
-      ok: 📦 Boxen
       photo_gallery: Fotogalerij
       upload_image: Afbeelding uploaden
       edit_gallery: Afbeelding bewerken
@@ -261,7 +262,6 @@ nl:
       li11_html: <span class= 'color-black'>Berichten van de Referee van een andere club verschijnen in donkergrijs</span>
       li12_html: <span class= 'color-tennis-red'>Berichten van de beheerder verschijnen in het rood</span>
       p29: Ontvangen berichten verschijnen aan de linkerkant, en verzonden berichten aan de rechterkant.
-      ok: 📦 boxen
     my_club:
       my_club_title: Mijn Club
       club_branding_title: Club Identiteit
@@ -271,7 +271,6 @@ nl:
       banner_label: Club Banner
       current_banner: Huidige banner
       update_branding: Identiteit Bijwerken
-      ok: 📦 boxen
     update_club:
       unauthorized: U bent niet gemachtigd om de club identiteit bij te werken.
       success: Club identiteit succesvol bijgewerkt.
@@ -288,4 +287,3 @@ nl:
       error: Fout bij het bijwerken van de profielfoto.
       user_not_found: Gebruiker niet gevonden.
     staff:
-      ok: 📦 boxen
