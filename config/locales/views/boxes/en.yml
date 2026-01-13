@@ -13,32 +13,30 @@ en:
       my_current_box: my current box
       my_box: my box
       all_boxes_link: 📦 boxes
-    index_expanded:
-      all_box_title_html: All boxes (round %{round_label}) <i style="font-weight:normal">(expanded view)</i>
-      all_boxes_btn: 🔁 compact view
+    common:
       round_ranking_btn: 🏆 round ranking
+      to_csv_btn: 📄 CSV
+      all_box_title_html: All boxes for round %{round_label} <i style="font-weight:normal">(%{view_type})</i>
+      intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
+    index_expanded:
+      all_boxes_btn: 🔁 compact display
       message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>
       message_csv_pop: >
         <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>
         email_player, phone_number_player, role_player,
         email_opponent, phone_number_opponent, role_opponent, match_date, court_nb, input_user_id, input_date</i>
-      to_csv_btn: 📄 CSV
       clear_format: Clear background color gradient
     index:
-      all_box_title_html: All boxes (round %{round_label}) <i style="font-weight:normal">(compact view)</i>
       all_box_explain_html: <i><b class='color-green'>Click on a box</b> to view the details of the matches</i>
-      intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
       message_box_pop: "Name, rank, games played, points earned.<br /><br /><i class='color-green'>Click for match details on box %{box}</i>"
       message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
       my_current_box: (my current box)
       create_round_btn: create the next round
       my_box: (my box)
-      open_view_btn: 🔁 expanded view
-      round_ranking_btn: 🏆 round ranking
+      open_view_btn: 🔁 expanded display
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
-      to_csv_btn: 📄 CSV
       load_scores: 📄 load scores
     my_scores:
       my_scores: My scores & chatroom
