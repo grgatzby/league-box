@@ -1,12 +1,20 @@
-<!-- in table or list view: display first section of the view -->
+<%#
+  Intro Lines Partial
+  Displays the header section for box views (table or list view).
+  Shows box title, user information, club details, and navigation buttons.
+%>
 <% if !@is_mobile %><br><% end %>
+
+<%# Header Section: Box Title and User Info %>
 <div class="one-liner" style="width: 100%">
+  <%# Build popover message with user role and permissions info %>
   <% message = "#{current_user.role.capitalize} <b>#{(render "shared/fullname", user: current_user).strip}</b>,<br />"
      if current_user.role != "player"
        message += "#{t(".pop01_a")}#{current_user == @admin ? "#{t(".pop01_b")}" : ""}"
      else
        message += "#{t(".pop02_html")}"
      end
+  # Display "My Box" indicator if viewing own box
      my_box_text = @is_this_my_box ? "#{render "shared/fullname", user: current_user} \
                    (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
@@ -16,39 +24,48 @@
     <span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
   </div>
 
+  <%# Print-only logo and copyright %>
   <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
 </div>
+
+<%# Navigation Section: Club Info and Action Buttons %>
 <div class="one-liner">
   <h4><%= render "shared/display_club", round: box.round %>
   </h4>
   <div class="dont-print">
     <%= render 'shared/stats' %>
+
+    <%# "My Scores" button - only shown if viewing own box %>
     <% if @is_this_my_box %>
       <%= link_to t(".my_scores_btn"), my_scores_path(box), class: "btn btn-shape btn-orange mb-3" %>
     <% end %>
+
+    <%# Link to all boxes view %>
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow mb-3" %>
+
+    <%# View Toggle and Navigation: Switch between table/list view and navigate between boxes %>
     <% case view_type %>
       <% when t("boxes.table_view") %>
-        <%# if in table view, link back to list view %>
+        <%# Currently in table view: show link to switch to list view %>
         <%= link_to box_list_path, class: "btn btn-shape btn-yellow mb-3" do %>
           <i class="fa-regular fa-list"></i><%= " #{t("boxes.switch")} #{t("boxes.list_view")}" %>
         <% end %>
-        <%# previous and next boxes table view %>
+        <%# Previous and next box navigation (table view) %>
         <%= link_to "←", box_path(@id_previous_box), class: "btn btn-shape btn-yellow mb-3" %>
         <%= link_to "→", box_path(@id_next_box), class: "btn btn-shape btn-yellow mb-3" %>
       <% else %>
-        <%# if in list view, link back to table view %>
+        <%# Currently in list view: show link to switch to table view %>
         <%= link_to box_path, class: "btn btn-shape btn-yellow mb-3" do %>
           <i class="fa-solid fa-table-cells"></i><%= " #{t("boxes.switch")} #{t("boxes.table_view")}" %>
         <% end %>
-        <%# previous and next boxes list view %>
+        <%# Previous and next box navigation (list view) %>
         <%= link_to "←", box_list_path(@id_previous_box), class: "btn btn-shape btn-yellow mb-3" %>
         <%= link_to "→", box_list_path(@id_next_box), class: "btn btn-shape btn-yellow mb-3" %>
     <% end %>
-    <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green mb-3 dont-print"%>
+
+    <%# Back button: return to previous page with parameters %>
     <% if @page_from %>
       <% parameters = "?club_id=#{@round.club_id}" %>
-      <%# if params[:round_id] %>
       <% if @round %>
         <% parameters += "&round_id=#{@round.id}" %>
       <% elsif params[:league_start] %>

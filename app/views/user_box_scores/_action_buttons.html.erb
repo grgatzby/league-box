@@ -1,10 +1,13 @@
-<!-- partial: print, export to text, and export to csv buttons -->
+<%#
+  Action Buttons Partial
+  Displays action buttons for exporting and navigating league tables.
+  Different buttons shown for round ranking (index) vs tournament ranking (index_league).
+%>
 <div class="<%= class_names("d-flex flex-wrap gap-2": @is_mobile) %>">
   <% if from == "index" %>
-    <%# link_to t('print_btn'), '#',
-        onclick: 'window.print();return false;',
-        class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
+    <%# Round Ranking (index) Actions %>
 
+    <%# Export to Text Button: Export round ranking to plain text format %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_text_round_pop' %>">
@@ -14,39 +17,49 @@
           class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
 
+    <%# Export to CSV Button: Export round ranking to CSV file %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_csv_round_pop' %>">
       <%= link_to t('.to_csv_btn'), csv_round_league_table_path(round_id: round.id, club_id: round.club_id),
                                   class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
-    <%# render 'shared/stats' %>
+
+    <%# Select League Dropdown: Switch to tournament league table %>
     <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
+
+    <%# View All Boxes Link: Navigate to boxes index page %>
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
   <% else %>
-      <%# link_to t('print_btn'), '#',
-          onclick: 'window.print();return false;',
-          class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
+    <%# Tournament League Table (index_league) Actions %>
 
-      <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
-          data-bs-content="<%= t '.message_text_pop' %>">
-        <%= link_to t('.to_text_btn'), index_league_path(to_text: true, league_start: @league_start, club_id: @club.id),
-            method: :get,
-            onclick: 'JavaScript:location.reload(true);',
-            class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
-      </span>
+    <%# Export to Text Button: Export tournament ranking to plain text format %>
+    <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+        data-bs-content="<%= t '.message_text_pop' %>">
+      <%= link_to t('.to_text_btn'), index_league_path(to_text: true, league_start: @league_start, club_id: @club.id),
+          method: :get,
+          onclick: 'JavaScript:location.reload(true);',
+          class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
+    </span>
 
-      <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
-          data-bs-content="<%= t '.message_csv_pop' %>">
+    <%# Export to CSV Button: Export tournament ranking to CSV file %>
+    <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+        data-bs-content="<%= t '.message_csv_pop' %>">
       <%= link_to t('.to_csv_btn'), csv_league_table_path(league_start: @league_start, club_id: round.club_id),
                                     class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
-      </span>
-      <% if @league_starts.size > 1 %>
-        <%= render "select_league", fallback_path: user_box_scores_path, from: "index_league" %>
-      <% end %>
+    </span>
+
+    <%# Select League Dropdown: Only show if multiple league starts exist %>
+    <% if @league_starts.size > 1 %>
+      <%= render "select_league", fallback_path: user_box_scores_path, from: "index_league" %>
+    <% end %>
+
+    <%# View All Boxes Link: Navigate to boxes index page %>
     <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
+
+    <%# Round Ranking Link: Navigate to round ranking table %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_round_rank_pop' %>">

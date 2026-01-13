@@ -1,21 +1,33 @@
-<!-- no match line (list view) -->
+<%#
+  No Match Line Partial
+  Displays an unplayed match in list view format.
+  Shows opponent name and either "Enter score" link (if authorized) or "Not played" text.
+  Authorization: player in their own box, admin, or referee for current round.
+%>
 <li>
   <div class="row hovered-player color-tennis-blue">
+    <%# Opponent Name Column (col-4) %>
     <div class="col-4"><%= render "shared/fullname", user: opponent %></div>
+
+    <%# Check if user is authorized to enter a score %>
     <% may_enter_score = (current_user == player \
                            || current_user.role == "admin" \
                            || (["referee", "player referee"].include?(current_user.role) && @round == @current_round)) %>
+
+    <%# Match Status Column (col-8): Enter score link or "Not played" text %>
     <div class="col-8">
       <% if may_enter_score %>
+        <%# Authorized: Show clickable "Enter score" link with popover %>
         <i class='color-green'><%= t('.enter_score') %></i>
         <% message = "#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}<br>#{t(".pop02_a")}" %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">
-          <%# click on opponent no-match line to enter a new match score %>
+          <%# Click to navigate to new match score form %>
           <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round_id, page_from: page_from), class: "line-link" %>
         </div>
       <% else %>
+        <%# Not Authorized: Show "Not played" text (non-clickable) %>
         <%= t('.not_played') %>
       <% end %>
   </div>

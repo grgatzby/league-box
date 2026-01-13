@@ -1,16 +1,22 @@
-<!-- partial: league table wrap -->
-
+<%#
+  League Table Partial
+  Wraps the league table with headers and data rows.
+  Displays sortable column headers and scrollable player data.
+  Includes scroll-to-top button for long tables.
+%>
 <div class="<%= class_names("print-all-content print-boxes-league frame-color-shape frame-padding frame-scroller-wrap",
   "mobile-text-size": !@is_mobile, "text-size": @is_mobile) %>">
   <div class="<%= class_names("row", "mobile-table-width": @is_mobile, "table-width": !@is_mobile) %>">
+    <%# Column Headers: Sortable headers for all table columns %>
     <div class="one-liner bold-font">
-      <%# headers %>
       <%= render "table_headers", from: from %>
     </div>
 
+    <%# Player Data Rows: Scrollable list of players with stats %>
     <div class="print-scroller box-scroller" data-toggle-target="togglableElement" >
-      <%# player lines %>
       <%= render "table_data", user_box_scores: @user_box_scores, from: from %>
+
+      <%# Scroll to Top Button: Hidden by default, shown when scrolling down %>
       <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn btn-shape btn-beige top-button d-none">
         <i class="fa-solid fa-up-long"></i>

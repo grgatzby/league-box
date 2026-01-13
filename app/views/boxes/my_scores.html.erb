@@ -1,42 +1,68 @@
-<!-- player page to view own match results, enter new scores -->
+<%#
+  My Scores Page
+  Displays a player's own match results and allows them to enter new scores.
+  Shows all opponents in the box with match status, points, dates, and action buttons.
+  Also provides access to the box chatroom.
+%>
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
+
+  <%# Page Header Section %>
   <div>
-  <% my_box_text = @is_this_my_box ? "#{render "shared/fullname", user: current_user} \
+    <%# Build "My Box" indicator text if viewing own box %>
+    <% my_box_text = @is_this_my_box ? "#{render "shared/fullname", user: current_user} \
                    (#{@box == @my_current_box ? t('.my_current_box') : t('.my_box')})" : "" %>
-    <h3><%= t '.my_scores' %></h3><span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
+    <h3><%= t '.my_scores' %></h3>
+    <span class="color-tennis-red"><h5><%= my_box_text %></h5></span>
+
+    <%# Box Check: Show explanation if no box, otherwise set round %>
     <% if @box %>
       <% @round = @box.round %>
     <% else %>
       <%= render "explain_page", explain_paragraph: t(".intro_html") %>
     <% end %>
   </div>
+
+  <%# Main Content: Only show if round exists %>
   <% if @round %>
     <% if @user_not_in_round %>
+      <%# User Not in Round: Display message %>
       <br><br><h4><%= render "shared/fullname", user: @current_player %><%= t '.not_in_round' %></h4>
     <% else %>
+      <%# User in Round: Display match information %>
+
+      <%# Club Info and Navigation Section %>
       <div class="one-liner">
         <h4><%= render "shared/display_club", round: @box.round %></h4>
         <div>
           <%= render 'shared/stats' %>
+          <%# Build back button parameters with round and club IDs %>
           <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
           <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn btn-shape btn-yellow mb-3" %>
         </div>
       </div>
+
+      <%# Matches List Section: All opponents and match status %>
       <div class="<%=class_names( "frame-color-shape players frame-padding",
                                   "mobile-text-size": @is_mobile) %>">
         <h4><%= t '.view_enter_scores' %></h4>
+
+        <%# Column Headers %>
         <div class="row justify-content-center top-bottom-padding bold-font">
           <div class="col-3"><%= t '.player_header' %></div>
           <div class="col-2"><%= t '.total_points_header' %></div>
           <div class="col-2"><%= t '.played_on_header' %></div>
           <div class="col-2"></div>
         </div>
+
+        <%# Iterate through all matches for current user %>
+        <%# Data structure: @my_matches = [[user_match_score, match], ...] %>
         <% @my_matches.each do |my_match|
           opponent = my_match[0].user
           match = my_match[1] %>
 
           <div class="row justify-content-center">
+            <%# Opponent Column (col-3): Name with popover and profile picture %>
             <div class="col-3 top-bottom-padding">
               <% opponent_name = "#{render "shared/fullname", user: opponent}" %>
               <% message = "📞 #{opponent.phone_number}<br />✉️ #{opponent.email}" %>
@@ -44,38 +70,52 @@
                   data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
                   title="<%= opponent_name %>" data-bs-content="<%= message %>">
                 <div style="display: flex; align-items: center; gap: 8px;">
+                  <%# Highlight current user's name in red if opponent is self %>
                   <span style=<%=opponent == @current_player ? "color:#c60407" : "" %>>
                     <%= "#{render "shared/fullname", user: opponent}" %>
                   </span>
+                  <%# Display opponent's profile picture if available %>
                   <% if opponent.profile_picture.present? %>
                     <%= image_tag(profile_picture_circular_url(opponent, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
                   <% end %>
                 </div>
               </div>
             </div>
+
+            <%# Points Column (col-2): Points earned in match with this opponent %>
             <div class="col-2 top-bottom-padding">
                 <%= t("pts", count: my_match[0].points) %>
             </div>
+
+            <%# Date Column (col-2): Match date (if match played and not against self) %>
             <div class="col-2 top-bottom-padding">
               <% if match && opponent != @current_player %>
                 <%= "#{l(match.time, format: :wwwddmmmyy_date)}" %>
               <% end %>
             </div>
+
+            <%# Action Column (col-2): Context-dependent action buttons %>
             <div class="col-2">
               <% class_btns = class_names( "btn btn-ghost", "mobile-text-size": @is_mobile, "text-size": !@is_mobile) %>
               <% if opponent == @current_player %>
+                <%# Self Match: Link to view box results %>
                 <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
               <% elsif match %>
+                <%# Match Played: Link to view match card/details %>
                 <%= link_to t(".see_match_card_btn"), match_path(player: current_user.id, opponent: opponent.id, match_id: match.id, page_from: my_scores_path), class: class_btns %>
               <% elsif @box == @my_current_box %>
+                <%# No Match in Current Box: Link to enter new score %>
                 <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: opponent.id, round_id: @round.id, page_from: my_scores_path), class: class_btns %>
               <% else %>
+                <%# No Match in Other Box: Display "Not played" text %>
                 <div class="top-bottom-padding"><%= t(".match_not_played") %></div>
               <% end %>
             </div>
           </div>
         <% end %>
       </div><br>
+
+      <%# Chatroom Section: Access to box chatroom %>
       <div class="frame-color-shape players frame-padding">
         <h4><%= t '.chat_in_my_box' %></h4>
         <div class="buttons-wrap">

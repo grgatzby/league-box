@@ -1,28 +1,38 @@
-<%# match played (table view) %>
+<%#
+  Match Cell Partial
+  Displays a cell for a played match in the grid view.
+  Shows match score, date, points for both players, and provides clickable link to view/edit match.
+  For diagonal cells (player vs themselves), displays profile picture or default icon.
+%>
 <% match = player_match[0]
 opponent = player_match[1]
 user_score = player_match[2]
 opponent_score = player_match[3]
 if match %>
+  <%# Match Played: Display score and points %>
   <div class="click-cell">
-    <%# match played display %>
+    <%# Match Score Display %>
     <%= render "match_score", user_score: user_score, opponent_score: opponent_score %>
+    <%# Match Date: Only show if not in expanded view %>
     <%= "#{l(match.time, format: :wwwddmmm_date)}" if page_from != index_expanded_path %>
+    <%# Points for line player (row player) %>
     <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
+    <%# Points for opponent (column player) %>
     <span class=" color-tennis-blue">
       <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
     </span>
-    <%# match played links %>
+    <%# Clickable Link: Different behavior based on user role %>
     <% if current_user.role != "player" %>
-      <%# admin, referee: click on player match line to update/delete match score (matches and user_match_scores details) %>
+      <%# Admin/Referee: Click to edit/delete match score %>
       <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from, id: match.box_id), class: "line-link" %>
     <% else %>
-      <%# player: click on player match line to view match score %>
+      <%# Player: Click to view match details %>
       <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match_id: match.id, page_from: page_from, id: match.box_id), class: "box-link" %>
     <% end %>
   </div>
-<% elsif opponent == line_player %>
-  <% if line_player.profile_picture.present? %>
+<% elsif opponent == line_player
+  # Diagonal Cell (Player vs Themselves): Display profile picture or default icon
+  if line_player.profile_picture.present? %>
     <%= link_to line_player.profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
       <%= image_tag(profile_picture_circular_url(line_player, @is_mobile ? 38 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 38 : 50}px; height: #{@is_mobile ? 38 : 50}px; border-radius: 50%; object-fit: cover;") %>
     <% end %>

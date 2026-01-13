@@ -62,7 +62,7 @@ fr:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Vue en liste</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
         On accède à cette page depuis les <span class='bold-font color-tennis-blue'>Vue en grille</span> en venant de la page <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Les box</a>.<br>
-    show_list_headers:
+    list_headers:
       match_earnings: Points du match
       match_score_header: Scores
       player_points_header: Points joueur
@@ -77,7 +77,7 @@ fr:
         4-1 2-4 10-6 : gagnant 20, perdant 11<br />
         4-3 3-4 12-10 : gagnant 20, perdant 13<br />
         4-2 2-4 10-1 : gagnant 20, perdant 12
-    show_list_data:
+    list_data:
       won: Gagné
       lost: Perdu
       on_date: "le"

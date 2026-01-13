@@ -1,40 +1,52 @@
-<!-- index league page: league table for the tournament -->
+<%#
+  User Box Scores Index League Page - Tournament League Table
+  Displays the cumulative league table for the entire tournament (all rounds).
+  Shows aggregated stats across all rounds: rank, total points, matches, sets, and games.
+  Allows sorting by clicking column headers and exporting to text/CSV.
+%>
 <div class="<%= class_names("container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
+
+  <%# Page Title Section: Tournament league table with rounds popover %>
   <% if @rounds %>
     <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
-      <!-- display the title with a popover to display the rounds -->
-    <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
+      <%# Build popover message with all rounds in the tournament %>
+      <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
-    <!-- display the title with a popover to display the rounds -->
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-        data-bs-content="<%= message %>">
-      <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
+      <%# Title with popover showing all rounds in the tournament %>
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
+          data-bs-content="<%= message %>">
+        <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
+      </div>
+      <%# Print Header: Logo, copyright, and timestamp (only visible when printing) %>
+      <span class="will-print one-liner">
+        <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>
+        <div>LeagueBox ©</div>
+        <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
+      </span>
     </div>
-    <!-- the following lines will display when printing the page -->
-    <span class="will-print one-liner">
-      <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>
-      <div>LeagueBox ©</div>
-      <div><%= "#{l(Time.now, format: :wwwddmmm_date)}" %>&nbsp;&nbsp;<%= "#{l(Time.now, format: :hhmm_time)}" %></div>
-    </span>
-  </div>
   <% end %>
+
+  <%# Main Content: League Start and Round Selected %>
   <% if @league_start && @round %>
+    <%# Club Display Section %>
     <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center mb-2": @is_mobile) %>">
       <h4 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= render "shared/display_club", round: @round, fallback_path: user_box_scores_path %></h4>
     </div>
+
+    <%# Action Buttons Section: Export to text/CSV, view boxes, round ranking (hidden when exporting to text) %>
     <% if !@render_to_text %>
-      <%# don't export to text buttons and top line (in user_box_score index) %>
       <div class="<%= class_names("": !@is_mobile, "mb-2": @is_mobile) %>">
         <%= render 'action_buttons', round: @round, from: "index_league" %>
       </div>
     <% end %>
-    <!-- display the league table -->
+
+    <%# League Table: Tournament ranking with sortable columns %>
     <%= render 'league_table', from: "index_league" %>
   <% else %>
-    <!-- if no round selected, display the forms to select a club (admin only) and a round -->
+    <%# No League/Round Selected: Display selection forms %>
     <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('.league_table_title', league_start: "") %></h3>
     <div class="dont-print text-size">
       <%= render "shared/select_club_round", fallback_path: index_league_path, explain_paragraph: t(".intro") %>

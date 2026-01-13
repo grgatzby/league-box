@@ -1,16 +1,26 @@
 <%#
-  partial: league table data
-  locals:
-    from: "index" or "index_league"
-    user_box_scores: Array of user_box_score objects (index) or array of [user, stats_hash] (index_league)
--%>
+  Table Data Partial
+  Displays the player rows in the league table with all statistics.
+
+  Parameters:
+    from: "index" (round ranking) or "index_league" (tournament ranking)
+    user_box_scores:
+      - For "index": Array of UserBoxScore objects
+      - For "index_league": Array of [user, stats_hash] where stats_hash contains aggregated stats
+
+  Each row shows: player name, rank, points, box (round only), matches, sets, games.
+  Rows are clickable to navigate to the player's box.
+%>
 <% is_index = from == "index" %>
 <ol type="1" class="text-size">
+  <%# Iterate through each player in the league table %>
   <% user_box_scores.each do |user_bs| %>
+    <%# Extract player object based on source %>
     <% player = is_index ? user_bs.user : user_bs[0] %>
+    <%# Skip spare players (not included in rankings) %>
     <% next if player.role == "spare" %>
     <%
-      # Extract stats based on source
+      # Extract Statistics: Different data structure for round vs tournament ranking
       rank = is_index ? user_bs.rank : user_bs[1][:rank]
       points = is_index ? user_bs.points : user_bs[1][:points]
       matches_played = is_index ? user_bs.matches_played : user_bs[1][:matches_played]
@@ -20,44 +30,64 @@
       games_played = is_index ? user_bs.games_played : user_bs[1][:games_played]
       games_won = is_index ? user_bs.games_won : user_bs[1][:games_won]
 
-      # Build popover message
+      # Build Popover Message: Contact info and box history
       name = "#{render "shared/fullname", user: player}"
       if is_index
+        # Round ranking: Simple contact info
         message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}"
       else
+        # Tournament ranking: Contact info plus box history across all rounds
         boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
         message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}"
       end
 
-      # Build link path
+      # Build Link Path: Navigate to player's box when row is clicked
       if is_index
+        # Round ranking: Link to box in current round
         link_path = box_path(user_bs.box, page_from: user_box_scores_path, round_id: @round.id, club_id: @club.id)
       else
+        # Tournament ranking: Link to box in last round played
         box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0]
         link_path = box_path(box, page_from: index_league_path, league_start: @league_start, club_id: @club.id)
       end
     %>
+    <%# Player Row: Highlight current user in red %>
     <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
       <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
           data-bs-content="<%= message %>"
           style="width: 100%;">
         <div class="one-liner hovered-player" style="width: 100%;">
+          <%# Player Name Column (col-3): Profile picture and full name %>
           <div class="col-3">
             <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
             <%= render "shared/fullname", user: player %>
           </div>
+
+          <%# Rank Column (col-1) %>
           <div class="col-1 top-bottom-padding"><%= "# #{rank}" %></div>
+
+          <%# Points Column (col-1) %>
           <div class="col-1 top-bottom-padding"><%= t("pts", count: points) %></div>
+
+          <%# Box Column (col-1): Only shown in round ranking %>
           <% if is_index %>
             <div class="col-1 top-bottom-padding"><%= "#{user_bs.box.box_number}" %></div>
           <% end %>
+
+          <%# Matches Columns (col-1 each) %>
           <div class="col-1 top-bottom-padding"><%= t(".matches", count: matches_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".matches", count: matches_won) %></div>
+
+          <%# Sets Columns (col-1 each) %>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: sets_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".sets", count: sets_won) %></div>
+
+          <%# Games Columns (col-1 each) %>
           <div class="col-1 top-bottom-padding"><%= t(".games", count: games_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".games", count: games_won) %></div>
+
+          <%# Clickable Link: Entire row is clickable to navigate to player's box %>
           <%= link_to '', link_path, class: 'line-link'%>
         </div>
       </div>

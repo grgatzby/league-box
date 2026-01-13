@@ -1,10 +1,21 @@
-<!-- display the clicked header with an up or down arrow (denoting table sorting) -->
+<%#
+  Header Link Partial
+  Creates a clickable column header with sort indicator arrow.
+  Clicking toggles sort direction (ascending/descending) for that column.
+  Shows up arrow (↑) for ascending, down arrow (↓) for descending.
+%>
+<%# Determine sort arrow: up arrow for ascending (order == 1), down arrow for descending %>
 <% header_arrow = @order == 1 ? direction[0] : direction[1] %>
+<%# Only show arrow if this is the currently sorted column %>
 <% header_arrow = nb == @sort.to_i ? header_arrow : "" %>
+
+<%# Create clickable link that toggles sort order %>
 <%=link_to header+header_arrow,
 if from == "index"
+  # Round ranking: Sort round league table
   user_box_scores_path( exsort: @sort, order: -@order, sort: nb, round_id: @round.id, club_id: @club.id)
 else
+  # Tournament ranking: Sort tournament league table
   index_league_path( exsort: @sort, order: -@order, sort: nb, league_start: @league_start, club_id: @club.id)
 end,
 class: class_names("btn header-ghost", "mobile-text-size": @is_mobile)

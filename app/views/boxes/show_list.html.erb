@@ -1,17 +1,27 @@
-<!-- show page by list of matches -->
+<%#
+  Box Show List Page - List View
+  Displays a single box in list format showing all matches for each player.
+  Each player's matches are listed with scores, points, and opponent information.
+  Provides navigation and allows players/admins to enter or edit match scores.
+%>
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>" data-controller="toggle">
   <% if @box %>
+    <%# Box Selected: Display box information and list view %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.list_view") %>
 
+    <%# List View Container: Headers and match data %>
     <div class = "frame-color-shape frame-padding frame-scroller-wrap">
       <div class="<%=class_names( "row",
                                   "mobile-box-width mobile-text-size": @is_mobile,
                                   "box-width": !@is_mobile) %>">
-        <%= render "show_list_headers", page_from: box_list_path %>
-        <%= render "show_list_data", page_from: box_list_path %>
+        <%# Column Headers: Box number, match score, points columns %>
+        <%= render "list_headers", page_from: box_list_path %>
+        <%# Match Data: List of all players and their matches %>
+        <%= render "list_data", page_from: box_list_path %>
       </div>
     </div>
   <% else %>
+    <%# No Box Selected: Display explanation page %>
     <h3><%= t("boxes.list_view").capitalize %></h3><br>
     <%= render "explain_page", explain_paragraph: t(".intro_html", boxes_path: boxes_path) %>
   <% end %>

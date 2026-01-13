@@ -1,11 +1,18 @@
-<!-- partial: league table intro lines and photo display -->
+<%#
+  Top Line Partial
+  Displays introductory information and rules above the league table.
+  When table is sorted (params["sort"] present), shows clickable link to reset sorting.
+  Otherwise, displays rules section with stats and instructions.
+%>
 <% if params["sort"] %>
-  <%# when a header is clicked, the image disappears and top_line becomes clickable (unless on a mibile) %>
+  <%# Table Sorted: Hide rules section and show clickable reset link %>
   <% params["sort"] = nil  %>
   <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <% if is_mobile %>
+      <%# Mobile: Show text only (non-clickable) %>
       <%= t '.top_line_html' %>
     <% else %>
+      <%# Desktop: Show clickable link to reset sorting and show rules again %>
       <%= link_to t(".top_line_html"),
           user_box_scores_path(round_id: round.id, club_id: round.club_id),
           class: "btn btn-shape btn-top-line no-padding-no-border",
@@ -13,11 +20,13 @@
     <% end %>
   </p>
 <% else %>
+  <%# Table Not Sorted: Display rules section with stats %>
   <div class="photo-wrap frame-color-shape frame-padding color-black text-size dont-print">
     <%= sanitize t('.rules') %>
     <%= render 'shared/stats' %>
   </div><br>
 
+  <%# Instructions Text %>
   <p class="<%= class_names("dont-print text-size", "stick-rules": is_mobile) %>">
     <%= t '.top_line_html' %>
   </p>
