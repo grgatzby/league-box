@@ -1,11 +1,18 @@
-<!-- list of all boxes in expanded view -->
+<!--
+  List of all boxes in expanded view
+  Displays boxes in a detailed grid format showing all matches in a table layout
+-->
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
+
+  <!-- Page Header -->
   <div class="one-liner">
     <h3><%= t 'boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'expanded' %></h3>
     <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
   </div>
+
   <% if @round %>
+    <!-- Navigation and Action Buttons -->
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <%= render "shared/select_club", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
       <%= render "shared/select_round", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
@@ -15,11 +22,13 @@
         <%= link_to t('boxes.common.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
       </div>
     </div>
+
+    <!-- Clear Format Option -->
+    <%# Checkbox to remove background color gradient if page does not display well on screen %>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_box_pop' %>" style="width: 35%">
       <%= form_with method: :get do |form| %>
-        <%# checkbox to remove formatting if page does not display well on screen %>
         <%= hidden_field_tag(:round_id, @round.id) %>
         <%= hidden_field_tag(:club_id, @round.club_id) %>
         <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
@@ -27,17 +36,23 @@
       <% end %>
     </div>
 
+    <!-- Expanded Boxes Grid Display -->
     <div data-controller="toggle" class="print-all-content box-scroller" data-toggle-target="togglableElement">
       <% @boxes.each do |box| %>
+        <%# Add horizontal rule separator between boxes (except before first box) %>
         <% if box.box_number > 1 %><hr><% else %><br><% end %>
+        <%# Render grid view for each box with match details %>
         <%= render "grid_view", box: box, is_this_my_box: my_box?(box), box_matches: box_matches(box), page_from: index_expanded_path, clear_format: params[:clear_format] == "1" %>
       <% end %>
-      <%# bouton javascript pour scroller à la Box 1 %>
+      <%# Scroll to top button (hidden by default, shown via JavaScript when scrolling) %>
       <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
         class="btn btn-shape btn-beige top-button d-none"><i class="fa-solid fa-up-long"></i>
       </button>
     </div>
+
+    <!-- Action Buttons Section -->
     <div class="buttons-wrap dont-print">
+      <%# CSV export button for round scores (visible to non-players only) %>
       <% if current_user && current_user.role != "player" %>
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -45,12 +60,12 @@
           <%= link_to t('boxes.common.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
-      <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
     </div>
 
   <% else %>
+    <!-- No Round Selected: Show Selection Forms -->
     <div class="dont-print">
-      <%# if no round selected, invoke forms to select a club (admin only) and a round %>
+      <%# If no round selected, show forms to select a club (admin only) and a round %>
       <%= render "shared/select_club_round", fallback_path: index_expanded_path, explain_paragraph: t("boxes.common.intro") %>
     </div>
   <% end %>
