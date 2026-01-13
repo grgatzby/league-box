@@ -5,13 +5,12 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
 
-  <!-- Page Header -->
-  <div class="one-liner">
-    <h3><%= t 'boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'expanded' %></h3>
-    <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
-  </div>
-
   <% if @round %>
+    <!-- Page Header -->
+    <div class="one-liner">
+      <h3><%= t 'boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'expanded' %></h3>
+      <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
+    </div>
     <!-- Navigation and Action Buttons -->
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <%= render "shared/select_club", fallback_path: index_expanded_path, clear_format: params[:clear_format] %>
@@ -64,7 +63,7 @@
 
   <% else %>
     <!-- No Round Selected: Show Selection Forms -->
-    <div class="dont-print">
+    <div class="dont-print text-size">
       <%# If no round selected, show forms to select a club (admin only) and a round %>
       <%= render "shared/select_club_round", fallback_path: index_expanded_path, explain_paragraph: t("boxes.common.intro") %>
     </div>
