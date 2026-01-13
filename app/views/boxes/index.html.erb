@@ -1,57 +1,74 @@
-<!-- list of all boxes in compact view -->
+<!--
+  List of all boxes in compact view
+  Displays boxes in a grid layout with player names, ranks, matches played, and points
+-->
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
+
+  <!-- Page Header -->
   <div class="one-liner">
     <h3><%= t('boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'compact') %></h3>
     <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
   </div>
   <p><%= t '.all_box_explain_html' %></p>
+
   <% if @round %>
+    <!-- Navigation and Action Buttons -->
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
-      <!-- <h4><%= render "shared/display_club", round: @round, fallback_path: boxes_path %></h4> -->
       <%= render "shared/select_club", fallback_path: boxes_path %>
       <%= render "shared/select_round", fallback_path: boxes_path %>
       <div>
         <%= render 'shared/stats' %>
+        <%# Get user's clear_format preference for expanded view %>
         <% clear_format = current_user.preference ? (current_user.preference.clear_format.eql?(true) ? "1" : "0") : "0" %>
         <%= link_to t('.open_view_btn'), index_expanded_path(round_id: @round.id, club_id: @round.club_id, clear_format: clear_format), class: "btn btn-shape btn-yellow dont-print mb-3" %>
         <%= link_to t('boxes.common.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
       </div>
     </div>
+
+    <!-- Boxes Grid Display -->
     <div class="boxes print-all-content print-boxes-league box-scroller">
       <% @boxes.each do |box| %>
+        <%# Popover tooltip showing box information on hover %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
             data-bs-content="<%= t('.message_box_pop', box: box.box_number) %>">
+          <%# Box frame: highlighted if it's the user's current box (aqua) or their box (red title) %>
           <div class="<%=class_names( "box-frame small-font", "color-tennis-aqua": box == @my_current_box) %>">
             <div class="<%=class_names( "box-title", "color-tennis-red": box == @my_box) %>">
               <strong>
                 <%= "Box #{box.box_number} #{box == @my_current_box ? t('.my_current_box') : t('.my_box') if box == @my_box }" %>
               </strong>
             </div>
+            <%# Ordered list of players in the box, sorted by rank %>
             <ol type="1">
               <% scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
               <% scores.each do |user_box_score| %>
+                <%# Player row: highlighted in orange if it's the current user %>
                 <li class=<%=user_box_score.user == current_user ? "color-orange" : "" %>>
                   <div class="row">
                     <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                     <div class="col-2"><%= "##{user_box_score.rank}" %></div>
+                    <%# Matches played: highlighted in red if zero %>
                     <div class="<%= class_names("col-1", "color-tennis-red": user_box_score.matches_played.zero?) %>"><%= "#{user_box_score.matches_played}" %></div>
                     <div class="col-3"><%= t("pts", count: user_box_score.points) %></div>
                   </div>
                 </li>
-                <%# link_to '', box_path(user_box_score.box, page_from: boxes_path), class: 'box-link' %>
               <% end %>
             </ol>
+            <%# Invisible link covering the entire box for navigation to box details %>
             <%= link_to '', box_path(box, page_from: boxes_path), class: 'box-link' %>
           </div>
         </div>
       <% end %>
-      <%# adds a line of empy div to fully display the bottom of the last boxes %>
+      <%# Add empty divs to ensure proper grid layout at the bottom %>
       <% (5-(1+(@boxes.size-1).modulo(4))).times do %><div></div>
       <% end %>
     </div>
+
+    <!-- Action Buttons Section -->
     <div class="buttons-wrap dont-print">
+      <%# CSV export button (visible to non-players only) %>
       <% if current_user && current_user.role != "player" %>
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -59,21 +76,23 @@
           <%= link_to t('boxes.common.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
-      <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print me-3"%>
+      <%# Admin-only: Load scores button %>
       <% if current_user == @admin %>
         <%= link_to t(".load_scores"), load_scores_path(round_id: @round.id), class: "btn btn-shape btn-aqua me-3" %>
       <% end %>
+      <%# Round creation buttons: Admin can create, Referees can request %>
       <% if current_user && current_user.role == "admin" && @new_round_required %>
-          <%# allow referee/admin to create next round up to 15 days before or 300 days after end of last round
-          time related condition embedded in @new_round_required %>
+          <%# Allow admin to create next round up to 15 days before or 300 days after end of last round
+          Time-related condition embedded in @new_round_required %>
           <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn btn-shape btn-aqua" %>
       <% elsif current_user && (["referee", "player referee"].include?(current_user.role)) && @new_round_request%>
           <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn btn-shape btn-aqua" %>
       <% end %>
     </div>
   <% else %>
+    <!-- No Round Selected: Show Selection Forms -->
     <div class="dont-print">
-      <%# if no round selected, invoke forms to select a club (admin only) and a round %>
+      <%# If no round selected, show forms to select a club (admin only) and a round %>
       <%= render "shared/select_club_round", fallback_path: boxes_path, explain_paragraph: t("boxes.common.intro") %>
     </div>
   <% end %>
