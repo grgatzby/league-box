@@ -5,14 +5,13 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
 
-  <!-- Page Header -->
-  <div class="one-liner">
-    <h3><%= t('boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'compact') %></h3>
-    <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
-  </div>
-  <p><%= t '.all_box_explain_html' %></p>
-
   <% if @round %>
+    <!-- Page Header -->
+    <div class="one-liner">
+      <h3><%= t('boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'compact') %></h3>
+      <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
+    </div>
+    <p><%= t '.all_box_explain_html' %></p>
     <!-- Navigation and Action Buttons -->
     <div class = "<%= class_names("one-liner": !@is_mobile) %>">
       <%= render "shared/select_club", fallback_path: boxes_path %>
@@ -91,7 +90,8 @@
     </div>
   <% else %>
     <!-- No Round Selected: Show Selection Forms -->
-    <div class="dont-print">
+    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('boxes.common.all_box_title_html', round_label: "", view_type: 'compact') %></h3>
+    <div class="dont-print text-size">
       <%# If no round selected, show forms to select a club (admin only) and a round %>
       <%= render "shared/select_club_round", fallback_path: boxes_path, explain_paragraph: t("boxes.common.intro") %>
     </div>
