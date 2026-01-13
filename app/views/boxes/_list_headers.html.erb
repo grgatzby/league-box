@@ -1,21 +1,36 @@
+<%#
+  List Headers Partial
+  Displays column headers for the list view of matches.
+  Headers include: Box number, Match score, Player points, Opponent points, Opponent total points.
+%>
 <div class="row bold-font top-bottom-padding header-left-padding">
-  <!-- boxes show list headers (list view) -->
+  <%# Box Number Column (col-4): Highlighted if viewing own box %>
   <div class="col-4">
     <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": @is_this_my_box, "color-tennis-blue": !@is_this_my_box) %>">
       <h5><b><%= "Box #{@box.box_number}".upcase %></b></h5>
     </div>
   </div>
+
+  <%# Match Score Column (col-2) %>
   <div class="col-2"><%= t '.match_score_header' %></div>
+
+  <%# Player Points Column (col-2): Show popover with explanation if viewing from box list %>
   <% case page_from %>
     <% when box_list_path %>
+      <%# From box list: Add popover explaining match earnings %>
       <div class="col-2" data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
           title="<%= t '.match_earnings' %>" data-bs-content="<%= t '.points_pop' %>">
         <%= t '.player_points_header' %>
       </div>
     <% else %>
+      <%# From other pages: Simple header without popover %>
       <div class="col-2"><%= t '.player_points_header' %></div>
   <% end %>
+
+  <%# Opponent Points Column (col-2) %>
   <div class="col-2 color-tennis-blue"><%= t '.opponent_points_header' %></div>
+
+  <%# Opponent Total Points Column (col-2) %>
   <div class="col-2 color-tennis-blue"><%= t '.opponent_total_points_header' %></div>
 </div>

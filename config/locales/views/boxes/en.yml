@@ -62,7 +62,7 @@ en:
       intro_html: >
         For a given box, the <span class='bold-font color-tennis-blue'>List view</span> page displays all played matches in list view, and give players access to the match cards.<br>
         It can be accessed from the toggle button in <span class='bold-font color-tennis-blue'>Table view</span> which is accessed from <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">All boxes</a>.<br>
-    show_list_headers:
+    list_headers:
       match_earnings: Match earnings
       match_score_header: Match scores
       player_points_header: Player's points
@@ -77,7 +77,7 @@ en:
           4-1 2-4 10-6 : winner 20, looser 11<br />
           4-3 3-4 12-10 : winner 20, looser 13<br />
           4-2 2-4 10-1 : winner 20, looser 12
-    show_list_data:
+    list_data:
       won: Won
       lost: Lost
       on_date: "on"

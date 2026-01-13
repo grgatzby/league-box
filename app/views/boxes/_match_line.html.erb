@@ -1,23 +1,32 @@
-<!-- match line (list view) -->
+<%#
+  Match Line Partial
+  Displays a single played match in list view format.
+  Shows match result (won/lost), date, opponent info, score, and points for both players.
+  Includes popover with score entry details and clickable link to view/edit match.
+%>
 <% match = player_match[0]
   opponent = player_match[1]
   user_score = player_match[2]
   opponent_score = player_match[3] %>
-<% if match
-    name = "Score"
+<% if match %>
+    <%# Build popover message with score entry information %>
+    <% name = "Score"
     score_input_by = User.find(user_score.input_user_id)
     input_date = @tz.to_local(user_score.input_date)
     message = "#{t(".pop01",
                   user: "#{render "shared/fullname", user: score_input_by} (#{score_input_by.role})",
-                  date: l(input_date, format: :wwwwddmmmyyyy_at_hhmm))}"
-    if current_user.role != "player"
+                  date: l(input_date, format: :wwwwddmmmyyyy_at_hhmm))}" %>
+    <%# Add edit instruction for admins/referees %>
+    <%if current_user.role != "player"
       message += "#{t(".pop02")}"
     end %>
   <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
       data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
       data-bs-content="<%= message %>">
     <li>
+      <%# Match Row: Color-coded green for wins, red for losses %>
       <div class="<%= class_names("row hovered-player", "color-green": user_score.is_winner, "color-tennis-red": !user_score.is_winner) %>">
+        <%# Match Info Column (col-4): Result, date, opponent name and rank %>
         <div class="col-4">
           <%= "#{user_score.is_winner ? t(".won") : t(".lost")}" %>
           <% match_time = @tz.to_local(match.time) %>
@@ -28,16 +37,25 @@
             <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
           </span>
         </div>
+
+        <%# Match Score Column (col-2) %>
         <div class="col-2"><%= render "match_score", user_score: user_score, opponent_score: opponent_score %></div>
+
+        <%# Player Points Column (col-2): Points earned in this match %>
         <div class="col-2"><%= t("pts", count: user_score.points) %></div>
+
+        <%# Opponent Points Column (col-2): Points earned by opponent in this match %>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
+
+        <%# Opponent Total Points Column (col-2): Opponent's total points in the box %>
         <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
 
+        <%# Clickable Link: Different behavior based on user role %>
         <% if current_user.role != "player" %>
-          <%# admin, referee: click on player match line to update/delete match score (matches and user_match_scores details) %>
+          <%# Admin/Referee: Click to edit/delete match score %>
           <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from), class: "line-link" %>
         <% else %>
-          <%# player: click on player match line to view match score %>
+          <%# Player: Click to view match details %>
           <%= link_to '', match_path(player: player_match[2].user.id, opponent: opponent.id, match_id: match.id, page_from: page_from), class: "box-link" %>
         <% end %>
 

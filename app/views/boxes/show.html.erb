@@ -1,10 +1,16 @@
-<!-- show page of matches in table display -->
+<%#
+  Box Show Page - Table/Grid View
+  Displays a single box in grid/table format showing all matches between players.
+  Shows player names, scores, points, and provides navigation between boxes.
+%>
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if @box %>
+    <%# Box Selected: Display box information and grid view %>
     <%= render "intro_lines", box: @box, view_type: t("boxes.table_view") %>
     <%= render "grid_view", box: @box, is_this_my_box: @is_this_my_box, box_matches: @box_matches, page_from: box_path(@box), clear_format: false %>
     <br>
   <% else %>
+    <%# No Box Selected: Display explanation page %>
     <h3><%= t("boxes.table_view").capitalize %></h3><br>
     <%= render "explain_page", explain_paragraph: t(".intro_html") %>
   <% end %>

@@ -1,29 +1,51 @@
+<%#
+  List Data Partial
+  Displays the list of all players and their matches in list format.
+  Structure:
+    - Each player is a top-level list item showing name, rank, and total points
+    - Under each player, nested list shows all their matches (played or unplayed)
+    - Matches are displayed in sorted order by opponent
+%>
 <div class="box-scroller" data-toggle-target="togglableElement">
-  <!-- boxes show list data (list view) -->
   <ul>
-    <%#  @box_matches = [user_box_score , player_matches, player]
-          with player_matches = [match, opponent, user_score, opponent_score] %>
+    <%# Data Structure:
+        @box_matches = [user_box_score, player_matches, player]
+        where player_matches = [match, opponent, user_score, opponent_score] %>
+
+    <%# Sort players for consistent display order %>
     <% sorted_players = @box_matches.map { |bm| bm[2]} %>
+
+    <%# Iterate through each player in the box %>
     <% @box_matches.each do |user_box_matches| %>
       <li class="top-bottom-padding">
         <% user_box_score = user_box_matches[0]
            player_matches = user_box_matches[1]
            player = user_box_matches[2] %>
+
+        <%# Player Header: Name, rank, and total points %>
         <div>
+          <%# Highlight current user's name in red %>
           <span class=<%=user_box_score.user == current_user ? "color-tennis-red" : ""%>><b><%= render "shared/fullname", user: player %></b></span>
           <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
         </div>
+
+        <%# Nested List: All matches for this player %>
         <ul>
-          <% sorted_players.each do |player_opponent| %>
-            <% player_match = player_matches.select { |pm| pm[1] == player_opponent }[0] %>
-            <% if player_match %>
+          <%# Iterate through sorted opponents to maintain consistent order %>
+          <% sorted_players.each do |player_opponent|
+            # Find match between current player and opponent
+            player_match = player_matches.select { |pm| pm[1] == player_opponent }[0]
+            if player_match %>
+              <%# Match Played: Render match line with score and points %>
               <%= render "match_line", player_match: player_match, user_box_score: user_box_score, page_from: page_from %>
             <% elsif current_user.role != "player" || (@box == @my_current_box && current_user == player) %>
+              <%# No Match: Show "Enter score" link if user is authorized %>
               <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from %>
             <% end %>
           <% end %>
+
+          <%# Reminder Message: Show "Don't forget" message for players with only one match %>
           <% if player_matches.size == 1 && page_from == box_list_path && current_user.role == "player" %>
-            <%# no match played for this player %>
             <div class="col-4"></div>
             <div class="col-8"><%= t '.dont_forget_html' %></div>
           <% end %>
@@ -31,6 +53,8 @@
       </li>
     <% end %>
   </ul>
+
+  <%# Scroll to Top Button: Hidden by default, shown when scrolling down %>
   <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
     class="btn btn-shape btn-beige top-button d-none">
     <i class="fa-solid fa-up-long"></i>

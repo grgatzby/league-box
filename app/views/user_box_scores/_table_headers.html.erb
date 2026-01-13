@@ -1,20 +1,39 @@
-<!-- partial: league table headers -->
+<%#
+  Table Headers Partial
+  Displays sortable column headers for the league table.
+  Each header can be clicked to sort the table by that column.
+  Shows up/down arrows to indicate current sort column and direction.
+%>
+<%# Arrow symbols for sort direction indicators %>
 <% topdown = ["↑", "↓"] %>
 
+<%# Player Name Column (col-3): First name and last name are separately sortable %>
 <div class="col-3">
-  <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"><%# t('.player_header') %></span>
+  <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"></span>
   <%=render "header_link", from: from, nb: 1, header: t('.first_name_header'), direction: topdown.reverse%>
   <%=render "header_link", from: from, nb: 2, header: t('.last_name_header'), direction: topdown.reverse%>
   <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"></span>
 </div>
+
+<%# Rank Column (col-1): Player's ranking in the league %>
 <div class="col-1"><%=render "header_link", from: from, nb: 3, header: t('.rank_header'), direction: topdown.reverse%></div>
+
+<%# Points Column (col-1): Total points earned %>
 <div class="col-1"><%=render "header_link", from: from, nb: 4, header: t('.points_header'), direction: topdown%></div>
+
+<%# Box Column (col-1): Only shown in round ranking (index), not tournament ranking %>
 <% if from == "index" %>
   <div class="col-1"><%=render "header_link", from: from, nb: 5, header: t('.box_header'), direction: topdown.reverse%></div>
 <% end %>
+
+<%# Matches Columns (col-1 each): Matches played and matches won %>
 <div class="col-1"><%=render "header_link", from: from, nb: 6, header: t('.matches_played_header'), direction: topdown%></div>
 <div class="col-1"><%=render "header_link", from: from, nb: 7, header: t('.matches_won_header'), direction: topdown%></div>
+
+<%# Sets Columns (col-1 each): Sets played and sets won %>
 <div class="col-1"><%=render "header_link", from: from, nb: 8, header: t('.sets_played_header'), direction: topdown%></div>
 <div class="col-1"><%=render "header_link", from: from, nb: 9, header: t('.sets_won_header'), direction: topdown%></div>
+
+<%# Games Columns (col-1 each): Games played and games won %>
 <div class="col-1"><%=render "header_link", from: from, nb: 10, header: t('.games_played_header'), direction: topdown%></div>
 <div class="col-1"><%=render "header_link", from: from, nb: 11, header: t('.games_won_header'), direction: topdown%></div>

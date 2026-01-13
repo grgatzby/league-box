@@ -1,16 +1,25 @@
-<%# no match played (table view) %>
+<%#
+  No Match Cell Partial
+  Displays a cell for an unplayed match in the grid view.
+  Shows "Enter score" link if user is authorized (player in their own box, referee, or admin).
+  Otherwise shows "Not played" in grey text.
+%>
+<%# Check if user is authorized to enter a score %>
 <% if (box == @my_current_box && (current_user == column_player || current_user == line_player)) \
    || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) \
    || current_user.role == "admin" %>
+  <%# Authorized: Show clickable "Enter score" link %>
   <div class="click-cell dont-print">
-    <br><i class='color-green'><%= t '.enter_score' %></i>
-    <%# click on opponent no-match line to enter a new match score %>
+    <i class='color-green'><%= t '.enter_score' %></i>
+    <%# Click to navigate to new match score form %>
     <%= link_to '', new_match_path(player: line_player.id, opponent: column_player.id, round_id: @round.id, \
                                     page_from: page_from), class: "box-link" %>
   </div>
-  <div class="will-print"><br><%= t '.not_played' %></div>
+  <%# Print version: Show "Not played" text %>
+  <div class="will-print"><%= t '.not_played' %></div>
 <% else %>
+  <%# Not Authorized: Show "Not played" in grey (non-clickable) %>
   <span style="color:grey">
-    <br><%= t '.not_played' %>
+    <%= t '.not_played' %>
   </span>
 <% end %>

@@ -62,7 +62,7 @@ nl:
       intro_html: >
         Voor een box, geeft de pagina <span class='bold-font color-tennis-blue'>Resultaten lijst</span> alle gespeelde wedstrijden in lijstweergave weer en geeft spelers toegang tot de wedstrijdkaarten.<br>
         Deze is toegankelijk via de schakelknop in <span class='bold-font color-tennis-blue'>Resultatenraster</span> die toegankelijk is via <a class='btn btn-inlayed bold-font color-green' href="%{boxes_path}">Alle boxen</a>.<br>
-    show_list_headers:
+    list_headers:
       match_earnings: Matchpunten
       match_score_header: Wedstrijdscores
       player_points_header: Spelerpunten
@@ -77,7 +77,7 @@ nl:
         4-1 2-4 10-6 : winnaar 20, verliezer 11<br />
         4-3 3-4 12-10 : winnaar 20, verliezer 13<br />
         4-2 2-4 10-1 : winnaar 20, verliezer 12
-    show_list_data:
+    list_data:
       won: Won
       lost: Verloren
       on_date: "op"
