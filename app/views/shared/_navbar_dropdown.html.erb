@@ -1,9 +1,6 @@
 <%# partial: dropdown menu from the navbar %>
 <li class="nav-item dropdown">
-  <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i>&nbsp&nbsp<i class="fa-solid fa-arrow-down"></i>&nbsp&nbsp<%= "#{current_user.nickname}" %></a>-->
-  <!--<a href="#" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>-->
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-bars"></i></a>
-  <!--<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown color-black">-->
   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
     <%# Profile section %>
     <% if current_user.profile_picture.present? %>
@@ -17,15 +14,14 @@
       </div>
     <% end %>
 
-
-
+    <%# Club-related links %>
     <%= link_to t('.tournament_rules_link'), rules_path, class: "dropdown-item color-black" %>
     <%= link_to t('.my_club_link'), my_club_path, class: "dropdown-item color-black" %>
     <%= link_to t(".my_profile_link"), current_user.preference ? edit_preference_path(current_user.preference.id) : new_preference_path, class: "dropdown-item color-black" %>
     <%= link_to t(".gallery_link"), gallery_images_path, class: "dropdown-item color-black" %>
     <div class="dropdown-divider"></div>
 
-    <%# Navigation links %>
+    <%# Box-related links %>
     <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>
     <%= link_to t('.round_ranking_link'), user_box_scores_path, class: "dropdown-item color-green" %>
     <%= link_to t('.league_table_link'), index_league_path, class: "dropdown-item color-green" %>

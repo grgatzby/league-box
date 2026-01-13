@@ -2,7 +2,7 @@
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
   <div class="one-liner">
-    <h3><%= t '.all_box_title_html', round_label: round_label(@round) %></h3>
+    <h3><%= t 'boxes.common.all_box_title_html', round_label: round_label(@round), view_type: 'expanded' %></h3>
     <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
   </div>
   <% if @round %>
@@ -12,7 +12,7 @@
       <div>
         <%= render 'shared/stats' %>
         <%= link_to t('.all_boxes_btn'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
-        <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
+        <%= link_to t('boxes.common.round_ranking_btn'), user_box_scores_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow dont-print mb-3" %>
       </div>
     </div>
     <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
@@ -42,7 +42,7 @@
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
             data-bs-content="<%= t '.message_csv_pop' %>">
-          <%= link_to t('.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
+          <%= link_to t('boxes.common.to_csv_btn'), csv_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
       <%# link_to t('print_btn'), '#', :onclick => 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
@@ -51,7 +51,7 @@
   <% else %>
     <div class="dont-print">
       <%# if no round selected, invoke forms to select a club (admin only) and a round %>
-      <%= render "shared/select_club_round", fallback_path: index_expanded_path, explain_paragraph: t(".intro") %>
+      <%= render "shared/select_club_round", fallback_path: index_expanded_path, explain_paragraph: t("boxes.common.intro") %>
     </div>
   <% end %>
 </div>
