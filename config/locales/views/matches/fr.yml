@@ -12,7 +12,7 @@ fr:
       update_score_btn: ⎷ Valider
       delete_score_btn: x Supprimer le score
       sure: Confirmez-vous?
-      back_btn: ←
+      back_btn: ⇤
     new:
       new_match_title: Nouveau score (Box %{box})
       enter_new_score_html: >
@@ -30,7 +30,7 @@ fr:
       input_score: score du set
       and_more: et +
       save_score_btn: ⎷ Valider
-      back_btn: ←
+      back_btn: ⇤
       round_not_started_flash: Le Round n'a pas commencé.
     show:
       show_match_title: Score du match
@@ -38,7 +38,7 @@ fr:
       submitted: "Score entré %{date} par %{user}."
       points_earned: "Points gagnés : "
       challenge: "Pour contester ou faire modifier ce score, contacter le club Referee %{referee}."
-      back_btn: ←
+      back_btn: ⇤
     score_headers:
       player: Joueur
       set_1: set1
@@ -77,4 +77,4 @@ fr:
           toutes les box.
       submit_btn: ⎷ Valider
       delimiter: Séparateur CSV
-      back_btn: ←
+      back_btn: ⇤

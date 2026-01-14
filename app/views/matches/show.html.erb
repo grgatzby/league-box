@@ -1,45 +1,76 @@
-<!-- player: show match/user_match_scores details (called from boxes/my_scores, show, show_list) -->
-<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
+<%#
+  Show Match Page
+  Displays detailed information about a played match.
+  Shows players, scores, match date/time, court, submission info, and referee contact.
+  Called from boxes/my_scores, boxes/show, and boxes/show_list.
+%>
+<div class="<%= class_names("text-size", "container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
-  <div class="one-liner">
-    <h3><%= t '.show_match_title' %></h3>
+
+  <%# Page Header %>
+  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center mb-3": @is_mobile) %>">
+    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t '.show_match_title' %></h3>
   </div>
+
+  <%# Get player box scores to display ranks %>
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@player.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@opponent.id) %>
-  <h5>
-    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
-    <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
+
+  <%# Players Header: Names and ranks %>
+  <h5 class="<%= class_names("": !@is_mobile, "d-flex flex-column align-items-center gap-2 mb-3": @is_mobile) %>">
+    <span>
+      <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %>
+    </span>
+    <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>">versus</i>
+    <span>
+      <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
+    </span>
   </h5>
+
+  <%# Match Details Section %>
   <div class="frame-color-shape frame-padding frame-margin-rl text-size">
     <br>
+
+    <%# Determine if tiebreak was played (sum of both players' tiebreak scores > 0) %>
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
+
+    <%# Score Display Grid: Headers and both players' scores %>
     <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,
                                 "grid-container score-width": !@is_mobile) %>">
       <%= render "score_headers", tiebreak: tiebreak %><br>
       <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs %><br>
       <%= render "score_display", match_score: @opponent_match_score, tiebreak: tiebreak, user_box_score: opponent_ubs %>
     </div>
+
+    <%# Match Date and Court: When and where the match was played %>
     <% match_time = @tz.to_local(@match.time) %>
-    <%# t(".match_played", date: match_time.strftime("%a %-d %h %y"), time: match_time.strftime("%H:%M"), court: @match.court.name) %>
-    <%# t(".match_played", date: l(match_time, format: :wwwwddmmmyyyy_at_hhmm), court: @match.court.name) %>
-    <%= t(".match_played", date: l(match_time, format: :wwwddmmmyy_date), court: @match.court.name) %>
-    <br>
+    <div class="<%= class_names("": !@is_mobile, "mb-2 text-center": @is_mobile) %>">
+      <%= t(".match_played", date: l(match_time, format: :wwwddmmmyy_date), court: @match.court.name) %>
+    </div>
+
+    <%# Score Submission Info: Who submitted the score and when %>
     <% ums =  UserMatchScore.find_by(match_id: @match.id, user_id: @player.id)
      log_time = @tz.to_local(ums.input_date)
      score_input_by = User.find(ums.input_user_id) %>
-    <%= t(".submitted", date: l(log_time, format: :wwwwddmmmyyyy_at_hhmm),
-                            user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
-    <br><br>
+    <div class="<%= class_names("": !@is_mobile, "mb-2 text-center": @is_mobile) %>">
+      <%= t(".submitted", date: l(log_time, format: :wwwwddmmmyyyy_at_hhmm),
+                              user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
+    </div>
+
+    <%# Referee Contact: Popover with referee contact information %>
     <% name = "#{render "shared/fullname", user: @referee}" %>
     <% message = "📞 #{@referee.phone_number}<br />✉️#{@referee.email}" %>
-    <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-        data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-        title="<%= name %>" data-bs-content="<%= message %>">
-      <i><%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %></i>
+    <div class="<%= class_names("": !@is_mobile, "text-center": @is_mobile) %>">
+      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+          data-bs-trigger="hover" data-bs-placement="<%= @is_mobile ? "bottom" : "right" %>" data-bs-delay= '{ "show": 500 }'
+          title="<%= name %>" data-bs-content="<%= message %>">
+        <i><%= t(".challenge", referee: "#{(render "shared/fullname", user: @referee).strip}") %></i>
+      </div>
     </div>
-    <br>
   </div>
-  <div class="buttons-wrap">
+
+  <%# Back Button: Return to previous page %>
+  <div class="<%= class_names("buttons-wrap": !@is_mobile, "d-flex justify-content-center": @is_mobile) %>">
     <%= link_to t(".back_btn"), @page_from, class: "btn btn-shape btn-yellow" %>
   </div>
 </div>
