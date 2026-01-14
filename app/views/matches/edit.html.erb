@@ -4,22 +4,20 @@
   Allows modification of court, date/time, and scores for both players.
   Shows original submission information and provides delete functionality.
 %>
-<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
+<div class="<%= class_names("text-size", "container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
 
   <%# Page Header Section %>
-  <div class="one-liner">
-    <h3><%= t '.edit_match_title' %></h3>
+  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center mb-2": @is_mobile) %>">
+    <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t '.edit_match_title' %></h3>
+    <h4 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= render "shared/display_club", round: @round %></h4>
   </div>
-  <div class="one-liner">
-    <h4><%= render "shared/display_club", round: @round %></h4>
-  </div>
-  <p><%= t '.p01' %></p>
+  <p class="<%= class_names("": !@is_mobile, "text-center mb-3": @is_mobile) %>"><%= t '.p01' %></p>
 
   <%# Players Display: Show both players with profile pictures %>
   <% players = [@current_player, @opponent] %>
-  <div class="one-liner frame-margin-rl">
-    <h5>
+  <div class="<%= class_names("one-liner frame-margin-rl": !@is_mobile, "frame-margin-rl mb-3": @is_mobile) %>">
+    <h5 class="<%= class_names("": !@is_mobile, "d-flex flex-column align-items-center gap-2": @is_mobile) %>">
       <%# First Player: Name and profile picture %>
       <span style="display: inline-flex; align-items: center; gap: 8px;">
         <%= render "shared/fullname", user: @user_match_scores[0].user %>
@@ -27,7 +25,7 @@
           <%= image_tag(profile_picture_circular_url(@user_match_scores[0].user, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
         <% end %>
       </span>
-      <i><%= " versus " %></i>
+      <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>"><%= " versus " %></i>
       <%# Second Player: Name and profile picture %>
       <span style="display: inline-flex; align-items: center; gap: 8px;">
         <%= render "shared/fullname", user: @user_match_scores[1].user %>
@@ -48,43 +46,65 @@
       <br>
 
       <%# Court Selection: Select court number (1-10) %>
-      <div class="row">
-        <div class="col-4"><%= f.label :court_id, t(".match_played") %></div>
-        <div class="col-1"><%= f.select :court_id, 1..10 %></div>
+      <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
+        <div class="<%= class_names("col-4": !@is_mobile, "mb-2": @is_mobile) %>"><%= f.label :court_id, t(".match_played") %></div>
+        <div class="<%= class_names("col-1": !@is_mobile, "": @is_mobile) %>"><%= f.select :court_id, 1..10, {}, { class: "form-select" } %></div>
       </div>
-      <br>
 
       <%# Date Selection: Date picker with round date constraints %>
-      <div class="row">
-        <div class="col-4"><%= t '.date_time' %></div>
-        <div class="col-3">
-          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date ) %>
+      <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
+        <div class="<%= class_names("col-4": !@is_mobile, "mb-2": @is_mobile) %>"><%= t '.date_time' %></div>
+        <div class="<%= class_names("col-3": !@is_mobile, "": @is_mobile) %>">
+          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, class: "form-control") %>
           <%# Time selection commented out - can be enabled if needed %>
           <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
         </div>
       </div>
-      <br>
 
-      <%# Score Column Headers %>
-      <div class="row">
-        <div class="col-4"></div>
-        <div class="col-2"><%= t '.set_1' %></div>
-        <div class="col-2"><%= t '.set_2' %></div>
-        <div class="col-2"><%= t '.tie_break' %></div>
-      </div>
+      <%# Score Column Headers: Only show on desktop %>
+      <% unless @is_mobile %>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-2"><%= t '.set_1' %></div>
+          <div class="col-2"><%= t '.set_2' %></div>
+          <div class="col-2"><%= t '.tie_break' %></div>
+        </div>
+      <% end %>
 
       <%# Score Input Fields: Nested form for both players' scores %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
-        <div class="row">
-          <%# Player Name Column %>
-          <div class="col-4"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
-          <%# Set 1 Score: Games won (0-4) %>
-          <div class="col-2"><%= user_match_score.select :score_set1, 0..4 %></div>
-          <%# Set 2 Score: Games won (0-4) %>
-          <div class="col-2"><%= user_match_score.select :score_set2, 0..4 %></div>
-          <%# Tiebreak Score: Points (0-11) or "Na" (not applicable) %>
-          <div class="col-2"><%= user_match_score.select :score_tiebreak,['Na']+(0..11).to_a %></div>
-        </div>
+        <% if @is_mobile %>
+          <%# Mobile Layout: Stacked vertically %>
+          <div class="d-flex flex-column mb-3 p-2" style="background: rgba(255, 198, 90, 0.1); border-radius: 5px;">
+            <div class="mb-2"><b><%= render "shared/fullname", user: players[user_match_score.index] %></b></div>
+            <div class="d-flex flex-column gap-2">
+              <div class="d-flex align-items-center gap-2">
+                <label class="mb-0" style="min-width: 60px;"><%= t '.set_1' %>:</label>
+                <%= user_match_score.select :score_set1, 0..4, {}, { class: "form-select flex-grow-1" } %>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <label class="mb-0" style="min-width: 60px;"><%= t '.set_2' %>:</label>
+                <%= user_match_score.select :score_set2, 0..4, {}, { class: "form-select flex-grow-1" } %>
+              </div>
+              <div class="d-flex align-items-center gap-2">
+                <label class="mb-0" style="min-width: 60px;"><%= t '.tie_break' %>:</label>
+                <%= user_match_score.select :score_tiebreak, ['Na']+(0..11).to_a, {}, { class: "form-select flex-grow-1" } %>
+              </div>
+            </div>
+          </div>
+        <% else %>
+          <%# Desktop Layout: Horizontal row %>
+          <div class="row">
+            <%# Player Name Column %>
+            <div class="col-4"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
+            <%# Set 1 Score: Games won (0-4) %>
+            <div class="col-2"><%= user_match_score.select :score_set1, 0..4 %></div>
+            <%# Set 2 Score: Games won (0-4) %>
+            <div class="col-2"><%= user_match_score.select :score_set2, 0..4 %></div>
+            <%# Tiebreak Score: Points (0-11) or "Na" (not applicable) %>
+            <div class="col-2"><%= user_match_score.select :score_tiebreak,['Na']+(0..11).to_a %></div>
+          </div>
+        <% end %>
       <% end %>
       <br>
 
@@ -105,15 +125,15 @@
     <br>
 
     <%# Form Actions: Back, Delete, and Update buttons %>
-    <div class="buttons-wrap">
+    <div class="<%= class_names("buttons-wrap": !@is_mobile, "d-flex flex-column gap-2 align-items-center": @is_mobile) %>">
       <%= link_to t(".back_btn"), @page_from, class: "btn btn-shape btn-yellow mb-3" %>
 
       <%# Delete Button: Delete match with confirmation dialog %>
       <%= link_to t(".delete_score_btn"), match_path(@match, page_from: @page_from), class: "btn btn-shape btn-green mb-3",
-      data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>&nbsp;&nbsp;&nbsp;&nbsp;
+      data: {turbo_method: :delete, turbo_confirm: t(".sure")} %>
 
       <%# Update Button: Submit form to update match %>
-      <%= f.submit t(".update_score_btn"), class: "btn btn-shape btn-green mb-3" %>&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.submit t(".update_score_btn"), class: "btn btn-shape btn-green mb-3" %>
     </div>
   <% end %>
   <br>
