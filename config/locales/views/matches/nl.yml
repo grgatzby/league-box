@@ -12,7 +12,7 @@ nl:
       update_score_btn: ⎷ Bevestigen
       delete_score_btn: x Verwijderen
       sure: Jij bevestigt?
-      back_btn: ←
+      back_btn: ⇤
     new:
       new_match_title: Nieuwe score (Box %{box})
       enter_new_score_html: >
@@ -30,7 +30,7 @@ nl:
       input_score: kies een score
       and_more: en +
       save_score_btn: ⎷ Bevestigen
-      back_btn: ←
+      back_btn: ⇤
       round_not_started_flash: De ronde is nog niet begonnen.
     show:
       show_match_title: Wedstrijdkaart
@@ -38,7 +38,7 @@ nl:
       submitted: "Score ingevoerd op %{date} door %{user}."
       points_earned: "Punten verdiend : "
       challenge: "Als u deze score wilt betwisten of wijzigen, neemt u contact op met de clubReferee %{referee}."
-      back_btn: ←
+      back_btn: ⇤
     score_headers:
       player: Speler
       set_1: set1
@@ -76,4 +76,4 @@ nl:
           Als een box minder spelers heeft, bevat het CSV-bestand lege rijen om ervoor te zorgen dat alle boxen hetzelfde aantal rijen hebben.
       delimiter: CSV-scheidingsteken
       submit_btn: ⎷ Bevestigen
-      back_btn: ←
+      back_btn: ⇤

@@ -1,13 +1,25 @@
+<%#
+  Score Headers Partial
+  Displays column headers for the match score display table.
+  Headers: Player, Set 1, Set 2, Tiebreak (if played), Match Points, Total Points.
+  Column widths must sum to 12 (Bootstrap grid).
+%>
 <b><div class="row">
-  <%# sum of col- must equal 12 %>
+  <%# Player Column (col-3) %>
   <div class="col-3"><%= t(".player") %></div>
+  <%# Score Columns Container (col-9): Nested row for score-related columns %>
   <div class="col-9 row">
+    <%# Set 1 Column (col-1) %>
     <div class="col-1"><%= t(".set_1") %></div>
+    <%# Set 2 Column (col-1) %>
     <div class="col-1"><%= t(".set_2") %></div>
+    <%# Tiebreak Column (col-2): Only shown if tiebreak was played %>
     <% if tiebreak > 0 %>
       <div class="col-2"><%= t(".tie_break") %></div>
     <% end %>
+    <%# Match Points Column (col-3): Points earned in this match %>
     <div class="col-3"><%= t(".match_points") %></div>
+    <%# Total Points Column (col-1): Player's total points in the box %>
     <div class="col-1"><%= t(".total") %></div>
   </div>
 </div></b>

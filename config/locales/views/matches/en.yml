@@ -12,7 +12,7 @@ en:
       update_score_btn: ⎷ Update
       delete_score_btn: x Delete the score
       sure: Are you sure?
-      back_btn: ←
+      back_btn: ⇤
     new:
       new_match_title: New match score (Box %{box})
       enter_new_score_html: >
@@ -30,7 +30,7 @@ en:
       input_score: input score
       and_more: and +
       save_score_btn: ⎷ Save
-      back_btn: ←
+      back_btn: ⇤
       round_not_started_flash: Round has not started yet.
     show:
       show_match_title: Match card
@@ -38,7 +38,7 @@ en:
       submitted: "Score submitted on %{date} by %{user}."
       points_earned: "Points earned : "
       challenge: "To challenge or edit this match score, contact your club Referee %{referee}."
-      back_btn: ←
+      back_btn: ⇤
     score_headers:
       player: Player
       set_1: set1
@@ -76,4 +76,4 @@ en:
           If a box has fewer players, the CSV file will include empty rows to ensure the same number of rows for all boxes.
       delimiter: CSV delimiter
       submit_btn: ⎷ Submit
-      back_btn: ←
+      back_btn: ⇤
