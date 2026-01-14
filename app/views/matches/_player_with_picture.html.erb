@@ -1,0 +1,16 @@
+<%#
+  Player with Picture Partial
+  Displays a player's name and profile picture (if available).
+
+  Parameters:
+    user: User object to display
+    is_mobile: Boolean indicating mobile view
+%>
+<span style="display: inline-flex; align-items: center; gap: 8px;">
+  <%= render "shared/fullname", user: user %>
+  <% if user.profile_picture.present? %>
+    <% size = is_mobile ? 25 : 50 %>
+    <%= image_tag(profile_picture_circular_url(user, size), alt: 'Profile picture',
+                  style: "width: #{size}px; height: #{size}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+  <% end %>
+</span>
