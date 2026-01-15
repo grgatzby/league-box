@@ -12,7 +12,7 @@ if match %>
   <%# Match Played: Display score and points %>
   <div class="click-cell">
     <%# Match Score Display %>
-    <%= render "match_score", user_score: user_score, opponent_score: opponent_score %>
+    <%= render "match_score", user_score: user_score, opponent_score: opponent_score %><br>
     <%# Match Date: Only show if not in expanded view %>
     <%= "#{l(match.time, format: :wwwddmmm_date)}" if page_from != index_expanded_path %>
     <%# Points for line player (row player) %>

@@ -17,7 +17,12 @@
 
   <%# Players Header: Names and ranks %>
   <h5>
-    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %><i> versus</i>
+    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %>
+    <% if @is_mobile %>
+      <i> vs</i><br>
+    <% else %>
+      <i> versus</i>
+    <% end %>
     <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
 
