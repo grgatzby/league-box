@@ -71,7 +71,7 @@
   }
 
   #grid-lines>.row {
-    height: 5.5rem;
+    height: 6.5rem;
     .grid-columns {
       padding-top: .75rem;
       padding-bottom: .75rem;
@@ -91,12 +91,12 @@
   }
 
   .first-col-lines {
-    height: 5.5rem;
+    height: 6.5rem;
     .col-12 {
       padding-top: .75rem;
       padding-bottom: .75rem;
-      display: flex;
-      align-items: center;
+      //display: flex;
+      //align-items: center;
       // border: 1px solid rgba(39,41,43,0.1);
     }
   }
@@ -108,8 +108,8 @@
     height: calc(max(6vw,4rem));
     padding-top: .75rem;
     padding-bottom: .75rem;
-    display: flex;
-    align-items: center;
+    //display: flex;
+    //align-items: center;
     // border: 1px solid rgba(39,41,43,0.1);
 
   }

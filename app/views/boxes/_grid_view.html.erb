@@ -16,7 +16,7 @@
       <%# Top Left Corner: Box Number Header %>
       <% if page_from == box_path(box) %>
         <%# Single box grid view: static box number display %>
-        <div class="row mb-3">
+        <div class="row">
           <div class="<%=class_names( "col-12 bold-font", "color-tennis-red": is_this_my_box, "color-tennis-blue": !is_this_my_box) %>">
             <h5><%= "Box #{box.box_number}".upcase %></h5>
           </div>
@@ -47,7 +47,7 @@
             data-bs-trigger="hover" data-bs-placement="bottom" data-bs-delay= '{ "show": 500 }'
             title="<%= name %>" data-bs-content="<%= message %>">
               <%# Highlight current user's name in red %>
-              <span class="<%=class_names("bold-font", "color-tennis-red": user_box_matches[0].user == current_user) %>">
+              <br><span class="<%=class_names("bold-font", "color-tennis-red": user_box_matches[0].user == current_user) %>">
                 <%= render "shared/fullname", user: line_player %>
               </span><br>
               <%# Display points and rank %>
