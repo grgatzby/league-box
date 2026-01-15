@@ -10,6 +10,7 @@ class MatchesController < ApplicationController
 
   def show
     @page_from = local_path(params[:page_from])
+    set_club_round
     @player = User.find(params[:player])
     @opponent = User.find(params[:opponent])
     # @referee = @referee || User.find_by(role: "referee", club_id: @player.club.id)
@@ -23,6 +24,7 @@ class MatchesController < ApplicationController
   def new
     @page_from = local_path(params[:page_from])
     @round = Round.find(params[:round_id])
+    set_club_round
     @current_player = params[:player] ? User.find(params[:player]) : current_user
     @box = my_own_box(@round, @current_player)
     if @round.start_date > Time.now
@@ -136,6 +138,7 @@ class MatchesController < ApplicationController
 
   def edit
     @page_from = local_path(params[:page_from])
+    set_club_round
     # for admin and referees only
     # allows to edit match scores (match and 2 user_match_scores)
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])

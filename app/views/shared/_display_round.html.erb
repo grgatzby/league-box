@@ -4,7 +4,8 @@
     start: l(round.start_date, format: :ddmmm_date),
     end: l(round.end_date, format: @is_mobile ? :ddmmm_date : :ddmmmyy_date),
     round: @round_nb) %>
-<% if round.end_date >= Date.today %>
+<%
+if round.end_date >= Date.today %>
   <span class="color-green"><%= t(".days_left", days: (round.end_date - Date.today).to_i) %></span>
   <% else %>
   <span class="color-tennis-red"><%= t(".expired_html") %></span>

@@ -11,7 +11,6 @@
   <div class="one-liner">
     <h3><%= t '.show_match_title' %></h3>
   </div>
-
   <%# Get player box scores to display ranks %>
   <% player_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@player.id) %>
   <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@opponent.id) %>
@@ -30,7 +29,7 @@
     <% tiebreak = @player_match_score.score_tiebreak + @opponent_match_score.score_tiebreak %>
 
     <%# Score Display Grid: Headers and both players' scores %>
-    <div class="<%=class_names( "mobile-grid-container mobile-score-width mobile-text-size": @is_mobile,
+    <div class="<%=class_names( "grid-container score-width text-size": @is_mobile,
                                 "grid-container score-width": !@is_mobile) %>">
       <%= render "score_headers", tiebreak: tiebreak %><br>
       <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs %><br>

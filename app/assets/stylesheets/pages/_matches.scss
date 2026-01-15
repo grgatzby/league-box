@@ -1,3 +1,11 @@
 .score-width {
   width: 50rem;
 }
+
+// Mobile: Ensure score dropdowns have enough space for selected text and arrow
+@media only screen and (max-width: 768px) {
+  .match-score-select {
+    padding-right: 2.5rem; // Extra padding to prevent text from being hidden by dropdown arrow
+    min-width: 0; // Allow flexbox to control width
+  }
+}

@@ -34,7 +34,7 @@
       <%# Court Selection: Select court number from available courts %>
       <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
         <div class="<%= class_names("col-3": !@is_mobile, "mb-2": @is_mobile) %>"><b><%= f.label :court_id, t(".match_played") %></b></div>
-        <div class="<%= class_names("col-1": !@is_mobile, "": @is_mobile) %>"><%= f.select(:court_id, 1..@round.club.courts.size, { selected: params[:court_id] }, { class: "form-select" }) %></div>
+        <div class="<%= class_names("col-2": !@is_mobile, "": @is_mobile) %>"><%= f.select(:court_id, 1..@round.club.courts.size, { selected: params[:court_id] }, { class: "form-select" }) %></div>
       </div>
 
       <%# Date/Time Selection: Date picker with round date constraints %>
@@ -50,14 +50,29 @@
       <%# f.time_select(:time, start_hour: 8, end_hour: 19, minute_step: 30, :time_separator => "") %>
 
       <%# Score Section: Column headers for score input %>
-      <b><%= t '.score' %></b>
-      <i><div class="row">
-        <div class="col-3"><%= @is_mobile ? "" : t('.player_1') %></div>
-        <div class="col-2"><%= t '.set_1' %></div>
-        <div class="col-2"><%= t '.set_2' %></div>
-        <div class="col-2"><%= t '.tie_break' %></div>
-        <div class="col-3"><%= @is_mobile ? "" : t('.player_2') %></div>
-      </div></i>
+      <% if @is_mobile %>
+        <div class="row">
+          <div class="col-3"><b><%= t '.score' %></b></div>
+          <div class="col-9">
+            <%= render "shared/fullname", user: players[0] %><i>vs</i>
+            <%= render "shared/fullname", user: players[1] %>
+          </div>
+        </div>
+        <i><div class="row">
+          <div class="col-4"><%= t '.set_1' %></div>
+          <div class="col-4"><%= t '.set_2' %></div>
+          <div class="col-4"><%= t '.tie_break' %></div>
+        </div></i>
+      <% else %>
+        <b><%= t '.score' %></b>
+        <i><div class="row">
+          <div class="col-3"><%= t('.player_1') %></div>
+          <div class="col-2"><%= t '.set_1' %></div>
+          <div class="col-2"><%= t '.set_2' %></div>
+          <div class="col-2"><%= t '.tie_break' %></div>
+          <div class="col-3"><%= t('.player_2') %></div>
+        </div></i>
+      <% end %>
 
       <%# Score Options: Predefined score combinations for sets and tiebreak %>
       <%# Set scores: Common game scores (4-3, 4-2, etc.) %>
@@ -70,30 +85,34 @@
       <%# Score Input Fields: Nested form for both players' scores %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>
         <div class="row">
-          <%# Player Name Column %>
-          <div class="<%= class_names("col-3", "mb-2": @is_mobile)%>">
+          <%# Player Name Column: Smaller in mobile to make room for wider score fields %>
+          <% unless @is_mobile %>
+            <div class="col-3 float-right">
             <b><%= render "shared/fullname", user: players[user_match_score.index] %></b>
-          </div>
-          <%# Score Dropdowns %>
-          <div class="<%= class_names("col-2", "mb-2": @is_mobile)%>">
+            </div>
+          <% end %>
+          <%# Score Dropdowns: Wider columns in mobile to accommodate dropdown arrow and selected text %>
+          <div class="<%= class_names(@is_mobile ? "col-4" : "col-2", "mb-2": @is_mobile)%>">
             <%= user_match_score.select(:score_set1, scores[user_match_score.index],
                                         { selected: params[:score_set1] },
-                                        { class: "form-select" }) %>
+                                        { class: "form-select match-score-select" }) %>
           </div>
-          <div class="<%= class_names("col-2", "mb-2": @is_mobile)%>">
+          <div class="<%= class_names(@is_mobile ? "col-4" : "col-2", "mb-2": @is_mobile)%>">
             <%= user_match_score.select(:score_set2, scores[user_match_score.index],
                                         { selected: params[:score_set2] },
-                                        { class: "form-select" }) %>
+                                        { class: "form-select match-score-select" }) %>
           </div>
-          <div class="<%= class_names("col-2", "mb-2": @is_mobile)%>">
+          <div class="<%= class_names(@is_mobile ? "col-4" : "col-2", "mb-2": @is_mobile)%>">
             <%= user_match_score.select(:score_tiebreak, score_tb[user_match_score.index],
                                         { selected: params[:score_tiebreak] },
-                                        { class: "form-select" }) %>
+                                        { class: "form-select match-score-select" }) %>
           </div>
-          <%# Opponent Name Column %>
-          <div class="<%= class_names("col-3 float-right", "mb-2": @is_mobile)%>">
-            <b><%= render "shared/fullname", user: players[1] %></b>
-          </div>
+          <%# Opponent Name Column: Only show on desktop, hidden in mobile %>
+          <% unless @is_mobile %>
+            <div class="col-3 float-right">
+              <b><%= render "shared/fullname", user: players[1] %></b>
+            </div>
+          <% end %>
         </div>
       <% end %>
       <br>
@@ -107,7 +126,7 @@
     <br>
 
     <%# Form Actions: Back button and Save Score button %>
-    <div class="<%= class_names("buttons-wrap": !@is_mobile, "d-flex flex-column gap-2 align-items-center": @is_mobile) %>">
+    <div class="buttons-wrap">
       <%= link_to t(".back_btn"), @page_from, class: "btn btn-shape btn-yellow mb-3" %>
       <%= f.submit t(".save_score_btn"), class: "btn btn-shape btn-green mb-3" %>
     </div>
