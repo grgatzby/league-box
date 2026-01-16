@@ -1,5 +1,18 @@
-<%# partial: display staff details %>
+<%#
+  Staff Details Partial
+  Displays club staff information (admin and referees) in a table format.
+  Parameters:
+    from: Context where partial is rendered ("pages" or "contact")
+    @admin: Admin user object
+    @referees: Array of referee users (only displayed to admin)
+    @referee: Current user's club referee (defined in application_controller#global_variables)
+    @sample_club: Sample club object (admin's club)
+    @is_mobile: Boolean indicating mobile view
+%>
+
+<!-- Introduction Section: Title and descriptive text -->
 <div class="text-size contact-wrap">
+  <%# Show title only when rendered from pages context %>
   <% if from == "pages" %>
     <br><h4><div class="title"><b><%= t(".your_club_staff_title").upcase %></b></div></h4><br>
   <% end %>
@@ -7,6 +20,7 @@
   <p><%= t '.staff_p02_html' %></p>
   <p>
     <%= t('.staff_p03_html', path: my_scores_path(0)) %>
+    <%# Different contact links based on context %>
     <% if from == "pages" %>
       <%= t('.staff_p04a_html', path: new_contact_path) %>
     <% else %>
@@ -16,12 +30,15 @@
 </div>
 <br>
 
+<!-- Staff Table Section -->
 <div class="frame-no-margin-rl">
+  <%# Apply different frame styles based on context %>
   <div class="<%=class_names("box-table-wrap text-size", "frame-color-shape": from == "pages",
                                                     "frame-color-shape-contact": from == "contact") %>">
-    <%#div class="grid-container box-width"%>
+    <%# Responsive grid container: mobile vs desktop layout %>
     <div class="<%=class_names( "mobile-grid-container mobile-box-width text-size": @is_mobile,
                                 "grid-container box-width": !@is_mobile) %>">
+      <!-- Table Header Row -->
       <div class="row" style="font-weight: bold">
         <div class="col-2"><%= t '.header_role' %></div>
         <div class="col-2"><%= t '.header_name' %></div>
@@ -29,7 +46,9 @@
         <div class="col-3"><%= t '.header_email' %></div>
         <div class="col-2"><%= t '.header_phone' %></div>
       </div>
+      <!-- Admin Row: Display admin user details -->
       <div class="row">
+        <%# Role Column: Club logo (if present), favicon, and admin role label %>
         <div class="col-2 flex-align-center flex-gap-8">
           <% if @sample_club&.logo.present? %>
             <%= image_tag @sample_club.logo.url, alt: "#{@sample_club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
@@ -37,6 +56,7 @@
           <%= image_tag "favicon.png", alt: "Favicon", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
           <span><%= t '.website_admin' %></span>
         </div>
+        <%# Name Column: Admin profile picture (clickable if present) and full name %>
         <div class="col-2 flex-align-center flex-gap-8">
           <% if @admin.profile_picture.present? %>
             <%= link_to @admin.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
@@ -47,23 +67,30 @@
           <% end %>
           <span><%= render "shared/fullname", user: @admin%></span>
         </div>
+        <%# Club Column: Club website link (if present) %>
         <div class="col-2 flex-align-center">
           <% if @sample_club&.website.present? %>
             <%= link_to @sample_club.website, @sample_club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
           <% end %>
         </div>
+        <%# Email Column: Admin email address %>
         <div class="col-3 flex-align-center"><%= "#{@admin.email}" %></div>
+        <%# Phone Column: Admin phone number %>
         <div class="col-2 flex-align-center"><%= "#{@admin.phone_number}" %></div>
       </div>
+      <%# Referees Section: Only displayed to admin users %>
       <% if current_user == @admin %>
         <% @referees.each do |referee| %>
+          <!-- Referee Row: Display each referee's details -->
           <div class="row">
+            <%# Role Column: Club logo (if present) and referee role label %>
             <div class="col-2 flex-align-center flex-gap-8">
               <% if referee.club&.logo.present? %>
                 <%= image_tag referee.club.logo.url, alt: "#{referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
               <% end %>
               <span><%= t ".club_referee" %></span>
             </div>
+            <%# Name Column: Referee profile picture (clickable if present) and full name %>
             <div class="col-2 flex-align-center flex-gap-8">
               <% if referee.profile_picture.present? %>
                 <%= link_to referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
@@ -74,28 +101,35 @@
               <% end %>
               <span><%= render "shared/fullname", user: referee%></span>
             </div>
+            <%# Club Column: Club name as link if website present, otherwise plain text %>
             <div class="col-2 flex-align-center">
               <% if referee.club.website.present? %>
-                <%= link_to referee.club.name, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
+                <span><%= link_to referee.club.name, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %></span>
               <% else %>
-                <%= referee.club.name %>
+                <span><%= referee.club.name %></span>
               <% end %>
             </div>
+            <%# Email Column: Referee email address %>
             <div class="col-3 flex-align-center"><%= "#{referee.email}" %></div>
+            <%# Phone Column: Referee phone number %>
             <div class="col-2 flex-align-center"><%= "#{referee.phone_number}" %></div>
           </div>
         <% end %>
       <% end %>
 
+      <%# Current User's Club Referee Section: Display current user's club referee (if defined) %>
+      <%# @referee is defined in application_controller#global_variables %>
       <% if @referee %>
-        <!-- defined in application_controller#global_variables : current user's club referee-->
+        <!-- Current User's Referee Row -->
         <div class="row">
+          <%# Role Column: Club logo (if present) and referee role (capitalized) %>
           <div class="col-2 flex-align-center flex-gap-8">
             <% if @referee.club&.logo.present? %>
               <%= image_tag @referee.club.logo.url, alt: "#{@referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
             <% end %>
             <span><%= "#{@referee.role.capitalize}" %></span>
           </div>
+          <%# Name Column: Referee profile picture (clickable if present) and full name %>
           <div class="col-2 flex-align-center flex-gap-8">
             <% if @referee.profile_picture.present? %>
               <%= link_to @referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
@@ -106,14 +140,17 @@
             <% end %>
             <span><%= render "shared/fullname", user: @referee%></span>
           </div>
+          <%# Club Column: Club name as link if website present, otherwise plain text %>
           <div class="col-2 flex-align-center">
             <% if @referee.club.website.present? %>
-              <%= link_to @referee.club.name, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
+              <span><%= link_to @referee.club.name, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %></span>
             <% else %>
-              <%= @referee.club.name %>
+              <span><%= @referee.club.name %></span>
             <% end %>
           </div>
+          <%# Email Column: Referee email address %>
           <div class="col-3 flex-align-center"><%= "#{@referee.email}" %></div>
+          <%# Phone Column: Referee phone number %>
           <div class="col-2 flex-align-center"><%= "#{@referee.phone_number}" %></div>
         </div>
       <% end %>
