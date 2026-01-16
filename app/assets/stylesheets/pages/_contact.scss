@@ -25,6 +25,16 @@
   }
 }
 
+// Staff table utility classes
+.flex-align-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-gap-8 {
+  gap: 8px;
+}
+
 @media only screen and (max-width: 990px) {
  .contact-wrap {
    padding: 25px calc(var(--bs-gutter-x) * 2) 5px;
