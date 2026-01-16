@@ -123,10 +123,50 @@ class PagesController < ApplicationController
     redirect_to my_club_path
   end
 
+  def update_club_website
+    # Only allow admin or referee to update club website
+    unless current_user && (current_user.role&.include?("referee") || current_user == @admin)
+      flash[:alert] = t("preferences.edit.unauthorized", default: "You are not authorized to update club website.")
+      redirect_to edit_preference_path(current_user.preference)
+      return
+    end
+
+    # If admin is just selecting a club (no website param), redirect back with club_id
+    if current_user == @admin && params[:club_id].present? && params[:website].blank?
+      redirect_to edit_preference_path(current_user.preference, club_id: params[:club_id])
+      return
+    end
+
+    begin
+      club = if current_user == @admin && params[:club_id].present?
+               Club.find(params[:club_id])
+             else
+               # Referee can only update their own club
+               current_user.club
+             end
+
+      if club.update(website: params[:website])
+        flash[:notice] = t("preferences.edit.website_updated", default: "Club website updated successfully.")
+      else
+        flash[:alert] = t("preferences.edit.website_error", default: "Error updating club website.")
+      end
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = t("preferences.edit.club_not_found", default: "Club not found.")
+    end
+
+    # Preserve club_id parameter for admin when redirecting
+    redirect_path = if current_user == @admin && params[:club_id].present?
+                      edit_preference_path(current_user.preference, club_id: params[:club_id])
+                    else
+                      edit_preference_path(current_user.preference)
+                    end
+    redirect_to redirect_path
+  end
+
   private
 
   def club_params
-    params.require(:club).permit(:logo, :banner)
+    params.require(:club).permit(:logo, :banner, :website)
   end
 
   def user_profile_picture_params

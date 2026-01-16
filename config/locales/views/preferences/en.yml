@@ -33,3 +33,13 @@ en:
       submit_button: OK
       choose_file: Choose File
       no_file_selected: No file selected
+      my_club: My Club
+      website: Website
+      website_placeholder: "https://example.com"
+      website_help: "Enter the full website URL (e.g., https://example.com)"
+      update_website: Update Website
+      select_club: Select Club
+      unauthorized: "You are not authorized to update club website."
+      website_updated: "Club website updated successfully."
+      website_error: "Error updating club website."
+      club_not_found: "Club not found."

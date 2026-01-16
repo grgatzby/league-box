@@ -1,13 +1,12 @@
 <%# My details form for existing user %>
-<%= render "shared/image_front" %>
-<div class="<%= class_names("container": !@is_mobile) %>"
-     data-controller="toggle">
+<%# render "shared/image_front" %>
+<div class="<%= class_names("container": !@is_mobile) %>">
   <div class="one-liner">
     <h3><%= t '.title' %></h3>
   </div>
   <%# Removed Active Storage photo code - now using CarrierWave on User model for profile pictures %>
 
-  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |f| %>
+  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |preference_f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -30,8 +29,8 @@
       </div>
 
       <div class="row">
-        <div class="col-4"><%= f.label :nickname, "😎 #{t(".nickname")}:" %></div>
-        <div class="col-2"><%= f.text_field :nickname,
+        <div class="col-4"><%= preference_f.label :nickname, "😎 #{t(".nickname")}:" %></div>
+        <div class="col-2"><%= preference_f.text_field :nickname,
                                 placeholder: current_user.nickname,
                                 value: current_user.nickname,
                                 style: "width: 15em",
@@ -39,8 +38,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-4"><%= f.label :first_name, "👤 #{t(".first_name")}:" %></div>
-        <div class="col-2"><%= f.text_field :first_name,
+        <div class="col-4"><%= preference_f.label :first_name, "👤 #{t(".first_name")}:" %></div>
+        <div class="col-2"><%= preference_f.text_field :first_name,
                                 placeholder: current_user.first_name,
                                 value: current_user.first_name,
                                 style: "width: 15em",
@@ -48,8 +47,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-4"><%= f.label :last_name, "👤 #{t(".last_name")}:" %></div>
-        <div class="col-2"><%= f.text_field :last_name,
+        <div class="col-4"><%= preference_f.label :last_name, "👤 #{t(".last_name")}:" %></div>
+        <div class="col-2"><%= preference_f.text_field :last_name,
                                 placeholder: current_user.last_name,
                                 value: current_user.last_name,
                                 style: "width: 15em",
@@ -57,8 +56,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-4"><%= f.label :e_mail, "📩 #{t(".e_mail")} :" %></div>
-        <div class="col-2"><%= f.text_field :e_mail,
+        <div class="col-4"><%= preference_f.label :e_mail, "📩 #{t(".e_mail")} :" %></div>
+        <div class="col-2"><%= preference_f.text_field :e_mail,
                                 placeholder: current_user.email,
                                 value: current_user.email,
                                 style: "width: 20em",
@@ -66,8 +65,8 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-4"><%= f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
-        <div class="col-2"><%= f.text_field :phone_number,
+        <div class="col-4"><%= preference_f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
+        <div class="col-2"><%= preference_f.text_field :phone_number,
                                 placeholder: current_user.phone_number,
                                 value: current_user.phone_number,
                                 style: "width: 10em",
@@ -170,9 +169,9 @@
 
 
       <div class="row">
-        <div class="col-4"><%= f.label :password, "🔐 #{t(".password")}:" %></div>
+        <div class="col-4"><%= preference_f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-8">
-          <i><%= f.label :password, t(".modify_password") %></i>
+          <i><%= preference_f.label :password, t(".modify_password") %></i>
           &nbsp;&nbsp;<%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
       </div>
@@ -184,7 +183,7 @@
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
         <div class="col-5">
-          <i><%= f.label :clear_format, t(".clear_format") %></i>
+          <i><%= preference_f.label :clear_format, t(".clear_format") %></i>
           &nbsp;&nbsp;<%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
         </div>
       </div>
@@ -204,10 +203,88 @@
           </div>
         </div>
       <% end %>
+
+      <%# My Club Section: Allow admin/referee to edit club website %>
+      <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
+        <hr>
+        <b><%= t(".my_club") %></b><br>
+        <%# Determine selected club for display %>
+        <% if current_user == @admin %>
+          <% available_clubs = Club.all.reject { |c| c == @sample_club } %>
+          <% selected_club_id = if params[:club_id].present?
+                                   params[:club_id].to_i
+                                 elsif available_clubs.any?
+                                   available_clubs.first.id
+                                 else
+                                   current_user.club.id
+                                 end %>
+          <% selected_club = Club.find(selected_club_id) %>
+          <%# Admin club selection dropdown (not a separate form, just updates the hidden field) %>
+          <div class="row mb-3">
+            <div class="col-4"><%= label_tag :club_id, t(".select_club"), class: "form-label" %></div>
+            <div class="col-6">
+              <%= select_tag :club_id,
+                  options_for_select(available_clubs.map { |club| [club.name, club.id] }, selected_club_id),
+                  { class: "form-control", id: "club_select_dropdown" } %>
+            </div>
+          </div>
+          <%# Store club data for JavaScript (embedded in script tag) %>
+          <script type="application/json" id="clubs-data">
+            <%= available_clubs.map { |club| { id: club.id, website: club.website || "" } }.to_json.html_safe %>
+          </script>
+        <% else %>
+          <%# Referee can only edit their own club %>
+          <% selected_club = current_user.club %>
+        <% end %>
+
+        <%# Website update field %>
+        <div class="row">
+          <div class="col-4"><%= preference_f.label :website, "🌐 #{t(".website")}:", for: "website_input" %></div>
+          <div class="col-6">
+            <%= preference_f.text_field :website,
+                placeholder: t(".website_placeholder"),
+                value: selected_club.website,
+                style: "width: 100%; max-width: 30em",
+                class: "form-control",
+                id: "website_input" %>
+            <small class="form-text text-muted"><%= t(".website_help") %></small>
+          </div>
+        </div>
+
+        <%# JavaScript to update website field when club dropdown changes (admin only) %>
+        <% if current_user == @admin %>
+          <script>
+            (function() {
+              const clubSelect = document.getElementById('club_select_dropdown');
+              const websiteInput = document.getElementById('website_input');
+              const websiteClubId = document.getElementById('website_club_id');
+              const clubsDataElement = document.getElementById('clubs-data');
+
+              if (!clubSelect || !websiteInput || !websiteClubId || !clubsDataElement) {
+                return;
+              }
+
+              const clubsData = JSON.parse(clubsDataElement.textContent || '[]');
+
+              clubSelect.addEventListener('change', function() {
+                const selectedClubId = parseInt(this.value);
+                const selectedClub = clubsData.find(club => club.id === selectedClubId);
+
+                if (selectedClub) {
+                  websiteInput.value = selectedClub.website || '';
+                  websiteClubId.value = selectedClubId;
+                }
+              });
+            })();
+          </script>
+        <% end %>
+        <%# Hidden field for club_id (top-level parameter, not nested under preference) %>
+        <%= hidden_field_tag :club_id, selected_club.id, id: "website_club_id" %>
+      <% end %>
     </div>
     <br>
     <div class = "buttons-wrap">
-      <%= f.submit t(".submit_button"), class: "btn btn-shape btn-aqua" %>
+      <%= preference_f.submit t(".submit_button"), class: "btn btn-shape btn-aqua" %>
     </div>
   <% end %>
 

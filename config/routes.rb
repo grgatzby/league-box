@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get "rules", to: "pages#rules", as: "rules"
     get "my_club", to: "pages#my_club", as: "my_club"
     patch "my_club", to: "pages#update_club", as: "update_club"
+    patch "update_club_website", to: "pages#update_club_website", as: "update_club_website"
     patch "users/:id/update_profile_picture", to: "pages#update_user_profile_picture", as: "update_user_profile_picture"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
