@@ -14,18 +14,19 @@ class PreferencesController < ApplicationController
     preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
     preference.save
 
-    # update current_user details
+    # update current_user details (using strong parameters)
+    pref_params = preference_params
     user_params = {
-      nickname: params[:preference][:nickname],
-      first_name: params[:preference][:first_name],
-      last_name: params[:preference][:last_name],
-      phone_number: params[:preference][:phone_number],
-      email: params[:preference][:e_mail]
+      nickname: pref_params[:nickname],
+      first_name: pref_params[:first_name],
+      last_name: pref_params[:last_name],
+      phone_number: pref_params[:phone_number],
+      email: pref_params[:e_mail]
     }
 
-    # update club details
+    # update club details (using strong parameters)
     club_params = {
-      website: params[:preference][:website]
+      website: pref_params[:website]
     }
 
     # Handle profile picture upload if present
@@ -53,13 +54,14 @@ class PreferencesController < ApplicationController
       changes_made = true
     end
 
-    # Check if user details changed
+    # Check if user details changed (using strong parameters)
+    pref_params = preference_params
     user_params = {}
-    user_params[:nickname] = params[:preference][:nickname] if params[:preference][:nickname].to_s != (current_user.nickname || "").to_s
-    user_params[:first_name] = params[:preference][:first_name] if params[:preference][:first_name].to_s != (current_user.first_name || "").to_s
-    user_params[:last_name] = params[:preference][:last_name] if params[:preference][:last_name].to_s != (current_user.last_name || "").to_s
-    user_params[:phone_number] = params[:preference][:phone_number] if params[:preference][:phone_number].to_s != (current_user.phone_number || "").to_s
-    user_params[:email] = params[:preference][:e_mail] if params[:preference][:e_mail].to_s != (current_user.email || "").to_s
+    user_params[:nickname] = pref_params[:nickname] if pref_params[:nickname].to_s != (current_user.nickname || "").to_s
+    user_params[:first_name] = pref_params[:first_name] if pref_params[:first_name].to_s != (current_user.first_name || "").to_s
+    user_params[:last_name] = pref_params[:last_name] if pref_params[:last_name].to_s != (current_user.last_name || "").to_s
+    user_params[:phone_number] = pref_params[:phone_number] if pref_params[:phone_number].to_s != (current_user.phone_number || "").to_s
+    user_params[:email] = pref_params[:e_mail] if pref_params[:e_mail].to_s != (current_user.email || "").to_s
 
     # Handle profile picture upload if present
     if params[:user] && params[:user][:profile_picture].present?
@@ -84,8 +86,8 @@ class PreferencesController < ApplicationController
                  current_user.club
                end
 
-        # Check if website changed
-        website_value = params[:preference]&.dig(:website) || ""
+        # Check if website changed (using strong parameters)
+        website_value = preference_params[:website] || ""
         if (club.website || "").to_s != website_value.to_s
           club.update(website: website_value)
           changes_made = true
@@ -105,9 +107,11 @@ class PreferencesController < ApplicationController
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 
-#  private
+  private
 
-#  def preference_params
-#    params.require(:preference).permit(:photo, :clear_format)
-#  end
+  def preference_params
+    # Permit website field even though it's not a Preference attribute
+    # It's used to update the Club model
+    params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail, :website)
+  end
 end
