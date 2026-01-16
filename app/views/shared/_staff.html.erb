@@ -30,14 +30,14 @@
         <div class="col-2"><%= t '.header_phone' %></div>
       </div>
       <div class="row">
-        <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+        <div class="col-2 flex-align-center flex-gap-8">
           <% if @sample_club&.logo.present? %>
             <%= image_tag @sample_club.logo.url, alt: "#{@sample_club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
           <% end %>
           <%= image_tag "favicon.png", alt: "Favicon", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
           <span><%= t '.website_admin' %></span>
         </div>
-        <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+        <div class="col-2 flex-align-center flex-gap-8">
           <% if @admin.profile_picture.present? %>
             <%= link_to @admin.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
               <%= image_tag(profile_picture_circular_url(@admin, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -47,24 +47,24 @@
           <% end %>
           <span><%= render "shared/fullname", user: @admin%></span>
         </div>
-        <div class="col-2">
+        <div class="col-2 flex-align-center">
           <% if @sample_club&.website.present? %>
             <%= link_to @sample_club.website, @sample_club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
           <% end %>
         </div>
-        <div class="col-3"><%= "#{@admin.email}" %></div>
-        <div class="col-2"><%= "#{@admin.phone_number}" %></div>
+        <div class="col-3 flex-align-center"><%= "#{@admin.email}" %></div>
+        <div class="col-2 flex-align-center"><%= "#{@admin.phone_number}" %></div>
       </div>
       <% if current_user == @admin %>
         <% @referees.each do |referee| %>
           <div class="row">
-            <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+            <div class="col-2 flex-align-center flex-gap-8">
               <% if referee.club&.logo.present? %>
                 <%= image_tag referee.club.logo.url, alt: "#{referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
               <% end %>
               <span><%= t ".club_referee" %></span>
             </div>
-            <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+            <div class="col-2 flex-align-center flex-gap-8">
               <% if referee.profile_picture.present? %>
                 <%= link_to referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
                   <%= image_tag(profile_picture_circular_url(referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -74,15 +74,15 @@
               <% end %>
               <span><%= render "shared/fullname", user: referee%></span>
             </div>
-            <div class="col-2">
+            <div class="col-2 flex-align-center">
               <% if referee.club.website.present? %>
                 <%= link_to referee.club.name, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
               <% else %>
                 <%= referee.club.name %>
               <% end %>
             </div>
-            <div class="col-3"><%= "#{referee.email}" %></div>
-            <div class="col-2"><%= "#{referee.phone_number}" %></div>
+            <div class="col-3 flex-align-center"><%= "#{referee.email}" %></div>
+            <div class="col-2 flex-align-center"><%= "#{referee.phone_number}" %></div>
           </div>
         <% end %>
       <% end %>
@@ -90,13 +90,13 @@
       <% if @referee %>
         <!-- defined in application_controller#global_variables : current user's club referee-->
         <div class="row">
-          <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+          <div class="col-2 flex-align-center flex-gap-8">
             <% if @referee.club&.logo.present? %>
               <%= image_tag @referee.club.logo.url, alt: "#{@referee.club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
             <% end %>
             <span><%= "#{@referee.role.capitalize}" %></span>
           </div>
-          <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
+          <div class="col-2 flex-align-center flex-gap-8">
             <% if @referee.profile_picture.present? %>
               <%= link_to @referee.profile_picture.url, target: "_blank", rel: "noopener noreferrer", class: "player-profile-picture-link" do %>
                 <%= image_tag(profile_picture_circular_url(@referee, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover;") %>
@@ -106,15 +106,15 @@
             <% end %>
             <span><%= render "shared/fullname", user: @referee%></span>
           </div>
-          <div class="col-2">
+          <div class="col-2 flex-align-center">
             <% if @referee.club.website.present? %>
               <%= link_to @referee.club.name, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
             <% else %>
               <%= @referee.club.name %>
             <% end %>
           </div>
-          <div class="col-3"><%= "#{@referee.email}" %></div>
-          <div class="col-2"><%= "#{@referee.phone_number}" %></div>
+          <div class="col-3 flex-align-center"><%= "#{@referee.email}" %></div>
+          <div class="col-2 flex-align-center"><%= "#{@referee.phone_number}" %></div>
         </div>
       <% end %>
     </div>
