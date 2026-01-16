@@ -34,11 +34,13 @@ nl:
       choose_file: Bestand kiezen
       no_file_selected: Geen bestand geselecteerd
       my_club: Mijn Club
+      website_note_html: Om de club identiteit te wijzigen, gebruik de %{inset} pagina.
+      website_note_club: Mijn Club
       website: Website
       website_placeholder: "https://voorbeeld.com"
-      website_help: "Voer de volledige website-URL in (bijv. https://voorbeeld.com)"
-      update_website: Website Bijwerken
-      select_club: Selecteer Club
+      website_help: "Voer de volledige website-URL in (bijvoorbeeld https://voorbeeld.com)"
+      update_website: Website bijwerken
+      select_club: Club selecteren
       unauthorized: "U bent niet gemachtigd om de clubwebsite bij te werken."
       website_updated: "Clubwebsite succesvol bijgewerkt."
       website_error: "Fout bij het bijwerken van de clubwebsite."
