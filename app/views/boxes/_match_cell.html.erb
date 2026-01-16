@@ -14,7 +14,7 @@ if match %>
     <%# Match Score Display %>
     <%= render "match_score", user_score: user_score, opponent_score: opponent_score %><br>
     <%# Match Date: Only show if not in expanded view %>
-    <%= "#{l(match.time, format: :wwwddmmm_date)}" if page_from != index_expanded_path %>
+    <%= "#{l(match.time, format: :wwwddmmm_date)}" %>
     <%# Points for line player (row player) %>
     <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
     <%# Points for opponent (column player) %>

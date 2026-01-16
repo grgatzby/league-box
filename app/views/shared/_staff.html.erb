@@ -13,9 +13,9 @@
       <%= t('.staff_p04b_html') %>
     <% end %>
   </p>
-
 </div>
 <br>
+
 <div class="frame-no-margin-rl">
   <div class="<%=class_names("box-table-wrap text-size", "frame-color-shape": from == "pages",
                                                     "frame-color-shape-contact": from == "contact") %>">
@@ -34,6 +34,7 @@
           <% if @sample_club&.logo.present? %>
             <%= image_tag @sample_club.logo.url, alt: "#{@sample_club.name} logo", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
           <% end %>
+          <%= image_tag "favicon.png", alt: "Favicon", style: "width: #{@is_mobile ? 20 : 25}px; height: #{@is_mobile ? 20 : 25}px; object-fit: contain;" %>
           <span><%= t '.website_admin' %></span>
         </div>
         <div class="col-2" style="display: flex; align-items: center; gap: 8px;">
@@ -46,7 +47,11 @@
           <% end %>
           <span><%= render "shared/fullname", user: @admin%></span>
         </div>
-        <div class="col-2"></div>
+        <div class="col-2">
+          <% if @sample_club&.website.present? %>
+            <%= link_to @sample_club.website, @sample_club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
+          <% end %>
+        </div>
         <div class="col-3"><%= "#{@admin.email}" %></div>
         <div class="col-2"><%= "#{@admin.phone_number}" %></div>
       </div>
@@ -69,7 +74,13 @@
               <% end %>
               <span><%= render "shared/fullname", user: referee%></span>
             </div>
-            <div class="col-2"><%= "#{referee.club.name}" %></div>
+            <div class="col-2">
+              <%= "#{referee.club.name}" %>
+              <% if referee.club.website.present? %>
+                <br>
+                <%= link_to referee.club.website, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
+              <% end %>
+            </div>
             <div class="col-3"><%= "#{referee.email}" %></div>
             <div class="col-2"><%= "#{referee.phone_number}" %></div>
           </div>
@@ -95,7 +106,13 @@
             <% end %>
             <span><%= render "shared/fullname", user: @referee%></span>
           </div>
-          <div class="col-2"><%= "#{@referee.club.name}" %></div>
+          <div class="col-2">
+            <%= "#{@referee.club.name}" %>
+            <% if @referee.club.website.present? %>
+              <br>
+              <%= link_to @referee.club.website, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
+            <% end %>
+          </div>
           <div class="col-3"><%= "#{@referee.email}" %></div>
           <div class="col-2"><%= "#{@referee.phone_number}" %></div>
         </div>

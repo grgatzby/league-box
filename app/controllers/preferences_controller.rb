@@ -23,31 +23,9 @@ class PreferencesController < ApplicationController
       email: params[:preference][:e_mail]
     }
 
-    # Handle profile picture upload if present
-    if params[:user] && params[:user][:profile_picture].present?
-      user_params[:profile_picture] = params[:user][:profile_picture]
-    end
-
-    current_user.update(user_params)
-
-    flash[:notice] = t(".details_stored_flash")
-
-    redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
-  end
-
-  def update
-    # update preference record for current_user, coming form form preferences/edit.html.erb
-    preference = Preference.find(params[:id])
-    preference.update(clear_format: params[:clear_format]=="1")
-    preference.save
-
-    # update current_user details
-    user_params = {
-      nickname: params[:preference][:nickname],
-      first_name: params[:preference][:first_name],
-      last_name: params[:preference][:last_name],
-      phone_number: params[:preference][:phone_number],
-      email: params[:preference][:e_mail]
+    # update club details
+    club_params = {
+      website: params[:preference][:website]
     }
 
     # Handle profile picture upload if present
@@ -56,8 +34,74 @@ class PreferencesController < ApplicationController
     end
 
     current_user.update(user_params)
-
+    current_user.club.update(club_params)
     flash[:notice] = t(".details_stored_flash")
+
+    redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
+  end
+
+  def update
+    # Track if any changes were made
+    changes_made = false
+
+    # update preference record for current_user, coming form form preferences/edit.html.erb
+    preference = Preference.find(params[:id])
+    new_clear_format = params[:clear_format] == "1"
+    if preference.clear_format != new_clear_format
+      preference.update(clear_format: new_clear_format)
+      preference.save
+      changes_made = true
+    end
+
+    # Check if user details changed
+    user_params = {}
+    user_params[:nickname] = params[:preference][:nickname] if params[:preference][:nickname].to_s != (current_user.nickname || "").to_s
+    user_params[:first_name] = params[:preference][:first_name] if params[:preference][:first_name].to_s != (current_user.first_name || "").to_s
+    user_params[:last_name] = params[:preference][:last_name] if params[:preference][:last_name].to_s != (current_user.last_name || "").to_s
+    user_params[:phone_number] = params[:preference][:phone_number] if params[:preference][:phone_number].to_s != (current_user.phone_number || "").to_s
+    user_params[:email] = params[:preference][:e_mail] if params[:preference][:e_mail].to_s != (current_user.email || "").to_s
+
+    # Handle profile picture upload if present
+    if params[:user] && params[:user][:profile_picture].present?
+      user_params[:profile_picture] = params[:user][:profile_picture]
+      changes_made = true
+    end
+
+    if user_params.any?
+      current_user.update(user_params)
+      changes_made = true
+    end
+
+    # update club website (if user is admin or referee)
+    if current_user && (current_user.role&.include?("referee") || current_user == @admin)
+      begin
+        # Determine which club to update
+        club = if current_user == @admin && params[:club_id].present?
+                 # Admin can update any club
+                 Club.find(params[:club_id])
+               else
+                 # Referee/player can only update their own club
+                 current_user.club
+               end
+
+        # Check if website changed
+        website_value = params[:preference]&.dig(:website) || ""
+        if (club.website || "").to_s != website_value.to_s
+          club.update(website: website_value)
+          changes_made = true
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        # Club not found - log error but don't break the form submission
+        Rails.logger.error("Club not found in preferences update: #{e.message}")
+      rescue => e
+        # Log any other errors but don't break the form submission
+        Rails.logger.error("Error updating club website in preferences: #{e.message}")
+        Rails.logger.error(e.backtrace.join("\n"))
+      end
+    end
+
+    # Only show flash notice if changes were made
+    flash[:notice] = t(".details_stored_flash") if changes_made
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 

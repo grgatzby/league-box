@@ -6,11 +6,11 @@ fr:
     navbar:
       login_link: Connexion
     navbar_dropdown:
-      tournament_rules_link: 📜 Règles
+      tournament_rules_link: 📜 Les règles
       my_club_link: 🎾 Mon club
       all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement du round
-      league_table_link: 🏆🏆 League table
+      league_table_link: 🏆🏆 Classement du tournoi
       my_scores_link: ✉️ Mes scores & chatroom
       my_profile_link: 👤 Mon profil
       gallery_link: 📷 Galerie
@@ -49,6 +49,7 @@ fr:
         Joignez les membres de votre box de préférence via la chatroom.<br>
         Vous trouverez leurs coordonnées et celles des membres du tournoi dans l'<a class='btn btn-inlayed bold-font color-grey' href='#player_directory'>annuaire des joueurs</a> ci-dessous.
       staff_p04b_html: ce formulaire.
+      staff_p05: "Site internet du club: "
       header_role: 🧩 Rôle
       header_name: 👤 Nom
       header_club: 🎾 Club
