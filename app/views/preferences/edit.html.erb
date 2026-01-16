@@ -207,8 +207,10 @@
       <%# My Club Section: Allow admin/referee to edit club website %>
       <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
         <hr>
-        <b><%= t(".my_club") %></b><br>
-        <%# Determine selected club for display %>
+        <div class="row">
+          <div class="col-4"><b><%= t(".my_club") %></b></div>
+          <div class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></div>
+        </div>
         <% if current_user == @admin %>
           <% available_clubs = Club.all.reject { |c| c == @sample_club } %>
           <% selected_club_id = if params[:club_id].present?

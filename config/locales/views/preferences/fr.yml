@@ -34,9 +34,11 @@ fr:
       choose_file: Choisir un fichier
       no_file_selected: Aucun fichier sélectionné
       my_club: Mon Club
+      website_note_html: Pour changer l'identité visuelle du club, utilisez la page %{inset}.
+      website_note_club: Mon Club
       website: Site Web
       website_placeholder: "https://exemple.com"
-      website_help: "Entrez l'URL complète du site web (ex: https://exemple.com)"
+      website_help: "Entrez l'URL complète du site web (par exemple https://exemple.com)"
       update_website: Mettre à jour le Site Web
       select_club: Sélectionner un Club
       unauthorized: "Vous n'êtes pas autorisé à modifier le site web du club."
