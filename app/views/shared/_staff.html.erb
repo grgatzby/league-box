@@ -75,10 +75,10 @@
               <span><%= render "shared/fullname", user: referee%></span>
             </div>
             <div class="col-2">
-              <%= "#{referee.club.name}" %>
               <% if referee.club.website.present? %>
-                <br>
-                <%= link_to referee.club.website, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
+                <%= link_to referee.club.name, referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
+              <% else %>
+                <%= referee.club.name %>
               <% end %>
             </div>
             <div class="col-3"><%= "#{referee.email}" %></div>
@@ -107,10 +107,10 @@
             <span><%= render "shared/fullname", user: @referee%></span>
           </div>
           <div class="col-2">
-            <%= "#{@referee.club.name}" %>
             <% if @referee.club.website.present? %>
-              <br>
-              <%= link_to @referee.club.website, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "text-decoration-none" %>
+              <%= link_to @referee.club.name, @referee.club.website, target: "_blank", rel: "noopener noreferrer", class: "btn btn-inlayed bold-font color-blue" %>
+            <% else %>
+              <%= @referee.club.name %>
             <% end %>
           </div>
           <div class="col-3"><%= "#{@referee.email}" %></div>
