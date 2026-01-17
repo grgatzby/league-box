@@ -21,8 +21,10 @@ class ChatroomsController < ApplicationController
       # [1..] removes the first character '#' of the name (same as [1..-1])
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..])
       @box_nb = @chatroom.box.box_number
-      @round = @chatroom.box.round
+      # general chatroom has no round, then set @round to club's current round
+      @round = @chatroom.box.round unless @chatroom.name == "general"
       @round_nb = round_label(@round)
+
     elsif (params[:round] && current_user.role == "player") || params[:box]
       # [B] displays a chatroom after selecting a club, a round and a box number
       # either selects an open chatroom or create (open) a chatroom
