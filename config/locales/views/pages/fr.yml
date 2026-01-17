@@ -28,7 +28,7 @@ fr:
         Après chaque match, <b>entrez votre score</b> dans %{inset_a}, %{inset_b}, ou %{inset_c}.
       li07_list_view: Vue en liste
       li07_grid_view: Vue en grille
-      li07_my_scores: Mes scores & chatroom
+      li07_my_scores: Scores & messagerie
       li08_html: <b>Votre classement est à jour</b> dans %{inset_a} et %{inset_b}.
       li08_round_ranking: 🏆 Classement du round
       li08_league_table: 🏆🏆 League table
@@ -181,7 +181,7 @@ fr:
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
     7_disputes:
       disputes: Différends
-      mail_to_referee_html: "%{referee_name} par e-mail (<i>%{referee_email}</i>) ou via la Chatroom de votre box"
+      mail_to_referee_html: "%{referee_name} par e-mail (<i>%{referee_email}</i>) ou via la Messagerie de votre box"
       mail_to_admin_html: "votre admin (e-mail: <i>%{admin_email}</i>)"
       p40_html: "Les décisions de l'Arbitre (Referee) du Tournoi sont définitives. Toute demande de différend est à adresser à %{mailto}."
     sitemap:
@@ -235,7 +235,7 @@ fr:
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en grille</span> ( <i class='fa-regular fa-table-list color-tennis-blue'></i> ) est affiché.
       my_scores: Mes scores
       p22_html: Chacune de mes dates de matchs et les points des joueurs avec des liens tels que <span class='color-tennis-blue'>Vers ma box</span>, <span class='color-tennis-blue'>Carte du match</span> et <span class='color-tennis-blue'>Entrer le score</span>.
-      p23_html: Lien vers la <span class='color-tennis-blue'>chatroom de box</span> pour organiser vos prochains matchs.
+      p23_html: Lien vers la <span class='color-tennis-blue'>messagerie de box</span> pour organiser vos prochains matchs.
       match_results: Affichage des résultats du match
       p24: "Détails d'un match joué:"
       li05: date du match et numéro du terrain
@@ -246,14 +246,14 @@ fr:
       p25: Formulaire pour saisir les détails d'un nouveau match.
       match_edit_score: Éditer le score
       p26: Formulaire pour modifier les détails du match ou supprimer le score.
-      chatrooms: Chatrooms
+      chatrooms: Messageries
       p27_html: >
-        Les chatrooms sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='bold-font color-tennis-red'>Mes scores & chatroom</span> pour les joueurs.<br>
-        La <b>chatroom #general</b> est réservée à l'admin et aux referees quel que soit leur club.
+        Les messagerie sont accessibles depuis le menu principal pour l'admin et les referee et depuis la page <span class='bold-font color-tennis-red'>Scores & messagerie</span> pour les joueurs.<br>
+        La <b>messagerie #general</b> est réservée à l'admin et aux referees quel que soit leur club.
         Sa vocation est la communication à portée générale, et non pour un club spécifique, et pour communiquer avec l'admin.<br>
-        Dans les chatrooms, une couleur est attribuée aux messages, selon leur auteur:<br>
+        Dans les messagerie, une couleur est attribuée aux messages, selon leur auteur:<br>
       p28_html: >
-        Chaque box dispose d'une <b>chatroom</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Mes scores & chatroom</span>.<br><br>
+        Chaque box dispose d'une <b>messagerie</b> dédiée, accessible aux joueurs depuis la page <span class='bold-font color-tennis-red'>Scores & messagerie</span>.<br><br>
         Une couleur est attribuée aux messages, selon leur auteur:<br>
       li08_html: <span class='color-tennis-blue'>Les messages des joueurs de votre club apparaissent en bleu</span>
       li09_html: <span class='color-tennis-aqua'>Les messages de votre Referee apparaissent en aqua</span>

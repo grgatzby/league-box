@@ -11,6 +11,8 @@ nl:
         Bericht positie:<br />
         Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chatroom %{chatroom}"
+      general_chatroom_title: "Algemene chatroom"
+      box_chatroom_title: "Chatroom - Box %{box_nb}"
       message_invite: "> Bericht naar"
       send_btn: ⎷ Versturen
       back_btn: ⇤

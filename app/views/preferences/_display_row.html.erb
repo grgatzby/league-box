@@ -5,9 +5,9 @@
     emoji: String emoji for the label
     label: Label text
     value: Value to display
-    value_col: Bootstrap column class for value (default: "col-3")
+    value_col: Bootstrap column class for value (default: "col-8")
 %>
-<% value_col = local_assigns[:value_col] || 'col-3' %>
+<% value_col = local_assigns[:value_col] || 'col-8' %>
 <div class="row">
   <div class="col-4"><%= "#{emoji} #{label}:" %></div>
   <div class="<%= value_col %>"><%= value %></div>

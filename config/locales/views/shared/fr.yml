@@ -11,11 +11,11 @@ fr:
       all_boxes_link: 📦 Les box
       round_ranking_link: 🏆 Classement du round
       league_table_link: 🏆🏆 Classement du tournoi
-      my_scores_link: ✉️ Mes scores & chatroom
+      my_scores_link: ✉️ Scores & messagerie
       my_profile_link: 👤 Mon profil
       gallery_link: 📷 Galerie
-      general_chat_link: "Chatroom #general"
-      chatrooms_link: ✉️ Chatrooms
+      general_chat_link: "Messagerie #general"
+      chatrooms_link: ✉️ Messageries
       round_end_link: Repousser la fin du round
       log_out_link: Déconnexion
     display_round:
@@ -42,11 +42,11 @@ fr:
       staff_p02_html: >
         Il vous aidera à résoudre les désaccords sur un score déjà entré, ou pourra saisir un score à votre place.<br>
       staff_p03_html: >
-        &emsp;&emsp;&emsp;→ contactez votre <b>Arbitre</b> (Referee) via la Chatroom de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores & chatroom</a>).<br>
+        &emsp;&emsp;&emsp;→ contactez votre <b>Arbitre</b> (Referee) via la Messagerie de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Scores & messagerie</a>).<br>
         &emsp;&emsp;&emsp;→ contactez l'<b>admin</b> via
       staff_p04a_html: >
         le lien <a class='btn btn-inlayed bold-font color-grey' href='%{path}'>✉️</a> dans la bannière de bas de page.<br>
-        Joignez les membres de votre box de préférence via la chatroom.<br>
+        Joignez les membres de votre box de préférence via la messagerie.<br>
         Vous trouverez leurs coordonnées et celles des membres du tournoi dans l'<a class='btn btn-inlayed bold-font color-grey' href='#player_directory'>annuaire des joueurs</a> ci-dessous.
       staff_p04b_html: ce formulaire.
       staff_p05: "Site internet du club: "
