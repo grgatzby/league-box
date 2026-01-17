@@ -8,11 +8,11 @@ en:
       welcome_title: A Social Tournament in your own Club
       p01_html: >
         <ul>
-          <li> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
-          <li> Only <b class='color-tennis-aqua'>members of the club</b> may participate,
-          <li> Participants are dealt into <b class='color-tennis-aqua'>boxes of comparable level</b>, of 4/5 players,
-          <li> The season includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
-          <li> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Season winner.
+          <li class="home-feature-item"> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
+          <li class="home-feature-item"> Only <b class='color-tennis-aqua'>members of the club</b> may participate,
+          <li class="home-feature-item"> Participants are dealt into <b class='color-tennis-aqua'>boxes of comparable level</b>, of 4/5 players,
+          <li class="home-feature-item"> The season includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
+          <li class="home-feature-item"> During each round <b class='color-tennis-aqua'>points earned accumulate</b> to name an overall Season winner.
         </ul>
       p02_html: 🥇🥈🥉 The <b>Round Ranking</b> and the <b>League Table</b> (tournament ranking) shall be updated after each score entry and displayed on the league board at the end of each round.
       p03_html: >

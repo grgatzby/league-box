@@ -8,10 +8,10 @@ nl:
       welcome_title: Het Sociaal Toernooi van jouw club
       p01_html: >
         <ul>
-          <li> Door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
-          <li> Alleen <b class='color-tennis-aqua'>leden van de club</b> mogen deelnemen.
-          <li> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen afhankelijk van hun niveau</b> van 4/5 spelers.
-          <li> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
+          <li class="home-feature-item"> Door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
+          <li class="home-feature-item"> Alleen <b class='color-tennis-aqua'>leden van de club</b> mogen deelnemen.
+          <li class="home-feature-item"> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen afhankelijk van hun niveau</b> van 4/5 spelers.
+          <li class="home-feature-item"> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
         </ul>
       p02_html: 🥇🥈🥉 De <b>ronde rangschikking</b> en de <b>League Table</b> (toernooi rangschikking) worden automatisch bijgewerkt een weergegeven op het competitiebord aan het einde van elke ronde.
       p03_html: >

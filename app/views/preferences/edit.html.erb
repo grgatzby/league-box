@@ -1,5 +1,5 @@
 <%# My details form for existing user %>
-<%# render "shared/image_front" %>
+<%= render "shared/image_front" %>
 <div class="<%= class_names("container": !@is_mobile) %>">
   <div class="one-liner">
     <h3><%= t '.title' %></h3>
@@ -20,8 +20,8 @@
       <br><br>
 
       <%# Display-only information rows %>
-      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name %>
-      <%= render "preferences/display_row", emoji: "🧩", label: t(".role"), value: current_user.role.capitalize %>
+      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name.capitalize %>
+      <%= render "preferences/display_row", emoji: "🧩", label: t(".role"), value: current_user.role %>
 
       <%# Editable form fields %>
       <%= render "preferences/form_field",
@@ -68,7 +68,7 @@
 
       <div class="row">
         <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
-        <div class="col-4">
+        <div class="col-8">
           <div style="display: flex; align-items: center; gap: 15px;">
             <div class="custom-file-input-wrapper">
               <%= file_field_tag "user[profile_picture]", accept: "image/jpeg,image/jpg,image/png,image/gif,image/webp", class: "form-control custom-file-input", id: "profile_picture_input" %>
@@ -162,7 +162,7 @@
       <div class="row">
         <div class="col-4"><%= preference_f.label :password, "🔐 #{t(".password")}:" %></div>
         <div class="col-8">
-          <i><%= preference_f.label :password, t(".modify_password") %></i>
+          <small><i><%= preference_f.label :password, t(".modify_password") %></i></small>
           &nbsp;&nbsp;<%= check_box_tag(:password,"1", params[:password].eql?("1")) %>
         </div>
       </div>
@@ -173,8 +173,8 @@
         <%# check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
       <div class="row">
         <div class="col-4"><%= t(".expanded_view") %></div>
-        <div class="col-5">
-          <i><%= preference_f.label :clear_format, t(".clear_format") %></i>
+        <div class="col-8">
+          <small><i><%= preference_f.label :clear_format, t(".clear_format") %></i></small>
           &nbsp;&nbsp;<%= check_box_tag(:clear_format,"1", @preference.clear_format.eql?(true)) %>
         </div>
       </div>
@@ -199,8 +199,8 @@
       <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
         <hr>
         <div class="row">
-          <div class="col-4"><b><%= t(".my_club") %></b></div>
-          <div class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></div>
+          <div class="col-4"><b><%= t(".club_details") %></b></div>
+          <small class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></small>
         </div>
         <% if current_user == @admin %>
           <% available_clubs = Club.all.reject { |c| c == @sample_club } %>
@@ -215,10 +215,10 @@
           <%# Admin club selection dropdown (not a separate form, just updates the hidden field) %>
           <div class="row mb-3">
             <div class="col-4"><%= label_tag :club_id, t(".select_club"), class: "form-label" %></div>
-            <div class="col-6">
+            <div class="col-8">
               <%= select_tag :club_id,
                   options_for_select(available_clubs.map { |club| [club.name, club.id] }, selected_club_id),
-                  { class: "form-control", id: "club_select_dropdown" } %>
+                  { class: "form-control", id: "club_select_dropdown", style: "width: 20em; max-width: 100%" } %>
             </div>
           </div>
           <%# Store club data for JavaScript (embedded in script tag) %>
@@ -233,14 +233,15 @@
         <%# Website update field %>
         <div class="row">
           <div class="col-4"><%= preference_f.label :website, "🌐 #{t(".website")}:", for: "website_input" %></div>
-          <div class="col-6">
+          <div class="col-8">
             <%= preference_f.text_field :website,
                 placeholder: t(".website_placeholder"),
                 value: selected_club.website,
-                style: "width: 100%; max-width: 30em",
+                #style: "width: 100%; max-width: 30em",
+                style: "width: 20em; max-width: 100%",
                 class: "form-control",
                 id: "website_input" %>
-            <small class="form-text text-muted"><%= t(".website_help") %></small>
+            <small class="form-text text-muted"><i><%= t(".website_help") %></i></small>
           </div>
         </div>
 

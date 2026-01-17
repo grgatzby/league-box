@@ -33,7 +33,7 @@ nl:
       submit_button: OK
       choose_file: Bestand kiezen
       no_file_selected: Geen bestand geselecteerd
-      my_club: Mijn Club
+      club_details: Club details
       website_note_html: Om de club identiteit te wijzigen, gebruik de %{inset} pagina.
       website_note_club: Mijn Club
       website: Website

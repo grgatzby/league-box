@@ -33,7 +33,7 @@ fr:
       submit_button: OK
       choose_file: Choisir un fichier
       no_file_selected: Aucun fichier sélectionné
-      my_club: Mon Club
+      club_details: Détails du club
       website_note_html: Pour changer l'identité visuelle du club, utilisez la page %{inset}.
       website_note_club: Mon Club
       website: Site Web

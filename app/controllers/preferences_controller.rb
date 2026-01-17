@@ -3,53 +3,23 @@
 # Allows users to update their profile information (nickname, name, email, phone, profile picture).
 # Allows admin and referees to update club website information.
 class PreferencesController < ApplicationController
-  # Display form for new user registration/preferences
-  # Used when a user first creates their account
-  def new
-    @preference = Preference.new(user_id: current_user.id)
-  end
-
   # Display form for existing user to edit preferences
+  # Creates preference record if it doesn't exist, then shows the form
   # Shows current user's preferences including personal details and club website (for admin/referee)
   def edit
-    @preference = current_user.preference
-  end
-
-  # Create preference record for new user and update user/club details
-  # Called during initial user registration to set up preferences
-  # Updates both User model and Club model (if website is provided)
-  def create
-    # Create preference record with clear_format setting
-    preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
-    preference.save
-
-    # update current_user details (using strong parameters)
-    pref_params = preference_params
-    user_params = {
-      nickname: pref_params[:nickname],
-      first_name: pref_params[:first_name],
-      last_name: pref_params[:last_name],
-      phone_number: pref_params[:phone_number],
-      email: pref_params[:e_mail]
-    }
-
-    # update club details (using strong parameters)
-    club_params = {
-      website: pref_params[:website]
-    }
-
-    # Handle profile picture upload if present
-    if params[:user] && params[:user][:profile_picture].present?
-      user_params[:profile_picture] = params[:user][:profile_picture]
+    # Handle case where ID is 0 (from navbar when preference doesn't exist yet) or preference is nil
+    if params[:id] == "0" || current_user.preference.nil?
+      @preference = current_user.preference || Preference.create(user_id: current_user.id, clear_format: false)
+    else
+      @preference = Preference.find(params[:id])
+      # Ensure the preference belongs to the current user
+      unless @preference.user_id == current_user.id
+        @preference = current_user.preference || Preference.create(user_id: current_user.id, clear_format: false)
+      end
     end
-
-    current_user.update(user_params)
-    current_user.club.update(club_params)
-    flash[:notice] = t(".details_stored_flash")
-
-    redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 
+  
   # Update preference record and user/club details for existing user
   # Tracks changes to only show flash notice if actual changes were made
   # Handles user details, profile picture, and club website updates (for admin/referee)

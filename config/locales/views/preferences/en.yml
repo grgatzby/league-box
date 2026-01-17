@@ -33,7 +33,7 @@ en:
       submit_button: OK
       choose_file: Choose File
       no_file_selected: No file selected
-      my_club: My Club
+      club_details: Club details
       website_note_html: To change the club branding, please use the %{inset} page.
       website_note_club: My Club
       website: Website
