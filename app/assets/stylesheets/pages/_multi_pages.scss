@@ -71,7 +71,7 @@ span img {
   position: relative;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     background-size: 110%;
     filter: brightness(1.1);
@@ -98,7 +98,7 @@ span img {
   }
 
   &:hover .club-logo-overlay {
-    transform: scale(1.05);
+    transform: scale(1.02);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
 
@@ -113,7 +113,7 @@ span img {
   }
 
   &:hover .image-home-text {
-    transform: scale(1.1);
+    transform: scale(1.02);
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
     letter-spacing: 0.05em;
   }

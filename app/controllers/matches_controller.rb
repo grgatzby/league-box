@@ -1,3 +1,8 @@
+# Matches Controller
+# Handles match creation, editing, deletion, and score validation.
+# Manages match scores (two sets + optional tiebreak), points calculation, and statistics updates.
+# Validates tennis scoring rules and updates UserBoxScore statistics (points, matches, sets, games).
+# Allows CSV import of match scores for bulk loading.
 class MatchesController < ApplicationController
   REQUIRED_SCORES_HEADERS = ["first_name_player", "last_name_player",
                             "first_name_opponent", "last_name_opponent",
@@ -6,8 +11,10 @@ class MatchesController < ApplicationController
   REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
   REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_nb", "input_user_id", "input_date"]
-  SHORT_TIEBREAK_EDIT = 7 #although the tie-break rule is first to 10, admin/referee may edit score and allow first to 7
+  SHORT_TIEBREAK_EDIT = 7 # Tiebreak rule is first to 10, but admin/referee may edit score and allow first to 7
 
+  # Display match details with scores for both players
+  # Shows match time, court, scores, and referee information
   def show
     @page_from = local_path(params[:page_from])
     set_club_round
@@ -21,12 +28,16 @@ class MatchesController < ApplicationController
     @opponent_match_score = match_score(@match, @opponent)
   end
 
+  # Display form to create a new match
+  # Validates that round has started before allowing score entry
+  # Sets maximum match date to round end_date or current time (whichever is earlier)
   def new
     @page_from = local_path(params[:page_from])
     @round = Round.find(params[:round_id])
     set_club_round
     @current_player = params[:player] ? User.find(params[:player]) : current_user
     @box = my_own_box(@round, @current_player)
+    # Validation: prevent score entry before round start_date
     if @round.start_date > Time.now
       flash[:notice] = t('.round_not_started_flash')
       redirect_back(fallback_location: @page_from)
@@ -56,16 +67,22 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Create a new match with scores for both players
+  # Validates scores, calculates points, updates UserBoxScore statistics, and recalculates rankings
+  # Score format: "4-2 1-3 10-7" (set1 player1-player2, set2 player1-player2, tiebreak player1-player2)
+  # Points calculation:
+  #   - Winner: 20 points
+  #   - Loser: 10 points per set won + number of games in lost sets
+  #   - Tiebreak counts as one set (no points for loser)
   def create
-    # create new Match instance with the matches/new.html.erb form and 2 UserMatchScore instances
     @match = Match.new
     @current_player = User.find(params[:player])
     @match.box = my_own_box(Round.find(params[:round_id]), @current_player)
-    # get the court from the input court number (user inputs court number in lieu of court id)
+    # Get court from court number (user inputs court number, not court ID)
     @match.court = Court.find_by name: params[:match][:court_id]
 
     match_scores = [{}, {}]
-    # eg: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
+    # Example: "4-2 1-3 10-7" => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
     score_set1 = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_set1])
     score_set2 = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_set2])
     score_tiebreak = score_to_a(params[:match][:user_match_scores_attributes]["0"][:score_tiebreak])
@@ -136,11 +153,12 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Display form to edit match scores (admin and referees only)
+  # Allows modification of match scores, court, and match date
+  # Converts match time from UTC to local time for display
   def edit
     @page_from = local_path(params[:page_from])
     set_club_round
-    # for admin and referees only
-    # allows to edit match scores (match and 2 user_match_scores)
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
     if @user_match_scores[0].score_tiebreak.zero? && @user_match_scores[1].score_tiebreak.zero?
       @user_match_scores[0].score_tiebreak = "Na"
@@ -158,12 +176,15 @@ class MatchesController < ApplicationController
     @max_end_date = [@round.end_date, Time.now].min
   end
 
+  # Update match scores (admin and referees only)
+  # Recalculates points and updates UserBoxScore statistics (removes old values, adds new values)
+  # Updates rankings after score change
   def update
     match = Match.find(params[:match_id])
     user_match_scores = UserMatchScore.where(match_id: params[:match_id])
 
+    # Store current match points before update (for delta calculation)
     results = compute_results(user_match_scores) # ARRAY of won sets count for each player
-    # stores current match points for each player
     match_points = [{}, {}]
     [0, 1].each do |index|
       match_points[index][:points] = user_match_scores[index].points
@@ -238,9 +259,11 @@ class MatchesController < ApplicationController
     @round_nb = round_label(@round)
   end
 
+  # Bulk import match scores from CSV file (admin/referee only)
+  # Removes existing matches for the round before importing
+  # Creates players if they don't exist in the database
+  # Updates UserBoxScore statistics and rankings after import
   def create_scores
-    # populate match_scores for a chosen club and round from a CSV file
-    # if players don't exist in the database, create them
     csv_file = params[:csv_file]
     delimiter = params[:delimiter]
     round = Round.find(params[:round_id])
@@ -345,13 +368,10 @@ class MatchesController < ApplicationController
     rank_players(match.box.round.user_box_scores)
   end
 
+  # Validate match scores for an edit
+  # Similar to #test_new_score but uses existing results for validation
+  # Returns: true if valid, false otherwise
   def test_edit_score(match_scores, results)
-    # for a score edit
-    # return true if scores entered in matches/edit are valid, false otherwise
-    # return match_scores (array of 2 hashes of scores)
-    # eg: 4-2 1-3 10-7
-    #     => [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #          {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
     if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
        (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
       flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
@@ -377,18 +397,16 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Calculate points for both players based on match scores
+  # Parameters: match_scores (array of 2 hashes with score_set1, score_set2, score_tiebreak)
+  # Returns: results (array of won sets count for each player)
+  # Also modifies match_scores to add :points key
+  # Points rules:
+  #   - Winner: 20 points total
+  #   - Loser: 10 points per set won + number of games in lost sets
+  #   - Tiebreak counts as one set (no points for loser)
+  # Example: 4-2 1-3 10-7 => Winner: 20 points, Loser: 12 points (10+2 for lost set1, +0 for lost set2)
   def compute_points(match_scores)
-    # match_scores (array of 2 hashes of scores) => results (array of won sets count for each player)
-    # eg: for 4-2 1-3 10-7
-    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    # =>  [ 2 , 1 ] & transforms entry array:
-    #     [ {score_set1: 4, score_set2: 1, score_tiebreak: 10, points: 20 },
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7, points: 12} ]
-    # Points rules:
-    #   - Winner earns 20 points
-    #   - Looser earns 10 points per set won + number of games per lost set
-    #   - The championship tie-break counts as one set (no points awarded for the looser)
 
     results = compute_results(match_scores)
     # first set
@@ -424,12 +442,11 @@ class MatchesController < ApplicationController
     results
   end
 
+  # Validate match scores for a new match
+  # Checks: both sets have scores, tiebreak present if sets are 1-1, tiebreak margin is 2+ points
+  # Returns: ARRAY [sets_won_player1, sets_won_player2] if valid, false otherwise
+  # Example: 4-2 1-3 10-7 => [2, 1] (player1 wins 2 sets)
   def test_new_score(match_scores)
-    # for a new match
-    # return ARRAY of won sets count for each player if scores entered in matches/new are valid,
-    # eg: 4-2 1-3 10-7
-    #     => [ 2, 1 ]
-    # returns false otherwise
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
     # test scores entries for first set and second set
     if !match_scores ||
@@ -473,11 +490,12 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Calculate number of sets won by each player
+  # Parameters: match_scores (array of 2 hashes with score_set1, score_set2, score_tiebreak)
+  # Returns: [sets_won_player1, sets_won_player2]
+  # Tiebreak only counted if sets are 1-1
+  # Example: [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}] => [2, 1]
   def compute_results(match_scores)
-    # compute and returns results (array of won sets count for each player)
-    # eg: [ {score_set1: 4, score_set2: 1, score_tiebreak: 10},
-    #       {score_set1: 2, score_set2: 3, score_tiebreak: 7} ]
-    # =>  [ 2 , 1 ]
 
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
 
@@ -507,15 +525,16 @@ class MatchesController < ApplicationController
     [results[:sets_won1], results[:sets_won2]]
   end
 
+  # Convert set score string to array
+  # Example: "4-3" => [4, 3]
   def score_to_a(score)
-    # convert set score "4-3" into array [4, 3]
     score.split("-").map(&:to_i)
   end
 
+  # Convert full match score string to match_scores array
+  # Example: "4-2 1-3 10-7" => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
+  # Converts string to array of arrays first: [[4, 2], [1, 3], [10, 7]]
   def match_scores_to_a(score)
-    # convert score "4-2 1-3 10-7" into match_scores
-    # [{:score_set1=>4, :score_set2=>1, :score_tiebreak=>10}, {:score_set1=>2, :score_set2=>3, :score_tiebreak=>7}]
-    # first conversion of "4-2 1-3 10-7" into array of arrays [[4, 2], [1, 3], [10, 7]]
     score = score.split.map { |s| s.split("-").map(&:to_i) }
     score << [0, 0] if score.length == 2 # in case no tiebreak
     if score.length >= 2
@@ -532,15 +551,17 @@ class MatchesController < ApplicationController
     end
   end
 
+  # Calculate total games won by a player in a match
+  # Sum of games from set1, set2, and tiebreak
   def won_games(user_match_score)
-    # sum of games of a player's match card
     user_match_score.score_set1 + user_match_score.score_set2 + user_match_score.score_tiebreak
   end
 
+  # Determine winner and loser from CSV row
+  # CSV format: score is winner's score, points_opponent column indicates if player won (20 points = win)
+  # Creates players if they don't exist in database
+  # Returns: [winner, loser] array
   def winner_loser(row)
-    # in PM Holland Park spreadsheet, the score is formatted as the winner's score and only the points_opponent columns
-    # reveals whether its the player's score or the opponent's score.
-    # this method returns the array [winner, loser]
     if row[:role_player] && row[:role_opponent]
       if row[:points_opponent].to_i != 20
         winner = User.find_by(first_name: row[:first_name_player], last_name: row[:last_name_player])

@@ -1,7 +1,14 @@
+# Messages Controller
+# Handles chatroom message creation and deletion (admin only).
+# Uses ActionCable for real-time message broadcasting and notifications.
 class MessagesController < ApplicationController
   before_action :set_message, only: [:destroy]
   before_action :authorize_admin, only: [:destroy]
 
+  # Create a new message in a chatroom
+  # Broadcasts message via ActionCable to all chatroom subscribers
+  # Sends notifications to all users with access (except the sender)
+  # Marks message as read for the sender
   def create
     @chatroom = Chatroom.find(params[:chatroom_id])
     @message = Message.new(message_params)
@@ -41,6 +48,8 @@ class MessagesController < ApplicationController
     end
   end
 
+  # Delete a single message (admin only)
+  # Broadcasts deletion via ActionCable to all chatroom subscribers
   def destroy
     @chatroom = @message.chatroom
     @message.destroy
@@ -52,6 +61,8 @@ class MessagesController < ApplicationController
     head :ok
   end
 
+  # Delete multiple messages at once (admin only)
+  # Broadcasts deletion for each message via ActionCable
   def bulk_delete
     authorize_admin
     @chatroom = Chatroom.find(params[:chatroom_id])
@@ -78,16 +89,19 @@ class MessagesController < ApplicationController
 
   private
 
+  # Set message instance variable from params
   def set_message
     @message = Message.find(params[:id])
   end
 
+  # Authorization check: only admin can delete messages
   def authorize_admin
     unless current_user == @admin
       head :forbidden
     end
   end
 
+  # Strong parameters for message form
   def message_params
     params.require(:message).permit(:content)
   end

@@ -1,16 +1,25 @@
+# Preferences Controller
+# Handles user preference management, including personal details and club website updates.
+# Allows users to update their profile information (nickname, name, email, phone, profile picture).
+# Allows admin and referees to update club website information.
 class PreferencesController < ApplicationController
+  # Display form for new user registration/preferences
+  # Used when a user first creates their account
   def new
-    #My details form for new user
     @preference = Preference.new(user_id: current_user.id)
   end
 
+  # Display form for existing user to edit preferences
+  # Shows current user's preferences including personal details and club website (for admin/referee)
   def edit
-    #My details form for existing user
     @preference = current_user.preference
   end
 
+  # Create preference record for new user and update user/club details
+  # Called during initial user registration to set up preferences
+  # Updates both User model and Club model (if website is provided)
   def create
-    # create preference record for current_user
+    # Create preference record with clear_format setting
     preference = Preference.new(clear_format: params[:clear_format]=="1", user_id: current_user.id)
     preference.save
 
@@ -41,8 +50,11 @@ class PreferencesController < ApplicationController
     redirect_to params[:password] == "1" ? edit_user_registration_path : boxes_path
   end
 
+  # Update preference record and user/club details for existing user
+  # Tracks changes to only show flash notice if actual changes were made
+  # Handles user details, profile picture, and club website updates (for admin/referee)
   def update
-    # Track if any changes were made
+    # Track if any changes were made (only show flash notice if changes occurred)
     changes_made = false
 
     # update preference record for current_user, coming form form preferences/edit.html.erb
@@ -109,9 +121,10 @@ class PreferencesController < ApplicationController
 
   private
 
+  # Strong parameters for preference form
+  # Permits website field even though it's not a Preference attribute
+  # The website field is used to update the Club model, not the Preference model
   def preference_params
-    # Permit website field even though it's not a Preference attribute
-    # It's used to update the Club model
     params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail, :website)
   end
 end
