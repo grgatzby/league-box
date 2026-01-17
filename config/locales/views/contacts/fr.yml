@@ -11,8 +11,8 @@ fr:
       error_message: "l'envoi de ce formulaire:"
       contact_p01_html: >
         Cette demande sera <span class='color-tennis-aqua'>envoyée à l'admin du site</span>. <br>Pour contacter votre Arbitre (Referee),
-        vous trouverez ses coordonnées ci-dessous, ou vous le joindrez sur la <b>Chatroom</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).
-      contact_p02_html: <u>Les différends sur les scores</u> devront être traités depuis la chatroom de votre box.
+        vous trouverez ses coordonnées ci-dessous, ou vous le joindrez sur la <b>Messagerie</b> de votre box (depuis la page <a class='btn btn-inlayed bold-font color-tennis-red' href='%{path}'>Mes scores</a>).
+      contact_p02_html: <u>Les différends sur les scores</u> devront être traités depuis la messagerie de votre box.
       prompt: Choisir un sujet →
       topics:
       - feedback: Commentaire sur le site

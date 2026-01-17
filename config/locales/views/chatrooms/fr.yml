@@ -10,31 +10,33 @@ fr:
           <span class= 'color-tennis-red'>- L'admin apparaît en rouge</span><br /><br />
         Position des messages:<br />
         Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
-      chatroom_title: "Chatroom %{chatroom}"
+      chatroom_title: "Messagerie %{chatroom}"
+      general_chatroom_title: "Messagerie générale"
+      box_chatroom_title: "Messagerie - Box %{box_nb}"
       message_invite: "> Message vers"
       send_btn: ⎷ Envoi
       back_btn: ⇤
-      chatroom_choice: Accéder à une chatroom ouverte, ou
-      chose_chatroom: "Choisir une chatroom ouverte: "
-      chatroom_name: Nom de la chatroom
+      chatroom_choice: Accéder à une messagerie ouverte, ou
+      chose_chatroom: "Choisir une messagerie ouverte: "
+      chatroom_name: Nom de la messagerie
       confirm_btn: ⎷ Confirmer
-      chatrooms_title: "Chatrooms %{club}"
-      unread_chatrooms_title: "Chatrooms avec messages non lus"
-      no_access_flash: Vous n'avez pas accès à cette chatroom
-      no_chatroom_flash: Cette chatroom n'existe pas
+      chatrooms_title: "Messageries %{club}"
+      unread_chatrooms_title: "Messagerie avec messages non lus"
+      no_access_flash: Vous n'avez pas accès à cette messagerie
+      no_chatroom_flash: Cette messagerie n'existe pas
       or: ou
-      new_chatroom: "Ouvrir une chatroom: "
+      new_chatroom: "Ouvrir une messagerie: "
       club: Choix d'un club
       round: Date de début du round
       box: Numéro de box
-      chatroom_created_flash: Création d'une nouvelle chatroom
+      chatroom_created_flash: Création d'une nouvelle messagerie
       message1_box_pop: >
-        Nom d'une chatroom:<br />
+        Nom d'une messagerie:<br />
         #[NomClub] - aaaa/mm_Rxx:Byy<br /><br />
         <i>aaaa/mm : année et mois du tournoi,<br />
         xx : index du round,<br />
         yy : numéro de la box.</i>
-      message2_box_pop: ouvrir une chatroom en choisissant
+      message2_box_pop: ouvrir une messagerie en choisissant
       message2_box_pop_admin: le club, le round et la box.
       message2_box_pop_referee: le round et la box.
       message2_box_pop_player_referee: le round et la box.
@@ -48,13 +50,13 @@ fr:
       confirm_bulk_delete: Êtes-vous sûr de vouloir supprimer les messages sélectionnés?
       bulk_delete_success: "%{count} message(s) supprimé(s) avec succès"
       no_messages_selected: Aucun message sélectionné
-      delete_chatroom_title: Supprimer une chatroom
-      delete_chatroom_popover: Sélectionnez une chatroom à supprimer. Cela supprimera définitivement la chatroom et tous ses messages.
-      select_chatroom_to_delete: "Sélectionner une chatroom à supprimer:"
-      chatroom_to_delete: "Chatroom à supprimer:"
-      messages_count: "Messages dans cette chatroom:"
-      confirm_delete_chatroom: Supprimer la Chatroom et Tous les Messages
-      confirm_delete_chatroom_message: Êtes-vous sûr de vouloir supprimer cette chatroom et tous ses messages? Cette action ne peut pas être annulée.
-      chatroom_deleted: Chatroom "%{chatroom}" et %{count} message(s) supprimé(s) avec succès
+      delete_chatroom_title: Supprimer une messagerie
+      delete_chatroom_popover: Sélectionnez une messagerie à supprimer. Cela supprimera définitivement la messagerie et tous ses messages.
+      select_chatroom_to_delete: "Sélectionner une messagerie à supprimer:"
+      chatroom_to_delete: "Messagerie à supprimer:"
+      messages_count: "Messages dans cette messagerie:"
+      confirm_delete_chatroom: Supprimer la messagerie et tous les messages
+      confirm_delete_chatroom_message: Êtes-vous sûr de vouloir supprimer cette messagerie et tous ses messages? Cette action ne peut pas être annulée.
+      chatroom_deleted: Messagerie "%{chatroom}" et %{count} message(s) supprimé(s) avec succès
       unauthorized: Vous n'êtes pas autorisé à effectuer cette action
-      cannot_delete_general: La chatroom générale ne peut pas être supprimée
+      cannot_delete_general: La messagerie générale ne peut pas être supprimée

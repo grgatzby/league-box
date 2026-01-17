@@ -11,6 +11,8 @@ en:
         Message positions:<br />
         Messages are displayed on the left of the screen, except for your messages which are on the right
       chatroom_title: "%{chatroom} chatroom"
+      general_chatroom_title: "General Chatroom"
+      box_chatroom_title: "Chatroom - Box %{box_nb}"
       message_invite: "> Message to"
       send_btn: ⎷ Send
       back_btn: ⇤

@@ -20,7 +20,7 @@
       <br><br>
 
       <%# Display-only information rows %>
-      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name.capitalize %>
+      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name.titleize %>
       <%= render "preferences/display_row", emoji: "🧩", label: t(".role"), value: current_user.role %>
 
       <%# Editable form fields %>

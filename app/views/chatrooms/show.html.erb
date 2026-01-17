@@ -15,11 +15,11 @@
   >
     <% if !@is_mobile %><br><% end %>
     <div class="one-liner" style="width: 100%">
-      <h3><%= @chatroom.name == "general" ? "General Chatroom" : "Chatroom - Box #{@box_nb}" %></h3>
+      <h3><%= @chatroom.name == "general" ? t(".general_chatroom_title") : t(".box_chatroom_title", box_nb: @box_nb) %></h3>
       <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">
-      #<%= t(".chatroom_title", chatroom: @chatroom.name) %>
+      <%= t(".chatroom_title", chatroom: "##{@chatroom.name}") %>
       <div>
         <%# link_to t('.back_btn'), :back, class: "btn btn-shape btn-yellow dont-print" %>
         <%= link_to t('.back_btn'), is_admin_or_referee ? chatroom_path(0) : my_scores_path(0), class: "btn btn-shape btn-yellow dont-print" %>

@@ -6,7 +6,7 @@ fr:
     table_view: vue en grille
     intro_lines:
       one_box_title_html: Box %{box} <i style="font-weight:normal">(%{view})</i>
-      my_scores_btn: Mes scores & chatroom
+      my_scores_btn: Scores & messagerie
       pop01_a: cliquer sur un match pour <i>éditer</i> ou <i>supprimer</i> son score
       pop01_b: ", ou <i>saisir</i> un nouveau score"
       pop02_html: si vous êtes dans cette box, votre nom apparaît en <span class='color-orange'>orange</span>
@@ -39,11 +39,11 @@ fr:
       valid_round_flash: "League table annuel: choisir un round valide"
       load_scores: 📄 charger les scores
     my_scores:
-      my_scores: Mes scores & chatroom
+      my_scores: Scores & messagerie
       intro_html: >
         La page <b class='color-tennis-red'>Mes scores</b> donne aux joueurs accès à une vue de leur propre Box, d'où ils accèdent à leurs cartes de match, et peuvent entrer de nouveaux scores,<br />
         ce qu'ils peuvent faire également dans les <b class='bold-font color-tennis-blue'>Vue en liste</b> et <b class='bold-font color-tennis-blue'>Vue en table</b>.<br><br>
-        <b class='color-tennis-red'>Mes scores</b> donne aussi accès à la <b>Chatroom de la box</b> pour organiser les matchs entre joueurs, ou contacter le Referee.<br>
+        <b class='color-tennis-red'>Mes scores</b> donne aussi accès à la <b>Messagerie de la box</b> pour organiser les matchs entre joueurs, ou contacter le Referee.<br>
       intro_stale: Pour le round choisi, accédez à <b>votre box</b><br />pour voir les détails de vos match, et saisir de nouveaux scores
       my_current_box: ma box en cours
       my_box: ma box
@@ -57,7 +57,7 @@ fr:
       enter_score_btn: Entrer le score
       match_not_played: Match non joué
       chat_in_my_box: Contacter les membres de la box, ou le Referee du Tournoi
-      access_chatroom_btn: chatroom de ma box
+      access_chatroom_btn: messagerie de la box
     show_list:
       intro_html: >
         La page des <span class='bold-font color-tennis-blue'>Vue en liste</span> affiche la liste des matchs d'une box, et donne aux joueurs accès à la carte de score des matchs.<br>
