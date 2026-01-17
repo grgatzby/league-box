@@ -19,60 +19,51 @@
       </div>
       <br><br>
 
-      <div class="row">
-        <div class="col-4"><%= "🎾 Club:" %></div>
-        <div class="col-3"><%= "#{current_user.club.name}" %></div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= "🧩 #{t(".role")}:" %></div>
-        <div class="col-3"><%= "#{current_user.role.capitalize}" %></div>
-      </div>
+      <%# Display-only information rows %>
+      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name %>
+      <%= render "preferences/display_row", emoji: "🧩", label: t(".role"), value: current_user.role.capitalize %>
 
-      <div class="row">
-        <div class="col-4"><%= preference_f.label :nickname, "😎 #{t(".nickname")}:" %></div>
-        <div class="col-2"><%= preference_f.text_field :nickname,
-                                placeholder: current_user.nickname,
-                                value: current_user.nickname,
-                                style: "width: 15em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= preference_f.label :first_name, "👤 #{t(".first_name")}:" %></div>
-        <div class="col-2"><%= preference_f.text_field :first_name,
-                                placeholder: current_user.first_name,
-                                value: current_user.first_name,
-                                style: "width: 15em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= preference_f.label :last_name, "👤 #{t(".last_name")}:" %></div>
-        <div class="col-2"><%= preference_f.text_field :last_name,
-                                placeholder: current_user.last_name,
-                                value: current_user.last_name,
-                                style: "width: 15em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= preference_f.label :e_mail, "📩 #{t(".e_mail")} :" %></div>
-        <div class="col-2"><%= preference_f.text_field :e_mail,
-                                placeholder: current_user.email,
-                                value: current_user.email,
-                                style: "width: 20em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-4"><%= preference_f.label :phone_number, "📞 #{t(".phone_number")} :" %></div>
-        <div class="col-2"><%= preference_f.text_field :phone_number,
-                                placeholder: current_user.phone_number,
-                                value: current_user.phone_number,
-                                style: "width: 10em",
-                                input_html: {class: "contact-field"} %>
-        </div>
-      </div>
+      <%# Editable form fields %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :nickname,
+          emoji: "😎",
+          label_text: t(".nickname"),
+          placeholder: current_user.nickname,
+          field_value: current_user.nickname,
+          width: "15em" %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :first_name,
+          emoji: "👤",
+          label_text: t(".first_name"),
+          placeholder: current_user.first_name,
+          field_value: current_user.first_name,
+          width: "15em" %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :last_name,
+          emoji: "👤",
+          label_text: t(".last_name"),
+          placeholder: current_user.last_name,
+          field_value: current_user.last_name,
+          width: "15em" %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :e_mail,
+          emoji: "📩",
+          label_text: t(".e_mail"),
+          placeholder: current_user.email,
+          field_value: current_user.email,
+          width: "20em" %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :phone_number,
+          emoji: "📞",
+          label_text: t(".phone_number"),
+          placeholder: current_user.phone_number,
+          field_value: current_user.phone_number,
+          width: "10em" %>
      <hr>
 
       <div class="row">

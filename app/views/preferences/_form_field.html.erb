@@ -1,0 +1,24 @@
+<%#
+  Form Field Partial
+  Renders a text field with label in a consistent row layout.
+  Parameters:
+    form: Form builder object
+    field_name: Symbol for the field name (e.g., :nickname)
+    emoji: String emoji for the label
+    label_text: Translated label text (already translated from parent view)
+    placeholder: Placeholder value for the input
+    field_value: Current value for the input
+    width: CSS width value (e.g., "15em", "20em")
+    input_col: Bootstrap column class for input (default: "col-2")
+%>
+<% input_col = local_assigns[:input_col] || 'col-2' %>
+<div class="row">
+  <div class="col-4"><%= form.label field_name, "#{emoji} #{label_text}:" %></div>
+  <div class="<%= input_col %>">
+    <%= form.text_field field_name,
+        placeholder: placeholder,
+        value: field_value,
+        style: "width: #{width}",
+        input_html: {class: "contact-field"} %>
+  </div>
+</div>
