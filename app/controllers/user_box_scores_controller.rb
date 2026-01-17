@@ -1,3 +1,7 @@
+# User Box Scores Controller
+# Handles league table display, sorting, CSV export, and club/round creation from CSV files.
+# Manages user box scores which track player statistics within a round (points, matches, sets, games).
+# Allows admin to create new clubs and rounds from CSV files.
 class UserBoxScoresController < ApplicationController
   require "csv"
   MIN_PLAYERS_PER_BOX = 4
@@ -8,10 +12,12 @@ class UserBoxScoresController < ApplicationController
   REFEREE = ["referee", "player referee"]
   PLAYERS = ["player", "player referee"]
   PLAYERS_AND_SPARES = PLAYERS + ["spare"] # referee can play in lieu of missing player in a box as a 'spare' player
-  # spare players do not appear ine the box league ranking
+  # spare players do not appear in the box league ranking
 
+  # Display league table for a specific round with sorting capabilities
+  # Allows users to sort by various columns (name, rank, points, matches, sets, games)
+  # Supports text export via @render_to_text flag
   def index
-    # displays the league table for the round, allows user to sort the table by click on headers
     set_club_round
     # @order dictates the sorting order of the selected header
     # it is passed from the partial _header_to_link.html.erb when a header is clicked
@@ -59,9 +65,11 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
+  # Display league table for entire tournament (all rounds with same league_start)
+  # Aggregates statistics across multiple rounds for each player
+  # Allows sorting by various columns similar to #index
   def index_league
     set_club_round
-    # displays the league table for the tournament (same club, same league_start), allows user to sort the table by click on headers
     # club_id = params[:club_id].to_i
     # club_id = @club.id
     #@club = Club.find(club_id)
@@ -125,14 +133,15 @@ class UserBoxScoresController < ApplicationController
   def new
   end
 
+  # Create a new club, courts, players, round, boxes, and user_box_scores from CSV file (admin only)
+  # CSV file requirements:
+  #   Required fields: id, email, first_name, last_name, phone_number, role
+  #   Optional fields: nickname, box_number
+  # Roles: player, referee, player referee, spare
+  # Players allocated in boxes by ID (descending order) or by box_number if provided
+  # Spare players do not appear in league ranking
+  # Note: New boxes assigned to #general chatroom initially, replaced when player visits My Scores
   def create
-    # (admin only) CREATE A NEW CLUB, its courts, players (given in a csv file), a round, its boxes and user_box_scores.
-    # The csv file must contain the following fields:
-    #      id, email, first_name, last_name, nickname, phone_number, role (player / referee / player referee / spare)
-    # Players are allocated in boxes by id (in descending order).
-    # The csv file may also contain the field box_number. Players are then allocated in the corresponding box.
-    # TO DO: for each new box, the assigned chatroom is the #general chatroom which is later replaced with
-    # a box chatroom when a player visits My Scores.
 
     csv_file = params[:csv_file]
     delimiter = params[:delimiter]
@@ -248,9 +257,10 @@ class UserBoxScoresController < ApplicationController
     end
   end
 
+  # Export round league table to CSV file
+  # Includes all player statistics for a specific round
+  # Credits: https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
   def round_league_table_to_csv
-    # export the round league table to a csv file
-    # credits https://www.freecodecamp.org/news/export-a-database-table-to-csv-using-a-simple-ruby-script-2/
     round = Round.find(params[:round_id])
     # file = Rails.root.join('public', 'data.csv')
     file = "#{Rails.root}/public/data.csv"
@@ -272,8 +282,9 @@ class UserBoxScoresController < ApplicationController
     download_csv(file.pathmap, "League Table-R#{round_label(round)}", round.club.name)
   end
 
+  # Export tournament league table to CSV file (all rounds with same league_start)
+  # Includes aggregate statistics and per-round details (rank, points, box) for each player
   def league_table_to_csv
-    # export the league table to a csv file for the tournament (= collection of rounds with same league_start)
     league_start = params[:league_start].to_date
     club_id = params[:club_id].to_i
     # rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id:)
@@ -313,17 +324,20 @@ class UserBoxScoresController < ApplicationController
 
   private
 
+  # Export league table as plain text file (HTML stripped)
+  # Credits: https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
   def create_txt
-    # credits https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails
-    # strip all html
+    # Strip all HTML from rendered view
     html_free_string = ActionView::Base.full_sanitizer.sanitize(render_to_string.encode("UTF-8"))
     send_data(html_free_string, template: :raw, filename: "league-table-#{Date.today}.txt", type: "text/txt")
   end
 
+  # Build league table hash aggregating statistics across multiple rounds
+  # Parameters:
+  #   rounds: Collection of rounds in tournament (same club, same league_start)
+  #   users: Collection of players in the club
+  # Returns: Hash { player => { index, rank, points, matches_played, matches_won, games_played, games_won, sets_played, sets_won, last_round, rank_round1, points_round1, box_round1, ... } }
   def league_table(rounds, users)
-    # rounds is the collection of rounds in the tournament (same club, same league_start)
-    # users is the collection of players in the club
-    # return a hash : { player, { index, rank, points, matches_played, matches_won, games_played, games_won, sets_played, sets_won, last_round } }
     round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # array of each round's array of user_box_scores in one tournament
     league_table = {}
     users.each do |user|

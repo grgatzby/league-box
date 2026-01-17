@@ -1,11 +1,20 @@
+# Chatrooms Controller
+# Handles chatroom display, creation, and deletion.
+# Chatrooms have a one-to-one relation with Boxes (has_one :box).
+# Manages chatroom access control based on user roles (player, referee, admin).
 class ChatroomsController < ApplicationController
-  # Chatrooms have a one to one relation wth Boxes (has_one :box)
   REFEREE = ["referee", "player referee"]
 
+  # Display or create a chatroom
+  # Accessible from multiple entry points:
+  # [A] Chatroom name selection from dropdown
+  # [B] Club/round/box selection from form
+  # [C] Navbar dropdown (shows selection form)
+  # [D] My scores view or unread chatroom links
+  # Automatically creates chatroom if it doesn't exist
+  # Marks chatroom as read when displaying
   def show
     set_club_round # sets variables @club and @round (ApplicationController)
-    # chooses/displays a chatroom
-    # this method is accessed from either [A, B] itself (form), [C] the navbar dropdown, or [D] My scores view
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
       # [A] displays a chatroom after selecting a chatroom name from the chatrooms/show dropdown
@@ -53,7 +62,7 @@ class ChatroomsController < ApplicationController
       @round_nb = round_label(@round)
     elsif params[:id]
       if params[:id] == "0"
-        # [C] coming from the navbar dropdown: displays the forms (a dropdown list of available chatrooms
+        # [C] comming from the navbar dropdown: displays the forms (a dropdown list of available chatrooms
         # and a nested form of club/round/box numbers)
         # Get unread chatrooms for admin/referee (only those they have access to)
         if ["admin", "referee", "player referee"].include?(current_user.role)
@@ -88,7 +97,7 @@ class ChatroomsController < ApplicationController
         @data.each { |field| field.deep_symbolize_keys! }.reject! { |a| a[:id] == @sample_club.id }
         @clubs = @data.map { |club| club[:name] }
       elsif Chatroom.exists?(params[:id])
-        # [D] coming from my_scores view (players) or unread chatroom links (admin/referee): display the box chatroom
+        # [D] comming from my_scores view (players) or unread chatroom links (admin/referee): display the box chatroom
         @chatroom = Chatroom.find(params[:id])
         unless @chatroom.users_with_access.include?(current_user)
           # chatroom not available to current user
@@ -111,7 +120,11 @@ class ChatroomsController < ApplicationController
     end
   end
 
+  # Delete a chatroom (admin only)
+  # Prevents deletion of the general chatroom
+  # Reassigns associated box to general chatroom if chatroom has a box
   def destroy
+    # Authorization check: only admin can delete chatrooms
     unless current_user == @admin
       flash[:alert] = t('chatrooms.show.unauthorized')
       redirect_back(fallback_location: root_path)
@@ -122,7 +135,7 @@ class ChatroomsController < ApplicationController
     chatroom_name = @chatroom.name
     messages_count = @chatroom.messages.count
 
-    # Prevent deletion of the general chatroom
+    # Prevent deletion of the general chatroom (protected chatroom)
     if @chatroom.name == "general"
       flash[:alert] = t('chatrooms.show.cannot_delete_general')
       redirect_to chatroom_path(0)
@@ -145,14 +158,18 @@ class ChatroomsController < ApplicationController
 
   private
 
+  # Mark chatroom as read for current user
+  # Updates or creates ChatroomRead record with current timestamp
   def mark_chatroom_as_read(chatroom)
     ChatroomRead.find_or_create_by(user: current_user, chatroom: chatroom).update(last_read_at: Time.current)
   end
 
+  # Display form for new chatroom (unused - chatrooms created automatically)
   def new
     @chatroom = Chatroom.new
   end
 
+  # Create new chatroom (unused - chatrooms created automatically in #show)
   def create
     @chatroom = Chatroom.new(params[:box_id])
     redirect_to chatroom_path(@chatroom)

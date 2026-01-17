@@ -54,17 +54,20 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :nickname,:phone_number, :role])
   end
 
+  # Set global variables available to all controllers and views
+  # Called as before_action in all controllers
+  # Sets: @sample_club, @club, @current_round, @admin, @referee, @general_chatroom, @tz, @is_mobile
   def global_variables
-    # players and referees belong to a club, the admin belongs to the sample club
+    # Sample club used for non-authenticated users and as admin's club
     @sample_club = Club.find_by(name: "your tennis club")
     @club = current_user ? current_user.club : @sample_club
     @current_round = current_round(@club.id)
     @admin = User.find_by(role: "admin")
     @my_current_box = my_own_box(current_round(current_user.club_id)) if current_user
-    # @referee = User.find_by(role: "referee", club_id: @club.id) #TO DO : role includes referee
+    # Find referee (role includes "referee" - can be "referee" or "player referee")
     @referee = User.find_by("club_id = ? AND role like ?", @club.id, "%referee%")
     @general_chatroom = Chatroom.find_by(name: "general") || Chatroom.create(name: "general")
-    # time_zone (dependency on gem tzinfo-data): used to convert UTC persisted times in local time
+    # Time zone (dependency on gem tzinfo-data): used to convert UTC persisted times to local time
     @tz = TZInfo::Timezone.get("Europe/Paris")
     @is_mobile = mobile_device?
   end
@@ -74,10 +77,11 @@ class ApplicationController < ActionController::Base
     boxes_path
   end
 
+  # Set club and round instance variables from form parameters
+  # Called from club/round selection forms in multiple views
+  # Sets: @club, @round, @rounds_dropdown, @league_starts, @round_nb, @boxes
+  # Handles both numeric IDs and string names/date labels
   def set_club_round
-    # instantiate variables @club from params[:club_id], and @round from params[:round_id]
-    # if they have been selected from the _select_club_round forms
-    # method called from #index, #my_scores in Boxes and user_box_scores/index views forms
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown list in the select_club form
 
@@ -108,39 +112,54 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Check if a string contains only digits
+  # Used to determine if params[:club_id] or params[:round_id] is a numeric ID or a name/date string
+  # Returns: true if string is numeric, false otherwise
   def is_number?(string)
-    # returns true if string contains only digits
     string.scan(/\D/).empty?
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the #current_round, #my_scores and #match_score methods are invoked
-  # - from #show and #show_list methods in BoxesControllers
-  # - from #show method in MatchesController
+  # Round and Match Helper Methods
+  # Used by: BoxesController#show, BoxesController#show_list, MatchesController#show
 
+  # Get current round for a club (round where current date is between start_date and end_date)
+  # Falls back to last existing round if no current round
+  # Parameters: club_id
+  # Returns: Round object
   def current_round(club_id)
-    # given a club_id, returns its current round or the last existing round
     Round.current.find_by(club_id: club_id) || Round.where(club_id: club_id).order(:start_date).last
   end
 
+  # Get last round played by a player
+  # Parameters: player (User object, defaults to current_user)
+  # Returns: Round object (most recent by start_date)
   def last_round(player = current_user)
-    # given a player, returns its last played round
     player.user_box_scores.map(&:box).map(&:round).max { |a, b| a.start_date <=> b.start_date }
   end
 
+  # Get user_match_score for a specific player in a match
+  # Parameters: match (Match object), player (User object or ID)
+  # Returns: UserMatchScore object for that player
   def match_score(match, player)
-    # given a match (has two user_match_scores) and a player, returns the user_match_score for that player
-    # match.user_match_scores.select { |user_match_score| user_match_score.user == player }[0]
     match.user_match_scores.where(user_id: player)[0]
   end
 
   # -------------------------------------------------------------------------------------------------------------------
-  # the #rank_players method is invoked
-  # - by #index in UserBoxScoresController
-  # - and by #create in MatchesController
+  # Ranking System Methods
+  # Used by: UserBoxScoresController#index, MatchesController#create
 
+  # Rank players based on 4 criteria with tie handling
+  # Ranking criteria (in order):
+  #   1. Most points won
+  #   2. Most matches played
+  #   3. Highest set win ratio (sets_won / sets_played)
+  #   4. Highest game win ratio (games_won / games_played)
+  # Parameters:
+  #   user_box_scores: Array of UserBoxScore objects or [player, {stats_hash}] tuples
+  #   from: "index" (single round) or "index_league" (tournament aggregate)
+  # Updates rank field in database for each player
   def rank_players(user_box_scores, *from)
-    # updates the rank field in the UserBoxScore database
     from = from[0] || "index" # "index_league" or "index"
 
     # old type ranking based on points only (not used, for initial tests only):
@@ -169,33 +188,41 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Compare two UserBoxScore records for ranking
+  # Uses spaceship operator (<=>) which returns -1 (a<b), 0 (a=b), 1 (a>b), or nil
+  # Compares using 4 criteria in order (stops at first non-zero comparison):
+  #   1. Points (descending)
+  #   2. Matches played (descending)
+  #   3. Set win ratio (descending)
+  #   4. Game win ratio (descending)
+  # If all criteria equal, players are marked as tied
+  # Parameters: ubs_a, ubs_b (UserBoxScore objects or tuples), from ("index" or "index_league")
+  # Returns: -1, 0, or 1
   def compare(ubs_a, ubs_b, from)
-    # ranking based on 4 sorting criterias (points, nb of matches played, highest set ratio, highest game ratio)
-    # the 4 compare_ methods all use the spaceship operator:
-    # a <=> b returns -1 (if a<b), 0 (if a=b), 1 (if a>b) or nil (if a, b are not comparable)
-
-    # Ranking criterias:
-    # 1 - most points won in the round
+    # Ranking criterion 1: Most points won in the round
     comparison = compare_points(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    # 2 - most matches played
+    # Ranking criterion 2: Most matches played
     comparison = compare_matches_played(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    # 3 - highest ratio of Sets Won to Sets Played %
+    # Ranking criterion 3: Highest ratio of Sets Won to Sets Played (%)
     comparison = compare_set_ratio(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
-    # 4 - highest ratio of Games Won to Games Played %
+    # Ranking criterion 4: Highest ratio of Games Won to Games Played (%)
     comparison = compare_game_ratio(ubs_a, ubs_b, from)
     return comparison unless comparison.zero?
 
+    # All criteria equal: mark players as tied
     add_to_tieds(ubs_a, ubs_b, from)
 
     comparison
   end
 
+  # Compare points between two players (used in ranking)
+  # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by points)
   def compare_points(a, b, from)
     if from == "index_league"
       b[1][:points] <=> a[1][:points]
@@ -204,6 +231,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Compare matches played between two players (used in ranking)
+  # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by matches_played)
   def compare_matches_played(a, b, from)
     if from == "index_league"
       b[1][:matches_played] <=> a[1][:matches_played]
@@ -212,6 +241,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Compare set win ratio between two players (used in ranking)
+  # Calculates sets_won / sets_played ratio (handles division by zero)
+  # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by ratio)
   def compare_set_ratio(a, b, from)
     if from == "index_league"
       (b[1][:sets_played].zero? ? 0 : b[1][:sets_won].to_f / b[1][:sets_played]) <=> (a[1][:sets_played].zero? ? 0 : a[1][:sets_won].to_f / a[1][:sets_played])
@@ -220,6 +252,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Compare game win ratio between two players (used in ranking)
+  # Calculates games_won / games_played ratio (handles division by zero)
+  # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by ratio)
   def compare_game_ratio(a, b, from)
     if from == "index_league"
       (b[1][:games_played].zero? ? 0 : b[1][:games_won].to_f / b[1][:games_played]) <=> (a[1][:games_played].zero? ? 0 : a[1][:games_won].to_f / a[1][:games_played])
@@ -228,25 +263,31 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Add players to tied players array (for display purposes)
+  # Players with identical stats across all 4 criteria are considered tied
   def add_to_tieds(*players)
     players.each { |player| @tieds << player }
     @tieds.uniq!
   end
 
+  # Detect if the current request is from a mobile device
+  # Used to adjust display and styling for mobile views
+  # Returns: true if mobile device detected, false otherwise
   def mobile_device?
-    # returns true if device is a mobile (used for mobile display)
     request.user_agent =~ /Mobile|webOS/
   end
 
+  # Replace stale locale in path string with current locale
+  # Used to update URLs with correct locale parameter
+  # Example: "/en/boxes" => "/fr/boxes" (if current locale is fr)
   def local_path(path)
-    # replaces stale locale with current locale in the path string
-    # path.gsub(/en|fr|nl/, locale.to_s) if path
     path&.gsub(/en|fr|nl/, locale.to_s) # Ruby Safe Navigation
   end
 
+  # Generate round label in format "yy/mm_Rnn"
+  # Format: yy/mm is tournament start date (league_start), nn is round number in tournament
+  # Example: "24/10_R01" (October 2024, Round 1)
   def round_label(round)
-    # returns round label in format "yy/mm_Rnn" where
-    # yy/mm is the tournament start date and nn is the rank of the round in the tournament
     league_start = round.league_start
     rounds_ordered = Round.where(league_start:, club_id: round.club)
                           .order('start_date ASC')
@@ -254,17 +295,22 @@ class ApplicationController < ActionController::Base
     "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
   end
 
+  # Generate dropdown label for round selection
+  # Format: "yy/mm_Rnn (dd/mm/yyyy)" - includes round label and start date
   def rounds_dropdown(round)
     "#{round_label(round)} (#{round.start_date.strftime('%d/%m/%Y')})"
   end
 
+  # Extract round start_date from dropdown label
+  # Label format: "yy/mm_Rnn (dd/mm/yyyy)" - extracts date portion at position [13, 10]
   def round_dropdown_to_start_date(label)
-    # [13, 10] to extract the round start_date (in '%d/%m/%Y' format) from the dropdown label
     label[13, 10].to_date
   end
 
+  # Redirect back to referer with additional parameters
+  # Alternative to redirect_back method, allows adding extra params
+  # Credits: https://www.filippoliverani.com/pass-params-rails-redirect-back
   def redirect_to_back(options = {})
-    # alternative to redirect_back method, adding more params, courtesy of https://www.filippoliverani.com/pass-params-rails-redirect-back
     uri = URI(request.referer)
     new_query = Rack::Utils.parse_nested_query(uri.query).merge(options.transform_keys! {|k| k.to_s })
     uri.query = options.delete(:params)&.to_query
@@ -272,26 +318,35 @@ class ApplicationController < ActionController::Base
     redirect_to("#{uri}?#{new_query.to_query}")
   end
 
+  # Download CSV file with league table data
+  # Parameters:
+  #   file: File path (default: "#{Rails.root}/public/data.csv")
+  #   league_type: Type identifier (e.g., "League Table-R01" or "League Table-T2024-10-01")
+  #   club_name: Club name for filename
   def download_csv(file = "#{Rails.root}/public/data.csv", league_type, club_name)
     if File.exist?(file)
       send_file file, filename: "#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
     end
   end
 
+  # Check if a player belongs to a specific box
+  # Parameters: box (Box object), player (User object, defaults to current_user)
+  # Returns: true if player is in the box, false otherwise
   def my_box?(box, player = current_user)
-    # returns true if player belongs to box, false if not
-    # player.role == "player" && box == player.user_box_scores.first.box
     box.user_box_scores.map(&:user).select { |user| user == player }.size.positive?
   end
 
+  # Get a player's box for a specific round
+  # Parameters: round (Round object), player (User object, defaults to current_user)
+  # Returns: Box object for that player in that round, or nil if not found
   def my_own_box(round, player = current_user)
-    # given a round, returns player's box for that round
-    # player.user_box_scores.map(&:box).select { |box| box.round == round }[0]
     player.user_box_scores.includes([box: :round]).map(&:box).select { |box| box.round == round }[0]
   end
 
+  # Initialize statistics variables for display in views
+  # Sets: @nb_matches, @nb_matches_played, @days_left, @round_days, @last_round_match_date, @nb_boxes, @nb_players
+  # Also sets box-specific stats if @box is present
   def init_stats
-    # sets the global statistic variables for the stats to be displayed in the view pages
     # @nb_matches = @round.boxes.map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
     @nb_matches = @round.boxes.includes([:user_box_scores, :matches]).map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
     @nb_matches_played = @round.boxes.map { |box| box.matches.size }.sum
@@ -311,21 +366,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Generate chatroom name for a box
+  # Format: "Club Name - yy/mm_Rnn:Bnn" (Club - Round:Box number)
+  # Example: "My Club - 24/10_R01:B03"
   def chatroom_name(box)
-    # for a given box, returns the chatroom name
     "#{box.round.club.name} - #{round_label(box.round)}:B#{format('%02d', box.box_number)}"
   end
 
+  # Get the most recent match date in a round (across all boxes)
+  # Returns: Time object or nil if no matches
   def last_round_match_date(round)
     round.boxes.map { |box| box.matches if box.matches.size.positive? }.flatten.compact.map(&:time).max
   end
 
+  # Get the most recent match date in a box
+  # Returns: Time object or nil if no matches
   def last_box_match_date(box)
     box.matches.map(&:time).max if box.matches.size.positive?
   end
 
   private
 
+  # Extract locale from browser Accept-Language header
+  # Returns: one of ALLOWED_LOCALES or DEFAULT_LOCALE
   def extract_locale_from_headers
     browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
     if ALLOWED_LOCALES.include?(browser_locale)

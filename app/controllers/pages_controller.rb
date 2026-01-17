@@ -1,6 +1,12 @@
+# Pages Controller
+# Handles public and authenticated page views (home, rules, my_club).
+# Manages club/player information display and updates (logo, banner, website, profile pictures).
+# Public pages: home, rules, sitemap, my_club (skip authentication)
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[home rules sitemap my_club]
 
+  # Display home page with navigation paths
+  # Sets up path hash for various navigation links on the home page
   def home
     @box = my_own_box(current_round(current_user.club_id)) if current_user
     @path = {}
@@ -18,10 +24,13 @@ class PagesController < ApplicationController
 
   end
 
+  # Display rules page with gallery images
+  # Shows gallery images grouped by club with different access levels based on user role
+  # Admin sees all images, authenticated users see their club's images, guests see sample club images
   def rules
-      @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
-      @rounds = @club.rounds
-      # Show images grouped by club - admin sees all, others see only accessible to their club
+    @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
+    @rounds = @club.rounds
+    # Show images grouped by club - admin sees all, others see only accessible to their club
       if current_user&.role == "admin"
         all_images = GalleryImage.joins(:club).order('clubs.name ASC, gallery_images.created_at DESC')
         @gallery_images_by_club = all_images.group_by(&:club)
@@ -39,8 +48,10 @@ class PagesController < ApplicationController
       end
   end
 
+  # Display club information page (players, referees, gallery images)
+  # Admin sees all clubs' data, regular users see only their club's data
+  # Similar functionality to ContactsController # new
   def my_club
-    # similar to ContactsController # new
     if current_user == @admin
       # @referees = User.where(role: "referee") #TO DO : role includes 'referee' or 'player referee'
       @referees = User.where("role like ?", "%referee%")
@@ -73,8 +84,10 @@ class PagesController < ApplicationController
     end
   end
 
+  # Update club logo and banner (admin or referee only)
+  # Referees can only update their own club, admin can update any club
   def update_club
-    # Only allow referees to update their club's logo and banner
+    # Authorization check: only admin or referees can update club logo/banner
     unless current_user && (current_user.role&.include?("referee") || current_user == @admin)
       flash[:alert] = t("pages.update_club.unauthorized")
       redirect_to my_club_path
@@ -100,8 +113,10 @@ class PagesController < ApplicationController
     redirect_to my_club_path
   end
 
+  # Update user profile picture (admin only)
+  # Allows admin to change any user's profile picture
   def update_user_profile_picture
-    # Only allow admin to update user profile pictures
+    # Authorization check: only admin can update profile pictures
     unless current_user == @admin
       flash[:alert] = t("pages.update_user_profile_picture.unauthorized", default: "You are not authorized to update profile pictures.")
       redirect_to my_club_path
@@ -123,8 +138,11 @@ class PagesController < ApplicationController
     redirect_to my_club_path
   end
 
+  # Update club website (admin or referee only)
+  # Handles club selection for admin and preserves club_id in redirect
+  # Referees can only update their own club's website
   def update_club_website
-    # Only allow admin or referee to update club website
+    # Authorization check: only admin or referees can update club website
     unless current_user && (current_user.role&.include?("referee") || current_user == @admin)
       flash[:alert] = t("preferences.edit.unauthorized", default: "You are not authorized to update club website.")
       redirect_to edit_preference_path(current_user.preference)
@@ -165,10 +183,12 @@ class PagesController < ApplicationController
 
   private
 
+  # Strong parameters for club updates
   def club_params
     params.require(:club).permit(:logo, :banner, :website)
   end
 
+  # Strong parameters for user profile picture updates
   def user_profile_picture_params
     params.require(:user).permit(:profile_picture)
   end

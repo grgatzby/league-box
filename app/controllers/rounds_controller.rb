@@ -1,16 +1,22 @@
+# Rounds Controller
+# Handles round creation, editing, and player promotion/relegation.
+# Allows admin to create new rounds from CSV files or form-based player moves.
+# Manages player movement between boxes based on performance (promotion/relegation).
 class RoundsController < ApplicationController
-  MIN_QUALIFYING_MATCHES = 0 #2
+  MIN_QUALIFYING_MATCHES = 0 #2 # Minimum matches required to qualify for next round (currently 0)
   MIN_PLAYERS_PER_BOX = 4
   NEW_ROUND_HEADERS = ["email", "first_name", "last_name", "phone_number", "role"].sort
   REFEREE = ["referee", "player referee"]
   PLAYERS = ["player", "player referee"]
   PLAYERS_AND_SPARES = PLAYERS + ["spare"]
 
+  # Display form to create a new round (referees/admin only)
+  # Pre-populates form with suggested player moves based on current round rankings:
+  #   - Top 2 players: promoted (1st: 2 boxes up, 2nd: 1 box up)
+  #   - Bottom 2 players: relegated (last: 2 boxes down, 2nd last: 1 box down)
+  #   - Players with < MIN_QUALIFYING_MATCHES: removed (move = 99)
+  # Can also create round from CSV file upload
   def new
-    # called from a button in Boxes index view (referees only)
-    # form request to admin to generate a next round derived from the current
-    # There is a file upload field in the form so the admin can create the round from a CSV file
-    # if admin is logged in, the club is given by params[:club_id]
     @current_round = current_round(params[:club_id] ? params[:club_id].to_i : current_user.club_id)
     @boxes = @current_round.boxes.sort
 
@@ -37,12 +43,12 @@ class RoundsController < ApplicationController
     end
   end
 
+  # Create a new round (admin only)
+  # Two modes:
+  #   1. CSV file upload: Creates round with players from CSV (with or without box_number)
+  #   2. Form submission: Creates round using player moves from current round (promotion/relegation)
+  # New boxes are assigned to #general chatroom initially (replaced when player visits My Scores)
   def create
-    # admin to generate next round from the current one
-    # if user is admin, club is given by params[:club_id], else: the referee's club
-    # the new round is seeded through the uploaded CSV file or if none, through the form
-    # TO DO: create a chatroom for each new box:
-    # maybe dealt with in the 20231018223106_add_reference_to_boxes migration file with the default value
 
     csv_file = params[:round][:csv_file]
     delimiter = params[:delimiter]
@@ -189,8 +195,10 @@ class RoundsController < ApplicationController
     end
   end
 
+  # Display form to edit round end_date (admin and referee only)
+  # Only allows editing the most recent round's end_date
+  # Validates that no matches were played after the new end_date
   def edit
-    # allow admin and referee to modify the last round end_date
     data = Club.all.includes(rounds: :boxes).as_json(
       include: { rounds: { only: [:id, :start_date, :end_date, :league_start] } })
     # transform the hash format convention {"round" => value} to {round: value} and exclude the sample club
@@ -207,9 +215,11 @@ class RoundsController < ApplicationController
     end
   end
 
+  # Update round end_date (admin and referee only)
+  # Validates that no matches were played after the proposed new end_date
   def update
     @round = Round.find(params[:id])
-    # check if any match was played after the new round end date
+    # Validation: prevent changing end_date if matches were played after proposed date
     if last_round_match_date(@round) > params[:round][:end_date].to_date
       flash[:alert] = "Some match have been played beyond the proposed end date" # Match
       render :edit, status: :unprocessable_entity
@@ -221,9 +231,10 @@ class RoundsController < ApplicationController
 
   private
 
+  # Create temporary boxes for new round (same number as current round)
+  # Temporary boxes will be cleaned and redistributed in #clean_boxes
+  # All boxes initially assigned to #general chatroom
   def new_temp_boxes(nb_boxes)
-    # return array of temporary boxes; nb_boxes = number of boxes in the current round
-    # #general chatroom is assigned (automatically replaced when visiting My scores page)
     boxes = []
     nb_boxes.times do |box_index|
       boxes << Box.create(round_id: @new_round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
@@ -231,9 +242,10 @@ class RoundsController < ApplicationController
     boxes
   end
 
+  # Apply player moves (promotion/relegation) to temporary boxes
+  # Moves players based on form input (shift values: 2, 1, 0, -1, -2, 99)
+  # Players not evenly distributed yet (handled in #clean_boxes)
   def apply_shifts(current_boxes, new_boxes)
-    # assign players to temporary boxes according to requested box shift
-    # players are not spread evenly accross boxes yet
     current_boxes.size.times do |box_index|
       nb_players = current_boxes[box_index].user_box_score_ids.size
       nb_players.times do |player_index|
@@ -252,8 +264,10 @@ class RoundsController < ApplicationController
     end
   end
 
+  # Redistribute players evenly across boxes and delete empty boxes
+  # Groups players into equal-sized boxes (nb_player_per_box per box)
+  # Remaining empty boxes are deleted
   def clean_boxes(temp_boxes, nb_player_per_box)
-    # deal players (user_box_scores) evenly across temporary boxes and delete remaining empty boxes
     all_user_box_scores = temp_boxes.map(&:user_box_scores).flatten
     # create groups of user_box_scores items (nb_player_per_box items per group)
     nb_new_boxes = all_user_box_scores.size / nb_player_per_box
@@ -274,6 +288,9 @@ class RoundsController < ApplicationController
     temp_boxes.each(&:delete)
   end
 
+  private
+
+  # Strong parameters for round updates
   def round_params
     params.require(:round).permit(:end_date)
   end
