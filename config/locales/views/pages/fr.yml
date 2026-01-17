@@ -8,11 +8,11 @@ fr:
       welcome_title: Le tournoi interne de votre club
       p01_html: >
         <ul>
-          <li> Un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League,
-          <li> Seuls <b class='color-tennis-aqua'>les membres du club</b> peuvent participer,
-          <li> Les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> de 4 à 5 joueurs,
-          <li> La saison se déroule en <b class='color-tennis-aqua'>rounds successifs</b> d'un mois ou plus,
-          <li> À chaque round les <b class='color-tennis-aqua'>points gagnés se cumulent</b> pour départager le vainqueur de la saison.
+          <li class="home-feature-item"> Un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League,
+          <li class="home-feature-item"> Seuls <b class='color-tennis-aqua'>les membres du club</b> peuvent participer,
+          <li class="home-feature-item"> Les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> de 4 à 5 joueurs,
+          <li class="home-feature-item"> La saison se déroule en <b class='color-tennis-aqua'>rounds successifs</b> d'un mois ou plus,
+          <li class="home-feature-item"> À chaque round les <b class='color-tennis-aqua'>points gagnés se cumulent</b> pour départager le vainqueur de la saison.
         </ul>
       p02_html: 🥇🥈🥉 Le <b>classement du round</b> et la <b>League table</b> (classement de la saison) sont automatiquement mis à jour et affichés sur le tableau d'honneur à la fin des rounds.
       p03_html: >
@@ -55,7 +55,7 @@ fr:
     rules:
       rules_title: Format et règles
       general_rules_section: Règles générales de LeagueBox
-      round_dates_section: Saison & Dates des Rounds
+      round_dates_section: Saisons & Dates des Rounds
       match_rules_section: Règles des matchs
       scoring_and_points_section: Points & scores
       ranking_and_promotions_section: Classement & promotions

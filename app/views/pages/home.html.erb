@@ -1,7 +1,18 @@
+<%#
+  Home Page View
+  Main landing page for the LeagueBox application.
+  Displays welcome information, feature overview, getting started guide, and navigation links.
+  Uses Stimulus toggle controller for collapsible sections and scroll-to-top functionality.
+  Different content is shown for authenticated vs. non-authenticated users.
+%>
+
+<%# Hero Image: Hidden on mobile, visible on desktop and larger screens %>
 <div class="d-none d-md-block"><%= render "shared/image_front" %></div>
 
+<%# Main Container: Responsive padding and Stimulus toggle controller %>
 <div class="container-fluid px-2 px-md-3 px-lg-4"
      data-controller="toggle" >
+  <%# Main Content Area: Styled frame with scrollable content %>
   <div class="photo-home-text frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
         data-toggle-target="togglableElement">
     <!-- Main Title Section -->
@@ -11,8 +22,9 @@
       </h1>
     </header>
 
-    <!-- Welcome Section -->
+    <!-- Welcome Section: Introduction to LeagueBox -->
     <section class="home-section mb-4">
+      <%# Section Header: Clickable toggle header with icon and arrow %>
       <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="1">
         <h2 class="mb-0 d-flex align-items-center gap-2">
           <span class="section-icon">🏆</span>
@@ -20,6 +32,7 @@
           <span class="section-arrow">⬇️</span>
         </h2>
       </div>
+      <%# Section Content: Collapsible welcome paragraphs (hidden by default) %>
       <div class="home-section-content d-none" data-toggle-target="section1">
         <div class="mt-3">
           <p><%= t '.p01_html' %></p>
@@ -29,8 +42,9 @@
       </div>
     </section>
 
-    <!-- LeagueBox at a Glance Section -->
+    <!-- LeagueBox at a Glance Section: Feature overview with conditional links -->
     <section class="home-section mb-4">
+      <%# Section Header: Clickable toggle header with icon and arrow %>
       <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="2">
         <h2 class="mb-0 d-flex align-items-center gap-2">
           <span class="section-icon">🧑‍💻</span>
@@ -38,9 +52,11 @@
           <span class="section-arrow">⬇️</span>
         </h2>
       </div>
+      <%# Section Content: Feature list with different styling for authenticated vs. non-authenticated users %>
       <div class="home-section-content d-none" data-toggle-target="section2">
         <div class="mt-3">
           <ol class="home-features-list">
+            <%# Non-authenticated users: Display styled spans (no links) %>
             <% if !current_user
               class_prefix = "bold-font color-" %>
               <li class="home-feature-item"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li06_boxes"}</span>".html_safe) %></li>
@@ -49,6 +65,7 @@
                                                  inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li07_my_scores"}</span>".html_safe) %></li>
               <li class="home-feature-item"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li08_round_ranking"}</span>".html_safe,
                                                  inset_b: "<span class='#{class_prefix}green'>#{t ".li08_league_table"}</span>".html_safe) %></li>
+            <%# Authenticated users: Display clickable links to actual pages %>
             <% else
               class_prefix = "btn btn-inlayed bold-font color-" %>
               <li class="home-feature-item"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li06_boxes"}</a>".html_safe) %></li>
@@ -64,19 +81,23 @@
     </section>
 
 
-    <!-- Ready Section -->
+    <!-- Ready Section: Getting started guide with numbered steps -->
     <section class="home-section mb-4">
+      <%# Section Header: Clickable toggle header with responsive racket icon and arrow %>
       <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="3">
         <h2 class="mb-0 d-flex align-items-center gap-2">
+          <%# Racket icon: Small on mobile, larger on desktop %>
           <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-inline d-md-none", width: 20 %>
           <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-none d-md-inline", width: 30 %>
           <b class="cursor-pointer flex-grow-1"><%= t '.ready_title' %></b>
           <span class="section-arrow">⬇️</span>
         </h2>
       </div>
+      <%# Section Content: Collapsible step-by-step guide (hidden by default) %>
       <div class="home-section-content d-none" data-toggle-target="section3">
         <div class="mt-3">
           <p><%= t '.p04' %></p>
+          <%# Step list: Dynamically renders translation keys li09_html through li12_html %>
           <ol id="steps" class="home-steps-list">
             <% (9..12).each do |i| %>
               <li class="home-step-item"><%= t ".li#{format('%02d', i)}_html" %></li>
@@ -86,9 +107,10 @@
       </div>
     </section>
 
-    <!-- Call to Action -->
+    <!-- Call to Action: Primary navigation button (login or view boxes) -->
     <div class="home-cta-section my-4 my-md-5">
       <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
+        <%# Show "View Boxes" button for authenticated users, "Login" for non-authenticated %>
         <% if user_signed_in?%>
           <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
         <% else %>
@@ -97,53 +119,62 @@
       </div>
     </div>
 
-    <!-- Social Tennis Image -->
+    <!-- Social Tennis Image: Decorative image section -->
     <div class="home-image-section mb-4" data-toggle-target="image">
       <%= image_tag "social_tennis.jpg", alt: "Social tennis", class: "img-fluid rounded", width: "100%" %>
     </div>
 
-    <!-- Rules Section -->
+    <!-- Rules Section: Link to rules page and tournament message -->
     <section class="home-rules-section text-center my-4 my-md-5">
+      <%# CSS class prefix for styled links %>
       <% class_prefix = "btn btn-inlayed bold-font color-" %>
+      <%# Racket icon: Responsive sizing (small on mobile, larger on desktop) %>
       <div class="title mb-3">
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
       </div>
+      <%# Rules link paragraph %>
       <div class="title">
         <p class="mb-3"><%= t(".p05_html", inset: "<a class='#{class_prefix}black' href='#{@path["05"]}'>#{t ".li13"}</a>".html_safe) %></p>
       </div>
+      <%# Tournament message %>
       <div class="title">
         <h5 class="mb-0"><b><%= t '.happy_tournament' %></b></h5>
       </div>
     </section>
 
-    <!-- Club Join Section -->
+    <!-- Club Join Section: Information about joining a club -->
     <section class="home-join-section my-4 my-md-5">
       <h5 class="color-tennis-blue mb-3"><b>👤 <%= t '.club_join_title' %></b></h5>
+      <%# Contact link paragraph with styled link %>
       <p class="mb-4"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
+      <%# Decorative racket icons: Responsive sizing %>
       <div class="buttons-wrap text-center">
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
         <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
       </div>
     </section>
 
-    <!-- Scroll to Top Button -->
+    <!-- Scroll to Top Button: Floating button (hidden by default, shown via Stimulus) -->
     <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
       class="btn btn-shape btn-beige top-button d-none">
       <i class="fa-solid fa-up-long"></i>
     </button>
   </div>
 
-  <!-- Bottom Navigation -->
+  <!-- Bottom Navigation: Conditional navigation links based on user role -->
   <div class="home-bottom-nav mt-4">
     <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
+      <%# Show Chatrooms link for referees and admin %>
       <% if user_signed_in? %>
         <% if current_user.role&.include?("referee") || current_user == @admin %>
           <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
         <% end %>
+      <%# Show Login link for non-authenticated users %>
       <% else %>
         <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
       <% end %>
+      <%# Show Create Club button for admin only %>
       <% if current_user == @admin %>
         <%= link_to t('.create_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua text-size" %>
       <% end %>

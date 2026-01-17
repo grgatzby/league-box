@@ -1,20 +1,34 @@
+<%#
+  Rules Page View
+  Displays the tournament rules and regulations for the LeagueBox application.
+  Shows collapsible sections for different rule categories (general rules, match rules, scoring, etc.).
+  Includes a gallery section that can be toggled on/off.
+  Uses Stimulus toggle controller for collapsible sections and gallery display.
+  Section 2 (Round Dates) is only visible to authenticated users.
+%>
+
+<%# Hero Image: Hidden on mobile, visible on desktop and larger screens (not printed) %>
 <div class="d-none d-md-block dont-print"><%= render "shared/image_front" %></div>
+<%# Mobile Spacing: Adds vertical spacing on mobile devices %>
 <div class="d-block d-md-none"><br></div>
 
+<%# Main Container: Responsive padding and Stimulus toggle controller with translation values %>
 <div data-controller="toggle" class="container-fluid px-2 px-md-3 px-lg-4"
      data-toggle-display-rounds-value="<%= t '.btn_display_gallery' %>"
      data-toggle-hide-rounds-value="<%= t '.btn_hide_gallery' %>">
+  <%# Rules Content Frame: Styled frame containing all rules sections (not printed) %>
   <div class="frame-color-shape frame-padding frame-margin-rl text-size dont-print">
 
-    <!-- Rules Header -->
+    <!-- Rules Header: Page title section -->
     <header id="rules-header" class="rules-header mb-4 mb-md-5">
       <h1 class="title mb-0">
         <b><%= t(".rules_title").upcase %></b>
       </h1>
     </header>
 
-    <!-- Rules Sections -->
+    <!-- Rules Sections: Dynamic rendering of collapsible rule sections -->
     <div class="rules-sections-container">
+      <%# Define all available rule sections with their metadata %>
       <% rules_sections = [
         { number: 1, icon: "fa-regular fa-circle-check", key: ".general_rules_section", partial: "1_general_rules" },
         { number: 2, icon: "fa-solid fa-calendar", key: ".round_dates_section", partial: "2_round_dates" },
@@ -24,9 +38,11 @@
         { number: 6, icon: "fa-solid fa-circle-exclamation", key: ".special_circumstances_section", partial: "6_special_circumstances" },
         { number: 7, icon: "fa-solid fa-scale-balanced", key: ".disputes_section", partial: "7_disputes" }
       ]
+      # Remove Section 2 (Round Dates) for non-authenticated users
       rules_sections.reject! { |section| section[:number] == 2 } unless user_signed_in?
       %>
 
+      <%# Render each rule section using the rules_section partial %>
       <% rules_sections.each do |section| %>
         <%= render "rules_section",
             section_number: section[:number],
@@ -37,8 +53,9 @@
     </div>
   </div>
 
-  <!-- Rules Actions -->
+  <!-- Rules Actions: Gallery toggle buttons section (not printed) -->
   <div class="rules-actions-section my-4 my-md-5 dont-print">
+    <%# Gallery Toggle Buttons: Allow users to show/hide the gallery section %>
     <%= render "gallery_toggle_buttons",
         toggle_button_class: "btn btn-shape btn-yellow text-size",
         translation_namespace: "pages.rules",
@@ -47,5 +64,6 @@
         buttons_wrap_style: "flex-wrap: nowrap;" %>
   </div>
 
+  <%# Embedded Gallery: Gallery section with images grouped by club %>
   <%= render "embedded_gallery", translation_namespace: "pages.rules" %>
 </div>

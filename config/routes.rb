@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     patch "users/:id/update_profile_picture", to: "pages#update_user_profile_picture", as: "update_user_profile_picture"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
-    resources :preferences, only: %i[new create edit update]
+    resources :preferences, only: %i[edit update]
 
     resources :boxes, only: %i[index show]
     get 'boxese', to: "boxes#index_expanded", as: "index_expanded"
