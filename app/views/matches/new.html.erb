@@ -19,7 +19,7 @@
   <%# Players Display: Show both players with profile pictures %>
   <% players = [@current_player, @opponent] %>
   <div class="<%= class_names("one-liner frame-margin-rl": !@is_mobile, "frame-margin-rl mb-3": @is_mobile) %>">
-    <h5 class="<%= class_names("": !@is_mobile, "d-flex flex-column align-items-center gap-2": @is_mobile) %>">
+    <h5 class="<%= class_names("": !@is_mobile, "d-flex align-items-center justify-content-center gap-2": @is_mobile) %>">
       <%= render "player_with_picture", user: @current_player, is_mobile: @is_mobile %>
       <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>"><%= " versus " %></i>
       <%= render "player_with_picture", user: @opponent, is_mobile: @is_mobile %>

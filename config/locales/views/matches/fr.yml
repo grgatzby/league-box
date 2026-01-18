@@ -21,7 +21,7 @@ fr:
         <i>Si vous avez joué le tie-break en 'premier à 7 pts', entrez 10 au lieu de 7 (par exemple 10-5 pour 7-5) et demandez au referee de corriger le score</i>
       match_played: "Court nº:"
       date_time: "Match joué le:"
-      score: "Score du match:"
+      score: "Score match:"
       player_1: Joueur 1
       player_2: Joueur 2
       set_1: Set1
