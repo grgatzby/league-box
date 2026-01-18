@@ -11,12 +11,12 @@ nl:
         Bericht positie:<br />
         Berichten worden aan de linkerkant van het scherm weergegeven, behalve uw berichten die aan de rechterkant staan
       chatroom_title: "Chatroom %{chatroom}"
-      general_chatroom_title: "Algemene chatroom"
+      general_chatroom_title: "Chatroom #general (reserverd voor beheerder en arbiters)"
       box_chatroom_title: "Chatroom - Box %{box_nb}"
       message_invite: "> Bericht naar"
       send_btn: ⎷ Versturen
       back_btn: ⇤
-      chatroom_choice: Toegang tot een open chatroom of
+      chatroom_choice: Communiceren met andere spelers, of de scheidsrechter
       chose_chatroom: "Kies een open chatroom: "
       chatroom_name: Chatroom naam
       confirm_btn: ⎷ Bevestigen
@@ -51,8 +51,8 @@ nl:
       bulk_delete_success: "%{count} bericht(en) succesvol verwijderd"
       no_messages_selected: Geen berichten geselecteerd
       delete_chatroom_title: Verwijder een chatroom
-      delete_chatroom_popover: Selecteer een chatroom om te verwijderen. Dit zal de chatroom en alle berichten permanent verwijderen.
-      select_chatroom_to_delete: "Selecteer een chatroom om te verwijderen:"
+      delete_chatroom_popover: Dit zal de chatroom en alle berichten permanent verwijderen.
+      select_chatroom_to_delete: "Selecteer een chatroom:"
       chatroom_to_delete: "Chatroom om te verwijderen:"
       messages_count: "Berichten in deze chatroom:"
       confirm_delete_chatroom: Verwijder Chatroom en Alle Berichten

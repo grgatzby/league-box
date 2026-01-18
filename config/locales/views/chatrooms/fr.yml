@@ -11,12 +11,12 @@ fr:
         Position des messages:<br />
         Les messages apparaîssent à gauche de l'écran, à l'exception de vos messages qui sont à droite
       chatroom_title: "Messagerie %{chatroom}"
-      general_chatroom_title: "Messagerie générale"
+      general_chatroom_title: "Messagerie #general (réservée à l'admin et aux referees)"
       box_chatroom_title: "Messagerie - Box %{box_nb}"
       message_invite: "> Message vers"
       send_btn: ⎷ Envoi
       back_btn: ⇤
-      chatroom_choice: Accéder à une messagerie ouverte, ou
+      chatroom_choice: Communiquer avec les autres joueurs, ou le referee
       chose_chatroom: "Choisir une messagerie ouverte: "
       chatroom_name: Nom de la messagerie
       confirm_btn: ⎷ Confirmer
@@ -51,8 +51,8 @@ fr:
       bulk_delete_success: "%{count} message(s) supprimé(s) avec succès"
       no_messages_selected: Aucun message sélectionné
       delete_chatroom_title: Supprimer une messagerie
-      delete_chatroom_popover: Sélectionnez une messagerie à supprimer. Cela supprimera définitivement la messagerie et tous ses messages.
-      select_chatroom_to_delete: "Sélectionner une messagerie à supprimer:"
+      delete_chatroom_popover: Cela supprimera définitivement la messagerie et tous ses messages.
+      select_chatroom_to_delete: "Sélectionner une messagerie:"
       chatroom_to_delete: "Messagerie à supprimer:"
       messages_count: "Messages dans cette messagerie:"
       confirm_delete_chatroom: Supprimer la messagerie et tous les messages

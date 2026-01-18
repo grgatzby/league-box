@@ -240,14 +240,14 @@
         </div>
       <% end %>
 
-      <h5><%= t(".chatroom_choice") %> <%= "#{t('.message2_box_pop')} #{t(".message2_box_pop_#{suffix}")}" %></h5>
+      <h5><%= t(".chatroom_choice") %></h5>
       <div class="frame-color-shape frame-padding frame-margin-rl text-size">
-        <br>
+
         <%# form 1: choose an open chatroom from a list of chatroom names %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= t '.message1_box_pop' %>">
-          <%= t(".chose_chatroom") %>
+          <h5><%= t(".chose_chatroom") %></h5>
           <%= form_with url: chatroom_path, method: :get do |form| %>
             <div class="row">
               <div class="col-1"></div>
@@ -256,13 +256,13 @@
             </div>
           <% end %>
         </div>
-        <br><b><%= t(".or") %>:</b><br><br>
+        <br><%= t(".or") %><br><br>
 
         <%# form 2: select a club, a round and a box to open or create the corresponding chatroom %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
         data-bs-content="<%= "#{t('.message2_box_pop').capitalize} #{t(".message2_box_pop_#{suffix}")}" %>">
-          <%= t(".new_chatroom") %><br>
+          <h5><%= t(".new_chatroom") %></h5>
           <% if current_user == @admin %>
             <%= form_with url: chatroom_path, method: :get do |form| %>
               <%# as some chatrooms are not open yet, select a club (admin) %>
@@ -326,7 +326,7 @@
       <%# Delete chatroom form (admin only) %>
       <% if current_user == @admin %>
         <div class="frame-color-shape frame-padding frame-margin-rl text-size mb-3">
-          <h5><%= t(".delete_chatroom_title", default: "Delete a chatroom") %></h5>
+          <h5 class="color-tennis-red"><%= t(".delete_chatroom_title", default: "Delete a chatroom") %></h5>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
           data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
           data-bs-content="<%= t('.delete_chatroom_popover', default: "Select a chatroom to delete. This will permanently delete the chatroom and all its messages.") %>">

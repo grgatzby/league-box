@@ -30,28 +30,28 @@ style in stylessheet/pages/_chatroom.scss and in app/views/layouts/application.h
   <div class="message-box msg-<%= message.user_id %> ">
     <small>
       <%# sender = popover text when hovering on a sendee name %>
-      <% sender = message.user.club == current_user.club || message.user.role == "admin" ?
-                      "" : "#{message.user.club.name}: " %>
-      <% case message.user.role %>
-      <% when "player" %>
-        <% box = message.user.user_box_scores.map(&:box).last %>
-        <% user_box_score = UserBoxScore.find_by(user_id: message.user_id, box_id: box.id) %>
-        <% sender += render "shared/fullname", user: message.user %>
-        <% sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"  %>
-        <% color_name = message.user.club == current_user.club ? "color-tennis-blue" : "color-grey" %>
-      <% when "referee", "player referee" %>
-        <% sender += render "shared/fullname", user: message.user %>
-        <% color_name = message.user.club == current_user.club ? "color-tennis-aqua" : "color-black" %>
-      <% when "admin" %>
-        <% sender += " LeagueBox © admin"  %>
-        <% color_name = "color-tennis-red" %>
-      <% end %>
-      <% sender += " #{message.user.role}"  %>
+      <% case message.user.role
+      when "player"
+        sender = message.user.club == current_user.club ? "" : "#{message.user.club.name}: <br>"
+        sender += render "shared/fullname", user: message.user
+        box = message.user.user_box_scores.map(&:box).last
+        user_box_score = UserBoxScore.find_by(user_id: message.user_id, box_id: box.id)
+        sender += " (Box #{box.box_number}, rank ##{user_box_score.rank})"
+        color_name = message.user.club == current_user.club ? "color-tennis-blue" : "color-grey"
+      when "referee", "player referee"
+        sender = render "shared/fullname", user: message.user
+        sender += message.user.club == current_user.club ? "" : "<br>#{message.user.club.name} #{message.user.role}"
+        color_name = message.user.club == current_user.club ? "color-tennis-aqua" : "color-black"
+      when "admin"
+        sender = render "shared/fullname", user: message.user
+        sender += "<br>LeagueBox © #{message.user.role}"
+        color_name = "color-tennis-red"
+      end %>
       <div class="d-flex justify-content-between align-items-start">
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="left" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= sender %>">
-          <strong class=<%=color_name%>><%= message.user.nickname %></strong>
+          <strong class=<%=color_name%>><%= "#{message.user.nickname} (#{message.user.role})" %></strong>
         </div>
         <% if current_user == @admin %>
           <%= link_to chatroom_message_path(message.chatroom, message),
