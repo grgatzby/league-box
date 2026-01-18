@@ -1,0 +1,28 @@
+<%#
+  Home Section Partial
+  Renders a collapsible section with header and content.
+  Parameters:
+    section_number: Section number for Stimulus data attributes
+    icon: Icon emoji string or HTML content
+    title_key: Translation key for section title (e.g., ".welcome_title")
+%>
+<section class="home-section mb-4">
+  <%# Section Header: Clickable toggle header with icon and arrow %>
+  <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="<%= section_number %>">
+    <h2 class="mb-0 d-flex align-items-center gap-2">
+      <% if icon.is_a?(String) && !icon.include?('<') %>
+        <span class="section-icon"><%= icon %></span>
+      <% else %>
+        <%= icon.html_safe %>
+      <% end %>
+      <b class="cursor-pointer flex-grow-1"><%= t title_key %></b>
+      <span class="section-arrow">⬇️</span>
+    </h2>
+  </div>
+  <%# Section Content: Collapsible content (hidden by default) %>
+  <div class="home-section-content d-none" data-toggle-target="section<%= section_number %>">
+    <div class="mt-3">
+      <%= yield %>
+    </div>
+  </div>
+</section>

@@ -8,7 +8,9 @@ module MetaTagsHelper
   end
 
   def meta_image
-    meta_image = (content_for?(:meta_image) ? content_for(:meta_image) : DEFAULT_META["meta_image"])
+    meta_image = (content_for?(:meta_image) ? content_for(:meta_image) : DEFAULT_META["meta_image"] || "box_league_racket.png")
+    # Return nil if no image is set
+    return nil if meta_image.blank?
     # little twist to make it work equally with an asset or a url
     meta_image.starts_with?("http") ? meta_image : image_url(meta_image)
   end

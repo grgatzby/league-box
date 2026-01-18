@@ -1,0 +1,12 @@
+<%#
+  Admin/Referee Buttons Partial
+  Displays Chatrooms and Create Club buttons for authorized users.
+%>
+<%# Show Chatrooms link for referees and admin %>
+<% if user_signed_in? && (current_user.role&.include?("referee") || current_user == @admin) %>
+  <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
+<% end %>
+<%# Show Create Club button for admin only %>
+<% if current_user == @admin %>
+  <%= link_to t('pages.home.create_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua text-size" %>
+<% end %>

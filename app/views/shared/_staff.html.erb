@@ -47,7 +47,7 @@
         <div class="col-2"><%= t '.header_phone' %></div>
       </div>
       <!-- Admin Row: Display admin user details -->
-      <div class="row">
+      <div class="row row-linear-gradient">
         <%# Role Column: Club logo (if present), favicon, and admin role label %>
         <div class="col-2 flex-align-center flex-gap-8">
           <% if @sample_club&.logo.present? %>
@@ -82,7 +82,7 @@
       <% if current_user == @admin %>
         <% @referees.each do |referee| %>
           <!-- Referee Row: Display each referee's details -->
-          <div class="row">
+          <div class="row row-linear-gradient">
             <%# Role Column: Club logo (if present) and referee role label %>
             <div class="col-2 flex-align-center flex-gap-8">
               <% if referee.club&.logo.present? %>
@@ -121,7 +121,7 @@
       <%# @referee is defined in application_controller#global_variables %>
       <% if @referee %>
         <!-- Current User's Referee Row -->
-        <div class="row">
+        <div class="row row-linear-gradient">
           <%# Role Column: Club logo (if present) and referee role (capitalized) %>
           <div class="col-2 flex-align-center flex-gap-8">
             <% if @referee.club&.logo.present? %>
