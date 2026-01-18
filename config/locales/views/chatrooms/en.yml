@@ -11,12 +11,12 @@ en:
         Message positions:<br />
         Messages are displayed on the left of the screen, except for your messages which are on the right
       chatroom_title: "%{chatroom} chatroom"
-      general_chatroom_title: "General Chatroom"
+      general_chatroom_title: "Chatroom #general (reserved for admin and referees)"
       box_chatroom_title: "Chatroom - Box %{box_nb}"
       message_invite: "> Message to"
       send_btn: ⎷ Send
       back_btn: ⇤
-      chatroom_choice: Access an open chatroom, or
+      chatroom_choice: Communicate with other players, or the referee
       chose_chatroom: "Choose an open chatroom: "
       chatroom_name: Chatroom name
       confirm_btn: ⎷ Confirm
@@ -51,8 +51,8 @@ en:
       bulk_delete_success: "%{count} message(s) deleted successfully"
       no_messages_selected: No messages selected
       delete_chatroom_title: Delete a chatroom
-      delete_chatroom_popover: Select a chatroom to delete. This will permanently delete the chatroom and all its messages.
-      select_chatroom_to_delete: "Select a chatroom to delete:"
+      delete_chatroom_popover: This will permanently delete the chatroom and all its messages.
+      select_chatroom_to_delete: "Select a chatroom:"
       chatroom_to_delete: "Chatroom to delete:"
       messages_count: "Messages in this chatroom:"
       confirm_delete_chatroom: Delete Chatroom and All Messages
