@@ -4,7 +4,12 @@
   Parameters:
     section_number: Section number for Stimulus data attributes
     icon: Icon emoji string or HTML content
-    title_key: Translation key for section title (e.g., ".welcome_title")
+    title_key: Translation key for section title (e.g., "welcome_title" without leading dot)
+    home_t: Translation helper lambda (used for both section title and content translations)
+  Note:
+    The home_t helper is used to translate both the section title (via title_key) and
+    all translation keys within the yielded content block. This ensures consistent use
+    of the "pages.home" scope throughout the section.
 %>
 <section class="home-section mb-4">
   <%# Section Header: Clickable toggle header with icon and arrow %>
@@ -15,7 +20,13 @@
       <% else %>
         <%= icon.html_safe %>
       <% end %>
-      <b class="cursor-pointer flex-grow-1"><%= t title_key %></b>
+      <b class="cursor-pointer flex-grow-1">
+        <% if local_assigns[:home_t] %>
+          <%= home_t[title_key] %>
+        <% else %>
+          <%= t(".#{title_key}", scope: 'pages.home') %>
+        <% end %>
+      </b>
       <span class="section-arrow">⬇️</span>
     </h2>
   </div>
