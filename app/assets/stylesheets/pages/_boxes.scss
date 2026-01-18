@@ -64,7 +64,7 @@
   }
 
   // Player directory - apply linear gradient with opacity to all rows (desktop)
-  .player-directory-row {
+  .row-linear-gradient {
     // Apply linear gradient with opacity to all rows - higher opacity for better coverage
     background: linear-gradient(180deg, rgba(255, 198, 90, 0.6) 0%, rgba(229, 200, 152, 0.6) 100%);
     background-color: transparent; // Ensure gradient shows
@@ -115,7 +115,7 @@
   }
 
   // Player directory - apply linear gradient with opacity to all rows (mobile)
-  .player-directory-row {
+  .row-linear-gradient {
     // Apply linear gradient with opacity to all rows - higher opacity for better coverage
     background: linear-gradient(180deg, rgba(255, 198, 90, 0.6) 0%, rgba(229, 200, 152, 0.6) 100%);
     background-color: transparent; // Ensure gradient shows
@@ -123,6 +123,17 @@
     // Override gradient background for sticky column to ensure full opacity
     .sticky-name-column {
       background: linear-gradient(180deg, rgba(255, 198, 90, 1) 0%, rgba(229, 200, 152, 1) 100%);
+    }
+  }
+
+  .row-orange {
+    // Apply linear gradient with opacity to all rows - higher opacity for better coverage
+    background: linear-gradient(180deg, $tennis-orange 0%, $tennis-orange 100%);
+    background-color: transparent; // Ensure gradient shows
+
+    // Override gradient background for sticky column to ensure full opacity
+    .sticky-name-column {
+      background: linear-gradient(180deg, $tennis-orange 0%, $tennis-orange 100%);
     }
   }
 

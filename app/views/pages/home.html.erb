@@ -23,96 +23,59 @@
     </header>
 
     <!-- Welcome Section: Introduction to LeagueBox -->
-    <section class="home-section mb-4">
-      <%# Section Header: Clickable toggle header with icon and arrow %>
-      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="1">
-        <h2 class="mb-0 d-flex align-items-center gap-2">
-          <span class="section-icon">🏆</span>
-          <b class="cursor-pointer flex-grow-1"><%= t '.welcome_title' %></b>
-          <span class="section-arrow">⬇️</span>
-        </h2>
-      </div>
-      <%# Section Content: Collapsible welcome paragraphs (hidden by default) %>
-      <div class="home-section-content d-none" data-toggle-target="section1">
-        <div class="mt-3">
-          <p><%= t '.p01_html' %></p>
-          <p><%= t '.p02_html' %></p>
-          <p><%= t '.p03_html' %></p>
-        </div>
-      </div>
-    </section>
+    <%= render "pages/home_section", section_number: 1, icon: "🏆", title_key: ".welcome_title" do %>
+      <p><%= t '.p01_html' %></p>
+      <p><%= t '.p02_html' %></p>
+      <p><%= t '.p03_html' %></p>
+    <% end %>
 
     <!-- LeagueBox at a Glance Section: Feature overview with conditional links -->
-    <section class="home-section mb-4">
-      <%# Section Header: Clickable toggle header with icon and arrow %>
-      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="2">
-        <h2 class="mb-0 d-flex align-items-center gap-2">
-          <span class="section-icon">🧑‍💻</span>
-          <b class="cursor-pointer flex-grow-1"><%= t '.use_title' %></b>
-          <span class="section-arrow">⬇️</span>
-        </h2>
-      </div>
-      <%# Section Content: Feature list with different styling for authenticated vs. non-authenticated users %>
-      <div class="home-section-content d-none" data-toggle-target="section2">
-        <div class="mt-3">
-          <ol class="home-features-list">
-            <%# Non-authenticated users: Display styled spans (no links) %>
-            <% if !current_user
-              class_prefix = "bold-font color-" %>
-              <li class="home-feature-item"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li06_boxes"}</span>".html_safe) %></li>
-              <li class="home-feature-item"><%= t(".li07_html", inset_a: "<span class='#{class_prefix}tennis-blue'>#{t ".li07_list_view"}</span>".html_safe,
-                                                 inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li07_grid_view"}</span>".html_safe,
-                                                 inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li07_my_scores"}</span>".html_safe) %></li>
-              <li class="home-feature-item"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li08_round_ranking"}</span>".html_safe,
-                                                 inset_b: "<span class='#{class_prefix}green'>#{t ".li08_league_table"}</span>".html_safe) %></li>
-            <%# Authenticated users: Display clickable links to actual pages %>
-            <% else
-              class_prefix = "btn btn-inlayed bold-font color-" %>
-              <li class="home-feature-item"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li06_boxes"}</a>".html_safe) %></li>
-              <li class="home-feature-item"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li07_list_view"}</a>".html_safe,
-                                                 inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li07_grid_view"}</a>".html_safe,
-                                                 inset_c: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li07_my_scores"}</a>".html_safe) %></li>
-              <li class="home-feature-item"><%= t(".li08_html", inset_a: "<a class='#{class_prefix}green' href='#{@path["04a"]}'>#{t ".li08_round_ranking"}</a>".html_safe,
-                                                 inset_b: "<a class='#{class_prefix}green' href='#{@path["04b"]}'>#{t ".li08_league_table"}</a>".html_safe) %></li>
-            <% end %>
-          </ol>
-        </div>
-      </div>
-    </section>
-
+    <%= render "pages/home_section", section_number: 2, icon: "🧑‍💻", title_key: ".use_title" do %>
+      <ol class="home-features-list">
+        <%# Determine class prefix based on authentication status %>
+        <% class_prefix = current_user ? "btn btn-inlayed bold-font color-" : "bold-font color-" %>
+        <% if current_user %>
+          <%# Authenticated users: Display clickable links to actual pages %>
+          <li class="home-feature-item"><%= t(".li06_html", inset: "<a class='#{class_prefix}green' href='#{@path["02"]}'>#{t ".li06_boxes"}</a>".html_safe) %></li>
+          <li class="home-feature-item"><%= t(".li07_html", inset_a: "<a class='#{class_prefix}tennis-blue' href='#{@path["03a"]}'>#{t ".li07_list_view"}</a>".html_safe,
+                                             inset_b: "<a class='#{class_prefix}tennis-blue' href='#{@path["03b"]}'>#{t ".li07_grid_view"}</a>".html_safe,
+                                             inset_c: "<a class='#{class_prefix}tennis-red' href='#{@path["01"]}'>#{t ".li07_my_scores"}</a>".html_safe) %></li>
+          <li class="home-feature-item"><%= t(".li08_html", inset_a: "<a class='#{class_prefix}green' href='#{@path["04a"]}'>#{t ".li08_round_ranking"}</a>".html_safe,
+                                             inset_b: "<a class='#{class_prefix}green' href='#{@path["04b"]}'>#{t ".li08_league_table"}</a>".html_safe) %></li>
+        <% else %>
+          <%# Non-authenticated users: Display styled spans (no links) %>
+          <li class="home-feature-item"><%= t(".li06_html", inset: "<span class='#{class_prefix}green'>#{t ".li06_boxes"}</span>".html_safe) %></li>
+          <li class="home-feature-item"><%= t(".li07_html", inset_a: "<span class='#{class_prefix}tennis-blue'>#{t ".li07_list_view"}</span>".html_safe,
+                                             inset_b: "<span class='#{class_prefix}tennis-blue'>#{t ".li07_grid_view"}</span>".html_safe,
+                                             inset_c: "<span class='#{class_prefix}tennis-red'>#{t ".li07_my_scores"}</span>".html_safe) %></li>
+          <li class="home-feature-item"><%= t(".li08_html", inset_a: "<span class='#{class_prefix}green'>#{t ".li08_round_ranking"}</span>".html_safe,
+                                             inset_b: "<span class='#{class_prefix}green'>#{t ".li08_league_table"}</span>".html_safe) %></li>
+        <% end %>
+      </ol>
+    <% end %>
 
     <!-- Ready Section: Getting started guide with numbered steps -->
-    <section class="home-section mb-4">
-      <%# Section Header: Clickable toggle header with responsive racket icon and arrow %>
-      <div class="home-section-header" data-action="click->toggle#toggleSection" data-section="3">
-        <h2 class="mb-0 d-flex align-items-center gap-2">
-          <%# Racket icon: Small on mobile, larger on desktop %>
-          <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-inline d-md-none", width: 20 %>
-          <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "section-icon d-none d-md-inline", width: 30 %>
-          <b class="cursor-pointer flex-grow-1"><%= t '.ready_title' %></b>
-          <span class="section-arrow">⬇️</span>
-        </h2>
-      </div>
-      <%# Section Content: Collapsible step-by-step guide (hidden by default) %>
-      <div class="home-section-content d-none" data-toggle-target="section3">
-        <div class="mt-3">
-          <p><%= t '.p04' %></p>
-          <%# Step list: Dynamically renders translation keys li09_html through li12_html %>
-          <ol id="steps" class="home-steps-list">
-            <% (9..12).each do |i| %>
-              <li class="home-step-item"><%= t ".li#{format('%02d', i)}_html" %></li>
-            <% end %>
-          </ol>
-        </div>
-      </div>
-    </section>
+    <% racket_icon = render("shared/racket_icon", mobile_width: 20, desktop_width: 30, mobile_class: "section-icon d-inline d-md-none", desktop_class: "section-icon d-none d-md-inline") %>
+    <%= render "pages/home_section", section_number: 3, icon: racket_icon, title_key: ".ready_title" do %>
+      <p><%= t '.p04' %></p>
+      <%# Step list: Dynamically renders translation keys li09_html through li12_html %>
+      <ol id="steps" class="home-steps-list">
+        <% (9..12).each do |i| %>
+          <li class="home-step-item"><%= t ".li#{format('%02d', i)}_html" %></li>
+        <% end %>
+      </ol>
+    <% end %>
 
     <!-- Call to Action: Primary navigation button (login or view boxes) -->
     <div class="home-cta-section my-4 my-md-5">
-      <div class="buttons-wrap d-flex flex-column flex-sm-row gap-2 gap-sm-0 justify-content-center align-items-center">
+      <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
         <%# Show "View Boxes" button for authenticated users, "Login" for non-authenticated %>
-        <% if user_signed_in?%>
+        <% if user_signed_in? %>
           <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+          <%# Show admin/referee buttons on mobile %>
+          <% if @is_mobile %>
+            <%= render "shared/admin_referee_buttons" %>
+          <% end %>
         <% else %>
           <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
         <% end %>
@@ -130,8 +93,7 @@
       <% class_prefix = "btn btn-inlayed bold-font color-" %>
       <%# Racket icon: Responsive sizing (small on mobile, larger on desktop) %>
       <div class="title mb-3">
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
+        <%= render "shared/racket_icon", mobile_width: 25, desktop_width: 50 %>
       </div>
       <%# Rules link paragraph %>
       <div class="title">
@@ -150,8 +112,7 @@
       <p class="mb-4"><%= t(".p06_html", inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{t ".li14"}</a>".html_safe) %></p>
       <%# Decorative racket icons: Responsive sizing %>
       <div class="buttons-wrap text-center">
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-inline d-md-none", width: 25 %>
-        <%= image_tag "box_league_racket.png", alt: "Tennis racket", class: "d-none d-md-inline", width: 50 %>
+        <%= render "shared/racket_icon", mobile_width: 25, desktop_width: 50 %>
       </div>
     </section>
 
@@ -165,18 +126,9 @@
   <!-- Bottom Navigation: Conditional navigation links based on user role -->
   <div class="home-bottom-nav mt-4">
     <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
-      <%# Show Chatrooms link for referees and admin %>
-      <% if user_signed_in? %>
-        <% if current_user.role&.include?("referee") || current_user == @admin %>
-          <%= link_to "Chatrooms", chatroom_path(0), class: "btn btn-shape btn-aqua text-size" %>
-        <% end %>
-      <%# Show Login link for non-authenticated users %>
-      <% else %>
-        <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size" %>
-      <% end %>
-      <%# Show Create Club button for admin only %>
-      <% if current_user == @admin %>
-        <%= link_to t('.create_club_btn'), new_user_box_score_path, class: "btn btn-shape btn-aqua text-size" %>
+      <%# Show admin/referee buttons on desktop (hidden on mobile, shown in CTA section) %>
+      <% unless @is_mobile %>
+        <%= render "shared/admin_referee_buttons" %>
       <% end %>
     </div>
   </div>

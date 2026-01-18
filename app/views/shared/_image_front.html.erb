@@ -5,5 +5,5 @@
       <%= image_tag @club.logo.url, alt: "#{@club.name} logo", class: "club-logo" %>
     </div>
   <% end %>
-  <div class="font-black image-home-text"><h1><b><%= @club == @sample_club ? "" : @club.name.capitalize %> LeagueBox</b></h1></div>
+  <div class="font-black image-home-text"><h1><b><%= @club == @sample_club ? "" : @club.name.titleize %> LeagueBox</b></h1></div>
 </div><br>

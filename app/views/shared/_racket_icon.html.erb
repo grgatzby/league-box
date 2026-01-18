@@ -1,0 +1,15 @@
+<%#
+  Racket Icon Partial
+  Displays responsive tennis racket icon with different sizes for mobile and desktop.
+  Parameters:
+    mobile_width: Width for mobile (default: 25)
+    desktop_width: Width for desktop (default: 50)
+    mobile_class: Additional classes for mobile (default: "d-inline d-md-none")
+    desktop_class: Additional classes for desktop (default: "d-none d-md-inline")
+%>
+<% mobile_width = local_assigns[:mobile_width] || 25 %>
+<% desktop_width = local_assigns[:desktop_width] || 50 %>
+<% mobile_class = local_assigns[:mobile_class] || "d-inline d-md-none" %>
+<% desktop_class = local_assigns[:desktop_class] || "d-none d-md-inline" %>
+<%= image_tag "box_league_racket.png", alt: "Tennis racket", class: mobile_class, width: mobile_width %>
+<%= image_tag "box_league_racket.png", alt: "Tennis racket", class: desktop_class, width: desktop_width %>

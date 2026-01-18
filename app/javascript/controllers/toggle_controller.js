@@ -23,43 +23,45 @@ export default class extends Controller {
 
   connect() {
     var currentElement = this.togglableElementTarget,
-    wSinit = currentElement.scrollTop, // number of pixels by which content is scrolled from its top edge.
+    scroTopinit = currentElement.scrollTop, // number of pixels by which content is scrolled from its top edge.
     screenType = this.screenTypeValue,
     topButton = this.topButtonTarget,
-    hasImage = this.hasImageTarget
+    hasImage = this.hasImageTarget,
+    image = null,
+    imH = 0
     //console.log(this.tournamentRulesTarget,this.displayRoundsValue, this.hideRoundsValue);
     if (hasImage) {
       // console.log('image target is in the DOM');
-      var image = this.imageTarget,
-      iH = image.firstElementChild.clientHeight; // 325
+      image = this.imageTarget;
+      imH = image.firstElementChild.clientHeight; // 325
     }
 
     currentElement.onscroll = function(e) {
-      var wH = window.innerHeight, // 988
-      woH = window.outerHeight, // 920
-      wS = currentElement.scrollTop; // 0 - 1083
+      var inH = window.innerHeight, // 988
+      outH = window.outerHeight, // 920
+      scroTop = currentElement.scrollTop; // 0 - 1083
       if (hasImage) {
-        var hT = image.offsetTop // 2011 (distance from the outer border of image to the top padding edge of the offsetParent.
-        // console.log (wH, woH, wS, wS+iH, hT-wH, wS+iH-(hT-wH), ((wS+iH-(hT-wH))/iH));
-        if (wS+iH > (hT-wH)) {
+        var imOffsTop = image.offsetTop // 2011 (distance from the outer border of image to the top padding edge of the offsetParent.
+        console.log ("inH, outH, scroTop, scroTop+imH, imOffsTop-inH, scroTop+imH-(imOffsTop-inH), imH,((scroTop+imH-(imOffsTop-inH))/imH", inH, outH, scroTop, scroTop+imH, imOffsTop-inH, scroTop+imH-(imOffsTop-inH), imH,((scroTop+imH-(imOffsTop-inH))/imH));
+        if (scroTop+imH > (imOffsTop-inH)) {
             // console.log('image on the view!');
         }
-        if (wS+iH/2 > (hT-wH)) {
+        if (scroTop+imH/2 > (imOffsTop-inH)) {
             // console.log('center of image on the view!');
             // fade image in at the end of scroll down
-            image.style.opacity = ((wS+iH/2-(hT-wH))/iH);
+            image.style.opacity = ((scroTop+imH/2-(imOffsTop-inH))/imH);
         } else {
           image.style.opacity = 0;
         }
       }
 
-      if (wSinit < wS && wS > 0 && screenType !== "mobile") {
+      if (scroTopinit < scroTop && scroTop > 0 && screenType !== "mobile") {
         // when scrolling UP in the scroll-box, scroll the entire window up if NOT on a mobile screen
         window.scrollTo(0, document.body.scrollHeight);
       }
-      wSinit = wS;
+      scroTopinit = scroTop;
       // console.log('top button', topButton.classList);
-      if (wS > wH/3) {
+      if (scroTop > inH/3) {
         // when the scrolling through the scroll-box, show the Top button
         topButton.classList.remove("d-none");
       } else {
