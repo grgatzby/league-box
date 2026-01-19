@@ -4,80 +4,92 @@
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  /* custom CSS */
-  .container {
-    margin: 0 auto;
-    width: 50%;
-  }
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
-  @media only screen and (max-width: 768px) {
-    .container {
-      width: 80%;
+    body {
+      font-family: "Lato", "sans-serif";
     }
-  }
 
-  .message {
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "Lato", "sans-serif";
+    }
+    /* custom CSS */
+    .container {
+      margin: 0 auto;
+      width: 50%;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .container {
+        width: 80%;
+      }
+    }
+
+    .message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-content: space-around;
+
+    }
+    .frame-color-shape {
+      text-align: center;
+      background-color: rgba(255,255,255,0.1);
+      margin: 0 auto;
+      padding: 5px 24px;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+
+    .buttons-wrap {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: space-around;
-
-  }
-  .frame-color-shape {
-    text-align: center;
-    background-color: #9cb879;
-    margin: 0 auto;
     padding: 5px 24px;
-    border-radius: 0.5rem;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  }
+    flex-wrap: wrap;
+    }
 
-  .buttons-wrap {
-  display: flex;
-  padding: 5px 24px;
-  flex-wrap: wrap;
-  }
+    .button-green {
+    margin: 0 auto 5px;
+    padding: 6px 24px;
+    border-radius: 0.25rem;
+    text-decoration: none;
+    background: #03897c;
+    color: #FFC65A;;
+    transition: background 0.3s ease;
+    }
 
-  .button-blue {
-  margin: 0 auto 5px;
-  color: white;
-  padding: 6px 24px;
-  border-radius: 0.25rem;
-  text-decoration: none;
-  background: #336699;
-  transition: background 0.3s ease;
-  }
+    .button-green:hover {
+      background: #336699;
+      color: white;
+    }
 
-  .button-blue:hover {
-    background: #7f7f7f;
-    color: white;
-  }
+    .image-home {
+      position: sticky;
+      height: 20rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-size: cover;
+      background-position: center;
+    }
 
-  .image-home {
-    position: sticky;
-    height: 20rem;
-    display: flex;
-    flex-direction: column;
-    background-size: cover;
-    background-position: center;
-  }
+    .image-home > .image-home-text {
+      color: white;
+      font-size: 2.6vw;
+      font-weight: bolder;
+      transition: all 0.4s ease;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      z-index: 5;
+      position: relative;
+    }
 
-  .image-home > .image-home-text {
-    color: white;
-    font-size: 30px;
-    font-weight: bolder;
-    padding-top: 150px;
-    text-align: center;
-  }
-
-</style>
+  </style>
 </head>
 
-<body>
+<body style="background-color: #FFC65A;">
   <!-- This file lives in public/500.html -->
   <div class="image-home"
     style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/clay-court.webp')">
-    <br><h4 class="mx-5 image-home-text">LeagueBox</h4><br>
+    <h4 class="mx-5 image-home-text">LeagueBox</h4><br>
   </div><br>
 
   <div class="container">
@@ -97,7 +109,7 @@
     </div>
     <br>
     <div class = "buttons-wrap">
-      <a  class="button-blue" href="/">Back to Home page</a>
+      <a  class="button-green" href="/">Back to Home page</a>
     </div>
   </div>
 
