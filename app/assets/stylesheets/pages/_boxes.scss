@@ -127,11 +127,11 @@
   }
 
   .row-orange {
-    // Apply linear gradient with opacity to all rows - higher opacity for better coverage
+    // Apply linear orange background with opacity to all rows - higher opacity for better coverage
     background: linear-gradient(180deg, $tennis-orange 0%, $tennis-orange 100%);
     background-color: transparent; // Ensure gradient shows
 
-    // Override gradient background for sticky column to ensure full opacity
+    // Override orange  background for sticky column to ensure full opacity
     .sticky-name-column {
       background: linear-gradient(180deg, $tennis-orange 0%, $tennis-orange 100%);
     }
