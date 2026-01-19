@@ -14,7 +14,8 @@ class ChatroomsController < ApplicationController
   # Automatically creates chatroom if it doesn't exist
   # Marks chatroom as read when displaying
   def show
-    set_club_round # sets variables @club and @round (ApplicationController)
+    # sets variables @club and @round (ApplicationController) for display in the navbar
+    set_club_round
     @current_box = current_user.user_box_scores.map(&:box).last
     if params[:chatroom]
       # [A] displays a chatroom after selecting a chatroom name from the chatrooms/show dropdown
@@ -22,9 +23,10 @@ class ChatroomsController < ApplicationController
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..])
       @box_nb = @chatroom.box.box_number
       # general chatroom has no round, then set @round to club's current round
-      @round = @chatroom.box.round unless @chatroom.name == "general"
-      @round_nb = round_label(@round)
-
+      # @round = @chatroom.box.round
+      #  @round = @chatroom.box.round unless @chatroom.name == "general"
+      #  @round_nb = round_label(@round)
+      #end
     elsif (params[:round] && current_user.role == "player") || params[:box]
       # [B] displays a chatroom after selecting a club, a round and a box number
       # either selects an open chatroom or create (open) a chatroom
@@ -59,14 +61,16 @@ class ChatroomsController < ApplicationController
           )
         end
       end
-      @box_nb = @chatroom.box.box_number
-      @round = @chatroom.box.round
-      @round_nb = round_label(@round)
+      #@box_nb = @chatroom.box.box_number
+      #@round = @chatroom.box.round
+      #@round_nb = round_label(@round)
     elsif params[:id]
       if params[:id] == "0"
-        # [C] comming from the navbar dropdown: displays the forms (a dropdown list of available chatrooms
-        # and a nested form of club/round/box numbers)
-        # Get unread chatrooms for admin/referee (only those they have access to)
+        # [C] comming from the navbar dropdown: chose a chatroom from the dropdown lists
+        # two forms :
+        #   - a dropdown list of available chatrooms
+        #   - a nested form of club/round/box numbers
+        # display unread allowed chatrooms for admin/referee
         if ["admin", "referee", "player referee"].include?(current_user.role)
           @unread_chatrooms = current_user.unread_chatrooms
         end
