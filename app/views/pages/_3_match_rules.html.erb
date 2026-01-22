@@ -12,5 +12,10 @@
   <p><%= t '.p13' %></p>
 <h5 class="color-tennis-blue">1.10 <%= t '.match_format' %></h5>
   <% (14..19).each do |i| %>
-    <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
+    <% if i == 16 %>
+      <%# Use dynamic tiebreak_points from club %>
+      <p><%= t(".p#{format '%02d',i}", points: @club.tiebreak_points) %></p>
+    <% else %>
+      <p><%= t(".p#{format '%02d',i}#{"_html" if i==17}") %></p>
+    <% end %>
   <% end %>

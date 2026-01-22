@@ -77,10 +77,22 @@
       <%# Score Options: Predefined score combinations for sets and tiebreak %>
       <%# Set scores: Common game scores (4-3, 4-2, etc.) %>
       <% scores = [["#{ @is_mobile ? "---" : t('.input_score') }", "4-3", "4-2", "4-1", "4-0", "0-4", "1-4", "2-4", "3-4"]] %>
-      <%# Tiebreak scores: Point scores from 0-10, with 11-9+ for extended tiebreaks %>
-      <% score_tb = [["---",
-                    "11-9 #{ @is_mobile ? "+" : t('.and_more') }", "10-8", "10-7", "10-6", "10-5", "10-4", "10-3", "10-2", "10-1", "10-0",
-                    "0-10", "1-10", "2-10", "3-10", "4-10", "5-10", "6-10", "7-10", "8-10", "9-11 #{ @is_mobile ? "+" : t('.and_more') }" ]] %>
+      <%# Tiebreak scores: Dynamically generated based on effective_tiebreak_points %>
+      <% tiebreak_points = @effective_tiebreak_points || @round.effective_tiebreak_points %>
+      <% tiebreak_options = ["---"] %>
+      <%# Extended tiebreak scores (above standard) - e.g., "11-9+" %>
+      <% tiebreak_options << "#{tiebreak_points + 1}-#{tiebreak_points - 1} #{ @is_mobile ? "+" : t('.and_more') }" %>
+      <%# Standard tiebreak scores: from tiebreak_points-0 down to tiebreak_points-1 %>
+      <% (tiebreak_points - 2).downto(0) do |i| %>
+        <% tiebreak_options << "#{tiebreak_points}-#{i}" %>
+      <% end %>
+      <%# Standard tiebreak scores: from 0-tiebreak_points up to (tiebreak_points-1)-tiebreak_points %>
+      <% 0.upto(tiebreak_points - 2) do |i| %>
+        <% tiebreak_options << "#{i}-#{tiebreak_points}" %>
+      <% end %>
+      <%# Extended tiebreak scores (below standard) - e.g., "9-11+" %>
+      <% tiebreak_options << "#{tiebreak_points - 1}-#{tiebreak_points + 1} #{ @is_mobile ? "+" : t('.and_more') }" %>
+      <% score_tb = [tiebreak_options] %>
 
       <%# Score Input Fields: Nested form for both players' scores %>
       <%= f.fields_for :user_match_scores do |user_match_score| %>

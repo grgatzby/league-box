@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_01_16_080616) do
+ActiveRecord::Schema[7.0].define(version: 2026_01_19_104854) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_16_080616) do
     t.string "logo"
     t.string "banner"
     t.string "website"
+    t.integer "tiebreak_points", default: 10, null: false
   end
 
   create_table "courts", force: :cascade do |t|
@@ -132,6 +133,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_16_080616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "league_start"
+    t.integer "tiebreak_points"
     t.index ["club_id"], name: "index_rounds_on_club_id"
   end
 

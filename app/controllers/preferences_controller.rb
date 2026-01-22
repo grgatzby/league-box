@@ -19,7 +19,7 @@ class PreferencesController < ApplicationController
     end
   end
 
-  
+
   # Update preference record and user/club details for existing user
   # Tracks changes to only show flash notice if actual changes were made
   # Handles user details, profile picture, and club website updates (for admin/referee)

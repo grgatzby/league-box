@@ -15,7 +15,7 @@ nl:
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
     edit:
-      title: Mijn profiel
+      title: Profiel & voorkeuren
       role: Rol
       preferences: Voorkeuren
       nickname: Pseudo
@@ -45,3 +45,12 @@ nl:
       website_updated: "Clubwebsite succesvol bijgewerkt."
       website_error: "Fout bij het bijwerken van de clubwebsite."
       club_not_found: "Club niet gevonden."
+      club_tiebreak_points: Tie-break Punten
+      club_tiebreak_points_help: Standaard tie-break punten voor deze club (gebruikt als rondespecifieke waarde niet is ingesteld)
+      round_tiebreak_configuration: Ronde Tie-break
+      round_tiebreak_help: Configureer tie-break punten voor elke ronde. Laat leeg om over te nemen van de club standaardwaarde.
+      round: Ronde
+      inherits_from_club: "Neemt over van club (standaard: %{points} punten)"
+      overrides_club: "Overschrijft club standaard (%{points} punten, club standaard: %{club_points} punten)"
+      no_rounds: Geen rondes beschikbaar voor deze club.
+      details_stored_flash: Details opgeslagen

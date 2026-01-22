@@ -114,7 +114,7 @@ en:
       match_format: Match Format
       p14: Matches will be played as two short sets with a deciding championship tie-break if required.
       p15: "Each set will be played as the first to 4 games with a normal 7 point tie-break at games 3:3."
-      p16: The championship tiebreaker will be played as the first to 10 points with 2 clear.
+      p16: The championship tiebreaker will be played as the first to %{points} points with 2 clear.
       p17_html: >
         OPTIONAL: <i>to be decided amongst players before the start of a match</i>
       p18: "So that games do not become protracted, a sudden death deuce can be played to decide a game should the game score be 40:40."

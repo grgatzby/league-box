@@ -9,4 +9,13 @@ class Club < ApplicationRecord
 
   validates :name, presence: true
   validates :name, uniqueness: true
+  validates :tiebreak_points, presence: true, numericality: { greater_than_or_equal_to: 7 }
+
+  before_validation :set_default_tiebreak_points, on: :create
+
+  private
+
+  def set_default_tiebreak_points
+    self.tiebreak_points ||= 10
+  end
 end

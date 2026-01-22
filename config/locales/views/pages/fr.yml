@@ -112,7 +112,7 @@ fr:
       match_format: Format du match
       p14: Les matchs seront joués en deux mini-sets avec un tie-break décisif si nécessaire.
       p15: "Chaque set sera joué en 4 jeux gagnants avec un jeu décisif (ou tie-break) de 7 points à 3:3."
-      p16: Le tie-break décisif sera joué comme le premier à 10 points avec 2 points d'écart minimum.
+      p16: Le tie-break décisif sera joué comme le premier à %{points} points avec 2 points d'écart minimum.
       p17_html: >
         OPTIONNEL: <i>à décider entre les joueurs avant le début du match</i>
       p18: "Pour que les jeux ne s'éternisent pas, une Mort Subite à égalité peut être jouée pour décider du jeu à 40:40."

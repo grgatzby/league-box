@@ -11,7 +11,7 @@ class MatchesController < ApplicationController
   REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                                  "email_opponent", "phone_number_opponent", "role_opponent"]
   REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_nb", "input_user_id", "input_date"]
-  SHORT_TIEBREAK_EDIT = 7 # Tiebreak rule is first to 10, but admin/referee may edit score and allow first to 7
+  WINNING_GAMES_PER_SET = 4 # number of winning games per set
 
   # Display match details with scores for both players
   # Shows match time, court, scores, and referee information
@@ -47,6 +47,8 @@ class MatchesController < ApplicationController
       @max_end_date = [@round.end_date, Time.now].min
       @match = Match.new(time: @max_end_date)
       @match.user_match_scores.build
+      # Store effective tiebreak points for use in view
+      @effective_tiebreak_points = @round.effective_tiebreak_points
       # the code below was adapted to the previous form where scores of a set were input individually (eg 4 and 1 for 4-1)
       # if params[:score_set1]
       #   @match_entry = Match.new
@@ -92,7 +94,8 @@ class MatchesController < ApplicationController
       match_scores[index][:score_tiebreak] = score_tiebreak[index] || 0
     end
 
-    test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
+    tiebreak_points = @match.box.round.effective_tiebreak_points
+    test_score = test_new_score(match_scores, tiebreak_points) # ARRAY of won sets count if scores ok, false otherwise
     if test_score
       results = compute_points(match_scores)
       # if score is valid, store match date and match time in UTC Time
@@ -174,6 +177,8 @@ class MatchesController < ApplicationController
     @round = @match.box.round
     # max match date in the form: user can't post results in the future
     @max_end_date = [@round.end_date, Time.now].min
+    # Store effective tiebreak points for use in view
+    @effective_tiebreak_points = @round.effective_tiebreak_points
   end
 
   # Update match scores (admin and referees only)
@@ -205,8 +210,11 @@ class MatchesController < ApplicationController
       user_match_scores[index].input_date = input_date
     end
 
+    # Get round for tiebreak_points validation
+    round = match.box.round
+
     # updates points in user_match_scores and return ARRAY of won sets count for each player
-    test_edit_score = test_edit_score(user_match_scores, results)
+    test_edit_score = test_edit_score(user_match_scores, results, round)
 
     if test_edit_score
       results = compute_points(user_match_scores)
@@ -295,7 +303,7 @@ class MatchesController < ApplicationController
 
           # match_scores_to_a: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
           match_scores = match_scores_to_a(row[:score_winner])
-          test_score = test_new_score(match_scores) # ARRAY of won sets count if scores ok, false otherwise
+          test_score = test_new_score(match_scores, round.effective_tiebreak_points) # ARRAY of won sets count if scores ok, false otherwise
           if test_score
             @match = Match.create(box_id:, court_id:, time: row[:match_date] || round.start_date)
             results = compute_points(match_scores)
@@ -371,17 +379,18 @@ class MatchesController < ApplicationController
   # Validate match scores for an edit
   # Similar to #test_new_score but uses existing results for validation
   # Returns: true if valid, false otherwise
-  def test_edit_score(match_scores, results)
-    if (match_scores[0][:score_set1] < 4 && match_scores[1][:score_set1] < 4) ||
-       (match_scores[0][:score_set2] < 4 && match_scores[1][:score_set2] < 4)
+  def test_edit_score(match_scores, results, round)
+    tiebreak_points = round.effective_tiebreak_points
+    if (match_scores[0][:score_set1] < WINNING_GAMES_PER_SET && match_scores[1][:score_set1] < WINNING_GAMES_PER_SET) ||
+       (match_scores[0][:score_set2] < WINNING_GAMES_PER_SET && match_scores[1][:score_set2] < WINNING_GAMES_PER_SET)
       flash[:alert] = t('.test_scores01_flash') # A score must be entered for each set.
       false
-    elsif (match_scores[0][:score_tiebreak] < SHORT_TIEBREAK_EDIT && match_scores[1][:score_tiebreak] < SHORT_TIEBREAK_EDIT) &&
+    elsif (match_scores[0][:score_tiebreak] < tiebreak_points && match_scores[1][:score_tiebreak] < tiebreak_points) &&
           (results[0] == 1 || results[1] == 1) # no score entered for the tiebreak with 1 set each
       flash[:alert] = t('.test_scores02_flash') # There must be a winner for the tiebreak.
       false
-    elsif (match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] == 4) ||
-          (match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] == 4)
+    elsif (match_scores[0][:score_set1] == WINNING_GAMES_PER_SET && match_scores[1][:score_set1] == WINNING_GAMES_PER_SET) ||
+          (match_scores[0][:score_set2] == WINNING_GAMES_PER_SET && match_scores[1][:score_set2] == WINNING_GAMES_PER_SET)
       flash[:alert] = t('.test_scores03_flash') # 4-4: enter a correct score for set 1 and set 2
       false
     elsif ((match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2) &&
@@ -443,10 +452,11 @@ class MatchesController < ApplicationController
   end
 
   # Validate match scores for a new match
-  # Checks: both sets have scores, tiebreak present if sets are 1-1, tiebreak margin is 2+ points
+  # Checks: both sets have scores, tiebreak present if sets are 1-1, tiebreak margin is 2+ points,
+  # and winning tiebreak score reaches the configured threshold.
   # Returns: ARRAY [sets_won_player1, sets_won_player2] if valid, false otherwise
   # Example: 4-2 1-3 10-7 => [2, 1] (player1 wins 2 sets)
-  def test_new_score(match_scores)
+  def test_new_score(match_scores, tiebreak_points)
     results = { sets_won1: 0, sets_won2: 0 } # player 1, player 2
     # test scores entries for first set and second set
     if !match_scores ||
@@ -456,13 +466,13 @@ class MatchesController < ApplicationController
       false
     else # score entries are OK for set 1 and set 2 => count won sets for each player
       # first set
-      if match_scores[0][:score_set1] == 4 && match_scores[1][:score_set1] < 4
+      if match_scores[0][:score_set1] == WINNING_GAMES_PER_SET && match_scores[1][:score_set1] < WINNING_GAMES_PER_SET
         results[:sets_won1] += 1
       else
         results[:sets_won2] += 1
       end
       # second set
-      if match_scores[0][:score_set2] == 4 && match_scores[1][:score_set2] < 4
+      if match_scores[0][:score_set2] == WINNING_GAMES_PER_SET && match_scores[1][:score_set2] < WINNING_GAMES_PER_SET
         results[:sets_won1] += 1
       else
         results[:sets_won2] += 1
@@ -479,13 +489,20 @@ class MatchesController < ApplicationController
         flash[:notice] = t('.test_scores05_flash')
         true # return a notice but enter the score without the tiebreak score
       else
-        if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
-          results[:sets_won1] += 1
+        # Validate tiebreak threshold and margin of 2 points
+        max_score = [match_scores[0][:score_tiebreak], match_scores[1][:score_tiebreak]].max
+        if max_score < tiebreak_points || (match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2
+          flash[:alert] = t('.test_scores04_flash') # Tiebreak: need 2 points clear.
+          false
         else
-          results[:sets_won2] += 1
+          if match_scores[0][:score_tiebreak] > match_scores[1][:score_tiebreak]
+            results[:sets_won1] += 1
+          else
+            results[:sets_won2] += 1
+          end
+          # return ARRAY of won sets count for each player
+          [results[:sets_won1], results[:sets_won2]]
         end
-        # return ARRAY of won sets count for each player
-        [results[:sets_won1], results[:sets_won2]]
       end
     end
   end
