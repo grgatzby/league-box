@@ -89,6 +89,7 @@ fr:
       new_club_name: nom de club
       nb_of_courts: nombre de courts
       players_per_box: joueurs par box
+      tiebreak_points: points du tie-break
       round_dates: dates du round
       submit_btn: ⎷ Valider
       back_btn: ←

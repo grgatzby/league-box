@@ -15,7 +15,7 @@ fr:
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
     edit:
-      title: Mon profil
+      title: Profil & préférences
       role: Rôle
       preferences: Préférences
       nickname: Pseudo
@@ -45,3 +45,12 @@ fr:
       website_updated: "Site web du club mis à jour avec succès."
       website_error: "Erreur lors de la mise à jour du site web du club."
       club_not_found: "Club introuvable."
+      club_tiebreak_points: Points de Tie-break
+      club_tiebreak_points_help: Points de tie-break par défaut pour ce club (utilisés si la valeur spécifique au round n'est pas définie)
+      round_tiebreak_configuration: Tie-break des Rounds
+      round_tiebreak_help: Configurez les points de tie-break pour chaque round. Laissez vide pour hériter de la valeur par défaut du club.
+      round: Round
+      inherits_from_club: "Hérite du club (par défaut: %{points} points)"
+      overrides_club: "Remplace la valeur par défaut du club (%{points} points, valeur club: %{club_points} points)"
+      no_rounds: Aucun round disponible pour ce club.
+      details_stored_flash: Détails enregistrés

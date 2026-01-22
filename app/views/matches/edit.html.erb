@@ -82,8 +82,10 @@
           <div class="col-2"><%= user_match_score.select :score_set1, 0..4 %></div>
           <%# Set 2 Score: Games won (0-4) %>
           <div class="col-2"><%= user_match_score.select :score_set2, 0..4 %></div>
-          <%# Tiebreak Score: Points (0-11) or "Na" (not applicable) %>
-          <div class="col-2"><%= user_match_score.select :score_tiebreak,['Na']+(0..11).to_a %></div>
+          <%# Tiebreak Score: Points dynamically generated based on effective_tiebreak_points or "Na" (not applicable) %>
+          <% tiebreak_points = @effective_tiebreak_points || @round.effective_tiebreak_points %>
+          <% tiebreak_options = ['Na'] + (0..tiebreak_points).to_a + (tiebreak_points + 1..tiebreak_points + 2).to_a %>
+          <div class="col-2"><%= user_match_score.select :score_tiebreak, tiebreak_options %></div>
         </div>
       <% end %>
       <br>

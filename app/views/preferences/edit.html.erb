@@ -1,5 +1,17 @@
-<%# My details form for existing user %>
+
+  <%# My details form for existing user %>
 <%= render "shared/image_front" %>
+<%# Reusable JavaScript function for DOM ready checks %>
+<script>
+  // Helper function to run code when DOM is ready
+  function runWhenReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback);
+    } else {
+      callback();
+    }
+  }
+</script>
 <div class="<%= class_names("container": !@is_mobile) %>">
   <div class="one-liner">
     <h3><%= t '.title' %></h3>
@@ -20,8 +32,14 @@
       <br><br>
 
       <%# Display-only information rows %>
-      <%= render "preferences/display_row", emoji: "🎾", label: "Club", value: current_user.club.name.titleize %>
-      <%= render "preferences/display_row", emoji: "🧩", label: t(".role"), value: current_user.role %>
+      <%= render "preferences/display_row",
+          emoji: "🎾",
+          label: "Club",
+          value: (current_user == @admin ? current_user.club.name : selected_club.name).titleize %>
+      <%= render "preferences/display_row",
+          emoji: "🧩",
+          label: t(".role"),
+          value: current_user == @admin ? current_user.role : selected_club.role %>
 
       <%# Editable form fields %>
       <%= render "preferences/form_field",
@@ -148,13 +166,8 @@
             });
           }
 
-          // Run immediately if DOM is ready, otherwise wait for DOMContentLoaded
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initProfilePicturePreview);
-          } else {
-            // DOM is already loaded, run immediately
-            initProfilePicturePreview();
-          }
+          // Run when DOM is ready
+          runWhenReady(initProfilePicturePreview);
         })();
       </script>
 
@@ -197,11 +210,6 @@
 
       <%# My Club Section: Allow admin/referee to edit club website %>
       <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
-        <hr>
-        <div class="row">
-          <div class="col-4"><b><%= t(".club_details") %></b></div>
-          <small class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></small>
-        </div>
         <% if current_user == @admin %>
           <% available_clubs = Club.all.reject { |c| c == @sample_club } %>
           <% selected_club_id = if params[:club_id].present?
@@ -212,6 +220,13 @@
                                    current_user.club.id
                                  end %>
           <% selected_club = Club.find(selected_club_id) %>
+
+        <hr>
+        <div class="row">
+          <div class="col-4"><b><%= t(".club_details") %></b></div>
+          <small class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></small>
+        </div>
+        <% if current_user == @admin %>
           <%# Admin club selection dropdown (not a separate form, just updates the hidden field) %>
           <div class="row mb-3">
             <div class="col-4"><%= label_tag :club_id, t(".select_club"), class: "form-label" %></div>
@@ -223,7 +238,23 @@
           </div>
           <%# Store club data for JavaScript (embedded in script tag) %>
           <script type="application/json" id="clubs-data">
-            <%= available_clubs.map { |club| { id: club.id, website: club.website || "" } }.to_json.html_safe %>
+            <%= available_clubs.map { |club|
+              rounds = club.rounds.order(start_date: :desc)
+              {
+                id: club.id,
+                website: club.website || "",
+                tiebreak_points: club.tiebreak_points,
+                rounds: rounds.map { |round|
+                  {
+                    id: round.id,
+                    label: round_label(round),
+                    start_date: round.start_date.strftime("%d/%m/%Y"),
+                    end_date: round.end_date.strftime("%d/%m/%Y"),
+                    tiebreak_points: round.tiebreak_points
+                  }
+                }
+              }
+            }.to_json.html_safe %>
           </script>
         <% else %>
           <%# Referee can only edit their own club %>
@@ -245,35 +276,242 @@
           </div>
         </div>
 
-        <%# JavaScript to update website field when club dropdown changes (admin only) %>
+        <%# Club Tiebreak Points update field (admin only) %>
+        <% if current_user == @admin %>
+          <div class="row">
+            <div class="col-4"><%= label_tag :club_tiebreak_points, "🎾 #{t(".club_tiebreak_points")}:", class: "form-label", for: "club_tiebreak_points_input" %></div>
+            <div class="col-8">
+              <%= number_field_tag :club_tiebreak_points,
+                  selected_club.tiebreak_points,
+                  min: 7,
+                  class: "form-control",
+                  style: "width: 10em; max-width: 100%",
+                  id: "club_tiebreak_points_input" %>
+              <small class="form-text text-muted"><i><%= t(".club_tiebreak_points_help") %></i></small>
+            </div>
+          </div>
+        <% end %>
+
+        <%# JavaScript to update website and club tie-break fields when club dropdown changes (admin only) %>
         <% if current_user == @admin %>
           <script>
             (function() {
-              const clubSelect = document.getElementById('club_select_dropdown');
-              const websiteInput = document.getElementById('website_input');
-              const websiteClubId = document.getElementById('website_club_id');
-              const clubsDataElement = document.getElementById('clubs-data');
+              function setupClubDropdown() {
+                const clubSelect = document.getElementById('club_select_dropdown');
 
-              if (!clubSelect || !websiteInput || !websiteClubId || !clubsDataElement) {
-                return;
+                if (!clubSelect) {
+                  console.warn('Club dropdown not found');
+                  return;
+                }
+
+                // Remove any existing change handlers by using onclick attribute
+                clubSelect.onchange = null;
+
+                // Add new change handler
+                clubSelect.addEventListener('change', function(e) {
+                  const selectedClubId = parseInt(this.value);
+
+                  if (isNaN(selectedClubId)) {
+                    console.warn('Invalid club ID:', this.value);
+                    return;
+                  }
+
+                  // Always reload page to update Round Tie-break section for the selected club
+                  const url = new URL(window.location.href);
+                  url.searchParams.set('club_id', selectedClubId);
+                  url.searchParams.set('scroll_to_bottom', 'true');
+                  // Add timestamp to ensure URL is always different and forces reload
+                  url.searchParams.set('_t', Date.now().toString());
+
+                  // Force navigation
+                  window.location.href = url.toString();
+                }, { once: false });
               }
 
-              const clubsData = JSON.parse(clubsDataElement.textContent || '[]');
-
-              clubSelect.addEventListener('change', function() {
-                const selectedClubId = parseInt(this.value);
-                const selectedClub = clubsData.find(club => club.id === selectedClubId);
-
-                if (selectedClub) {
-                  websiteInput.value = selectedClub.website || '';
-                  websiteClubId.value = selectedClubId;
-                }
-              });
+              // Initialize when DOM is ready
+              runWhenReady(setupClubDropdown);
             })();
           </script>
         <% end %>
         <%# Hidden field for club_id (top-level parameter, not nested under preference) %>
         <%= hidden_field_tag :club_id, selected_club.id, id: "website_club_id" %>
+        <% else %>
+          <%# Referee can only edit their own club %>
+          <% selected_club = current_user.club %>
+          <hr>
+          <div class="row">
+            <div class="col-4"><b><%= t(".club_details") %></b></div>
+            <small class="col-8"><i><%= t(".website_note_html", inset: "<a class='btn btn-inlayed bold-font color-blue' href='#{my_club_path}'>#{t ".website_note_club"}</a>".html_safe) %></i></small>
+          </div>
+          <%# Website update field %>
+          <div class="row">
+            <div class="col-4"><%= preference_f.label :website, "🌐 #{t(".website")}:", for: "website_input" %></div>
+            <div class="col-8">
+              <%= preference_f.text_field :website,
+                  placeholder: t(".website_placeholder"),
+                  value: selected_club.website,
+                  style: "width: 20em; max-width: 100%",
+                  class: "form-control",
+                  id: "website_input" %>
+              <small class="form-text text-muted"><i><%= t(".website_help") %></i></small>
+            </div>
+          </div>
+          <%= hidden_field_tag :club_id, selected_club.id, id: "website_club_id" %>
+        <% end %>
+      <% end %>
+
+      <%# Round Tie-break Configuration Section: Allow referee/admin to edit tiebreak_points for rounds %>
+      <% if current_user && (current_user.role&.include?("referee") || current_user == @admin) %>
+        <%# Get rounds for the selected club (admin) or current user's club (referee) %>
+        <% if current_user == @admin %>
+          <% available_clubs = Club.where.not(id: @sample_club&.id) %>
+          <% rounds_club_id = if params[:club_id].present?
+                                params[:club_id].to_i
+                              elsif available_clubs.any?
+                                available_clubs.first.id
+                              else
+                                current_user.club.id
+                              end %>
+          <% rounds_club = Club.find(rounds_club_id) %>
+        <% else %>
+          <% rounds_club = current_user.club %>
+        <% end %>
+
+        <hr>
+        <div class="row">
+          <div class="col-4"><b><%= t(".round_tiebreak_configuration") %></b></div>
+          <small class="col-8"><i><%= t(".round_tiebreak_help") %></i></small>
+        </div>
+        <% rounds = rounds_club.rounds.order(start_date: :desc) %>
+        <div id="rounds_container">
+          <% if rounds.any? %>
+            <% selected_round = rounds.first %>
+            <%# Store rounds data for JavaScript %>
+            <script type="application/json" id="rounds-data">
+              <%= rounds.map { |round|
+                {
+                  id: round.id,
+                  label: round_label(round),
+                  start_date: round.start_date.strftime("%d/%m/%Y"),
+                  end_date: round.end_date.strftime("%d/%m/%Y"),
+                  tiebreak_points: round.tiebreak_points
+                }
+              }.to_json.html_safe %>
+            </script>
+
+            <div class="row mb-3">
+              <div class="col-4">
+                <%= label_tag :selected_round_id, t(".round"), class: "form-label" %>
+
+                <small class="text-muted" id="round_dates_text">
+                  (<%= selected_round.start_date.strftime("%d/%m/%Y") %> - <%= selected_round.end_date.strftime("%d/%m/%Y") %>)
+                </small>
+              </div>
+              <div class="col-8">
+                <%= select_tag :selected_round_id,
+                    options_for_select(
+                      rounds.map { |round|
+                        ["#{round_label(round)} (#{round.start_date.strftime("%d/%m/%Y")} - #{round.end_date.strftime("%d/%m/%Y")})", round.id]
+                      },
+                      selected_round.id
+                    ),
+                    class: "form-control",
+                    id: "round_select_dropdown",
+                    style: "width: 20em; max-width: 100%" %>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-4">
+                <%= label_tag :selected_round_tiebreak_points, "#{t(".round")} #{round_label(selected_round)}:", class: "form-label", id: "round_tiebreak_label" %>
+              </div>
+              <div class="col-8">
+                <%= number_field_tag :selected_round_tiebreak_points,
+                    selected_round.tiebreak_points,
+                    min: 7,
+                    class: "form-control",
+                    style: "width: 10em; max-width: 100%",
+                    placeholder: rounds_club.tiebreak_points.to_s,
+                    id: "selected_round_tiebreak_points_input" %>
+                <small class="form-text text-muted">
+                  <i id="round_inherits_text">
+                    <% if selected_round.tiebreak_points.nil? %>
+                      <%= t(".inherits_from_club", points: rounds_club.tiebreak_points) %>
+                    <% else %>
+                      <%= t(".overrides_club", points: selected_round.tiebreak_points, club_points: rounds_club.tiebreak_points) %>
+                    <% end %>
+                  </i>
+                </small>
+              </div>
+            </div>
+
+            <%# JavaScript to update tiebreak_points field when round dropdown changes %>
+            <script>
+              (function() {
+                const roundSelect = document.getElementById('round_select_dropdown');
+                const roundsDataElement = document.getElementById('rounds-data');
+                const tiebreakInput = document.getElementById('selected_round_tiebreak_points_input');
+                const roundDatesText = document.getElementById('round_dates_text');
+                const roundTiebreakLabel = document.getElementById('round_tiebreak_label');
+                const roundInheritsText = document.getElementById('round_inherits_text');
+
+                if (!roundSelect || !roundsDataElement || !tiebreakInput) {
+                  return;
+                }
+
+                const roundsData = JSON.parse(roundsDataElement.textContent || '[]');
+                const clubTiebreakPoints = <%= rounds_club.tiebreak_points %>;
+
+                // Translation strings
+                const translations = {
+                  round: <%= t(".round").to_json.html_safe %>,
+                  inheritsTemplate: <%= t(".inherits_from_club", points: "__POINTS__").to_json.html_safe %>,
+                  overridesTemplate: <%= t(".overrides_club", points: "__POINTS__", club_points: "__CLUB_POINTS__").to_json.html_safe %>
+                };
+
+                function updateRoundFields(round) {
+                  if (!round) return;
+
+                  // Update tiebreak points input
+                  const tiebreakValue = round.tiebreak_points !== null && round.tiebreak_points !== undefined ? round.tiebreak_points : '';
+                  tiebreakInput.value = tiebreakValue;
+                  tiebreakInput.placeholder = clubTiebreakPoints;
+
+                  // Update dates text
+                  if (roundDatesText) {
+                    roundDatesText.textContent = round.start_date + ' - ' + round.end_date;
+                  }
+
+                  // Update label
+                  if (roundTiebreakLabel) {
+                    roundTiebreakLabel.textContent = translations.round + ' ' + round.label + ':';
+                  }
+
+                  // Update help text
+                  if (roundInheritsText) {
+                    if (round.tiebreak_points === null || round.tiebreak_points === undefined) {
+                      roundInheritsText.textContent = translations.inheritsTemplate.replace('__POINTS__', clubTiebreakPoints);
+                    } else {
+                      roundInheritsText.textContent = translations.overridesTemplate
+                        .replace('__POINTS__', round.tiebreak_points)
+                        .replace('__CLUB_POINTS__', clubTiebreakPoints);
+                    }
+                  }
+                }
+
+                roundSelect.addEventListener('change', function() {
+                  const selectedRoundId = parseInt(this.value);
+                  const selectedRound = roundsData.find(round => round.id === selectedRoundId);
+                  updateRoundFields(selectedRound);
+                });
+              })();
+            </script>
+          <% else %>
+            <div class="row">
+              <div class="col-12"><i><%= t(".no_rounds") %></i></div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
     <br>
@@ -283,3 +521,36 @@
   <% end %>
 
 </div>
+<%# Scroll to bottom when admin changes club %>
+<% if current_user == @admin && params[:scroll_to_bottom] == 'true' %>
+  <script>
+    (function() {
+      function scrollToBottom() {
+        // Find the scrollable div container (box-scroller class)
+        const scrollableDiv = document.querySelector('.box-scroller');
+
+        // Scroll the div container to the bottom if it exists
+        if (scrollableDiv) {
+          scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+        }
+
+        // Also scroll the entire page to the bottom
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+
+        // Remove the scroll and timestamp parameters from URL without reloading
+        const url = new URL(window.location);
+        url.searchParams.delete('scroll_to_bottom');
+        url.searchParams.delete('_t');
+        window.history.replaceState({}, '', url.toString());
+      }
+
+      // Wait for page to fully load, then scroll to bottom
+      runWhenReady(function() {
+        setTimeout(scrollToBottom, 100);
+      });
+    })();
+  </script>
+<% end %>

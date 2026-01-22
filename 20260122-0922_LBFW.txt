@@ -1,0 +1,10 @@
+{
+  "status": null,
+  "errors": [
+    {
+      "error": 13,
+      "description": "Permission denied",
+      "info": "Firewall"
+    }
+  ]
+}

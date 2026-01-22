@@ -90,6 +90,7 @@ en:
       new_club_name: new club name
       nb_of_courts: number of courts
       players_per_box: players per box
+      tiebreak_points: tie-break points
       round_dates: round dates
       submit_btn: ⎷ Submit
       back_btn: ←

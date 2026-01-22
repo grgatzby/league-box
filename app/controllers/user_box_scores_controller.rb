@@ -152,7 +152,8 @@ class UserBoxScoresController < ApplicationController
         box_players = [] # array (one per box) of array of box players
         boxes = [] # array of boxes
         # create club
-        club = Club.create(name: params[:new_club_name])
+        tiebreak_points = params[:tiebreak_points].present? ? params[:tiebreak_points].to_i : 10
+        club = Club.create(name: params[:new_club_name], tiebreak_points: tiebreak_points)
 
         # create courts
         params[:nb_of_courts].to_i.times { |court_number| Court.create(name: court_number + 1, club_id: club.id) }

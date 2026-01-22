@@ -89,6 +89,7 @@ nl:
       new_club_name: nieuwe clubnaam
       nb_of_courts: aantal rechtbanken
       players_per_box: spelers per box
+      tiebreak_points: tie-break punten
       round_dates: ronde data
       submit_btn: ⎷ Bevestigen
       back_btn: ←

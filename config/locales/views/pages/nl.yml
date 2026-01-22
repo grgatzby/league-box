@@ -112,7 +112,7 @@ nl:
       match_format: Match-formaat
       p14: De wedstrijden worden gespeeld in twee minisets, eventueel met een beslissende tie-break.
       p15: "Elke set wordt gespeeld als de eerste met 4 games met een standaard tiebreak van 7 punten om 3:3."
-      p16: De beslissende tie-break wordt net als de eerste gespeeld op 10 punten met een minimaal verschil van 2 punten.
+      p16: De beslissende tie-break wordt net als de eerste gespeeld op %{points} punten met een minimaal verschil van 2 punten.
       p17_html: >
         OPTIONEEL: <i>nader te bepalen tussen de spelers vóór aanvang van de wedstrijd</i>
       p18: "Om te voorkomen dat games zich voortslepen, kan een gelijkspel Sudden Death worden gespeeld om de wedstrijd om 40:40 te beslissen."

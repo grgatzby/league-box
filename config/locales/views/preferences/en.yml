@@ -15,7 +15,7 @@ en:
       expanded_view: Expanded view
       clear_format: Clear background color gradient
     edit:
-      title: My profile
+      title: Profile & preferences
       role: Role
       preferences: Preferences
       nickname: Nick name
@@ -45,3 +45,12 @@ en:
       website_updated: "Club website updated successfully."
       website_error: "Error updating club website."
       club_not_found: "Club not found."
+      club_tiebreak_points: Tie-break Points
+      club_tiebreak_points_help: Default tie-break points for this club (used if round-specific value is not set)
+      round_tiebreak_configuration: Round Tie-break
+      round_tiebreak_help: Configure tie-break points for each round. Leave empty to inherit from club default.
+      round: Round
+      inherits_from_club: "Inherits from club (default: %{points} points)"
+      overrides_club: "Overrides club default (%{points} points, club default: %{club_points} points)"
+      no_rounds: No rounds available for this club.
+      details_stored_flash: Details stored
