@@ -74,12 +74,50 @@ class PreferencesController < ApplicationController
           club.update(website: website_value)
           changes_made = true
         end
+
+        # Update club tiebreak_points if admin and parameter is present
+        if current_user == @admin && params[:club_tiebreak_points].present?
+          tiebreak_points = params[:club_tiebreak_points].to_i
+          if tiebreak_points >= 7 && club.tiebreak_points != tiebreak_points
+            club.update(tiebreak_points: tiebreak_points)
+            changes_made = true
+          end
+        end
       rescue ActiveRecord::RecordNotFound => e
         # Club not found - log error but don't break the form submission
         Rails.logger.error("Club not found in preferences update: #{e.message}")
       rescue => e
         # Log any other errors but don't break the form submission
         Rails.logger.error("Error updating club website in preferences: #{e.message}")
+        Rails.logger.error(e.backtrace.join("\n"))
+      end
+    end
+
+    # Update round tiebreak_points if admin/referee and parameter is present
+    if current_user && (current_user.role&.include?("referee") || current_user == @admin)
+      begin
+        if params[:selected_round_id].present? && params[:selected_round_tiebreak_points].present?
+          round = Round.find(params[:selected_round_id])
+          tiebreak_points = params[:selected_round_tiebreak_points].to_i
+          
+          # Verify the round belongs to the club the user can edit
+          club = if current_user == @admin && params[:club_id].present?
+                   Club.find(params[:club_id])
+                 else
+                   current_user.club
+                 end
+          
+          if round.club_id == club.id && tiebreak_points >= 0
+            if round.tiebreak_points != tiebreak_points
+              round.update(tiebreak_points: tiebreak_points)
+              changes_made = true
+            end
+          end
+        end
+      rescue ActiveRecord::RecordNotFound => e
+        Rails.logger.error("Round not found in preferences update: #{e.message}")
+      rescue => e
+        Rails.logger.error("Error updating round tiebreak_points in preferences: #{e.message}")
         Rails.logger.error(e.backtrace.join("\n"))
       end
     end
