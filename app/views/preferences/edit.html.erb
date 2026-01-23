@@ -32,6 +32,8 @@
       <br><br>
 
       <%# Display-only information rows %>
+      <%# Define selected_club early for referees (admins will override it later) %>
+      <% selected_club ||= current_user.club %>
       <%= render "preferences/display_row",
           emoji: "🎾",
           label: "Club",
@@ -39,7 +41,7 @@
       <%= render "preferences/display_row",
           emoji: "🧩",
           label: t(".role"),
-          value: current_user == @admin ? current_user.role : selected_club.role %>
+          value: current_user.role %>
 
       <%# Editable form fields %>
       <%= render "preferences/form_field",
@@ -316,6 +318,11 @@
                     return;
                   }
 
+                  // Disable browser scroll restoration to prevent blinking
+                  if ('scrollRestoration' in history) {
+                    history.scrollRestoration = 'manual';
+                  }
+
                   // Always reload page to update Round Tie-break section for the selected club
                   const url = new URL(window.location.href);
                   url.searchParams.set('club_id', selectedClubId);
@@ -535,10 +542,7 @@
         }
 
         // Also scroll the entire page to the bottom
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth'
-        });
+        window.scrollTo(0, document.body.scrollHeight);
 
         // Remove the scroll and timestamp parameters from URL without reloading
         const url = new URL(window.location);
@@ -547,10 +551,13 @@
         window.history.replaceState({}, '', url.toString());
       }
 
-      // Wait for page to fully load, then scroll to bottom
-      runWhenReady(function() {
-        setTimeout(scrollToBottom, 100);
-      });
-    })();
+      // Disable browser scroll restoration
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      // Scroll immediately when DOM is ready (no delay to minimize blinking)
+      runWhenReady(scrollToBottom);
+   })();
   </script>
 <% end %>
