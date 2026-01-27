@@ -189,12 +189,12 @@ fr:
       home: Page d'accueil
       p01: Présentation générale du Tournoi de la Box League.
       p02_html: Pour l'admin, bouton <i class='color-tennis-aqua'>Ajouter un nouveau club</i>.
-      overview_rules: Le Tournoi
+      overview_rules: Les règles du tournoi
       p03: Description du Tournoi et explication des règles de la Box League.
       my_club: Mon Club
       p05_html: >
         Coordonnées de l'admin et de l'Arbitre (Referee) du club.<br>
-        Annuaire des joueurs.
+        Annuaire des joueurs du tournoi.
       all_boxes: Les box
       p07: "Vue de toutes les box du round avec pour chaque joueur:"
       li01: son nom
@@ -209,9 +209,9 @@ fr:
       league_table: Classement d'un round et league table de la saison
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
       p13_html: Modifiez l'ordre de la liste en cliquant sur l'entête correspondant.<br>
-      referee_list_view: Vue en Liste (admin/Referee)
+      referee_list_view: Vue en Liste
       p14_html: >
-        Les matchs joués par chaque joueur sont affichés sous forme de liste dont les entêtes sont <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
+        Liste des matchs joués par chaque joueur affichant: <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>
         Les matchs non encore joués sont également listés.<br><br>
         En cliquant sur la ligne d'un match, vous accédez à la page <i>Modifier/Supprimer</i> un score, et l'admin peut cliquer sur une ligne de match non joué pour entrer un <b>Nouveau score</b>.
       table_view: Vue en Grille
@@ -223,7 +223,7 @@ fr:
       p18_html: >
         Un lien de bascule vers la <span class='color-tennis-blue'>Vue en liste</span> ( <i class='fa-solid fa-list color-tennis-blue'></i> ) est affiché.
         Cliquez sur la case d'un match pour <i>Modifier/Supprimer</i> un score, et sur une <i>case "Entrer score"</i> pour entrer un <b>Nouveau score</b>.
-      list_view: Vue en Liste (joueur)
+      list_view: Vue en Liste
       p19_html: Les matchs joués par chaque joueur sont affichés sous forme d'éléments de liste. Les en-têtes sont <b>Score matchs, Points joueur, Points adversaire, Cumul adversaire</b>.
       p20_html: >
         Si vous regardez votre box, votre nom sera affiché en rouge<br>.

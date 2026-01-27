@@ -14,7 +14,7 @@ const scrollDirection = function() {
 // Connects to data-controller="toggle"
 export default class extends Controller {
   static targets = ["togglableButton", "togglableElement", "tournamentRules", "topButton", "image",
-    "section1", "section2", "section3", "section4", "section5", "section6", "section7"]
+    "section1", "section2", "section3", "section4", "section5", "section6", "section7", "section8", "section9", "section10", "section11", "section12"]
   static values = {
     displayRounds: String,
     hideRounds: String,
@@ -113,15 +113,71 @@ export default class extends Controller {
     // when the user clicks on the section
     const sectionTarget = this[`section${sectionNumber}Target`];
     if (sectionTarget) {
+      const isCurrentlyHidden = sectionTarget.classList.contains("d-none");
       sectionTarget.classList.toggle("d-none");
+      
+      // Rotate arrow icon when section opens/closes
+      const arrow = event.currentTarget.querySelector('.sitemap-arrow');
+      if (arrow) {
+        if (isCurrentlyHidden) {
+          arrow.style.transform = 'rotate(180deg)';
+        } else {
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+
+      // If section is being expanded, check if we need to scroll to bottom
+      if (isCurrentlyHidden) {
+        // Wait for the animation to start, then check if next section is hidden
+        setTimeout(() => {
+          this.checkAndScrollToBottom(sectionNumber);
+        }, 50);
+      }
+    }
+  }
+
+  checkAndScrollToBottom(expandedSectionNumber) {
+    const scrollableContainer = this.togglableElementTarget;
+    if (!scrollableContainer) return;
+
+    // Check if this is the last section (12 is the maximum)
+    const isLastSection = expandedSectionNumber >= 12;
+
+    // Check if next section header exists and is hidden
+    let nextSectionHeaderHidden = false;
+    if (!isLastSection) {
+      const nextSectionNumber = expandedSectionNumber + 1;
+      const nextSectionHeader = document.querySelector(`[data-section="${nextSectionNumber}"]`);
+      if (nextSectionHeader) {
+        const nextSectionRect = nextSectionHeader.getBoundingClientRect();
+        const containerRect = scrollableContainer.getBoundingClientRect();
+        // Check if next section header is below the visible area
+        nextSectionHeaderHidden = nextSectionRect.top > containerRect.bottom;
+      }
+    }
+
+    // Scroll to bottom if it's the last section or next section header is hidden
+    if (isLastSection || nextSectionHeaderHidden) {
+      scrollableContainer.scrollTo({
+        top: scrollableContainer.scrollHeight,
+        behavior: 'smooth'
+      });
     }
   }
 
   collapseSections(number) {
     // collapse all sections except the one that is clicked
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 12; i++) {
       if (number !== i && this[`hasSection${i}Target`]) {
         this[`section${i}Target`].classList.add("d-none");
+        // Reset arrow rotation for collapsed sections
+        const sectionHeader = document.querySelector(`[data-section="${i}"]`);
+        if (sectionHeader) {
+          const arrow = sectionHeader.querySelector('.sitemap-arrow');
+          if (arrow) {
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        }
       }
     }
   }
