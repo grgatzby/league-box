@@ -8,92 +8,251 @@
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller"
          data-toggle-target="togglableElement" >
     <br><h4><div class="title"><b><%= t(".sitemap_title").upcase %></b></div></h4><br>
-    <br><h5><%= t '.home' %></h5>
-    <p><%= t '.p01' %></p>
+
+    <%# Section 1: Home %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="1">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.home' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section1">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p01' %></p>
+          <% if current_user && current_user.role != "player" %>
+            <p><%= t '.p02_html' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%# Section 2: All Boxes %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="2">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.all_boxes' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section2">
+        <div class="sitemap-section-body mt-2">
+          <%= t '.p07' %>
+          <ul>
+            <li><%= t '.li01' %></li>
+            <li><%= t '.li02' %></li>
+            <li><%= t '.li03' %></li>
+            <li><%= t '.li04' %></li>
+          </ul>
+          <p><%= t '.p08_html' %></p>
+          <p>
+            <%= t '.p09_html' %>
+            <% if current_user && current_user.role == "admin" %>
+              <%= t '.p10a_html' %>
+              <%= t '.p10b_html' %>
+            <% end %>
+            <% if current_user && (["referee", "player referee"].include?(current_user.role)) %>
+              <%= t '.p11_html' %>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <%# Section 3: League Table %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="3">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.league_table' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section3">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p12_html' %></p>
+          <p><%= t '.p13_html' %></p>
+        </div>
+      </div>
+    </div>
+
+    <%# Section 4: Overview Rules %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="4">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.overview_rules' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section4">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p03' %></p>
+        </div>
+      </div>
+    </div>
+
+    <%# Section 5: My Club %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="5">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.my_club' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section5">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p05_html' %></p>
+        </div>
+      </div>
+    </div>
+
+    <%# Section 6: Table View %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="6">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.table_view' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section6">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p16' %></p>
+          <% if current_user && current_user.role != "player" %>
+            <p><%= t '.p18_html' %></p>
+          <% else %>
+            <p><%= t '.p17_html' %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <% if current_user && current_user.role != "player" %>
-      <p><%= t '.p02_html' %></p>
-    <% end %>
-
-    <br><h5><%= t '.all_boxes' %></h5>
-    <%= t '.p07' %>
-    <ul>
-      <li><%= t '.li01' %></li>
-      <li><%= t '.li02' %></li>
-      <li><%= t '.li03' %></li>
-      <li><%= t '.li04' %></li>
-    </ul>
-    <p><%= t '.p08_html' %></p>
-    <p>
-      <%= t '.p09_html' %>
-      <% if current_user && current_user.role == "admin" %>
-        <%= t '.p10a_html' %>
-        <%= t '.p10b_html' %>
-      <% end %>
-      <% if current_user && (["referee", "player referee"].include?(current_user.role)) %>
-        <%= t '.p11_html' %>
-      <% end %>
-    </p>
-
-    <br><h5><%= t '.league_table' %></h5>
-    <p><%= t '.p12_html' %></p>
-    <p><%= t '.p13_html' %></p>
-
-    <br><h5><%= t '.overview_rules' %></h5>
-    <p><%= t '.p03' %></p>
-
-    <br><h5><%= t '.my_club' %></h5>
-    <p><%= t '.p05_html' %></p>
-
-    <br><h5><%= t '.table_view' %></h5>
-    <p><%= t '.p16' %></p>
-    <% if current_user && current_user.role != "player" %>
-      <p><%= t '.p18_html' %></p>
-
-      <br><h5><%= t '.referee_list_view' %></h5>
-      <p><%= t '.p14_html' %></p>
-      <p><%= t '.p21_html' %></p>
+      <%# Section 7: Referee List View %>
+      <div class="sitemap-section mb-3">
+        <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="7">
+          <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+            <span class="sitemap-arrow">⬇️</span>
+            <b><%= t '.referee_list_view' %></b>
+          </h5>
+        </div>
+        <div class="sitemap-section-content d-none" data-toggle-target="section7">
+          <div class="sitemap-section-body mt-2">
+            <p><%= t '.p14_html' %></p>
+            <p><%= t '.p21_html' %></p>
+          </div>
+        </div>
+      </div>
     <% else %>
-      <p><%= t '.p17_html' %></p>
+      <%# Section 7: List View %>
+      <div class="sitemap-section mb-3">
+        <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="7">
+          <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+            <span class="sitemap-arrow">⬇️</span>
+            <b><%= t '.list_view' %></b>
+          </h5>
+        </div>
+        <div class="sitemap-section-content d-none" data-toggle-target="section7">
+          <div class="sitemap-section-body mt-2">
+            <p><%= t '.p19_html' %></p>
+            <p><%= t '.p20_html' %></p>
+          </div>
+        </div>
+      </div>
 
-      <br><h5><%= t '.list_view' %></h5>
-      <p><%= t '.p19_html' %></p>
-      <p><%= t '.p20_html' %></p>
-
-      <br><h5><%= t '.my_scores' %></h5>
-      <p><%= t '.p22_html' %></p>
-      <p><%= t '.p23_html' %></p>
+      <%# Section 8: My Scores %>
+      <div class="sitemap-section mb-3">
+        <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="8">
+          <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+            <span class="sitemap-arrow">⬇️</span>
+            <b><%= t '.my_scores' %></b>
+          </h5>
+        </div>
+        <div class="sitemap-section-content d-none" data-toggle-target="section8">
+          <div class="sitemap-section-body mt-2">
+            <p><%= t '.p22_html' %></p>
+            <p><%= t '.p23_html' %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
 
-    <br><h5><%= t '.match_results' %></h5>
-    <%= t '.p24' %>
-    <ul>
-      <li><%= t '.li05' %></li>
-      <li><%= t '.li06' %></li>
-      <li><%= t '.li07' %></li>
-    </ul>
+    <%# Section 9: Match Results %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="9">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.match_results' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section9">
+        <div class="sitemap-section-body mt-2">
+          <%= t '.p24' %>
+          <ul>
+            <li><%= t '.li05' %></li>
+            <li><%= t '.li06' %></li>
+            <li><%= t '.li07' %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-    <br><h5><%= t '.new_match_score' %></h5>
-    <p><%= t '.p25' %></p>
+    <%# Section 10: New Match Score %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="10">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.new_match_score' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section10">
+        <div class="sitemap-section-body mt-2">
+          <p><%= t '.p25' %></p>
+        </div>
+      </div>
+    </div>
 
     <% if current_user && current_user.role != "player" %>
-      <br><h5><%= t '.match_edit_score' %></h5>
-      <p><%= t '.p26' %></p>
+      <%# Section 11: Match Edit Score %>
+      <div class="sitemap-section mb-3">
+        <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="11">
+          <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+            <span class="sitemap-arrow">⬇️</span>
+            <b><%= t '.match_edit_score' %></b>
+          </h5>
+        </div>
+        <div class="sitemap-section-content d-none" data-toggle-target="section11">
+          <div class="sitemap-section-body mt-2">
+            <p><%= t '.p26' %></p>
+          </div>
+        </div>
+      </div>
     <% end %>
 
-    <br><h5><%= t '.chatrooms' %></h5>
-    <% if current_user && current_user.role != "player" %>
-      <%= t '.p27_html' %>
-    <% else %>
-      <%= t '.p28_html' %>
-    <% end %>
-    <ul>
-      <li><%= t '.li08_html' %></li>
-      <li><%= t '.li09_html' %></li>
-      <li><%= t '.li10_html' %></li>
-      <li><%= t '.li11_html' %></li>
-      <li><%= t '.li12_html' %></li>
-    </ul></p>
-    <p><%= t '.p29' %></p>
+    <%# Section 12: Chatrooms %>
+    <div class="sitemap-section mb-3">
+      <div class="sitemap-section-header" data-action="click->toggle#toggleSection" data-section="12">
+        <h5 class="mb-0 d-flex align-items-center gap-2 cursor-pointer">
+          <span class="sitemap-arrow">⬇️</span>
+          <b><%= t '.chatrooms' %></b>
+        </h5>
+      </div>
+      <div class="sitemap-section-content d-none" data-toggle-target="section12">
+        <div class="sitemap-section-body mt-2">
+          <% if current_user && current_user.role != "player" %>
+            <%= t '.p27_html' %>
+          <% else %>
+            <%= t '.p28_html' %>
+          <% end %>
+          <ul>
+            <li><%= t '.li08_html' %></li>
+            <li><%= t '.li09_html' %></li>
+            <li><%= t '.li10_html' %></li>
+            <li><%= t '.li11_html' %></li>
+            <li><%= t '.li12_html' %></li>
+          </ul>
+          <p><%= t '.p29' %></p>
+        </div>
+      </div>
+    </div>
     <br><br>
 
     <button  data-action="click->toggle#scrollToTop" data-toggle-target="topButton"
