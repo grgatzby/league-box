@@ -20,7 +20,9 @@ en:
       intro: "At a glance, see all the players' <b>name</b>, <b>ranking</b>, number of <b>played games</b>, and their <b>cumulated box points</b><br />"
     index_expanded:
       all_boxes_btn: 🔁 compact display
-      message_box_pop: If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>
+      message_box_pop: >
+        If the page does not display correctly, <i class='color-green'>tick this box to clear the background color gradient</i>.<br>
+        Save your choice in page <b>Profile & preferences</b>.
       message_csv_pop: >
         <b>export round scores</b> to CSV file with the following headers:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>

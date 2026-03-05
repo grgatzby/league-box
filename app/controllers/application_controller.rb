@@ -73,8 +73,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # user_box_scores_path
-    boxes_path
+    # For both player and referee, the landing page after login is the "All boxes" page.
+    # If the user has set the preference to open the "Round Ranking" page after login,
+    # then the landing page is the "Round Ranking" page.
+    preference = resource.preference || Preference.create(user_id: resource.id, clear_format: false)
+    preference.landing_to_user_box_scores ? user_box_scores_path : root_path
   end
 
   # Set club and round instance variables from form parameters

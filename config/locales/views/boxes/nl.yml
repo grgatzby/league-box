@@ -20,7 +20,9 @@ nl:
       intro: In één oogopslag, bekijk de spelers <b>namen</b>, <b>ranglijsten</b>, <b>gespeelde wedstrijden</b> en <b>cumulatieve punten</b><br />
     index_expanded:
       all_boxes_btn: 🔁 compacte weergave
-      message_box_pop: Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleurverloop te wissen</i>
+      message_box_pop: >
+        Als de pagina niet correct wordt weergegeven, <i class='color-green'>vinkt u dit vakje aan om de achtergrondkleurverloop te wissen</i>.<br>
+        Sla je keuze op in <b>Profiel en voorkeuren</b>.
       message_csv_pop: >
         <b>scores exporteren</b> naar CSV-bestand met kolommen:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>

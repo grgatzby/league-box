@@ -20,7 +20,9 @@ fr:
       intro: "En un coup d'œil, consultez <b>le nom des joueurs</b>, leur <b>classement</b>, le nombre de <b>matchs joués</b> et leurs <b>points cumulés</b><br />"
     index_expanded:
       all_boxes_btn: 🔁 vue compacte
-      message_box_pop: Si la page ne s'affiche pas correctement, <i class='color-green'>cocher la case pour supprimer le dégradé de couleurs</i>
+      message_box_pop: >
+        Si la page ne s'affiche pas correctement, <i class='color-green'>cocher la case pour supprimer le dégradé de couleurs</i>.<br>
+        Vous pouvez sauvegarder votre choix dans la page <b>Profil & préférences</b>.
       message_csv_pop: >
         <b>exporter les scores du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>first_name_player, last_name_player, first_name_opponent, last_name_opponent,
         points_player, points_opponent, box_number, score_winner, score_winner2<br>

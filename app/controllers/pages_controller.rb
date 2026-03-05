@@ -24,6 +24,13 @@ class PagesController < ApplicationController
 
   end
 
+  # Update the preferred post-login landing page from Home toggle
+  def update_landing_preference
+    preference = current_user.preference || Preference.create(user_id: current_user.id, clear_format: false)
+    preference.update(landing_to_user_box_scores: params[:landing_to_user_box_scores] == "1")
+    redirect_to root_path
+  end
+
   # Display rules page with gallery images
   # Shows gallery images grouped by club with different access levels based on user role
   # Admin sees all images, authenticated users see their club's images, guests see sample club images

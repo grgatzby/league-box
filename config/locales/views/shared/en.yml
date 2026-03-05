@@ -68,12 +68,12 @@ en:
       stats: 📈 round stats
       round: Round
       round_dates: <b>%{start} to %{end}</b><br>
-      round_players_boxes: "%{players} players, %{boxes} boxes<br>"
+      round_players_boxes: "%{players} players, across %{boxes} boxes<br>"
       nb_matches:
-        zero: 0 matches
-        one: 1 match
-        other: "%{count} matches"
-      nb_matches_played: ", %{count} played (%{ratio}%)<br>"
+        zero: 0 matches,
+        one: 1 match,
+        other: "%{count} matches,"
+      nb_matches_played: " %{count} played (%{ratio}%)<br>"
       round_days_left:
         zero: "%{total_days} days, 0 days left (%{ratio}%)<br>"
         one: "%{total_days} days, 1 day left (%{ratio}%)<br>"

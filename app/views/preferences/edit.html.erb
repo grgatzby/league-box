@@ -194,6 +194,14 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-4"><%= t(".landing_page") %></div>
+        <div class="col-8">
+          <small><i><%= t(".landing_to_user_box_scores_help") %></i></small>
+          &nbsp;&nbsp;<%= preference_f.check_box :landing_to_user_box_scores %>
+        </div>
+      </div>
+
       <% if (["player", "player referee"].include?(current_user.role)) %>
         <hr>
         <b><%= t(".history") %></b><br>

@@ -29,6 +29,8 @@ fr:
       previous_rounds: Rounds précédents
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
+      landing_page: Page de destination après connexion
+      landing_to_user_box_scores_help: Cocher pour ouvrir la page "Classement du round" après connexion; décocher pour garder la page d'accueil
       profile_picture: "🖼️ Photo de profil :"
       submit_button: OK
       choose_file: Choisir un fichier
