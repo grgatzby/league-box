@@ -36,6 +36,13 @@ class PreferencesController < ApplicationController
       changes_made = true
     end
 
+    new_landing_preference = preference_params[:landing_to_user_box_scores] == "1"
+    if preference.landing_to_user_box_scores != new_landing_preference
+      preference.update(landing_to_user_box_scores: new_landing_preference)
+      preference.save
+      changes_made = true
+    end
+
     # Check if user details changed (using strong parameters)
     pref_params = preference_params
     user_params = {}
@@ -133,6 +140,6 @@ class PreferencesController < ApplicationController
   # Permits website field even though it's not a Preference attribute
   # The website field is used to update the Club model, not the Preference model
   def preference_params
-    params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail, :website)
+    params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail, :website, :landing_to_user_box_scores)
   end
 end

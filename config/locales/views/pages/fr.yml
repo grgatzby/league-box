@@ -52,6 +52,7 @@ fr:
       happy_tournament: Bon tournoi sur LeagueBox!
       create_club_btn: Créer un nouveau club
       login_link: se connecter
+      landing_to_user_box_scores: "🏁 Ouvrir la page \"Classement du round\" après connexion"
     rules:
       rules_title: Format et règles
       general_rules_section: Règles générales de LeagueBox

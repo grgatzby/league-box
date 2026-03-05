@@ -52,6 +52,7 @@ nl:
       happy_tournament: Gelukkig toernooi met LeagueBox!
       create_club_btn: Maak een nieuwe club
       login_link: log in
+      landing_to_user_box_scores: "🏁 Open \"Ronde rangschikking\" page na inloggen"
     rules:
       rules_title: Format en regels
       general_rules_section: Algemene regels
