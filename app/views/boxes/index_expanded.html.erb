@@ -30,8 +30,8 @@
       <%= form_with method: :get do |form| %>
         <%= hidden_field_tag(:round_id, @round.id) %>
         <%= hidden_field_tag(:club_id, @round.club_id) %>
+        <%= label_tag :clear_format, t(".clear_format") %>
         <%= check_box_tag(:clear_format,"1", params[:clear_format].eql?("1"), onchange: "this.form.submit();") %>
-        <%= form.label :clear_format, t(".clear_format") %>
       <% end %>
     </div>
 

@@ -106,14 +106,14 @@ class PreferencesController < ApplicationController
         if params[:selected_round_id].present? && params[:selected_round_tiebreak_points].present?
           round = Round.find(params[:selected_round_id])
           tiebreak_points = params[:selected_round_tiebreak_points].to_i
-          
+
           # Verify the round belongs to the club the user can edit
           club = if current_user == @admin && params[:club_id].present?
                    Club.find(params[:club_id])
                  else
                    current_user.club
                  end
-          
+
           if round.club_id == club.id && tiebreak_points >= 0
             if round.tiebreak_points != tiebreak_points
               round.update(tiebreak_points: tiebreak_points)

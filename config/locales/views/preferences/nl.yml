@@ -28,9 +28,9 @@ nl:
       history: Mijn geschiedenis
       previous_rounds: Vorige rondes
       expanded_view: Uitgebreide weergave
-      clear_format: Zijn achtergrondkleurverloop
+      clear_format_help: Zijn achtergrondkleurverloop
       landing_page: Startpagina na inloggen
-      landing_to_user_box_scores_help: Aanvinken om "Ronde ranglijst" te openen na inloggen; uitvinken om Home te behouden
+      landing_to_user_box_scores_help: Open "Ronde ranglijst" pagina na inloggen
       profile_picture: "🖼️ Profielfoto:"
       submit_button: OK
       choose_file: Bestand kiezen
