@@ -36,7 +36,7 @@ class PreferencesController < ApplicationController
       changes_made = true
     end
 
-    new_landing_preference = preference_params[:landing_to_user_box_scores] == "1"
+    new_landing_preference = params[:landing_to_user_box_scores] == "1"
     if preference.landing_to_user_box_scores != new_landing_preference
       preference.update(landing_to_user_box_scores: new_landing_preference)
       preference.save
