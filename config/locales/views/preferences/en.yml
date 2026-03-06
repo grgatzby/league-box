@@ -28,9 +28,9 @@ en:
       history: My history
       previous_rounds: Previous rounds
       expanded_view: Expanded view
-      clear_format: Clear background color gradient
+      clear_format_help: Clear background color gradient
       landing_page: Landing page after login
-      landing_to_user_box_scores_help: Tick to open "Round Ranking" page after login; untick to keep Home page
+      landing_to_user_box_scores_help: Open "Round Ranking" page after login
       profile_picture: "🖼️ Profile Picture:"
       submit_button: OK
       choose_file: Choose File

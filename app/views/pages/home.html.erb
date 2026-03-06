@@ -77,7 +77,7 @@
           <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
           <%= form_with url: update_home_landing_preference_path, method: :patch, local: true, class: "d-inline-flex align-items-center gap-2 m-0" do %>
             <%= hidden_field_tag :landing_to_user_box_scores, "0" %>
-            <%= check_box_tag :landing_to_user_box_scores, "1", (current_user.preference&.landing_to_user_box_scores == true), onchange: "this.form.requestSubmit();", class: "form-check-input m-0" %>
+            <%= check_box_tag :landing_to_user_box_scores, "1", (current_user.preference&.landing_to_user_box_scores.eql?(true)), onchange: "this.form.requestSubmit();", class: "form-check-input m-0" %>
             <%= label_tag :landing_to_user_box_scores, t(".landing_to_user_box_scores"), class: "m-0" %>
           <% end %>
           <%# Show admin/referee buttons on mobile %>
