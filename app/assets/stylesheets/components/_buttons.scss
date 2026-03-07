@@ -32,6 +32,7 @@
   color: $tennis-blue;
 
   &:hover {
+    transform: scale(1.1);
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     // background: #3e8e41;
     // background: #7f7f7f;
@@ -47,6 +48,7 @@
   color: $tennis-blue;
 
   &:hover {
+    transform: scale(1.1);
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     // background: #7f7f7f;
     background: linear-gradient(180deg, #7f7f7f 0%, $orange 100%);
@@ -59,6 +61,7 @@
   color: $tennis-blue;
 
   &:hover {
+    transform: scale(1.1);
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     background: $tennis-blue;
     color: white;
@@ -70,6 +73,7 @@
   color: $tennis-orange;
 
   &:hover {
+    transform: scale(1.1);
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     background: $tennis-blue;
     color: white;
@@ -81,6 +85,7 @@
   color: brown;
 
   &:hover {
+    transform: scale(1.1);
     box-shadow: 0 0 15px 5px rgba(0,0,0,0.1);
     background: rgb(246, 137, 79);
     color: $tennis-beige;
@@ -97,6 +102,7 @@
   transition: opacity 0.3s ease;
 
   &:hover {
+    transform: scale(1.1);
     color: #7f7f7f;
   }
 }

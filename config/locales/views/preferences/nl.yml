@@ -50,7 +50,7 @@ nl:
       club_tiebreak_points: Tie-break Punten
       club_tiebreak_points_help: Standaard tie-break punten voor deze club (gebruikt als rondespecifieke waarde niet is ingesteld)
       round_tiebreak_configuration: Ronde Tie-break
-      round_tiebreak_help: Configureer tie-break punten voor elke ronde. Laat leeg om over te nemen van de club standaardwaarde.
+      round_tiebreak_help: Tie-break punten voor elke ronde. Standaardwaarde van de club (%{points} punten).
       round: Ronde
       inherits_from_club: "Neemt over van club (standaard: %{points} punten)"
       overrides_club: "Overschrijft club standaard (%{points} punten, club standaard: %{club_points} punten)"

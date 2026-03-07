@@ -44,9 +44,11 @@
             <li><%= t '.li03' %></li>
             <li><%= t '.li04' %></li>
           </ul>
-          <p><%= t '.p08_html' %></p>
           <p>
-            <%= t '.p09_html' %>
+            <%= t '.p08_html' %><br>
+            &nbsp;&nbsp;<%= t '.p09_html' %>
+          </p>
+          <p>
             <% if current_user && current_user.role == "admin" %>
               <%= t '.p10a_html' %>
               <%= t '.p10b_html' %>

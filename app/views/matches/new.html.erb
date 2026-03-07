@@ -82,7 +82,7 @@
       <% tiebreak_options = ["---"] %>
       <%# Extended tiebreak scores (above standard) - e.g., "11-9+" %>
       <% tiebreak_options << "#{tiebreak_points + 1}-#{tiebreak_points - 1} #{ @is_mobile ? "+" : t('.and_more') }" %>
-      <%# Standard tiebreak scores: from tiebreak_points-0 down to tiebreak_points-1 %>
+      <%# Standard tiebreak scores: from tiebreak_points - 0 down to tiebreak_points-1 %>
       <% (tiebreak_points - 2).downto(0) do |i| %>
         <% tiebreak_options << "#{tiebreak_points}-#{i}" %>
       <% end %>
