@@ -188,8 +188,8 @@ fr:
     sitemap:
       sitemap_title: Plan du site
       home: Page d'accueil
-      p01: Présentation générale du Tournoi de la Box League.
-      p02_html: Pour l'admin, bouton <i class='color-tennis-aqua'>Ajouter un nouveau club</i>.
+      p01: Présentation du tournoi de la Box League.
+      p02_html: Bouton <span class='color-tennis-aqua'>Ajouter un nouveau club</span> (admins seulement).
       overview_rules: Les règles du tournoi
       p03: Description du Tournoi et explication des règles de la Box League.
       my_club: Mon Club
@@ -197,19 +197,19 @@ fr:
         Coordonnées de l'admin et de l'Arbitre (Referee) du club.<br>
         Annuaire des joueurs du tournoi.
       all_boxes: Les box
-      p07: "Vue de toutes les box du round avec pour chaque joueur:"
+      p07: "Vue de l'ensemble des box du round avec pour chaque joueur:"
       li01: son nom
       li02: son classement dans le Tournoi
       li03: le nombre de matchs joués
       li04: le cumul de ses points
       p08_html: Le <span class='color-tennis-red'>joueur connecté</span> et le <span class='color-tennis-red'>nom de sa box</span> apparaîssent en rouge.
-      p09_html: Un clic sur une box présente la Vue en grille de la box. <br>Le bouton <i>Vue déployée</i> permet de voir toutes les box en vue Grille.<br>
+      p09_html: Un clic sur une box présente sa Vue en grille. <br>Le bouton <i>Vue déployée</i> permet de voir toutes les box en vue Grille.<br>
       p10a_html: Quand approche la date de fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Créer le prochain round</i> (admin),
       p10b_html: ou pour <i class='color-tennis-aqua'>Demander la création du prochain round</i> (referee).
       p11_html: Quand approche la fin du round, un bouton apparaît en bas de la page pour <i class='color-tennis-aqua'>Demander la création du prochain round</i>.
       league_table: Classement d'un round et league table de la saison
       p12_html: Chaque joueur apparaît du mieux au moins bien classé sous les entêtes <b>Joueur, Classement, Points, Box, Matchs </b>(matchs joués)<b>, Gagnés </b>(matchs gagnés)<b>, Sets </b>(sets joués)<b>, Gagnés </b>(sets gagnés).
-      p13_html: Modifiez l'ordre de la liste en cliquant sur l'entête correspondant.<br>
+      p13_html: L'ordre de la liste est modifié en cliquant sur l'entête correspondant.<br>
       referee_list_view: Vue en Liste
       p14_html: >
         Liste des matchs joués par chaque joueur affichant: <b>Score matchs</b>, <b>Points joueur</b>, <b>Points adversaire</b>, <b>Cumul adversaire</b>.<br>

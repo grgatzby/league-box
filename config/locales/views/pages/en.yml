@@ -190,8 +190,8 @@ en:
     sitemap:
       sitemap_title: Sitemap
       home: Home
-      p01: General presentation of the Box League Tournament
-      p02_html: For the admin, <span class='color-tennis-aqua'>Add a new club</span> button.
+      p01: Presentation of the Box League Tournament
+      p02_html: <span class='color-tennis-aqua'>Add a new club</span> button (admins only).
       overview_rules: Tournament rules
       p03: Tournament overview and explanation of the Box League rules.
       my_club: My Club
@@ -211,7 +211,7 @@ en:
       p11_html: When reaching the end of the round, a button appears to <i class='color-tennis-aqua'>Request the next round</i>.
       league_table: Round ranking and tournament league table
       p12_html: Each player appears in descending rank order under the headers <b>Player, Rank, Points, Box, Matches </b>(matches played)<b>, Won </b>(matches won)<b>, Sets </b>(sets played)<b>, Won </b>(sets won).
-      p13_html: Change the list order by simply clicking on the corresponding header.<br>
+      p13_html: Change the list order by clicking on the corresponding header.<br>
       referee_list_view: Box List view
       p14_html: >
         Each player's matches which have been played are shown as list items.

@@ -395,7 +395,7 @@
         <hr>
         <div class="row">
           <div class="col-4"><b><%= t(".round_tiebreak_configuration") %></b></div>
-          <small class="col-8"><i><%= t(".round_tiebreak_help") %></i></small>
+          <small class="col-8"><i><%= t(".round_tiebreak_help", club_points: rounds_club.tiebreak_points) %></i></small>
         </div>
         <% rounds = rounds_club.rounds.order(start_date: :desc) %>
         <div id="rounds_container">

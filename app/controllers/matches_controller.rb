@@ -491,7 +491,8 @@ class MatchesController < ApplicationController
       else
         # Validate tiebreak threshold and margin of 2 points
         max_score = [match_scores[0][:score_tiebreak], match_scores[1][:score_tiebreak]].max
-        if max_score < tiebreak_points || (match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2
+        if (max_score < tiebreak_points || (match_scores[0][:score_tiebreak] - match_scores[1][:score_tiebreak]).abs < 2) &&
+          (results[:sets_won1] == 1 || results[:sets_won2] == 1) # no score entered for the tiebreak with 1 set each
           flash[:alert] = t('.test_scores04_flash') # Tiebreak: need 2 points clear.
           false
         else
@@ -505,6 +506,7 @@ class MatchesController < ApplicationController
         end
       end
     end
+    #raise "test_new_score: #{match_scores[0][:score_set1]} #{match_scores[1][:score_set1]} #{match_scores[0][:score_set2]} #{match_scores[1][:score_set2]} #{match_scores[0][:score_tiebreak]} #{match_scores[1][:score_tiebreak]} #{results[:sets_won1]} #{results[:sets_won2]}"
   end
 
   # Calculate number of sets won by each player

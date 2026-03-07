@@ -42,15 +42,15 @@ fr:
       website_placeholder: "https://exemple.com"
       website_help: "Entrez l'URL complète du site web (par exemple https://exemple.com)"
       update_website: Mettre à jour le Site Web
-      select_club: Sélectionner un Club
+      select_club: Sélectionner un club
       unauthorized: "Vous n'êtes pas autorisé à modifier le site web du club."
       website_updated: "Site web du club mis à jour avec succès."
       website_error: "Erreur lors de la mise à jour du site web du club."
       club_not_found: "Club introuvable."
       club_tiebreak_points: Points de Tie-break
       club_tiebreak_points_help: Points de tie-break par défaut pour ce club (utilisés si la valeur spécifique au round n'est pas définie)
-      round_tiebreak_configuration: Tie-break des Rounds
-      round_tiebreak_help: Configurez les points de tie-break pour chaque round. Laissez vide pour hériter de la valeur par défaut du club.
+      round_tiebreak_configuration: Tie-break des rounds
+      round_tiebreak_help: Points de tie-break pour chaque round. Par défaut, la valeur du club (%{club_points} points).
       round: Round
       inherits_from_club: "Hérite du club (par défaut: %{points} points)"
       overrides_club: "Remplace la valeur par défaut du club (%{points} points, valeur club: %{club_points} points)"

@@ -188,8 +188,8 @@ nl:
     sitemap:
       sitemap_title: Sitemap
       home: Home
-      p01: Algemene presentatie van het Box League Toernooi
-      p02_html: Voor de beheerder, knop <i class='color-tennis-aqua'>Een nieuwe club toevoegen</i>.
+      p01: Presentatie van het Box League Toernooi
+      p02_html: <span class='color-tennis-aqua'>Een nieuwe club toevoegen</span> knop (admins alleen).
       overview_rules: Toernooiregels
       p03: Toernooibeschrijving en Box League-regels uitgelegd.
       my_club: Mijn Club
