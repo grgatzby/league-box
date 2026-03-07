@@ -48,9 +48,9 @@ fr:
       website_error: "Erreur lors de la mise à jour du site web du club."
       club_not_found: "Club introuvable."
       club_tiebreak_points: Points de Tie-break
-      club_tiebreak_points_help: Points de tie-break par défaut pour ce club (utilisés si la valeur spécifique au round n'est pas définie)
+      club_tiebreak_points_help: Points de tie-break par défaut pour ce club (valeur utilisée si la valeur spécifique au round n'est pas définie ci-dessous)
       round_tiebreak_configuration: Tie-break des rounds
-      round_tiebreak_help: Points de tie-break pour chaque round. Par défaut, la valeur du club (%{club_points} points).
+      round_tiebreak_help: "Points de tie-break pour chaque round. Par défaut : %{club_points} points (valeur du club)."
       round: Round
       inherits_from_club: "Hérite du club (par défaut: %{points} points)"
       overrides_club: "Remplace la valeur par défaut du club (%{points} points, valeur club: %{club_points} points)"
