@@ -8,7 +8,7 @@ nl:
       welcome_title: Het Sociaal Toernooi van jouw club
       p01_html: >
         <ul>
-          <li class="home-feature-item"> Door <b class='color-tennis-aqua'>een Singles Social Tournament</b> georganiseerd als een Box League.
+          <li class="home-feature-item"> Door <b class='color-tennis-aqua'>een Singles, Doubles of Padel Tournament</b> georganiseerd als een Box League.
           <li class="home-feature-item"> Alleen <b class='color-tennis-aqua'>leden van de club</b> mogen deelnemen.
           <li class="home-feature-item"> Deelnemers worden ingedeeld in <b class='color-tennis-aqua'>boxen afhankelijk van hun niveau</b> van 4/5 spelers.
           <li class="home-feature-item"> <b class='color-tennis-aqua'>Verdiende punten</b> tijdens een ronde worden bij elkaar opgeteld en leveren een algehele toernooiwinnaar op.
@@ -55,6 +55,10 @@ nl:
       landing_to_user_box_scores: "🏁 Open \"Ronde rangschikking\" page na inloggen"
     rules:
       rules_title: Format en regels
+      format_label: Toernooiformaat
+      format_singles_tennis: Enkel tennis
+      format_doubles_tennis: Dubbel tennis
+      format_doubles_padel: Dubbel padel
       general_rules_section: Algemene regels
       round_dates_section: Seizoen & Rondedata
       match_rules_section: Wedstrijdregels
@@ -111,6 +115,8 @@ nl:
       warm_up: Opwarmen
       p13: Om ervoor te zorgen dat de wedstrijden binnen het toegewezen uur worden afgewerkt, zijn de warming-ups beperkt tot 5 minuten.
       match_format: Match-formaat
+      doubles_tennis_intro: Wedstrijden worden in dubbel gespeeld (2 tegen 2). Elke speler van beide teams kan scores invoeren.
+      doubles_padel_intro: Wedstrijden worden in padel dubbel gespeeld (2 tegen 2). Elke speler van beide teams kan scores invoeren.
       p14: De wedstrijden worden gespeeld in twee minisets, eventueel met een beslissende tie-break.
       p15: "Elke set wordt gespeeld als de eerste met 4 games met een standaard tiebreak van 7 punten om 3:3."
       p16: De beslissende tie-break wordt net als de eerste gespeeld op %{points} punten met een minimaal verschil van 2 punten.
@@ -120,6 +126,8 @@ nl:
       p19: De ontvanger zal dan beslissen van welke kant hij service zal krijgen bij een gelijkspel met plotselinge dood.
     4_scoring_and_points:
       points: Punten
+      doubles_tennis_points: In dubbel tennis worden punten en ranglijsten op teamniveau bijgehouden.
+      doubles_padel_points: In dubbel padel worden punten en ranglijsten op teamniveau bijgehouden.
       p20: "Verdiende punten worden berekend om spelers aan te moedigen zoveel mogelijk games te winnen en worden als volgt bepaald:"
       li06: "Wedstrijdwinnaar: 20 punten"
       li07: "Verliezer: 10 punten per gewonnen set + aantal games per verloren set"
@@ -135,40 +143,67 @@ nl:
         Elke speler in de Box kan inloggen op zijn account en scores online invoeren, of deze kunnen op het bord worden gemarkeerd
         waar u een scoreblad ter beschikking wordt gesteld. Indien een uitslag verkeerd is ingevoerd, neem dan contact op met de ToernooiReferee.
       p24: Houd er rekening mee dat alle resultaten vóór het einde van de ronde moeten worden ingevoerd, tenzij de Referee uitstel heeft verleend.
+    tournament_chooser:
+      title: Kies je toernooi
+      subtitle: Je bent ingeschreven in meerdere actieve toernooien. Kies er één om verder te gaan.
+      view_boxes: Bekijk boxen
+      round_ranking: Ronde ranglijst
+      my_scores: Mijn scores
     5_ranking_and_promotions:
       box_league_ranking: Stand van de Box League
       p25: >
         De rangschikking van een speler wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer spelers
         hetzelfde aantal punten zou hebben, wordt de rangschikking bepaald door:
+      p25_doubles: >
+        De rangschikking van een team wordt bepaald door de cumulatieve punten die tijdens de ronde zijn verdiend. In geval van twee of meer teams
+        met hetzelfde aantal punten, wordt de rangschikking bepaald door:
       li13: Meeste wedstrijden gespeeld
       li14: De verhouding tussen Gewonnen Sets en gespeelde sets %
       li15: De verhouding tussen Gewonnen games en gespeelde games %
       promotion_relegation: Promotie/degradatie
       p26: Onder normale omstandigheden, in elke box
+      p26_doubles: Onder normale omstandigheden, in elke box
       li16_html: "de twee beste spelers promoveren (<i>eerste: met 2 boxen, tweede: met één box</i>)."
+      li16_doubles_html: "de twee beste teams promoveren (<i>eerste team: 2 boxen, tweede: één box</i>)."
       li17_html: "de laatste twee spelers degraderen (<i>voorlaatste: één box, laatste: 2 boxen</i>)."
+      li17_doubles_html: "de laatste twee teams degraderen (<i>voorlaatste team: één box, laatste: 2 boxen</i>)."
       new_entrants: Nieuwkomers
       p27: We zullen zoveel mogelijk proberen nieuwe spelers op te nemen in een box die is aangepast aan hun niveau.
+      p27_doubles: We zullen zoveel mogelijk proberen nieuwe teams op te nemen in een box die is aangepast aan hun niveau.
     6_special_circumstances:
       disqualification: Diskwalificatie
       p28: >
         Spelers die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
         naar eigen goeddunken van de toernooiReferee.
+      p28_doubles: >
+        Teams die zonder geldige reden of na kennisgeving geen wedstrijd in hun ronde spelen, kunnen worden gediskwalificeerd voor het toernooi,
+        naar eigen goeddunken van de toernooiReferee.
       no_show: No show
       p29: Als een speler meer dan
+      p29_doubles: Als een speler van een van beide teams meer dan
       li18: 5 minuten te laat op het speelveld is, mag zijn tegenstander 1 game eisen.
+      li18_doubles: 5 minuten te laat op het speelveld is, mag het tegenstandersteam 1 game eisen.
       li19: 10 minuten te laat op het speelveld is, mag zijn tegenstander 2 games eisen.
+      li19_doubles: 10 minuten te laat op het speelveld is, mag het tegenstandersteam 2 games eisen.
       li20: 15 minuten te laat op het speelveld is, mag zijn tegenstander een set eisen.
+      li20_doubles: 15 minuten te laat op het speelveld is, mag het tegenstandersteam een set eisen.
       retire_from_match: Terugtrekt van een Match
       p30: Als een speler zich terugtrekt, bijvoorbeeld vanwege een blessure, tellen alle gespeelde wedstrijden mee. Niet gespeelde wedstrijden worden verloren verklaard.
+      p30_doubles: Als een team zich terugtrekt, bijvoorbeeld vanwege een blessure, tellen alle gespeelde wedstrijden mee. Niet gespeelde wedstrijden worden verloren verklaard.
       p31: "Bijvoorbeeld:"
       p32: "Speler A leidt 2/1, 30:15 in de eerste set en moet opgeven."
+      p32_doubles: "Team A leidt 2/1, 30:15 in de eerste set en moet opgeven."
       p33: De score van de in te voeren wedstrijd is 2/4 0/4 in het voordeel van speler B.
+      p33_doubles: De score van de in te voeren wedstrijd is 2/4 0/4 in het voordeel van team B.
       withdrawing: Terugtrekking vóór aanvang van een ronde
       p34: Spelers informeren de Referee als ze zich willen terugtrekken uit de Box League.
+      p34_doubles: Teams informeren de Referee als ze zich willen terugtrekken uit de Box League.
       p35: >
         Als de speler zich vóór het begin van de ronde terugtrekt, zal de Referee proberen zijn positie in de competitie te behouden
         als hij wilde deelnemen aan de volgende ronde.
+      p35_doubles: >
+        Als het team zich vóór het begin van de ronde terugtrekt, zal de Referee proberen de positie van het team in de competitie te behouden
+        als het wilde deelnemen aan de volgende ronde.
       walk_overs: Overwinning door verbeurdverklaring of afwezigheid (walk-over)
       p36: "Walk-overs zijn afgeschaft en niet meer toegestaan ​​om de volgende redenen:"
       li21: ingewikkeld om te beheren
@@ -176,10 +211,15 @@ nl:
       li23: oneerlijke toewijzing van niet-gespeelde punten
       deadline_extensions: Deadline-verlengingen
       p37: Spelers zullen ernaar moeten streven hun wedstrijden binnen de duur van de Box League te spelen.
+      p37_doubles: Teams zullen ernaar moeten streven hun wedstrijden binnen de duur van de Box League te spelen.
       p38: >
         Spelers kunnen om uitstel verzoeken, op voorwaarde dat de wedstrijd is geregeld en de baan is gereserveerd. Zo'n verzoek
         zal worden beoordeeld naar goeddunken van de toernooiReferee, wiens beslissing definitief zal zijn.
+      p38_doubles: >
+        Teams kunnen om uitstel verzoeken, op voorwaarde dat de wedstrijd is geregeld en de baan is gereserveerd. Zo'n verzoek
+        zal worden beoordeeld naar goeddunken van de toernooiReferee, wiens beslissing definitief zal zijn.
       p39: Spelers die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
+      p39_doubles: Teams die hun wedstrijden tijdens een ronde niet hebben gespeeld, worden teruggetrokken en moeten zich opnieuw registreren om in het toernooi te blijven.
     7_disputes:
       disputes: Geschillen
       mail_to_referee_html: "%{referee_name} per e-mail (<i>%{referee_email}</i>) of via jouw Box chatroom"

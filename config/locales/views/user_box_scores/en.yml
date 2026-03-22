@@ -68,6 +68,8 @@ en:
       player_header: Player
       last_name_header: Surname
       first_name_header: First name
+      first_player_header: 1st player
+      second_player_header: 2nd player
       rank_header: Rank
       points_header: Points
       box_header: Box nb

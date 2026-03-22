@@ -1,0 +1,25 @@
+<div class="d-none d-md-block"><%= render "shared/image_front" %></div>
+
+<div class="<%= class_names("container": !@is_mobile) %>">
+  <div class="one-liner">
+    <h3><%= t(".title", default: "Choose your tournament") %></h3>
+  </div>
+
+  <div class="frame-color-shape frame-padding frame-margin-rl text-size">
+    <p><%= t(".subtitle", default: "You are enrolled in multiple active tournaments. Select one to continue.") %></p>
+
+    <% @tournament_contexts.each do |context| %>
+      <div class="row mb-3">
+        <div class="col-12 col-md-8">
+          <b><%= context[:title] %></b>
+        </div>
+        <div class="col-12 col-md-4 buttons-wrap">
+          <%= link_to context[:format_label],
+              select_tournament_path(round_id: context[:round_id], tournament_format: context[:format], destination: @preferred_destination),
+              class: "btn btn-shape btn-aqua mb-2" %>
+        </div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+</div>

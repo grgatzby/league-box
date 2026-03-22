@@ -1,17 +1,22 @@
-<!-- partial : rules section 5 (Ranking_and_promotions
-)-->
+<%# partial: rules section 5 (Ranking and promotions). Uses "team" wording for doubles/padel, "player" for singles. %>
+<% doubles_format = %w[doubles_tennis doubles_padel].include?(@selected_tournament_format.to_s) %>
+<% p25_key = doubles_format ? '.p25_doubles' : '.p25' %>
+<% p26_key = doubles_format ? '.p26_doubles' : '.p26' %>
+<% li16_key = doubles_format ? '.li16_doubles_html' : '.li16_html' %>
+<% li17_key = doubles_format ? '.li17_doubles_html' : '.li17_html' %>
+<% p27_key = doubles_format ? '.p27_doubles' : '.p27' %>
 <h5 class="color-tennis-blue">1.13 <%= t '.box_league_ranking' %></h5>
-  <%= t '.p25' %>
+  <%= t p25_key %>
   <ol>
     <% (13..15).each do |i| %>
       <li><%= t ".li#{format '%02d',i}" %></li>
     <% end %>
   </ol>
 <h5 class="color-tennis-blue">1.14 <%= t '.promotion_relegation' %></h5>
-  <%= t '.p26' %>
+  <%= t p26_key %>
   <ul>
-    <li><%= t '.li16_html' %></li>
-    <li><%= t '.li17_html' %></li>
+    <li><%= t li16_key %></li>
+    <li><%= t li17_key %></li>
   </ul>
 <h5 class="color-tennis-blue">1.15 <%= t '.new_entrants' %></h5>
-  <p><%= t '.p27' %></p>
+  <p><%= t p27_key %></p>

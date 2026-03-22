@@ -5,6 +5,12 @@
   <div class="dont-print btn btn-shape btn-yellow mb-3" style="cursor: default;">
     <%= form_with url: index_league_path, method: :get, html: { style: "cursor: default;" } do |form| %>
       <%= hidden_field_tag(:club_id, @club.id) %>
+      <%= hidden_field_tag(:round_id, @round.id) if @round %>
+      <% if @tournament_format_for_links.present? %>
+        <%= hidden_field_tag(:tournament_format, @tournament_format_for_links) %>
+      <% elsif @round&.tournament_format.present? %>
+        <%= hidden_field_tag(:tournament_format, @round.tournament_format) %>
+      <% end %>
       <% if from == "index" %>
         <%# form.label :league_start, local_assigns[:label] ? label : t('.select_league') %>
         🏆🏆<%= form.select(:league_start, @league_starts.unshift(t('.league_dropdown')), {selected: params[:league_start]}, {onchange: "this.form.submit();", style: "cursor: default;"}) %>&nbsp;&nbsp;&nbsp;&nbsp;

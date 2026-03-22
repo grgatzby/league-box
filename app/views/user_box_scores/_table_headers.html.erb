@@ -1,17 +1,17 @@
 <%#
-  Table Headers Partial
-  Displays sortable column headers for the league table.
-  Each header can be clicked to sort the table by that column.
-  Shows up/down arrows to indicate current sort column and direction.
+  Sortable column headers (singles and doubles/padel).
+  Singles: first name / surname. Doubles/padel: 1st player / 2nd player (both sort by that player’s last name).
 %>
 <%# Arrow symbols for sort direction indicators %>
 <% topdown = ["↑", "↓"] %>
+<% name_col1 = @doubles_mode ? t(".first_player_header") : t(".first_name_header") %>
+<% name_col2 = @doubles_mode ? t(".second_player_header") : t(".last_name_header") %>
 
-<%# Player Name Column (col-3): First name and last name are separately sortable %>
+<%# Player / team name columns (col-3) %>
 <div class="col-3">
   <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"></span>
-  <%=render "header_link", from: from, nb: 1, header: t('.first_name_header'), direction: topdown.reverse%>
-  <%=render "header_link", from: from, nb: 2, header: t('.last_name_header'), direction: topdown.reverse%>
+  <%= render "header_link", from: from, nb: 1, header: name_col1, direction: topdown.reverse %>
+  <%= render "header_link", from: from, nb: 2, header: name_col2, direction: topdown.reverse %>
   <span class="<%=class_names("header-no-link", "mobile-text-size": @is_mobile) %>"></span>
 </div>
 

@@ -11,6 +11,11 @@
 <h5 class="color-tennis-blue">1.9 <%= t '.warm_up' %></h5>
   <p><%= t '.p13' %></p>
 <h5 class="color-tennis-blue">1.10 <%= t '.match_format' %></h5>
+  <% if @selected_tournament_format == "doubles_tennis" %>
+    <p><%= t(".doubles_tennis_intro", default: "Matches are played in doubles format (2 vs 2). Any player from either team can enter results.") %></p>
+  <% elsif @selected_tournament_format == "doubles_padel" %>
+    <p><%= t(".doubles_padel_intro", default: "Matches are played in padel doubles format (2 vs 2). Any player from either team can enter results.") %></p>
+  <% end %>
   <% (14..19).each do |i| %>
     <% if i == 16 %>
       <%# Use dynamic tiebreak_points from club %>

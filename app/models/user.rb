@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :user_box_scores
   has_many :messages
   has_one :preference
+  has_many :team_memberships, dependent: :destroy
+  has_many :teams, through: :team_memberships
   has_many :chatroom_reads, dependent: :destroy
   has_many :read_chatrooms, through: :chatroom_reads, source: :chatroom
   mount_uploader :profile_picture, ProfilePictureUploader

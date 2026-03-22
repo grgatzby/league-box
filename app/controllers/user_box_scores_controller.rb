@@ -27,35 +27,44 @@ class UserBoxScoresController < ApplicationController
       @order = - 1
     end
     if @round
-      # by default: sort player by rank
-      @user_box_scores = rank_players(@round.user_box_scores)
-      @user_box_scores.reverse! if @order == 1
-      @sort = params[:sort] || 3 # "Ranking: default sorting order"
-      init_stats
-      case params[:sort].to_i
-      when 1 # "Player first name"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name.upcase, -@order * user_bs.rank] }
+      if @round.doubles_format?
+        @doubles_mode = true
+        @team_box_scores = rank_teams(
+          @round.boxes.includes(team_box_scores: { team: :users }).map(&:team_box_scores).flatten
+        )
+        init_stats
+        apply_team_box_score_sort!
+      else
+        # by default: sort player by rank
+        @user_box_scores = rank_players(@round.user_box_scores)
         @user_box_scores.reverse! if @order == 1
-      when 2 # "Player last name"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name.upcase, -@order * user_bs.rank] }
-        @user_box_scores.reverse! if @order == 1
-      when 3 # "Ranking: default sorting order"
-      when 4 # "Points"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.points, -@order * user_bs.rank] }
-      when 5 # "Box"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
-      when 6 # "Matches Played"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_played, -@order * user_bs.rank] }
-      when 7 # "Matches Won"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_won, -@order * user_bs.rank] }
-      when 8 # "Sets Played"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
-      when 9 # "Sets Won"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
-      when 10 # "Games Played"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
-      when 11 # "Games Won"
-        @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
+        @sort = params[:sort] || 3 # "Ranking: default sorting order"
+        init_stats
+        case params[:sort].to_i
+        when 1 # "Player first name"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.first_name.upcase, -@order * user_bs.rank] }
+          @user_box_scores.reverse! if @order == 1
+        when 2 # "Player last name"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [user_bs.user.last_name.upcase, -@order * user_bs.rank] }
+          @user_box_scores.reverse! if @order == 1
+        when 3 # "Ranking: default sorting order"
+        when 4 # "Points"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.points, -@order * user_bs.rank] }
+        when 5 # "Box"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [-@order * user_bs.box.box_number, -@order * user_bs.rank] }
+        when 6 # "Matches Played"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_played, -@order * user_bs.rank] }
+        when 7 # "Matches Won"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.matches_won, -@order * user_bs.rank] }
+        when 8 # "Sets Played"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_played, -@order * user_bs.rank] }
+        when 9 # "Sets Won"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.sets_won, -@order * user_bs.rank] }
+        when 10 # "Games Played"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_played, -@order * user_bs.rank] }
+        when 11 # "Games Won"
+          @user_box_scores = @round.user_box_scores.sort_by { |user_bs| [@order * user_bs.games_won, -@order * user_bs.rank] }
+        end
       end
     end
     @render_to_text = false
@@ -75,9 +84,33 @@ class UserBoxScoresController < ApplicationController
     #@club = Club.find(club_id)
     # @round = current_round(@club.id)
     if @round
-      @league_start = "#{params[:league_start]}".to_date || @round.league_start
-      # @rounds = Round.where(league_start: @league_start, club_id:)
-      @rounds = Round.where(league_start: @league_start, club_id:@club.id)
+      tf = params[:tournament_format].presence || @round&.tournament_format || session[:selected_tournament_format].presence
+      # Doubles team view only when this round is doubles AND the requested context is doubles (avoid
+      # showing doubles when @round was wrongly resolved to current_round doubles while user chose singles).
+      doubles_context = tf.blank? || %w[doubles_tennis doubles_padel].include?(tf.to_s)
+      if @round.doubles_format? && doubles_context
+        @doubles_mode = true
+        @league_start = @round.league_start
+        if params[:order] && (params[:exsort] == params[:sort])
+          @order = params[:order].to_i
+        else
+          @order = -1
+        end
+        @team_box_scores = rank_teams(
+          @round.boxes.includes(team_box_scores: { team: :users }).map(&:team_box_scores).flatten
+        )
+        init_stats
+        apply_team_box_score_sort!
+        return
+      end
+      begin
+        parsed_league = params[:league_start].present? ? "#{params[:league_start]}".to_date : nil
+      rescue ArgumentError, Date::Error
+        parsed_league = nil
+      end
+      @league_start = parsed_league || @round.league_start
+      rounds_scope = Round.where(league_start: @league_start, club_id: @club.id)
+      @rounds = tf.present? ? rounds_scope.where(tournament_format: tf) : rounds_scope
       if @rounds.length.positive?
         # users = User.where(club_id:, role: "player")
         users = User.select { |user| PLAYERS.include?(user.role) && user.club == @club }
@@ -290,6 +323,8 @@ class UserBoxScoresController < ApplicationController
     club_id = params[:club_id].to_i
     # rounds = Round.where('extract(year  from start_date) = ?', year).where(club_id:)
     rounds = Round.where(league_start:, club_id:)
+    tf = params[:tournament_format].presence
+    rounds = rounds.where(tournament_format: tf) if tf.present?
     # users = User.where(club_id:, role: "player")
     users = User.select { |user| PLAYERS.include?(user.role) && user.club_id == club_id }
     file = "#{Rails.root}/public/data.csv"
@@ -324,6 +359,43 @@ class UserBoxScoresController < ApplicationController
   end
 
   private
+
+  # Same column numbers as singles: 1–2 name (for teams: 1st / 2nd player last name), 3 rank … 11 games won
+  def apply_team_box_score_sort!
+    return if @team_box_scores.blank?
+
+    @sort = params[:sort] || 3
+    case @sort.to_i
+    when 1 # 1st player’s last name
+      @team_box_scores = @team_box_scores.sort_by do |tbs|
+        [tbs.team.first_player_for_sort&.last_name.to_s.upcase, -@order * tbs.rank]
+      end
+      @team_box_scores.reverse! if @order == 1
+    when 2 # 2nd player’s last name
+      @team_box_scores = @team_box_scores.sort_by do |tbs|
+        [tbs.team.second_player_for_sort&.last_name.to_s.upcase, -@order * tbs.rank]
+      end
+      @team_box_scores.reverse! if @order == 1
+    when 3 # ranking
+      @team_box_scores = @team_box_scores.sort_by { |tbs| -@order * tbs.rank }
+    when 4 # points
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.points, -@order * tbs.rank] }
+    when 5 # box
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [-@order * tbs.box.box_number, -@order * tbs.rank] }
+    when 6 # matches played
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.matches_played, -@order * tbs.rank] }
+    when 7 # matches won
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.matches_won, -@order * tbs.rank] }
+    when 8 # sets played
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.sets_played, -@order * tbs.rank] }
+    when 9 # sets won
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.sets_won, -@order * tbs.rank] }
+    when 10 # games played
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.games_played, -@order * tbs.rank] }
+    when 11 # games won
+      @team_box_scores = @team_box_scores.sort_by { |tbs| [@order * tbs.games_won, -@order * tbs.rank] }
+    end
+  end
 
   # Export league table as plain text file (HTML stripped)
   # Credits: https://stackoverflow.com/questions/7414267/strip-html-from-string-ruby-on-rails

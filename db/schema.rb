@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_01_20_100000) do
+ActiveRecord::Schema[7.0].define(version: 2026_01_20_110500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,8 +104,12 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_20_100000) do
     t.bigint "box_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "team_a_id"
+    t.bigint "team_b_id"
     t.index ["box_id"], name: "index_matches_on_box_id"
     t.index ["court_id"], name: "index_matches_on_court_id"
+    t.index ["team_a_id"], name: "index_matches_on_team_a_id"
+    t.index ["team_b_id"], name: "index_matches_on_team_b_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -135,7 +139,64 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_20_100000) do
     t.datetime "updated_at", null: false
     t.date "league_start"
     t.integer "tiebreak_points"
+    t.string "tournament_format", default: "singles_tennis", null: false
     t.index ["club_id"], name: "index_rounds_on_club_id"
+    t.index ["tournament_format"], name: "index_rounds_on_tournament_format"
+  end
+
+  create_table "team_box_scores", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "box_id", null: false
+    t.integer "points", default: 0, null: false
+    t.integer "rank", default: 1, null: false
+    t.integer "sets_won", default: 0, null: false
+    t.integer "sets_played", default: 0, null: false
+    t.integer "matches_won", default: 0, null: false
+    t.integer "matches_played", default: 0, null: false
+    t.integer "games_won", default: 0, null: false
+    t.integer "games_played", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_team_box_scores_on_box_id"
+    t.index ["team_id", "box_id"], name: "index_team_box_scores_on_team_id_and_box_id", unique: true
+    t.index ["team_id"], name: "index_team_box_scores_on_team_id"
+  end
+
+  create_table "team_match_scores", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "match_id", null: false
+    t.integer "points", default: 0, null: false
+    t.integer "score_set1", default: 0, null: false
+    t.integer "score_set2", default: 0, null: false
+    t.integer "score_tiebreak", default: 0, null: false
+    t.boolean "is_winner", default: false, null: false
+    t.integer "input_user_id"
+    t.datetime "input_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_team_match_scores_on_match_id"
+    t.index ["team_id", "match_id"], name: "index_team_match_scores_on_team_id_and_match_id", unique: true
+    t.index ["team_id"], name: "index_team_match_scores_on_team_id"
+  end
+
+  create_table "team_memberships", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id", "user_id"], name: "index_team_memberships_on_team_id_and_user_id", unique: true
+    t.index ["team_id"], name: "index_team_memberships_on_team_id"
+    t.index ["user_id"], name: "index_team_memberships_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.bigint "round_id", null: false
+    t.bigint "box_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["box_id"], name: "index_teams_on_box_id"
+    t.index ["round_id"], name: "index_teams_on_round_id"
   end
 
   create_table "user_box_scores", force: :cascade do |t|
@@ -201,10 +262,20 @@ ActiveRecord::Schema[7.0].define(version: 2026_01_20_100000) do
   add_foreign_key "gallery_images", "clubs"
   add_foreign_key "matches", "boxes"
   add_foreign_key "matches", "courts"
+  add_foreign_key "matches", "teams", column: "team_a_id"
+  add_foreign_key "matches", "teams", column: "team_b_id"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "preferences", "users"
   add_foreign_key "rounds", "clubs"
+  add_foreign_key "team_box_scores", "boxes"
+  add_foreign_key "team_box_scores", "teams"
+  add_foreign_key "team_match_scores", "matches"
+  add_foreign_key "team_match_scores", "teams"
+  add_foreign_key "team_memberships", "teams"
+  add_foreign_key "team_memberships", "users"
+  add_foreign_key "teams", "boxes"
+  add_foreign_key "teams", "rounds"
   add_foreign_key "user_box_scores", "boxes"
   add_foreign_key "user_box_scores", "users"
   add_foreign_key "user_match_scores", "matches"

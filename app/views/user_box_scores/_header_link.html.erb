@@ -13,10 +13,10 @@
 <%=link_to header+header_arrow,
 if from == "index"
   # Round ranking: Sort round league table
-  user_box_scores_path( exsort: @sort, order: -@order, sort: nb, round_id: @round.id, club_id: @club.id)
+  user_box_scores_path({ exsort: @sort, order: -@order, sort: nb, round_id: @round.id, club_id: @club.id }.merge(tournament_format_params))
 else
   # Tournament ranking: Sort tournament league table
-  index_league_path( exsort: @sort, order: -@order, sort: nb, league_start: @league_start, club_id: @club.id)
+  index_league_path({ exsort: @sort, order: -@order, sort: nb, league_start: @league_start, club_id: @club.id }.merge(tournament_format_params))
 end,
 class: class_names("btn header-ghost", "text-size": @is_mobile)
 %>

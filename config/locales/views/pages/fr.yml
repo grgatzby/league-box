@@ -8,7 +8,7 @@ fr:
       welcome_title: Le tournoi interne de votre club
       p01_html: >
         <ul>
-          <li class="home-feature-item"> Un <b class='color-tennis-aqua'>tournoi en simple</b> organisé comme une Box League,
+          <li class="home-feature-item"> Un <b class='color-tennis-aqua'>tournoi en simple, en double ou en padel</b> organisé comme une Box League,
           <li class="home-feature-item"> Seuls <b class='color-tennis-aqua'>les membres du club</b> peuvent participer,
           <li class="home-feature-item"> Les joueurs inscrits sont répartis dans des <b class='color-tennis-aqua'>box de même niveau</b> de 4 à 5 joueurs,
           <li class="home-feature-item"> La saison se déroule en <b class='color-tennis-aqua'>rounds successifs</b> d'un mois ou plus,
@@ -51,10 +51,14 @@ fr:
         Écrivez-nous via le formulaire %{inset} pour en savoir plus.
       happy_tournament: Bon tournoi sur LeagueBox!
       create_club_btn: Créer un nouveau club
-      login_link: se connecter
+      login_link: connexion
       landing_to_user_box_scores: "🏁 Ouvrir la page \"Classement du round\" après connexion"
     rules:
       rules_title: Format et règles
+      format_label: Format du tournoi
+      format_singles_tennis: Tennis simple
+      format_doubles_tennis: Tennis double
+      format_doubles_padel: Padel double
       general_rules_section: Règles générales de LeagueBox
       round_dates_section: Saisons & Dates des Rounds
       match_rules_section: Règles des matchs
@@ -111,6 +115,8 @@ fr:
       warm_up: Échauffement
       p13: Pour garantir que les matchs soient terminés dans l'heure impartie, l'échauffement sera limité à 5 minutes.
       match_format: Format du match
+      doubles_tennis_intro: Les matchs se jouent en doubles (2 contre 2). N'importe quel joueur des deux équipes peut saisir le score.
+      doubles_padel_intro: Les matchs se jouent en padel doubles (2 contre 2). N'importe quel joueur des deux équipes peut saisir le score.
       p14: Les matchs seront joués en deux mini-sets avec un tie-break décisif si nécessaire.
       p15: "Chaque set sera joué en 4 jeux gagnants avec un jeu décisif (ou tie-break) de 7 points à 3:3."
       p16: Le tie-break décisif sera joué comme le premier à %{points} points avec 2 points d'écart minimum.
@@ -120,6 +126,8 @@ fr:
       p19: Le receveur décidera alors de quel côté il recevra le service dans une Mort Subite à égalité.
     4_scoring_and_points:
       points: Points
+      doubles_tennis_points: En tennis double, les points et classements sont suivis au niveau de l'équipe.
+      doubles_padel_points: En padel double, les points et classements sont suivis au niveau de l'équipe.
       p20: "Les points gagnés sont calculés de façon à encourager les joueurs à gagner autant de jeux que possible et sont déterminés ainsi:"
       li06: "Gagnant du match: 20 points"
       li07: "Perdant: 10 points par sets gagnés + nombre de jeux par sets perdus"
@@ -135,40 +143,67 @@ fr:
         Chaque joueur de la Box pourra se connecter à son compte et saisir les scores en ligne, ou ils pourront être marqués au tableau
         où une feuille de scores sera mise à votre disposition. Si un résultat a été incorrectement saisi, contacter l'Arbitre (Referee) du Tournoi.
       p24: Veuillez noter que tous les résultats devront être entrés avant la fin du round, à moins qu'un délai ait été accordé par l'Arbitre (Referee).
+    tournament_chooser:
+      title: Choisissez votre tournoi
+      subtitle: Vous êtes inscrit(e) à plusieurs tournois actifs. Sélectionnez-en un pour continuer.
+      view_boxes: Voir les box
+      round_ranking: Classement du round
+      my_scores: Mes scores
     5_ranking_and_promotions:
       box_league_ranking: Classement de la Box League
       p25: >
         Le classement d'un joueur est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
         de points, le classement sera déterminé selon:
+      p25_doubles: >
+        Le classement d'une équipe est déterminé par le cumul des points gagnés pendant le Round. En cas d'égalité
+        de points entre deux ou plusieurs équipes, le classement sera déterminé selon:
       li13: Le plus de matchs joués
       li14: Le ratio de sets gagnés sur sets joués en %
       li15: Le ratio de jeux gagnés sur jeux joués en %
       promotion_relegation: Promotion / Relégation
       p26: Dans les circonstances habituelles, au prochain round dans chaque box
+      p26_doubles: Dans les circonstances habituelles, au prochain round dans chaque box
       li16_html: "les deux meilleurs joueurs seront promus (<i>premier joueur: 2 box, second: 1 box</i>)."
+      li16_doubles_html: "les deux meilleures équipes seront promues (<i>première équipe: 2 box, seconde: 1 box</i>)."
       li17_html: "les deux derniers joueurs seront relégués (<i>avant-dernier joueur: 1 box, dernier: 2 box</i>)."
+      li17_doubles_html: "les deux dernières équipes seront reléguées (<i>avant-dernière équipe: 1 box, dernière: 2 box</i>)."
       new_entrants: Nouveaux entrants
       p27: L'Arbitre (Referee) essaiera autant que possible d'inclure les nouveaux joueurs dans une box adaptée à leur niveau.
+      p27_doubles: L'Arbitre (Referee) essaiera autant que possible d'inclure les nouvelles équipes dans une box adaptée à leur niveau.
     6_special_circumstances:
       disqualification: Disqualification
       p28: >
         Les joueurs qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiés du tournoi,
         à la seule discrétion de l'Arbitre (Referee) du Tournoi.
+      p28_doubles: >
+        Les équipes qui n'auront pas joué de match dans leur round sans raison valable ou avoir prévenu peuvent être disqualifiées du tournoi,
+        à la seule discrétion de l'Arbitre (Referee) du Tournoi.
       no_show: No show
       p29: Si un joueur a plus de
+      p29_doubles: Si un joueur de l'une ou l'autre équipe a plus de
       li18: 5 minutes de retard sur le court son adversaire peut exiger un jeu.
+      li18_doubles: 5 minutes de retard sur le court l'équipe adverse peut exiger un jeu.
       li19: 10 minutes de retard sur le court son adversaire peut exiger deux jeux.
+      li19_doubles: 10 minutes de retard sur le court l'équipe adverse peut exiger deux jeux.
       li20: 15 minutes de retard sur le court son adversaire peut exiger un set.
+      li20_doubles: 15 minutes de retard sur le court l'équipe adverse peut exiger un set.
       retire_from_match: Forfait d'un match
       p30: Si un joueur déclare forfait, pour blessure par exemple, tous les jeux joués compteront. Les jeux non joués seront déclarés perdus.
+      p30_doubles: Si une équipe déclare forfait, pour blessure par exemple, tous les jeux joués compteront. Les jeux non joués seront déclarés perdus.
       p31: "Par exemple:"
       p32: "Le joueur A mène 2/1, 30:15 au premier set et doit déclarer forfait."
+      p32_doubles: "L'équipe A mène 2/1, 30:15 au premier set et doit déclarer forfait."
       p33: Le score du match à saisir sera 2/4 0/4 à l'avantage du joueur B.
+      p33_doubles: Le score du match à saisir sera 2/4 0/4 à l'avantage de l'équipe B.
       withdrawing: Retrait avant le début d'un round
       p34: Les joueurs informeront l'Arbitre (Referee) s'ils souhaitent se retirer de la box league.
+      p34_doubles: Les équipes informeront l'Arbitre (Referee) si elles souhaitent se retirer de la box league.
       p35: >
         Si le joueur se retire avant le début du round, le Referee s'efforcera pour maintenir sa position dans la league
         s'il souhaitait participer au round suivant.
+      p35_doubles: >
+        Si l'équipe se retire avant le début du round, le Referee s'efforcera pour maintenir sa position dans la league
+        si elle souhaitait participer au round suivant.
       walk_overs: Victoire par forfait ou absence (walk-over)
       p36: "Les walk-overs ont été abolis et ne sont plus autorisés pour les raisons suivantes:"
       li21: compliqués à gérer
@@ -176,10 +211,15 @@ fr:
       li23: attribution injuste de points non joués
       deadline_extensions: Dérogation de Deadline
       p37: Les joueurs devront s'efforcer de jouer leurs matchs dans le délai imparti pour le round.
+      p37_doubles: Les équipes devront s'efforcer de jouer leurs matchs dans le délai imparti pour le round.
       p38: >
         Les joueurs pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
         sera jugée à la discrétion de l'Arbitre (Referee) du Tournoi dont la décision sera définitive.
+      p38_doubles: >
+        Les équipes pourront demander un délai à condition que le match ait été arrangé et le court réservé. Une telle requête
+        sera jugée à la discrétion de l'Arbitre (Referee) du Tournoi dont la décision sera définitive.
       p39: Les joueurs n'ayant pas joué leurs matchs pendant un round seront retirés et devront se réinscrire pour rester dans le Tournoi.
+      p39_doubles: Les équipes n'ayant pas joué leurs matchs pendant un round seront retirées et devront se réinscrire pour rester dans le Tournoi.
     7_disputes:
       disputes: Différends
       mail_to_referee_html: "%{referee_name} par e-mail (<i>%{referee_email}</i>) ou via la Messagerie de votre box"

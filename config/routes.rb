@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     patch "update_club_website", to: "pages#update_club_website", as: "update_club_website"
     patch "users/:id/update_profile_picture", to: "pages#update_user_profile_picture", as: "update_user_profile_picture"
     patch "home_landing_preference", to: "pages#update_landing_preference", as: "update_home_landing_preference"
+    get "tournament_chooser", to: "pages#tournament_chooser", as: "tournament_chooser"
+    match "tournament_chooser/select", to: "pages#select_tournament", via: %i[get post], as: "select_tournament"
     get "sitemap", to: "pages#sitemap", as: "sitemap"
 
     resources :preferences, only: %i[edit update]

@@ -8,6 +8,7 @@
 opponent = player_match[1]
 user_score = player_match[2]
 opponent_score = player_match[3]
+is_team_mode = (defined?(doubles_mode) && doubles_mode) || line_player.is_a?(Team)
 if match %>
   <%# Match Played: Display score and points %>
   <div class="click-cell">
@@ -16,10 +17,12 @@ if match %>
     <%# Match Date: Only show if not in expanded view %>
     <%= "#{l(match.time, format: :wwwddmmm_date)}" %>
     <%# Points for line player (row player) %>
-    <br><%= "#{line_player.last_name}: " %><%= t("pts", count: user_score.points) %>
+    <% line_label = is_team_mode ? abbreviated_team_label(line_player) : line_player.last_name %>
+    <% opponent_label = is_team_mode ? abbreviated_team_label(opponent) : opponent.last_name %>
+    <br><%= "#{line_label}: " %><%= t("pts", count: user_score.points) %>
     <%# Points for opponent (column player) %>
     <span class=" color-tennis-blue">
-      <br><%= "#{opponent.last_name}: " %><%= t("pts", count: opponent_score.points) %>
+      <br><%= "#{opponent_label}: " %><%= t("pts", count: opponent_score.points) %>
     </span>
     <%# Clickable Link: Different behavior based on user role %>
     <% if current_user.role != "player" %>
@@ -27,13 +30,22 @@ if match %>
       <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from, id: match.box_id), class: "line-link" %>
     <% else %>
       <%# Player: Click to view match details %>
-      <%= link_to '', match_path(player: line_player.id, opponent: opponent.id, match_id: match.id, page_from: page_from, id: match.box_id), class: "box-link" %>
+      <% if is_team_mode %>
+        <% player_id = line_player.users.first&.id %>
+        <% opponent_id = opponent.users.first&.id %>
+      <% else %>
+        <% player_id = line_player.id %>
+        <% opponent_id = opponent.id %>
+      <% end %>
+      <%= link_to '', match_path(player: player_id, opponent: opponent_id, match_id: match.id, page_from: page_from, id: match.box_id), class: "box-link" %>
     <% end %>
   </div>
 <% elsif opponent == line_player
   # Diagonal Cell (Player vs Themselves): Display profile picture or default icon
-  if line_player.profile_picture.present? %>
-    <%= link_to line_player.profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
+  if is_team_mode %>
+    <%= image_tag "box_league_racket.png", alt: "Team", width: @is_mobile ? 38 : 50 %>
+  <% elsif (profile_picture = line_player.try(:profile_picture)).present? %>
+    <%= link_to profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
       <%= image_tag(profile_picture_circular_url(line_player, @is_mobile ? 38 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 38 : 50}px; height: #{@is_mobile ? 38 : 50}px; border-radius: 50%; object-fit: cover;") %>
     <% end %>
   <% else %>

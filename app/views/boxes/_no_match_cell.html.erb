@@ -5,15 +5,30 @@
   Otherwise shows "Not played" in grey text.
 %>
 <%# Check if user is authorized to enter a score %>
-<% if (box == @my_current_box && (current_user == column_player || current_user == line_player)) \
-   || (["referee", "player referee"].include?(current_user.role) && @round == @current_round) \
-   || current_user.role == "admin" %>
-  <%# Authorized: Show clickable "Enter score" link %>
+<% referee_or_admin = current_user.role == "admin" || current_user.role.to_s.include?("referee") %>
+<% may_enter_score = if doubles_mode
+                       (column_player.users.include?(current_user) || line_player.users.include?(current_user)) \
+                       || referee_or_admin
+                     else
+                       (box == @my_current_box && (current_user == column_player || current_user == line_player)) \
+                       || referee_or_admin
+                     end %>
+<% if may_enter_score %>
+  <%# Authorized: Show clickable "Enter match score" link %>
   <div class="click-cell dont-print">
-    <i class='color-green'><%= t '.enter_score' %></i>
     <%# Click to navigate to new match score form %>
-    <%= link_to '', new_match_path(player: line_player.id, opponent: column_player.id, round_id: @round.id, \
-                                    page_from: page_from), class: "box-link" %>
+    <% if doubles_mode %>
+      <%= link_to t('.enter_score'),
+                  new_match_path(player: current_user.id, opponent: current_user.id, round_id: @round.id,
+                                 team_a_id: line_player.id, team_b_id: column_player.id,
+                                 page_from: page_from),
+                  style: "color: #198754; text-decoration: none; font-style: italic;" %>
+    <% else %>
+      <%= link_to t('.enter_score'),
+                  new_match_path(player: line_player.id, opponent: column_player.id, round_id: @round.id, \
+                                 page_from: page_from),
+                  style: "color: #198754; text-decoration: none; font-style: italic;" %>
+    <% end %>
   </div>
   <%# Print version: Show "Not played" text %>
   <div class="will-print"><%= t '.not_played' %></div>

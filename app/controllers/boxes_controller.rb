@@ -19,6 +19,7 @@ class BoxesController < ApplicationController
     # @boxes&.each { |box| @my_box = box if my_box?(box) } # Ruby Safe Navigation (instead of if @boxes each_block else nil end)
     @my_box = my_own_box(@round)
     if @round
+      @doubles_mode = @round.doubles_format?
       init_stats
       days_left = (@round.end_date - Date.today).to_i # nb of days til then end of the round
       # admin : creates button appears in last days or after if round is the most recent
@@ -43,10 +44,15 @@ class BoxesController < ApplicationController
       @my_box = my_own_box(@round)
       init_stats
       @round_nb = round_label(@round)
+      @doubles_mode = @round.doubles_format?
       # @box_matches is an array of [user_box_score , matches_details(user), user]
       # matches_details(user) is an array of [match, opponent, user_score, opponent_score]
-      @box_matches = box_matches(@box) # sorted by descending points scores
-      @is_this_my_box = my_box?(@box)
+      @box_matches = box_matches(@box) # sorted by descending points scores (or teams in doubles)
+      @is_this_my_box = if @doubles_mode
+                          @box.teams.includes(:users).any? { |team| team.users.include?(current_user) }
+                        else
+                          my_box?(@box)
+                        end
     end
   end
 
@@ -76,14 +82,30 @@ class BoxesController < ApplicationController
       @round = @box.round
       @my_box = my_own_box(@round)
       init_stats
-      @my_matches = []
-      @box.user_box_scores.each do |user_box_score|
-        opponent_matches = user_matches(user_box_score.user, @box)
-        current_player_matches = user_matches(@current_player, @box)
-        match_played = (opponent_matches & current_player_matches)[0]
-        @my_matches << [user_box_score, match_played]
+      @doubles_mode = @round.doubles_format?
+      if @doubles_mode
+        @my_team = @box.teams.includes(:users).find { |team| team.users.include?(@current_player) }
+        @my_team_matches = []
+        if @my_team
+          @box.teams.includes(:users).each do |team|
+            match_played = Match.where(box_id: @box.id).where(
+              "(team_a_id = ? AND team_b_id = ?) OR (team_a_id = ? AND team_b_id = ?)",
+              @my_team.id, team.id, team.id, @my_team.id
+            ).first
+            team_box_score = TeamBoxScore.find_by(team_id: team.id, box_id: @box.id)
+            @my_team_matches << [team, team_box_score, match_played]
+          end
+        end
+      else
+        @my_matches = []
+        @box.user_box_scores.each do |user_box_score|
+          opponent_matches = user_matches(user_box_score.user, @box)
+          current_player_matches = user_matches(@current_player, @box)
+          match_played = (opponent_matches & current_player_matches)[0]
+          @my_matches << [user_box_score, match_played]
+        end
+        @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       end
-      @my_matches = @my_matches.sort { |a, b| b[0].points <=> a[0].points }
       if !@box.chatroom || @box.chatroom == @general_chatroom
         # creates (and opens) a new chatroom if it does not exist yet or if it is still set to "general":
         # rationale : the Chatroom class was migrated after the Box class (with: chatroom has one box)
@@ -214,6 +236,8 @@ class BoxesController < ApplicationController
   def box_matches(box)
     # returns array of [user_box_score, matches_details, user] sorted by player's total points
     # where matches_details is an array of [match, opponent, user_score, opponent_score]
+    return box_team_matches(box) if box.round.doubles_format?
+
     box_matches = []
     # box.user_box_scores.each do |user_box_score|
     # box.user_box_scores.includes([user: {user_match_scores: :match}]).each do |user_box_score|
@@ -221,6 +245,15 @@ class BoxesController < ApplicationController
       box_matches << [user_box_score, matches_details(user_box_score), user_box_score.user]
     end
     box_matches.sort { |a, b| b[0].points <=> a[0].points } # sorts by descending points scores
+  end
+
+  def box_team_matches(box)
+    team_matches = []
+    box.teams.includes(:users).each do |team|
+      tbs = TeamBoxScore.find_by(team_id: team.id, box_id: box.id)
+      team_matches << [tbs, team_matches_details(team, box), team]
+    end
+    team_matches.sort { |a, b| (b[0]&.points || 0) <=> (a[0]&.points || 0) }
   end
 
   def matches_details(user_box_score)
@@ -232,5 +265,26 @@ class BoxesController < ApplicationController
       [match, opponent, match_score(match, user), match_score(match, opponent)]
     end
     matches << [nil, user, nil, nil] # add user to the list
+  end
+
+  def team_matches_details(team, box)
+    matches = team_matches(team, box)
+    matches = matches.map do |match|
+      opponent_team = team_opponent(match, team)
+      [match, opponent_team, team_match_score(match, team), team_match_score(match, opponent_team)]
+    end
+    matches << [nil, team, nil, nil] # add team to align with grid/list loops
+  end
+
+  def team_matches(team, box)
+    Match.where(box_id: box.id).where("team_a_id = ? OR team_b_id = ?", team.id, team.id)
+  end
+
+  def team_opponent(match, team)
+    match.team_a_id == team.id ? match.team_b : match.team_a
+  end
+
+  def team_match_score(match, team)
+    TeamMatchScore.find_by(match_id: match.id, team_id: team.id)
   end
 end

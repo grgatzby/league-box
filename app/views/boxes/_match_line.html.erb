@@ -33,8 +33,14 @@
           <%= " #{t(".on_date")} #{l(match_time, format: :wwwddmmm_date)}" %>
           <i>vs</i>
           <span class="color-tennis-blue">
-            <%= render "shared/fullname", user: opponent %>
-            <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
+            <% if doubles_mode %>
+              <% opponent_team_score = TeamBoxScore.find_by(team_id: opponent.id, box_id: match.box_id) %>
+              <%= opponent.display_name %>
+              <%= "(# #{opponent_team_score&.rank || "-"})" %>
+            <% else %>
+              <%= render "shared/fullname", user: opponent %>
+              <%= "(# #{user_box_score.box.user_box_scores.find_by(user_id: opponent.id).rank})" %>
+            <% end %>
           </span>
         </div>
 
@@ -48,7 +54,14 @@
         <div class="col-2 color-tennis-blue"><%= t("pts", count: opponent_score.points) %></div>
 
         <%# Opponent Total Points Column (col-2): Opponent's total points in the box %>
-        <div class="col-2 color-tennis-blue"><%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %></div>
+        <div class="col-2 color-tennis-blue">
+          <% if doubles_mode %>
+            <% opponent_team_score = TeamBoxScore.find_by(team_id: opponent.id, box_id: match.box_id) %>
+            <%= t("pts", count: opponent_team_score&.points || 0) %>
+          <% else %>
+            <%= t("pts", count: user_box_score.box.user_box_scores.find_by(user_id: opponent.id).points) %>
+          <% end %>
+        </div>
 
         <%# Clickable Link: Different behavior based on user role %>
         <% if current_user.role != "player" %>
@@ -56,7 +69,14 @@
           <%= link_to '', edit_match_path(match_id: match.id, page_from: page_from), class: "line-link" %>
         <% else %>
           <%# Player: Click to view match details %>
-          <%= link_to '', match_path(player: player_match[2].user.id, opponent: opponent.id, match_id: match.id, page_from: page_from), class: "box-link" %>
+          <% if doubles_mode %>
+            <% player_id = player_match[2].team.users.first&.id %>
+            <% opponent_id = opponent.users.first&.id %>
+          <% else %>
+            <% player_id = player_match[2].user.id %>
+            <% opponent_id = opponent.id %>
+          <% end %>
+          <%= link_to '', match_path(player: player_id, opponent: opponent_id, match_id: match.id, page_from: page_from), class: "box-link" %>
         <% end %>
 
       </div>

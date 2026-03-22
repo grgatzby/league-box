@@ -59,9 +59,49 @@
 
         <%# Iterate through all matches for current user %>
         <%# Data structure: @my_matches = [[user_match_score, match], ...] %>
-        <% @my_matches.each do |my_match|
-          opponent = my_match[0].user
-          match = my_match[1] %>
+        <% if @doubles_mode %>
+          <% @my_team_matches.each do |row|
+            team = row[0]
+            team_box_score = row[1]
+            match = row[2] %>
+
+            <div class="<%=class_names( "row", "justify-content-center": !@is_mobile) %>">
+              <div class="col-3 top-bottom-padding">
+                <div class="mb-4">
+                  <span style="<%= team == @my_team ? "color:#c60407" : "" %>">
+                    <%= team.display_name %>
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-2 top-bottom-padding">
+                <%= t("pts", count: (team_box_score&.points || 0)) %>
+              </div>
+
+              <div class="col-3 top-bottom-padding">
+                <% if match && team != @my_team %>
+                  <%= "#{l(match.time, format: :wwwddmmmyy_date)}" %>
+                <% end %>
+              </div>
+
+              <div class="col-3">
+                <% class_btns = "btn btn-ghost" %>
+                <% if team == @my_team %>
+                  <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
+                <% elsif match %>
+                  <%= link_to t(".see_match_card_btn"), box_list_path(@box), class: class_btns %>
+                <% elsif @box == @my_current_box %>
+                  <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: current_user.id, round_id: @round.id, page_from: my_scores_path, team_a_id: @my_team.id, team_b_id: team.id), class: class_btns %>
+                <% else %>
+                  <div class="top-bottom-padding"><%= t(".match_not_played") %></div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <% @my_matches.each do |my_match|
+            opponent = my_match[0].user
+            match = my_match[1] %>
 
       <div class="<%=class_names( "row",
                                   "justify-content-center": !@is_mobile) %>">
@@ -115,6 +155,7 @@
               <% end %>
             </div>
           </div>
+          <% end %>
         <% end %>
       </div><br>
 
