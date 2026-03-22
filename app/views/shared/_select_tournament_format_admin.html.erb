@@ -1,0 +1,17 @@
+<%# Admin: choose singles tennis / doubles tennis / padel when the club has rounds in more than one format %>
+<% if @show_tournament_format_selector_for_admin && @tournament_format_options_for_admin.present? %>
+  <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2 mt-2": @is_mobile, "mt-2": !@is_mobile) %>">
+    <%= form.label :tournament_format, t("pages.rules.format_label"), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
+    <%= form.select(
+      :tournament_format,
+      options_for_select(
+        @tournament_format_options_for_admin.map do |f|
+          [ t("pages.rules.format_#{f}", default: f.to_s.tr("_", " ").titleize), f ]
+        end,
+        @tournament_format_for_links
+      ),
+      {},
+      { onchange: "this.form.submit();", class: (@is_mobile ? "form-select w-100" : "") }
+    ) %>
+  </div>
+<% end %>

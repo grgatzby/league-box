@@ -30,7 +30,12 @@
       <div class="<%= class_names("buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center", "flex-wrap": @is_mobile, "flex-nowrap": !@is_mobile) %>">
         <%# Show "View Boxes" button for authenticated users, "Login" for non-authenticated %>
         <% if user_signed_in? %>
-          <% if (@home_tournament_contexts || []).size <= 1 %>
+          <% if current_user == @admin %>
+            <%# Admin: club + format + round selection (same flow as boxes index), not a single "view boxes" button %>
+            <div class="home-admin-club-picker text-start w-100" style="max-width: 42rem; margin-left: auto; margin-right: auto;">
+              <%= render "shared/select_club", fallback_path: boxes_path, home_admin_ok: true %>
+            </div>
+          <% elsif (@home_tournament_contexts || []).size <= 1 %>
             <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
           <% else %>
             <% @home_tournament_contexts.each do |context| %>

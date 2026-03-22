@@ -1,4 +1,5 @@
 <%# partial: let the user select a club and a round %>
+<% club_selected_for_admin = @club_names.present? && @club&.name && @club_names.include?(@club.name) ? @club.name : @club_names&.first %>
 <% if !params[:round_id] %>
   <%= sanitize explain_paragraph %>
 <% end %>

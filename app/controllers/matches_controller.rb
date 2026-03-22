@@ -74,6 +74,7 @@ class MatchesController < ApplicationController
       @match.user_match_scores.build
       # Store effective tiebreak points for use in view
       @effective_tiebreak_points = @round.effective_tiebreak_points
+      @court_options = Court.for_round(@round).pluck(:name)
       # the code below was adapted to the previous form where scores of a set were input individually (eg 4 and 1 for 4-1)
       # if params[:score_set1]
       #   @match_entry = Match.new
@@ -118,8 +119,13 @@ class MatchesController < ApplicationController
       redirect_back(fallback_location: @page_from || boxes_path)
       return
     end
-    # Get court from court number (user inputs court number, not court ID)
-    @match.court = Court.find_by(name: params[:match][:court_id], club_id: @match.box.round.club_id)
+    # Court name in form; must match round format (tennis vs padel)
+    round = @match.box.round
+    @match.court = Court.find_by(
+      name: params[:match][:court_id],
+      club_id: round.club_id,
+      court_kind: Court.kind_for_tournament_format(round.tournament_format)
+    )
     unless @match.court
       flash[:alert] = t(".invalid_court_flash", default: "Invalid court selected.")
       redirect_back(fallback_location: @page_from || boxes_path)
@@ -261,7 +267,6 @@ class MatchesController < ApplicationController
     @score_input_by = User.find_by(id: score_input_id)
     @log_time = score_input_date ? @tz.to_local(score_input_date) : nil
 
-    @match.court_id = @match.court.name
     # convert @match.time from UTC time to local time for display in the form
     @match.time += @tz.to_local(@match.time).utc_offset
     @round = @match.box.round
@@ -269,6 +274,7 @@ class MatchesController < ApplicationController
     @max_end_date = [@round.end_date, Time.now].min
     # Store effective tiebreak points for use in view
     @effective_tiebreak_points = @round.effective_tiebreak_points
+    @court_options = Court.for_round(@round).pluck(:name)
   end
 
   # Update match scores (admin and referees only)
@@ -301,7 +307,17 @@ class MatchesController < ApplicationController
       old_results = compute_results(old_match_scores)
       apply_doubles_stats_delta(match, old_match_scores, old_results, -1)
 
-      match.court_id = Court.find_by(name: params[:match][:court_id], club_id: match.court.club_id).id
+      court = Court.find_by(
+        name: params[:match][:court_id],
+        club_id: match.court.club_id,
+        court_kind: Court.kind_for_tournament_format(round.tournament_format)
+      )
+      unless court
+        flash[:alert] = t(".invalid_court_flash", default: "Invalid court selected.")
+        redirect_back(fallback_location: edit_match_path(match))
+        return
+      end
+      match.court_id = court.id
       match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
       match.save
 
@@ -374,7 +390,17 @@ class MatchesController < ApplicationController
     if test_edit_score
       results = compute_points(user_match_scores)
       # if score entered is valid, store match date and match time in UTC time
-      match.court_id = Court.find_by(name: params[:match][:court_id], club_id: match.court.club_id).id
+      court = Court.find_by(
+        name: params[:match][:court_id],
+        club_id: match.court.club_id,
+        court_kind: Court.kind_for_tournament_format(round.tournament_format)
+      )
+      unless court
+        flash[:alert] = t(".invalid_court_flash", default: "Invalid court selected.")
+        redirect_back(fallback_location: edit_match_path(match))
+        return
+      end
+      match.court_id = court.id
       # match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match]['time(4i)']}:#{params[:match]['time(5i)']}:00".to_datetime)
       # previously, user could enter match hour in the form, but it was deemed  unnecessary and not ux friendly
       match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
@@ -454,7 +480,14 @@ class MatchesController < ApplicationController
           player = match_players[0] # winner
           opponent = match_players[1] # loser
           box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
-          court_id = Court.find_by(club_id: round.club_id, name: row[:court_nb]).id
+          court = Court.find_by(
+            club_id: round.club_id,
+            name: row[:court_nb],
+            court_kind: Court.kind_for_tournament_format(round.tournament_format)
+          )
+          next unless court
+
+          court_id = court.id
 
           # match_scores_to_a: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
           match_scores = match_scores_to_a(row[:score_winner])

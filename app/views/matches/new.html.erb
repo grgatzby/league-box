@@ -40,12 +40,12 @@
       <%# Court Selection: Select court number from available courts %>
       <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
         <div class="<%= class_names("col-3": !@is_mobile, "mb-2": @is_mobile) %>"><b><%= f.label :court_id, t(".match_played") %></b></div>
-        <% court_options = @round.club.courts.order(:name).pluck(:name) %>
+        <% court_options = @court_options || [] %>
         <div class="<%= class_names("col-2": !@is_mobile, "": @is_mobile) %>">
           <% if court_options.any? %>
             <%= f.select(:court_id, court_options, { selected: params[:court_id] || court_options.first }, { class: "form-select" }) %>
           <% else %>
-            <%= f.select(:court_id, [t(".no_courts", default: "No courts configured for this club")], {}, { class: "form-select", disabled: true }) %>
+            <%= f.select(:court_id, [t(".no_courts")], {}, { class: "form-select", disabled: true }) %>
           <% end %>
         </div>
       </div>

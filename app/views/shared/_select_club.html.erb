@@ -1,4 +1,5 @@
 <%# partial: let the user select a club %>
+<% club_selected_for_admin = @club_names.present? && @club&.name && @club_names.include?(@club.name) ? @club.name : @club_names&.first %>
 <% format_value = @round&.tournament_format || session[:selected_tournament_format] %>
 <% format_label = if format_value.present?
                     t("pages.tournament_chooser.format_#{format_value}", default: format_value.to_s.humanize)
@@ -8,10 +9,27 @@
     <!-- for the admin: display the club form before the round form, then keep displaying the club form -->
     <%= form_with url: fallback_path, method: :get do |form| %>
       <%= hidden_field_tag(:clear_format, clear_format) if local_assigns[:clear_format] %>
-      <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2": @is_mobile) %>">
-        <%= form.label :club_id, t('.select_club'), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
-        <%= form.select(:club_id, @club_names, {selected: @club.name}, {onchange: "this.form.submit();", class: (@is_mobile ? "form-select w-100" : "")}) %>
-      </div>
+      <% club_select_opts = { class: (@is_mobile ? "form-select w-100" : "") } %>
+      <% club_select_opts[:onchange] = "this.form.submit();" unless local_assigns[:home_admin_ok] %>
+      <% if local_assigns[:home_admin_ok] %>
+        <%# Home: club + format with OK beside/below; club select does not auto-submit %>
+        <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-stretch align-items-sm-end gap-2 flex-wrap") %>">
+          <div class="flex-grow-1 min-w-0">
+            <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2": @is_mobile) %>">
+              <%= form.label :club_id, t('.select_club'), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
+              <%= form.select(:club_id, @club_names, { selected: club_selected_for_admin }, club_select_opts) %>
+            </div>
+            <%= render "shared/select_tournament_format_admin", form: form %>
+          </div>
+          <%= form.submit t('.ok_btn'), class: class_names("btn btn-shape btn-green flex-shrink-0", "w-100": @is_mobile, "align-self-stretch": @is_mobile), name: "" %>
+        </div>
+      <% else %>
+        <div class="<%= class_names("d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-2": @is_mobile) %>">
+          <%= form.label :club_id, t('.select_club'), class: class_names("mb-0": !@is_mobile, "mb-1": @is_mobile) %>
+          <%= form.select(:club_id, @club_names, { selected: club_selected_for_admin }, club_select_opts) %>
+        </div>
+        <%= render "shared/select_tournament_format_admin", form: form %>
+      <% end %>
     <% end %>
   <% end %>
 <% else %>

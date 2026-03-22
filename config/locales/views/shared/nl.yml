@@ -27,6 +27,7 @@ nl:
       players: "%{nb_players} spellers"
     select_club:
       select_club: "Club: "
+      ok_btn: OK
     select_round:
       select_round: "Vorige rondes: "
       select_round_label: <i>ronde naam (ronde startdatum)</i>
