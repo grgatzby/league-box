@@ -4,6 +4,7 @@ en:
       edit_match_title: Edit match score
       p01: Update or delete an existing match score
       match_played: "Court number: "
+      no_courts: No courts configured for this format
       date_time: "Match played on:"
       set_1: Set1
       set_2: Set2
@@ -18,6 +19,7 @@ en:
       enter_new_score_html: >
         Enter the match score.<br><br>
       match_played: "Court number:"
+      no_courts: No courts configured for this format
       date_time: "Match played on:"
       score: "Match score:"
       player_1: Player 1

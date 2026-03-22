@@ -27,6 +27,7 @@ fr:
       players: "%{nb_players} joueurs"
     select_club:
       select_club: "Club: "
+      ok_btn: OK
     select_round:
       select_round: "Rounds précédents: "
       select_round_label: <i>nom du round (départ du round)</i>

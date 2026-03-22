@@ -114,9 +114,9 @@ class ApplicationController < ActionController::Base
       @club = selected_context_club if selected_context_club
     end
 
-    if current_user != @admin || params[:club_id]
+    if current_user != @admin || params[:club_id].present? || session[:selected_tournament_club_id].present?
       # user is a player or a referee (belongs to a club)),
-      # or admin has selected a club from the form (club name is defined as params[:club_id])
+      # or admin has selected a club (params[:club_id]) or has a club in session from a prior pick
       if params[:club_id].present?
         selected_club_id = params[:club_id].to_s
         @club = if is_number?(selected_club_id)
@@ -129,15 +129,30 @@ class ApplicationController < ActionController::Base
       end
       @club ||= current_user.club
       all_club_rounds = @club.rounds
+      formats_for_club = all_club_rounds.distinct.pluck(:tournament_format).compact.uniq
+      formats_for_club = formats_for_club.sort_by { |f| Round::TOURNAMENT_FORMATS.index(f) || 99 }
+      @tournament_format_options_for_admin = formats_for_club
+      @show_tournament_format_selector_for_admin = (current_user == @admin && formats_for_club.size > 1)
+
+      tf_param = params[:tournament_format].presence
+      tf_param = nil if tf_param.present? && formats_for_club.any? && !formats_for_club.include?(tf_param)
+
       # Prefer explicit round_id; otherwise session round when still the same club (GET forms often send
       # club_id but omit round_id — without this we fall back to current_round and may load the wrong format).
+      # Session round is only reused if tournament_format matches when a format filter is present.
       selected_round_id = params[:round_id].presence
       if selected_round_id.blank?
         session_club_id = session[:selected_tournament_club_id].to_s
         params_club_id = @club&.id.to_s
         same_club_as_session = session_club_id.present? && session_club_id == params_club_id
         if params[:club_id].blank? || same_club_as_session
-          selected_round_id = session[:selected_tournament_round_id]
+          sr_id = session[:selected_tournament_round_id]
+          if sr_id.present?
+            sr = Round.find_by(id: sr_id)
+            if sr && sr.club_id == @club.id && (tf_param.blank? || sr.tournament_format == tf_param)
+              selected_round_id = sr_id
+            end
+          end
         end
       end
       if selected_round_id
@@ -162,27 +177,27 @@ class ApplicationController < ActionController::Base
             redirect_back(fallback_location: request.path)
             return
           else
-            @round = current_round(@club.id)
+            @round = resolve_round_for_club_after_miss(formats_for_club, tf_param)
           end
         end
       else
-        @round = current_round(@club.id)
-        if @round
-          session[:selected_tournament_round_id] = @round.id
-          session[:selected_tournament_club_id] = @round.club_id
-          session[:selected_tournament_format] = @round.tournament_format
-        end
+        @round = resolve_round_for_club_after_miss(formats_for_club, tf_param)
       end
-      # Prefer explicit param, then the round being viewed — session can be stale (e.g. after switching singles/doubles).
-      selected_format = params[:tournament_format].presence || @round&.tournament_format || session[:selected_tournament_format].presence
+      # Prefer round's format, then explicit param, then session — session can be stale (e.g. after switching format).
+      selected_format = @round&.tournament_format.presence || tf_param.presence || session[:selected_tournament_format].presence
+      if selected_format.present? && formats_for_club.any? && !formats_for_club.include?(selected_format)
+        selected_format = formats_for_club.first
+      end
+      selected_format ||= formats_for_club.first if formats_for_club.size == 1
       @tournament_format_for_links = selected_format
+      session[:selected_tournament_format] = selected_format if selected_format.present?
       rounds_for_dropdown = selected_format.present? ? all_club_rounds.where(tournament_format: selected_format) : all_club_rounds
       @rounds_dropdown = rounds_for_dropdown.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
       rounds_for_league_dates = selected_format.present? ? all_club_rounds.where(tournament_format: selected_format) : all_club_rounds
       @league_starts = rounds_for_league_dates.map(&:league_start).compact.sort.uniq
       @league_starts = @league_starts.map { |d| d.strftime('%d/%m/%Y') }.uniq
-      @round_nb = round_label(@round)
-      @boxes = @round.boxes.includes([user_box_scores: :user]).sort
+      @round_nb = @round ? round_label(@round) : nil
+      @boxes = @round ? @round.boxes.includes([user_box_scores: :user]).sort : []
       # @boxes = @round.boxes.sort
     end
   end
@@ -204,6 +219,38 @@ class ApplicationController < ActionController::Base
   # Returns: Round object
   def current_round(club_id)
     Round.current.find_by(club_id: club_id) || Round.where(club_id: club_id).order(:start_date).last
+  end
+
+  # Current or latest round for a club restricted to one tournament format (singles / doubles / padel).
+  def current_round_for_club_format(club_id, tournament_format)
+    return nil unless tournament_format.present?
+
+    Round.current.find_by(club_id: club_id, tournament_format: tournament_format) ||
+      Round.where(club_id: club_id, tournament_format: tournament_format).order(:start_date).last
+  end
+
+  # Pick a round when none matched by id (invalid session or first load), using tournament_format param when present.
+  def resolve_round_for_club_after_miss(formats_for_club, tf_param)
+    selected_format = tf_param
+    if selected_format.blank?
+      s = session[:selected_tournament_format].presence
+      selected_format = s if s && formats_for_club.include?(s)
+    end
+    if selected_format.blank?
+      selected_format = formats_for_club.first if formats_for_club.size == 1
+    end
+    if selected_format.blank? && formats_for_club.size > 1
+      selected_format = formats_for_club.first
+    end
+
+    r = current_round_for_club_format(@club.id, selected_format) if selected_format.present?
+    r ||= current_round(@club.id)
+    if r
+      session[:selected_tournament_round_id] = r.id
+      session[:selected_tournament_club_id] = r.club_id
+      session[:selected_tournament_format] = r.tournament_format
+    end
+    r
   end
 
   # Get last round played by a player

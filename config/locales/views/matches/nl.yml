@@ -4,6 +4,7 @@ nl:
       edit_match_title: Bewerk een wedstrijdscore
       p01: Update of verwijder een bestaande wedstrijdscore
       match_played: "Tennisbaan:"
+      no_courts: Geen banen geconfigureerd voor dit format
       date_time: "Wedstrijd gespeeld:"
       set_1: Set1
       set_2: Set2
@@ -18,6 +19,7 @@ nl:
       enter_new_score_html: >
         Voer de wedstrijdscore in.<br><br>
       match_played: "Tennisbaan:"
+      no_courts: Geen banen geconfigureerd voor dit format
       date_time: "Wedstrijd gespeeld:"
       score: "Wedstrijdscore:"
       player_1: Speler 1

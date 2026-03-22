@@ -189,7 +189,9 @@ class UserBoxScoresController < ApplicationController
         club = Club.create(name: params[:new_club_name], tiebreak_points: tiebreak_points)
 
         # create courts
-        params[:nb_of_courts].to_i.times { |court_number| Court.create(name: court_number + 1, club_id: club.id) }
+        params[:nb_of_courts].to_i.times do |court_number|
+          Court.create!(name: court_number + 1, club_id: club.id, court_kind: "tennis")
+        end
 
         # create first round
         round = Round.create(club_id: club.id,

@@ -4,6 +4,7 @@ fr:
       edit_match_title: Editer un score
       p01: Editer ou supprimer un score existant
       match_played: "Court nº:"
+      no_courts: Aucun terrain configuré pour ce format
       date_time: "Match joué le:"
       set_1: Set1
       set_2: Set2
@@ -18,6 +19,7 @@ fr:
       enter_new_score_html: >
         Soumettre le score du match.<br><br>
       match_played: "Court nº:"
+      no_courts: Aucun terrain configuré pour ce format
       date_time: "Match joué le:"
       score: "Score match:"
       player_1: Joueur 1

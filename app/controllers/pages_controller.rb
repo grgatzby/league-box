@@ -9,6 +9,14 @@ class PagesController < ApplicationController
   # Sets up path hash for various navigation links on the home page
   def home
     @box = my_own_box(current_round(current_user.club_id)) if current_user
+    # Admin: prepare club / format / round picker (same as boxes index) for the home CTA
+    if current_user == @admin
+      clubs = Club.all.reject { |club| club == @sample_club }
+      @club_names = clubs.map(&:name)
+      if params[:club_id].present? || session[:selected_tournament_club_id].present?
+        set_club_round
+      end
+    end
     @path = {}
     if current_user
       resolver_contexts = TournamentContextResolver.new(current_user).contexts(include_inactive_latest: true)
