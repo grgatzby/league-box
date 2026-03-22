@@ -5,8 +5,8 @@
   Column widths must sum to 12 (Bootstrap grid).
 %>
 <b><div class="row">
-  <%# Player Column (col-3) %>
-  <div class="col-3"><%= t(".player") %></div>
+  <%# Player or team column (col-3) %>
+  <div class="col-3"><%= doubles_mode ? t(".team") : t(".player") %></div>
   <%# Score Columns Container (col-9): Nested row for score-related columns %>
   <div class="col-9 row">
     <%# Set 1 Column (col-1) %>

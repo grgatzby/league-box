@@ -22,15 +22,24 @@
     <div class="dropdown-divider"></div>
 
     <%# Box-related links %>
-    <%= link_to t('.all_boxes_link'), boxes_path, class: "dropdown-item color-green" %>
-    <%= link_to t('.round_ranking_link'), user_box_scores_path, class: "dropdown-item color-green" %>
-    <%= link_to t('.league_table_link'), index_league_path, class: "dropdown-item color-green" %>
+    <% context_params = {} %>
+    <% if session[:selected_tournament_round_id].present? && session[:selected_tournament_club_id].present? %>
+      <% context_params = {
+        round_id: session[:selected_tournament_round_id],
+        club_id: session[:selected_tournament_club_id],
+        tournament_format: session[:selected_tournament_format]
+      } %>
+    <% end %>
+    <%= link_to t('.all_boxes_link'), boxes_path(context_params), class: "dropdown-item color-green" %>
+    <%= link_to t('.round_ranking_link'), user_box_scores_path(context_params), class: "dropdown-item color-green" %>
+    <%= link_to t('.league_table_link'), index_league_path(context_params), class: "dropdown-item color-green" %>
+    <%= link_to t('.switch_tournament_link', default: "Switch tournament"), tournament_chooser_path, class: "dropdown-item color-green" %>
     <div class="dropdown-divider"></div>
 
     <%# Player-specific links %>
     <% if current_user && current_user.role == "player" %>
       <%# my_scores_path(0) forces the _select_club_round form %>
-      <%= link_to t('.my_scores_link'), my_scores_path(0), class: "dropdown-item color-tennis-red" %>
+      <%= link_to t('.my_scores_link'), my_scores_path(0, context_params), class: "dropdown-item color-tennis-red" %>
     <% end %>
 
     <%# Admin links %>

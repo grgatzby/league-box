@@ -18,23 +18,31 @@
 
   <%# Players Display: Show both players with profile pictures %>
   <% players = [@current_player, @opponent] %>
+  <% left_user = @user_match_scores[0]&.user || players[0] %>
+  <% right_user = @user_match_scores[1]&.user || players[1] %>
   <div class="one-liner frame-margin-rl">
     <h5>
-      <%# First Player: Name and profile picture %>
-      <span style="display: inline-flex; align-items: center; gap: 8px;">
-        <%= render "shared/fullname", user: @user_match_scores[0].user %>
-        <% if @user_match_scores[0].user.profile_picture.present? %>
-          <%= image_tag(profile_picture_circular_url(@user_match_scores[0].user, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-        <% end %>
-      </span>
-      <i><%= " versus " %></i>
-      <%# Second Player: Name and profile picture %>
-      <span style="display: inline-flex; align-items: center; gap: 8px;">
-        <%= render "shared/fullname", user: @user_match_scores[1].user %>
-        <% if @user_match_scores[1].user.profile_picture.present? %>
-          <%= image_tag(profile_picture_circular_url(@user_match_scores[1].user, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-        <% end %>
-      </span>
+      <% if @match.doubles_match? %>
+        <span><%= @team_a&.display_name %></span>
+        <i><%= " versus " %></i>
+        <span><%= @team_b&.display_name %></span>
+      <% else %>
+        <%# First Player: Name and profile picture %>
+        <span style="display: inline-flex; align-items: center; gap: 8px;">
+          <%= render "shared/fullname", user: left_user %>
+          <% if left_user&.profile_picture&.present? %>
+            <%= image_tag(profile_picture_circular_url(left_user, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+          <% end %>
+        </span>
+        <i><%= " versus " %></i>
+        <%# Second Player: Name and profile picture %>
+        <span style="display: inline-flex; align-items: center; gap: 8px;">
+          <%= render "shared/fullname", user: right_user %>
+          <% if right_user&.profile_picture&.present? %>
+            <%= image_tag(profile_picture_circular_url(right_user, @is_mobile ? 25 : 50), alt: 'Profile picture', style: "width: #{@is_mobile ? 25 : 50}px; height: #{@is_mobile ? 25 : 50}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+          <% end %>
+        </span>
+      <% end %>
     </h5>
   </div>
 
@@ -73,33 +81,52 @@
         <div class="col-2"><%= t '.tie_break' %></div>
       </div>
 
-      <%# Score Input Fields: Nested form for both players' scores %>
-      <%= f.fields_for :user_match_scores do |user_match_score| %>
+      <%# Score Input Fields: Singles uses nested user scores, doubles uses team-vs-team score selectors %>
+      <% if @match.doubles_match? %>
+        <% score_options = ["4-3", "4-2", "4-1", "4-0", "0-4", "1-4", "2-4", "3-4"] %>
+        <% tiebreak_points = @effective_tiebreak_points || @round.effective_tiebreak_points %>
+        <% tiebreak_options = ["Na", "#{tiebreak_points + 1}-#{tiebreak_points - 1}"] %>
+        <% (tiebreak_points - 2).downto(0) { |i| tiebreak_options << "#{tiebreak_points}-#{i}" } %>
+        <% 0.upto(tiebreak_points - 2) { |i| tiebreak_options << "#{i}-#{tiebreak_points}" } %>
+        <% tiebreak_options << "#{tiebreak_points - 1}-#{tiebreak_points + 1}" %>
+
         <div class="row">
-          <%# Player Name Column %>
-          <div class="col-4"><%= render "shared/fullname", user: players[user_match_score.index] %></div>
-          <%# Set 1 Score: Games won (0-4) %>
-          <div class="col-2"><%= user_match_score.select :score_set1, 0..4 %></div>
-          <%# Set 2 Score: Games won (0-4) %>
-          <div class="col-2"><%= user_match_score.select :score_set2, 0..4 %></div>
-          <%# Tiebreak Score: Points dynamically generated based on effective_tiebreak_points or "Na" (not applicable) %>
-          <% tiebreak_points = @effective_tiebreak_points || @round.effective_tiebreak_points %>
-          <% tiebreak_options = ['Na'] + (0..tiebreak_points).to_a + (tiebreak_points + 1..tiebreak_points + 2).to_a %>
-          <div class="col-2"><%= user_match_score.select :score_tiebreak, tiebreak_options %></div>
+          <div class="col-4"><b><%= @team_a&.display_name %></b></div>
+          <div class="col-2"><%= f.select :doubles_score_set1, score_options, { selected: @selected_doubles_score_set1 } %></div>
+          <div class="col-2"><%= f.select :doubles_score_set2, score_options, { selected: @selected_doubles_score_set2 } %></div>
+          <div class="col-2"><%= f.select :doubles_score_tiebreak, tiebreak_options, { selected: @selected_doubles_score_tiebreak } %></div>
         </div>
+        <div class="row">
+          <div class="col-4"><b><%= @team_b&.display_name %></b></div>
+        </div>
+      <% else %>
+        <%= f.fields_for :user_match_scores do |user_match_score| %>
+          <div class="row">
+            <%# Player Name Column %>
+            <div class="col-4"><%= render "shared/fullname", user: players[user_match_score.index] || user_match_score.object.user %></div>
+            <%# Set 1 Score: Games won (0-4) %>
+            <div class="col-2"><%= user_match_score.select :score_set1, 0..4 %></div>
+            <%# Set 2 Score: Games won (0-4) %>
+            <div class="col-2"><%= user_match_score.select :score_set2, 0..4 %></div>
+            <%# Tiebreak Score: Points dynamically generated based on effective_tiebreak_points or "Na" (not applicable) %>
+            <% tiebreak_points = @effective_tiebreak_points || @round.effective_tiebreak_points %>
+            <% tiebreak_options = ['Na'] + (0..tiebreak_points).to_a + (tiebreak_points + 1..tiebreak_points + 2).to_a %>
+            <div class="col-2"><%= user_match_score.select :score_tiebreak, tiebreak_options %></div>
+          </div>
+        <% end %>
       <% end %>
       <br>
 
       <%# Original Submission Info: Who submitted the score and when %>
-      <% score_input_by = User.find(@match.user_match_scores[0].input_user_id) %>
-      <% log_time = @tz.to_local(@match.user_match_scores[0].input_date) %>
-      <%= t(".submitted", date: l(log_time, format: :wwwwddmmmyyyy_at_hhmm),
-                          user: "#{score_input_by.role} #{(render "shared/fullname", user: score_input_by).strip}") %>
+      <% if @score_input_by && @log_time %>
+        <%= t(".submitted", date: l(@log_time, format: :wwwwddmmmyyyy_at_hhmm),
+                            user: "#{@score_input_by.role} #{(render "shared/fullname", user: @score_input_by).strip}") %>
+      <% end %>
       <br><br>
 
       <%# Hidden Fields: Store player IDs, round ID, return path, and match ID %>
-      <%= hidden_field_tag(:player_id, @current_player.id) %>
-      <%= hidden_field_tag(:opponent_id, @opponent.id) %>
+      <%= hidden_field_tag(:player_id, @current_player.id) if @current_player %>
+      <%= hidden_field_tag(:opponent_id, @opponent.id) if @opponent %>
       <%= hidden_field_tag(:round, @round.id) %>
       <%= hidden_field_tag(:page_from, @page_from) %>
       <%= hidden_field_tag(:match_id, params[:match_id]) %>

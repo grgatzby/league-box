@@ -1,23 +1,37 @@
-<!-- partial : rules section 6 (Special circumstances)-->
+<%# partial: rules section 6 (Special circumstances). Uses "team" wording for doubles/padel where relevant. %>
+<% doubles_format = %w[doubles_tennis doubles_padel].include?(@selected_tournament_format.to_s) %>
+<% p28_key = doubles_format ? '.p28_doubles' : '.p28' %>
+<% p29_key = doubles_format ? '.p29_doubles' : '.p29' %>
+<% li18_key = doubles_format ? '.li18_doubles' : '.li18' %>
+<% li19_key = doubles_format ? '.li19_doubles' : '.li19' %>
+<% li20_key = doubles_format ? '.li20_doubles' : '.li20' %>
+<% p30_key = doubles_format ? '.p30_doubles' : '.p30' %>
+<% p32_key = doubles_format ? '.p32_doubles' : '.p32' %>
+<% p33_key = doubles_format ? '.p33_doubles' : '.p33' %>
+<% p34_key = doubles_format ? '.p34_doubles' : '.p34' %>
+<% p35_key = doubles_format ? '.p35_doubles' : '.p35' %>
+<% p37_key = doubles_format ? '.p37_doubles' : '.p37' %>
+<% p38_key = doubles_format ? '.p38_doubles' : '.p38' %>
+<% p39_key = doubles_format ? '.p39_doubles' : '.p39' %>
 <h5 class="color-tennis-blue">1.16 <%= t '.disqualification' %></h5>
-  <p><%= t '.p28' %></p>
+  <p><%= t p28_key %></p>
 <h5 class="color-tennis-blue">1.17 <%= t '.no_show' %></h5>
-  <%= t '.p29' %>
+  <%= t p29_key %>
   <ul>
-    <% (18..20).each do |i| %>
-      <li><%= t ".li#{format '%02d',i}" %></li>
-    <% end %>
+    <li><%= t li18_key %></li>
+    <li><%= t li19_key %></li>
+    <li><%= t li20_key %></li>
   </ul>
 <h5 class="color-tennis-blue">1.18 <%= t '.retire_from_match' %></h5>
-  <p><%= t '.p30' %></p>
+  <p><%= t p30_key %></p>
   <p></p><%= t '.p31' %>
   <i><ul>
-    <li><%= t '.p32' %></li>
-    <li><%= t '.p33' %></li>
+    <li><%= t p32_key %></li>
+    <li><%= t p33_key %></li>
   </ul></i>
 <h5 class="color-tennis-blue">1.19 <%= t '.withdrawing' %></h5>
-  <p><%= t '.p34' %></p>
-  <p><%= t '.p35' %></p>
+  <p><%= t p34_key %></p>
+  <p><%= t p35_key %></p>
 <h5 class="color-tennis-blue">1.20 <%= t '.walk_overs' %></h5>
   <%= t '.p36' %>
   <ul>
@@ -26,6 +40,6 @@
     <% end %>
   </ul>
 <h5 class="color-tennis-blue">1.21 <%= t '.deadline_extensions' %></h5>
-  <p><%= t '.p37' %></p>
-  <p><%= t '.p38' %></p>
-  <p><%= t '.p39' %></p>
+  <p><%= t p37_key %></p>
+  <p><%= t p38_key %></p>
+  <p><%= t p39_key %></p>

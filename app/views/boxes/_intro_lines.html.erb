@@ -64,14 +64,24 @@
     <% end %>
 
     <%# Back button: return to previous page with parameters %>
+    <%# If page_from already has a query string (e.g. index_league?league_start=...), use "&" not "?" — a second "?" breaks parsing and drops league/tournament params. %>
     <% if @page_from %>
-      <% parameters = "?club_id=#{@round.club_id}" %>
+      <% pf = @page_from.to_s %>
+      <% sep = pf.include?("?") ? "&" : "?" %>
+      <% qs = [] %>
       <% if @round %>
-        <% parameters += "&round_id=#{@round.id}" %>
+        <% qs << "club_id=#{@round.club_id}" %>
+        <% qs << "round_id=#{@round.id}" %>
+        <% if @round.tournament_format.present? && !pf.match?(/[?&]tournament_format=/) %>
+          <% qs << "tournament_format=#{@round.tournament_format}" %>
+        <% end %>
+        <% if pf.include?("index_league") && @round.league_start && !pf.match?(/[?&]league_start=/) %>
+          <% qs << "league_start=#{@round.league_start.strftime('%Y-%m-%d')}" %>
+        <% end %>
       <% elsif params[:league_start] %>
-        <% parameters += "&league_start=#{params[:league_start]}" %>
+        <% qs << "league_start=#{params[:league_start]}" %>
       <% end %>
-      <%= link_to t('back_btn'), @page_from+parameters, class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
+      <%= link_to t('back_btn'), pf + sep + qs.join("&"), class: "btn btn-shape btn-green mb-3 dont-print text-size" %>
     <% end %>
   </div>
 </div>

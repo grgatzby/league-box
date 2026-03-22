@@ -26,6 +26,22 @@
       </h1>
     </header>
 
+    <div class="row mb-3">
+      <div class="col-12 col-md-4"><b><%= t(".format_label", default: "Tournament format") %></b></div>
+      <div class="col-12 col-md-8">
+        <%= form_with url: rules_path, method: :get, local: true do |form| %>
+          <%= form.select :tournament_format,
+              [
+                [t(".format_singles_tennis", default: "Singles tennis"), "singles_tennis"],
+                [t(".format_doubles_tennis", default: "Doubles tennis"), "doubles_tennis"],
+                [t(".format_doubles_padel", default: "Doubles padel"), "doubles_padel"]
+              ],
+              { selected: @selected_tournament_format },
+              { class: "form-select", onchange: "this.form.submit();" } %>
+        <% end %>
+      </div>
+    </div>
+
     <!-- Rules Sections: Dynamic rendering of collapsible rule sections -->
     <div class="rules-sections-container">
       <%# Define all available rule sections with their metadata %>

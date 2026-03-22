@@ -7,12 +7,16 @@
   Parameters:
     match_score: UserMatchScore object containing the player's match scores
     tiebreak: Sum of both players' tiebreak scores (determines if tiebreak column is shown)
-    user_box_score: UserBoxScore object for displaying total box points
+    user_box_score: UserBoxScore object (fallback for singles total box points)
+    name_label: optional — doubles/padel: team display name instead of one player's last name
+    points_source: optional — UserBoxScore or TeamBoxScore for cumulative box/team points column
 %>
+<% row_label = local_assigns[:name_label].presence || match_score.user.last_name %>
+<% pts_record = local_assigns.fetch(:points_source, user_box_score) %>
 <div class="<%= class_names("row", "color-green": match_score.is_winner, "color-tennis-red": !match_score.is_winner) %>">
-  <%# Player Name Column (col-3): Last name only %>
-  <div class="col-3"%>
-    <b><%= match_score.user.last_name %></b>
+  <%# Player or team name (col-3) %>
+  <div class="col-3">
+    <b><%= row_label %></b>
   </div>
   <%# Score Columns Container (col-9): Nested row for score-related columns %>
   <div class="col-9 row">
@@ -26,7 +30,7 @@
     <% end %>
     <%# Match Points Column (col-3): Points earned in this match %>
     <div class="col-3">&nbsp;&nbsp;<%= t("pts", count: match_score.points) %></div>
-    <%# Total Box Points Column (col-4): Player's cumulative points in the box %>
-    <div class="col-4"><%= t("box_pts", count: user_box_score.points) %></div>
+    <%# Total box / team points column (col-4) %>
+    <div class="col-4"><%= t("box_pts", count: pts_record.points) %></div>
   </div>
 </div>

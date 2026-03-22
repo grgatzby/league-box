@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     @box = my_own_box(current_round(current_user.club_id)) if current_user
     @path = {}
     if current_user
+      resolver_contexts = TournamentContextResolver.new(current_user).contexts(include_inactive_latest: true)
+      @home_tournament_contexts = resolver_contexts.uniq { |ctx| ctx[:format] }.map do |ctx|
+        ctx.merge(format_label: tournament_format_label(ctx[:format]))
+      end
       # paths associated with the links in the home page
       @path["01"] = my_scores_path(0)
       @path["02"] = boxes_path
@@ -24,9 +28,61 @@ class PagesController < ApplicationController
 
   end
 
+  # Display tournament chooser for users enrolled in multiple active tournament formats
+  def tournament_chooser
+    @tournament_contexts = TournamentContextResolver.new(current_user)
+                                                 .contexts(include_inactive_latest: true)
+                                                 .uniq { |ctx| ctx[:format] }
+                                                 .map { |ctx| ctx.merge(format_label: tournament_format_label(ctx[:format])) }
+    preference = current_user.preference || Preference.find_or_create_by(user_id: current_user.id) do |pref|
+      pref.clear_format = false
+    end
+    @preferred_destination = preference.landing_to_user_box_scores ? "ranking" : "boxes"
+    if @tournament_contexts.empty?
+      flash[:notice] = t(".no_active_tournament", default: "No active tournament found.")
+      redirect_to root_path
+      return
+    end
+  end
+
+  # Persist selected tournament context in session and redirect
+  def select_tournament
+    selected_format = params[:tournament_format].presence || params[:format].to_s
+    context = TournamentContextResolver.new(current_user).contexts(include_inactive_latest: true).find do |ctx|
+      ctx[:round_id] == params[:round_id].to_i && ctx[:format] == selected_format
+    end
+
+    unless context
+      flash[:alert] = t(".invalid_tournament_context", default: "Unable to select this tournament context.")
+      redirect_to tournament_chooser_path
+      return
+    end
+
+    session[:selected_tournament_round_id] = context[:round_id]
+    session[:selected_tournament_club_id] = context[:club_id]
+    session[:selected_tournament_format] = context[:format]
+
+    destination = params[:destination].presence
+    unless destination
+      preference = current_user.preference || Preference.find_or_create_by(user_id: current_user.id) do |pref|
+        pref.clear_format = false
+      end
+      destination = preference.landing_to_user_box_scores ? "ranking" : "boxes"
+    end
+    if destination == "ranking"
+      redirect_to user_box_scores_path(round_id: context[:round_id], club_id: context[:club_id], tournament_format: context[:format])
+    elsif destination == "my_scores"
+      redirect_to my_scores_path(0, round_id: context[:round_id], club_id: context[:club_id], tournament_format: context[:format])
+    else
+      redirect_to boxes_path(round_id: context[:round_id], club_id: context[:club_id], tournament_format: context[:format])
+    end
+  end
+
   # Update the preferred post-login landing page from Home toggle
   def update_landing_preference
-    preference = current_user.preference || Preference.create(user_id: current_user.id, clear_format: false)
+    preference = current_user.preference || Preference.find_or_create_by(user_id: current_user.id) do |pref|
+      pref.clear_format = false
+    end
     preference.update(landing_to_user_box_scores: params[:landing_to_user_box_scores] == "1")
     redirect_to root_path
   end
@@ -35,6 +91,8 @@ class PagesController < ApplicationController
   # Shows gallery images grouped by club with different access levels based on user role
   # Admin sees all images, authenticated users see their club's images, guests see sample club images
   def rules
+    @selected_tournament_format = params[:tournament_format].presence || session[:selected_tournament_format] || "singles_tennis"
+    session[:selected_tournament_format] = @selected_tournament_format
     @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
     @rounds = @club.rounds
     # Show images grouped by club - admin sees all, others see only accessible to their club
@@ -189,6 +247,19 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def tournament_format_label(format)
+    case format
+    when "singles_tennis"
+      t("pages.tournament_chooser.format_singles_tennis", default: "Tennis Singles")
+    when "doubles_tennis"
+      t("pages.tournament_chooser.format_doubles_tennis", default: "Tennis Doubles")
+    when "doubles_padel"
+      t("pages.tournament_chooser.format_doubles_padel", default: "Padel")
+    else
+      format.to_s.humanize
+    end
+  end
 
   # Strong parameters for club updates
   def club_params

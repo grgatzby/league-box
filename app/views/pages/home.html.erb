@@ -25,6 +25,35 @@
       </h1>
     </header>
 
+    <!-- Call to Action: Primary navigation button (login or view boxes) -->
+    <div class="home-cta-section my-4 my-md-5">
+      <div class="<%= class_names("buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center", "flex-wrap": @is_mobile, "flex-nowrap": !@is_mobile) %>">
+        <%# Show "View Boxes" button for authenticated users, "Login" for non-authenticated %>
+        <% if user_signed_in? %>
+          <% if (@home_tournament_contexts || []).size <= 1 %>
+            <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+          <% else %>
+            <% @home_tournament_contexts.each do |context| %>
+              <%= link_to context[:format_label],
+                  select_tournament_path(round_id: context[:round_id], tournament_format: context[:format]),
+                  class: class_names("btn btn-shape btn-aqua", "text-size w-100": @is_mobile, "btn-sm px-3 py-1": !@is_mobile) %>
+            <% end %>
+          <% end %>
+          <%= form_with url: update_home_landing_preference_path, method: :patch, local: true, class: "d-inline-flex align-items-center gap-2 m-0" do %>
+            <%= hidden_field_tag :landing_to_user_box_scores, "0" %>
+            <%= check_box_tag :landing_to_user_box_scores, "1", (current_user.preference&.landing_to_user_box_scores.eql?(true)), onchange: "this.form.requestSubmit();", class: "form-check-input m-0" %>
+            <%= label_tag :landing_to_user_box_scores, t(".landing_to_user_box_scores"), class: "m-0" %>
+          <% end %>
+          <%# Show admin/referee buttons on mobile %>
+          <% if @is_mobile %>
+            <%= render "shared/admin_referee_buttons" %>
+          <% end %>
+        <% else %>
+          <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
+        <% end %>
+      </div>
+    </div>
+
     <!-- Welcome Section: Introduction to LeagueBox -->
     <%= render "pages/home_section", section_number: 1, icon: "🏆", title_key: "welcome_title", home_t: home_t do %>
       <p><%= home_t['p01_html'] %></p>
@@ -69,27 +98,6 @@
       </ol>
     <% end %>
 
-    <!-- Call to Action: Primary navigation button (login or view boxes) -->
-    <div class="home-cta-section my-4 my-md-5">
-      <div class="buttons-wrap d-flex flex-row gap-2 justify-content-center align-items-center flex-wrap">
-        <%# Show "View Boxes" button for authenticated users, "Login" for non-authenticated %>
-        <% if user_signed_in? %>
-          <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
-          <%= form_with url: update_home_landing_preference_path, method: :patch, local: true, class: "d-inline-flex align-items-center gap-2 m-0" do %>
-            <%= hidden_field_tag :landing_to_user_box_scores, "0" %>
-            <%= check_box_tag :landing_to_user_box_scores, "1", (current_user.preference&.landing_to_user_box_scores.eql?(true)), onchange: "this.form.requestSubmit();", class: "form-check-input m-0" %>
-            <%= label_tag :landing_to_user_box_scores, t(".landing_to_user_box_scores"), class: "m-0" %>
-          <% end %>
-          <%# Show admin/referee buttons on mobile %>
-          <% if @is_mobile %>
-            <%= render "shared/admin_referee_buttons" %>
-          <% end %>
-        <% else %>
-          <%= link_to t('.login_link'), new_user_session_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
-        <% end %>
-      </div>
-    </div>
-
     <!-- Social Tennis Image: Decorative image section -->
     <div class="home-image-section mb-4" data-toggle-target="image">
       <%= image_tag "social_tennis.jpg", alt: "Social tennis", class: "img-fluid rounded", width: "100%" %>
@@ -113,16 +121,13 @@
       </div>
     </section>
 
-    <!-- Club Join Section: Information about joining a club -->
-    <section class="home-join-section my-4 my-md-5">
-      <h5 class="color-tennis-blue mb-3"><b>👤 <%= home_t['club_join_title'] %></b></h5>
-      <%# Contact link paragraph with styled link %>
-      <p class="mb-4"><%= home_t.call('p06_html', inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{home_t['li14']}</a>".html_safe) %></p>
-      <%# Decorative racket icons: Responsive sizing %>
+    <!-- Club Join Section: Information about joining a club (collapsible, same pattern as Ready section) -->
+    <%= render "pages/home_section", section_number: 4, icon: "👤", title_key: "club_join_title", home_t: home_t do %>
+      <p><%= home_t.call('p06_html', inset: "<a class='#{class_prefix}tennis-blue' href='#{@path["06"]}'>#{home_t['li14']}</a>".html_safe) %></p>
       <div class="buttons-wrap text-center">
         <%= render "shared/racket_icon", mobile_width: 25, desktop_width: 50 %>
       </div>
-    </section>
+    <% end %>
 
     <!-- Scroll to Top Button: Floating button (hidden by default, shown via Stimulus) -->
     <button data-action="click->toggle#scrollToTop" data-toggle-target="topButton"

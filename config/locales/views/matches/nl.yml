@@ -39,6 +39,7 @@ nl:
       back_btn: ⇤
     score_headers:
       player: Speler
+      team: Team
       set_1: set1
       set_2: set2
       tie_break: tiebreak

@@ -67,6 +67,8 @@ fr:
       player_header: Joueur
       last_name_header: Nom
       first_name_header: Prénom
+      first_player_header: 1er joueur
+      second_player_header: 2e joueur
       rank_header: Rang
       points_header: Points
       box_header: Box

@@ -26,6 +26,14 @@ class MatchesController < ApplicationController
     @match = Match.find(params[:match_id])
     @player_match_score = match_score(@match, @player)
     @opponent_match_score = match_score(@match, @opponent)
+    @round = @match.box.round
+    @doubles_match = @round.doubles_format?
+    if @doubles_match
+      @player_team = @player.teams.includes(:users).find_by(box_id: @match.box_id)
+      @opponent_team = @opponent.teams.includes(:users).find_by(box_id: @match.box_id)
+      @player_team_tbs = TeamBoxScore.find_by(team_id: @player_team.id, box_id: @match.box_id) if @player_team
+      @opponent_team_tbs = TeamBoxScore.find_by(team_id: @opponent_team.id, box_id: @match.box_id) if @opponent_team
+    end
   end
 
   # Display form to create a new match
@@ -33,8 +41,14 @@ class MatchesController < ApplicationController
   # Sets maximum match date to round end_date or current time (whichever is earlier)
   def new
     @page_from = local_path(params[:page_from])
-    @round = Round.find(params[:round_id])
+    requested_round = Round.find_by(id: params[:round_id])
     set_club_round
+    @round = requested_round || @round
+    unless @round
+      flash[:notice] = t(".valid_round_flash", default: "Please choose a valid round.")
+      redirect_back(fallback_location: @page_from || boxes_path)
+      return
+    end
     @current_player = params[:player] ? User.find(params[:player]) : current_user
     @box = my_own_box(@round, @current_player)
     # Validation: prevent score entry before round start_date
@@ -42,7 +56,18 @@ class MatchesController < ApplicationController
       flash[:notice] = t('.round_not_started_flash')
       redirect_back(fallback_location: @page_from)
     else
-      @opponent = User.find(params[:opponent])
+      if @round.doubles_format?
+        @team_a = params[:team_a_id].present? ? Team.find(params[:team_a_id]) : current_user_team_in_box(@box)
+        @team_b = params[:team_b_id].present? ? Team.find(params[:team_b_id]) : opposing_team_for(@box, @team_a)
+        @box ||= @team_a&.box || @team_b&.box
+        unless @team_a && @team_b
+          flash[:notice] = t('.team_not_found_flash', default: "No valid opponent team found for this format.")
+          redirect_back(fallback_location: @page_from)
+          return
+        end
+      else
+        @opponent = User.find(params[:opponent])
+      end
       # max match date in the form: user can't post results in the future
       @max_end_date = [@round.end_date, Time.now].min
       @match = Match.new(time: @max_end_date)
@@ -78,10 +103,28 @@ class MatchesController < ApplicationController
   #   - Tiebreak counts as one set (no points for loser)
   def create
     @match = Match.new
+    @page_from = local_path(params[:page_from])
     @current_player = User.find(params[:player])
-    @match.box = my_own_box(Round.find(params[:round_id]), @current_player)
+    round = Round.find(params[:round_id])
+    team_a = Team.find_by(id: params[:team_a_id]) if round.doubles_format?
+    team_b = Team.find_by(id: params[:team_b_id]) if round.doubles_format?
+    @match.box = if round.doubles_format? && team_a && team_b
+                   team_a.box
+                 else
+                   my_own_box(round, @current_player)
+                 end
+    unless @match.box
+      flash[:alert] = t(".invalid_box_flash", default: "Unable to determine the match box.")
+      redirect_back(fallback_location: @page_from || boxes_path)
+      return
+    end
     # Get court from court number (user inputs court number, not court ID)
-    @match.court = Court.find_by name: params[:match][:court_id]
+    @match.court = Court.find_by(name: params[:match][:court_id], club_id: @match.box.round.club_id)
+    unless @match.court
+      flash[:alert] = t(".invalid_court_flash", default: "Invalid court selected.")
+      redirect_back(fallback_location: @page_from || boxes_path)
+      return
+    end
 
     match_scores = [{}, {}]
     # Example: "4-2 1-3 10-7" => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
@@ -94,7 +137,24 @@ class MatchesController < ApplicationController
       match_scores[index][:score_tiebreak] = score_tiebreak[index] || 0
     end
 
-    tiebreak_points = @match.box.round.effective_tiebreak_points
+    round = @match.box.round
+    if round.doubles_format?
+      valid_teams = team_a && team_b &&
+                    team_a.box_id == @match.box_id && team_b.box_id == @match.box_id &&
+                    team_a.round_id == round.id && team_b.round_id == round.id &&
+                    team_a.id != team_b.id
+      if current_user.role == "player"
+        authorized_submitter = team_a.users.include?(current_user) || team_b.users.include?(current_user)
+      else
+        authorized_submitter = true
+      end
+      unless valid_teams && authorized_submitter
+        flash[:alert] = t(".unauthorized_doubles_submit", default: "Only players from either doubles team can submit this score.")
+        redirect_back(fallback_location: @page_from || boxes_path)
+        return
+      end
+    end
+    tiebreak_points = round.effective_tiebreak_points
     test_score = test_new_score(match_scores, tiebreak_points) # ARRAY of won sets count if scores ok, false otherwise
     if test_score
       results = compute_points(match_scores)
@@ -102,42 +162,50 @@ class MatchesController < ApplicationController
       # @match.time = @tz.local_to_utc("#{params[:match][:time]} #{params[:match_id]['time(4i)']}:#{params[:match_id]['time(5i)']}:00".to_datetime)
       # previously, user could enter match hour in the form, but it was considered unnecessary and not ux friendly
       @match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
+      if round.doubles_format?
+        @match.team_a_id = team_a.id
+        @match.team_b_id = team_b.id
+      end
       @match.save
 
-      # create and fill a user_match_score instance for each player of the match
-      UserMatchScore.create(user_id: params[:player], match_id: @match.id)
-      UserMatchScore.create(user_id: params[:opponent], match_id: @match.id)
-
-      user_match_scores = UserMatchScore.where(match_id: @match.id)
-
       input_date = Time.now
-      [0, 1].each do |index|
-        user_match_scores[index].score_set1 = match_scores[index][:score_set1]
-        user_match_scores[index].score_set2 = match_scores[index][:score_set2]
-        user_match_scores[index].score_tiebreak = match_scores[index][:score_tiebreak]
-        user_match_scores[index].points = match_scores[index][:points]
-        user_match_scores[index].is_winner = (results[index] > results[1 - index])
-        user_match_scores[index].input_user_id = current_user.id
-        user_match_scores[index].input_date = input_date
-        user_match_scores[index].save
-      end
+      if round.doubles_format?
+        create_doubles_scores_and_stats(@match, match_scores, results, input_date)
+      else
+        # create and fill a user_match_score instance for each player of the match
+        UserMatchScore.create(user_id: params[:player], match_id: @match.id)
+        UserMatchScore.create(user_id: params[:opponent], match_id: @match.id)
 
-      # update user_box_score for each player
-      [0, 1].each do |index|
-        match = user_match_scores[index].match
-        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
-        user_box_score.points += user_match_scores[index].points
-        user_box_score.games_won += won_games(user_match_scores[index])
-        user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
-        user_box_score.sets_won += results[index]
-        user_box_score.sets_played += results.sum
-        user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
-        user_box_score.matches_played += 1
-        user_box_score.save
-      end
+        user_match_scores = UserMatchScore.where(match_id: @match.id)
 
-      # update the league table
-      rank_players(@match.box.round.user_box_scores)
+        [0, 1].each do |index|
+          user_match_scores[index].score_set1 = match_scores[index][:score_set1]
+          user_match_scores[index].score_set2 = match_scores[index][:score_set2]
+          user_match_scores[index].score_tiebreak = match_scores[index][:score_tiebreak]
+          user_match_scores[index].points = match_scores[index][:points]
+          user_match_scores[index].is_winner = (results[index] > results[1 - index])
+          user_match_scores[index].input_user_id = current_user.id
+          user_match_scores[index].input_date = input_date
+          user_match_scores[index].save
+        end
+
+        # update user_box_score for each player
+        [0, 1].each do |index|
+          match = user_match_scores[index].match
+          user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+          user_box_score.points += user_match_scores[index].points
+          user_box_score.games_won += won_games(user_match_scores[index])
+          user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+          user_box_score.sets_won += results[index]
+          user_box_score.sets_played += results.sum
+          user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+          user_box_score.matches_played += 1
+          user_box_score.save
+        end
+
+        # update the league table
+        rank_players(@match.box.round.user_box_scores)
+      end
 
       redirect_to local_path(params[:page_from])
     else
@@ -162,15 +230,37 @@ class MatchesController < ApplicationController
   def edit
     @page_from = local_path(params[:page_from])
     set_club_round
+    @match = Match.find(params[:match_id])
     @user_match_scores = UserMatchScore.where(match_id: params[:match_id])
-    if @user_match_scores[0].score_tiebreak.zero? && @user_match_scores[1].score_tiebreak.zero?
+    @current_player = @user_match_scores[0]&.user
+    @opponent = @user_match_scores[1]&.user
+    if !@match.doubles_match? && @user_match_scores[0] && @user_match_scores[1] &&
+       @user_match_scores[0].score_tiebreak.zero? && @user_match_scores[1].score_tiebreak.zero?
       @user_match_scores[0].score_tiebreak = "Na"
       @user_match_scores[1].score_tiebreak = "Na"
     end
-    @current_player = @user_match_scores[0].user
-    @opponent = @user_match_scores[1].user
 
-    @match = Match.find(params[:match_id])
+    if @match.doubles_match?
+      @team_a = @match.team_a
+      @team_b = @match.team_b
+      team_score_a = TeamMatchScore.find_by(match_id: @match.id, team_id: @team_a&.id)
+      team_score_b = TeamMatchScore.find_by(match_id: @match.id, team_id: @team_b&.id)
+      @selected_doubles_score_set1 = "#{team_score_a&.score_set1.to_i}-#{team_score_b&.score_set1.to_i}"
+      @selected_doubles_score_set2 = "#{team_score_a&.score_set2.to_i}-#{team_score_b&.score_set2.to_i}"
+      @selected_doubles_score_tiebreak = if team_score_a&.score_tiebreak.to_i.zero? && team_score_b&.score_tiebreak.to_i.zero?
+                                           "Na"
+                                         else
+                                           "#{team_score_a&.score_tiebreak.to_i}-#{team_score_b&.score_tiebreak.to_i}"
+                                         end
+      score_input_id = team_score_a&.input_user_id
+      score_input_date = team_score_a&.input_date
+    else
+      score_input_id = @match.user_match_scores[0]&.input_user_id
+      score_input_date = @match.user_match_scores[0]&.input_date
+    end
+    @score_input_by = User.find_by(id: score_input_id)
+    @log_time = score_input_date ? @tz.to_local(score_input_date) : nil
+
     @match.court_id = @match.court.name
     # convert @match.time from UTC time to local time for display in the form
     @match.time += @tz.to_local(@match.time).utc_offset
@@ -186,6 +276,71 @@ class MatchesController < ApplicationController
   # Updates rankings after score change
   def update
     match = Match.find(params[:match_id])
+    if match.doubles_match?
+      round = match.box.round
+      input_date = Time.now
+
+      score_set1 = score_to_a(params[:match][:doubles_score_set1])
+      score_set2 = score_to_a(params[:match][:doubles_score_set2])
+      score_tiebreak = params[:match][:doubles_score_tiebreak] == "Na" ? [0, 0] : score_to_a(params[:match][:doubles_score_tiebreak])
+      match_scores = [{}, {}]
+      [0, 1].each do |index|
+        match_scores[index][:score_set1] = score_set1[index]
+        match_scores[index][:score_set2] = score_set2[index]
+        match_scores[index][:score_tiebreak] = score_tiebreak[index] || 0
+      end
+
+      test_score = test_new_score(match_scores, round.effective_tiebreak_points)
+      unless test_score
+        redirect_back(fallback_location: edit_match_path(match))
+        return
+      end
+
+      results = compute_points(match_scores)
+      old_match_scores = team_scores_payload_from_match(match)
+      old_results = compute_results(old_match_scores)
+      apply_doubles_stats_delta(match, old_match_scores, old_results, -1)
+
+      match.court_id = Court.find_by(name: params[:match][:court_id], club_id: match.court.club_id).id
+      match.time = @tz.local_to_utc("#{params[:match][:time]} #12:00".to_datetime)
+      match.save
+
+      [match.team_a_id, match.team_b_id].each_with_index do |team_id, index|
+        tms = TeamMatchScore.find_or_initialize_by(match_id: match.id, team_id: team_id)
+        tms.score_set1 = match_scores[index][:score_set1]
+        tms.score_set2 = match_scores[index][:score_set2]
+        tms.score_tiebreak = match_scores[index][:score_tiebreak]
+        tms.points = match_scores[index][:points]
+        tms.is_winner = (results[index] > results[1 - index])
+        tms.input_user_id = current_user.id
+        tms.input_date = input_date
+        tms.save
+      end
+
+      match.user_match_scores.destroy_all
+      [match.team_a, match.team_b].each_with_index do |team, index|
+        team.users.each do |player|
+          UserMatchScore.create!(
+            user_id: player.id,
+            match_id: match.id,
+            score_set1: match_scores[index][:score_set1],
+            score_set2: match_scores[index][:score_set2],
+            score_tiebreak: match_scores[index][:score_tiebreak],
+            points: match_scores[index][:points],
+            is_winner: (results[index] > results[1 - index]),
+            input_user_id: current_user.id,
+            input_date: input_date
+          )
+        end
+      end
+
+      apply_doubles_stats_delta(match, match_scores, results, 1)
+      rank_teams(match.box.team_box_scores)
+      rank_players(match.box.round.user_box_scores)
+      redirect_to local_path(params[:page_from])
+      return
+    end
+
     user_match_scores = UserMatchScore.where(match_id: params[:match_id])
 
     # Store current match points before update (for delta calculation)
@@ -353,6 +508,127 @@ class MatchesController < ApplicationController
   end
 
   private
+
+  def current_user_team_in_box(box)
+    return nil unless box
+
+    box.teams.includes(:users).find { |team| team.users.include?(current_user) }
+  end
+
+  def opposing_team_for(box, team)
+    return nil unless box && team
+
+    box.teams.where.not(id: team.id).first
+  end
+
+  def create_doubles_scores_and_stats(match, match_scores, results, input_date)
+    team_ids = [match.team_a_id, match.team_b_id]
+    team_scores = []
+    [0, 1].each do |index|
+      tms = TeamMatchScore.create(
+        team_id: team_ids[index],
+        match_id: match.id,
+        score_set1: match_scores[index][:score_set1],
+        score_set2: match_scores[index][:score_set2],
+        score_tiebreak: match_scores[index][:score_tiebreak],
+        points: match_scores[index][:points],
+        is_winner: (results[index] > results[1 - index]),
+        input_user_id: current_user.id,
+        input_date: input_date
+      )
+      team_scores << tms
+    end
+
+    # Mirror team match score on each team member to keep backward-compatible player stats and views
+    [0, 1].each do |index|
+      team = Team.includes(:users).find(team_ids[index])
+      team.users.each do |player|
+        ums = UserMatchScore.create(user_id: player.id, match_id: match.id)
+        ums.update(
+          score_set1: match_scores[index][:score_set1],
+          score_set2: match_scores[index][:score_set2],
+          score_tiebreak: match_scores[index][:score_tiebreak],
+          points: match_scores[index][:points],
+          is_winner: (results[index] > results[1 - index]),
+          input_user_id: current_user.id,
+          input_date: input_date
+        )
+
+        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: player.id)
+        next unless user_box_score
+
+        user_box_score.points += ums.points
+        user_box_score.games_won += won_games(ums)
+        user_box_score.games_played += won_games(ums) + team_scores[1 - index].score_set1 + team_scores[1 - index].score_set2 + team_scores[1 - index].score_tiebreak
+        user_box_score.sets_won += results[index]
+        user_box_score.sets_played += results.sum
+        user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+        user_box_score.matches_played += 1
+        user_box_score.save
+      end
+    end
+
+    [0, 1].each do |index|
+      team = Team.find(team_ids[index])
+      team_box_score = TeamBoxScore.find_or_create_by(team_id: team.id, box_id: match.box_id)
+      team_box_score.points += match_scores[index][:points]
+      team_box_score.games_won += match_scores[index][:score_set1] + match_scores[index][:score_set2] + match_scores[index][:score_tiebreak]
+      team_box_score.games_played += match_scores[index][:score_set1] + match_scores[index][:score_set2] + match_scores[index][:score_tiebreak] + match_scores[1 - index][:score_set1] + match_scores[1 - index][:score_set2] + match_scores[1 - index][:score_tiebreak]
+      team_box_score.sets_won += results[index]
+      team_box_score.sets_played += results.sum
+      team_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+      team_box_score.matches_played += 1
+      team_box_score.save
+    end
+
+    rank_teams(match.box.team_box_scores)
+    rank_players(match.box.round.user_box_scores)
+  end
+
+  def team_scores_payload_from_match(match)
+    team_scores = match.team_match_scores.index_by(&:team_id)
+    [match.team_a_id, match.team_b_id].map do |team_id|
+      tms = team_scores[team_id]
+      {
+        score_set1: tms&.score_set1.to_i,
+        score_set2: tms&.score_set2.to_i,
+        score_tiebreak: tms&.score_tiebreak.to_i,
+        points: tms&.points.to_i
+      }
+    end
+  end
+
+  def apply_doubles_stats_delta(match, match_scores, results, factor)
+    [match.team_a, match.team_b].each_with_index do |team, index|
+      own_games = match_scores[index][:score_set1] + match_scores[index][:score_set2] + match_scores[index][:score_tiebreak]
+      opp_games = match_scores[1 - index][:score_set1] + match_scores[1 - index][:score_set2] + match_scores[1 - index][:score_tiebreak]
+      won_match = results[index] > results[1 - index] ? 1 : 0
+
+      team_box_score = TeamBoxScore.find_or_create_by(team_id: team.id, box_id: match.box_id)
+      team_box_score.points += factor * match_scores[index][:points]
+      team_box_score.games_won += factor * own_games
+      team_box_score.games_played += factor * (own_games + opp_games)
+      team_box_score.sets_won += factor * results[index]
+      team_box_score.sets_played += factor * results.sum
+      team_box_score.matches_won += factor * won_match
+      team_box_score.matches_played += factor
+      team_box_score.save
+
+      team.users.each do |player|
+        user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: player.id)
+        next unless user_box_score
+
+        user_box_score.points += factor * match_scores[index][:points]
+        user_box_score.games_won += factor * own_games
+        user_box_score.games_played += factor * (own_games + opp_games)
+        user_box_score.sets_won += factor * results[index]
+        user_box_score.sets_played += factor * results.sum
+        user_box_score.matches_won += factor * won_match
+        user_box_score.matches_played += factor
+        user_box_score.save
+      end
+    end
+  end
 
   def destroy_match(match)
     user_match_scores = UserMatchScore.where(match_id: match.id)

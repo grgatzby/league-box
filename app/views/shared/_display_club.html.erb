@@ -1,6 +1,10 @@
 <%# partial: display club name %>
+<% format_value = round&.tournament_format || session[:selected_tournament_format] %>
+<% format_label = if format_value.present?
+                    t("pages.tournament_chooser.format_#{format_value}", default: format_value.to_s.humanize)
+                  end %>
 
   <div class=<%=@is_mobile ? "" : "one-liner"%>>
-    <div><%= round.club.name %></div>
+    <div><%= format_label.present? ? "#{round.club.name} - #{format_label}" : round.club.name %></div>
     <div style="width: 20px"></div>
   </div>

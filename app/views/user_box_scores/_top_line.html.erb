@@ -14,14 +14,14 @@
     <% else %>
       <%# Desktop: Show clickable link to reset sorting and show rules again %>
       <%= link_to t(".top_line_html"),
-          user_box_scores_path(round_id: round.id, club_id: round.club_id),
+          user_box_scores_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)),
           class: "btn btn-shape btn-top-line no-padding-no-border",
           title: t(".hover_text") %>
     <% end %>
   </p>
 <% else %>
   <%# Table Not Sorted: Display rules section with stats %>
-  <div class="photo-wrap frame-color-shape frame-padding color-black text-size dont-print">
+  <div class="<%= class_names("photo-wrap frame-color-shape frame-padding color-black text-size dont-print", "photo-wrap--padel": round&.tournament_format == "doubles_padel") %>">
     <%= sanitize t('.rules') %>
     <%= render 'shared/stats' %>
   </div><br>

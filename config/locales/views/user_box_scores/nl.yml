@@ -67,6 +67,8 @@ nl:
       player_header: Speler
       first_name_header: Voor-
       last_name_header: Achternaam
+      first_player_header: 1e speler
+      second_player_header: 2e speler
       rank_header: Rang
       points_header: Punten
       box_header: Box

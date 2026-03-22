@@ -73,11 +73,33 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    # For both player and referee, the landing page after login is the "All boxes" page.
-    # If the user has set the preference to open the "Round Ranking" page after login,
-    # then the landing page is the "Round Ranking" page.
-    preference = resource.preference || Preference.create(user_id: resource.id, clear_format: false)
-    preference.landing_to_user_box_scores ? user_box_scores_path : root_path
+    contexts = TournamentContextResolver.new(resource).contexts
+
+    if contexts.size > 1
+      return tournament_chooser_path
+    end
+
+    if contexts.size == 1
+      context = contexts.first
+      session[:selected_tournament_round_id] = context[:round_id]
+      session[:selected_tournament_club_id] = context[:club_id]
+      session[:selected_tournament_format] = context[:format]
+    else
+      session.delete(:selected_tournament_round_id)
+      session.delete(:selected_tournament_club_id)
+      session.delete(:selected_tournament_format)
+    end
+
+    preference = resource.preference || Preference.find_or_create_by(user_id: resource.id) do |pref|
+      pref.clear_format = false
+    end
+
+    if preference.landing_to_user_box_scores && contexts.size == 1
+      context = contexts.first
+      user_box_scores_path(round_id: context[:round_id], club_id: context[:club_id], tournament_format: context[:format])
+    else
+      root_path
+    end
   end
 
   # Set club and round instance variables from form parameters
@@ -87,28 +109,78 @@ class ApplicationController < ActionController::Base
   def set_club_round
     clubs = Club.all.reject { |club| club == @sample_club }
     @club_names = clubs.map(&:name) # dropdown list in the select_club form
+    if session[:selected_tournament_club_id].present? && params[:club_id].blank?
+      selected_context_club = Club.find_by(id: session[:selected_tournament_club_id])
+      @club = selected_context_club if selected_context_club
+    end
 
     if current_user != @admin || params[:club_id]
       # user is a player or a referee (belongs to a club)),
       # or admin has selected a club from the form (club name is defined as params[:club_id])
-      if @club == @sample_club
+      if params[:club_id].present?
+        selected_club_id = params[:club_id].to_s
+        @club = if is_number?(selected_club_id)
+                  Club.find_by(id: selected_club_id)
+                else
+                  Club.find_by(name: selected_club_id)
+                end
+      elsif @club == @sample_club
         @club = is_number?(params[:club_id]) ? Club.find(params[:club_id]) : Club.find_by(name: params[:club_id])
       end
-      @rounds_dropdown = @club.rounds.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
-      @league_starts = @club.rounds.map(&:league_start).sort
-      @league_starts = @league_starts.map { |round_league_start| round_league_start.strftime('%d/%m/%Y') }.uniq
-      if params[:round_id]
-        @round = is_number?(params[:round_id]) ? Round.find(params[:round_id]) : Round.find_by(start_date: round_dropdown_to_start_date(params[:round_id]), club_id: @club.id)
+      @club ||= current_user.club
+      all_club_rounds = @club.rounds
+      # Prefer explicit round_id; otherwise session round when still the same club (GET forms often send
+      # club_id but omit round_id — without this we fall back to current_round and may load the wrong format).
+      selected_round_id = params[:round_id].presence
+      if selected_round_id.blank?
+        session_club_id = session[:selected_tournament_club_id].to_s
+        params_club_id = @club&.id.to_s
+        same_club_as_session = session_club_id.present? && session_club_id == params_club_id
+        if params[:club_id].blank? || same_club_as_session
+          selected_round_id = session[:selected_tournament_round_id]
+        end
+      end
+      if selected_round_id
+        selected_round_id = selected_round_id.to_s
+        selected_round_from_params = params[:round_id].present?
+        @round = if is_number?(selected_round_id)
+                   Round.find_by(id: selected_round_id, club_id: @club.id)
+                 else
+                   Round.find_by(start_date: round_dropdown_to_start_date(selected_round_id), club_id: @club.id)
+                 end
         if @round
+          session[:selected_tournament_round_id] = @round.id
+          session[:selected_tournament_club_id] = @round.club_id
+          session[:selected_tournament_format] = @round.tournament_format
           @selected_label = rounds_dropdown(@round)
         else
-          flash[:notice] = t('.valid_round_flash')
-          redirect_back(fallback_location: request.path)
-          return
+          session.delete(:selected_tournament_round_id)
+          session.delete(:selected_tournament_club_id)
+          session.delete(:selected_tournament_format)
+          if selected_round_from_params
+            flash[:notice] = t('.valid_round_flash')
+            redirect_back(fallback_location: request.path)
+            return
+          else
+            @round = current_round(@club.id)
+          end
         end
       else
         @round = current_round(@club.id)
+        if @round
+          session[:selected_tournament_round_id] = @round.id
+          session[:selected_tournament_club_id] = @round.club_id
+          session[:selected_tournament_format] = @round.tournament_format
+        end
       end
+      # Prefer explicit param, then the round being viewed — session can be stale (e.g. after switching singles/doubles).
+      selected_format = params[:tournament_format].presence || @round&.tournament_format || session[:selected_tournament_format].presence
+      @tournament_format_for_links = selected_format
+      rounds_for_dropdown = selected_format.present? ? all_club_rounds.where(tournament_format: selected_format) : all_club_rounds
+      @rounds_dropdown = rounds_for_dropdown.map { |round| rounds_dropdown(round) }.sort.reverse # dropdown in the select round form
+      rounds_for_league_dates = selected_format.present? ? all_club_rounds.where(tournament_format: selected_format) : all_club_rounds
+      @league_starts = rounds_for_league_dates.map(&:league_start).compact.sort.uniq
+      @league_starts = @league_starts.map { |d| d.strftime('%d/%m/%Y') }.uniq
       @round_nb = round_label(@round)
       @boxes = @round.boxes.includes([user_box_scores: :user]).sort
       # @boxes = @round.boxes.sort
@@ -189,6 +261,35 @@ class ApplicationController < ActionController::Base
     else # from == "index"
       user_box_scores.each_with_index { |score, index| score.update(rank: ranks[index]) }
     end
+  end
+
+  # Rank doubles teams by same criteria as players
+  def rank_teams(team_box_scores)
+    tieds = []
+    sorted = team_box_scores.sort do |a, b|
+      cmp = b.points <=> a.points
+      cmp = (b.matches_played <=> a.matches_played) if cmp.zero?
+      cmp = ((b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)) if cmp.zero?
+      cmp = ((b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)) if cmp.zero?
+      tieds << [a, b] if cmp.zero?
+      cmp
+    end
+
+    rank_tied = 1
+    previous = sorted.first
+    ranks = sorted.map do |score|
+      same_as_previous = previous &&
+                         previous.points == score.points &&
+                         previous.matches_played == score.matches_played &&
+                         (previous.sets_played.zero? ? 0 : previous.sets_won.to_f / previous.sets_played) == (score.sets_played.zero? ? 0 : score.sets_won.to_f / score.sets_played) &&
+                         (previous.games_played.zero? ? 0 : previous.games_won.to_f / previous.games_played) == (score.games_played.zero? ? 0 : score.games_won.to_f / score.games_played)
+      rank_tied = sorted.index(score) + 1 unless same_as_previous
+      previous = score
+      rank_tied
+    end
+
+    sorted.each_with_index { |score, index| score.update(rank: ranks[index]) }
+    sorted
   end
 
   # Compare two UserBoxScore records for ranking
@@ -284,7 +385,7 @@ class ApplicationController < ActionController::Base
   # Used to update URLs with correct locale parameter
   # Example: "/en/boxes" => "/fr/boxes" (if current locale is fr)
   def local_path(path)
-    path&.gsub(/en|fr|nl/, locale.to_s) # Ruby Safe Navigation
+    path&.gsub(/en|fr|nl/, I18n.locale.to_s) # Ruby Safe Navigation
   end
 
   # Generate round label in format "yy/mm_Rnn"
@@ -292,7 +393,7 @@ class ApplicationController < ActionController::Base
   # Example: "24/10_R01" (October 2024, Round 1)
   def round_label(round)
     league_start = round.league_start
-    rounds_ordered = Round.where(league_start:, club_id: round.club)
+    rounds_ordered = Round.where(league_start:, club_id: round.club_id)
                           .order('start_date ASC')
                           .map(&:id)
     "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"

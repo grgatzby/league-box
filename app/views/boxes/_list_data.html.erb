@@ -9,8 +9,9 @@
 <div class="box-scroller" data-toggle-target="togglableElement">
   <ul style="list-style: none; ">
     <%# Data Structure:
-        @box_matches = [user_box_score, player_matches, player]
-        where player_matches = [match, opponent, user_score, opponent_score] %>
+        Singles: @box_matches = [user_box_score, player_matches, player]
+        Doubles: @box_matches = [team_box_score, team_matches, team]
+        where *_matches = [match, opponent, score_a, score_b] %>
 
     <%# Sort players for consistent display order %>
     <% sorted_players = @box_matches.map { |bm| bm[2]} %>
@@ -22,19 +23,25 @@
            player_matches = user_box_matches[1]
            player = user_box_matches[2] %>
 
-        <%# Player Header: Profile picture, name, rank, and total points %>
+        <%# Header: Profile picture/name for singles, team label for doubles %>
         <div style="display: flex; align-items: center; gap: 10px;">
-          <%# Profile picture: clickable to open full photo in new tab %>
-          <% if player.profile_picture.present? %>
-            <%= link_to player.profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
-              <%= image_tag(profile_picture_circular_url(player, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
-            <% end %>
+          <% if @doubles_mode %>
+            <%= image_tag("box_league_racket.png", alt: 'Team', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+            <span><b><%= team_label(player, current_user) %></b></span>
+            <%= "(# #{user_box_score&.rank || "-"})" %> : <%= t("points", count: user_box_score&.points || 0) %>
           <% else %>
-            <%= image_tag(player_profile_picture_or_favicon(player, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+            <%# Profile picture: clickable to open full photo in new tab %>
+            <% if player.profile_picture.present? %>
+              <%= link_to player.profile_picture.url, target: "_blank", rel: "noopener noreferrer" do %>
+                <%= image_tag(profile_picture_circular_url(player, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+              <% end %>
+            <% else %>
+              <%= image_tag(player_profile_picture_or_favicon(player, @is_mobile ? 30 : 40), alt: 'Profile picture', style: "width: #{@is_mobile ? 30 : 40}px; height: #{@is_mobile ? 30 : 40}px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
+            <% end %>
+            <%# Highlight current user's name in red %>
+            <span class=<%=user_box_score.user == current_user ? "color-tennis-red" : ""%>><b><%= render "shared/fullname", user: player %></b></span>
+            <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
           <% end %>
-          <%# Highlight current user's name in red %>
-          <span class=<%=user_box_score.user == current_user ? "color-tennis-red" : ""%>><b><%= render "shared/fullname", user: player %></b></span>
-          <%= "(# #{user_box_score.rank})" %> : <%= t("points", count: user_box_score.points) %>
         </div>
 
         <%# Nested List: All matches for this player %>
@@ -45,10 +52,10 @@
             player_match = player_matches.select { |pm| pm[1] == player_opponent }[0]
             if player_match %>
               <%# Match Played: Render match line with score and points %>
-              <%= render "match_line", player_match: player_match, user_box_score: user_box_score, page_from: page_from %>
-            <% elsif current_user.role != "player" || (@box == @my_current_box && current_user == player) %>
+              <%= render "match_line", player_match: player_match, user_box_score: user_box_score, page_from: page_from, doubles_mode: @doubles_mode %>
+            <% elsif current_user.role != "player" || ((@doubles_mode && player.users.include?(current_user)) || (!@doubles_mode && @box == @my_current_box && current_user == player)) %>
               <%# No Match: Show "Enter score" link if user is authorized %>
-              <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from %>
+              <%= render "no_match_line", player: player, opponent: player_opponent, page_from: page_from, doubles_mode: @doubles_mode %>
             <% end %>
           <% end %>
 

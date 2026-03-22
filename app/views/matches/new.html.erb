@@ -20,9 +20,15 @@
   <% players = [@current_player, @opponent] %>
   <div class="<%= class_names("one-liner frame-margin-rl": !@is_mobile, "frame-margin-rl mb-3": @is_mobile) %>">
     <h5 class="<%= class_names("": !@is_mobile, "d-flex align-items-center justify-content-center gap-2": @is_mobile) %>">
-      <%= render "player_with_picture", user: @current_player, is_mobile: @is_mobile %>
-      <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>"><%= " versus " %></i>
-      <%= render "player_with_picture", user: @opponent, is_mobile: @is_mobile %>
+      <% if @round.doubles_format? && @team_a && @team_b %>
+        <span><%= @team_a.display_name %></span>
+        <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>"><%= " versus " %></i>
+        <span><%= @team_b.display_name %></span>
+      <% else %>
+        <%= render "player_with_picture", user: @current_player, is_mobile: @is_mobile %>
+        <i class="<%= class_names("": !@is_mobile, "my-1": @is_mobile) %>"><%= " versus " %></i>
+        <%= render "player_with_picture", user: @opponent, is_mobile: @is_mobile %>
+      <% end %>
     </h5>
   </div>
 
@@ -34,15 +40,22 @@
       <%# Court Selection: Select court number from available courts %>
       <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
         <div class="<%= class_names("col-3": !@is_mobile, "mb-2": @is_mobile) %>"><b><%= f.label :court_id, t(".match_played") %></b></div>
-        <div class="<%= class_names("col-2": !@is_mobile, "": @is_mobile) %>"><%= f.select(:court_id, 1..@round.club.courts.size, { selected: params[:court_id] }, { class: "form-select" }) %></div>
+        <% court_options = @round.club.courts.order(:name).pluck(:name) %>
+        <div class="<%= class_names("col-2": !@is_mobile, "": @is_mobile) %>">
+          <% if court_options.any? %>
+            <%= f.select(:court_id, court_options, { selected: params[:court_id] || court_options.first }, { class: "form-select" }) %>
+          <% else %>
+            <%= f.select(:court_id, [t(".no_courts", default: "No courts configured for this club")], {}, { class: "form-select", disabled: true }) %>
+          <% end %>
+        </div>
       </div>
 
       <%# Date/Time Selection: Date picker with round date constraints %>
       <div class="<%= class_names("row": !@is_mobile, "d-flex flex-column mb-3": @is_mobile) %>">
         <div class="<%= class_names("col-3": !@is_mobile, "mb-2": @is_mobile) %>"><b><%= t '.date_time' %></b></div>
         <div class="<%= class_names("col-3": !@is_mobile, "": @is_mobile) %>">
-          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date, selected: @round.start_date,
-                                  value: params[:time] ? Date.strptime(params[:time], '%Y-%m-%d') : @max_end_date,
+          <%= f.date_field(:time, min: @round.start_date, max: @max_end_date,
+                                  value: match_form_date_value(params[:time], @max_end_date),
                                   class: "form-control") %>
         </div>
       </div>
@@ -54,8 +67,13 @@
         <div class="row">
           <div class="col-3"><b><%= t '.score' %></b></div>
           <div class="col-9">
-            <%= render "shared/fullname", user: players[0] %><i>vs</i>
-            <%= render "shared/fullname", user: players[1] %>
+            <% if @round.doubles_format? && @team_a && @team_b %>
+              <%= @team_a.display_name %><i>vs</i>
+              <%= @team_b.display_name %>
+            <% else %>
+              <%= render "shared/fullname", user: players[0] %><i>vs</i>
+              <%= render "shared/fullname", user: players[1] %>
+            <% end %>
           </div>
         </div>
         <i><div class="row">
@@ -100,7 +118,12 @@
           <%# Player Name Column: Smaller in mobile to make room for wider score fields %>
           <% unless @is_mobile %>
             <div class="col-3 float-right">
-            <b><%= render "shared/fullname", user: players[user_match_score.index] %></b>
+              <% if @round.doubles_format? && @team_a && @team_b %>
+                <% lhs_label = user_match_score.index == 0 ? @team_a.display_name : @team_b.display_name %>
+                <b><%= lhs_label %></b>
+              <% else %>
+                <b><%= render "shared/fullname", user: players[user_match_score.index] %></b>
+              <% end %>
             </div>
           <% end %>
           <%# Score Dropdowns: Wider columns in mobile to accommodate dropdown arrow and selected text %>
@@ -122,7 +145,11 @@
           <%# Opponent Name Column: Only show on desktop, hidden in mobile %>
           <% unless @is_mobile %>
             <div class="col-3 float-right">
-              <b><%= render "shared/fullname", user: players[1] %></b>
+              <% if @round.doubles_format? && @team_b %>
+                <b><%= @team_b.display_name %></b>
+              <% else %>
+                <b><%= render "shared/fullname", user: players[1] %></b>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -131,7 +158,11 @@
 
       <%# Hidden Fields: Store player IDs, round ID, and return path %>
       <%= hidden_field_tag(:player, @current_player.id) %>
-      <%= hidden_field_tag(:opponent, @opponent.id) %>
+      <%= hidden_field_tag(:opponent, @opponent.id) unless @round.doubles_format? %>
+      <% if @round.doubles_format? && @team_a && @team_b %>
+        <%= hidden_field_tag(:team_a_id, @team_a.id) %>
+        <%= hidden_field_tag(:team_b_id, @team_b.id) %>
+      <% end %>
       <%= hidden_field_tag(:round_id, @round.id) %>
       <%= hidden_field_tag(:page_from, @page_from) %>
     </div>

@@ -70,6 +70,10 @@
   background-image: url("social_tennis.jpg");
   background-size: cover;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
+
+  &--padel {
+    background-image: url("social_padel.jpg");
+  }
 }
 
 @media only screen and (max-width: 768px) {

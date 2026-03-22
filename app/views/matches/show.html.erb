@@ -11,19 +11,29 @@
   <div class="one-liner">
     <h3><%= t '.show_match_title' %></h3>
   </div>
-  <%# Get player box scores to display ranks %>
-  <% player_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@player.id) %>
-  <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id:@opponent.id) %>
+  <%# Box / team ranks: singles use UserBoxScore; doubles & padel use Team + TeamBoxScore %>
+  <% player_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id: @player.id) %>
+  <% opponent_ubs = UserBoxScore.find_by(box_id: @match.box_id, user_id: @opponent.id) %>
 
-  <%# Players Header: Names and ranks %>
+  <%# Players / teams header: names and ranks %>
   <h5>
-    <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %>
-    <% if @is_mobile %>
-      <i> vs</i><br>
+    <% if @doubles_match && @player_team && @opponent_team %>
+      <%= @player_team.display_name %><%= "(# #{@player_team_tbs&.rank || player_ubs&.rank})" %>
+      <% if @is_mobile %>
+        <i> vs</i><br>
+      <% else %>
+        <i> versus</i>
+      <% end %>
+      <%= @opponent_team.display_name %><%= "(# #{@opponent_team_tbs&.rank || opponent_ubs&.rank})" %>
     <% else %>
-      <i> versus</i>
+      <%= render "shared/fullname", user: @player %><%= "(# #{player_ubs.rank})" %>
+      <% if @is_mobile %>
+        <i> vs</i><br>
+      <% else %>
+        <i> versus</i>
+      <% end %>
+      <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
     <% end %>
-    <%= render "shared/fullname", user: @opponent %><%= "(# #{opponent_ubs.rank})" %>
   </h5>
 
   <%# Match Details Section %>
@@ -36,9 +46,13 @@
     <%# Score Display Grid: Headers and both players' scores %>
     <div class="<%=class_names( "grid-container score-width text-size": @is_mobile,
                                 "grid-container score-width": !@is_mobile) %>">
-      <%= render "score_headers", tiebreak: tiebreak %><br>
-      <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs %><br>
-      <%= render "score_display", match_score: @opponent_match_score, tiebreak: tiebreak, user_box_score: opponent_ubs %>
+      <%= render "score_headers", tiebreak: tiebreak, doubles_mode: @doubles_match %><br>
+      <%= render "score_display", match_score: @player_match_score, tiebreak: tiebreak, user_box_score: player_ubs,
+          name_label: (@doubles_match && @player_team) ? @player_team.display_name : nil,
+          points_source: (@doubles_match && @player_team_tbs) ? @player_team_tbs : player_ubs %><br>
+      <%= render "score_display", match_score: @opponent_match_score, tiebreak: tiebreak, user_box_score: opponent_ubs,
+          name_label: (@doubles_match && @opponent_team) ? @opponent_team.display_name : nil,
+          points_source: (@doubles_match && @opponent_team_tbs) ? @opponent_team_tbs : opponent_ubs %>
     </div>
 
     <%# Match Date and Court: When and where the match was played %>

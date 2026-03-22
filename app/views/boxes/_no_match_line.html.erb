@@ -7,24 +7,37 @@
 <li>
   <div class="row hovered-player color-tennis-blue">
     <%# Opponent Name Column (col-4) %>
-    <div class="col-4"><%= render "shared/fullname", user: opponent %></div>
+    <div class="col-4"><%= doubles_mode ? opponent.display_name : render("shared/fullname", user: opponent) %></div>
 
     <%# Check if user is authorized to enter a score %>
-    <% may_enter_score = (current_user == player \
-                           || current_user.role == "admin" \
-                           || (["referee", "player referee"].include?(current_user.role) && @round == @current_round)) %>
+    <% referee_or_admin = current_user.role == "admin" || current_user.role.to_s.include?("referee") %>
+    <% may_enter_score = if doubles_mode
+                           player.users.include?(current_user) || referee_or_admin
+                         else
+                           current_user == player || referee_or_admin
+                         end %>
 
     <%# Match Status Column (col-8): Enter score link or "Not played" text %>
     <div class="col-8">
       <% if may_enter_score %>
-        <%# Authorized: Show clickable "Enter score" link with popover %>
-        <i class='color-green'><%= t('.enter_score') %></i>
-        <% message = "#{render "shared/fullname", user: player}<i>vs</i> #{render "shared/fullname", user: opponent}<br>#{t(".pop02_a")}" %>
+        <%# Authorized: Show clickable "Enter match score" link with popover %>
+        <% lhs = doubles_mode ? player.display_name : render("shared/fullname", user: player) %>
+        <% rhs = doubles_mode ? opponent.display_name : render("shared/fullname", user: opponent) %>
+        <% message = "#{lhs}<i>vs</i> #{rhs}<br>#{t(".pop02_a")}" %>
         <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
             data-bs-content="<%= message %>">
           <%# Click to navigate to new match score form %>
-          <%= link_to '', new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round_id, page_from: page_from), class: "line-link" %>
+          <% if doubles_mode %>
+            <%= link_to t('.enter_score'),
+                        new_match_path(player: current_user.id, opponent: current_user.id, round_id: @box.round_id,
+                                       team_a_id: player.id, team_b_id: opponent.id, page_from: page_from),
+                        style: "color: #198754; text-decoration: none; font-style: italic;" %>
+          <% else %>
+            <%= link_to t('.enter_score'),
+                        new_match_path(player: player.id, opponent: opponent.id, round_id: @box.round_id, page_from: page_from),
+                        style: "color: #198754; text-decoration: none; font-style: italic;" %>
+          <% end %>
         </div>
       <% else %>
         <%# Not Authorized: Show "Not played" text (non-clickable) %>

@@ -11,7 +11,7 @@
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_text_round_pop' %>">
-      <%= link_to t('.to_text_btn'), user_box_scores_path(to_text: true, round_id: round.id, club_id: round.club_id),
+      <%= link_to t('.to_text_btn'), user_box_scores_path({ to_text: true, round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)),
           method: :get,
           onclick: 'JavaScript:location.reload(true);',
           class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
@@ -21,7 +21,7 @@
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_csv_round_pop' %>">
-      <%= link_to t('.to_csv_btn'), csv_round_league_table_path(round_id: round.id, club_id: round.club_id),
+      <%= link_to t('.to_csv_btn'), csv_round_league_table_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)),
                                   class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
 
@@ -29,7 +29,7 @@
     <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
 
     <%# View All Boxes Link: Navigate to boxes index page %>
-    <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
+    <%= link_to t('.all_boxes_link'), boxes_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
   <% else %>
     <%# Tournament League Table (index_league) Actions %>
 
@@ -37,7 +37,7 @@
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_text_pop' %>">
-      <%= link_to t('.to_text_btn'), index_league_path(to_text: true, league_start: @league_start, club_id: @club.id),
+      <%= link_to t('.to_text_btn'), index_league_path({ to_text: true, league_start: @league_start, club_id: @club.id }.merge(tournament_format_params)),
           method: :get,
           onclick: 'JavaScript:location.reload(true);',
           class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
@@ -47,7 +47,7 @@
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_csv_pop' %>">
-      <%= link_to t('.to_csv_btn'), csv_league_table_path(league_start: @league_start, club_id: round.club_id),
+      <%= link_to t('.to_csv_btn'), csv_league_table_path({ league_start: @league_start, club_id: round.club_id }.merge(tournament_format_params)),
                                     class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
 
@@ -57,13 +57,13 @@
     <% end %>
 
     <%# View All Boxes Link: Navigate to boxes index page %>
-    <%= link_to t('.all_boxes_link'), boxes_path(round_id: round.id, club_id: round.club_id), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
+    <%= link_to t('.all_boxes_link'), boxes_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)), class: "btn btn-shape btn-yellow mb-3 #{'w-100' if @is_mobile}" %>
 
     <%# Round Ranking Link: Navigate to round ranking table %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
         data-bs-content="<%= t '.message_round_rank_pop' %>">
-      <%= link_to t('.round_ranking_btn'), user_box_scores_path(round_id: round.id, club_id: round.club_id),
+      <%= link_to t('.round_ranking_btn'), user_box_scores_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)),
                                     class: "btn btn-shape btn-yellow mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
   <% end %>

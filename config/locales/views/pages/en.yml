@@ -8,7 +8,7 @@ en:
       welcome_title: A Social Tournament in your own Club
       p01_html: >
         <ul>
-          <li class="home-feature-item"> Through <b class='color-tennis-aqua'>a Singles Social Tournament</b> organised as a Box League,
+          <li class="home-feature-item"> Through <b class='color-tennis-aqua'>a Singles, Doubles or Padel Tournament</b> organised as a Box League,
           <li class="home-feature-item"> Only <b class='color-tennis-aqua'>members of the club</b> may participate,
           <li class="home-feature-item"> Participants are dealt into <b class='color-tennis-aqua'>boxes of comparable level</b>, of 4/5 players,
           <li class="home-feature-item"> The season includes <b class='color-tennis-aqua'>several rounds</b> of one month each or more,
@@ -56,6 +56,10 @@ en:
       landing_to_user_box_scores: "🏁 Open \"Round Ranking\" page after login"
     rules:
       rules_title: Format and Rules
+      format_label: Tournament format
+      format_singles_tennis: Singles tennis
+      format_doubles_tennis: Doubles tennis
+      format_doubles_padel: Doubles padel
       general_rules_section: General Rules
       round_dates_section: Seasons & Round Dates
       match_rules_section: Match Rules
@@ -113,6 +117,8 @@ en:
       warm_up: Warm-up
       p13: To ensure that matches are completed within 1 hour warm-ups should be restricted to 5 minutes.
       match_format: Match Format
+      doubles_tennis_intro: Matches are played in doubles format (2 vs 2). Any player from either team can enter results.
+      doubles_padel_intro: Matches are played in padel doubles format (2 vs 2). Any player from either team can enter results.
       p14: Matches will be played as two short sets with a deciding championship tie-break if required.
       p15: "Each set will be played as the first to 4 games with a normal 7 point tie-break at games 3:3."
       p16: The championship tiebreaker will be played as the first to %{points} points with 2 clear.
@@ -122,6 +128,8 @@ en:
       p19: The Receiver then would determine which side to receive the serve on a Sudden Death Deuce.
     4_scoring_and_points:
       points: Points
+      doubles_tennis_points: In doubles tennis, points and rankings are tracked at team level.
+      doubles_padel_points: In doubles padel, points and rankings are tracked at team level.
       p20: "Points earned are calculated to provide incentive to win as many games as possible and are calculated as follows:"
       li06: "Winner: 20 points"
       li07: "Looser: 10 points per set won + number of games per lost set"
@@ -137,40 +145,67 @@ en:
         Each Box player will log in to their account and enter the score on line, otherwise they can be marked on the club board
         where a sheet is provided for your convenience. If a result has been entered incorrectly contact the Tournament Referee.
       p24: Please note that all results must be posted by the end date of the round, except where an extension has been granted by the Referee.
+    tournament_chooser:
+      title: Choose your tournament
+      subtitle: You are enrolled in multiple active tournaments. Select one to continue.
+      view_boxes: View boxes
+      round_ranking: Round ranking
+      my_scores: My scores
     5_ranking_and_promotions:
       box_league_ranking: Box League Ranking
       p25: >
         A player's league position is determined by the total number of points won in a Round. In the event that two or more players
+        have the same number of points the league position will be determined by:
+      p25_doubles: >
+        A team's league position is determined by the total number of points won in a Round. In the event that two or more teams
         have the same number of points the league position will be determined by:
       li13: Most matches played
       li14: Ratio of Sets Won to Sets Played %
       li15: Ratio of Games Won to Games Played %
       promotion_relegation: Promotion / Relegation
       p26: In normal circumstances
+      p26_doubles: In normal circumstances, at the next round in each box
       li16_html: "the top two players will be promoted  (<i>first player: 2 boxes, second: 1 box</i>)."
+      li16_doubles_html: "the top two teams will be promoted (<i>first team: 2 boxes, second: 1 box</i>)."
       li17_html: "the last two players will be relegated (<i>second last player: 1 box, last player: 2 boxes</i>)."
+      li17_doubles_html: "the last two teams will be relegated (<i>second last team: 1 box, last team: 2 boxes</i>)."
       new_entrants: New Entrants
       p27: Every effort will be made to accommodate new league players into a box that is appropriate to the player’s ability.
+      p27_doubles: Every effort will be made to accommodate new league teams into a box that is appropriate to the team's ability.
     6_special_circumstances:
       disqualification: Disqualification
       p28: >
         Players who do not play any matches in a round without good reason or advance notice may be withdrawn from the tournament,
         at the sole discretion of the Tournament Referee.
+      p28_doubles: >
+        Teams that do not play any matches in a round without good reason or advance notice may be withdrawn from the tournament,
+        at the sole discretion of the Tournament Referee.
       no_show: No show
       p29: If a player is more than
+      p29_doubles: If any player from either team is more than
       li18: 5 minutes late on court the opponent has the right to claim 1 game.
+      li18_doubles: 5 minutes late on court the opposing team has the right to claim 1 game.
       li19: 10 minutes late on court the opponent has the right to claim 2 games.
+      li19_doubles: 10 minutes late on court the opposing team has the right to claim 2 games.
       li20: 15 minutes late on court the opponent has the right to claim a set.
+      li20_doubles: 15 minutes late on court the opposing team has the right to claim a set.
       retire_from_match: Retire from a match
       p30: If a player retires from a match, for example because of injury, all completed games will stand. Any unplayed games will be conceded.
+      p30_doubles: If a team retires from a match, for example because of injury to one or more players, all completed games will stand. Any unplayed games will be conceded.
       p31: "For example:"
       p32: "Player A is leading 2/1 and 30:15 in set 1 when player A has to retire."
+      p32_doubles: "Team A is leading 2/1 and 30:15 in set 1 when team A has to retire."
       p33: The match score should be entered as 2/4 0/4 to player B.
+      p33_doubles: The match score should be entered as 2/4 0/4 to team B.
       withdrawing: Withdrawing before the start of a round
       p34: Players should inform the Tournament Referee if they wish to withdraw from the box league.
+      p34_doubles: Teams should inform the Tournament Referee if they wish to withdraw from the box league.
       p35: >
         If a player withdraws before the start of a round the Tournament Referee will make every effort to maintain the player's
         position should the player rejoin the box league at the start of the next round.
+      p35_doubles: >
+        If a team withdraws before the start of a round the Tournament Referee will make every effort to maintain the team's
+        position should the team rejoin the box league at the start of the next round.
       walk_overs: Walk-overs
       p36: "Walk-overs have been abolished and are not allowed for the following reasons:"
       li21: complications in managing walk-overs
@@ -178,10 +213,15 @@ en:
       li23: unfair allocation of unplayed point
       deadline_extensions: Deadline Extensions
       p37: Players should make every effort to play their matches within the box league period.
+      p37_doubles: Teams should make every effort to play their matches within the box league period.
       p38: >
         Players can request an extension to the deadline providing the match has been arranged and the court booked. Such requests
         will be considered at the discretion of the Tournament Referee whose decision is final.
+      p38_doubles: >
+        Teams can request an extension to the deadline providing the match has been arranged and the court booked. Such requests
+        will be considered at the discretion of the Tournament Referee whose decision is final.
       p39: Players with no matches played in a round will be removed and will have to re-apply to remain in the competition.
+      p39_doubles: Teams with no matches played in a round will be removed and will have to re-apply to remain in the competition.
     7_disputes:
       disputes: Disputes
       mail_to_referee_html: "emailed to %{referee_name} (<i>%{referee_email}</i>) or through your box chatroom"
