@@ -34,6 +34,7 @@ class UserBoxScoresController < ApplicationController
         )
         init_stats
         apply_team_box_score_sort!
+        preload_users_for_popover_history!(@team_box_scores.flat_map { |tbs| tbs.team.users })
       else
         # by default: sort player by rank
         @user_box_scores = rank_players(@round.user_box_scores)
@@ -101,6 +102,7 @@ class UserBoxScoresController < ApplicationController
         )
         init_stats
         apply_team_box_score_sort!
+        preload_users_for_popover_history!(@team_box_scores.flat_map { |tbs| tbs.team.users })
         return
       end
       begin
@@ -151,6 +153,7 @@ class UserBoxScoresController < ApplicationController
         when 11 # "Games Won"
           @user_box_scores.sort_by! { |user_bs| [@order * user_bs[1][:games_won], -@order * user_bs[1][:rank]] }
         end
+        preload_users_for_popover_history!(@user_box_scores.map(&:first))
         @render_to_text = false
         if params[:to_text] == "true"
           @render_to_text = true
@@ -361,6 +364,19 @@ class UserBoxScoresController < ApplicationController
   end
 
   private
+
+  # Avoid N+1 when building tournament-format–grouped popovers on league tables.
+  def preload_users_for_popover_history!(users)
+    return if users.blank?
+
+    ActiveRecord::Associations::Preloader.new(
+      records: users.uniq,
+      associations: [
+        { user_box_scores: { box: :round } },
+        { teams: { team_box_scores: { box: :round } } }
+      ]
+    ).call
+  end
 
   # Same column numbers as singles: 1–2 name (for teams: 1st / 2nd player last name), 3 rank … 11 games won
   def apply_team_box_score_sort!

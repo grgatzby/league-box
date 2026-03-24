@@ -1,0 +1,42 @@
+nl:
+  tournament_formats:
+    common:
+      missing_club: Selecteer een club.
+      no_seed_players: Geen bestaande spelers gevonden in deze club om willekeurig te initialiseren.
+      not_enough_seed_players_doubles: Minimaal 2 spelers zijn nodig om dubbel/padel te initialiseren.
+      invalid_date: Ongeldig datumformaat.
+      invalid_round_dates: Eerste ronde einddatum moet op of na de startdatum van de league liggen.
+      missing_courts_to_create: Vul in hoeveel banen voor dit format moeten worden aangemaakt.
+    new:
+      title: Maak toernooiformat vanuit CSV
+      club: Club
+      format: Toernooiformaat
+      players_per_box: Spelers per box
+      teams_per_box: Teams per box (2 spelers per team)
+      league_start: Startdatum league
+      first_round_end_date: Einddatum eerste ronde
+      courts_to_create: "Er zijn geen %{kind}-banen voor deze club. Hoeveel moeten worden aangemaakt?"
+      separator: CSV-scheidingsteken
+      separator_dot: punt (.)
+      separator_comma: komma (,)
+      separator_semicolon: puntkomma (;)
+      csv_file: "CSV-bestand (headers: first_name,last_name,phone_number,email)"
+      csv_file_doubles: "CSV-bestand (headers: first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2)"
+      all_formats_exist: Alle toernooiformaten bestaan al voor deze club
+      preview_btn: Bekijk spelers
+    preview:
+      title: Valideer spelers en maak toernooi
+      box_title: "Box %{box}"
+      team_title: "Team %{team}"
+      teams_count: "%{count} teams"
+      create_btn: Maak toernooi
+      back_btn: Terug
+    create:
+      missing_players: Upload en valideer minimaal een speler.
+      missing_file: Upload een CSV-bestand.
+      invalid_headers: "Ongeldige CSV-headers. Verwacht: first_name,last_name,phone_number,email"
+      invalid_doubles_headers: "Ongeldige CSV-headers voor dubbel/padel. Verwacht: first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2"
+      format_unavailable: Dit toernooiformat bestaat al voor de geselecteerde club.
+      missing_email: Elke speler moet een e-mail hebben.
+      created: Nieuw toernooi succesvol aangemaakt.
+      forbidden: Niet toegestaan.

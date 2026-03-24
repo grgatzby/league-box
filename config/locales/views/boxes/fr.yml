@@ -33,6 +33,11 @@ fr:
       all_box_explain_html: <i><b class='color-green'>Cliquer sur une box</b> pour voir les matchs en détail</i>
       message_box_pop: "Nom, rang, matchs joués, points obtenus<br /><br /><i class='color-green'>Cliquer pour voir les matchs de la box %{box} en détail</i>"
       message_csv_pop: <b>exporter les joueurs et le referee du round</b> vers un fichier CSV, avec les colonnes suivantes:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
+      to_tournament_csv_btn: 📄 CSV joueurs du tournoi
+      message_tournament_csv_pop: >
+        <b>exporter les joueurs du tournoi</b> vers un fichier CSV.<br />
+        <i>Simple : first_name, last_name, phone_number, email</i><br />
+        <i>Double/Padel : first_name1, last_name1, phone_number1, email1, first_name2, last_name2, phone_number2, email2</i>
       my_current_box: (ma box en cours)
       my_box: (ma box)
       open_view_btn: 🔁 vue complète

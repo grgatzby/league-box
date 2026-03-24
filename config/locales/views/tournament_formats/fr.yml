@@ -1,0 +1,42 @@
+fr:
+  tournament_formats:
+    common:
+      missing_club: Veuillez sélectionner un club.
+      no_seed_players: Aucun joueur existant trouvé dans ce club pour un tirage aléatoire.
+      not_enough_seed_players_doubles: Au moins 2 joueurs sont requis pour initialiser un double/padel.
+      invalid_date: Format de date invalide.
+      invalid_round_dates: La date de fin du premier round doit être postérieure ou égale à la date de début du tournoi.
+      missing_courts_to_create: Veuillez indiquer combien de terrains créer pour ce format.
+    new:
+      title: Créer un format de tournoi depuis un CSV
+      club: Club
+      format: Format du tournoi
+      players_per_box: Joueurs par box
+      teams_per_box: Equipes par box (2 joueurs par equipe)
+      league_start: Date de début du tournoi
+      first_round_end_date: Date de fin du premier round
+      courts_to_create: "Aucun terrain %{kind} n'existe pour ce club. Combien faut-il en créer ?"
+      separator: Séparateur CSV
+      separator_dot: point (.)
+      separator_comma: virgule (,)
+      separator_semicolon: point-virgule (;)
+      csv_file: "Fichier CSV (en-têtes : first_name,last_name,phone_number,email)"
+      csv_file_doubles: "Fichier CSV (en-têtes : first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2)"
+      all_formats_exist: Tous les formats existent déjà pour ce club
+      preview_btn: Prévisualiser les joueurs
+    preview:
+      title: Valider les joueurs et créer le tournoi
+      box_title: "Box %{box}"
+      team_title: "Equipe %{team}"
+      teams_count: "%{count} equipes"
+      create_btn: Créer le tournoi
+      back_btn: Retour
+    create:
+      missing_players: Veuillez importer et valider au moins un joueur.
+      missing_file: Veuillez importer un fichier CSV.
+      invalid_headers: "En-têtes CSV invalides. Attendus : first_name,last_name,phone_number,email"
+      invalid_doubles_headers: "En-têtes CSV invalides pour double/padel. Attendus : first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2"
+      format_unavailable: Ce format existe déjà pour le club sélectionné.
+      missing_email: Chaque joueur doit avoir un email.
+      created: Nouveau tournoi créé avec succès.
+      forbidden: Non autorisé.

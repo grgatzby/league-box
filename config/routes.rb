@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :boxes, only: %i[index show]
     get 'boxese', to: "boxes#index_expanded", as: "index_expanded"
     get 'boxes_csv/boxes', to: "boxes#round_boxes_to_csv", as: "csv_boxes"
+    get 'boxes_csv/tournament_players', to: "boxes#tournament_players_to_csv", as: "csv_tournament_players"
     get 'boxes_csv/scores', to: "boxes#round_scores_to_csv", as: "csv_scores"
     get "boxes_list/:id", to: "boxes#show_list", as: "box_list"
     get "my_scores/:id", to: "boxes#my_scores", as: "my_scores"
@@ -33,6 +34,11 @@ Rails.application.routes.draw do
     get 'user_box_scores_csv/league_table', to: "user_box_scores#league_table_to_csv", as: "csv_league_table"
 
     resources :rounds, only: %i[new create edit update]
+    resources :tournament_formats, only: %i[new create] do
+      collection do
+        post :preview
+      end
+    end
 
     resources :chatrooms, only: [:show, :destroy] do
       resources :messages, only: [:create, :destroy] do

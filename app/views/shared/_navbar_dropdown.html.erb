@@ -49,6 +49,9 @@
       <%= link_to chatroom_path(0), class: "dropdown-item color-orange" do %>
         <%= t('.chatrooms_link') %>
       <% end %>
+      <% if current_user == @admin %>
+        <%= link_to t(".new_tournament_format_link", default: "Create tournament format"), new_tournament_format_path, class: "dropdown-item color-black" %>
+      <% end %>
       <%= link_to t('.round_end_link'), edit_round_path(0), class: "dropdown-item color-black" %>
     <% end %>
 
