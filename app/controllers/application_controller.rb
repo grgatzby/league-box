@@ -376,9 +376,9 @@ class ApplicationController < ActionController::Base
   # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by points)
   def compare_points(a, b, from)
     if from == "index_league"
-      b[1][:points] <=> a[1][:points]
+      b[1][:points].to_i <=> a[1][:points].to_i
     else # from == "index"
-      b.points <=> a.points
+      b.points.to_i <=> a.points.to_i
     end
   end
 
@@ -386,9 +386,9 @@ class ApplicationController < ActionController::Base
   # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by matches_played)
   def compare_matches_played(a, b, from)
     if from == "index_league"
-      b[1][:matches_played] <=> a[1][:matches_played]
+      b[1][:matches_played].to_i <=> a[1][:matches_played].to_i
     else
-      b.matches_played <=> a.matches_played
+      b.matches_played.to_i <=> a.matches_played.to_i
     end
   end
 
@@ -397,9 +397,17 @@ class ApplicationController < ActionController::Base
   # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by ratio)
   def compare_set_ratio(a, b, from)
     if from == "index_league"
-      (b[1][:sets_played].zero? ? 0 : b[1][:sets_won].to_f / b[1][:sets_played]) <=> (a[1][:sets_played].zero? ? 0 : a[1][:sets_won].to_f / a[1][:sets_played])
+      b_sets_played = b[1][:sets_played].to_i
+      b_sets_won = b[1][:sets_won].to_i
+      a_sets_played = a[1][:sets_played].to_i
+      a_sets_won = a[1][:sets_won].to_i
+      (b_sets_played.zero? ? 0 : b_sets_won.to_f / b_sets_played) <=> (a_sets_played.zero? ? 0 : a_sets_won.to_f / a_sets_played)
     else # from == "index"
-      (b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)
+      b_sets_played = b.sets_played.to_i
+      b_sets_won = b.sets_won.to_i
+      a_sets_played = a.sets_played.to_i
+      a_sets_won = a.sets_won.to_i
+      (b_sets_played.zero? ? 0 : b_sets_won.to_f / b_sets_played) <=> (a_sets_played.zero? ? 0 : a_sets_won.to_f / a_sets_played)
     end
   end
 
@@ -408,9 +416,17 @@ class ApplicationController < ActionController::Base
   # Returns: -1 if a < b, 0 if equal, 1 if a > b (sorted descending by ratio)
   def compare_game_ratio(a, b, from)
     if from == "index_league"
-      (b[1][:games_played].zero? ? 0 : b[1][:games_won].to_f / b[1][:games_played]) <=> (a[1][:games_played].zero? ? 0 : a[1][:games_won].to_f / a[1][:games_played])
+      b_games_played = b[1][:games_played].to_i
+      b_games_won = b[1][:games_won].to_i
+      a_games_played = a[1][:games_played].to_i
+      a_games_won = a[1][:games_won].to_i
+      (b_games_played.zero? ? 0 : b_games_won.to_f / b_games_played) <=> (a_games_played.zero? ? 0 : a_games_won.to_f / a_games_played)
     else # from == "index"
-      (b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)
+      b_games_played = b.games_played.to_i
+      b_games_won = b.games_won.to_i
+      a_games_played = a.games_played.to_i
+      a_games_won = a.games_won.to_i
+      (b_games_played.zero? ? 0 : b_games_won.to_f / b_games_played) <=> (a_games_played.zero? ? 0 : a_games_won.to_f / a_games_played)
     end
   end
 

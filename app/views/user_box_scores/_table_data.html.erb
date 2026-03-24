@@ -70,8 +70,11 @@
         if is_index
           link_path = box_path(user_bs.box, page_from: user_box_scores_path({ round_id: @round.id, club_id: @club.id }.merge(tournament_format_params)), round_id: @round.id, club_id: @club.id)
         else
-          box = player.user_box_scores.map(&:box).select { |box| box.round == user_bs[1][:last_round] }[0]
-          link_path = box_path(box, page_from: index_league_path({ league_start: @league_start, club_id: @club.id }.merge(tournament_format_params)), league_start: @league_start, club_id: @club.id)
+          last_round = user_bs[1][:last_round]
+          box = player.user_box_scores.find { |ubs| ubs.box.round == last_round }&.box
+          link_path = if box
+                        box_path(box, page_from: index_league_path({ league_start: @league_start, club_id: @club.id }.merge(tournament_format_params)), league_start: @league_start, club_id: @club.id)
+                      end
         end
       %>
       <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
@@ -104,7 +107,9 @@
             <div class="col-1 top-bottom-padding"><%= t(".games", count: games_played) %></div>
             <div class="col-1 top-bottom-padding"><%= t(".games", count: games_won) %></div>
 
-            <%= link_to '', link_path, class: 'line-link'%>
+            <% if link_path.present? %>
+              <%= link_to '', link_path, class: 'line-link' %>
+            <% end %>
           </div>
         <% end %>
       </li>

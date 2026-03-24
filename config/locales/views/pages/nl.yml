@@ -149,6 +149,7 @@ nl:
       view_boxes: Bekijk boxen
       round_ranking: Ronde ranglijst
       my_scores: Mijn scores
+      no_active_tournament: Geen actief toernooi gevonden.
     5_ranking_and_promotions:
       box_league_ranking: Stand van de Box League
       p25: >

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_02_09_120000) do
+ActiveRecord::Schema[7.0].define(version: 2026_03_24_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -186,8 +186,11 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_09_120000) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "round_id", null: false
+    t.index ["round_id"], name: "index_team_memberships_on_round_id"
     t.index ["team_id", "user_id"], name: "index_team_memberships_on_team_id_and_user_id", unique: true
     t.index ["team_id"], name: "index_team_memberships_on_team_id"
+    t.index ["user_id", "round_id"], name: "idx_team_memberships_user_round_unique", unique: true
     t.index ["user_id"], name: "index_team_memberships_on_user_id"
   end
 
@@ -274,6 +277,7 @@ ActiveRecord::Schema[7.0].define(version: 2026_02_09_120000) do
   add_foreign_key "team_box_scores", "teams"
   add_foreign_key "team_match_scores", "matches"
   add_foreign_key "team_match_scores", "teams"
+  add_foreign_key "team_memberships", "rounds"
   add_foreign_key "team_memberships", "teams"
   add_foreign_key "team_memberships", "users"
   add_foreign_key "teams", "boxes"
