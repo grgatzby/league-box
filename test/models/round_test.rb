@@ -20,4 +20,42 @@ class RoundTest < ActiveSupport::TestCase
     round.tournament_format = "not_supported"
     assert_not round.valid?
   end
+
+  test "round_label includes format suffix and matches round_label_round_part" do
+    club = Club.create!(name: "RoundLabel Club #{SecureRandom.hex(4)}", tiebreak_points: 10)
+    league_start = Date.new(2024, 10, 1)
+    r1 = Round.create!(
+      club: club,
+      start_date: league_start,
+      end_date: league_start + 20,
+      league_start: league_start,
+      tournament_format: "singles_tennis"
+    )
+    r2 = Round.create!(
+      club: club,
+      start_date: league_start + 30,
+      end_date: league_start + 50,
+      league_start: league_start,
+      tournament_format: "doubles_tennis"
+    )
+
+    I18n.with_locale(:en) do
+      assert_equal "R01S", r1.round_label_round_part
+      assert_equal "2024/10_R01S", r1.round_label
+
+      assert_equal "R02D", r2.round_label_round_part
+      assert_equal "2024/10_R02D", r2.round_label
+    end
+
+    padel = Round.create!(
+      club: club,
+      start_date: league_start + 60,
+      end_date: league_start + 80,
+      league_start: league_start,
+      tournament_format: "doubles_padel"
+    )
+    I18n.with_locale(:en) do
+      assert_equal "2024/10_R03P", padel.round_label
+    end
+  end
 end

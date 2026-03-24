@@ -12,7 +12,7 @@
   <% if @rounds %>
     <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
       <%# Build popover message with all rounds in the tournament %>
-      <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
+      <% boxes = @rounds.map{ |round| "#{round.round_label_round_part}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
       <%# Title popover: tag helper entity-escapes content (avoid raw data-bs-content interpolation; it breaks on quotes and &) %>
       <%= tag.div data: {
