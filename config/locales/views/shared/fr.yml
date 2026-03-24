@@ -6,6 +6,10 @@ fr:
     navbar:
       login_link: Connexion
     navbar_dropdown:
+      tournament_format_short:
+        singles_tennis: Tournoi en simple
+        doubles_tennis: Tournoi en double
+        doubles_padel: Tournoi padel
       tournament_rules_link: 📜 Les règles
       my_club_link: 🎾 Mon club
       all_boxes_link: 📦 Les box

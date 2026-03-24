@@ -6,6 +6,10 @@ nl:
     navbar:
       login_link: Log in
     navbar_dropdown:
+      tournament_format_short:
+        singles_tennis: Singlestoernooi
+        doubles_tennis: Dubbeltoernooi
+        doubles_padel: Padeltoernooi
       tournament_rules_link: 📜 Regels
       my_club_link: 🎾 Mijn club
       all_boxes_link: 📦 Boxen
