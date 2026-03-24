@@ -67,21 +67,11 @@ module ApplicationHelper
   # — initial of first name + first 4 letters of last name, trailing "." if last name is longer than 4 chars.
   def abbreviated_player_label(user)
     return "" unless user
-
-    first = user.first_name.to_s.strip
+    name_length = 7
     last = user.last_name.to_s.strip
-    initial_segment = first.present? ? "#{first[0].upcase}." : "?."
-
-    return initial_segment if last.blank?
-
-    abbr = last.length > 4 ? last[0, 4] : last
-    abbr = if abbr.length > 1
-             abbr[0].upcase + abbr[1..].downcase
-           else
-             abbr.upcase
-           end
-    suffix = last.length > 4 ? "." : ""
-    "#{initial_segment} #{abbr}#{suffix}".strip
+    abbr = last.length > name_length ? last[0, name_length] : last
+    suffix = last.length > name_length ? "." : ""
+    "#{abbr.capitalize}#{suffix}".strip
   end
 
   # Same player order as Team#display_name (alphabetical by last name, then first name).
@@ -197,11 +187,12 @@ module ApplicationHelper
 
   # Player directory: history only (contact is already on the row).
   def player_directory_history_popover_html(user, club_id: nil)
+    name = ERB::Util.h("#{user.first_name} #{user.last_name}".strip)
     hist = tournament_format_grouped_history_html(user, club_id: club_id)
     if hist.present?
-      hist
+      "<b>#{name}</b><br />#{hist}".html_safe
     else
-      ERB::Util.h(I18n.t("shared.player_history.empty", default: "No ranking history in this club yet."))
+      "<b>#{name}</b><br />#{ERB::Util.h(I18n.t("shared.player_history.empty", default: "No ranking history in this club yet."))}".html_safe
     end
   end
 end

@@ -6,7 +6,7 @@ class TournamentContextResolver
   def contexts(include_inactive_latest: false)
     return [] unless @user
 
-    active_contexts = (singles_contexts(active_only: true) + doubles_contexts(active_only: true))
+    active_contexts = (singles_contexts(active_only: true) + doubles_contexts(active_only: true) + referee_contexts(active_only: true))
                       .uniq { |ctx| [ctx[:round_id], ctx[:format]] }
     return active_contexts unless include_inactive_latest
 
@@ -42,7 +42,8 @@ class TournamentContextResolver
   def latest_context_per_missing_format(formats_with_active_context)
     joined_rounds = (
       @user.user_box_scores.includes(box: :round).map(&:box).map(&:round) +
-      @user.teams.includes(:round).map(&:round)
+      @user.teams.includes(:round).map(&:round) +
+      referee_rounds
     ).compact.uniq
 
     joined_rounds
@@ -60,6 +61,29 @@ class TournamentContextResolver
 
   def active_round?(round)
     round.start_date <= Date.today && round.end_date >= Date.today
+  end
+
+  def referee_contexts(active_only:)
+    return [] unless referee_like_user?
+
+    referee_rounds.filter_map do |round|
+      next unless round
+      next if active_only && !active_round?(round)
+
+      mode = round.doubles_format? ? :doubles : :singles
+      build_context(round, mode)
+    end
+  end
+
+  def referee_rounds
+    return [] unless referee_like_user?
+    return [] unless @user.club_id
+
+    Round.where(club_id: @user.club_id).to_a
+  end
+
+  def referee_like_user?
+    @user.role.to_s.include?("referee")
   end
 
   def build_context(round, mode)

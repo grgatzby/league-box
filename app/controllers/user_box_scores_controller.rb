@@ -432,6 +432,9 @@ class UserBoxScoresController < ApplicationController
     round_user_bss = rounds.sort_by(&:start_date).map(&:user_box_scores) # array of each round's array of user_box_scores in one tournament
     league_table = {}
     users.each do |user|
+      user_scores_in_scope = round_user_bss.map { |user_bss| user_bss.find { |user_bs| user_bs.user_id == user.id } }.compact
+      last_round_in_scope = user_scores_in_scope.max_by { |ubs| [ubs.box.round.start_date, ubs.box.round.id] }&.box&.round
+
       league_table[user] =
         { # for each player, sum of points, matches_played, matches_won, games_played, games_won, sets_played, sets_won across the chosen league's rounds
           index: 0,
@@ -443,7 +446,7 @@ class UserBoxScoresController < ApplicationController
           sets_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:sets_won) },
           games_played: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_played) },
           games_won: round_user_bss.sum { |user_bss| user_bss.select { |user_bs| user_bs.user_id == user.id }.sum(&:games_won) },
-          last_round: last_round(user)
+          last_round: last_round_in_scope
         }
       # add the ranks, points and box of each round of the league for the player
       (1..rounds.size).each do |i|

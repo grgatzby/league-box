@@ -151,6 +151,7 @@ en:
       view_boxes: View boxes
       round_ranking: Round ranking
       my_scores: My scores
+      no_active_tournament: No active tournament found.
     5_ranking_and_promotions:
       box_league_ranking: Box League Ranking
       p25: >

@@ -590,13 +590,17 @@ class MatchesController < ApplicationController
         user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: player.id)
         next unless user_box_score
 
-        user_box_score.points += ums.points
-        user_box_score.games_won += won_games(ums)
-        user_box_score.games_played += won_games(ums) + team_scores[1 - index].score_set1 + team_scores[1 - index].score_set2 + team_scores[1 - index].score_tiebreak
-        user_box_score.sets_won += results[index]
-        user_box_score.sets_played += results.sum
-        user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
-        user_box_score.matches_played += 1
+        own_games = won_games(ums).to_i
+        opp_games = team_scores[1 - index].score_set1.to_i + team_scores[1 - index].score_set2.to_i + team_scores[1 - index].score_tiebreak.to_i
+        won_match = results[index] > results[1 - index] ? 1 : 0
+
+        user_box_score.points = user_box_score.points.to_i + ums.points.to_i
+        user_box_score.games_won = user_box_score.games_won.to_i + own_games
+        user_box_score.games_played = user_box_score.games_played.to_i + own_games + opp_games
+        user_box_score.sets_won = user_box_score.sets_won.to_i + results[index].to_i
+        user_box_score.sets_played = user_box_score.sets_played.to_i + results.sum.to_i
+        user_box_score.matches_won = user_box_score.matches_won.to_i + won_match
+        user_box_score.matches_played = user_box_score.matches_played.to_i + 1
         user_box_score.save
       end
     end
@@ -604,13 +608,17 @@ class MatchesController < ApplicationController
     [0, 1].each do |index|
       team = Team.find(team_ids[index])
       team_box_score = TeamBoxScore.find_or_create_by(team_id: team.id, box_id: match.box_id)
-      team_box_score.points += match_scores[index][:points]
-      team_box_score.games_won += match_scores[index][:score_set1] + match_scores[index][:score_set2] + match_scores[index][:score_tiebreak]
-      team_box_score.games_played += match_scores[index][:score_set1] + match_scores[index][:score_set2] + match_scores[index][:score_tiebreak] + match_scores[1 - index][:score_set1] + match_scores[1 - index][:score_set2] + match_scores[1 - index][:score_tiebreak]
-      team_box_score.sets_won += results[index]
-      team_box_score.sets_played += results.sum
-      team_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
-      team_box_score.matches_played += 1
+      own_games = match_scores[index][:score_set1].to_i + match_scores[index][:score_set2].to_i + match_scores[index][:score_tiebreak].to_i
+      opp_games = match_scores[1 - index][:score_set1].to_i + match_scores[1 - index][:score_set2].to_i + match_scores[1 - index][:score_tiebreak].to_i
+      won_match = results[index] > results[1 - index] ? 1 : 0
+
+      team_box_score.points = team_box_score.points.to_i + match_scores[index][:points].to_i
+      team_box_score.games_won = team_box_score.games_won.to_i + own_games
+      team_box_score.games_played = team_box_score.games_played.to_i + own_games + opp_games
+      team_box_score.sets_won = team_box_score.sets_won.to_i + results[index].to_i
+      team_box_score.sets_played = team_box_score.sets_played.to_i + results.sum.to_i
+      team_box_score.matches_won = team_box_score.matches_won.to_i + won_match
+      team_box_score.matches_played = team_box_score.matches_played.to_i + 1
       team_box_score.save
     end
 
@@ -638,26 +646,26 @@ class MatchesController < ApplicationController
       won_match = results[index] > results[1 - index] ? 1 : 0
 
       team_box_score = TeamBoxScore.find_or_create_by(team_id: team.id, box_id: match.box_id)
-      team_box_score.points += factor * match_scores[index][:points]
-      team_box_score.games_won += factor * own_games
-      team_box_score.games_played += factor * (own_games + opp_games)
-      team_box_score.sets_won += factor * results[index]
-      team_box_score.sets_played += factor * results.sum
-      team_box_score.matches_won += factor * won_match
-      team_box_score.matches_played += factor
+      team_box_score.points = team_box_score.points.to_i + factor * match_scores[index][:points].to_i
+      team_box_score.games_won = team_box_score.games_won.to_i + factor * own_games.to_i
+      team_box_score.games_played = team_box_score.games_played.to_i + factor * (own_games.to_i + opp_games.to_i)
+      team_box_score.sets_won = team_box_score.sets_won.to_i + factor * results[index].to_i
+      team_box_score.sets_played = team_box_score.sets_played.to_i + factor * results.sum.to_i
+      team_box_score.matches_won = team_box_score.matches_won.to_i + factor * won_match.to_i
+      team_box_score.matches_played = team_box_score.matches_played.to_i + factor.to_i
       team_box_score.save
 
       team.users.each do |player|
         user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: player.id)
         next unless user_box_score
 
-        user_box_score.points += factor * match_scores[index][:points]
-        user_box_score.games_won += factor * own_games
-        user_box_score.games_played += factor * (own_games + opp_games)
-        user_box_score.sets_won += factor * results[index]
-        user_box_score.sets_played += factor * results.sum
-        user_box_score.matches_won += factor * won_match
-        user_box_score.matches_played += factor
+        user_box_score.points = user_box_score.points.to_i + factor * match_scores[index][:points].to_i
+        user_box_score.games_won = user_box_score.games_won.to_i + factor * own_games.to_i
+        user_box_score.games_played = user_box_score.games_played.to_i + factor * (own_games.to_i + opp_games.to_i)
+        user_box_score.sets_won = user_box_score.sets_won.to_i + factor * results[index].to_i
+        user_box_score.sets_played = user_box_score.sets_played.to_i + factor * results.sum.to_i
+        user_box_score.matches_won = user_box_score.matches_won.to_i + factor * won_match.to_i
+        user_box_score.matches_played = user_box_score.matches_played.to_i + factor.to_i
         user_box_score.save
       end
     end
