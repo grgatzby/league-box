@@ -59,7 +59,7 @@
            data-bs-content="<%= t('.last_round_match_date', date: @last_round_match_date.strftime('%d/%m/%Y')) %>">
           <div class="col-1"></div>
           <%# Round Label: Display in RYY_NN format (e.g., R24_01) %>
-          <div class="col-4">Round R<%= round_label(@round) %></div>
+          <div class="col-4">Round <%= round_label(@round) %></div>
         </div>
 
         <%# Current End Date Display %>

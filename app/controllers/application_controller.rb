@@ -451,27 +451,23 @@ class ApplicationController < ActionController::Base
     path&.gsub(/en|fr|nl/, I18n.locale.to_s) # Ruby Safe Navigation
   end
 
-  # Generate round label in format "yy/mm_Rnn"
-  # Format: yy/mm is tournament start date (league_start), nn is round number in tournament
-  # Example: "24/10_R01" (October 2024, Round 1)
+  # Delegates to Round#round_label (yyyy/mm_RnnS — S/D/P by format); see Round model.
   def round_label(round)
-    league_start = round.league_start
-    rounds_ordered = Round.where(league_start:, club_id: round.club_id)
-                          .order('start_date ASC')
-                          .map(&:id)
-    "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
+    round.round_label
   end
 
   # Generate dropdown label for round selection
-  # Format: "yy/mm_Rnn (dd/mm/yyyy)" - includes round label and start date
+  # Format: "yy/mm_RnnS (dd/mm/yyyy)" - includes round label and start date
   def rounds_dropdown(round)
     "#{round_label(round)} (#{round.start_date.strftime('%d/%m/%Y')})"
   end
 
-  # Extract round start_date from dropdown label
-  # Label format: "yy/mm_Rnn (dd/mm/yyyy)" - extracts date portion at position [13, 10]
+  # Extract round start_date from dropdown label (robust to label length / S-D-P suffix)
   def round_dropdown_to_start_date(label)
-    label[13, 10].to_date
+    m = label.to_s.match(/\((\d{2}\/\d{2}\/\d{4})\)/)
+    raise ArgumentError, "invalid round dropdown label: #{label.inspect}" unless m
+
+    Date.strptime(m[1], "%d/%m/%Y")
   end
 
   # Redirect back to referer with additional parameters

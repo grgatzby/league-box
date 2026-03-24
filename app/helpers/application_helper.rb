@@ -101,15 +101,6 @@ module ApplicationHelper
     end
   end
 
-  # Same semantics as ApplicationController#round_label (helper_method), callable from helpers without delegation.
-  def format_round_label_for_popover(round)
-    league_start = round.league_start
-    rounds_ordered = Round.where(league_start:, club_id: round.club_id)
-                          .order(:start_date)
-                          .map(&:id)
-    "#{l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
-  end
-
   # Round history for popovers: singles (UserBoxScore) + doubles/padel (TeamBoxScore), grouped by tournament format.
   # Optional club_id limits rows to that club’s rounds.
   def tournament_format_grouped_history_html(user, club_id: nil)
@@ -149,7 +140,7 @@ module ApplicationHelper
       items = items.sort_by { |x| x.box.round.start_date }
       lines = items.reverse.map do |row|
         r = row.box.round
-        "#{format_round_label_for_popover(r)} - Box#{format('%02d', row.box.box_number)}, ##{row.rank} <br />"
+        "#{r.round_label} - Box#{format('%02d', row.box.box_number)}, ##{row.rank} <br />"
       end.join
 
       title = I18n.t("shared.player_history.format.#{tf}",

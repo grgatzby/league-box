@@ -108,14 +108,6 @@ class TournamentContextResolver
                      round.tournament_format.to_s.humanize
                    end
 
-    "#{round.club.name} - #{format_label} - #{round_label(round)}"
-  end
-
-  def round_label(round)
-    league_start = round.league_start
-    rounds_ordered = Round.where(league_start:, club_id: round.club_id)
-                          .order("start_date ASC")
-                          .map(&:id)
-    "#{I18n.l(league_start, format: :yyymm_date)}_R#{format('%02d', rounds_ordered.index(round.id) + 1)}"
+    "#{round.club.name} - #{format_label} - #{round.round_label}"
   end
 end
