@@ -1,0 +1,42 @@
+en:
+  tournament_formats:
+    common:
+      missing_club: Please select a club.
+      no_seed_players: No existing players found in this club to seed from.
+      not_enough_seed_players_doubles: At least 2 players are required to seed doubles/padel.
+      invalid_date: Invalid date format.
+      invalid_round_dates: First round end date must be on or after league start date.
+      missing_courts_to_create: Please enter how many courts to create for this format.
+    new:
+      title: Create tournament format from CSV
+      club: Club
+      format: Tournament format
+      players_per_box: Players per box
+      teams_per_box: Teams per box (2 players per team)
+      league_start: League start date
+      first_round_end_date: First round end date
+      courts_to_create: "No %{kind} courts exist for this club. How many should be created?"
+      separator: CSV separator
+      separator_dot: dot (.)
+      separator_comma: comma (,)
+      separator_semicolon: semicolon (;)
+      csv_file: "CSV file (headers: first_name,last_name,phone_number,email)"
+      csv_file_doubles: "CSV file (headers: first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2)"
+      all_formats_exist: All tournament formats already exist for this club
+      preview_btn: Preview players
+    preview:
+      title: Validate players and create tournament
+      box_title: "Box %{box}"
+      team_title: "Team %{team}"
+      teams_count: "%{count} teams"
+      create_btn: Create tournament
+      back_btn: Back
+    create:
+      missing_players: Please upload and validate at least one player.
+      missing_file: Please upload a CSV file.
+      invalid_headers: "Invalid CSV headers. Expected: first_name,last_name,phone_number,email"
+      invalid_doubles_headers: "Invalid CSV headers for doubles/padel. Expected: first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2"
+      format_unavailable: This tournament format already exists for the selected club.
+      missing_email: Each player must have an email.
+      created: New tournament created successfully.
+      forbidden: Unauthorized.

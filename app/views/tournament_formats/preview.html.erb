@@ -1,0 +1,68 @@
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
+  <% if !@is_mobile %><br><% end %>
+  <h4>
+    <%= @club_for_preview&.name || Club.find_by(id: @form[:club_id])&.name %>
+    -
+    <%= t("pages.rules.format_#{@form[:tournament_format]}", default: @form[:tournament_format].to_s.humanize) %>
+  </h4>
+  <h3><%= t(".title", default: "Validate players and create tournament") %></h3>
+  <%= form_with url: tournament_formats_path, method: :post, local: true, data: { turbo: false } do |f| %>
+    <%= hidden_field_tag :club_id, @form[:club_id] %>
+    <%= hidden_field_tag :tournament_format, @form[:tournament_format] %>
+    <%= hidden_field_tag :players_per_box, @form[:players_per_box] %>
+    <%= hidden_field_tag :league_start, @form[:league_start] %>
+    <%= hidden_field_tag :first_round_end_date, @form[:first_round_end_date] %>
+    <%= hidden_field_tag :courts_to_create, @form[:courts_to_create] if @form[:courts_to_create].present? %>
+    <%= hidden_field_tag :separator, @form[:separator] %>
+
+    <% doubles_mode = @form[:tournament_format].to_s != "singles_tennis" %>
+    <% @players_by_box.keys.sort.each do |box_nb| %>
+      <div class="frame-color-shape frame-padding frame-margin-rl mb-3">
+        <% if doubles_mode %>
+          <% teams_in_box = @players_by_box[box_nb].group_by { |p| p[:team_key] } %>
+          <h5><%= t(".box_title", default: "Box %{box}", box: box_nb) %> - <%= t(".teams_count", default: "%{count} teams", count: teams_in_box.size) %></h5>
+          <% teams_in_box.values.each_with_index do |team_players, team_idx| %>
+            <div class="border rounded p-2 mb-3 bg-light">
+              <div class="mb-2"><strong><%= t(".team_title", default: "Team %{team}", team: team_idx + 1) %></strong></div>
+              <% team_players.each_with_index do |player, idx| %>
+                <% field_key = "#{box_nb}_#{team_idx}_#{idx}" %>
+                <%= hidden_field_tag "players[#{field_key}][existing_user_id]", player[:existing_user_id] %>
+                <%= hidden_field_tag "players[#{field_key}][index]", player[:index] %>
+                <%= hidden_field_tag "players[#{field_key}][team_key]", player[:team_key] %>
+                <%= hidden_field_tag "players[#{field_key}][box_number]", box_nb %>
+                <div class="row g-2 mb-2">
+                  <div class="col-md-2"><%= text_field_tag "players[#{field_key}][first_name]", player[:first_name], class: "form-control", placeholder: "first_name" %></div>
+                  <div class="col-md-2"><%= text_field_tag "players[#{field_key}][last_name]", player[:last_name], class: "form-control", placeholder: "last_name" %></div>
+                  <div class="col-md-2"><%= text_field_tag "players[#{field_key}][nickname]", player[:nickname], class: "form-control", placeholder: "nickname" %></div>
+                  <div class="col-md-3"><%= email_field_tag "players[#{field_key}][email]", player[:email], class: "form-control", placeholder: "email" %></div>
+                  <div class="col-md-3"><%= text_field_tag "players[#{field_key}][phone_number]", player[:phone_number], class: "form-control", placeholder: "phone_number" %></div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          <h5><%= t(".box_title", default: "Box %{box}", box: box_nb) %></h5>
+          <% @players_by_box[box_nb].each_with_index do |player, idx| %>
+            <% field_key = "#{box_nb}_#{idx}" %>
+            <%= hidden_field_tag "players[#{field_key}][existing_user_id]", player[:existing_user_id] %>
+            <%= hidden_field_tag "players[#{field_key}][index]", player[:index] %>
+            <%= hidden_field_tag "players[#{field_key}][team_key]", player[:team_key] %>
+            <%= hidden_field_tag "players[#{field_key}][box_number]", box_nb %>
+            <div class="row g-2 mb-2">
+              <div class="col-md-2"><%= text_field_tag "players[#{field_key}][first_name]", player[:first_name], class: "form-control", placeholder: "first_name" %></div>
+              <div class="col-md-2"><%= text_field_tag "players[#{field_key}][last_name]", player[:last_name], class: "form-control", placeholder: "last_name" %></div>
+              <div class="col-md-2"><%= text_field_tag "players[#{field_key}][nickname]", player[:nickname], class: "form-control", placeholder: "nickname" %></div>
+              <div class="col-md-3"><%= email_field_tag "players[#{field_key}][email]", player[:email], class: "form-control", placeholder: "email" %></div>
+              <div class="col-md-3"><%= text_field_tag "players[#{field_key}][phone_number]", player[:phone_number], class: "form-control", placeholder: "phone_number" %></div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="frame-margin-rl">
+      <%= f.submit t(".create_btn", default: "Create tournament"), class: "btn btn-shape btn-green" %>
+      <%= link_to t(".back_btn", default: "Back"), new_tournament_format_path, class: "btn btn-shape btn-yellow ms-2" %>
+    </div>
+  <% end %>
+</div>

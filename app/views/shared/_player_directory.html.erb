@@ -36,9 +36,19 @@
         </div>
         <% players.each do |player| %>
           <% player_name = "#{player.first_name} #{player.last_name}" %>
-          <div class="row row-linear-gradient"
-               data-player-filter-target="item"
-               data-searchable="<%= "#{player_name} #{player.email} #{player.phone_number}" %>">
+          <% pop_user = (@players_for_popover || {})[player.id] || player %>
+          <% dir_popover = player_directory_history_popover_html(pop_user, club_id: player.club_id) %>
+          <%= tag.div class: "row row-linear-gradient", data: {
+            controller: "popover",
+            bs_toggle: "popover",
+            bs_html: true,
+            bs_trigger: "hover focus",
+            bs_placement: "bottom",
+            bs_delay: { show: 400 },
+            bs_content: dir_popover.to_s,
+            player_filter_target: "item",
+            searchable: "#{player_name} #{player.email} #{player.phone_number}"
+          } do %>
             <div class="col-3 top-bottom-padding <%= 'sticky-name-column' if is_mobile %>">
               <% if current_user == @admin %>
                 <%# Admin can click to edit profile picture %>
@@ -63,6 +73,14 @@
                 <% end %>
               <% end %>
               <%= render "shared/fullname", user: player %>
+              <% format_letters = (@player_formats_by_id || {})[player.id] || [] %>
+              <% if format_letters.any? %>
+                <span class="ms-1 player-format-badges" title="S: singles, D: doubles, P: padel">
+                  <% format_letters.each do |letter| %>
+                    <span class="player-format-badge player-format-badge-<%= letter.downcase %>"><%= letter %></span>
+                  <% end %>
+                </span>
+              <% end %>
             </div>
             <div class="col-4 top-bottom-padding" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               ✉️ <%= player.email %>
@@ -70,7 +88,7 @@
             <div class="col-5 top-bottom-padding" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               📞 <%= player.phone_number %>
             </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
     </div>

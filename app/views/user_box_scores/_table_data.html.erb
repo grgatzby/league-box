@@ -18,8 +18,18 @@
         <% doubles_link_path = box_path(box, page_from: index_league_path({ league_start: @league_start, club_id: @club.id }.merge(tournament_format_params)), league_start: @league_start, club_id: @club.id) %>
       <% end %>
       <% team_row_highlight = tbs.team.users.include?(current_user) %>
+      <% team_popover = doubles_team_row_popover_html(tbs.team, club_id: @club.id) %>
       <li class="league-table-row <%= 'color-tennis-red' if team_row_highlight %>">
-        <div class="one-liner hovered-player" style="width: 100%;">
+        <%= tag.div style: "width: 100%;", data: {
+          controller: "popover",
+          bs_toggle: "popover",
+          bs_html: true,
+          bs_trigger: "hover focus",
+          bs_placement: "bottom",
+          bs_delay: { show: 500 },
+          bs_content: team_popover.to_s
+        } do %>
+          <div class="one-liner hovered-player" style="width: 100%;">
           <div class="col-3"><%= tbs.team.display_name %></div>
           <div class="col-1 top-bottom-padding"><%= "# #{tbs.rank}" %></div>
           <div class="col-1 top-bottom-padding"><%= t("pts", count: tbs.points) %></div>
@@ -33,7 +43,8 @@
           <div class="col-1 top-bottom-padding"><%= t(".games", count: tbs.games_played, default: tbs.games_played) %></div>
           <div class="col-1 top-bottom-padding"><%= t(".games", count: tbs.games_won, default: tbs.games_won) %></div>
           <%= link_to "", doubles_link_path, class: "line-link" %>
-        </div>
+          </div>
+        <% end %>
       </li>
     <% end %>
   <% else %>
@@ -54,8 +65,7 @@
         if is_index
           message = "#{name}<br />📞 #{player.phone_number}<br />✉️ #{player.email}"
         else
-          boxes = player.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank} <br />" }.sort.reverse.join[0...-7]
-          message = "<b>#{name}</b><br />📞 #{player.phone_number}<br />✉️ #{player.email}<br /><u>League_Round - Box, #rank:</u><br />#{boxes}"
+          message = player_league_popover_html(player, club_id: @club.id)
         end
         if is_index
           link_path = box_path(user_bs.box, page_from: user_box_scores_path({ round_id: @round.id, club_id: @club.id }.merge(tournament_format_params)), round_id: @round.id, club_id: @club.id)
@@ -65,10 +75,15 @@
         end
       %>
       <li class="league-table-row <%= 'color-tennis-red' if player == current_user %>">
-        <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-            data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-            data-bs-content="<%= message %>"
-            style="width: 100%;">
+        <%= tag.div style: "width: 100%;", data: {
+          controller: "popover",
+          bs_toggle: "popover",
+          bs_html: true,
+          bs_trigger: "hover focus",
+          bs_placement: "bottom",
+          bs_delay: { show: 500 },
+          bs_content: message.to_s
+        } do %>
           <div class="one-liner hovered-player" style="width: 100%;">
             <div class="col-3">
               <%= image_tag(player_profile_picture_or_favicon(player, 30), alt: 'Profile picture', style: "width: 30px; height: 30px; border-radius: 50%; object-fit: cover; flex-shrink: 0;") %>
@@ -91,7 +106,7 @@
 
             <%= link_to '', link_path, class: 'line-link'%>
           </div>
-        </div>
+        <% end %>
       </li>
     <% end %>
   <% end %>

@@ -10,6 +10,9 @@ class BoxesController < ApplicationController
   SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
                     "email_opponent", "phone_number_opponent", "role_opponent",
                     "match_date", "court_nb", "input_user_id", "input_date"]
+  TOURNAMENT_SINGLES_HEADERS = ["first_name", "last_name", "phone_number", "email"]
+  TOURNAMENT_DOUBLES_HEADERS = ["first_name1", "last_name1", "phone_number1", "email1",
+                                "first_name2", "last_name2", "phone_number2", "email2"]
 
   def index
     # displays all boxes and the shared select_round form
@@ -140,8 +143,6 @@ class BoxesController < ApplicationController
     end
   end
 
-  private
-
   def mark_chatroom_as_read(chatroom)
     ChatroomRead.find_or_create_by(user: current_user, chatroom: chatroom).update(last_read_at: Time.current)
   end
@@ -209,6 +210,36 @@ class BoxesController < ApplicationController
       end
     end
     download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name)
+  end
+
+  def tournament_players_to_csv
+    round = Round.find(params[:round_id])
+    return redirect_back(fallback_location: boxes_path(round_id: round.id, club_id: round.club_id), alert: "Unauthorized.") unless current_user == @admin
+
+    file = "#{Rails.root}/public/data.csv"
+    CSV.open(file, "w", col_sep: ",") do |writer|
+      if round.tournament_format == "singles_tennis"
+        writer << TOURNAMENT_SINGLES_HEADERS
+        round.boxes.includes(user_box_scores: :user).order(:box_number).each do |box|
+          box.user_box_scores.each do |ubs|
+            user = ubs.user
+            writer << [user.first_name, user.last_name, user.phone_number, user.email]
+          end
+        end
+      else
+        writer << TOURNAMENT_DOUBLES_HEADERS
+        round.boxes.includes(teams: :users).order(:box_number).each do |box|
+          box.teams.each do |team|
+            players = team.users.sort_by { |u| [u.last_name.to_s.upcase, u.first_name.to_s.upcase] }
+            p1 = players[0]
+            p2 = players[1]
+            writer << [p1&.first_name, p1&.last_name, p1&.phone_number, p1&.email,
+                       p2&.first_name, p2&.last_name, p2&.phone_number, p2&.email]
+          end
+        end
+      end
+    end
+    download_csv(file.pathmap, "TournamentPlayers-R#{round_label(round)}", round.club.name)
   end
 
   private

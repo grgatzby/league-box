@@ -17,6 +17,7 @@ fr:
       gallery_link: 📷 Galerie
       general_chat_link: "Messagerie #general"
       chatrooms_link: ✉️ Messageries
+      new_tournament_format_link: Créer un format de tournoi
       round_end_link: Repousser la fin du round
       log_out_link: Déconnexion
     display_round:
@@ -67,6 +68,12 @@ fr:
       header_contact_details: Coordonnées
       search_placeholder: Rechercher par nom, email ou téléphone...
       no_results: Aucun joueur ne correspond à votre recherche.
+    player_history:
+      empty: Aucun historique de classement dans ce club pour le moment.
+      format:
+        singles_tennis: Tennis simple
+        doubles_tennis: Tennis double
+        doubles_padel: Padel
     stats:
       stats: 📈 stats du round
       round: Round

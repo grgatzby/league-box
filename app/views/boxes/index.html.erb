@@ -90,6 +90,13 @@
           <%= link_to t('boxes.common.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
         </span>
       <% end %>
+      <% if current_user == @admin %>
+        <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
+            data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
+            data-bs-content="<%= t '.message_tournament_csv_pop' %>">
+          <%= link_to t(".to_tournament_csv_btn"), csv_tournament_players_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
+        </span>
+      <% end %>
       <%# Admin-only: Load scores button %>
       <% if current_user == @admin %>
         <%= link_to t(".load_scores"), load_scores_path(round_id: @round.id), class: "btn btn-shape btn-aqua me-3" %>

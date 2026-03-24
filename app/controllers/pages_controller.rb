@@ -142,6 +142,36 @@ class PagesController < ApplicationController
       @is_admin = false
     end
 
+    # Build one map: player_id -> ["S", "D", "P"] based on formats they played in.
+    player_ids = if @is_admin
+                   @players_by_club.values.flatten.map(&:id).uniq
+                 else
+                   @players.map(&:id)
+                 end
+    @player_formats_by_id = {}
+    if player_ids.any?
+      formats_by_player = UserBoxScore.joins(box: :round)
+                                      .where(user_id: player_ids)
+                                      .distinct
+                                      .pluck(:user_id, "rounds.tournament_format")
+                                      .group_by(&:first)
+      format_letter = {
+        "singles_tennis" => "S",
+        "doubles_tennis" => "D",
+        "doubles_padel" => "P"
+      }
+      formats_by_player.each do |player_id, tuples|
+        letters = tuples.map { |(_, tf)| format_letter[tf] }.compact.uniq
+        @player_formats_by_id[player_id] = letters
+      end
+
+      @players_for_popover = User.where(id: player_ids)
+                                 .includes(user_box_scores: { box: :round }, teams: { team_box_scores: { box: :round } })
+                                 .index_by(&:id)
+    else
+      @players_for_popover = {}
+    end
+
     # Load gallery images grouped by club (similar to rules method)
     if current_user&.role == "admin"
       all_images = GalleryImage.joins(:club).order('clubs.name ASC, gallery_images.created_at DESC')

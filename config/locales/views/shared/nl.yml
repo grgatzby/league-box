@@ -17,6 +17,7 @@ nl:
       gallery_link: 📷 Galerie
       general_chat_link: "Chatroom #general"
       chatrooms_link: ✉️ Chatrooms
+      new_tournament_format_link: Maak toernooiformat
       round_end_link: Stel ronde einde uit
       log_out_link: Uitloggen
     display_round:
@@ -67,6 +68,12 @@ nl:
       header_contact_details: Contactgegevens
       search_placeholder: Zoeken op naam, e-mail of telefoon...
       no_results: Geen spelers komen overeen met uw zoekopdracht.
+    player_history:
+      empty: Nog geen rankinggeschiedenis in deze club.
+      format:
+        singles_tennis: Enkelspel tennis
+        doubles_tennis: Dubbelspel tennis
+        doubles_padel: Padel
     stats:
       stats: 📈 ronde stat
       round: Ronde

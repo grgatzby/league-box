@@ -14,12 +14,18 @@
       <%# Build popover message with all rounds in the tournament %>
       <% boxes = @rounds.map{ |round| "#{round_label(round)[-3..]}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
       message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
-      <%# Title with popover showing all rounds in the tournament %>
-      <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-          data-bs-trigger="hover focus" data-bs-placement="bottom" data-html="true" data-bs-delay= '{ "show": 500 }'
-          data-bs-content="<%= message %>">
+      <%# Title popover: tag helper entity-escapes content (avoid raw data-bs-content interpolation; it breaks on quotes and &) %>
+      <%= tag.div data: {
+        controller: "popover",
+        bs_toggle: "popover",
+        bs_html: true,
+        bs_trigger: "hover focus",
+        bs_placement: "bottom",
+        bs_delay: { show: 500 },
+        bs_content: message.to_s
+      } do %>
         <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2": @is_mobile) %>"><%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %></h3>
-      </div>
+      <% end %>
       <%# Print Header: Logo, copyright, and timestamp (only visible when printing) %>
       <span class="will-print one-liner">
         <div><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %></div>

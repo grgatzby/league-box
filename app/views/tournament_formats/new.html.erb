@@ -1,0 +1,74 @@
+<div class="<%= class_names("text-size", "container": !@is_mobile) %>">
+  <% if !@is_mobile %><br><% end %>
+  <h3><%= t(".title", default: "Create tournament format from CSV") %></h3>
+
+  <%= form_with url: preview_tournament_formats_path, method: :post, local: true, multipart: true, data: { turbo: false } do |f| %>
+    <div class="frame-color-shape frame-padding frame-margin-rl">
+      <div class="mb-3">
+        <%= f.label :club_id, t(".club", default: "Club") %>
+        <%= f.select :club_id,
+                     @clubs.map { |c| [c.name, c.id] },
+                     { selected: @form[:club_id] },
+                     { class: "form-select", onchange: "window.location='#{new_tournament_format_path}?club_id=' + this.value;" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :tournament_format, t(".format", default: "Tournament format") %>
+        <% if @available_formats.present? %>
+          <%= f.select :tournament_format,
+                       @available_formats.map { |fmt| [t("pages.rules.format_#{fmt}", default: fmt.humanize), fmt] },
+                       { selected: @form[:tournament_format] },
+                       { class: "form-select" } %>
+        <% else %>
+          <%= f.select :tournament_format, [[t(".all_formats_exist", default: "All tournament formats already exist for this club"), ""]], {}, { class: "form-select", disabled: true } %>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :players_per_box,
+                    (@form[:tournament_format] == "singles_tennis" ?
+                      t(".players_per_box", default: "Players per box") :
+                      t(".teams_per_box", default: "Teams per box (2 players per team)")) %>
+        <%= f.number_field :players_per_box, value: @form[:players_per_box], min: 3, max: 5, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :league_start, t(".league_start", default: "League start date") %>
+        <%= f.date_field :league_start, value: @form[:league_start], class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :first_round_end_date, t(".first_round_end_date", default: "First round end date") %>
+        <%= f.date_field :first_round_end_date, value: @form[:first_round_end_date], class: "form-control" %>
+      </div>
+
+      <% if @needs_courts_input %>
+        <div class="mb-3">
+          <%= f.label :courts_to_create,
+                      t(".courts_to_create", default: "No %{kind} courts exist for this club. How many should be created?", kind: @required_court_kind) %>
+          <%= f.number_field :courts_to_create, value: @form[:courts_to_create], min: 1, class: "form-control" %>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= f.label :separator, t(".separator", default: "CSV separator") %>
+        <%= f.select :separator,
+                     [[t(".separator_dot", default: "dot (.)"), "dot"],
+                      [t(".separator_comma", default: "comma (,)"), "comma"],
+                      [t(".separator_semicolon", default: "semicolon (;)"), "semicolon"]],
+                     { selected: @form[:separator] },
+                     { class: "form-select" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :csv_file,
+                    (@form[:tournament_format] == "singles_tennis" ?
+                      t(".csv_file", default: "CSV file (optional, headers: first_name,last_name,phone_number,email)") :
+                      t(".csv_file_doubles", default: "CSV file (optional, headers: first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2)")) %>
+        <%= f.file_field :csv_file, accept: ".csv,text/csv", class: "form-control" %>
+      </div>
+
+      <%= f.submit t(".preview_btn", default: "Preview players"), class: "btn btn-shape btn-green", disabled: @available_formats.blank? %>
+    </div>
+  <% end %>
+</div>

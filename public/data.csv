@@ -1,67 +1,33 @@
-id,club_id,email,first_name,last_name,nickname,phone_number,role,box_number
-186,5,dick.cartwright@club.be,Dick,Cartwright,DickC,984.155.2336,player,1
-174,5,frederic.brakus@club.be,Frederic,Brakus,FredericB,843-851-5544,player,1
-179,5,frederick.nicolas@club.be,Frederick,Nicolas,FrederickN,(839) 348-5521,player,1
-178,5,stanton.schmidt@club.be,Stanton,Schmidt,StantonS,175-672-6053,player,1
-175,5,brent.emard@club.be,Brent,Emard,BrentE,602.155.5616,player,1
-191,5,korey.hoeger@club.be,Korey,Hoeger,KoreyH,1-636-101-7747,player,1
-188,5,graig.cruickshank@club.be,Graig,Cruickshank,GraigC,156-767-0361,player,2
-198,5,lewis.luettgen@club.be,Lewis,Luettgen,LewisL,1-459-227-6481,player,2
-177,5,aurelio.boyle@club.be,Aurelio,Boyle,AurelioB,(565) 886-7164,player,2
-199,5,ramiro.dubuque@club.be,Ramiro,DuBuque,RamiroD,1-748-092-4490,player,2
-176,5,chuck.cartwright@club.be,Chuck,Cartwright,ChuckC,1-870-464-0847,player,2
-187,5,kristopher.cronin@club.be,Kristopher,Cronin,KristopherC,343.873.3324,player,2
-200,5,kory.wyman@club.be,Kory,Wyman,KoryW,134-830-5270,player,3
-202,5,rueben.effertz@club.be,Rueben,Effertz,RuebenE,197.873.5236,player,3
-190,5,johnathon.crooks@club.be,Johnathon,Crooks,JohnathonC,727.702.2774,player,3
-215,5,tobias.nicolas@club.be,Tobias,Nicolas,TobiasN,815.454.2407,player,3
-214,5,irvin.harvey@club.be,Irvin,Harvey,IrvinH,(215) 523-4931,player,3
-189,5,parker.wisozk@club.be,Parker,Wisozk,ParkerW,798-121-3883,player,3
-217,5,octavio.wisoky@club.be,Octavio,Wisoky,OctavioW,(252) 498-2201,player,4
-203,5,sanford.schroeder@club.be,Sanford,Schroeder,SanfordS,307.820.8720,player,4
-213,5,rueben.mckenzie@club.be,Rueben,McKenzie,RuebenM,485.929.8431,player,4
-211,5,reyes.willms@club.be,Reyes,Willms,ReyesW,246.308.1655,player,4
-201,5,abe.koepp@club.be,Abe,Koepp,AbeK,399-268-9229,player,4
-216,5,luther.cormier@club.be,Luther,Cormier,LutherC,1-846-247-9230,player,4
-212,5,hilario.d'amore@club.be,Hilario,D'Amore,HilarioD,(192) 705-6696,player,5
-210,5,lindsay.jakubowski@club.be,Lindsay,Jakubowski,LindsayJ,862-054-8991,player,5
-220,5,robt.haag@club.be,Robt,Haag,RobtH,1-910-338-2490,player,5
-223,5,royal.ondricka@club.be,Royal,Ondricka,RoyalO,(347) 477-4825,player,5
-218,5,bradly.bergstrom@club.be,Bradly,Bergstrom,BradlyB,(735) 382-4780,player,5
-222,5,carrol.o'conner@club.be,Carrol,O'Conner,CarrolO,(234) 690-6150,player,5
-219,5,dorian.osinski@club.be,Dorian,Osinski,DorianO,469.738.3506,player,6
-240,5,ron.pacocha@club.be,Ron,Pacocha,RonP,1-893-540-3542,player,6
-225,5,rey.mills@club.be,Rey,Mills,ReyM,628-759-1271,player,6
-244,5,lloyd.padberg@club.be,Lloyd,Padberg,LloydP,451-260-0736,player,6
-226,5,elmo.weimann@club.be,Elmo,Weimann,ElmoW,472-901-3571,player,6
-221,5,dong.metz@club.be,Dong,Metz,DongM,596-081-8298,player,6
-248,5,bryce.goodwin@club.be,Bryce,Goodwin,BryceG,1-434-167-4260,player,7
-241,5,miguel.sawayn@club.be,Miguel,Sawayn,MiguelS,514-435-5766,player,7
-227,5,lester.o'connell@club.be,Lester,O'Connell,LesterO,1-388-302-4503,player,7
-245,5,pat.johnson@club.be,Pat,Johnson,PatJ,564-187-9797,player,7
-224,5,jospeh.senger@club.be,Jospeh,Senger,JospehS,902-257-2953,player,7
-249,5,donald.denesik@club.be,Donald,Denesik,DonaldD,223-353-5022,player,7
-243,5,abel.kuvalis@club.be,Abel,Kuvalis,AbelK,521.533.5917,player,8
-246,5,wilmer.crist@club.be,Wilmer,Crist,WilmerC,185-870-5707,player,8
-251,5,raleigh.reynolds@club.be,Raleigh,Reynolds,RaleighR,(949) 245-4681,player,8
-242,5,allen.spencer@club.be,Allen,Spencer,AllenS,1-665-888-2270,player,8
-247,5,val.waelchi@club.be,Val,Waelchi,ValW,1-456-909-1058,player,8
-250,5,ted.nienow@club.be,Ted,Nienow,TedN,499-926-5445,player,8
-192,5,albert.rosenbaum@club.be,Albert,Rosenbaum,AlbertR,(789) 744-9615,player,9
-196,5,elvin.murazik@club.be,Elvin,Murazik,ElvinM,(970) 950-4938,player,9
-195,5,nathaniel.mohr@club.be,Nathaniel,Mohr,NathanielM,(369) 553-3975,player,9
-206,5,jeffry.gottlieb@club.be,Jeffry,Gottlieb,JeffryG,(668) 874-4472,player,9
-208,5,valentin.abbott@club.be,Valentin,Abbott,ValentinA,(116) 503-1292,player,9
-193,5,aurelio.auer@club.be,Aurelio,Auer,AurelioA,748.139.5371,player,9
-194,5,hobert.beier@club.be,Hobert,Beier,HobertB,391.824.3587,player,10
-182,5,alfonzo.o'kon@club.be,Alfonzo,O'Kon,AlfonzoO,1-322-123-1832,player,10
-209,5,ahmad.mante@club.be,Ahmad,Mante,AhmadM,395-218-5037,player,10
-204,5,warner.corwin@club.be,Warner,Corwin,WarnerC,764.182.9683,player,10
-207,5,rodrick.witting@club.be,Rodrick,Witting,RodrickW,1-818-264-0346,player,10
-197,5,russel.bechtelar@club.be,Russel,Bechtelar,RusselB,(394) 608-6881,player,10
-180,5,kendrick.bahringer@club.be,Kendrick,Bahringer,KendrickB,1-243-302-3856,player,11
-184,5,cedric.zemlak@club.be,Cedric,Zemlak,CedricZ,1-696-014-1741,player,11
-181,5,weldon.ernser@club.be,Weldon,Ernser,WeldonE,1-159-284-4191,player,11
-185,5,glenn.raynor@club.be,Glenn,Raynor,GlennR,197.487.2456,player,11
-183,5,moses.mccullough@club.be,Moses,McCullough,MosesM,847.700.9327,player,11
-173,5,philippe.dardenne@club.be,Philippe,Dardenne,PhilippeD,(32) 477 940 591,referee
+first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2
+Sophie,Dubois,+33 6 45 67 89 01,sophie.dubois@example.com,Quentin,Fournier,+33 6 90 10 20 30,quentin.fournier@example.com
+Pierre,Bernard,+33 6 34 56 78 90,pierre.bernard@example.com,Valerie,Masson,+33 6 12 13 14 15,valerie.masson@example.com
+Marie,Martin,+33 6 23 45 67 89,marie.martin@example.com,Laetitia,Mercier,+33 6 16 17 18 19,laetitia.mercier@example.com
+Jean,Dupont,+33 6 12 34 56 78,jean.dupont@example.com,Gregory,Dupuy,+33 6 17 18 19 20,gregory.dupuy@example.com
+Benjamin,Andre,+33 6 15 16 17 18,benjamin.andre@example.com,Isabelle,Moreau,+33 6 67 89 01 23,isabelle.moreau@example.com
+Antoine,Laurent,+33 6 56 78 90 12,antoine.laurent@example.com,Vanessa,Roussel,+33 6 18 19 20 21,vanessa.roussel@example.com
+Melissa,Colin,+33 6 20 21 22 23,melissa.colin@example.com,Thomas,Simon,+33 6 78 90 12 34,thomas.simon@example.com
+Kevin,Leclerc,+33 6 19 20 21 22,kevin.leclerc@example.com,Claire,Lefebvre,+33 6 89 01 23 45,claire.lefebvre@example.com
+Stephanie,Caron,+33 6 22 23 24 25,stephanie.caron@example.com,Julie,Vincent,+33 6 22 33 44 55,julie.vincent@example.com
+Nicolas,Roux,+33 6 90 12 34 56,nicolas.roux@example.com,Cyril,Vidal,+33 6 21 22 23 24,cyril.vidal@example.com
+Emilie,Girard,+33 6 01 23 45 67,emilie.girard@example.com,Mathieu,Schmitt,+33 6 23 24 25 26,mathieu.schmitt@example.com
+Laurent,Bonnet,+33 6 11 22 33 44,laurent.bonnet@example.com,Clement,Noel,+33 6 25 26 27 28,clement.noel@example.com
+Cecile,Bertrand,+33 6 66 77 88 99,cecile.bertrand@example.com,Marie-Laure,Marchand,+33 6 26 27 28 29,marie-laure.marchand@example.com
+Olivier,David,+33 6 55 66 77 88,olivier.david@example.com,Amandine,Roy,+33 6 24 25 26 27,amandine.roy@example.com
+Thibault,Meunier,+33 6 29 30 31 32,thibault.meunier@example.com,Sebastien,Michel,+33 6 33 44 55 66,sebastien.michel@example.com
+Emeline,Bailly,+33 6 28 29 30 31,emeline.bailly@example.com,Anne,Garcia,+33 6 44 55 66 77,anne.garcia@example.com
+Elodie,Gauthier,+33 6 00 11 22 33,elodie.gauthier@example.com,Florian,Lemoine,+33 6 27 28 29 30,florian.lemoine@example.com
+Pauline,Perrin,+33 6 30 31 32 33,pauline.perrin@example.com,Guillaume,Rousseau,+33 6 77 88 99 00,guillaume.rousseau@example.com
+Clara,Durand,+33 6 32 33 34 35,clara.durand@example.com,Alexandre,Leroy,+33 6 99 00 11 22,alexandre.leroy@example.com
+Marion,Fontaine,+33 6 88 99 00 11,marion.fontaine@example.com,Loic,Leroux,+33 6 33 34 35 36,loic.leroux@example.com
+Celia,Barbier,+33 6 34 35 36 37,celia.barbier@example.com,Audrey,Lucas,+33 6 40 50 60 70,audrey.lucas@example.com
+Romain,Guillaume,+33 6 30 40 50 60,romain.guillaume@example.com,Remy,Morin,+33 6 31 32 33 34,remy.morin@example.com
+Caroline,Blanc,+33 6 20 30 40 50,caroline.blanc@example.com,Elise,Renard,+33 6 36 37 38 39,elise.renard@example.com
+Florent,Muller,+33 6 10 20 30 40,florent.muller@example.com,Axel,Poirier,+33 6 35 36 37 38,axel.poirier@example.com
+Lea,Lemaire,+33 6 38 39 40 41,lea.lemaire@example.com,Melanie,Petit,+33 6 60 70 80 90,melanie.petit@example.com
+Corentin,Denis,+33 6 37 38 39 40,corentin.denis@example.com,Vincent,Henry,+33 6 50 60 70 80,vincent.henry@example.com
+Raphael,Chevalier,+33 6 42 43 44 45,raphael.chevalier@example.com,Damien,Robin,+33 6 70 80 90 10,damien.robin@example.com
+Manon,Joly,+33 6 40 41 42 43,manon.joly@example.com,Stephanie,Richard,+33 6 80 90 10 20,stephanie.richard@example.com
+Adrien,Legrand,+33 6 13 14 15 16,adrien.legrand@example.com,Gaetan,Thomas,+33 6 39 40 41 42,gaetan.thomas@example.com
+Brice,Bouchet,+33 6 41 42 43 44,brice.bouchet@example.com,Chloe,Fabre,+33 6 14 15 16 17,chloe.fabre@example.com
+Guillaume,Dumond,+33 6 23 24 25 26,guillaume.dumond@example.com,Paul,Louvrier,+33 6 39 41 40 42,paul.louvrier@example.com
+Pauline,Perrin,+33 6 30 31 32 33,pauline.perrin@example.com,Melanie,Petit,+33 6 60 70 80 90,melanie.petit@example.com
