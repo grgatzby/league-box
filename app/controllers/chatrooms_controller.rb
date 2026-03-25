@@ -21,7 +21,7 @@ class ChatroomsController < ApplicationController
       # [A] displays a chatroom after selecting a chatroom name from the chatrooms/show dropdown
       # [1..] removes the first character '#' of the name (same as [1..-1])
       @chatroom = Chatroom.find_by(name: params[:chatroom][1..])
-      @box_nb = @chatroom.box.box_number
+      @box_nb = @chatroom&.box&.box_number
       # general chatroom has no round, then set @round to club's current round
       # @round = @chatroom.box.round
       #  @round = @chatroom.box.round unless @chatroom.name == "general"
@@ -81,14 +81,15 @@ class ChatroomsController < ApplicationController
         # elsif current_user.role == "referee" || current_user.role == "player referee"
         elsif REFEREE.include?(current_user.role)
           # referees have access to all chatrooms from their club + the #general chatroom
-          @chatrooms = Chatroom.select do |chatroom|
-            chatroom.box.round.club == current_user.club
+          # (skip chatrooms with no box, e.g. orphan or mislinked rows — #general is appended below)
+          @chatrooms = Chatroom.all.select do |chatroom|
+            chatroom.box&.round&.club == current_user.club
           end
           @chatrooms.push(@general_chatroom) unless @chatrooms.include?(@general_chatroom)
         else
           # player can only access chatrooms from their current or previous boxes
-          @chatrooms = Chatroom.select do |chatroom|
-            my_box?(chatroom.box)
+          @chatrooms = Chatroom.all.select do |chatroom|
+            chatroom.box && my_box?(chatroom.box)
           end
         end
         # prepend the '#' character to the chatroom names (for the form display)
