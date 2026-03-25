@@ -165,13 +165,24 @@
           form.submit();
         };
 
-        // Add event listeners to all checkboxes
-        document.addEventListener('DOMContentLoaded', function() {
+        // Add event listeners to all checkboxes.
+        // Important: under Turbo, `DOMContentLoaded` might not fire the way we expect
+        // on subsequent navigations, so we also hook into `turbo:load` and initialize immediately.
+        function initBulkDeleteCheckboxes() {
           document.querySelectorAll('.message-checkbox-input').forEach(checkbox => {
+            if (checkbox.hasAttribute('data-listener-added')) return;
             checkbox.addEventListener('change', updateSelectedCount);
+            checkbox.setAttribute('data-listener-added', 'true');
           });
           updateSelectedCount();
-        });
+        }
+
+        document.addEventListener('turbo:load', initBulkDeleteCheckboxes);
+        if (document.readyState !== 'loading') {
+          initBulkDeleteCheckboxes();
+        } else {
+          document.addEventListener('DOMContentLoaded', initBulkDeleteCheckboxes, { once: true });
+        }
 
         // Also handle dynamically added messages (from ActionCable)
         const messagesContainer = document.querySelector('[data-chatroom-subscription-target="messages"]');

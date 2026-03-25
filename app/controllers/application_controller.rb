@@ -529,11 +529,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Generate chatroom name for a box
-  # Format: "Club Name - yy/mm_Rnn:Bnn" (Club - Round:Box number)
-  # Example: "My Club - 24/10_R01:B03"
+  # Delegates to Box#chatroom_label (round segment = Round#round_label, includes S/D/P before ":Bnn").
   def chatroom_name(box)
-    "#{box.round.club.name} - #{round_label(box.round)}:B#{format('%02d', box.box_number)}"
+    box.chatroom_label
   end
 
   # Get the most recent match date in a round (across all boxes)
