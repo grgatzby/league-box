@@ -121,9 +121,12 @@ class ChatroomsController < ApplicationController
     # instantiate @message for the new message form
     @message = Message.new
 
-    # Mark chatroom as read for current user (when displaying a chatroom, not when id == "0" which shows the selection form)
-    if @chatroom && params[:id] != "0"
-      mark_chatroom_as_read(@chatroom)
+    # Mark chatroom as read for current user (when displaying a chatroom).
+    # Note: when opening from the dropdown, the URL can be `chatrooms/0?chatroom=...`,
+    # so `params[:id] == "0"` while `@chatroom` is present.
+    if @chatroom
+      mark_chatroom_as_read(@chatroom) if params[:id] != "0"
+      set_adjacent_chatrooms if current_user == @admin || REFEREE.include?(current_user.role)
     end
   end
 
@@ -169,6 +172,43 @@ class ChatroomsController < ApplicationController
   # Updates or creates ChatroomRead record with current timestamp
   def mark_chatroom_as_read(chatroom)
     ChatroomRead.find_or_create_by(user: current_user, chatroom: chatroom).update(last_read_at: Time.current)
+  end
+
+  # For admin/referees: previous/next navigation among open chatrooms available to the current user.
+  # Sorted by chatroom name for deterministic ordering.
+  def set_adjacent_chatrooms
+    return unless @chatroom
+
+    skip_empty_chatrooms = ActiveModel::Type::Boolean.new.cast(params[:skip_empty_chatrooms])
+
+    available = if current_user == @admin
+                  Chatroom.order(:name).to_a
+                elsif REFEREE.include?(current_user.role)
+                  club_chatrooms = Chatroom.all.select do |chatroom|
+                    chatroom.box&.round&.club == current_user.club
+                  end
+                  (club_chatrooms + [@general_chatroom]).compact.uniq.sort_by(&:name)
+                else
+                  []
+                end
+
+    return if available.empty?
+
+    if skip_empty_chatrooms
+      available_ids = available.map(&:id)
+      non_empty_ids = Message.where(chatroom_id: available_ids).distinct.pluck(:chatroom_id)
+      # Keep the current chatroom in the list even if it's empty, so the UI can
+      # still show prev/next navigation and let you move away.
+      available = available.select { |c| non_empty_ids.include?(c.id) || c.id == @chatroom.id }
+    end
+
+    return if available.empty?
+
+    idx = available.index { |c| c.id == @chatroom.id }
+    return unless idx
+
+    @previous_chatroom = (idx > 0 ? available[idx - 1] : nil)
+    @next_chatroom = (idx < available.size - 1 ? available[idx + 1] : nil)
   end
 
   # Display form for new chatroom (unused - chatrooms created automatically)
