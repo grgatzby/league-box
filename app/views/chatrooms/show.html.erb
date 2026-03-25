@@ -15,17 +15,75 @@
   >
     <% if !@is_mobile %><br><% end %>
     <div class="one-liner" style="width: 100%">
-      <h3><%= @chatroom.name == "general" ? t(".general_chatroom_title") : t(".box_chatroom_title", box_nb: @box_nb) %></h3>
+      <% if @chatroom.name == "general" %>
+        <h3><%= t(".general_chatroom_title") %></h3>
+      <% else %>
+        <% round = @chatroom.box&.round %>
+        <% round_nb = round&.round_number_in_league %>
+        <% round_prefix = round&.league_start ? l(round.league_start, format: :yyymm_date) : nil %>
+        <% format_label_long = case round&.tournament_format
+                               when "singles_tennis" then "Singles"
+                               when "doubles_tennis" then "Doubles"
+                               when "doubles_padel" then "Padel"
+                               else round&.tournament_format.to_s.humanize
+                               end %>
+        <% format_label_short = round&.tournament_format_suffix || "?" %>
+        <% detailed_title = if @is_mobile
+                              "#{t(".box_chatroom_title", box_nb: @box_nb)} - R#{round_nb} - #{round_prefix} #{format_label_short}"
+                            else
+                              "#{t(".box_chatroom_title", box_nb: @box_nb)} - Round #{round_nb} - #{round_prefix} #{format_label_long}"
+                            end %>
+        <h3><%= detailed_title %></h3>
+      <% end %>
       <span class="will-print"><%= image_tag "box_league_racket.png", alt: "Tennis racket", width: 50 %> LeagueBox ©</span>
     </div>
     <h5  class="one-liner">
       <%= t(".chatroom_title", chatroom: "##{@chatroom.name}") %>
       <div>
+        <% if current_user == @admin || ["referee", "player referee"].include?(current_user.role) %>
+          <% skip_empty = params[:skip_empty_chatrooms].present? %>
+          <%= link_to "←",
+                      chatroom_path(@previous_chatroom, skip_empty_chatrooms: (skip_empty ? 1 : nil)),
+                      class: "btn btn-shape btn-yellow dont-print",
+                      title: t(".previous_chatroom", default: "Previous chatroom") if @previous_chatroom %>
+          <%= link_to "→",
+                      chatroom_path(@next_chatroom, skip_empty_chatrooms: (skip_empty ? 1 : nil)),
+                      class: "btn btn-shape btn-yellow dont-print",
+                      title: t(".next_chatroom", default: "Next chatroom") if @next_chatroom %>
+
+          <div class="form-check form-check-inline ms-2 align-items-center dont-print">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="skip-empty-chatrooms"
+                   name="skip_empty_chatrooms"
+                   value="1"
+                   <%= "checked" if skip_empty %>
+                   onchange="toggleSkipEmptyChatrooms(this.checked);" />
+            <label class="form-check-label text-size" for="skip-empty-chatrooms">
+              <%= t(".skip_empty_chatrooms", default: "Skip empty") %>
+            </label>
+          </div>
+        <% end %>
         <%# link_to t('.back_btn'), :back, class: "btn btn-shape btn-yellow dont-print" %>
         <%= link_to t('.back_btn'), is_admin_or_referee ? chatroom_path(0) : my_scores_path(0), class: "btn btn-shape btn-yellow dont-print" %>
         <%= link_to t('print_btn'), '#', onclick: 'window.print();return false;', class: "btn btn-shape btn-green dont-print"%>
       </div>
     </h5>
+
+    <%# Toggle helper for the skip-empty navigation filter %>
+    <% if current_user == @admin || ["referee", "player referee"].include?(current_user.role) %>
+      <script>
+        function toggleSkipEmptyChatrooms(checked) {
+          const url = new URL(window.location.href);
+          if (checked) {
+            url.searchParams.set('skip_empty_chatrooms', '1');
+          } else {
+            url.searchParams.delete('skip_empty_chatrooms');
+          }
+          window.location.href = url.toString();
+        }
+      </script>
+    <% end %>
     <div class="frame-color-shape chatroom-frame">
       <%# Bulk delete form for admin %>
       <% if current_user == @admin %>
@@ -59,9 +117,14 @@
         data-bs-content="<%= t '.message' %>">
         <%= form_for [@chatroom, @message],
           html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex" } do |f| %>
+          <% message_placeholder = if @is_mobile && @chatroom.box
+                                     "#{t ".message_invite"} Box #{@chatroom.box.box_number}"
+                                   else
+                                     "#{t ".message_invite"} #{@chatroom.name}"
+                                   end %>
           <%= f.text_field :content,
             label: false,
-            placeholder: "#{t ".message_invite"} #{@chatroom.name[-10,200]}",
+            placeholder: message_placeholder,
             class: "flex-grow-1 border-0 rounded-3"
           %>
           <%= f.submit t(".send_btn"), class: "btn btn-shape btn-beige ms-2" %>
