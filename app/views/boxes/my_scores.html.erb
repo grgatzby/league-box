@@ -36,9 +36,8 @@
         <h4><%= render "shared/display_club", round: @box.round %></h4>
         <div>
           <%= render 'shared/stats' %>
-          <%# Build back button parameters with round and club IDs %>
-          <% parameters = "?round_id=#{@box.round_id}&club_id=#{@box.round.club_id}" %>
-          <%= link_to t("back_btn"), @page_from ? @page_from+parameters : :back, class: "btn btn-shape btn-yellow mb-3" %>
+          <%# Always go to the current user's box list page (safe fallback to current @box). %>
+          <%= link_to t("back_btn"), box_list_path(@my_current_box || @box), class: "btn btn-shape btn-yellow mb-3" %>
         </div>
       </div>
 
@@ -87,12 +86,20 @@
               <div class="col-3">
                 <% class_btns = "btn btn-ghost" %>
                 <% if team == @my_team %>
+                  <%# Self Match: Link to view box results %>
                   <%= link_to t(".view_box_results_btn"), box_list_path(@box), class: class_btns %>
                 <% elsif match %>
-                  <%= link_to t(".see_match_card_btn"), box_list_path(@box), class: class_btns %>
+                  <%# Match Played: Link to view match card/details %>
+                  <% opponent_user = opponent_user = team.sorted_players.first || current_user %>
+                  <%= link_to t(".see_match_card_btn"),
+                              match_path(player: current_user.id, opponent: opponent_user.id, match_id: match.id, page_from: my_scores_path),
+                              class: class_btns %>
                 <% elsif @box == @my_current_box %>
-                  <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: current_user.id, round_id: @round.id, page_from: my_scores_path, team_a_id: @my_team.id, team_b_id: team.id), class: class_btns %>
+                  <%# No Match in Current Box: Link to enter new score %>
+                  <% opponent_user = team.sorted_players.first || current_user %>
+                  <%= link_to t(".enter_score_btn"), new_match_path(player: current_user.id, opponent: opponent_user.id, round_id: @round.id, page_from: my_scores_path, team_a_id: @my_team.id, team_b_id: team.id), class: class_btns %>
                 <% else %>
+                  <%# No Match in Other Box: Display "Not played" text %>
                   <div class="top-bottom-padding"><%= t(".match_not_played") %></div>
                 <% end %>
               </div>
