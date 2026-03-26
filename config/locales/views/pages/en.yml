@@ -53,7 +53,7 @@ en:
       happy_tournament: Happy LeagueBox tournament!
       create_club_btn: Create a new club
       login_link: log in
-      landing_to_user_box_scores: "🏁 Open \"Round Ranking\" page after login"
+      landing_to_user_box_scores: "🏁 Open the \"Round Ranking\" page"
     rules:
       rules_title: Format and Rules
       format_label: Tournament format

@@ -52,30 +52,15 @@ fr:
     #   winner: g
     load_scores:
       load_scores_title: Charger les scores du round %{round} (départ %{round_start}).
-      p01: "À partir d'un fichier CSV avec les entêtes ci-dessous, charger en groupe les scores des matchs du round:"
-      p02_html: >
-          <br>&emsp;&emsp;&emsp;
-          <i>first_name_player, last_name_player,
-             first_name_opponent, last_name_opponent,
-             points_player, points_opponent,
-             box_number, score_winner, score_winner2</i>.<br>
-          et:<br>&emsp;&emsp;&emsp;
-          <i>email_player, phone_number_player, role_player,
-             email_opponent, phone_number_opponent, role_opponent,
-             match_date, court_nb, input_user_id, input_date</i><br><br>
-          Le score doit être identique dans les colonnes <i>score_winner</i> et <i>score_winner2</i>, et saisi comme le score du gagnant
-          (ex: 4-2 1-3 10-7); le gagnant est celui des deux joueurs qui a 20 points (<i>points_player</i> ou <i>points_opponent</i>).<br><br>
-          Un round à à quatre joueurs par box comportera 6 rencontres, donc 6 lignes par box:
-          <ul>
-            <li>joueur 1 : joueur 2</li>
-            <li>joueur 1 : joueur 3</li>
-            <li>joueur 1 : joueur 4</li>
-            <li>joueur 2 : joueur 3</li>
-            <li>joueur 2 : joueur 4</li>
-            <li>joueur 3 : joueur 4</li>
-          </ul>
-          Si une box comporte moins de joueurs, le fichier CSV prévoiera des lignes vides de façon à respecter un nombre de lignes identique pour
-          toutes les box.
+      p01: Téléversez un fichier CSV pour importer les scores des matchs de ce round.
+      format_info: "Format : %{tournament_format}"
+      format_labels:
+        singles_tennis: Simples
+        doubles_tennis: Doubles
+        doubles_padel: Padel
+      required_headers: "En-têtes obligatoires : first_name_player, last_name_player, first_name_opponent, last_name_opponent, box_number, score_winner"
+      optional_headers: "En-têtes facultatifs : email_player, email_opponent, score_winner2, match_date, court_nb, input_user_id, input_date"
+      overwrite_existing: "Écraser les scores existants pour la même paire de joueurs / la même paire d'équipes"
       submit_btn: ⎷ Valider
       delimiter: Séparateur CSV
       back_btn: ⇤

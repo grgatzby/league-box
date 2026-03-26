@@ -38,11 +38,22 @@
           <% elsif (@home_tournament_contexts || []).size <= 1 %>
             <%= link_to t("pages.common.ok_view_boxes"), boxes_path, class: "btn btn-shape btn-aqua text-size w-100 w-sm-auto" %>
           <% else %>
-            <% @home_tournament_contexts.each do |context| %>
-              <%= link_to context[:format_label],
-                  select_tournament_path(round_id: context[:round_id], tournament_format: context[:format]),
-                  class: class_names("btn btn-shape btn-aqua", "text-size w-100": @is_mobile, "btn-sm px-3 py-1": !@is_mobile) %>
-            <% end %>
+            <div class="<%= class_names(
+                  'd-flex flex-row gap-2 justify-content-center align-items-stretch w-100 mx-auto home-tournament-contexts',
+                  'flex-wrap': @is_mobile,
+                  'flex-nowrap': !@is_mobile
+                ) %>"
+                 style="max-width: 42rem;">
+              <% @home_tournament_contexts.each do |context| %>
+                <%= link_to context[:format_label],
+                    select_tournament_path(round_id: context[:round_id], tournament_format: context[:format]),
+                    class: class_names(
+                      "btn btn-shape btn-aqua text-center",
+                      "text-size w-100": @is_mobile,
+                      "btn-sm px-3 py-1 flex-fill": !@is_mobile
+                    ) %>
+              <% end %>
+            </div>
           <% end %>
           <%= form_with url: update_home_landing_preference_path, method: :patch, local: true, class: "d-inline-flex align-items-center gap-2 m-0" do %>
             <%= hidden_field_tag :landing_to_user_box_scores, "0" %>
