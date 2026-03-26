@@ -4,13 +4,17 @@
 # Validates tennis scoring rules and updates UserBoxScore statistics (points, matches, sets, games).
 # Allows CSV import of match scores for bulk loading.
 class MatchesController < ApplicationController
-  REQUIRED_SCORES_HEADERS = ["first_name_player", "last_name_player",
-                            "first_name_opponent", "last_name_opponent",
-                            "points_player", "points_opponent",
-                            "box_number", "score_winner", "score_winner2"]
-  REQUIRED_SCORES_HEADERS_PLUS = ["email_player", "phone_number_player", "role_player",
-                                 "email_opponent", "phone_number_opponent", "role_opponent"]
-  REQUIRED_SCORES_HEADERS_OPT = ["match_date", "court_nb", "input_user_id", "input_date"]
+  REQUIRED_SCORES_HEADERS = [
+    "first_name_player", "last_name_player",
+    "first_name_opponent", "last_name_opponent",
+    "box_number", "score_winner"
+  ].freeze
+  OPTIONAL_SCORES_HEADERS = [
+    "score_winner2",
+    "points_player", "points_opponent",
+    "email_player", "email_opponent",
+    "match_date", "court_nb", "input_user_id", "input_date"
+  ].freeze
   WINNING_GAMES_PER_SET = 4 # number of winning games per set
 
   # Display match details with scores for both players
@@ -454,89 +458,135 @@ class MatchesController < ApplicationController
   # Updates UserBoxScore statistics and rankings after import
   def create_scores
     csv_file = params[:csv_file]
-    delimiter = params[:delimiter]
+    delimiter = params[:delimiter].presence || ";"
     round = Round.find(params[:round_id])
-    # 1/ remove existing match scores for the round and clean user_box_score values
-    Box.where(round_id: round.id).each do |box|
-      if box.matches.size.positive?
-        box.matches.each do |match|
-          destroy_match(match)
-        end
-      end
+    overwrite_existing = ActiveModel::Type::Boolean.new.cast(params[:overwrite_existing])
+
+    unless csv_file&.content_type == "text/csv"
+      flash[:notice] = t(".file_type_flash", default: "Please upload a CSV file.")
+      redirect_back(fallback_location: load_scores_path(round_id: round.id))
+      return
     end
-    # 2/ read CSV scores file
-    # court_id = Court.find_by(club_id: round.club_id, name: "1").id
-    if csv_file.content_type == "text/csv"
-      # user_box_scores are already created with users loading the round create CSV file
-      # a CSV file is attached, create user_match_scores and matches using it, and populate user_box_scores records
-      headers = CSV.foreach(csv_file, col_sep: delimiter).first
-      if (headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS).sort) ||
-        (headers.compact.map(&:downcase).sort - ["id"] == (REQUIRED_SCORES_HEADERS + REQUIRED_SCORES_HEADERS_PLUS + REQUIRED_SCORES_HEADERS_OPT).sort)
-        # create and fill user_match_scores and matches
-        input_date = Time.now
-        user_match_scores = []
-        CSV.foreach(csv_file, headers: :first_row, header_converters: :symbol, col_sep: delimiter) do |row|
-          match_players = winner_loser(row)
-          player = match_players[0] # winner
-          opponent = match_players[1] # loser
-          box_id = Box.find_by(box_number: row[:box_number], round_id: round.id).id
-          court = Court.find_by(
-            club_id: round.club_id,
-            name: row[:court_nb],
-            court_kind: Court.kind_for_tournament_format(round.tournament_format)
-          )
-          next unless court
 
-          court_id = court.id
+    headers = CSV.foreach(csv_file, col_sep: delimiter).first
+    normalized_headers = headers.to_a.compact.map { |h| h.to_s.downcase.strip } - ["id"]
+    missing_headers = REQUIRED_SCORES_HEADERS - normalized_headers
+    if missing_headers.any?
+      flash[:notice] = t(".header_flash", default: "Missing required headers: %{headers}", headers: missing_headers.join(", "))
+      redirect_back(fallback_location: load_scores_path(round_id: round.id))
+      return
+    end
 
-          # match_scores_to_a: 4-2 1-3 10-7 => [{score_set1: 4, score_set2: 1, score_tiebreak: 10}, {score_set1: 2, score_set2: 3, score_tiebreak: 7}]
-          match_scores = match_scores_to_a(row[:score_winner])
-          test_score = test_new_score(match_scores, round.effective_tiebreak_points) # ARRAY of won sets count if scores ok, false otherwise
-          if test_score
-            @match = Match.create(box_id:, court_id:, time: row[:match_date] || round.start_date)
-            results = compute_points(match_scores)
+    csv_rows = CSV.read(csv_file.path, headers: true, header_converters: :symbol, col_sep: delimiter)
+    input_date = Time.current
+    conflicts = []
+    imported = 0
 
-            # create and fill a user_match_score instance for each player of the match
-            UserMatchScore.create(user_id: player.id, match_id: @match.id)
-            UserMatchScore.create(user_id: opponent.id, match_id: @match.id)
+    csv_rows.each_with_index do |row, idx|
+      row_number = idx + 2
+      next if row.to_h.values.compact.map(&:to_s).all?(&:blank?)
 
-            # user_match_scores = UserMatchScore.where(match_id: @match.id)
-            user_match_scores = @match.user_match_scores
+      box = Box.find_by(box_number: row[:box_number], round_id: round.id)
+      next unless box
 
-            [0, 1].each do |index|
-              user_match_scores[index].score_set1 = match_scores[index][:score_set1]
-              user_match_scores[index].score_set2 = match_scores[index][:score_set2]
-              user_match_scores[index].score_tiebreak = match_scores[index][:score_tiebreak]
-              user_match_scores[index].points = match_scores[index][:points]
-              user_match_scores[index].is_winner = (results[index] > results[1 - index])
-              user_match_scores[index].input_user_id = match_scores[index][:input_user_id] || current_user.id
-              user_match_scores[index].input_date = match_scores[index][:input_date] || input_date
-              user_match_scores[index].save
-            end
+      match_scores = match_scores_to_a(row[:score_winner].to_s)
+      next unless match_scores
+      results = test_new_score(match_scores, round.effective_tiebreak_points)
+      next unless results
+      results = compute_points(match_scores)
 
-            # update user_box_score for each player
-            [0, 1].each do |index|
-              match = user_match_scores[index].match
-              user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
-              user_box_score.points += user_match_scores[index].points
-              user_box_score.games_won += won_games(user_match_scores[index])
-              user_box_score.games_played += won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
-              user_box_score.sets_won += results[index]
-              user_box_score.sets_played += results.sum
-              user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
-              user_box_score.matches_played += 1
-              user_box_score.save
-            end
+      court_name = row[:court_nb].presence || "1"
+      court = Court.find_by(
+        club_id: round.club_id,
+        name: court_name,
+        court_kind: Court.kind_for_tournament_format(round.tournament_format)
+      )
+      next unless court
 
-            # update the league table
-            rank_players(@match.box.round.user_box_scores) # compute user_box_scores
-          end
+      if round.doubles_format?
+        team_a, team_b = resolve_teams_for_csv_row(row, box, round)
+        next unless team_a && team_b && team_a.id != team_b.id
+
+        existing_match = Match.where(box_id: box.id)
+                              .where("(team_a_id = ? AND team_b_id = ?) OR (team_a_id = ? AND team_b_id = ?)",
+                                     team_a.id, team_b.id, team_b.id, team_a.id)
+                              .first
+        if existing_match && !overwrite_existing
+          conflicts << "row #{row_number}: #{team_a.display_name} vs #{team_b.display_name}"
+          next
         end
+        destroy_match_for_import(existing_match) if existing_match
+
+        match = Match.create!(
+          box_id: box.id,
+          court_id: court.id,
+          team_a_id: team_a.id,
+          team_b_id: team_b.id,
+          time: row[:match_date].presence || round.start_date
+        )
+        create_doubles_scores_and_stats(match, match_scores, results, row[:input_date].presence || input_date)
+        imported += 1
       else
-        flash[:notice] = t('.header_flash')
-        redirect_back(fallback_location: load_scores_path)
+        player = find_player_for_csv_side(row, :player, box)
+        opponent = find_player_for_csv_side(row, :opponent, box)
+        next unless player && opponent && player.id != opponent.id
+
+        existing_match = box.matches.joins(:user_match_scores)
+                            .where(user_match_scores: { user_id: [player.id, opponent.id] })
+                            .group("matches.id")
+                            .having("COUNT(DISTINCT user_match_scores.user_id) = 2")
+                            .first
+        if existing_match && !overwrite_existing
+          conflicts << "row #{row_number}: #{player.last_name} vs #{opponent.last_name}"
+          next
+        end
+        destroy_match_for_import(existing_match) if existing_match
+
+        match = Match.create!(box_id: box.id, court_id: court.id, time: row[:match_date].presence || round.start_date)
+        UserMatchScore.create!(user_id: player.id, match_id: match.id)
+        UserMatchScore.create!(user_id: opponent.id, match_id: match.id)
+        user_match_scores = match.user_match_scores
+
+        [0, 1].each do |index|
+          user_match_scores[index].update!(
+            score_set1: match_scores[index][:score_set1],
+            score_set2: match_scores[index][:score_set2],
+            score_tiebreak: match_scores[index][:score_tiebreak],
+            points: match_scores[index][:points],
+            is_winner: (results[index] > results[1 - index]),
+            input_user_id: row[:input_user_id].presence || current_user.id,
+            input_date: row[:input_date].presence || input_date
+          )
+        end
+
+        [0, 1].each do |index|
+          ums = user_match_scores[index]
+          user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: ums.user_id)
+          next unless user_box_score
+
+          user_box_score.points += ums.points
+          user_box_score.games_won += won_games(ums)
+          user_box_score.games_played += won_games(ums) + won_games(user_match_scores[1 - index])
+          user_box_score.sets_won += results[index]
+          user_box_score.sets_played += results.sum
+          user_box_score.matches_won += results[index] > results[1 - index] ? 1 : 0
+          user_box_score.matches_played += 1
+          user_box_score.save
+        end
+        imported += 1
       end
     end
+
+    if conflicts.any? && !overwrite_existing
+      flash[:alert] = t(".overwrite_needed_flash",
+                        default: "%{count} existing matches found for the same pair/team. Tick overwrite to replace them.",
+                        count: conflicts.size)
+      redirect_to load_scores_path(round_id: round.id, delimiter: delimiter)
+      return
+    end
+
+    rank_players(round.user_box_scores)
+    flash[:notice] = t(".imported_flash", default: "%{count} matches imported.", count: imported)
     redirect_to user_box_scores_path(round_id: round.id, club_id: round.club_id)
   end
 
@@ -691,6 +741,22 @@ class MatchesController < ApplicationController
 
     # update the league table
     rank_players(match.box.round.user_box_scores)
+  end
+
+  # Used by CSV import overwrite mode. Handles both singles and doubles cleanup before replacement.
+  def destroy_match_for_import(match)
+    return unless match
+
+    if match.doubles_match?
+      old_match_scores = team_scores_payload_from_match(match)
+      old_results = compute_results(old_match_scores)
+      apply_doubles_stats_delta(match, old_match_scores, old_results, -1)
+      TeamMatchScore.where(match_id: match.id).delete_all
+      UserMatchScore.where(match_id: match.id).delete_all
+      match.destroy
+    else
+      destroy_match(match)
+    end
   end
 
   # Validate match scores for an edit
@@ -920,5 +986,30 @@ class MatchesController < ApplicationController
       end
     end
     [winner, loser]
+  end
+
+  def find_player_for_csv_side(row, side, box)
+    email = row[:"email_#{side}"].to_s.strip
+    first_name = row[:"first_name_#{side}"].to_s.strip
+    last_name = row[:"last_name_#{side}"].to_s.strip
+
+    users_in_box = box.user_box_scores.includes(:user).map(&:user)
+    if email.present?
+      users_in_box.find { |u| u.email.to_s.casecmp(email).zero? } ||
+        users_in_box.find { |u| u.first_name.to_s.casecmp(first_name).zero? && u.last_name.to_s.casecmp(last_name).zero? }
+    else
+      users_in_box.find { |u| u.first_name.to_s.casecmp(first_name).zero? && u.last_name.to_s.casecmp(last_name).zero? }
+    end
+  end
+
+  def resolve_teams_for_csv_row(row, box, round)
+    player = find_player_for_csv_side(row, :player, box)
+    opponent = find_player_for_csv_side(row, :opponent, box)
+    return [nil, nil] unless player && opponent
+
+    teams_in_box = box.teams.includes(:users).where(round_id: round.id)
+    team_a = teams_in_box.find { |team| team.users.include?(player) }
+    team_b = teams_in_box.find { |team| team.users.include?(opponent) }
+    [team_a, team_b]
   end
 end

@@ -1,19 +1,15 @@
-<!-- admin only: load scores (from csv file)
-the csv file must contain fields
-  ["first_name_player", "last_name_player",
-   "first_name_opponent", "last_name_opponent",
-   "points_player", "points_opponent",
-   "box_number", "score_winner", "score_winner2",
-   "email_player", "phone_number_player", "role_player",
-   "email_opponent", "phone_number_opponent", "role_opponent"]
-  -->
 <div class="<%= class_names("container": !@is_mobile) %>">
   <h3><%= t('.load_scores_title', round: round_label(@round), round_start: @round.start_date.strftime('%d/%m/%Y')) %></h3><br>
   <% unless current_user.role == "admin" %>
     <br><br><%= t 'not_authorised' %>
   <% else %>
-    <p><%= t '.p01' %>
-    <%= t '.p02_html' %></p>
+    <% format_label = t(".format_labels.#{@round.tournament_format}", default: @round.tournament_format.to_s.humanize) %>
+    <p>
+      <%= t(".p01") %><br>
+      <%= t(".format_info", tournament_format: format_label) %><br>
+      <%= t(".required_headers") %><br>
+      <%= t(".optional_headers") %>
+    </p>
 
     <%= form_with(url: {action: "create_scores"}, multipart: true) do %>
       <div class="frame-color-shape frame-padding-no-top">
@@ -25,22 +21,25 @@ the csv file must contain fields
         </div><br>
         <div class="row"><br>
           <div class="col-2">
-            <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
-                data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
-                title="<%= t('title_pop') %>" data-bs-content="<%= t('message_pop') %>">
-              <%# label_tag t 'load_csv_file' %>
-              <%= label_tag('load_file', t('load_csv_file')) %>
+            <%= label_tag('load_file', t('load_csv_file')) %>
+          </div>
+          <%= hidden_field_tag(:round_id, params[:round_id]) %>
+          <div class="col-1"><%= file_field_tag :csv_file %></div>
+        </div><br>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-check">
+              <%= check_box_tag :overwrite_existing, "1", false, class: "form-check-input", id: "overwrite_existing" %>
+              <%= label_tag :overwrite_existing, t(".overwrite_existing"), class: "form-check-label" %>
             </div>
           </div>
-              <%= hidden_field_tag(:round_id, params[:round_id]) %>
-          <div class="col-1"><%= file_field_tag :csv_file %></div>
         </div><br>
       </div><br>
       <div class="buttons-wrap">
         <%= submit_tag t('.submit_btn'), class: "btn btn-shape btn-green" %>&nbsp;&nbsp;&nbsp;&nbsp;
         <%# link_to "Back", "javascript:history.back()", class: "btn btn-shape btn-yellow" %>
         <%# link_to t('.back'), :back, class: "btn btn-shape btn-yellow" %>
-        <%= link_to t('.back'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow" %>
+        <%= link_to t('.back_btn'), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow" %>
       </div>
     <% end %>
   <% end %>

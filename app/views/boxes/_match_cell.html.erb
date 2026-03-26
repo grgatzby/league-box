@@ -19,10 +19,10 @@ if match %>
     <%# Points for line player (row player) %>
     <% line_label = is_team_mode ? abbreviated_team_label(line_player) : line_player.last_name %>
     <% opponent_label = is_team_mode ? abbreviated_team_label(opponent) : opponent.last_name %>
-    <br><%= "#{line_label}: " %><%= t("pts", count: user_score.points) %>
+    <br><%= "#{line_label} " %><%= t("pts", count: user_score.points) %>
     <%# Points for opponent (column player) %>
     <span class=" color-tennis-blue">
-      <br><%= "#{opponent_label}: " %><%= t("pts", count: opponent_score.points) %>
+      <br><%= "#{opponent_label} " %><%= t("pts", count: opponent_score.points) %>
     </span>
     <%# Clickable Link: Different behavior based on user role %>
     <% if current_user.role != "player" %>
