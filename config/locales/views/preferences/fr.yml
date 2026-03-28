@@ -10,6 +10,9 @@ fr:
       phone_number: Téléphone
       e_mail: Adresse email
       password: Changer mon mot de passe
+      enlisted_tournament_formats: Formats de tournoi
+      my_formats: Mes formats
+      no_enlisted_tournament_formats: Aucun format de tournoi rejoint pour le moment
       history: Mon historique
       previous_rounds: Rounds précédents
       expanded_view: Vue "complète" des box
@@ -25,12 +28,17 @@ fr:
       e_mail: Adresse email
       password: Mot de passe
       modify_password: Changer mon mot de passe
+      enlisted_tournament_formats: Formats de tournoi
+      my_formats: Tournois rejoints
+      no_enlisted_tournament_formats: Aucun format de tournoi rejoint pour le moment
       history: Mon historique
       previous_rounds: Rounds précédents
       expanded_view: Vue "complète" des box
       clear_format_help: Sans dégradé de couleurs
       landing_page: Page d'accueil après connexion
       landing_to_user_box_scores_help: Charger la page "Classement du round"
+      league_export_buttons: Exports du classement
+      show_league_export_buttons_help: Afficher les boutons Texte et CSV sur les pages Classement du round et Tableau de ligue
       profile_picture: "🖼️ Photo de profil :"
       submit_button: OK
       choose_file: Choisir un fichier

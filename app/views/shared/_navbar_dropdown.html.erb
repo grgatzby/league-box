@@ -21,6 +21,16 @@
     <%= link_to t(".gallery_link"), gallery_images_path, class: "dropdown-item color-black" %>
     <div class="dropdown-divider"></div>
 
+    <% current_tf = @tournament_format_for_links.presence || @round&.tournament_format.presence || session[:selected_tournament_format].presence %>
+    <% if current_tf.present? %>
+      <h6 class="dropdown-header text-muted mb-0 text-center fw-bold fs-6">
+        <%= t(".tournament_format_short.#{current_tf}", default: current_tf.to_s.humanize) %>
+      </h6>
+    <% end %>
+    <% unless current_user == @admin %>
+      <%= link_to t('.switch_tournament_link', default: "Switch tournament"), tournament_chooser_path, class: "dropdown-item color-green" %>
+    <% end %>
+
     <%# Box-related links %>
     <% context_params = {} %>
     <% if session[:selected_tournament_round_id].present? && session[:selected_tournament_club_id].present? %>
@@ -33,15 +43,6 @@
     <%= link_to t('.all_boxes_link'), boxes_path(context_params), class: "dropdown-item color-green" %>
     <%= link_to t('.round_ranking_link'), user_box_scores_path(context_params), class: "dropdown-item color-green" %>
     <%= link_to t('.league_table_link'), index_league_path(context_params), class: "dropdown-item color-green" %>
-    <div class="dropdown-divider"></div>
-
-    <% current_tf = @tournament_format_for_links.presence || @round&.tournament_format.presence || session[:selected_tournament_format].presence %>
-    <% if current_tf.present? %>
-      <h6 class="dropdown-header text-muted mb-0"><%= t(".tournament_format_short.#{current_tf}", default: current_tf.to_s.humanize) %></h6>
-    <% end %>
-    <% unless current_user == @admin %>
-      <%= link_to t('.switch_tournament_link', default: "Switch tournament"), tournament_chooser_path, class: "dropdown-item color-green" %>
-    <% end %>
     <div class="dropdown-divider"></div>
 
     <%# Player-specific links %>
