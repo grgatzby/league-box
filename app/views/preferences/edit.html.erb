@@ -239,9 +239,17 @@
           </div>
           <div class="col-8">
             <i><%= "League_Round - Box, #rank" %></i><br>
-            <% name = "#{render "shared/fullname", user: current_user}"
-              boxes = current_user.user_box_scores.map{ |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank},<br />" }.sort.join[0...-7] %>
-            <%= sanitize "#{boxes}" %>
+            <% ubs_with_rounds = current_user.user_box_scores.includes(box: :round).to_a %>
+            <% format_order = Round::TOURNAMENT_FORMATS %>
+            <% by_format = ubs_with_rounds.group_by { |ubs| ubs.box.round.tournament_format } %>
+            <% formats_sorted = by_format.keys.sort_by { |f| format_order.index(f) || 99 } %>
+            <% formats_sorted.each do |tf| %>
+              <div class="mb-2">
+                <b><%= t("shared.player_history.format.#{tf}", default: tf.to_s.humanize) %></b><br>
+                <% lines = by_format[tf].map { |ubs| "#{round_label(ubs.box.round)} - Box#{format('%02d', ubs.box.box_number)}, ##{ubs.rank}" }.sort %>
+                <%= sanitize lines.join("<br />") %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
