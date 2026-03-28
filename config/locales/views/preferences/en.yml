@@ -10,6 +10,9 @@ en:
       phone_number: Phone number
       e_mail: E-mail
       password: Change my password
+      enlisted_tournament_formats: Tournament formats
+      my_formats: My formats
+      no_enlisted_tournament_formats: Not enlisted in any tournament format yet
       history: My history
       previous_rounds: Previous rounds
       expanded_view: Expanded view
@@ -25,12 +28,17 @@ en:
       e_mail: E-mail
       password: Password
       modify_password: Change my password
+      enlisted_tournament_formats: Tournament formats
+      my_formats: Tournament formats joined
+      no_enlisted_tournament_formats: Not enlisted in any tournament format yet
       history: My history
       previous_rounds: Previous rounds
       expanded_view: Expanded view
       clear_format_help: Clear background color gradient
       landing_page: Landing page after login
       landing_to_user_box_scores_help: Open the "Round Ranking" page
+      league_export_buttons: League table exports
+      show_league_export_buttons_help: Show Text and CSV buttons on Round Ranking and League Table pages
       profile_picture: "🖼️ Profile Picture:"
       submit_button: OK
       choose_file: Choose File

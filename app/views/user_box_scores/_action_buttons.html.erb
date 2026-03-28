@@ -3,10 +3,12 @@
   Displays action buttons for exporting and navigating league tables.
   Different buttons shown for round ranking (index) vs tournament ranking (index_league).
 %>
+<% show_league_export_buttons = current_user.preference&.show_league_export_buttons != false %>
 <div class="<%= class_names("d-flex flex-wrap gap-2": @is_mobile) %>">
   <% if from == "index" %>
     <%# Round Ranking (index) Actions %>
 
+    <% if show_league_export_buttons %>
     <%# Export to Text Button: Export round ranking to plain text format %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -24,6 +26,7 @@
       <%= link_to t('.to_csv_btn'), csv_round_league_table_path({ round_id: round.id, club_id: round.club_id }.merge(tournament_format_params)),
                                   class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
+    <% end %>
 
     <%# Select League Dropdown: Switch to tournament league table %>
     <%= render "select_league", fallback_path: user_box_scores_path, from: "index" %>
@@ -33,6 +36,7 @@
   <% else %>
     <%# Tournament League Table (index_league) Actions %>
 
+    <% if show_league_export_buttons %>
     <%# Export to Text Button: Export tournament ranking to plain text format %>
     <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
         data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
@@ -50,6 +54,7 @@
       <%= link_to t('.to_csv_btn'), csv_league_table_path({ league_start: @league_start, club_id: round.club_id }.merge(tournament_format_params)),
                                     class: "btn btn-shape btn-green mb-3 dont-print text-size #{'w-100' if @is_mobile}" %>
     </span>
+    <% end %>
 
     <%# Select League Dropdown: Only show if multiple league starts exist %>
     <% if @league_starts.size > 1 %>

@@ -202,7 +202,35 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="col-4"><%= t(".league_export_buttons") %></div>
+        <div class="col-8">
+          <small><i><%= label_tag :show_league_export_buttons, t(".show_league_export_buttons_help") %></i></small>
+          &nbsp;&nbsp;<%= check_box_tag(:show_league_export_buttons, "1", @preference.show_league_export_buttons.eql?(true)) %>
+        </div>
+      </div>
+
       <% if (["player", "player referee"].include?(current_user.role)) %>
+        <hr>
+        <b><%= t(".enlisted_tournament_formats") %></b><br>
+        <div class="row">
+          <div class="col-4">
+            <%= t(".my_formats") %>
+          </div>
+          <div class="col-8">
+            <% singles_formats = current_user.user_box_scores.includes(box: :round).map { |ubs| ubs.box.round.tournament_format } %>
+            <% doubles_formats = current_user.teams.includes(:round).map { |team| team.round&.tournament_format } %>
+            <% joined_formats = (singles_formats + doubles_formats).compact.uniq %>
+            <% format_order = Round::TOURNAMENT_FORMATS %>
+            <% joined_formats = joined_formats.sort_by { |f| format_order.index(f) || 99 } %>
+            <% if joined_formats.any? %>
+              <%= joined_formats.map { |tf| t("shared.player_history.format.#{tf}", default: tf.to_s.humanize) }.join(", ") %>
+            <% else %>
+              <i><%= t(".no_enlisted_tournament_formats") %></i>
+            <% end %>
+          </div>
+        </div>
+
         <hr>
         <b><%= t(".history") %></b><br>
         <div class="row">

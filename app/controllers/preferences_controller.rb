@@ -43,6 +43,13 @@ class PreferencesController < ApplicationController
       changes_made = true
     end
 
+    new_show_league_export_buttons = params[:show_league_export_buttons] == "1"
+    if preference.show_league_export_buttons != new_show_league_export_buttons
+      preference.update(show_league_export_buttons: new_show_league_export_buttons)
+      preference.save
+      changes_made = true
+    end
+
     # Check if user details changed (using strong parameters)
     pref_params = preference_params
     user_params = {}
