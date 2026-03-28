@@ -147,6 +147,7 @@ class PreferencesController < ApplicationController
   # Permits website field even though it's not a Preference attribute
   # The website field is used to update the Club model, not the Preference model
   def preference_params
-    params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail, :website, :landing_to_user_box_scores)
+    params.require(:preference).permit(:nickname, :first_name, :last_name, :phone_number, :e_mail,
+      :website, :landing_to_user_box_scores, :show_league_export_buttons, :clear_format)
   end
 end
