@@ -68,7 +68,9 @@
         <%= render "shared/navbar" %>
         <%= render "shared/flashes" %>
       <% end %>
-      <%= yield %>
+      <main class="turbo-page-transition-target">
+        <%= yield %>
+      </main>
     </div>
     <% if !@render_to_text %>
       <%# exclude footer from exporting to text (in user_box_score index) %>

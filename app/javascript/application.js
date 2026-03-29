@@ -1,5 +1,6 @@
 // Entry point for the build script in your package.json
 import "@hotwired/turbo-rails"
+import "./turbo_page_transitions"
 import "./controllers"
 import "bootstrap"
 import "@popperjs/core"
