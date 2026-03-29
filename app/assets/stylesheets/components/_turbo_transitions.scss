@@ -1,0 +1,21 @@
+// Turbo Drive: fade main content on in-app navigations (navbar stays stable).
+
+.turbo-page-transition-target {
+  transition: opacity 0.22s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+body.turbo-nav--leave .turbo-page-transition-target {
+  opacity: 0;
+}
+
+body.turbo-nav--enter .turbo-page-transition-target {
+  opacity: 0;
+}
+
+body:not(.turbo-nav--enter):not(.turbo-nav--leave) .turbo-page-transition-target {
+  opacity: 1;
+}
