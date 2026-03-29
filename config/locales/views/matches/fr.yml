@@ -37,7 +37,7 @@ fr:
       match_played: "Disputé le %{date} sur le court %{court}."
       submitted: "Score entré %{date} par %{user}."
       points_earned: "Points gagnés : "
-      challenge: "Pour contester ou faire modifier ce score, contacter le club Referee %{referee}."
+      challenge: "Pour contester ou faire modifier ce score, contacter le referee %{referee}."
       back_btn: ⇤
     score_headers:
       player: Joueur

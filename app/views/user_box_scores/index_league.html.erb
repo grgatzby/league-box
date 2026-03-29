@@ -9,6 +9,11 @@
   <% if !@is_mobile %><br><% end %>
 
   <%# Page Title Section: Tournament league table with rounds popover %>
+  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column": @is_mobile) %> text-size">
+  <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2 text-center": @is_mobile) %>">
+    <%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %>
+  </h3>
+</div>
   <% if @rounds %>
     <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
       <%# Build popover message with all rounds in the tournament %>

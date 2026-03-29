@@ -37,7 +37,7 @@ fr:
       expanded_view: Vue "complète" des box
       clear_format_help: Sans dégradé de couleurs
       landing_page: Page d'accueil après connexion
-      landing_to_user_box_scores_help: Charger la page "Classement du round"
+      landing_to_user_box_scores_help: "\"Classement du round\""
       league_export_buttons: Exports du classement
       show_league_export_buttons_help: Afficher les boutons Texte et CSV sur les pages Classement du round et du tournoi
       profile_picture: "🖼️ Photo de profil :"

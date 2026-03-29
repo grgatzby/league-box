@@ -25,3 +25,7 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 $popover-bg: $yellow;
+// Title/header same visual treatment as body (stats button, grid player popovers, etc.)
+$popover-header-bg: $popover-bg;
+$popover-header-color: $body-color;
+$popover-body-color: $body-color;

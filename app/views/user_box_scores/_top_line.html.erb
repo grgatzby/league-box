@@ -21,7 +21,7 @@
   </p>
 <% else %>
   <%# Table Not Sorted: Display rules section with stats %>
-  <div class="<%= class_names("photo-wrap frame-color-shape frame-padding color-black text-size dont-print", "photo-wrap--padel": round&.tournament_format == "doubles_padel") %>">
+  <div class="<%= class_names("photo-wrap frame-color-shape frame-padding color-orange-to-black text-size dont-print", "photo-wrap--padel": round&.tournament_format == "doubles_padel") %>">
     <%= sanitize t('.rules') %>
     <%= render 'shared/stats' %>
   </div><br>
