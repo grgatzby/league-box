@@ -18,7 +18,7 @@
   </div>
   <%# Removed Active Storage photo code - now using CarrierWave on User model for profile pictures %>
 
-  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true do |preference_f| %>
+  <%= form_with model: @preference, method: @preference.id ? :patch : :post, multipart: true, html: { class: "preferences-edit-form" } do |preference_f| %>
 
     <div class="frame-color-shape frame-padding frame-margin-rl text-size box-scroller" >
       <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
@@ -46,14 +46,6 @@
       <%# Editable form fields %>
       <%= render "preferences/form_field",
           form: preference_f,
-          field_name: :nickname,
-          emoji: "😎",
-          label_text: t(".nickname"),
-          placeholder: current_user.nickname,
-          field_value: current_user.nickname,
-          width: "15em" %>
-      <%= render "preferences/form_field",
-          form: preference_f,
           field_name: :first_name,
           emoji: "👤",
           label_text: t(".first_name"),
@@ -70,12 +62,12 @@
           width: "15em" %>
       <%= render "preferences/form_field",
           form: preference_f,
-          field_name: :e_mail,
-          emoji: "📩",
-          label_text: t(".e_mail"),
-          placeholder: current_user.email,
-          field_value: current_user.email,
-          width: "20em" %>
+          field_name: :nickname,
+          emoji: "😎",
+          label_text: t(".nickname"),
+          placeholder: current_user.nickname,
+          field_value: current_user.nickname,
+          width: "15em" %>
       <%= render "preferences/form_field",
           form: preference_f,
           field_name: :phone_number,
@@ -83,8 +75,16 @@
           label_text: t(".phone_number"),
           placeholder: current_user.phone_number,
           field_value: current_user.phone_number,
-          width: "10em" %>
-     <hr>
+          width: "15em" %>
+      <%= render "preferences/form_field",
+          form: preference_f,
+          field_name: :e_mail,
+          emoji: "📩",
+          label_text: t(".e_mail"),
+          placeholder: current_user.email,
+          field_value: current_user.email,
+          width: "20em" %>
+
 
       <div class="row">
         <div class="col-4"><%= label_tag "user[profile_picture]", t(".profile_picture") %></div>
@@ -235,10 +235,10 @@
         <b><%= t(".history") %></b><br>
         <div class="row">
           <div class="col-4">
-            <%= t(".previous_rounds") %>
+            <%= t(".rounds_played") %>
           </div>
           <div class="col-8">
-            <i><%= "League_Round - Box, #rank" %></i><br>
+            <i><%= t(".rounds_played_legend") %></i><br>
             <% ubs_with_rounds = current_user.user_box_scores.includes(box: :round).to_a %>
             <% format_order = Round::TOURNAMENT_FORMATS %>
             <% by_format = ubs_with_rounds.group_by { |ubs| ubs.box.round.tournament_format } %>

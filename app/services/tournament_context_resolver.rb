@@ -103,7 +103,7 @@ class TournamentContextResolver
                    when "doubles_tennis"
                      "Doubles Tennis"
                    when "doubles_padel"
-                     "Doubles Padel"
+                     "Padel"
                    else
                      round.tournament_format.to_s.humanize
                    end

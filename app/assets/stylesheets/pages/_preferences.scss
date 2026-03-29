@@ -1,0 +1,16 @@
+// Preferences edit: text-like controls use brand accent
+.preferences-edit-form {
+  .contact-field.form-control,
+  input.form-control:not(.custom-file-input),
+  select.form-control,
+  textarea.form-control {
+    background-color: $tennis-orange-light;
+    border-color: transparent;
+
+    &:focus {
+      background-color: $tennis-orange;
+      border-color: darken($tennis-orange, 12%);
+      box-shadow: 0 0 0 0.2rem rgba($tennis-orange, 0.45);
+    }
+  }
+}

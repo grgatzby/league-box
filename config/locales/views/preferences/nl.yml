@@ -14,7 +14,7 @@ nl:
       my_formats: Mijn formaten
       no_enlisted_tournament_formats: Nog niet ingeschreven in een toernooiformat
       history: Mijn geschiedenis
-      previous_rounds: Vorige rondes
+      rounds_played: Rondes gespeeld
       expanded_view: Uitgebreide weergave
       clear_format: Zijn achtergrondkleurverloop
     edit:
@@ -32,13 +32,14 @@ nl:
       my_formats: Toernooien ingeschreven
       no_enlisted_tournament_formats: Nog niet ingeschreven in een toernooiformat
       history: Mijn geschiedenis
-      previous_rounds: Vorige rondes
+      rounds_played: Rondes gespeeld
+      rounds_played_legend: "Ronde — box, #rang"
       expanded_view: Uitgebreide weergave
       clear_format_help: Zijn achtergrondkleurverloop
       landing_page: Startpagina na inloggen
       landing_to_user_box_scores_help: Open de "Ronde ranglijst" pagina
       league_export_buttons: Exportknoppen ranglijst
-      show_league_export_buttons_help: Toon de knoppen Tekst en CSV op de Ronde ranglijst- en Competitietabel-pagina's
+      show_league_export_buttons_help: Toon de knoppen Tekst en CSV op de Ronde ranglijst- en League Table-pagina's
       profile_picture: "🖼️ Profielfoto:"
       submit_button: OK
       choose_file: Bestand kiezen

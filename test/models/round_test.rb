@@ -43,8 +43,8 @@ class RoundTest < ActiveSupport::TestCase
       assert_equal "R01S", r1.round_label_round_part
       assert_equal "2024/10_R01S", r1.round_label
 
-      assert_equal "R02D", r2.round_label_round_part
-      assert_equal "2024/10_R02D", r2.round_label
+      assert_equal "R01D", r2.round_label_round_part
+      assert_equal "2024/10_R01D", r2.round_label
     end
 
     padel = Round.create!(
@@ -55,7 +55,31 @@ class RoundTest < ActiveSupport::TestCase
       tournament_format: "doubles_padel"
     )
     I18n.with_locale(:en) do
-      assert_equal "2024/10_R03P", padel.round_label
+      assert_equal "2024/10_R01P", padel.round_label
+    end
+  end
+
+  test "round_number_in_league is per tournament_format: same start_date yields R01 for each format" do
+    club = Club.create!(name: "RoundLabel Club #{SecureRandom.hex(4)}", tiebreak_points: 10)
+    league_start = Date.new(2026, 3, 1)
+    same_day = league_start
+    padel = Round.create!(
+      club: club,
+      start_date: same_day,
+      end_date: same_day + 20,
+      league_start: league_start,
+      tournament_format: "doubles_padel"
+    )
+    doubles = Round.create!(
+      club: club,
+      start_date: same_day,
+      end_date: same_day + 20,
+      league_start: league_start,
+      tournament_format: "doubles_tennis"
+    )
+    I18n.with_locale(:en) do
+      assert_equal "R01P", padel.round_label_round_part
+      assert_equal "R01D", doubles.round_label_round_part
     end
   end
 end

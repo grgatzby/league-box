@@ -14,7 +14,7 @@ fr:
       my_formats: Mes formats
       no_enlisted_tournament_formats: Aucun format de tournoi rejoint pour le moment
       history: Mon historique
-      previous_rounds: Rounds précédents
+      rounds_played: Rounds joués
       expanded_view: Vue "complète" des box
       clear_format: Sans dégradé de couleurs
     edit:
@@ -32,13 +32,14 @@ fr:
       my_formats: Tournois rejoints
       no_enlisted_tournament_formats: Aucun format de tournoi rejoint pour le moment
       history: Mon historique
-      previous_rounds: Rounds précédents
+      rounds_played: Rounds joués
+      rounds_played_legend: "Round — box, #rang"
       expanded_view: Vue "complète" des box
       clear_format_help: Sans dégradé de couleurs
       landing_page: Page d'accueil après connexion
       landing_to_user_box_scores_help: Charger la page "Classement du round"
       league_export_buttons: Exports du classement
-      show_league_export_buttons_help: Afficher les boutons Texte et CSV sur les pages Classement du round et Tableau de ligue
+      show_league_export_buttons_help: Afficher les boutons Texte et CSV sur les pages Classement du round et du tournoi
       profile_picture: "🖼️ Photo de profil :"
       submit_button: OK
       choose_file: Choisir un fichier
