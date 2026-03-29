@@ -1,15 +1,32 @@
 <!-- partial : rules section 2 (Round dates)-->
+<% format_order = Round::TOURNAMENT_FORMATS %>
 <% if current_user == @admin %>
-  <%# Admin view: display rounds for each club %>
+  <%# Admin view: display rounds for each club, grouped by tournament format %>
   <% clubs = Club.all.reject { |club| club == @sample_club } %>
   <% clubs.each do |club| %>
     <%# Club name as header %>
     <h5 class="color-tennis-blue" style="margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px;">
       <%= club.name %>
     </h5>
-    <%= render "pages/rounds_by_league", rounds: club.rounds %>
+    <% club_rounds = club.rounds.to_a %>
+    <% formats_in_club = club_rounds.map(&:tournament_format).uniq.sort_by { |f| format_order.index(f) || 99 } %>
+    <% formats_in_club.each do |tf| %>
+      <% format_rounds = club_rounds.select { |r| r.tournament_format == tf } %>
+      <h6 class="color-tennis-blue fw-bold" style="margin-top: 18px; margin-bottom: 12px;">
+        <%= t("shared.player_history.format.#{tf}", default: tf.to_s.humanize) %>
+      </h6>
+      <%= render "pages/rounds_by_league", rounds: format_rounds %>
+    <% end %>
   <% end %>
 <% else %>
-  <%# Non-admin view: display rounds for current club only %>
-  <%= render "pages/rounds_by_league", rounds: @rounds %>
+  <%# Non-admin view: display rounds for current club only, grouped by tournament format %>
+  <% user_rounds = @rounds.to_a %>
+  <% formats_here = user_rounds.map(&:tournament_format).uniq.sort_by { |f| format_order.index(f) || 99 } %>
+  <% formats_here.each do |tf| %>
+    <% format_rounds = user_rounds.select { |r| r.tournament_format == tf } %>
+    <h6 class="color-tennis-blue fw-bold" style="margin-top: 18px; margin-bottom: 12px;">
+      <%= t("shared.player_history.format.#{tf}", default: tf.to_s.humanize) %>
+    </h6>
+    <%= render "pages/rounds_by_league", rounds: format_rounds %>
+  <% end %>
 <% end %>

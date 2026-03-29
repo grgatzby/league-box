@@ -31,7 +31,7 @@ class Round < ApplicationRecord
   end
 
   # Single source of truth for round labels (see also ApplicationController#round_label, TournamentContextResolver#title_for).
-  # Format: yyyy/mm_RnnS — league start date, round order within that league+club, then S/D/P.
+  # Format: yyyy/mm_RnnS — league start date, round order within that league+club+tournament_format, then S/D/P.
   def round_label
     part = round_label_round_part
     return "" if part.blank?
@@ -51,11 +51,11 @@ class Round < ApplicationRecord
     TOURNAMENT_FORMAT_LABEL_SUFFIX[tournament_format] || "?"
   end
 
-  # 1-based index among rounds sharing this club and league_start, ordered by start_date.
+  # 1-based index among rounds sharing this club, league_start, and tournament_format, ordered by start_date.
   def round_number_in_league
     return nil unless league_start && id
 
-    ids = Round.where(league_start:, club_id: club_id).order(:start_date).map(&:id)
+    ids = Round.where(league_start:, club_id: club_id, tournament_format: tournament_format).order(:start_date).map(&:id)
     idx = ids.index(id)
     idx ? idx + 1 : nil
   end

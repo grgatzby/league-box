@@ -14,7 +14,7 @@ en:
       my_formats: My formats
       no_enlisted_tournament_formats: Not enlisted in any tournament format yet
       history: My history
-      previous_rounds: Previous rounds
+      rounds_played: Rounds played
       expanded_view: Expanded view
       clear_format: Clear background color gradient
     edit:
@@ -32,7 +32,8 @@ en:
       my_formats: Tournament formats joined
       no_enlisted_tournament_formats: Not enlisted in any tournament format yet
       history: My history
-      previous_rounds: Previous rounds
+      rounds_played: Rounds played
+      rounds_played_legend: "League round — Box, #Rank"
       expanded_view: Expanded view
       clear_format_help: Clear background color gradient
       landing_page: Landing page after login
