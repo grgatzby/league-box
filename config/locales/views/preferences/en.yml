@@ -37,7 +37,7 @@ en:
       expanded_view: Expanded view
       clear_format_help: Clear background color gradient
       landing_page: Landing page after login
-      landing_to_user_box_scores_help: Open the "Round Ranking" page
+      landing_to_user_box_scores_help: "\"Round Ranking\""
       league_export_buttons: League table exports
       show_league_export_buttons_help: Show Text and CSV buttons on Round Ranking and League Table pages
       profile_picture: "🖼️ Profile Picture:"
