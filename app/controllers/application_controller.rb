@@ -509,9 +509,13 @@ class ApplicationController < ActionController::Base
   # Initialize statistics variables for display in views
   # Sets: @nb_matches, @nb_matches_played, @days_left, @round_days, @last_round_match_date, @nb_boxes, @nb_players
   # Also sets box-specific stats if @box is present
+  #
+  # Round-robin capacity uses one "entity" per competitor: singles = players (user_box_scores), doubles/padel = teams
+  # (team_box_scores). Using user_box_scores for doubles would count both members of each team and inflate slots (e.g. 28 vs 6).
   def init_stats
-    # @nb_matches = @round.boxes.map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
-    @nb_matches = @round.boxes.includes([:user_box_scores, :matches]).map { |box| box.user_box_scores.size * (box.user_box_scores.size - 1) / 2 }.sum
+    doubles = @round.doubles_format?
+    includes = doubles ? [:user_box_scores, :team_box_scores, :matches] : [:user_box_scores, :matches]
+    @nb_matches = @round.boxes.includes(includes).map { |box| round_robin_match_count(box_competitors_count(box, doubles)) }.sum
     @nb_matches_played = @round.boxes.map { |box| box.matches.size }.sum
     @days_left = @round.end_date - Date.today
     @round_days = @round.end_date - @round.start_date
@@ -519,11 +523,12 @@ class ApplicationController < ActionController::Base
     @nb_boxes = @round.boxes.size
     @nb_players = @round.boxes.map { |box| box.user_box_scores.size }.sum
     if @box
-      @nb_box_matches = @box.user_box_scores.size * (@box.user_box_scores.size - 1) / 2
+      @nb_box_matches = round_robin_match_count(box_competitors_count(@box, doubles))
       @nb_box_matches_played = @box.matches.size
       @last_box_match_date = last_box_match_date(@box)
       if @box == @my_box
-        @my_nb_matches = @my_box.user_box_scores.size - 1
+        my_n = box_competitors_count(@my_box, doubles)
+        @my_nb_matches = my_n.positive? ? my_n - 1 : 0
         @my_nb_matches_played = current_user.user_match_scores.select { |user_match_score| user_match_score.match.box == @my_box }.map(&:match).size
       end
     end
@@ -547,6 +552,19 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  # Number of round-robin pairings for n competitors (each pair plays once).
+  def round_robin_match_count(n)
+    n = n.to_i
+    return 0 if n < 2
+
+    n * (n - 1) / 2
+  end
+
+  # Singles: players per box; doubles/padel: teams per box (not 2× players).
+  def box_competitors_count(box, doubles_round)
+    doubles_round ? box.team_box_scores.size : box.user_box_scores.size
+  end
 
   # Extract locale from browser Accept-Language header
   # Returns: one of ALLOWED_LOCALES or DEFAULT_LOCALE

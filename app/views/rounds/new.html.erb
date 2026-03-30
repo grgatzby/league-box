@@ -27,7 +27,7 @@
       <%# Main Form: Only display if @new_round is initialized %>
       <% if @new_round %>
         <h4><%= @current_round.club.name %></h4>
-        <%= form_for @new_round do |f| %>
+        <%= form_for @new_round, html: { class: "round-new-round-form" } do |f| %>
           <div data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{ "show": 500 }'
             title="Box moves" data-bs-content="<%= t '.message_boxes' %>">
@@ -39,23 +39,26 @@
                 <div class="box small-font">
                   <%# Box Header: Box number %>
                   <div class="box-title"><b><%= "Box #{box.box_number}" %></b></div>
-                  <ol type="1">
-                    <%# Sort players by rank for display %>
-                    <% user_box_scores = box.user_box_scores.sort { |a, b| a.rank <=> b.rank } %>
+                  <ol type="1" class="round-new-players-list mb-0">
+                    <%# Same order as proposals: points desc, then rank %>
+                    <% user_box_scores = box.user_box_scores.sort_by { |ubs| [-ubs.points.to_i, ubs.rank.to_i] } %>
                     <%= new_box.fields_for :user_box_scores do |new_user_box_score| %>
                       <% user_box_score = user_box_scores[new_user_box_score.index] %>
-                      <li>
-                        <div class="row">
+                      <li class="round-new-player-line">
+                        <div class="row g-1 align-items-center py-0 my-0">
                           <%# Player Name Column %>
                           <div class="col-6"><%= render "shared/fullname", user: user_box_score.user %></div>
                           <%# Current Rank Column %>
                           <div class="col-2"><%= "##{user_box_score.rank}" %></div>
                           <%# Matches Played Column %>
-                          <div class="col-1"><%= "#{user_box_score.matches_played}" %></div>
-                          <%# Box Move Selector: Shift player up/down boxes or remove (99) %>
-                          <%# shift is an array method: removes first element from array and returns the element %>
-                          <%# Options: -3 (move down 3 boxes), -2, -1, 0 (stay), 1, 2, 3 (move up), 99 (remove) %>
-                          <div class="col-2"><%= new_user_box_score.select :box_id, [-3,-2,-1,0,1,2,3,99].reverse, selected: @player_moves.shift %></div>
+                          <div class="col-1"><%= user_box_score.matches_played.to_i %></div>
+                          <%# Move: +2 … −2 (toward box 1 = up), 99 = skip next round %>
+                          <div class="col-3">
+                            <%= new_user_box_score.number_field :promotion_move,
+                                min: -2, max: 99, step: 1,
+                                class: "form-control form-control-sm d-inline-block",
+                                style: "width: 4.25rem" %>
+                          </div>
                         </div>
                       </li>
                     <% end %>
@@ -86,6 +89,16 @@
                   <%= f.date_field(:league_start, value: @current_round.league_start ) %>
                 </div>
 
+                <%# Players per box in the new round (default = current round first box) %>
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                  <%= label_tag :players_per_box, t(".players_per_box"), class: "mb-0" %>
+                  <%= number_field_tag :players_per_box, @default_players_per_box,
+                      min: RoundsController::MIN_PLAYERS_PER_BOX, max: 32, step: 1,
+                      class: "form-control form-control-sm",
+                      style: "width: 4.25rem" %>
+                  <small class="text-muted"><%= t(".players_per_box_hint") %></small>
+                </div>
+
                 <%# Round Date Fields: Start and end dates for the new round %>
                 <div class="one-liner">
                   <%# Calculate proposed dates based on current round %>
@@ -102,8 +115,9 @@
                   <%= f.date_field(:end_date, value: (enddate >> duration) - 1, min: (enddate >> 1) - 1 ) %>
                 </div><br>
 
-                <%# Hidden Field: Store club ID %>
+                <%# Hidden: club + source round so create uses the same boxes as this form (multi-format clubs). %>
                 <%= hidden_field_tag(:club_id, @current_round.club_id) %>
+                <%= hidden_field_tag(:round_id, @current_round.id) %>
 
                 <%# Form Actions: Submit to create round or go back %>
                 <div class="one-liner">

@@ -7,3 +7,18 @@
   padding: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+// Next round form: tighter rows between players
+.round-new-round-form {
+  .round-new-players-list {
+    padding-left: 1.25rem;
+  }
+
+  .round-new-player-line {
+    margin-bottom: 0.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -933,10 +933,13 @@ class MatchesController < ApplicationController
     [results[:sets_won1], results[:sets_won2]]
   end
 
-  # Convert set score string to array
-  # Example: "4-3" => [4, 3]
+  # Convert set score string to array of two game counts (one per player).
+  # Example: "4-3" => [4, 3]. Blank, nil, or one-sided input => [0, 0] / padded so [index] is never nil.
   def score_to_a(score)
-    score.split("-").map(&:to_i)
+    return [0, 0] if score.blank?
+
+    nums = score.to_s.split("-").map(&:to_i)
+    [nums[0] || 0, nums[1] || 0]
   end
 
   # Convert full match score string to match_scores array

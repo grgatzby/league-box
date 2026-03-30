@@ -42,14 +42,20 @@
             <%# Ordered list of players in the box, sorted by rank %>
             <ol type="1">
               <% if @round.doubles_format? %>
+                <%# Match count from Match rows (same source as box grid / show), not TeamBoxScore#matches_played which can drift. %>
+                <% team_match_counts = box.matches.each_with_object(Hash.new(0)) do |m, counts|
+                     counts[m.team_a_id] += 1 if m.team_a_id
+                     counts[m.team_b_id] += 1 if m.team_b_id
+                   end %>
                 <% team_scores = box.team_box_scores.includes(:team).sort { |a, b| a.rank <=> b.rank } %>
                 <% team_scores.each do |team_box_score| %>
                   <% team = team_box_score.team %>
+                  <% played = team_match_counts[team.id] %>
                   <li class=<%= team.users.include?(current_user) ? "color-orange" : "" %>>
                     <div class="row">
                       <div class="col-6"><%= team.display_name %></div>
                       <div class="col-2"><%= "##{team_box_score.rank}" %></div>
-                      <div class="<%= class_names("col-1", "color-tennis-red": team_box_score.matches_played.zero?) %>"><%= "#{team_box_score.matches_played}" %></div>
+                      <div class="<%= class_names("col-1", "color-tennis-red": played.zero?) %>"><%= played %></div>
                       <div class="col-3"><%= t("pts", count: team_box_score.points) %></div>
                     </div>
                   </li>
@@ -105,7 +111,7 @@
       <% if current_user && current_user.role == "admin" && @new_round_required %>
           <%# Allow admin to create next round up to 15 days before or 300 days after end of last round
           Time-related condition embedded in @new_round_required %>
-          <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id), class: "btn btn-shape btn-aqua" %>
+          <%= link_to t(".create_round_btn"), new_round_path(club_id: @round.club_id, round_id: @round.id), class: "btn btn-shape btn-aqua" %>
       <% elsif current_user && (["referee", "player referee"].include?(current_user.role)) && @new_round_request%>
           <%= link_to t(".request_round_btn"), new_contact_path(round_id: @round.id), class: "btn btn-shape btn-aqua" %>
       <% end %>
