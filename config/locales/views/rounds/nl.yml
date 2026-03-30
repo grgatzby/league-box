@@ -11,6 +11,8 @@ nl:
           -2 = kom langs 2 boxen.<br /><br />
           Kies 99 om de speler uit de volgende ronde te elimineren (bijvoorbeeld als er minder dan 2 wedstrijden gespeeld zijn).
       message_boxes: speler, rangschikking,<br />aantal gespeelde wedstrijden, voorgestelde zet
+      players_per_box: "Spelers per box (nieuwe ronde)"
+      players_per_box_hint: "Standaard het meest voorkomende aantal spelers per box in de huidige ronde. Aanpasbaar voor bevestiging."
       league_start: "Toernooistartdatum:"
       start_date: "Rondestartdatum:"
       end_date: "Rondeeinddatum:"
@@ -24,6 +26,10 @@ nl:
         De headers moeten 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [<i>optioneel</i>], 'telefoonnummer' en 'rol' bevatten.
     create:
       header_flash: De headers van de CSV-bestand moeten 'e-mail', 'voornaam', 'achternaam', 'bijnaam' [optioneel], 'telefoonnummer' en 'rol' bevatten.
+      round_created_from_form: "Volgende ronde aangemaakt: %{boxes} boxen, tot %{ppb} spelers per box."
+      doubles_not_supported: Aanmaken vanaf dit formulier is alleen beschikbaar voor enkelspel.
+      no_boxes_flash: Geen boxen in de huidige ronde.
+      no_players_flash: Geen spelers voor de volgende ronde (allemaal 99?).
       round_created:
         zero: Round gemaakt met %{players} spelers per box. Alle spelers waren aanwezig.
         one: Round gemaakt met %{players} spelers per box. De laatste speler konde niet worden ondergebracht.

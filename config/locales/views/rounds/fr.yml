@@ -11,6 +11,8 @@ fr:
           -2 = baisser de 2 box.<br /><br />
           Choisir 99 pour éliminer le joueur du prochain round (par ex. si moins de 2 matchs joués).
       message_boxes: joueur, classement,<br />nb matchs joués, mouvement proposé
+      players_per_box: "Joueurs par box (nouveau round)"
+      players_per_box_hint: "Par défaut, taille de box la plus fréquente dans le round actuel. Ajustable avant validation."
       league_start: "Départ du tournoi:"
       start_date: "Départ du round:"
       end_date: "Fin du round:"
@@ -24,6 +26,10 @@ fr:
         Les entêtes doivent inclure "email", "first_name", "last_name", "nickname"[<i>optionnel</i>], "phone_number", et "role".
     create:
       header_flash: Les entêtes du fichier CSV doivent inclure "email", "first_name", "last_name", "nickname"[optionnel], "phone_number", et "role".
+      round_created_from_form: "Prochain round créé : %{boxes} box, jusqu'à %{ppb} joueurs par box."
+      doubles_not_supported: La création depuis ce formulaire n'est disponible que pour les ligues en simple.
+      no_boxes_flash: Aucune box dans le round actuel.
+      no_players_flash: Aucun joueur pour le prochain round (tous en 99 ?).
       round_created:
         zero: Round créé avec %{players} joueurs par box. Tous les joueurs ont été inclus.
         one: Round créé avec %{players} joueurs par box. Le dernier joueur n'a pu être inclus.

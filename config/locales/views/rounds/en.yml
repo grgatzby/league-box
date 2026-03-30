@@ -7,10 +7,13 @@ en:
           Select box move, for example:<br />
           2 = two boxes up,<br />
           1 = one box up,<br />
+          0 = stay in same box tier,<br />
           -1 = one box down,<br />
           -2 = two boxes down.<br /><br />
-          Select 99 to remove player from next league round (e.g. if less than 2 games played).
+          Select 99 to remove player from next league round (e.g. if fewer than the minimum qualifying matches played).
       message_boxes: player name, player rank,<br />nb matches played, proposed box move
+      players_per_box: "Players per box (new round)"
+      players_per_box_hint: "Defaults to the most common box size in the current round. Change if needed before creating the round."
       league_start: "Tournament start:"
       start_date: "Round start:"
       end_date: "Round end:"
@@ -24,6 +27,10 @@ en:
         Headers must include "email", "first_name", "last_name", "nickname"[<i>optional</i>], "phone_number", and "role".
     create:
       header_flash: CSV file headers must include "email", "first_name", "last_name", "nickname"[optional], "phone_number", and "role".
+      round_created_from_form: "Next round created: %{boxes} boxes, up to %{ppb} players per box."
+      doubles_not_supported: Creating the next round from this form is only available for singles leagues.
+      no_boxes_flash: No boxes in the current round.
+      no_players_flash: No players selected for the next round (all marked 99?).
       round_created:
         zero: Round created with %{players} players per box. All players were included.
         one: Round created with %{players} players per box. Last player could not be accomodated.
