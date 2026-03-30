@@ -78,7 +78,7 @@ class MatchesController < ApplicationController
       @match.user_match_scores.build
       # Store effective tiebreak points for use in view
       @effective_tiebreak_points = @round.effective_tiebreak_points
-      @court_options = Court.for_round(@round).pluck(:name)
+      @court_options = sorted_court_options_for_round(@round)
       # the code below was adapted to the previous form where scores of a set were input individually (eg 4 and 1 for 4-1)
       # if params[:score_set1]
       #   @match_entry = Match.new
@@ -278,7 +278,7 @@ class MatchesController < ApplicationController
     @max_end_date = [@round.end_date, Time.now].min
     # Store effective tiebreak points for use in view
     @effective_tiebreak_points = @round.effective_tiebreak_points
-    @court_options = Court.for_round(@round).pluck(:name)
+    @court_options = sorted_court_options_for_round(@round)
   end
 
   # Update match scores (admin and referees only)
@@ -591,6 +591,12 @@ class MatchesController < ApplicationController
   end
 
   private
+
+  def sorted_court_options_for_round(round)
+    Court.for_round(round).pluck(:name).sort_by do |name|
+      name.to_s.scan(/\d+|\D+/).map { |part| part.match?(/\A\d+\z/) ? [0, part.to_i] : [1, part.downcase] }
+    end
+  end
 
   def current_user_team_in_box(box)
     return nil unless box
