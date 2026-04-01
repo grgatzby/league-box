@@ -60,6 +60,9 @@ class TournamentFormatsController < ApplicationController
     end
 
     round = nil
+    # After dropping boxes.chatroom_id, long-lived processes may keep stale column metadata.
+    # Refresh once here so Box.create! targets current DB columns.
+    Box.reset_column_information
     ActiveRecord::Base.transaction do
       club = Club.find(@form[:club_id])
       ensure_compatible_courts!(club, @form)
