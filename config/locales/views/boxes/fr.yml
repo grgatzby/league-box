@@ -45,6 +45,11 @@ fr:
       request_round_btn: faire créer le prochain round
       valid_round_flash: "League table annuel: choisir un round valide"
       load_scores: 📄 charger les scores
+      destroy_round_btn: Supprimer le round
+      destroy_round_confirm: Supprimer le round sélectionné et toutes les données liées ?
+      destroy_current_round_option: "Round courant (%{round})"
+      destroy_last_round_option: "Dernier round (%{round})"
+      destroy_round_choice_option: "%{round} (%{date})"
     my_scores:
       my_scores: Scores & messagerie
       intro_html: >

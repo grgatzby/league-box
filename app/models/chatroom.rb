@@ -1,6 +1,6 @@
 class Chatroom < ApplicationRecord
   has_many :messages, dependent: :destroy
-  has_one :box
+  belongs_to :box, optional: true
   has_many :chatroom_reads, dependent: :destroy
   has_many :read_by_users, through: :chatroom_reads, source: :user
 

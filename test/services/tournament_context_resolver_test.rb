@@ -20,7 +20,7 @@ class TournamentContextResolverTest < ActiveSupport::TestCase
       league_start: Date.today.beginning_of_month,
       tournament_format: "singles_tennis"
     )
-    box = Box.create!(round: singles_round, box_number: 1, chatroom: Chatroom.find_or_create_by!(name: "general"))
+    box = Box.create!(round: singles_round, box_number: 1)
     UserBoxScore.create!(user: user, box: box)
 
     doubles_round = Round.create!(
@@ -30,7 +30,7 @@ class TournamentContextResolverTest < ActiveSupport::TestCase
       league_start: Date.today.beginning_of_month,
       tournament_format: "doubles_tennis"
     )
-    doubles_box = Box.create!(round: doubles_round, box_number: 2, chatroom: Chatroom.find_or_create_by!(name: "general"))
+    doubles_box = Box.create!(round: doubles_round, box_number: 2)
     team = Team.create!(round: doubles_round, box: doubles_box, name: "Team A")
     TeamMembership.create!(team: team, user: user)
 

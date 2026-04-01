@@ -45,7 +45,7 @@ class ChatroomsController < ApplicationController
         # chatroom not opened yet, create it
         flash[:notice] = t('.chatroom_created_flash')
         @chatroom = Chatroom.create(name: chatroom_name)
-        @box.update(chatroom_id: @chatroom.id)
+        @chatroom.update(box: @box)
 
         # Broadcast notification to all users with access
         @chatroom.users_with_access.each do |user|
@@ -152,10 +152,10 @@ class ChatroomsController < ApplicationController
       return
     end
 
-    # If there's an associated box, reassign it to the general chatroom
+    # If there's an associated box, detach it from this chatroom.
+    # The box chatroom can be recreated lazily on next access.
     if @chatroom.box
-      general_chatroom = Chatroom.find_or_create_by(name: "general")
-      @chatroom.box.update(chatroom_id: general_chatroom.id)
+      @chatroom.update(box: nil)
     end
 
     # Delete all messages first (they will be deleted automatically via dependent: :destroy)

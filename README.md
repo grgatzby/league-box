@@ -236,7 +236,7 @@ Round
 
 Box
 ├── belongs_to :round
-├── belongs_to :chatroom
+├── has_one :chatroom
 ├── has_many :matches
 └── has_many :user_box_scores
   - box_number
@@ -266,8 +266,9 @@ UserBoxScore
   - points, rank, sets_won, sets_played, matches_won, matches_played, games_won, games_played
 
 Chatroom
+├── belongs_to :box (optional; "general" has no box)
 ├── has_many :messages
-└── has_one :box
+└── has_many :chatroom_reads
   - name
 
 Message

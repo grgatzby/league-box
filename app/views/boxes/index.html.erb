@@ -93,19 +93,35 @@
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
             data-bs-content="<%= t '.message_csv_pop' %>">
-          <%= link_to t('boxes.common.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
+          <%= link_to t('boxes.common.to_csv_btn'), csv_boxes_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3", target: "_blank", rel: "noopener" %>
         </span>
       <% end %>
       <% if current_user == @admin %>
         <span data-controller="popover" data-bs-html="true" data-bs-toggle="popover"
             data-bs-trigger="hover" data-bs-placement="right" data-bs-delay= '{"show": 1000}'
             data-bs-content="<%= t '.message_tournament_csv_pop' %>">
-          <%= link_to t(".to_tournament_csv_btn"), csv_tournament_players_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
+          <%= link_to t(".to_tournament_csv_btn"), csv_tournament_players_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3", target: "_blank", rel: "noopener" %>
         </span>
+        <%= link_to "CSV match scores", csv_player_match_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3", target: "_blank", rel: "noopener" %>
       <% end %>
       <%# Admin-only: Load scores button %>
       <% if current_user == @admin %>
         <%= link_to t(".load_scores"), load_scores_path(round_id: @round.id), class: "btn btn-shape btn-aqua me-3" %>
+      <% end %>
+        <% if current_user == @admin && @format_rounds.present? %>
+        <%= form_with url: destroy_round_path, method: :post, local: true, class: "d-inline-flex align-items-center gap-2 me-3" do %>
+          <%= hidden_field_tag :club_id, @round.club_id %>
+          <%= hidden_field_tag :round_id, @round.id %>
+          <% delete_options = [[t(".destroy_current_round_option", round: round_label(@round)), "current"]] %>
+          <% if @last_format_round && @last_format_round.id != @round.id %>
+            <% delete_options << [t(".destroy_last_round_option", round: round_label(@last_format_round)), "last"] %>
+          <% end %>
+          <% @format_rounds.reverse_each do |r| %>
+            <% delete_options << [t(".destroy_round_choice_option", round: round_label(r), date: l(r.start_date, format: :ddmmmyyy_date)), r.id] %>
+          <% end %>
+          <%= select_tag :destroy_round_choice, options_for_select(delete_options, "current"), class: "form-select form-select-sm", style: "width: 15.5rem" %>
+          <%= submit_tag t(".destroy_round_btn"), class: "btn btn-shape btn-red", data: { confirm: t(".destroy_round_confirm") } %>
+        <% end %>
       <% end %>
       <%# Round creation buttons: Admin can create, Referees can request %>
       <% if current_user && current_user.role == "admin" && @new_round_required %>

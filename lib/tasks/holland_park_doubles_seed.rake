@@ -83,8 +83,8 @@ namespace :seed do
       chatroom = Chatroom.find_or_create_by!(
         name: "#{club.name} - PadelSeed-R#{round.id}:B#{format('%02d', box_number)}"
       )
-      box = Box.create!(round_id: round.id, box_number: box_number, chatroom_id: chatroom.id)
-
+      box = Box.create!(round_id: round.id, box_number: box_number)
+      chatroom.update(box_id: box)
       teams_slice.each_with_index do |pair, team_index|
         team = Team.create!(
           round_id: round.id,

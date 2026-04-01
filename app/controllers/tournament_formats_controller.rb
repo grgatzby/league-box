@@ -75,8 +75,7 @@ class TournamentFormatsController < ApplicationController
       @players.group_by { |p| p[:box_number].to_i }.sort.each do |box_number, _|
         boxes[box_number] = Box.create!(
           round_id: round.id,
-          box_number: box_number,
-          chatroom_id: @general_chatroom.id
+          box_number: box_number
         )
       end
 
