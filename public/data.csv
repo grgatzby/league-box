@@ -1,33 +1,31 @@
-first_name1,last_name1,phone_number1,email1,first_name2,last_name2,phone_number2,email2
-Sophie,Dubois,+33 6 45 67 89 01,sophie.dubois@example.com,Quentin,Fournier,+33 6 90 10 20 30,quentin.fournier@example.com
-Pierre,Bernard,+33 6 34 56 78 90,pierre.bernard@example.com,Valerie,Masson,+33 6 12 13 14 15,valerie.masson@example.com
-Marie,Martin,+33 6 23 45 67 89,marie.martin@example.com,Laetitia,Mercier,+33 6 16 17 18 19,laetitia.mercier@example.com
-Jean,Dupont,+33 6 12 34 56 78,jean.dupont@example.com,Gregory,Dupuy,+33 6 17 18 19 20,gregory.dupuy@example.com
-Benjamin,Andre,+33 6 15 16 17 18,benjamin.andre@example.com,Isabelle,Moreau,+33 6 67 89 01 23,isabelle.moreau@example.com
-Antoine,Laurent,+33 6 56 78 90 12,antoine.laurent@example.com,Vanessa,Roussel,+33 6 18 19 20 21,vanessa.roussel@example.com
-Melissa,Colin,+33 6 20 21 22 23,melissa.colin@example.com,Thomas,Simon,+33 6 78 90 12 34,thomas.simon@example.com
-Kevin,Leclerc,+33 6 19 20 21 22,kevin.leclerc@example.com,Claire,Lefebvre,+33 6 89 01 23 45,claire.lefebvre@example.com
-Stephanie,Caron,+33 6 22 23 24 25,stephanie.caron@example.com,Julie,Vincent,+33 6 22 33 44 55,julie.vincent@example.com
-Nicolas,Roux,+33 6 90 12 34 56,nicolas.roux@example.com,Cyril,Vidal,+33 6 21 22 23 24,cyril.vidal@example.com
-Emilie,Girard,+33 6 01 23 45 67,emilie.girard@example.com,Mathieu,Schmitt,+33 6 23 24 25 26,mathieu.schmitt@example.com
-Laurent,Bonnet,+33 6 11 22 33 44,laurent.bonnet@example.com,Clement,Noel,+33 6 25 26 27 28,clement.noel@example.com
-Cecile,Bertrand,+33 6 66 77 88 99,cecile.bertrand@example.com,Marie-Laure,Marchand,+33 6 26 27 28 29,marie-laure.marchand@example.com
-Olivier,David,+33 6 55 66 77 88,olivier.david@example.com,Amandine,Roy,+33 6 24 25 26 27,amandine.roy@example.com
-Thibault,Meunier,+33 6 29 30 31 32,thibault.meunier@example.com,Sebastien,Michel,+33 6 33 44 55 66,sebastien.michel@example.com
-Emeline,Bailly,+33 6 28 29 30 31,emeline.bailly@example.com,Anne,Garcia,+33 6 44 55 66 77,anne.garcia@example.com
-Elodie,Gauthier,+33 6 00 11 22 33,elodie.gauthier@example.com,Florian,Lemoine,+33 6 27 28 29 30,florian.lemoine@example.com
-Pauline,Perrin,+33 6 30 31 32 33,pauline.perrin@example.com,Guillaume,Rousseau,+33 6 77 88 99 00,guillaume.rousseau@example.com
-Clara,Durand,+33 6 32 33 34 35,clara.durand@example.com,Alexandre,Leroy,+33 6 99 00 11 22,alexandre.leroy@example.com
-Marion,Fontaine,+33 6 88 99 00 11,marion.fontaine@example.com,Loic,Leroux,+33 6 33 34 35 36,loic.leroux@example.com
-Celia,Barbier,+33 6 34 35 36 37,celia.barbier@example.com,Audrey,Lucas,+33 6 40 50 60 70,audrey.lucas@example.com
-Romain,Guillaume,+33 6 30 40 50 60,romain.guillaume@example.com,Remy,Morin,+33 6 31 32 33 34,remy.morin@example.com
-Caroline,Blanc,+33 6 20 30 40 50,caroline.blanc@example.com,Elise,Renard,+33 6 36 37 38 39,elise.renard@example.com
-Florent,Muller,+33 6 10 20 30 40,florent.muller@example.com,Axel,Poirier,+33 6 35 36 37 38,axel.poirier@example.com
-Lea,Lemaire,+33 6 38 39 40 41,lea.lemaire@example.com,Melanie,Petit,+33 6 60 70 80 90,melanie.petit@example.com
-Corentin,Denis,+33 6 37 38 39 40,corentin.denis@example.com,Vincent,Henry,+33 6 50 60 70 80,vincent.henry@example.com
-Raphael,Chevalier,+33 6 42 43 44 45,raphael.chevalier@example.com,Damien,Robin,+33 6 70 80 90 10,damien.robin@example.com
-Manon,Joly,+33 6 40 41 42 43,manon.joly@example.com,Stephanie,Richard,+33 6 80 90 10 20,stephanie.richard@example.com
-Adrien,Legrand,+33 6 13 14 15 16,adrien.legrand@example.com,Gaetan,Thomas,+33 6 39 40 41 42,gaetan.thomas@example.com
-Brice,Bouchet,+33 6 41 42 43 44,brice.bouchet@example.com,Chloe,Fabre,+33 6 14 15 16 17,chloe.fabre@example.com
-Guillaume,Dumond,+33 6 23 24 25 26,guillaume.dumond@example.com,Paul,Louvrier,+33 6 39 41 40 42,paul.louvrier@example.com
-Pauline,Perrin,+33 6 30 31 32 33,pauline.perrin@example.com,Melanie,Petit,+33 6 60 70 80 90,melanie.petit@example.com
+first_name1_team,last_name1_team,first_name2_team,last_name2_team,email1_team,email2_team,first_name1_opponent_team,last_name1_opponent_team,first_name2_opponent_team,last_name2_opponent_team,email1_opponent,email2_opponent,box_number,score_winner
+Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-1 4-0
+Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,1,4-3 4-0
+Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-2 4-0
+Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,1,4-2 2-4 7-2
+Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-0 4-1
+Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,1,4-2 4-0
+Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,2,4-2 1-4 7-3
+Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-3 4-3
+Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-0 4-1
+Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,2,4-1 3-4 7-5
+Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-0 4-2
+Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,2,4-3 4-3
+Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,4-0 1-4 8-6
+Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,3,4-2 4-1
+Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,3,2-4 4-3 7-0
+Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,1-4 4-2 7-3
+Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,4-3 4-2
+Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,3,4-3 4-1
+Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,4,4-0 4-2
+Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,4,4-1 4-2
+Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-3 3-4 7-4
+Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-1 4-2
+Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,4,4-3 4-0
+Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-3 0-4 7-5
+Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-2 2-4 7-4
+Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,5,4-1 4-1
+Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,5,4-1 4-0
+Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,5,4-3 4-3
+Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-2 3-4 7-2
+Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-3 2-4 7-3

@@ -40,5 +40,5 @@
 *.swp
 .DS_Store
 
-# Ignore data.csv file: generated data from csv exports
-/public/data.csv
+# Ignore *.csv file: generated data from csv exports
+/public/*.csv

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2026_03_28_120000) do
+ActiveRecord::Schema[7.0].define(version: 2026_03_31_110000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,8 +47,6 @@ ActiveRecord::Schema[7.0].define(version: 2026_03_28_120000) do
     t.bigint "round_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "chatroom_id", null: false
-    t.index ["chatroom_id"], name: "index_boxes_on_chatroom_id"
     t.index ["round_id"], name: "index_boxes_on_round_id"
   end
 
@@ -67,6 +65,9 @@ ActiveRecord::Schema[7.0].define(version: 2026_03_28_120000) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "box_id"
+    t.index ["box_id"], name: "index_chatrooms_on_box_id"
+    t.index ["box_id"], name: "index_chatrooms_on_box_id_unique", unique: true, where: "(box_id IS NOT NULL)"
   end
 
   create_table "clubs", force: :cascade do |t|
@@ -260,10 +261,10 @@ ActiveRecord::Schema[7.0].define(version: 2026_03_28_120000) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "boxes", "chatrooms"
   add_foreign_key "boxes", "rounds"
   add_foreign_key "chatroom_reads", "chatrooms"
   add_foreign_key "chatroom_reads", "users"
+  add_foreign_key "chatrooms", "boxes"
   add_foreign_key "courts", "clubs"
   add_foreign_key "gallery_images", "clubs"
   add_foreign_key "matches", "boxes"

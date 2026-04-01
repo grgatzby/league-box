@@ -45,6 +45,11 @@ nl:
       request_round_btn: vraag de volgende ronde aan
       valid_round_flash: Kies een geldig rond.
       load_scores: 📄 upload scoren
+      destroy_round_btn: Ronde verwijderen
+      destroy_round_confirm: Geselecteerde ronde en alle bijbehorende gegevens verwijderen?
+      destroy_current_round_option: "Huidige ronde (%{round})"
+      destroy_last_round_option: "Laatste ronde (%{round})"
+      destroy_round_choice_option: "%{round} (%{date})"
     my_scores:
       my_scores: Mijn scores & chatroom
       intro_html: >

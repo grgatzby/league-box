@@ -20,7 +20,7 @@ namespace :data_fixes do
 
       expected = box.chatroom_label
       if expected.blank?
-        skipped_blank << { box_id: box.id, round_id: box.round_id, chatroom_id: box.chatroom_id }
+        skipped_blank << { box_id: box.id, round_id: box.round_id, chatroom_id: box.chatroom&.id }
         next
       end
 
@@ -124,7 +124,7 @@ namespace :data_fixes do
           created_chatrooms = []
           relink_targets.each do |h|
             tmp = Chatroom.create!(name: "__tmp_new_for_box_#{h[:box_id]}_#{SecureRandom.hex(4)}")
-            Box.where(id: h[:box_id]).update_all(chatroom_id: tmp.id)
+            tmp.update!(box_id: h[:box_id])
             created_chatrooms << { chatroom: tmp, to: h[:to], box_id: h[:box_id] }
           end
 

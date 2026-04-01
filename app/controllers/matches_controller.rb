@@ -7,12 +7,24 @@ class MatchesController < ApplicationController
   REQUIRED_SCORES_HEADERS = [
     "first_name_player", "last_name_player",
     "first_name_opponent", "last_name_opponent",
+    "email_player", "email_opponent",
     "box_number", "score_winner"
   ].freeze
+  REQUIRED_DOUBLES_SCORES_HEADERS = [
+    "first_name1_team", "last_name1_team",
+    "first_name2_team", "last_name2_team",
+    "first_name1_opponent_team", "last_name1_opponent_team",
+    "first_name2_opponent_team", "last_name2_opponent_team",
+    "email1_team", "email2_team", "email1_opponent", "email2_opponent",
+    "box_number", "score_winner"
+  ].freeze
+  OPTIONAL_DOUBLES_SCORES_HEADERS = [
+    "phone_number1_team", "phone_number2_team", "phone_number1_opponent", "phone_number2_opponent",
+    "role1_team", "role2_team", "role1_opponent", "role2_opponent",
+    "match_date", "court_nb", "input_user_id", "input_date"
+  ].freeze
   OPTIONAL_SCORES_HEADERS = [
-    "score_winner2",
-    "points_player", "points_opponent",
-    "email_player", "email_opponent",
+    "phone_number_player", "phone_number_opponent", "role_player", "role_opponent",
     "match_date", "court_nb", "input_user_id", "input_date"
   ].freeze
   WINNING_GAMES_PER_SET = 4 # number of winning games per set
@@ -458,7 +470,7 @@ class MatchesController < ApplicationController
   # Updates UserBoxScore statistics and rankings after import
   def create_scores
     csv_file = params[:csv_file]
-    delimiter = params[:delimiter].presence || ";"
+    delimiter = params[:delimiter].presence || ","
     round = Round.find(params[:round_id])
     overwrite_existing = ActiveModel::Type::Boolean.new.cast(params[:overwrite_existing])
 
@@ -470,7 +482,8 @@ class MatchesController < ApplicationController
 
     headers = CSV.foreach(csv_file, col_sep: delimiter).first
     normalized_headers = headers.to_a.compact.map { |h| h.to_s.downcase.strip } - ["id"]
-    missing_headers = REQUIRED_SCORES_HEADERS - normalized_headers
+    expected_headers = round.doubles_format? ? REQUIRED_DOUBLES_SCORES_HEADERS : REQUIRED_SCORES_HEADERS
+    missing_headers = expected_headers - normalized_headers
     if missing_headers.any?
       flash[:notice] = t(".header_flash", default: "Missing required headers: %{headers}", headers: missing_headers.join(", "))
       redirect_back(fallback_location: load_scores_path(round_id: round.id))
@@ -485,10 +498,13 @@ class MatchesController < ApplicationController
     csv_rows.each_with_index do |row, idx|
       row_number = idx + 2
       next if row.to_h.values.compact.map(&:to_s).all?(&:blank?)
-
+      # each CSV row is first targeted to a destination box via box_number,
+      # so scores are applied to players/teams in that box.
       box = Box.find_by(box_number: row[:box_number], round_id: round.id)
       next unless box
 
+      # then, each CSV row is targeted to a destination match via match_date,
+      # so scores are applied to players/teams in that match.
       match_scores = match_scores_to_a(row[:score_winner].to_s)
       next unless match_scores
       results = test_new_score(match_scores, round.effective_tiebreak_points)
@@ -504,6 +520,9 @@ class MatchesController < ApplicationController
       next unless court
 
       if round.doubles_format?
+        # For doubles/padel, resolve_teams_for_csv_row uses find_team_for_csv_side to match teams by member emails (email1_*, email2_*) when provided,
+        # and/or by member names,
+        # and if that fails, it falls back to legacy single-player-side matching (which also prefers email first).
         team_a, team_b = resolve_teams_for_csv_row(row, box, round)
         next unless team_a && team_b && team_a.id != team_b.id
 
@@ -527,6 +546,7 @@ class MatchesController < ApplicationController
         create_doubles_scores_and_stats(match, match_scores, results, row[:input_date].presence || input_date)
         imported += 1
       else
+        # For singles, player matching uses find_player_for_csv_side
         player = find_player_for_csv_side(row, :player, box)
         opponent = find_player_for_csv_side(row, :opponent, box)
         next unless player && opponent && player.id != opponent.id
@@ -587,7 +607,7 @@ class MatchesController < ApplicationController
 
     rank_players(round.user_box_scores)
     flash[:notice] = t(".imported_flash", default: "%{count} matches imported.", count: imported)
-    redirect_to user_box_scores_path(round_id: round.id, club_id: round.club_id)
+    redirect_to boxes_path(round_id: round.id, club_id: round.club_id)
   end
 
   private
@@ -998,6 +1018,8 @@ class MatchesController < ApplicationController
   end
 
   def find_player_for_csv_side(row, side, box)
+    # if email_player / email_opponent is present, try a case-insensitive email match first,
+    # if not found (or email blank), fall back to first+last name match within that box.
     email = row[:"email_#{side}"].to_s.strip
     first_name = row[:"first_name_#{side}"].to_s.strip
     last_name = row[:"last_name_#{side}"].to_s.strip
@@ -1012,13 +1034,55 @@ class MatchesController < ApplicationController
   end
 
   def resolve_teams_for_csv_row(row, box, round)
-    player = find_player_for_csv_side(row, :player, box)
-    opponent = find_player_for_csv_side(row, :opponent, box)
-    return [nil, nil] unless player && opponent
+    # it can match teams by member emails (email1_*, email2_*) when provided,
+    # and/or by member names,
+    # and if that fails, it falls back to legacy single-player-side matching (which also prefers email first).
+
 
     teams_in_box = box.teams.includes(:users).where(round_id: round.id)
-    team_a = teams_in_box.find { |team| team.users.include?(player) }
-    team_b = teams_in_box.find { |team| team.users.include?(opponent) }
+    team_a = find_team_for_csv_side(row, teams_in_box, :team)
+    team_b = find_team_for_csv_side(row, teams_in_box, :opponent_team)
+
+    # Backward compatibility for legacy doubles CSV headers using one player per side.
+    if team_a.nil? || team_b.nil?
+      player = find_player_for_csv_side(row, :player, box)
+      opponent = find_player_for_csv_side(row, :opponent, box)
+      return [nil, nil] unless player && opponent
+
+      team_a = teams_in_box.find { |team| team.users.include?(player) }
+      team_b = teams_in_box.find { |team| team.users.include?(opponent) }
+    end
+
     [team_a, team_b]
+  end
+
+  def find_team_for_csv_side(row, teams_in_box, side)
+    first_name1 = row[:"first_name1_#{side}"].to_s.strip
+    last_name1 = row[:"last_name1_#{side}"].to_s.strip
+    first_name2 = row[:"first_name2_#{side}"].to_s.strip
+    last_name2 = row[:"last_name2_#{side}"].to_s.strip
+    email1 = row[:"email1_#{side}"].to_s.strip
+    email2 = row[:"email2_#{side}"].to_s.strip
+    return nil if [first_name1, last_name1, first_name2, last_name2, email1, email2].all?(&:blank?)
+
+    teams_in_box.find do |team|
+      players = team.users.sort_by { |u| [u.last_name.to_s.upcase, u.first_name.to_s.upcase, u.id.to_i] }
+      next false unless players.size >= 2
+
+      team_players = players.first(2)
+      team_emails = team_players.map { |u| u.email.to_s.downcase }
+      csv_emails = [email1, email2].map { |e| e.to_s.downcase }.reject(&:blank?)
+
+      email_match = csv_emails.empty? || csv_emails.all? { |e| team_emails.include?(e) }
+
+      csv_players = [[first_name1, last_name1], [first_name2, last_name2]].reject { |fname, lname| fname.blank? && lname.blank? }
+      name_match = csv_players.empty? || csv_players.all? do |fname, lname|
+        team_players.any? do |u|
+          u.first_name.to_s.casecmp(fname.to_s).zero? && u.last_name.to_s.casecmp(lname.to_s).zero?
+        end
+      end
+
+      email_match && name_match
+    end
   end
 end

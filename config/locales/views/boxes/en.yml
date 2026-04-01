@@ -45,6 +45,11 @@ en:
       request_round_btn: next round request
       valid_round_flash: "League table: choose a valid round"
       load_scores: 📄 load scores
+      destroy_round_btn: Delete round
+      destroy_round_confirm: Delete selected round and all dependent data?
+      destroy_current_round_option: "Current round (%{round})"
+      destroy_last_round_option: "Last round (%{round})"
+      destroy_round_choice_option: "%{round} (%{date})"
     my_scores:
       my_scores: My scores & chatroom
       intro_html: >

@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     get 'boxes_csv/boxes', to: "boxes#round_boxes_to_csv", as: "csv_boxes"
     get 'boxes_csv/tournament_players', to: "boxes#tournament_players_to_csv", as: "csv_tournament_players"
     get 'boxes_csv/scores', to: "boxes#round_scores_to_csv", as: "csv_scores"
+    get 'boxes_csv/player_match_scores', to: "boxes#player_match_scores_to_csv", as: "csv_player_match_scores"
+    post 'boxes/destroy_round', to: "boxes#destroy_round", as: "destroy_round"
     get "boxes_list/:id", to: "boxes#show_list", as: "box_list"
     get "my_scores/:id", to: "boxes#my_scores", as: "my_scores"
 

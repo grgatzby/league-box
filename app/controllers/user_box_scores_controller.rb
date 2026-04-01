@@ -244,8 +244,7 @@ class UserBoxScoresController < ApplicationController
           box_numbers = box_numbers.uniq.sort
           nb_boxes = box_numbers.size
           nb_boxes.times do |box_index|
-            boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
-                                chatroom_id: @general_chatroom.id)
+            boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index])
 
             box_players[box_numbers[box_index]].each do |player|
               UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
@@ -262,7 +261,7 @@ class UserBoxScoresController < ApplicationController
           players_per_box -= 1 while (players.size % players_per_box < MIN_PLAYERS_PER_BOX) && players_per_box > MIN_PLAYERS_PER_BOX
           nb_boxes = (players.size / players_per_box) + ((players.size % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
           nb_boxes.times do |box_index|
-            boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+            boxes << Box.create!(round_id: round.id, box_number: box_index + 1)
             box_players << players.shift(players_per_box) # adds one array of box players
             box_players[box_index].each do |player|
               UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,

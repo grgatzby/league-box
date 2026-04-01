@@ -238,7 +238,7 @@ class RoundsController < ApplicationController
 
     groups = user_ids.each_slice(players_per_box).to_a
     groups.each_with_index do |uids, idx|
-      box = Box.create!(round_id: new_round.id, box_number: idx + 1, chatroom_id: @general_chatroom.id)
+      box = Box.create!(round_id: new_round.id, box_number: idx + 1)
       uids.each_with_index do |uid, rnk|
         UserBoxScore.create!(
           user_id: uid,
@@ -326,8 +326,7 @@ class RoundsController < ApplicationController
         box_numbers = box_numbers.uniq.sort
         nb_boxes = box_numbers.size
         nb_boxes.times do |box_index|
-          boxes << Box.create(round_id: round.id, box_number: box_numbers[box_index],
-                              chatroom_id: @general_chatroom.id)
+          boxes << Box.create!(round_id: round.id, box_number: box_numbers[box_index])
 
           box_players[box_numbers[box_index]].each do |player|
             UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
@@ -344,7 +343,7 @@ class RoundsController < ApplicationController
         nb_boxes = (players.size / players_per_box) + ((players.size % players_per_box) > MIN_PLAYERS_PER_BOX - 1 ? 1 : 0)
         box_players = []
         nb_boxes.times do |box_index|
-          boxes << Box.create(round_id: round.id, box_number: box_index + 1, chatroom_id: @general_chatroom.id)
+          boxes << Box.create!(round_id: round.id, box_number: box_index + 1)
           box_players << players.shift(players_per_box)
           box_players[box_index].each do |player|
             UserBoxScore.create(user_id: player.id, box_id: boxes[box_index].id,
