@@ -120,7 +120,9 @@
             <% delete_options << [t(".destroy_round_choice_option", round: round_label(r), date: l(r.start_date, format: :ddmmmyyy_date)), r.id] %>
           <% end %>
           <%= select_tag :destroy_round_choice, options_for_select(delete_options, "current"), class: "form-select form-select-sm", style: "width: 15.5rem" %>
-          <%= submit_tag t(".destroy_round_btn"), class: "btn btn-shape btn-red", data: { confirm: t(".destroy_round_confirm") } %>
+          <%= submit_tag t(".destroy_round_btn"),
+                         class: "btn btn-shape btn-red",
+                         data: { turbo_confirm: t(".destroy_round_confirm"), confirm: t(".destroy_round_confirm") } %>
         <% end %>
       <% end %>
       <%# Round creation buttons: Admin can create, Referees can request %>
