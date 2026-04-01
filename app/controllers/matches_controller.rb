@@ -511,12 +511,7 @@ class MatchesController < ApplicationController
       next unless results
       results = compute_points(match_scores)
 
-      court_name = row[:court_nb].presence || "1"
-      court = Court.find_by(
-        club_id: round.club_id,
-        name: court_name,
-        court_kind: Court.kind_for_tournament_format(round.tournament_format)
-      )
+      court = court_for_score_import(round, row[:court_nb].to_s.strip)
       next unless court
 
       if round.doubles_format?
@@ -616,6 +611,17 @@ class MatchesController < ApplicationController
     Court.for_round(round).pluck(:name).sort_by do |name|
       name.to_s.scan(/\d+|\D+/).map { |part| part.match?(/\A\d+\z/) ? [0, part.to_i] : [1, part.downcase] }
     end
+  end
+
+  # CSV import: use court_nb when it matches a court of the right kind for this round; otherwise
+  # (missing column, blank, wrong kind e.g. tennis name for padel) use first available
+  # compatible court for the club (same order as Court.for_round).
+  def court_for_score_import(round, court_name_from_csv)
+    kind = Court.kind_for_tournament_format(round.tournament_format)
+    scope = Court.where(club_id: round.club_id, court_kind: kind).order(:name)
+    return scope.first if court_name_from_csv.blank?
+
+    scope.find_by(name: court_name_from_csv) || scope.first
   end
 
   def current_user_team_in_box(box)
@@ -748,17 +754,38 @@ class MatchesController < ApplicationController
   end
 
   def destroy_match(match)
-    user_match_scores = UserMatchScore.where(match_id: match.id)
-    results = compute_results(user_match_scores)
-    # update user_box_score for each player
-    [0, 1].each do |index|
-      user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: user_match_scores[index].user_id)
+    box = match.box
+    round = box.round
 
-      user_box_score.points -= user_match_scores[index].points
+    if match.doubles_match?
+      # Same rollback as destroy_match_for_import: reverse team_box_scores, per-player user_box_scores,
+      # then remove scores (singles path below only handles two UMS and never touched team_box_score).
+      old_match_scores = team_scores_payload_from_match(match)
+      old_results = compute_results(old_match_scores)
+      apply_doubles_stats_delta(match, old_match_scores, old_results, -1)
+      TeamMatchScore.where(match_id: match.id).delete_all
+      UserMatchScore.where(match_id: match.id).delete_all
+      match.destroy
+      rank_teams(box.team_box_scores.reload)
+      rank_players(round.user_box_scores)
+      return
+    end
+
+    user_match_scores = UserMatchScore.where(match_id: match.id).order(:id).to_a
+    results = compute_results(user_match_scores)
+    # update user_box_score for each player (singles: two participants)
+    [0, 1].each do |index|
+      ums = user_match_scores[index]
+      next unless ums
+
+      user_box_score = UserBoxScore.find_by(box_id: match.box_id, user_id: ums.user_id)
+      next unless user_box_score
+
+      user_box_score.points -= ums.points
       user_box_score.sets_won -= results[index]
       user_box_score.sets_played -= results.sum
-      user_box_score.games_won -= won_games(user_match_scores[index])
-      user_box_score.games_played -= won_games(user_match_scores[index]) + won_games(user_match_scores[1 - index])
+      user_box_score.games_won -= won_games(ums)
+      user_box_score.games_played -= won_games(ums) + won_games(user_match_scores[1 - index])
       user_box_score.matches_won -= results[index] > results[1 - index] ? 1 : 0
       user_box_score.matches_played -= 1
       user_box_score.save
@@ -766,7 +793,7 @@ class MatchesController < ApplicationController
     match.destroy
 
     # update the league table
-    rank_players(match.box.round.user_box_scores)
+    rank_players(round.user_box_scores)
   end
 
   # Used by CSV import overwrite mode. Handles both singles and doubles cleanup before replacement.

@@ -397,6 +397,14 @@ The production database configuration expects:
 - PostgreSQL database named `league_box_production`
 - User `league_box` with password from environment variable
 
+After deploys that drop or rename DB columns, restart all app workers (web/jobs/console)
+and refresh schema cache so long-lived processes do not keep stale column metadata:
+
+```bash
+RAILS_ENV=production rails db:schema:cache:clear
+RAILS_ENV=production rails db:schema:cache:dump
+```
+
 ### Assets
 
 Precompile assets for production:
