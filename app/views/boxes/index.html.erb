@@ -4,6 +4,81 @@
 -->
 <div class="<%= class_names("text-size", "container": !@is_mobile) %>">
   <% if !@is_mobile %><br><% end %>
+  <% if params[:export_status].present? %>
+    <% export_ok = params[:export_status] == "ok" %>
+    <% export_message = export_ok ? t(".export_csv_ok") : t(".export_csv_ko") %>
+    <span id="csv-export-status"
+            class="position-fixed"
+            style="top: 82px; right: 20px; z-index: 1060;"
+            data-bs-toggle="popover"
+            data-bs-trigger="manual"
+            data-bs-placement="bottom"
+            data-bs-content="<%= export_message %>"></span>
+    <% if params[:export_csv].blank? %>
+      <script>
+        (function() {
+          let shown = false;
+          const showStatus = function() {
+            if (shown) return;
+            shown = true;
+            const el = document.getElementById("csv-export-status");
+            if (!el || typeof bootstrap === "undefined" || !bootstrap.Popover) return;
+            const pop = bootstrap.Popover.getOrCreateInstance(el, { trigger: "manual", placement: "bottom" });
+            pop.show();
+            setTimeout(function() { pop.hide(); }, 3500);
+          };
+          setTimeout(showStatus, 50);
+          document.addEventListener("turbo:load", showStatus, { once: true });
+          document.addEventListener("DOMContentLoaded", showStatus, { once: true });
+        })();
+      </script>
+    <% end %>
+  <% end %>
+  <% if params[:export_csv].present? %>
+    <script>
+      (function() {
+        let done = false;
+        let started = false;
+        const clearExportParamsFromUrl = function() {
+          try {
+            const url = new URL(window.location.href);
+            url.searchParams.delete("export_csv");
+            url.searchParams.delete("export_status");
+            window.history.replaceState({}, "", url.toString());
+          } catch (e) {
+            // no-op
+          }
+        };
+        const showStatus = function() {
+          if (done) return;
+          done = true;
+          const el = document.getElementById("csv-export-status");
+          if (!el || typeof bootstrap === "undefined" || !bootstrap.Popover) return;
+          const pop = bootstrap.Popover.getOrCreateInstance(el, { trigger: "manual", placement: "bottom" });
+          pop.show();
+          setTimeout(function() { pop.hide(); }, 3500);
+        };
+        const triggerDownload = function() {
+          if (started) return;
+          started = true;
+          const link = document.createElement("a");
+          link.href = "/exports/<%= ERB::Util.url_encode(params[:export_csv].to_s) %>";
+          link.setAttribute("download", "");
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Save dialogs block the UI and return focus when the user closes/confirms.
+          // Show the status popover at that moment so it appears after save/cancel.
+          window.addEventListener("focus", showStatus, { once: true });
+          setTimeout(clearExportParamsFromUrl, 0);
+        };
+        setTimeout(triggerDownload, 50);
+        document.addEventListener("turbo:load", triggerDownload, { once: true });
+        document.addEventListener("DOMContentLoaded", triggerDownload, { once: true });
+      })();
+    </script>
+  <% end %>
 
   <% if @round %>
     <!-- Page Header -->
@@ -102,7 +177,7 @@
             data-bs-content="<%= t '.message_tournament_csv_pop' %>">
           <%= link_to t(".to_tournament_csv_btn"), csv_tournament_players_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3", target: "_blank", rel: "noopener" %>
         </span>
-        <%= link_to "CSV match scores", csv_player_match_scores_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3", target: "_blank", rel: "noopener" %>
+        <%= link_to "CSV match scores", csv_player_match_scores_options_path(round_id: @round.id), class: "btn btn-shape btn-green dont-print me-3" %>
       <% end %>
       <%# Admin-only: Load scores button %>
       <% if current_user == @admin %>

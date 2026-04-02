@@ -1,5 +1,7 @@
 class BoxesController < ApplicationController
   require "csv"
+  require "fileutils"
+  require "securerandom"
   helper_method :box_matches, :my_box?  # allows the #box_matches method to be called from views
   DAYS_BEFORE_NEW_ROUND_CREATION = 15
   PLAYERS_HEADERS = ["id", "club_id", "email", "first_name", "last_name", "nickname", "phone_number", "role", "box_number"]
@@ -210,7 +212,7 @@ class BoxesController < ApplicationController
                   referee.phone_number, referee.role]
       end
     end
-    download_csv(file.pathmap, "Boxes-R#{round_label(round)}", round.club.name)
+    download_csv(file.pathmap, "Boxes-R#{round_label(round)}", round.club.name, "boxes#round_boxes_to_csv")
   end
 
   def round_scores_to_csv
@@ -237,7 +239,7 @@ class BoxesController < ApplicationController
         writer << row if row
       end
     end
-    download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name)
+    download_csv(file.pathmap, "Scores-R#{round_label(round)}", round.club.name, "boxes#round_scores_to_csv")
   end
 
   def tournament_players_to_csv
@@ -267,7 +269,12 @@ class BoxesController < ApplicationController
         end
       end
     end
-    download_csv(file.pathmap, "TournamentPlayers-R#{round_label(round)}", round.club.name)
+    download_csv(file.pathmap, "TournamentPlayers-R#{round_label(round)}", round.club.name, "boxes#tournament_players_to_csv")
+  end
+
+  def player_match_scores_options
+    @round = Round.find(params[:round_id])
+    return redirect_back(fallback_location: boxes_path(round_id: @round.id, club_id: @round.club_id), alert: "Unauthorized.") unless current_user == @admin
   end
 
   # Admin-only export with compact headers for player-vs-opponent score imports.
@@ -276,10 +283,19 @@ class BoxesController < ApplicationController
     round = Round.find(params[:round_id])
     return redirect_back(fallback_location: boxes_path(round_id: round.id, club_id: round.club_id), alert: "Unauthorized.") unless current_user == @admin
 
-    file = "#{Rails.root}/public/data.csv"
+    include_input_user_id = ActiveModel::Type::Boolean.new.cast(params[:include_input_user_id])
+    include_roles = ActiveModel::Type::Boolean.new.cast(params[:include_roles])
+    include_court_nb = ActiveModel::Type::Boolean.new.cast(params[:include_court_nb])
+
+    export_dir = Rails.root.join("public", "exports")
+    FileUtils.mkdir_p(export_dir)
+    safe_round_label = round_label(round).to_s.gsub(/[^0-9A-Za-z_-]/, "-")
+    export_filename = "player-match-scores-r#{safe_round_label}-boxes#player_match_scores_to_csv-#{Time.current.strftime('%Y%m%d%H%M%S')}-#{SecureRandom.hex(4)}.csv"
+    file = export_dir.join(export_filename)
+
     CSV.open(file, "w", col_sep: ",") do |writer|
       if round.doubles_format?
-        writer << [
+        headers = [
           "first_name1_team", "last_name1_team",
           "first_name2_team", "last_name2_team",
           "email1_team", "email2_team",
@@ -288,13 +304,21 @@ class BoxesController < ApplicationController
           "email1_opponent", "email2_opponent",
           "box_number", "score_winner"
         ]
+        headers += ["role1_team", "role2_team", "role1_opponent", "role2_opponent"] if include_roles
+        headers << "court_nb" if include_court_nb
+        headers << "input_user_id" if include_input_user_id
+        writer << headers
       else
-        writer << ["first_name_player", "last_name_player", "first_name_opponent", "last_name_opponent", "box_number", "score_winner"]
+        headers = ["first_name_player", "last_name_player", "first_name_opponent", "last_name_opponent", "box_number", "score_winner"]
+        headers += ["role_player", "role_opponent"] if include_roles
+        headers << "court_nb" if include_court_nb
+        headers << "input_user_id" if include_input_user_id
+        writer << headers
       end
       boxes_includes = if round.doubles_format?
-                         { matches: [:team_match_scores, { team_a: :users }, { team_b: :users }] }
+                         { matches: [:team_match_scores, { team_a: :users }, { team_b: :users }, :court] }
                        else
-                         { matches: { user_match_scores: :user } }
+                         { matches: [{ user_match_scores: :user }, :court] }
                        end
       round.boxes.includes(boxes_includes).order(:box_number).each do |box|
         box.matches.each do |match|
@@ -304,7 +328,7 @@ class BoxesController < ApplicationController
             score = score_winner_from_team_scores(match)
             next unless team_a_players.size >= 2 && team_b_players.size >= 2 && score.present?
 
-            writer << [
+            row = [
               team_a_players[0].first_name, team_a_players[0].last_name,
               team_a_players[1].first_name, team_a_players[1].last_name,
               team_a_players[0].email, team_a_players[1].email,
@@ -313,20 +337,45 @@ class BoxesController < ApplicationController
               team_b_players[0].email, team_b_players[1].email,
               box.box_number, score
             ]
+            input_source = match.team_match_scores.find { |s| s.team_id == match.team_a_id } || match.team_match_scores.first
+            row += [team_a_players[0].role, team_a_players[1].role, team_b_players[0].role, team_b_players[1].role] if include_roles
+            row << match.court&.name if include_court_nb
+            row << (input_source&.input_user_id || current_user.id) if include_input_user_id
+            writer << row
           else
             next if match.user_match_scores.size < 2
 
-            p0 = match.user_match_scores[0]&.user
-            p1 = match.user_match_scores[1]&.user
+            s0 = match.user_match_scores[0]
+            s1 = match.user_match_scores[1]
+            p0 = s0&.user
+            p1 = s1&.user
             score = score_winner_board(match)
             next unless p0 && p1 && score.present?
 
-            writer << [p0.first_name, p0.last_name, p1.first_name, p1.last_name, box.box_number, score]
+            row = [p0.first_name, p0.last_name, p1.first_name, p1.last_name, box.box_number, score]
+            row += [p0.role, p1.role] if include_roles
+            row << match.court&.name if include_court_nb
+            row << (s0&.input_user_id || current_user.id) if include_input_user_id
+            writer << row
           end
         end
       end
     end
-    download_csv(file.pathmap, "PlayerMatchScores-R#{round_label(round)}", round.club.name)
+    if ActiveModel::Type::Boolean.new.cast(params[:redirect_back])
+      redirect_to boxes_path(round_id: round.id,
+                             club_id: round.club_id,
+                             export_status: "ok",
+                             export_csv: export_filename)
+    else
+      send_file file,
+                filename: csv_download_filename(round.club.name, "PlayerMatchScores-R#{round_label(round)}", "boxes#player_match_scores_to_csv"),
+                disposition: "attachment",
+                type: "text/csv"
+    end
+  rescue StandardError => e
+    Rails.logger.error("player_match_scores_to_csv failed: #{e.class} - #{e.message}")
+    redirect_to boxes_path(round_id: round.id, club_id: round.club_id, export_status: "ko"),
+                alert: t("boxes.index.export_csv_ko")
   end
 
   private

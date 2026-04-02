@@ -1,0 +1,25 @@
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,box_number,score_winner,role_player,role_opponent
+Antoine,Laurent,Sophie,Dubois,1,4-2 4-1,player,player
+Antoine,Laurent,Marie,Martin,1,4-0 4-0,player,player
+Sophie,Dubois,Marie,Martin,1,4-0 4-3,player,player
+Pierre,Bernard,Jean,Dupont,2,4-3 4-3,player,player
+Isabelle,Moreau,Claire,Lefebvre,2,4-3 4-1,player,player
+Claire,Lefebvre,Pierre,Bernard,2,0-4 4-3 8-6,player,player
+Pierre,Bernard,Isabelle,Moreau,2,4-1 4-2,player,player
+Sebastien,Michel,Cecile,Bertrand,4,4-2 4-2,player,player
+Guillaume,Rousseau,Florent,Muller,5,4-2 4-0,player,player
+Guillaume,Rousseau,Marion,Fontaine,5,1-4 4-3 7-0,player,player
+Florent,Muller,Marion,Fontaine,5,4-2 4-0,player,player
+Romain,Guillaume,Audrey,Lucas,6,4-0 4-2,player,player
+Audrey,Lucas,Elodie,Gauthier,6,4-3 4-0,player,player
+Audrey,Lucas,Stephanie,Richard,6,4-3 0-4 7-2,player,player
+Romain,Guillaume,Elodie,Gauthier,6,2-4 4-3 7-4,player,player
+Stephanie,Richard,Romain,Guillaume,6,4-3 4-0,player,player
+Stephanie,Richard,Elodie,Gauthier,6,4-3 4-2,player,player
+Melanie,Petit,Damien,Robin,7,4-2 4-3,player,player
+Damien,Robin,Adrien,Legrand,7,4-1 4-2,player,player
+Melanie,Petit,Caroline,Blanc,7,4-2 4-1,player,player
+Damien,Robin,Caroline,Blanc,7,4-0 4-0,player,player
+Adrien,Legrand,Melanie,Petit,7,4-3 4-3,player,player
+Caroline,Blanc,Adrien,Legrand,7,4-1 4-2,player,player
+Valerie,Masson,Chloe,Fabre,8,4-0 4-2,player,player

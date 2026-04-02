@@ -33,6 +33,8 @@ en:
       all_box_explain_html: <i><b class='color-green'>Click on a box</b> to check the matches in detail</i>
       message_box_pop: "Name, rank, games played, points earned.<br /><br /><i class='color-green'>Click for match details on box %{box}</i>"
       message_csv_pop: <b>export round players and referee</b> to CSV file with the following headers:<br /><i>id, club_id, email, first_name, last_name, nickname, phone_number, role, box_number</i>
+      export_csv_ok: match scores exported to CSV.
+      export_csv_ko: error exporting match scores to CSV.
       to_tournament_csv_btn: 📄 tournament players CSV
       message_tournament_csv_pop: >
         <b>export tournament players</b> to CSV file.<br />
@@ -50,6 +52,16 @@ en:
       destroy_current_round_option: "Current round (%{round})"
       destroy_last_round_option: "Last round (%{round})"
       destroy_round_choice_option: "%{round} (%{date})"
+    player_match_scores_options:
+      title: CSV match scores export options
+      required_columns_label_html: <strong>The following parameters will be always exported:</strong>
+      required_columns_singles: first_name_player, last_name_player, first_name_opponent, last_name_opponent, box_number, score_winner
+      required_columns_doubles: first_name1_team, last_name1_team, first_name2_team, last_name2_team, email1_team, email2_team, first_name1_opponent_team, last_name1_opponent_team, first_name2_opponent_team, last_name2_opponent_team, email1_opponent, email2_opponent, box_number, score_winner
+      subtitle_html: <strong>Select additional parameters to include in the generated CSV file.</strong>
+      include_input_user_id: input_user_id (user who entered the score)
+      include_roles: players' roles
+      include_court_nb: court_nb
+      export_btn: Export CSV
     my_scores:
       my_scores: My scores & chatroom
       intro_html: >

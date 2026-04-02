@@ -1,0 +1,25 @@
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,box_number,score_winner
+Antoine,Laurent,Sophie,Dubois,1,4-2 4-1
+Antoine,Laurent,Marie,Martin,1,4-0 4-0
+Sophie,Dubois,Marie,Martin,1,4-0 4-3
+Pierre,Bernard,Jean,Dupont,2,4-3 4-3
+Isabelle,Moreau,Claire,Lefebvre,2,4-3 4-1
+Claire,Lefebvre,Pierre,Bernard,2,0-4 4-3 8-6
+Pierre,Bernard,Isabelle,Moreau,2,4-1 4-2
+Sebastien,Michel,Cecile,Bertrand,4,4-2 4-2
+Guillaume,Rousseau,Florent,Muller,5,4-2 4-0
+Guillaume,Rousseau,Marion,Fontaine,5,1-4 4-3 7-0
+Florent,Muller,Marion,Fontaine,5,4-2 4-0
+Romain,Guillaume,Audrey,Lucas,6,4-0 4-2
+Audrey,Lucas,Elodie,Gauthier,6,4-3 4-0
+Audrey,Lucas,Stephanie,Richard,6,4-3 0-4 7-2
+Romain,Guillaume,Elodie,Gauthier,6,2-4 4-3 7-4
+Stephanie,Richard,Romain,Guillaume,6,4-3 4-0
+Stephanie,Richard,Elodie,Gauthier,6,4-3 4-2
+Melanie,Petit,Damien,Robin,7,4-2 4-3
+Damien,Robin,Adrien,Legrand,7,4-1 4-2
+Melanie,Petit,Caroline,Blanc,7,4-2 4-1
+Damien,Robin,Caroline,Blanc,7,4-0 4-0
+Adrien,Legrand,Melanie,Petit,7,4-3 4-3
+Caroline,Blanc,Adrien,Legrand,7,4-1 4-2
+Valerie,Masson,Chloe,Fabre,8,4-0 4-2

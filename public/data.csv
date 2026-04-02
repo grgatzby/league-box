@@ -1,31 +1,25 @@
-first_name1_team,last_name1_team,first_name2_team,last_name2_team,email1_team,email2_team,first_name1_opponent_team,last_name1_opponent_team,first_name2_opponent_team,last_name2_opponent_team,email1_opponent,email2_opponent,box_number,score_winner
-Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-1 4-0
-Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,1,4-3 4-0
-Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-2 4-0
-Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Marie,Martin,Laetitia,Mercier,marie.martin@example.com,laetitia.mercier@example.com,1,4-2 2-4 7-2
-Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Pierre,Bernard,Valerie,Masson,pierre.bernard@example.com,valerie.masson@example.com,1,4-0 4-1
-Jean,Dupont,Gregory,Dupuy,jean.dupont@example.com,gregory.dupuy@example.com,Sophie,Dubois,Quentin,Fournier,sophie.dubois@example.com,quentin.fournier@example.com,1,4-2 4-0
-Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,2,4-2 1-4 7-3
-Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-3 4-3
-Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-0 4-1
-Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Melissa,Colin,Thomas,Simon,melissa.colin@example.com,thomas.simon@example.com,2,4-1 3-4 7-5
-Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Antoine,Laurent,Vanessa,Roussel,antoine.laurent@example.com,vanessa.roussel@example.com,2,4-0 4-2
-Kevin,Leclerc,Claire,Lefebvre,kevin.leclerc@example.com,claire.lefebvre@example.com,Benjamin,Andre,Isabelle,Moreau,benjamin.andre@example.com,isabelle.moreau@example.com,2,4-3 4-3
-Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,4-0 1-4 8-6
-Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,3,4-2 4-1
-Stephanie,Caron,Julie,Vincent,stephanie.caron@example.com,julie.vincent@example.com,Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,3,2-4 4-3 7-0
-Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,1-4 4-2 7-3
-Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Emilie,Girard,Mathieu,Schmitt,emilie.girard@example.com,mathieu.schmitt@example.com,3,4-3 4-2
-Nicolas,Roux,Cyril,Vidal,nicolas.roux@example.com,cyril.vidal@example.com,Laurent,Bonnet,Clement,Noel,laurent.bonnet@example.com,clement.noel@example.com,3,3-4 1-4
-Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,4,4-0 4-2
-Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,4,4-1 4-2
-Emeline,Bailly,Anne,Garcia,emeline.bailly@example.com,anne.garcia@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-3 3-4 7-4
-Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-1 4-2
-Cecile,Bertrand,Marie-Laure,Marchand,cecile.bertrand@example.com,marie-laure.marchand@example.com,Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,4,4-3 4-0
-Thibault,Meunier,Sebastien,Michel,thibault.meunier@example.com,sebastien.michel@example.com,Olivier,David,Amandine,Roy,olivier.david@example.com,amandine.roy@example.com,4,4-3 0-4 7-5
-Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-2 2-4 7-4
-Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,5,4-1 4-1
-Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,5,4-1 4-0
-Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Elodie,Gauthier,Florian,Lemoine,elodie.gauthier@example.com,florian.lemoine@example.com,5,4-3 4-3
-Clara,Durand,Alexandre,Leroy,clara.durand@example.com,alexandre.leroy@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-2 3-4 7-2
-Marion,Fontaine,Loic,Leroux,marion.fontaine@example.com,loic.leroux@example.com,Pauline,Perrin,Guillaume,Rousseau,pauline.perrin@example.com,guillaume.rousseau@example.com,5,4-3 2-4 7-3
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,email_player,email_opponent,box_number,score_winner,phone_number_player,phone_number_opponent,role_player,role_opponent,match_date,court_nb,input_user_id,input_date
+Antoine,Laurent,Sophie,Dubois,antoine.laurent@example.com,sophie.dubois@example.com,1,4-2 4-1,+33 6 56 78 90 12,+33 6 45 67 89 01,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Antoine,Laurent,Marie,Martin,antoine.laurent@example.com,marie.martin@example.com,1,4-0 4-0,+33 6 56 78 90 12,+33 6 23 45 67 89,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Sophie,Dubois,Marie,Martin,sophie.dubois@example.com,marie.martin@example.com,1,4-0 4-3,+33 6 45 67 89 01,+33 6 23 45 67 89,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Pierre,Bernard,Jean,Dupont,pierre.bernard@example.com,jean.dupont@example.com,2,4-3 4-3,+33 6 34 56 78 90,+33 6 12 34 56 78,player,player,2026-03-05 11:00:00 UTC,1,172,2026-03-30 19:30:01 UTC
+Isabelle,Moreau,Claire,Lefebvre,isabelle.moreau@example.com,claire.lefebvre@example.com,2,4-3 4-1,+33 6 67 89 01 23,+33 6 89 01 23 45,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Claire,Lefebvre,Pierre,Bernard,claire.lefebvre@example.com,pierre.bernard@example.com,2,0-4 4-3 8-6,+33 6 89 01 23 45,+33 6 34 56 78 90,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Pierre,Bernard,Isabelle,Moreau,pierre.bernard@example.com,isabelle.moreau@example.com,2,4-1 4-2,+33 6 34 56 78 90,+33 6 67 89 01 23,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Sebastien,Michel,Cecile,Bertrand,sebastien.michel@example.com,cecile.bertrand@example.com,4,4-2 4-2,+33 6 33 44 55 66,+33 6 66 77 88 99,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Guillaume,Rousseau,Florent,Muller,guillaume.rousseau@example.com,florent.muller@example.com,5,4-2 4-0,+33 6 77 88 99 00,+33 6 10 20 30 40,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Guillaume,Rousseau,Marion,Fontaine,guillaume.rousseau@example.com,marion.fontaine@example.com,5,1-4 4-3 7-0,+33 6 77 88 99 00,+33 6 88 99 00 11,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Florent,Muller,Marion,Fontaine,florent.muller@example.com,marion.fontaine@example.com,5,4-2 4-0,+33 6 10 20 30 40,+33 6 88 99 00 11,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Romain,Guillaume,Audrey,Lucas,romain.guillaume@example.com,audrey.lucas@example.com,6,4-0 4-2,+33 6 30 40 50 60,+33 6 40 50 60 70,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Audrey,Lucas,Elodie,Gauthier,audrey.lucas@example.com,elodie.gauthier@example.com,6,4-3 4-0,+33 6 40 50 60 70,+33 6 00 11 22 33,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Audrey,Lucas,Stephanie,Richard,audrey.lucas@example.com,stephanie.richard@example.com,6,4-3 0-4 7-2,+33 6 40 50 60 70,+33 6 80 90 10 20,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Romain,Guillaume,Elodie,Gauthier,romain.guillaume@example.com,elodie.gauthier@example.com,6,2-4 4-3 7-4,+33 6 30 40 50 60,+33 6 00 11 22 33,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Stephanie,Richard,Romain,Guillaume,stephanie.richard@example.com,romain.guillaume@example.com,6,4-3 4-0,+33 6 80 90 10 20,+33 6 30 40 50 60,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Stephanie,Richard,Elodie,Gauthier,stephanie.richard@example.com,elodie.gauthier@example.com,6,4-3 4-2,+33 6 80 90 10 20,+33 6 00 11 22 33,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Melanie,Petit,Damien,Robin,melanie.petit@example.com,damien.robin@example.com,7,4-2 4-3,+33 6 60 70 80 90,+33 6 70 80 90 10,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Damien,Robin,Adrien,Legrand,damien.robin@example.com,adrien.legrand@example.com,7,4-1 4-2,+33 6 70 80 90 10,+33 6 13 14 15 16,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Melanie,Petit,Caroline,Blanc,melanie.petit@example.com,caroline.blanc@example.com,7,4-2 4-1,+33 6 60 70 80 90,+33 6 20 30 40 50,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Damien,Robin,Caroline,Blanc,damien.robin@example.com,caroline.blanc@example.com,7,4-0 4-0,+33 6 70 80 90 10,+33 6 20 30 40 50,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Adrien,Legrand,Melanie,Petit,adrien.legrand@example.com,melanie.petit@example.com,7,4-3 4-3,+33 6 13 14 15 16,+33 6 60 70 80 90,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Caroline,Blanc,Adrien,Legrand,caroline.blanc@example.com,adrien.legrand@example.com,7,4-1 4-2,+33 6 20 30 40 50,+33 6 13 14 15 16,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
+Valerie,Masson,Chloe,Fabre,valerie.masson@example.com,chloe.fabre@example.com,8,4-0 4-2,+33 6 12 13 14 15,+33 6 14 15 16 17,player,player,2026-03-05 00:00:00 UTC,1,172,2026-03-30 22:33:20 UTC
