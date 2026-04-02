@@ -354,16 +354,15 @@ class BoxesController < ApplicationController
     board
   end
 
+  # Score string for doubles CSV: always team_a then team_b (same order as import assigns
+  # match_scores[0] to team_a / CSV "team" side and match_scores[1] to team_b / "opponent").
+  # Column name remains score_winner for backwards compatibility.
   def score_winner_from_team_scores(match)
     team_score_a = match.team_match_scores.find { |s| s.team_id == match.team_a_id }
     team_score_b = match.team_match_scores.find { |s| s.team_id == match.team_b_id }
     return nil unless team_score_a && team_score_b
 
-    board0, board1 = if team_score_a.is_winner
-                       [team_score_a, team_score_b]
-                     else
-                       [team_score_b, team_score_a]
-                     end
+    board0, board1 = team_score_a, team_score_b
     board = "#{board0.score_set1}-#{board1.score_set1} #{board0.score_set2}-#{board1.score_set2}"
     board += " #{board0.score_tiebreak}-#{board1.score_tiebreak}" if board0.score_tiebreak.to_i + board1.score_tiebreak.to_i > 0
     board
