@@ -318,6 +318,7 @@ class ApplicationController < ActionController::Base
       cmp = (b.matches_played <=> a.matches_played) if cmp.zero?
       cmp = ((b.sets_played.zero? ? 0 : b.sets_won.to_f / b.sets_played) <=> (a.sets_played.zero? ? 0 : a.sets_won.to_f / a.sets_played)) if cmp.zero?
       cmp = ((b.games_played.zero? ? 0 : b.games_won.to_f / b.games_played) <=> (a.games_played.zero? ? 0 : a.games_won.to_f / a.games_played)) if cmp.zero?
+      cmp = a.id <=> b.id if cmp.zero?
       tieds << [a, b] if cmp.zero?
       cmp
     end

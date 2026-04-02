@@ -600,6 +600,12 @@ class MatchesController < ApplicationController
       return
     end
 
+    if round.doubles_format?
+      # Same aggregation as user_box_scores#index: one global ordering for all teams in the round.
+      # Per-box rank_teams alone does not persist the same ranks as the round league table view.
+      tbs_all = round.boxes.includes(team_box_scores: { team: :users }).map(&:team_box_scores).flatten
+      rank_teams(tbs_all)
+    end
     rank_players(round.user_box_scores)
     flash[:notice] = t(".imported_flash", default: "%{count} matches imported.", count: imported)
     redirect_to boxes_path(round_id: round.id, club_id: round.club_id)
