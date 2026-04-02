@@ -1,0 +1,25 @@
+first_name_player,last_name_player,first_name_opponent,last_name_opponent,box_number,score_winner,role_player,role_opponent,court_nb,input_user_id
+Antoine,Laurent,Sophie,Dubois,1,4-2 4-1,player,player,1,172
+Antoine,Laurent,Marie,Martin,1,4-0 4-0,player,player,1,172
+Sophie,Dubois,Marie,Martin,1,4-0 4-3,player,player,1,172
+Pierre,Bernard,Jean,Dupont,2,4-3 4-3,player,player,1,172
+Isabelle,Moreau,Claire,Lefebvre,2,4-3 4-1,player,player,1,172
+Claire,Lefebvre,Pierre,Bernard,2,0-4 4-3 8-6,player,player,1,172
+Pierre,Bernard,Isabelle,Moreau,2,4-1 4-2,player,player,1,172
+Sebastien,Michel,Cecile,Bertrand,4,4-2 4-2,player,player,1,172
+Guillaume,Rousseau,Florent,Muller,5,4-2 4-0,player,player,1,172
+Guillaume,Rousseau,Marion,Fontaine,5,1-4 4-3 7-0,player,player,1,172
+Florent,Muller,Marion,Fontaine,5,4-2 4-0,player,player,1,172
+Romain,Guillaume,Audrey,Lucas,6,4-0 4-2,player,player,1,172
+Audrey,Lucas,Elodie,Gauthier,6,4-3 4-0,player,player,1,172
+Audrey,Lucas,Stephanie,Richard,6,4-3 0-4 7-2,player,player,1,172
+Romain,Guillaume,Elodie,Gauthier,6,2-4 4-3 7-4,player,player,1,172
+Stephanie,Richard,Romain,Guillaume,6,4-3 4-0,player,player,1,172
+Stephanie,Richard,Elodie,Gauthier,6,4-3 4-2,player,player,1,172
+Melanie,Petit,Damien,Robin,7,4-2 4-3,player,player,1,172
+Damien,Robin,Adrien,Legrand,7,4-1 4-2,player,player,1,172
+Melanie,Petit,Caroline,Blanc,7,4-2 4-1,player,player,1,172
+Damien,Robin,Caroline,Blanc,7,4-0 4-0,player,player,1,172
+Adrien,Legrand,Melanie,Petit,7,4-3 4-3,player,player,1,172
+Caroline,Blanc,Adrien,Legrand,7,4-1 4-2,player,player,1,172
+Valerie,Masson,Chloe,Fabre,8,4-0 4-2,player,player,1,172

@@ -42,3 +42,4 @@
 
 # Ignore *.csv file: generated data from csv exports
 /public/*.csv
+/public/exports/*.csv

@@ -317,7 +317,7 @@ class UserBoxScoresController < ApplicationController
                    user_bs.box.box_number]
       end
     end
-    download_csv(file.pathmap, "League Table-R#{round_label(round)}", round.club.name)
+    download_csv(file.pathmap, "League Table-R#{round_label(round)}", round.club.name, "user_box_scores#round_league_table_to_csv")
   end
 
   # Export tournament league table to CSV file (all rounds with same league_start)
@@ -359,7 +359,7 @@ class UserBoxScoresController < ApplicationController
         writer << data
       end
     end
-    download_csv(file.pathmap, "League Table-T#{params[:league_start]}", rounds[0].club.name)
+    download_csv(file.pathmap, "League Table-T#{params[:league_start]}", rounds[0].club.name, "user_box_scores#league_table_to_csv")
   end
 
   private

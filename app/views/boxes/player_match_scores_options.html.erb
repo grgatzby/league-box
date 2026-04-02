@@ -1,0 +1,38 @@
+<div class="<%= class_names("container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>">
+  <% if !@is_mobile %><br><% end %>
+
+  <h3><%= t(".title") %></h3>
+  <p><%= t(".required_columns_label_html") %></p>
+  <p class="ms-4"><%= @round.doubles_format? ? t(".required_columns_doubles") : t(".required_columns_singles") %></p>
+  <p><%= t(".subtitle_html") %></p>
+
+  <%= form_with url: csv_player_match_scores_path,
+                method: :get,
+                local: true,
+                class: "mb-3",
+                data: { turbo: false } do %>
+    <%= hidden_field_tag :round_id, @round.id %>
+    <%= hidden_field_tag :redirect_back, "1" %>
+
+    <div class="ms-4">
+      <div class="form-check mb-2">
+        <%= check_box_tag :include_input_user_id, "1", false, class: "form-check-input", id: "include_input_user_id" %>
+        <%= label_tag :include_input_user_id, t(".include_input_user_id"), class: "form-check-label" %>
+      </div>
+
+      <div class="form-check mb-2">
+        <%= check_box_tag :include_roles, "1", false, class: "form-check-input", id: "include_roles" %>
+        <%= label_tag :include_roles, t(".include_roles"), class: "form-check-label" %>
+      </div>
+
+      <div class="form-check mb-3">
+        <%= check_box_tag :include_court_nb, "1", false, class: "form-check-input", id: "include_court_nb" %>
+        <%= label_tag :include_court_nb, t(".include_court_nb"), class: "form-check-label" %>
+      </div>
+    </div>
+    <div class="buttons-wrap dont-print">
+      <%= submit_tag t(".export_btn"), class: "btn btn-shape btn-green me-2" %>
+      <%= link_to t("back_btn"), boxes_path(round_id: @round.id, club_id: @round.club_id), class: "btn btn-shape btn-yellow" %>
+    </div>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  require "securerandom"
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :global_variables
@@ -484,13 +485,22 @@ class ApplicationController < ActionController::Base
 
   # Download CSV file with league table data
   # Parameters:
-  #   file: File path (default: "#{Rails.root}/public/data.csv")
+  #   file: File path (e.g., "#{Rails.root}/public/data.csv")
   #   league_type: Type identifier (e.g., "League Table-R01" or "League Table-T2024-10-01")
   #   club_name: Club name for filename
-  def download_csv(file = "#{Rails.root}/public/data.csv", league_type, club_name)
+  #   source_method: Optional trace tag (e.g., "boxes#round_scores_to_csv")
+  def download_csv(file, league_type, club_name, source_method = nil)
     if File.exist?(file)
-      send_file file, filename: "#{club_name}-#{league_type}[#{Date.today}].csv", disposition: 'attachment', type: 'text/csv'
+      send_file file,
+                filename: csv_download_filename(club_name, league_type, source_method),
+                disposition: "attachment",
+                type: "text/csv"
     end
+  end
+
+  def csv_download_filename(club_name, league_type, source_method = nil)
+    trace = source_method.presence || "#{controller_name}##{action_name}"
+    "#{club_name}-#{league_type}[#{Date.today}]-#{trace}-#{SecureRandom.hex(4)}.csv"
   end
 
   # Check if a player belongs to a specific box
