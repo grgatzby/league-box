@@ -7,18 +7,14 @@
 <div class="<%= class_names("container": !@is_mobile, "px-2 px-md-3": @is_mobile) %>" data-controller="toggle"
      data-toggle-screen-type-value="<%= @is_mobile ? "mobile" : "widescreen" %>">
   <% if !@is_mobile %><br><% end %>
-
-  <%# Page Title Section: Tournament league table with rounds popover %>
-  <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column": @is_mobile) %> text-size">
-  <h3 class="<%= class_names("mb-0": !@is_mobile, "mb-2 text-center": @is_mobile) %>">
-    <%= t('.league_table_title', league_start: l(@league_start, format: :yyymm_date)) %>
-  </h3>
-</div>
+  <%# Title + rounds popover: singles (below) and doubles (controller sets @rounds before early return) %>
   <% if @rounds %>
     <div class="<%= class_names("one-liner": !@is_mobile, "d-flex flex-column text-center": @is_mobile) %> text-size">
       <%# Build popover message with all rounds in the tournament %>
       <% boxes = @rounds.map{ |round| "#{round.round_label_round_part}: #{round.start_date.strftime('%d/%m/%Y')} - #{round.end_date.strftime('%d/%m/%Y')},<br />" }.sort.join[0...-7]
-      message = "<br /><u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
+      format_name = tournament_format_default_section_title(@round&.tournament_format)
+      header = "<b>#{h(@club&.name)} - #{h(format_name)}</b><br />"
+      message = "#{header}<u>#{t(".rounds")} #{l(@league_start, format: :yyymm_date)}:</u><br />#{boxes}" %>
       <%# Title popover: tag helper entity-escapes content (avoid raw data-bs-content interpolation; it breaks on quotes and &) %>
       <%= tag.div data: {
         controller: "popover",

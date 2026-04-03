@@ -92,6 +92,9 @@ class UserBoxScoresController < ApplicationController
       if @round.doubles_format? && doubles_context
         @doubles_mode = true
         @league_start = @round.league_start
+        # Same scope as singles path so index_league can render title + rounds popover (not only the duplicate top title).
+        rounds_scope = Round.where(league_start: @league_start, club_id: @club.id)
+        @rounds = tf.present? ? rounds_scope.where(tournament_format: tf) : rounds_scope
         if params[:order] && (params[:exsort] == params[:sort])
           @order = params[:order].to_i
         else

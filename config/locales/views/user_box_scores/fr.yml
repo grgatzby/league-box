@@ -36,7 +36,7 @@ fr:
         </ol>
         <br /><br />
     action_buttons:
-      all_boxes_link: 📦 les box
+      all_boxes_link: 📦 les box du round
       round_ranking_btn: 🏆 classement du round
       to_text_btn: 📄 texte
       to_csv_btn: 📄 CSV
